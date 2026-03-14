@@ -16,6 +16,7 @@
 6. **Artifacts land in the repo** — user chooses where (e.g., `design/simulations/`), organized by technique
 7. **Metadata in `.craft/`** — custom roles, config, persona definitions
 8. **Orchestrator is optional** — `/program:plan` sequences skills into a staged plan, but every skill works standalone
+9. **Every program ends with an echo** — see [The Echo](#the-echo) below
 
 ---
 
@@ -451,6 +452,37 @@ stages:
 ```
 
 Each stage uses Layer 1 skills as its mini-pipeline. The program is optional — every skill works standalone.
+
+---
+
+## The Echo
+
+Every namespace in this plugin is an act of seeing through someone else's eyes before you commit. Scout sees through the market's eyes. Review sees through the expert's eyes. Trace sees through the system's eyes. Listen sees through the customer's eyes. The whole plugin is an empathy engine.
+
+But the most valuable output of any simulation is not the confirmation — it's the surprise. The thing that came back that you didn't send. The gap between what you believed and what the evidence showed.
+
+**The Echo** is the final phase of every program. After all stages complete, before the program closes, it asks one question:
+
+> **"What did we learn that we didn't expect?"**
+
+The echo collects unexpected findings from every stage — the P1 that nobody predicted, the persona who loved what you thought would fail, the trace that revealed a dependency you didn't know existed, the customer who wanted something you hadn't considered. It synthesizes them into a single document: `{topic}-echo-{date}.md`.
+
+```yaml
+# In program.yaml, the echo is always the final stage
+stages:
+  - name: scout
+    # ...
+  - name: listen
+    # ...
+  - name: echo
+    auto: true  # no skills to run — synthesizes across all prior stages
+    produces: "{topic}-echo-{date}.md"
+    question: "What did we learn that we didn't expect?"
+```
+
+The echo is not a review. It's not a gate. It's a reflection. Programs that skip the echo ship faster but learn slower. Programs that honor the echo build institutional memory — each echo becomes a breadcrumb for the next team that walks this path.
+
+The best simulations don't confirm. They surprise. The echo is where you listen for that.
 
 ---
 
