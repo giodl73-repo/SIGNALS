@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "report-coverage",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-28",
+    "prompt": "Produce spec coverage matrix showing which specs have scenario coverage"
+  }
+}

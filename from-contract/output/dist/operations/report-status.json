@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "report-status",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-27",
+    "prompt": "Generate overall simulation dashboard with aggregate metrics"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "codex-check",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-7",
+    "prompt": "Validate no code collisions exist in the CODEX"
+  }
+}

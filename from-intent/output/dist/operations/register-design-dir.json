@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "register-design-dir",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-3",
+    "prompt": "Register a design directory with its domain type and convention metadata so it participates in simulations"
+  }
+}

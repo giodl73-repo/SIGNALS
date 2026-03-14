@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "wire-status",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-25",
+    "prompt": "Show wiring status tracking design-only vs test-backed scenarios"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skill": "report",
+  "root": {
+    "type": "sequence",
+    "handle": "op-16",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-13",
+        "path": "*"
+      },
+      {
+        "type": "glob",
+        "handle": "op-14",
+        "pattern": "*"
+      },
+      {
+        "type": "grep",
+        "handle": "op-15",
+        "pattern": ""
+      }
+    ]
+  }
+}

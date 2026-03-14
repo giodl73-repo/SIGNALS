@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "list-series",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-1",
+    "prompt": "List all scenario series across registered design directories with status summaries and wave progress"
+  }
+}

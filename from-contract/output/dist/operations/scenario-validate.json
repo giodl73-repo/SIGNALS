@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scenario-validate",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-15",
+    "prompt": "Validate scenario completeness against domain-specific checklist"
+  }
+}

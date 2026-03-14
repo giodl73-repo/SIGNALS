@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "generate-series-dashboard",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-19",
+    "prompt": "Render series-level progress: scenarios complete vs. planned, wave completion, open findings"
+  }
+}

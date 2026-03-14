@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scenario-scaffolder",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-42",
+    "prompt": "Create individual scenario directories with intent, input fixtures, expected output placeholders, and validation checklists.\n"
+  }
+}

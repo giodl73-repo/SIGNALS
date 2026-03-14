@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "codex-scanner",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-18",
+    "prompt": "Scan all domains for series codes and validate CODEX consistency"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "add-cross-series-ref",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-9",
+    "prompt": "Record a cross-series reference when a scenario touches features owned by another series"
+  }
+}

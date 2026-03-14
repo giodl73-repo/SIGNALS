@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "gap-analyzer",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-22",
+    "prompt": "Identify gaps in simulation coverage -- specs without scenarios, series without adversarial waves, findings without DCRs.\n"
+  }
+}

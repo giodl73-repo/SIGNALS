@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "dcr-list",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-23",
+    "prompt": "List DCRs with status filters and spec linkage"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "role": "simulation-architect",
+  "artifact_type": "campaign-plan",
+  "directory": "campaigns",
+  "format": "markdown",
+  "naming": "{domain}-campaign.md",
+  "count": 0,
+  "artifacts": []
+}

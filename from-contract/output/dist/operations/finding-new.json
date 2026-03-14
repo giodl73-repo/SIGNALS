@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "finding-new",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-17",
+    "prompt": "Record a new finding with ID, severity, description, and linked scenario"
+  }
+}

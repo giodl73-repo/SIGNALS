@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "test-scaffolder",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-44",
+    "prompt": "Generate test file scaffolds from scenario expected outputs. Maps scenario variations to it() blocks, creates describe() structure matching series/wave hierarchy.\n"
+  }
+}

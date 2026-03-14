@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "generate-simulation-report",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-21",
+    "prompt": "Produce full simulation report: coverage matrix, findings scorecard, DCR rollup, cross-series dependency map"
+  }
+}

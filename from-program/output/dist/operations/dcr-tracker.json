@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "dcr-tracker",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-25",
+    "prompt": "Track DCR lifecycle (Draft → Closed) with spec linkage"
+  }
+}

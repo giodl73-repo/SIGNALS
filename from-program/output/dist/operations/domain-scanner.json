@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "domain-scanner",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-17",
+    "prompt": "Discover and index simulation artifacts in a registered domain"
+  }
+}

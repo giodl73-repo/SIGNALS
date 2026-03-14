@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "finding-batch",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-19",
+    "prompt": "Group related findings by pattern into a DCR proposal"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "wire-scaffold",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-24",
+    "prompt": "Generate test file scaffolds from validated scenario expected outputs"
+  }
+}

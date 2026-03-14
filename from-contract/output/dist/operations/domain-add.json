@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "domain-add",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-2",
+    "prompt": "Register a design directory with its domain type (compiler, runtime, bridge, api, emitter)"
+  }
+}

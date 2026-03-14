@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scenario-status",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-16",
+    "prompt": "Update scenario lifecycle status (planned, in-progress, complete, validated, wired)"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "setup",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-1",
+    "prompt": "Initialize simulation infrastructure in a project with CODEX, config, and directory skeleton"
+  }
+}

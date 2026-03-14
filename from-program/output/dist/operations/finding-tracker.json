@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "finding-tracker",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-24",
+    "prompt": "Track finding lifecycle (identified → resolved) with audit trail"
+  }
+}

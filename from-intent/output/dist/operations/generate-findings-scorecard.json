@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "generate-findings-scorecard",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-20",
+    "prompt": "Summarize findings by total, resolved, open, and severity across all series"
+  }
+}

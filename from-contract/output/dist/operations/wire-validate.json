@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "wire-validate",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-26",
+    "prompt": "Run coverage gates on wired tests (95% lines, 90% branches default)"
+  }
+}

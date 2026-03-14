@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scenario-trace",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-14",
+    "prompt": "Guide hand-compilation of expected output from specs (enforces hand-compile-first)"
+  }
+}

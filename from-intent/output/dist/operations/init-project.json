@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "init-project",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-2",
+    "prompt": "Bootstrap a simulation project: create CODEX, global config, and default directory skeleton"
+  }
+}

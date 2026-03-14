@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "generate-coverage-report",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-18",
+    "prompt": "Produce spec coverage matrix showing which specs have scenario coverage and where gaps exist"
+  }
+}

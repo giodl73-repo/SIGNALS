@@ -1,0 +1,78 @@
+version: 1
+plugin: sim-forge
+model: orchestrator-stage
+commands:
+  - name: init-project
+    tier: T2
+    description: "Bootstrap a simulation project: create CODEX, global config, and default directory skeleton"
+  - name: register-design-dir
+    tier: T2
+    description: Register a design directory with its domain type and convention metadata so it participates in simulations
+  - name: configure-domain
+    tier: T2
+    description: Define or update per-domain simulation conventions including directory structure, naming, finding format, and checklist templates
+  - name: register-series-code
+    tier: T2
+    description: Claim a unique 5-letter code in the CODEX, reject collisions, and bind it to a domain and owning series
+  - name: scaffold-series
+    tier: T2
+    description: Generate domain-appropriate directory structure, CLAUDE.md session driver, FINDINGS.md, INDEX.md, and COMPLETION-CRITERIA.md for a new series
+  - name: list-series
+    tier: T1
+    description: List all scenario series across registered design directories with status summaries and wave progress
+  - name: create-scenario
+    tier: T2
+    description: Create a new scenario with intent, input fixtures, and hand-compiled expected output; enforce hand-compile-first constraint
+  - name: update-scenario-status
+    tier: T2
+    description: "Advance scenario lifecycle: planned → in-progress → complete → validated → wired"
+  - name: add-cross-series-ref
+    tier: T2
+    description: Record a cross-series reference when a scenario touches features owned by another series
+  - name: record-finding
+    tier: T2
+    description: Append a new finding with ID, severity, description, and linked scenario; findings are immutable once recorded
+  - name: resolve-finding
+    tier: T2
+    description: Annotate a finding's resolution (DCR filed, spec amended, scenario updated) without modifying its original record
+  - name: batch-findings-to-dcr
+    tier: T2
+    description: Group related findings by pattern into a DCR proposal; link each finding to the new DCR
+  - name: create-dcr
+    tier: T2
+    description: Create a Design Change Request with affected specs, batched findings, and initial Draft status
+  - name: update-dcr-status
+    tier: T2
+    description: "Advance DCR lifecycle: Draft → Active → Integrated → Implemented → Closed"
+  - name: wire-scenario-to-test
+    tier: T2
+    description: Bridge a validated scenario to an automated test; blocked unless scenario status is 'validated'
+  - name: generate-test-scaffold
+    tier: T2
+    description: Emit test file scaffold from scenario's expected output, mapping scenario variations to individual test blocks
+  - name: check-coverage-gates
+    tier: T2
+    description: Validate coverage thresholds (95% lines/statements/functions, 90% branches) for wired scenarios
+  - name: generate-coverage-report
+    tier: T2
+    description: Produce spec coverage matrix showing which specs have scenario coverage and where gaps exist
+  - name: generate-series-dashboard
+    tier: T2
+    description: "Render series-level progress: scenarios complete vs. planned, wave completion, open findings"
+  - name: generate-findings-scorecard
+    tier: T2
+    description: Summarize findings by total, resolved, open, and severity across all series
+  - name: generate-simulation-report
+    tier: T2
+    description: "Produce full simulation report: coverage matrix, findings scorecard, DCR rollup, cross-series dependency map"
+entities:
+  - name: SimulationProject
+  - name: DesignDirectory
+  - name: DomainConfig
+  - name: SeriesCode
+  - name: ScenarioSeries
+  - name: Scenario
+  - name: Finding
+  - name: DCR
+  - name: TestWire
+  - name: CoverageReport

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "finding-resolve",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-18",
+    "prompt": "Annotate finding resolution with DCR reference, spec amendment, and scenario update"
+  }
+}

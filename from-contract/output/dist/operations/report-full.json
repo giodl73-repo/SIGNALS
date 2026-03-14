@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "report-full",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-30",
+    "prompt": "Comprehensive simulation report with coverage, findings, DCRs, and cross-series maps"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "series-list",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-11",
+    "prompt": "List all series across all registered domains with progress summaries"
+  }
+}

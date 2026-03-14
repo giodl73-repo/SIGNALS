@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "wire-tracker",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-26",
+    "prompt": "Track test wiring status and coverage gate results"
+  }
+}

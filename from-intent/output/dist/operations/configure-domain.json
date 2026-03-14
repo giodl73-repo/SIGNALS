@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "configure-domain",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-4",
+    "prompt": "Define or update per-domain simulation conventions including directory structure, naming, finding format, and checklist templates"
+  }
+}

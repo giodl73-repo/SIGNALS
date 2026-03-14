@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "series-complete",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-12",
+    "prompt": "Mark a series as complete after all scenarios are validated"
+  }
+}

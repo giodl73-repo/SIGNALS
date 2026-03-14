@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "create-scenario",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-7",
+    "prompt": "Create a new scenario with intent, input fixtures, and hand-compiled expected output; enforce hand-compile-first constraint"
+  }
+}

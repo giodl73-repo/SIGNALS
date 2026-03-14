@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "session-driver-generator",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-43",
+    "prompt": "Generate CLAUDE.md session drivers with enforced vocabulary table, pipeline model, progress table, current scenario pointer, and startup protocol. Adapts to domain conventions.\n"
+  }
+}

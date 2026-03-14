@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "series-new",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-9",
+    "prompt": "Create and scaffold a new scenario series with domain-appropriate directory structure"
+  }
+}

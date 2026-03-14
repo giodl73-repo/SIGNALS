@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "record-finding",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-10",
+    "prompt": "Append a new finding with ID, severity, description, and linked scenario; findings are immutable once recorded"
+  }
+}

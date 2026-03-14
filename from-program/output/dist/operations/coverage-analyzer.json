@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "coverage-analyzer",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-21",
+    "prompt": "Calculate spec coverage matrices, identify uncovered specs, and compute coverage percentages per domain.\n"
+  }
+}

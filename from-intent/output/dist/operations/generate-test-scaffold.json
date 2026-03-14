@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "generate-test-scaffold",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-16",
+    "prompt": "Emit test file scaffold from scenario's expected output, mapping scenario variations to individual test blocks"
+  }
+}

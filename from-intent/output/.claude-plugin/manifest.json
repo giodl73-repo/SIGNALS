@@ -1,0 +1,71 @@
+{
+  "name": "sim-forge",
+  "model": "orchestrator-stage",
+  "commands": [
+    "sim-forge:init-project",
+    "sim-forge:register-design-dir",
+    "sim-forge:configure-domain",
+    "sim-forge:register-series-code",
+    "sim-forge:scaffold-series",
+    "sim-forge:list-series",
+    "sim-forge:create-scenario",
+    "sim-forge:update-scenario-status",
+    "sim-forge:add-cross-series-ref",
+    "sim-forge:record-finding",
+    "sim-forge:resolve-finding",
+    "sim-forge:batch-findings-to-dcr",
+    "sim-forge:create-dcr",
+    "sim-forge:update-dcr-status",
+    "sim-forge:wire-scenario-to-test",
+    "sim-forge:generate-test-scaffold",
+    "sim-forge:check-coverage-gates",
+    "sim-forge:generate-coverage-report",
+    "sim-forge:generate-series-dashboard",
+    "sim-forge:generate-findings-scorecard",
+    "sim-forge:generate-simulation-report"
+  ],
+  "shared": [],
+  "entities": [
+    {
+      "name": "SimulationProject",
+      "schema_file": "schema/simulationproject.schema.json"
+    },
+    {
+      "name": "DesignDirectory",
+      "schema_file": "schema/designdirectory.schema.json"
+    },
+    {
+      "name": "DomainConfig",
+      "schema_file": "schema/domainconfig.schema.json"
+    },
+    {
+      "name": "SeriesCode",
+      "schema_file": "schema/seriescode.schema.json"
+    },
+    {
+      "name": "ScenarioSeries",
+      "schema_file": "schema/scenarioseries.schema.json"
+    },
+    {
+      "name": "Scenario",
+      "schema_file": "schema/scenario.schema.json"
+    },
+    {
+      "name": "Finding",
+      "schema_file": "schema/finding.schema.json"
+    },
+    {
+      "name": "DCR",
+      "schema_file": "schema/dcr.schema.json"
+    },
+    {
+      "name": "TestWire",
+      "schema_file": "schema/testwire.schema.json"
+    },
+    {
+      "name": "CoverageReport",
+      "schema_file": "schema/coveragereport.schema.json"
+    }
+  ],
+  "workers": []
+}

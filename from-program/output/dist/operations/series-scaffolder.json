@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "series-scaffolder",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-41",
+    "prompt": "Create domain-appropriate directory structure for a new series. Generates CLAUDE.md session driver, FINDINGS.md, INDEX.md, COMPLETION-CRITERIA.md, and scenario templates based on domain type.\n"
+  }
+}

@@ -1,0 +1,480 @@
+version: 1
+plugin: simulate
+model: claude-opus-4-6
+
+# ─── Architecture ───────────────────────────────────────────
+# Three-tier: campaign (root) → domain → series/scenario
+# Mirrors panel's paper/module/board but for simulation lifecycle
+
+workspace: simulate
+target_platform: claude-code
+
+agents:
+  emit: true
+  model: claude-opus-4-6
+  orchestration: true
+
+tiers:
+  - id: root
+    path: root/
+    parent: null
+  - id: domain
+    path: root/domain/
+    parent: root
+  - id: bridge
+    path: root/bridge/
+    parent: root
+
+# ─── Commands (5 consolidated, two-level dispatch) ──────────
+commands:
+  - name: run
+    description: >
+      Campaign orchestration -- setup projects, register domains,
+      manage simulation campaigns, and run interactive simulation sessions.
+      Operations: setup, domain (add/list/remove), session (new/resume/show),
+      status, config.
+    tier: T1
+    tools: [Read, Write, Edit, Glob, Grep, Bash]
+    inputs: [Domain, Campaign, Config]
+    outputs: [Domain, Campaign]
+    dependencies: []
+
+  - name: codex
+    description: >
+      Series code registry -- register, reserve, list, check, and manage
+      5-letter scenario series codes across all domains. Enforces uniqueness
+      and tracks code-to-domain mappings.
+      Operations: register, reserve, list, check, show, align.
+    tier: T1
+    tools: [Read, Write, Edit, Glob]
+    inputs: [Codex]
+    outputs: [Codex]
+    dependencies: []
+
+  - name: series
+    description: >
+      Scenario series lifecycle -- create series with domain-appropriate
+      scaffolding, manage scenarios within series, track findings, file DCRs,
+      and manage wave-based complexity gradients.
+      Operations: new, show, list, scenario (new/trace/validate/status),
+      finding (new/resolve/batch/list), dcr (new/update/list), complete.
+    tier: T2
+    tools: [Read, Write, Edit, Glob, Grep, Bash]
+    inputs: [Series, Scenario, Finding, DCR, Wave]
+    outputs: [Series, Scenario, Finding, DCR]
+    dependencies: [codex]
+
+  - name: wire
+    description: >
+      Test bridge -- generate test scaffolds from validated design scenarios,
+      track wiring status, run coverage gates, and validate that design
+      scenarios are backed by real tests.
+      Operations: scaffold, status, validate, map, coverage.
+    tier: T2
+    tools: [Read, Write, Edit, Glob, Grep, Bash]
+    inputs: [Series, Scenario, WireMap]
+    outputs: [WireMap]
+    dependencies: [series]
+
+  - name: report
+    description: >
+      Simulation reporting -- dashboards, coverage matrices, findings
+      scorecards, DCR rollups, and comprehensive simulation reports.
+      Operations: status, coverage, findings, dcrs, full, export.
+    tier: T1
+    tools: [Read, Glob, Grep]
+    inputs: [Domain, Series, Finding, DCR, WireMap]
+    outputs: []
+    dependencies: []
+
+# ─── Entities ───────────────────────────────────────────────
+entities:
+  - name: Config
+    fields:
+      - { name: version, type: number, default: 1 }
+      - { name: project_name, type: string }
+      - { name: codex_path, type: string, default: "CODEX.md" }
+      - { name: coverage_gate, type: object }
+      - { name: domains, type: array }
+
+  - name: Domain
+    fields:
+      - { name: id, type: string }
+      - { name: path, type: string }
+      - { name: type, type: string }
+      - { name: spec_corpus, type: string }
+      - { name: scenario_path, type: string }
+      - { name: finding_format, type: string }
+      - { name: directory_convention, type: string }
+      - { name: registered_at, type: date }
+
+  - name: Codex
+    fields:
+      - { name: code, type: string }
+      - { name: domain, type: string }
+      - { name: series_name, type: string }
+      - { name: count, type: number, default: 0 }
+      - { name: focus, type: string }
+      - { name: status, type: string, default: "active" }
+      - { name: reserved, type: boolean, default: false }
+
+  - name: Campaign
+    fields:
+      - { name: id, type: string }
+      - { name: name, type: string }
+      - { name: domains, type: array }
+      - { name: created_at, type: date }
+      - { name: status, type: string, default: "active" }
+      - { name: total_series, type: number, default: 0 }
+      - { name: total_scenarios, type: number, default: 0 }
+      - { name: total_findings, type: number, default: 0 }
+
+  - name: Series
+    fields:
+      - { name: code, type: string }
+      - { name: domain, type: string }
+      - { name: focus, type: string }
+      - { name: specs_covered, type: array }
+      - { name: wave_count, type: number, default: 1 }
+      - { name: scenario_count, type: number, default: 0 }
+      - { name: finding_count, type: number, default: 0 }
+      - { name: dcr_count, type: number, default: 0 }
+      - { name: status, type: string, default: "active" }
+      - { name: created_at, type: date }
+
+  - name: Scenario
+    fields:
+      - { name: id, type: string }
+      - { name: series, type: string }
+      - { name: wave, type: number }
+      - { name: name, type: string }
+      - { name: intent, type: string }
+      - { name: status, type: string, default: "planned" }
+      - { name: has_expected, type: boolean, default: false }
+      - { name: has_actual, type: boolean, default: false }
+      - { name: wired_test, type: string }
+      - { name: findings, type: array }
+
+  - name: Finding
+    fields:
+      - { name: id, type: string }
+      - { name: series, type: string }
+      - { name: scenario, type: string }
+      - { name: severity, type: string }
+      - { name: description, type: string }
+      - { name: resolved, type: boolean, default: false }
+      - { name: resolution, type: string }
+      - { name: dcr_ref, type: string }
+      - { name: discovered_at, type: date }
+      - { name: resolved_at, type: date }
+
+  - name: DCR
+    fields:
+      - { name: id, type: string }
+      - { name: title, type: string }
+      - { name: status, type: string, default: "Draft" }
+      - { name: specs_affected, type: array }
+      - { name: findings, type: array }
+      - { name: phase, type: string }
+      - { name: created_at, type: date }
+
+  - name: Wave
+    fields:
+      - { name: number, type: number }
+      - { name: series, type: string }
+      - { name: complexity, type: string }
+      - { name: scenario_count, type: number, default: 0 }
+      - { name: complete, type: boolean, default: false }
+
+  - name: WireMap
+    fields:
+      - { name: scenario_id, type: string }
+      - { name: series, type: string }
+      - { name: test_file, type: string }
+      - { name: test_name, type: string }
+      - { name: wired_at, type: date }
+      - { name: coverage, type: object }
+
+# ─── Workers ────────────────────────────────────────────────
+workers:
+  # Scanners
+  - name: domain-scanner
+    description: Discover and index simulation artifacts in a registered domain
+    commands: [run]
+    tier: T1
+
+  - name: codex-scanner
+    description: Scan all domains for series codes and validate CODEX consistency
+    commands: [codex]
+    tier: T1
+
+  - name: coverage-scanner
+    description: Scan spec corpus and map scenario coverage per spec
+    commands: [report]
+    tier: T1
+
+  # Generators
+  - name: series-scaffolder
+    description: >
+      Create domain-appropriate directory structure for a new series.
+      Generates CLAUDE.md session driver, FINDINGS.md, INDEX.md,
+      COMPLETION-CRITERIA.md, and scenario templates based on domain type.
+    commands: [series]
+    tier: T2
+
+  - name: scenario-scaffolder
+    description: >
+      Create individual scenario directories with intent, input fixtures,
+      expected output placeholders, and validation checklists.
+    commands: [series]
+    tier: T2
+
+  - name: session-driver-generator
+    description: >
+      Generate CLAUDE.md session drivers with enforced vocabulary table,
+      pipeline model, progress table, current scenario pointer, and
+      startup protocol. Adapts to domain conventions.
+    commands: [series]
+    tier: T2
+
+  - name: test-scaffolder
+    description: >
+      Generate test file scaffolds from scenario expected outputs.
+      Maps scenario variations to it() blocks, creates describe() structure
+      matching series/wave hierarchy.
+    commands: [wire]
+    tier: T2
+
+  # Analyzers
+  - name: finding-analyzer
+    description: >
+      Analyze findings across series for patterns -- recurring themes,
+      spec gaps, severity distributions. Proposes DCR batches.
+    commands: [series]
+    tier: T1
+
+  - name: coverage-analyzer
+    description: >
+      Calculate spec coverage matrices, identify uncovered specs,
+      and compute coverage percentages per domain.
+    commands: [report]
+    tier: T1
+
+  - name: gap-analyzer
+    description: >
+      Identify gaps in simulation coverage -- specs without scenarios,
+      series without adversarial waves, findings without DCRs.
+    commands: [report]
+    tier: T1
+
+  # Trackers
+  - name: scenario-tracker
+    description: Track scenario lifecycle state transitions (planned → wired)
+    commands: [series]
+    tier: T1
+
+  - name: finding-tracker
+    description: Track finding lifecycle (identified → resolved) with audit trail
+    commands: [series]
+    tier: T1
+
+  - name: dcr-tracker
+    description: Track DCR lifecycle (Draft → Closed) with spec linkage
+    commands: [series]
+    tier: T1
+
+  - name: wire-tracker
+    description: Track test wiring status and coverage gate results
+    commands: [wire]
+    tier: T1
+
+# ─── Roles ──────────────────────────────────────────────────
+roles:
+  - name: simulation-architect
+    tier: root
+    scope: workspace
+    archetype: structural
+    orientation:
+      frame: >
+        You design simulation campaigns as coverage maps -- every spec is a territory,
+        every scenario is a probe, every finding is intelligence. A well-designed
+        campaign reveals gaps before they become bugs.
+      serves: >
+        Design teams who need confidence that their specs are internally consistent
+        and implementation teams who need validated expected outputs to test against.
+    lens:
+      verify:
+        - "Does the scenario coverage map to all specs in the domain?"
+        - "Are waves structured with increasing complexity (happy → adversarial)?"
+        - "Do cross-series references capture all feature intersections?"
+        - "Is the CODEX collision-free and semantically clear?"
+      simplify:
+        - "Can any series be merged without losing coverage?"
+        - "Are there scenarios that duplicate coverage across series?"
+        - "Can wave gradients be steeper (fewer trivial scenarios)?"
+    expertise:
+      depth: >
+        Specification analysis, test design methodology, coverage modeling,
+        and design validation patterns. Deep experience with hand-compile-first
+        methodology across compiler, SDK, and bridge domains.
+      relevance: >
+        Simulation campaign design determines whether gaps are found early
+        (cheap to fix) or late (expensive rework). Coverage modeling prevents
+        both blind spots and redundant effort.
+    artifacts:
+      - type: campaign-plan
+        directory: campaigns
+        format: markdown
+        naming: "{domain}-campaign.md"
+    workflow:
+      - step: survey
+        description: "Map the spec corpus and identify coverage targets"
+      - step: design
+        description: "Design series, waves, and cross-references"
+        emits: [campaign-ready]
+      - step: review
+        description: "Review coverage after series completion"
+        trigger: series-complete
+
+  - name: domain-expert
+    tier: domain
+    scope: workspace
+    archetype: experiential
+    orientation:
+      frame: >
+        You trace through systems the way the system traces through data --
+        step by step, pass by pass, with full awareness of what each stage
+        transforms and what invariants it must preserve.
+      serves: >
+        Developers who will implement the system and need validated expected
+        outputs that serve as both documentation and test oracles.
+    lens:
+      verify:
+        - "Does the hand-compiled expected output match the spec exactly?"
+        - "Are all edge cases at system boundaries covered?"
+        - "Do findings accurately identify spec gaps vs. simulation errors?"
+        - "Is the severity classification correct for each finding?"
+      simplify:
+        - "Can the trace be simplified without losing fidelity?"
+        - "Are there intermediate steps that can be elided?"
+    expertise:
+      depth: >
+        Domain-specific system tracing -- compiler passes, API operation sequences,
+        sync pipeline stages, or emitter transformations depending on domain type.
+      relevance: >
+        The quality of hand-compiled expected outputs determines the quality
+        of findings. Incorrect expected outputs generate false positives that
+        waste implementation time.
+    artifacts:
+      - type: trace-document
+        directory: traces
+        format: markdown
+        naming: "{scenario}-trace.md"
+    workflow:
+      - step: trace
+        description: "Hand-compile expected output from specs"
+        trigger: scenario-created
+      - step: validate
+        description: "Compare actual vs. expected after implementation"
+        trigger: implementation-ready
+      - step: report
+        description: "File findings for any mismatches"
+        emits: [finding-reported]
+
+  - name: test-engineer
+    tier: bridge
+    scope: workspace
+    archetype: craft
+    orientation:
+      frame: >
+        You bridge the gap between design validation and code validation --
+        every validated scenario becomes a test case, every finding becomes
+        an assertion, every wave becomes a test suite.
+      serves: >
+        Implementation teams who need automated regression tests derived
+        from design scenarios, and CI pipelines that enforce coverage gates.
+    lens:
+      verify:
+        - "Does each test case map 1:1 to a validated scenario?"
+        - "Are assertions derived from the scenario's expected output?"
+        - "Do coverage gates match the domain's requirements?"
+        - "Are test names traceable back to scenario IDs?"
+      simplify:
+        - "Can test helpers reduce boilerplate across scenarios?"
+        - "Are there shared fixtures that can be extracted?"
+    expertise:
+      depth: >
+        Test framework design, coverage analysis, fixture management,
+        and the mapping from specification language to assertion language.
+      relevance: >
+        The value of simulation is only realized when scenarios become
+        automated tests. Poor wiring loses the investment in hand-compilation.
+    artifacts:
+      - type: test-scaffold
+        directory: tests
+        format: text
+        naming: "{series}.test.ts"
+    workflow:
+      - step: scaffold
+        description: "Generate test file structure from validated scenarios"
+        trigger: scenario-validated
+      - step: wire
+        description: "Map scenario expected outputs to test assertions"
+      - step: validate
+        description: "Run coverage gates and report results"
+        emits: [coverage-validated]
+
+# ─── Domain Type Templates ──────────────────────────────────
+# These define the conventions for each supported domain type.
+# Stored in config/domain-types/ as YAML files.
+
+# domain-types:
+#   compiler:
+#     directory_convention: "SNN-name/"
+#     subdirectories: ["00+workspace", "80+emit", "90+output"]
+#     artifacts: ["CLAUDE.md", "FINDINGS.md", "INDEX.md", "COMPLETION-CRITERIA.md", "VALIDATION.md"]
+#     finding_format: "F-NN"
+#     wave_structure: true
+#
+#   runtime:
+#     directory_convention: "SNN-name/"
+#     subdirectories: []
+#     artifacts: ["CLAUDE.md", "FINDINGS.md"]
+#     finding_format: "SIM-NN.N"
+#     wave_structure: true
+#     coverage_gate: { lines: 95, branches: 90, functions: 95, statements: 95 }
+#
+#   bridge:
+#     directory_convention: "NN+name/"
+#     subdirectories: ["10+input", "20+expected", "30+actual"]
+#     artifacts: ["CLAUDE.md", "SIMULATION.md", "SCENARIO.md"]
+#     finding_format: "inline"
+#     wave_structure: false
+#     pipeline_organized: true
+#
+#   api:
+#     directory_convention: "inline"
+#     subdirectories: []
+#     artifacts: ["SIMULATION.md"]
+#     finding_format: "PREFIX-NN"
+#     wave_structure: true
+#     inline_scenarios: true
+#
+#   emitter:
+#     directory_convention: "NN+name/"
+#     subdirectories: ["00+intent.md", "10+input", "20+expected", "30+actual"]
+#     artifacts: ["SCENARIOS.md"]
+#     finding_format: "per-series-count"
+#     wave_structure: false
+
+# ─── State ──────────────────────────────────────────────────
+state:
+  fields:
+    - { name: initialized, type: boolean, default: false }
+    - { name: domain_count, type: number, default: 0 }
+    - { name: series_count, type: number, default: 0 }
+    - { name: scenario_count, type: number, default: 0 }
+    - { name: finding_count, type: number, default: 0 }
+    - { name: dcr_count, type: number, default: 0 }
+    - { name: wired_count, type: number, default: 0 }
+  version: 1

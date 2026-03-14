@@ -1,0 +1,9 @@
+{
+  "role": "domain-expert",
+  "artifact_type": "trace-document",
+  "directory": "traces",
+  "format": "markdown",
+  "naming": "{scenario}-trace.md",
+  "count": 0,
+  "artifacts": []
+}

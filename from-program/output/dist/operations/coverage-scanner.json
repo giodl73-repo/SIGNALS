@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "coverage-scanner",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-19",
+    "prompt": "Scan spec corpus and map scenario coverage per spec"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "codex-register",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-5",
+    "prompt": "Register a new unique 5-letter series code in the project CODEX"
+  }
+}

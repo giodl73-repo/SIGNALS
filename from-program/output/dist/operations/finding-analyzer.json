@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "finding-analyzer",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-20",
+    "prompt": "Analyze findings across series for patterns -- recurring themes, spec gaps, severity distributions. Proposes DCR batches.\n"
+  }
+}

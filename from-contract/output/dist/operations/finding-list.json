@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "finding-list",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-20",
+    "prompt": "List findings with filters by series, severity, and resolution status"
+  }
+}

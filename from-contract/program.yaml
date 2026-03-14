@@ -1,0 +1,105 @@
+version: 1
+plugin: simulate
+model: orchestrator-multi-tier
+commands:
+  - name: setup
+    tier: T2
+    description: Initialize simulation infrastructure in a project with CODEX, config, and directory skeleton
+  - name: domain-add
+    tier: T2
+    description: Register a design directory with its domain type (compiler, runtime, bridge, api, emitter)
+  - name: domain-list
+    tier: T2
+    description: List all registered design domains with status summaries
+  - name: domain-remove
+    tier: T2
+    description: Unregister a design directory from the simulation project
+  - name: codex-register
+    tier: T2
+    description: Register a new unique 5-letter series code in the project CODEX
+  - name: codex-list
+    tier: T2
+    description: List all registered series codes across all domains
+  - name: codex-check
+    tier: T2
+    description: Validate no code collisions exist in the CODEX
+  - name: codex-reserve
+    tier: T2
+    description: Reserve a 5-letter code for future use without creating a series
+  - name: series-new
+    tier: T2
+    description: Create and scaffold a new scenario series with domain-appropriate directory structure
+  - name: series-show
+    tier: T2
+    description: Display series status including scenario progress, wave completion, and open findings
+  - name: series-list
+    tier: T2
+    description: List all series across all registered domains with progress summaries
+  - name: series-complete
+    tier: T2
+    description: Mark a series as complete after all scenarios are validated
+  - name: scenario-new
+    tier: T2
+    description: Create a new scenario with intent, input fixtures, and expected output placeholder
+  - name: scenario-trace
+    tier: T2
+    description: Guide hand-compilation of expected output from specs (enforces hand-compile-first)
+  - name: scenario-validate
+    tier: T2
+    description: Validate scenario completeness against domain-specific checklist
+  - name: scenario-status
+    tier: T2
+    description: Update scenario lifecycle status (planned, in-progress, complete, validated, wired)
+  - name: finding-new
+    tier: T2
+    description: Record a new finding with ID, severity, description, and linked scenario
+  - name: finding-resolve
+    tier: T2
+    description: Annotate finding resolution with DCR reference, spec amendment, and scenario update
+  - name: finding-batch
+    tier: T2
+    description: Group related findings by pattern into a DCR proposal
+  - name: finding-list
+    tier: T2
+    description: List findings with filters by series, severity, and resolution status
+  - name: dcr-new
+    tier: T2
+    description: Create a design change request from batched findings with affected specs
+  - name: dcr-update
+    tier: T2
+    description: Update DCR lifecycle status (Draft, Active, Integrated, Implemented, Closed)
+  - name: dcr-list
+    tier: T2
+    description: List DCRs with status filters and spec linkage
+  - name: wire-scaffold
+    tier: T2
+    description: Generate test file scaffolds from validated scenario expected outputs
+  - name: wire-status
+    tier: T2
+    description: Show wiring status tracking design-only vs test-backed scenarios
+  - name: wire-validate
+    tier: T2
+    description: Run coverage gates on wired tests (95% lines, 90% branches default)
+  - name: report-status
+    tier: T2
+    description: Generate overall simulation dashboard with aggregate metrics
+  - name: report-coverage
+    tier: T2
+    description: Produce spec coverage matrix showing which specs have scenario coverage
+  - name: report-findings
+    tier: T2
+    description: Generate findings scorecard by total, resolved, open, and severity
+  - name: report-full
+    tier: T2
+    description: Comprehensive simulation report with coverage, findings, DCRs, and cross-series maps
+entities:
+  - name: Domain
+  - name: Series
+  - name: Scenario
+  - name: Finding
+  - name: DCR
+  - name: Codex
+  - name: Wave
+  - name: WireMap
+  - name: Campaign
+  - name: DomainConfig

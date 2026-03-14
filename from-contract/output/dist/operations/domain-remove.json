@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "domain-remove",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-4",
+    "prompt": "Unregister a design directory from the simulation project"
+  }
+}

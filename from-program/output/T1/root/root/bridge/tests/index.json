@@ -1,0 +1,9 @@
+{
+  "role": "test-engineer",
+  "artifact_type": "test-scaffold",
+  "directory": "tests",
+  "format": "text",
+  "naming": "{series}.test.ts",
+  "count": 0,
+  "artifacts": []
+}

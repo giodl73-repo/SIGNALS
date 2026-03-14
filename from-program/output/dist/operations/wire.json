@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "skill": "wire",
+  "root": {
+    "type": "sequence",
+    "handle": "op-40",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-34",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-35",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "edit-file",
+        "handle": "op-36",
+        "path": "*",
+        "edits": []
+      },
+      {
+        "type": "glob",
+        "handle": "op-37",
+        "pattern": "*"
+      },
+      {
+        "type": "grep",
+        "handle": "op-38",
+        "pattern": ""
+      },
+      {
+        "type": "bash",
+        "handle": "op-39",
+        "command": "Bash"
+      }
+    ]
+  }
+}

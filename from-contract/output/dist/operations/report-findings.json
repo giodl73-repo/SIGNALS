@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "report-findings",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-29",
+    "prompt": "Generate findings scorecard by total, resolved, open, and severity"
+  }
+}

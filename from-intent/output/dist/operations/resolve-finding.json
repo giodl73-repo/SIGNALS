@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "resolve-finding",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-11",
+    "prompt": "Annotate a finding's resolution (DCR filed, spec amended, scenario updated) without modifying its original record"
+  }
+}

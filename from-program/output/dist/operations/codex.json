@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "skill": "codex",
+  "root": {
+    "type": "sequence",
+    "handle": "op-12",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-8",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-9",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "edit-file",
+        "handle": "op-10",
+        "path": "*",
+        "edits": []
+      },
+      {
+        "type": "glob",
+        "handle": "op-11",
+        "pattern": "*"
+      }
+    ]
+  }
+}

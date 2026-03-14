@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scenario-new",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-13",
+    "prompt": "Create a new scenario with intent, input fixtures, and expected output placeholder"
+  }
+}

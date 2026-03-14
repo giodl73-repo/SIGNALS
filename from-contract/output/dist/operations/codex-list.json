@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "codex-list",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-6",
+    "prompt": "List all registered series codes across all domains"
+  }
+}

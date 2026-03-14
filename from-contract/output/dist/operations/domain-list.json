@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "domain-list",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-3",
+    "prompt": "List all registered design domains with status summaries"
+  }
+}

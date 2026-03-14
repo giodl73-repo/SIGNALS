@@ -1,0 +1,112 @@
+{
+  "name": "simulate",
+  "model": "claude-opus-4-6",
+  "commands": [
+    "simulate:run",
+    "simulate:codex",
+    "simulate:series",
+    "simulate:wire",
+    "simulate:report"
+  ],
+  "shared": [],
+  "entities": [
+    {
+      "name": "Config",
+      "schema_file": "schema/config.schema.json"
+    },
+    {
+      "name": "Domain",
+      "schema_file": "schema/domain.schema.json"
+    },
+    {
+      "name": "Codex",
+      "schema_file": "schema/codex.schema.json"
+    },
+    {
+      "name": "Campaign",
+      "schema_file": "schema/campaign.schema.json"
+    },
+    {
+      "name": "Series",
+      "schema_file": "schema/series.schema.json"
+    },
+    {
+      "name": "Scenario",
+      "schema_file": "schema/scenario.schema.json"
+    },
+    {
+      "name": "Finding",
+      "schema_file": "schema/finding.schema.json"
+    },
+    {
+      "name": "DCR",
+      "schema_file": "schema/dcr.schema.json"
+    },
+    {
+      "name": "Wave",
+      "schema_file": "schema/wave.schema.json"
+    },
+    {
+      "name": "WireMap",
+      "schema_file": "schema/wiremap.schema.json"
+    }
+  ],
+  "workers": [
+    {
+      "name": "domain-scanner",
+      "file": "workers/domain-scanner.md"
+    },
+    {
+      "name": "codex-scanner",
+      "file": "workers/codex-scanner.md"
+    },
+    {
+      "name": "coverage-scanner",
+      "file": "workers/coverage-scanner.md"
+    },
+    {
+      "name": "series-scaffolder",
+      "file": "workers/series-scaffolder.md"
+    },
+    {
+      "name": "scenario-scaffolder",
+      "file": "workers/scenario-scaffolder.md"
+    },
+    {
+      "name": "session-driver-generator",
+      "file": "workers/session-driver-generator.md"
+    },
+    {
+      "name": "test-scaffolder",
+      "file": "workers/test-scaffolder.md"
+    },
+    {
+      "name": "finding-analyzer",
+      "file": "workers/finding-analyzer.md"
+    },
+    {
+      "name": "coverage-analyzer",
+      "file": "workers/coverage-analyzer.md"
+    },
+    {
+      "name": "gap-analyzer",
+      "file": "workers/gap-analyzer.md"
+    },
+    {
+      "name": "scenario-tracker",
+      "file": "workers/scenario-tracker.md"
+    },
+    {
+      "name": "finding-tracker",
+      "file": "workers/finding-tracker.md"
+    },
+    {
+      "name": "dcr-tracker",
+      "file": "workers/dcr-tracker.md"
+    },
+    {
+      "name": "wire-tracker",
+      "file": "workers/wire-tracker.md"
+    }
+  ]
+}

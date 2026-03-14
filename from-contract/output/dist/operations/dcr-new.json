@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "dcr-new",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-21",
+    "prompt": "Create a design change request from batched findings with affected specs"
+  }
+}

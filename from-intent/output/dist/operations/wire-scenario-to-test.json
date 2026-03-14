@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "wire-scenario-to-test",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-15",
+    "prompt": "Bridge a validated scenario to an automated test; blocked unless scenario status is 'validated'"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "dcr-update",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-22",
+    "prompt": "Update DCR lifecycle status (Draft, Active, Integrated, Implemented, Closed)"
+  }
+}

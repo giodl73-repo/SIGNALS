@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "codex-reserve",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-8",
+    "prompt": "Reserve a 5-letter code for future use without creating a series"
+  }
+}

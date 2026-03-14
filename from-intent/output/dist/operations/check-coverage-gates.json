@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "check-coverage-gates",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-17",
+    "prompt": "Validate coverage thresholds (95% lines/statements/functions, 90% branches) for wired scenarios"
+  }
+}

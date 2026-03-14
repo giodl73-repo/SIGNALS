@@ -1,0 +1,80 @@
+{
+  "name": "simulate",
+  "model": "orchestrator-multi-tier",
+  "commands": [
+    "simulate:setup",
+    "simulate:domain-add",
+    "simulate:domain-list",
+    "simulate:domain-remove",
+    "simulate:codex-register",
+    "simulate:codex-list",
+    "simulate:codex-check",
+    "simulate:codex-reserve",
+    "simulate:series-new",
+    "simulate:series-show",
+    "simulate:series-list",
+    "simulate:series-complete",
+    "simulate:scenario-new",
+    "simulate:scenario-trace",
+    "simulate:scenario-validate",
+    "simulate:scenario-status",
+    "simulate:finding-new",
+    "simulate:finding-resolve",
+    "simulate:finding-batch",
+    "simulate:finding-list",
+    "simulate:dcr-new",
+    "simulate:dcr-update",
+    "simulate:dcr-list",
+    "simulate:wire-scaffold",
+    "simulate:wire-status",
+    "simulate:wire-validate",
+    "simulate:report-status",
+    "simulate:report-coverage",
+    "simulate:report-findings",
+    "simulate:report-full"
+  ],
+  "shared": [],
+  "entities": [
+    {
+      "name": "Domain",
+      "schema_file": "schema/domain.schema.json"
+    },
+    {
+      "name": "Series",
+      "schema_file": "schema/series.schema.json"
+    },
+    {
+      "name": "Scenario",
+      "schema_file": "schema/scenario.schema.json"
+    },
+    {
+      "name": "Finding",
+      "schema_file": "schema/finding.schema.json"
+    },
+    {
+      "name": "DCR",
+      "schema_file": "schema/dcr.schema.json"
+    },
+    {
+      "name": "Codex",
+      "schema_file": "schema/codex.schema.json"
+    },
+    {
+      "name": "Wave",
+      "schema_file": "schema/wave.schema.json"
+    },
+    {
+      "name": "WireMap",
+      "schema_file": "schema/wiremap.schema.json"
+    },
+    {
+      "name": "Campaign",
+      "schema_file": "schema/campaign.schema.json"
+    },
+    {
+      "name": "DomainConfig",
+      "schema_file": "schema/domainconfig.schema.json"
+    }
+  ],
+  "workers": []
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scenario-tracker",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-23",
+    "prompt": "Track scenario lifecycle state transitions (planned → wired)"
+  }
+}

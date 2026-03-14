@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scaffold-series",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-6",
+    "prompt": "Generate domain-appropriate directory structure, CLAUDE.md session driver, FINDINGS.md, INDEX.md, and COMPLETION-CRITERIA.md for a new series"
+  }
+}

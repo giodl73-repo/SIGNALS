@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "series-show",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-10",
+    "prompt": "Display series status including scenario progress, wave completion, and open findings"
+  }
+}
