@@ -1,0 +1,499 @@
+metadata:
+  name: signal
+  version: 0.1.0
+  author: Giovanni Della-Libera
+  created: "2026-03-14T00:00:00Z"
+  status: planned
+
+model:
+  type: simple
+
+platform:
+  target: claude-code
+  integration: local
+  features:
+    hot_reload: false
+    git_status: false
+    prompt_caching: true
+    multiline_support: true
+
+architecture:
+  style: demand-paged
+  kernel_budget: 1500
+  command_budget: 6000
+  shared_utilities: true
+
+identity:
+  purpose: >
+    Know what you know before you commit. Signal helps teams gather evidence
+    for feature decisions and synthesizes it into a story. Every artifact is
+    a signal toward the topic's design commit.
+  domain: >
+    Feature decision-making through structured signal gathering. Covers market
+    research, design authoring, design review, domain process simulation,
+    system platform simulation, hypothesis investigation, post-ship feedback
+    simulation, program orchestration, and topic narrative management.
+  responsibilities:
+    - Gather market and competitive signals before feature commitment (scout)
+    - Author design artifacts from intent with guided structure (draft)
+    - Validate designs through multi-perspective review (review)
+    - Simulate domain processes and business lifecycle flows (flow)
+    - Simulate system platform behavior through hand-compilation (trace)
+    - Investigate hypotheses through structured experiments (prove)
+    - Simulate post-ship customer feedback and adoption curves (listen)
+    - Orchestrate multi-stage signal-gathering programs (program)
+    - Manage the topic narrative -- strategy, coverage, story, echo (topic)
+
+prohibitions:
+  - Never modify files outside the simulations/ directory without explicit user permission
+  - Never overwrite an existing signal artifact -- always produce a new file (append-only)
+  - Never skip the Setup phase -- always confirm scope before producing output
+  - Never invent findings not grounded in the target artifact or spec
+  - Never claim a topic is ready without checking all essential signals in strategy.md
+
+protocols:
+  - Every artifact is named {topic}-{item}-{date}.md and written to simulations/{namespace}/{skill}/
+  - Every artifact opens with frontmatter (skill, topic, item, date, skill_version, input)
+  - On first run of any skill that uses personas, surface the custom persona path (.craft/roles/signal/)
+  - The --quick flag enables lightweight mode (merged execute+findings, no amend phase)
+  - The --full flag enables full mode (all 4 phases explicit) regardless of namespace default
+  - The --json flag produces a structured sidecar {topic}-{item}-{date}.json alongside the artifact
+
+commands:
+  - name: signal:scout
+    description: >
+      PM proves the idea. Market positioning, competitive landscape, feasibility,
+      naming validation, compliance scan, market sizing, stakeholder alignment,
+      positioning pitch, and requirements validation. Lightweight default.
+    action: skills/scout/SKILL.md
+    tools: [Read, Write, Glob, Grep, WebSearch, WebFetch]
+    subcommands:
+      - name: competitors
+        description: Market positioning, feature gaps, competitive white space using PM and Strategy roles
+      - name: feasibility
+        description: Can X work? Architecture trade-offs, proof-of-concept using Architect and Developer roles
+      - name: naming
+        description: Content prediction, persona scoring, terminology testing using Design and UX roles
+      - name: compliance
+        description: Governance, audit, regulatory boundary analysis using Compliance role
+      - name: market
+        description: Market sizing, licensing, GTM, customer segments, pricing using PM and GTM roles
+      - name: stakeholders
+        description: Stakeholder alignment -- who cares, who blocks, who champions using PM role
+      - name: positioning
+        description: Pitch crafting -- 30s exec, 60s dev, 15s maker versions using PM and Strategy roles
+      - name: requirements
+        description: Requirements validation -- are we building the right thing? using PM and Architect roles
+    references:
+      - name: scout-lifecycle
+        description: Full 4-phase lifecycle for scout skills (setup/execute/findings/amend)
+        trigger: when user asks about how scout works or what phases to expect
+      - name: scout-stock-roles
+        description: Stock role definitions for PM, Strategy, Architect, Compliance, Design, UX, GTM
+        trigger: when user asks about roles or wants to understand who is reviewing
+
+  - name: signal:draft
+    description: >
+      Author writes the design. Guided authoring of specifications, proposals with
+      trade-off analysis, and pitch deck narratives. Lightweight default.
+    action: skills/draft/SKILL.md
+    tools: [Read, Write, Edit, Glob]
+    subcommands:
+      - name: spec
+        description: Author a specification from intent with guided section structure using Architect role
+      - name: proposal
+        description: Author a proposal/ADR with options and trade-offs using Architect and PM roles
+      - name: pitch
+        description: Author a pitch deck narrative in exec, developer, and maker versions using PM and Strategy roles
+    references:
+      - name: draft-lifecycle
+        description: Lightweight lifecycle for draft skills -- setup auto-detects, execute+findings merge
+        trigger: when user asks about the draft process or how to structure a spec
+
+  - name: signal:review
+    description: >
+      Team validates the design. Expert and discipline review of specs and code.
+      Persona walkthrough for usability. 12-customer-persona evaluation for adoption.
+      Full default.
+    action: skills/review/SKILL.md
+    tools: [Read, Write, Glob, Grep]
+    subcommands:
+      - name: design
+        description: Multi-expert review of specs/docs through 6 disciplines and auto-selected domain experts
+      - name: code
+        description: Discipline review of code/PRs against 6 standard disciplines with spec contract validation
+      - name: users
+        description: 5 persona advocates (maker, developer, compliance, supervisor, operator) walk a feature
+      - name: customers
+        description: 12 customer personas (C-01 through C-12) evaluate a feature for adoption, clarity, usefulness
+    references:
+      - name: review-personas
+        description: >
+          Full definitions for 5 user personas and 12 customer personas (C-01 Maria Chen
+          through C-12 Frank Hoffmann) with industry, role, concerns, and scoring rubric
+        trigger: when running review:users or review:customers and stock role details are needed
+      - name: review-disciplines
+        description: >
+          6 standard discipline definitions (architect, code-quality, documentation,
+          testing, process, implementation) with evaluation criteria and severity rubric
+        trigger: when running review:design or review:code
+
+  - name: signal:flow
+    description: >
+      Domain developer simulates the process. Business lifecycle flows, agent
+      conversations, automation triggers, data pipelines, integrations, throttle
+      limits, and resilience under failure. Full default.
+    action: skills/flow/SKILL.md
+    tools: [Read, Write, Glob, Grep]
+    subcommands:
+      - name: lifecycle
+        description: Multi-step business document lifecycle (L2O, P2P, period close, case lifecycle)
+      - name: conversation
+        description: Multi-turn agent conversation through a topic graph (Copilot Studio)
+      - name: trigger
+        description: Which automations fire when a record changes? (Automate, Copilot Studio)
+      - name: dataflow
+        description: Data through ETL, pipelines, sync, CDX, dual-write (Finance, Operations, Commerce)
+      - name: integration
+        description: Cross-system interaction through connectors, APIs (all backend, Connectors)
+      - name: throttle
+        description: Throughput simulation across rate-limited systems (Connectors, Automate)
+      - name: resilience
+        description: Degraded conditions -- offline, partial failure, eventual consistency (Commerce)
+
+  - name: signal:trace
+    description: >
+      System developer simulates the platform. Request tracing, state validation,
+      contract testing, component trees, deployment impact, migration safety, and
+      permission walk-through. Full default.
+    action: skills/trace/SKILL.md
+    tools: [Read, Write, Glob, Grep]
+    subcommands:
+      - name: request
+        description: Request through service boundaries, APIs, middleware (Dataverse, Commerce, Automate)
+      - name: state
+        description: Starting state -> operations -> expected outcome (Sales, Customer Service, Finance)
+      - name: contract
+        description: Expected vs actual output comparison -- three-directory pattern (Automate, Connectors)
+      - name: component
+        description: User action through UI component tree, state, renders (all frontend, universal)
+      - name: deployment
+        description: What happens when you deploy, import, migrate (Commerce, Operations)
+      - name: migration
+        description: Before/after schema change, version upgrade (Commerce, Finance, Operations)
+      - name: permissions
+        description: Who can do what through RBAC, security roles, teams (Customer Service)
+
+  - name: signal:prove
+    description: >
+      Prove what you believe. Hypothesis-first investigation decomposed into
+      approachable steps -- state, research, prototype, analyze, interview,
+      synthesize, publish. Full default.
+    action: skills/prove/SKILL.md
+    tools: [Read, Write, Glob, Grep, WebSearch, WebFetch]
+    subcommands:
+      - name: hypothesis
+        description: State what you believe and what would change your mind -- investigation entry point
+      - name: websearch
+        description: Search the public web for evidence supporting or refuting the hypothesis
+      - name: intelligence
+        description: Search internal sources (Work IQ, SharePoint, emails, Teams) for evidence
+      - name: prototype
+        description: Build something small and measure -- code experiment
+      - name: analysis
+        description: Analyze existing data, telemetry, schemas for patterns
+      - name: interview
+        description: Simulate stakeholder and customer interviews using persona-driven methodology
+      - name: synthesize
+        description: Merge all findings into answer-first format with principles and confidence
+      - name: publish
+        description: Write up as a paper/report using simplified panel review with custom expert roles
+    references:
+      - name: prove-flow
+        description: >
+          Prove skill flow: hypothesis -> pick experiments (websearch/intelligence/prototype/
+          analysis/interview) -> synthesize -> optionally publish
+        trigger: when user asks how to structure an investigation or which skills to run
+
+  - name: signal:listen
+    description: >
+      Team simulates post-ship feedback. Customer reactions, support ticket forecasts,
+      and adoption curve simulation before the feature ships. Lightweight default.
+    action: skills/listen/SKILL.md
+    tools: [Read, Write, Glob]
+    subcommands:
+      - name: feedback
+        description: Simulate customer reactions from 12 personas -- NPS predictions, blocking/major/minor findings
+      - name: support
+        description: Predict top support tickets in first 90 days ranked by volume and severity
+      - name: adoption
+        description: Simulate adoption curve -- innovators to laggards, chasm analysis, champion network
+    references:
+      - name: listen-personas
+        description: >
+          12 customer persona definitions (C-01 Maria Chen through C-12 Frank Hoffmann)
+          with industry, role, mental model, key question, blind spot
+        trigger: when running any listen skill and persona details are needed
+
+  - name: signal:program
+    description: >
+      Lead orchestrates all. Sequences scout -> draft -> review -> flow -> trace ->
+      listen into a staged program.yaml plan with gates and topic tracking. Full default.
+    action: skills/program/SKILL.md
+    tools: [Read, Write, Edit, Glob]
+    references:
+      - name: program-schema
+        description: >
+          program.yaml schema for staged plans: stages (name, skills, gate),
+          echo stage (auto: true, produces topic-echo-date.md)
+        trigger: when generating a program plan or explaining the program format
+
+  - name: signal:topic
+    description: >
+      Anyone manages the topic narrative. Register topics, plan signal strategy,
+      check coverage status, write shareable reports, synthesize the story, and
+      capture the echo. Lightweight default.
+    action: skills/topic/SKILL.md
+    tools: [Read, Write, Glob]
+    subcommands:
+      - name: new
+        description: Register a topic, define its strategy, plan the signals needed for design commit
+      - name: status
+        description: Show signal coverage and readiness in the terminal -- does not write a file
+      - name: report
+        description: Write shareable status to simulations/{topic}/status-{date}.md; --format teams for Teams card
+      - name: plan
+        description: Revise the signal strategy as new information arrives -- updates strategy.md
+      - name: story
+        description: Synthesize all signals into a coherent narrative -- the current state of the story
+      - name: echo
+        description: Synthesize unexpected findings after all essential signals gathered -- what surprised us
+
+utilities:
+  - name: signal-lifecycle
+    scope: kernel
+    purpose: >
+      4-phase lifecycle shared by all skills: Setup (gather context, confirm scope),
+      Execute (run the simulation), Findings (synthesize into P1/P2/P3), Amend
+      (address findings, iterate). Lightweight mode merges Execute+Findings and
+      makes Amend optional.
+    functions:
+      - setup_phase
+      - execute_phase
+      - findings_phase
+      - amend_phase
+      - lightweight_mode
+      - full_mode
+
+  - name: signal-artifact
+    scope: command
+    purpose: >
+      Artifact naming and frontmatter conventions. Produces {topic}-{item}-{date}.md
+      with standard frontmatter (skill, topic, item, date, skill_version, input).
+      Optionally produces JSON sidecar with --json flag.
+    functions:
+      - write_artifact
+      - write_frontmatter
+      - write_json_sidecar
+      - resolve_output_path
+
+shared_patterns:
+  - name: signal_lifecycle
+    l1_guidance: >
+      Every skill follows setup -> execute -> findings -> amend. Lightweight
+      mode (scout, draft, listen defaults) merges execute+findings and makes
+      amend optional. Full mode (review, flow, trace, prove, program defaults)
+      runs all 4 phases explicitly. --quick forces lightweight; --full forces full.
+      ~400 tokens
+    implementation: shared/signal-lifecycle.md
+    commands_using:
+      - signal:scout
+      - signal:draft
+      - signal:review
+      - signal:flow
+      - signal:trace
+      - signal:prove
+      - signal:listen
+      - signal:program
+      - signal:topic
+    savings_estimate: ~3600 tokens
+
+  - name: artifact_naming
+    l1_guidance: >
+      Artifacts: {topic}-{item}-{date}.md in simulations/{namespace}/{skill}/.
+      Frontmatter: skill, topic, item, date, skill_version, input.
+      Same item = edit the existing file. New angle = new file.
+      topic-signal-date is the contract. ~150 tokens
+    implementation: shared/artifact-naming.md
+    commands_using:
+      - signal:scout
+      - signal:draft
+      - signal:review
+      - signal:flow
+      - signal:trace
+      - signal:prove
+      - signal:listen
+      - signal:program
+      - signal:topic
+    savings_estimate: ~1350 tokens
+
+state_schema:
+  topics_registered: 0
+  active_topic: null
+  last_signal_date: null
+
+estimated_cost:
+  l1_tokens: 1200
+  l2_per_turn: 50
+  l3_on_demand: 4000
+  cache_assumptions:
+    hit_rate: 0.76
+    phase: warm
+
+roles:
+  - name: signal-pm
+    tier: root
+    scope: workspace
+    archetype: experiential
+    orientation:
+      frame: >
+        Sees the feature decision as a risk reduction problem -- every signal
+        gathered is one less unknown at commit time. Scout and draft are
+        the primary tools; listen closes the loop after ship.
+      serves: >
+        Product managers who need to justify feature investments with evidence
+        and who want to know what customers will say before they say it.
+    lens:
+      verify:
+        - Is the competitive landscape signal gathered before drafting?
+        - Does the requirements signal confirm we are building the right thing?
+        - Does the listen signal predict adoption or friction before ship?
+        - Is the topic strategy.md updated when scope changes?
+      simplify:
+        - Scout and listen are lightweight by default -- PMs want speed to insight
+        - The topic story is the PM's primary deliverable, not the individual signals
+    expertise:
+      depth: >
+        Feature prioritization, market analysis, customer development, GTM strategy,
+        and product positioning. Familiar with Dynamics 365 product areas.
+      relevance: >
+        PM signals drive the scout and listen namespaces and inform the topic strategy.
+        Without PM signals, the topic story lacks market and customer grounding.
+
+  - name: signal-architect
+    tier: root
+    scope: workspace
+    archetype: structural
+    orientation:
+      frame: >
+        Sees the feature as a system of contracts -- between components, between
+        services, between the spec and the implementation. Every trace and review
+        signal is a contract check.
+      serves: >
+        Architects and tech leads who need confidence that the design will hold up
+        under load, integration pressure, and adversarial scenarios.
+    lens:
+      verify:
+        - Does the trace signal cover all system boundaries and failure modes?
+        - Does the review:design signal check layering, dependency direction, separation?
+        - Are the flow signals covering all process edge cases and exceptions?
+        - Is the topic story grounded in system-level findings, not just PM intuition?
+      simplify:
+        - Trace and review are full by default -- architects expect all 4 phases
+        - One finding with a spec reference is worth more than ten vague concerns
+    expertise:
+      depth: >
+        System architecture, API design, distributed systems, Dataverse platform
+        internals, contract-first design, and integration patterns.
+      relevance: >
+        Architect signals drive the trace and review namespaces. Without them,
+        the topic story has no system-level grounding and deployment risk is invisible.
+
+  - name: signal-dev
+    tier: root
+    scope: workspace
+    archetype: craft
+    orientation:
+      frame: >
+        Sees every feature as a flow of data and operations through the system.
+        Hand-compilation is the gold standard -- trace what the system actually does,
+        not what you think it does.
+      serves: >
+        Developers who implement features and need validated expected outputs before
+        they write a line of code.
+    lens:
+      verify:
+        - Is the state signal covering all starting states and transitions?
+        - Does the flow signal identify all domain process exceptions and edge cases?
+        - Are the trace signals covering the actual system path, not the happy path?
+        - Do findings reference specific spec sections or code locations?
+      simplify:
+        - Flow and trace are full by default -- developers need all 4 phases
+        - A trace that skips a system boundary is not a trace
+    expertise:
+      depth: >
+        Dataverse plugin pipeline, Power Platform connectors, backend service
+        integration, state machine design, and hand-compilation methodology.
+      relevance: >
+        Developer signals drive the flow and trace namespaces. The quality of
+        hand-compiled expected outputs determines the quality of implementation.
+
+  - name: signal-researcher
+    tier: root
+    scope: workspace
+    archetype: structural
+    orientation:
+      frame: >
+        Sees every belief as a hypothesis awaiting falsification. No signal is
+        valid until the null hypothesis has been taken seriously. The prove
+        namespace is the scientific method as a skill set.
+      serves: >
+        PMs and architects who need to turn intuitions into evidence and who want
+        to publish their findings for institutional memory.
+    lens:
+      verify:
+        - Is the hypothesis stated with a clear falsification condition?
+        - Are at least two independent evidence signals gathered before synthesis?
+        - Does the synthesis answer the hypothesis directly, not dance around it?
+        - Are surprising findings captured in the echo?
+      simplify:
+        - Hypothesis first, always -- never run experiments without a stated belief
+        - The synthesis is the deliverable, not the individual experiment signals
+    expertise:
+      depth: >
+        Hypothesis-first investigation, quantitative and qualitative research
+        methods, academic publication standards, and evidence synthesis.
+      relevance: >
+        Researcher signals drive the prove namespace. Without them, the topic
+        story is opinion, not evidence.
+
+examples:
+  - scenario: Scout a new real-time CRM sync feature
+    steps:
+      - "/signal:topic new frogs 'Real-time sync between Dynamics 365 and Salesforce'"
+      - "/signal:scout competitors -- competitive landscape signal"
+      - "/signal:scout feasibility -- technical feasibility signal"
+      - "/signal:scout requirements -- requirements validation signal"
+      - "/signal:topic status frogs -- check coverage"
+      - "/signal:draft spec -- draft the spec once 3+ signals gathered"
+
+  - scenario: Validate a spec before implementation
+    steps:
+      - "/signal:review design design/specs/SPEC-FROGS-01.md"
+      - "/signal:review users design/specs/SPEC-FROGS-01.md"
+      - "/signal:review customers 'Real-time CRM sync feature'"
+      - "/signal:topic report frogs --format teams -- share status at standup"
+
+  - scenario: Simulate the system before building
+    steps:
+      - "/signal:trace state -- state machine for CRM record sync"
+      - "/signal:trace contract -- expected vs actual for sync payload"
+      - "/signal:flow integration -- cross-system connector interaction"
+      - "/signal:flow resilience -- what happens when Salesforce is offline"
+
+  - scenario: Complete a topic program
+    steps:
+      - "/signal:program plan frogs -- generate staged program.yaml"
+      - "-- execute stages: scout -> draft -> review -> flow/trace -> listen"
+      - "/signal:topic story frogs -- synthesize all signals into narrative"
+      - "/signal:topic echo frogs -- what surprised us"

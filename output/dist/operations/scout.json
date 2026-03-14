@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "skill": "scout",
+  "root": {
+    "type": "sequence",
+    "handle": "op-7",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-1",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-2",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "glob",
+        "handle": "op-3",
+        "pattern": "*"
+      },
+      {
+        "type": "grep",
+        "handle": "op-4",
+        "pattern": ""
+      },
+      {
+        "type": "mcp-call",
+        "handle": "op-5",
+        "server": "WebSearch",
+        "tool": "WebSearch"
+      },
+      {
+        "type": "mcp-call",
+        "handle": "op-6",
+        "server": "WebFetch",
+        "tool": "WebFetch"
+      }
+    ]
+  }
+}

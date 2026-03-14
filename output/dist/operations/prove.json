@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "skill": "prove",
+  "root": {
+    "type": "sequence",
+    "handle": "op-34",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-28",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-29",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "glob",
+        "handle": "op-30",
+        "pattern": "*"
+      },
+      {
+        "type": "grep",
+        "handle": "op-31",
+        "pattern": ""
+      },
+      {
+        "type": "mcp-call",
+        "handle": "op-32",
+        "server": "WebSearch",
+        "tool": "WebSearch"
+      },
+      {
+        "type": "mcp-call",
+        "handle": "op-33",
+        "server": "WebFetch",
+        "tool": "WebFetch"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "skill": "trace",
+  "root": {
+    "type": "sequence",
+    "handle": "op-27",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-23",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-24",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "glob",
+        "handle": "op-25",
+        "pattern": "*"
+      },
+      {
+        "type": "grep",
+        "handle": "op-26",
+        "pattern": ""
+      }
+    ]
+  }
+}

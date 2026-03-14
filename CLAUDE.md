@@ -1,10 +1,10 @@
-# Simulate — AI Simulation Plugin Project
+# Signal — AI Signal Gathering Plugin
 
 ## Overview
 
-Simulate is the plugin that exposes every simulation technique we've built across the craftworks ecosystem. This directory is both the evidence corpus and the future plugin source.
+Signal is a developer tool for feature decision-making. Know what you know before you commit. Teams gather evidence across 9 namespaces (scout, draft, review, flow, trace, prove, listen, program, topic), each artifact a signal toward the feature story. When enough signals exist, the topic tells you you're ready.
 
-The philosophy is in `ai-first-development-philosophy.md`. The evidence is in `techniques/`. The plugin will make these techniques available as composable, reusable simulation commands.
+The philosophy is in `ai-first-development-philosophy.md`. The evidence is in `techniques/`. The design is in `plugin-plan.md`. The principles are in `PRINCIPLES.md`.
 
 ## Directory Structure
 
@@ -70,17 +70,15 @@ These patterns appear across multiple techniques:
 
 ## Plugin Design Direction
 
-The simulate plugin will expose these techniques as composable commands:
+9 namespaces, 47 skills. Every skill produces a signal artifact (`{topic}-{signal}-{date}.md`).
+The `/topic:` namespace manages the narrative: what signals exist, what's missing, what the
+signals say together.
 
-```
-simulate scenario <technique> [options]    # Run a simulation scenario
-simulate review <target> --experts         # Expert review simulation
-simulate walkthrough <specs> --personas    # Persona walkthrough
-simulate research <question>               # Hypothesis investigation
-simulate panel <paper>                     # Academic peer review
-```
+See `plugin-plan.md` for the full catalog and `PRINCIPLES.md` for design decisions.
 
-Each command wraps the methodology documented in the technique README, making it reusable across any project — not just craftworks.
+Artifact naming: `{topic}-{signal}-{date}.md`
+Storage: `simulations/{namespace}/{skill}/{topic}-{signal}-{date}.md`
+Topic registry: `simulations/TOPICS.md`
 
 ## Platform
 

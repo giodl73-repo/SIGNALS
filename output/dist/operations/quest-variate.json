@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "skill": "quest-variate",
+  "root": {
+    "type": "sequence",
+    "handle": "op-59",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-57",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-58",
+        "path": "*",
+        "content": ""
+      }
+    ]
+  }
+}

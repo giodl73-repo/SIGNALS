@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "skill": "quest-rubric",
+  "root": {
+    "type": "sequence",
+    "handle": "op-56",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-53",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-54",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "glob",
+        "handle": "op-55",
+        "pattern": "*"
+      }
+    ]
+  }
+}

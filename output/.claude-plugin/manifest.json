@@ -1,0 +1,77 @@
+{
+  "name": "signal",
+  "model": "claude-sonnet-4-6",
+  "commands": [
+    "signal:scout",
+    "signal:draft",
+    "signal:review",
+    "signal:flow",
+    "signal:trace",
+    "signal:prove",
+    "signal:listen",
+    "signal:program",
+    "signal:topic",
+    "signal:trace-skill",
+    "signal:quest-rubric",
+    "signal:quest-variate",
+    "signal:quest-score",
+    "signal:quest-golden"
+  ],
+  "shared": [],
+  "entities": [
+    {
+      "name": "Topic",
+      "schema_file": "schema/topic.schema.json"
+    },
+    {
+      "name": "Strategy",
+      "schema_file": "schema/strategy.schema.json"
+    },
+    {
+      "name": "Signal",
+      "schema_file": "schema/signal.schema.json"
+    },
+    {
+      "name": "SkillSpec",
+      "schema_file": "schema/skillspec.schema.json"
+    },
+    {
+      "name": "TraceInput",
+      "schema_file": "schema/traceinput.schema.json"
+    },
+    {
+      "name": "TraceOutput",
+      "schema_file": "schema/traceoutput.schema.json"
+    },
+    {
+      "name": "SkillFinding",
+      "schema_file": "schema/skillfinding.schema.json"
+    },
+    {
+      "name": "ProgramPlan",
+      "schema_file": "schema/programplan.schema.json"
+    }
+  ],
+  "workers": [
+    {
+      "name": "signal-lifecycle",
+      "file": "workers/signal-lifecycle.md"
+    },
+    {
+      "name": "artifact-writer",
+      "file": "workers/artifact-writer.md"
+    },
+    {
+      "name": "topic-scanner",
+      "file": "workers/topic-scanner.md"
+    },
+    {
+      "name": "skill-tracer",
+      "file": "workers/skill-tracer.md"
+    },
+    {
+      "name": "quest-engine",
+      "file": "workers/quest-engine.md"
+    }
+  ]
+}

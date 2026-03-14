@@ -1,0 +1,25 @@
+---
+name: quest-golden
+description: "Find the golden prompt for a skill through systematic variation and scoring. Full loop: (1) load rubric or call quest-rubric to create one, (2) call quest-variate to generate N variations, (3) call quest-score to rank them, (4) identify excellence signals -- what made the top output better?, (5) extract the pattern, propose a rubric criterion update, (6) apply the update, (7) iterate from step 2 until dual convergence: all scenarios pass AND no new excellence patterns emerge across 2 consecutive rounds. Write the converged prompt as the skill body. Dual convergence = the golden prompt.
+"
+allowed-tools: [Read, Write, Glob, Grep]
+---
+---
+name: quest-golden
+description: "Find the golden prompt for a skill through systematic variation and scoring. Full loop: (1) load rubric or call quest-rubric to create one, (2) call quest-variate to generate N variations, (3) call quest-score to rank them, (4) identify excellence signals -- what made the top output better?, (5) extract the pattern, propose a rubric criterion update, (6) apply the update, (7) iterate from step 2 until dual convergence: all scenarios pass AND no new excellence patterns emerge across 2 consecutive rounds. Write the converged prompt as the skill body. Dual convergence = the golden prompt.
+"
+allowed-tools: [Read, Write, Glob, Grep]
+---
+## Purpose
+
+Find the golden prompt for a skill through systematic variation and scoring. Full loop: (1) load rubric or call quest-rubric to create one, (2) call quest-variate to generate N variations, (3) call quest-score to rank them, (4) identify excellence signals -- what made the top output better?, (5) extract the pattern, propose a rubric criterion update, (6) apply the update, (7) iterate from step 2 until dual convergence: all scenarios pass AND no new excellence patterns emerge across 2 consecutive rounds. Write the converged prompt as the skill body. Dual convergence = the golden prompt.
+
+
+## Parameters
+
+**Inputs**: SkillSpec, TraceInput
+**Outputs**: TraceOutput, SkillFinding
+
+## Algorithm
+
+Implementation for quest-golden.

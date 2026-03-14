@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "skill": "quest-golden",
+  "root": {
+    "type": "sequence",
+    "handle": "op-68",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-64",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-65",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "glob",
+        "handle": "op-66",
+        "pattern": "*"
+      },
+      {
+        "type": "grep",
+        "handle": "op-67",
+        "pattern": ""
+      }
+    ]
+  }
+}

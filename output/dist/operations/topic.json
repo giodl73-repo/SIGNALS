@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "skill": "topic",
+  "root": {
+    "type": "sequence",
+    "handle": "op-47",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-44",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-45",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "glob",
+        "handle": "op-46",
+        "pattern": "*"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "skill": "flow",
+  "root": {
+    "type": "sequence",
+    "handle": "op-22",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-18",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-19",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "glob",
+        "handle": "op-20",
+        "pattern": "*"
+      },
+      {
+        "type": "grep",
+        "handle": "op-21",
+        "pattern": ""
+      }
+    ]
+  }
+}

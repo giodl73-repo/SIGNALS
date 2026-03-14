@@ -1,0 +1,42 @@
+{
+  "plugin": "signal",
+  "version": "0.1.0",
+  "description": "Signal gathering for feature design — 10 namespaces, 52 skills",
+  "homepage": "https://github.com/giodl_microsoft/sim",
+  "install": {
+    "target": ".claude/skills",
+    "pattern": "{namespace}-{skill}",
+    "config": ".craft/signal.yaml"
+  },
+  "skills": [
+    { "id": "scout",    "namespace": "scout",   "path": "skills/scout/SKILL.md",    "version": "0.1.0", "audience": "pm",         "default_mode": "lightweight" },
+    { "id": "draft",    "namespace": "draft",   "path": "skills/draft/SKILL.md",    "version": "0.1.0", "audience": "pm",         "default_mode": "lightweight" },
+    { "id": "review",   "namespace": "review",  "path": "skills/review/SKILL.md",   "version": "0.1.0", "audience": "team",       "default_mode": "full" },
+    { "id": "flow",     "namespace": "flow",    "path": "skills/flow/SKILL.md",     "version": "0.1.0", "audience": "dev",        "default_mode": "full" },
+    { "id": "trace",    "namespace": "trace",   "path": "skills/trace/SKILL.md",    "version": "0.1.0", "audience": "dev",        "default_mode": "full" },
+    { "id": "prove",    "namespace": "prove",   "path": "skills/prove/SKILL.md",    "version": "0.1.0", "audience": "pm",         "default_mode": "full" },
+    { "id": "listen",   "namespace": "listen",  "path": "skills/listen/SKILL.md",   "version": "0.1.0", "audience": "team",       "default_mode": "lightweight" },
+    { "id": "program",  "namespace": "program", "path": "skills/program/SKILL.md",  "version": "0.1.0", "audience": "lead",       "default_mode": "full" },
+    { "id": "topic",    "namespace": "topic",   "path": "skills/topic/SKILL.md",    "version": "0.1.0", "audience": "anyone",     "default_mode": "lightweight" },
+    { "id": "achieve",  "namespace": "achieve", "path": "skills/achieve/SKILL.md",  "version": "0.1.0", "audience": "anyone",     "default_mode": "lightweight" },
+    { "id": "quest-rubric",  "namespace": "quest", "path": "skills/quest-rubric/SKILL.md",  "version": "0.1.0", "audience": "skill-builder", "default_mode": "full" },
+    { "id": "quest-variate", "namespace": "quest", "path": "skills/quest-variate/SKILL.md", "version": "0.1.0", "audience": "skill-builder", "default_mode": "full" },
+    { "id": "quest-score",   "namespace": "quest", "path": "skills/quest-score/SKILL.md",   "version": "0.1.0", "audience": "skill-builder", "default_mode": "full" },
+    { "id": "quest-golden",  "namespace": "quest", "path": "skills/quest-golden/SKILL.md",  "version": "0.1.0", "audience": "skill-builder", "default_mode": "full" }
+  ],
+  "upgrade": {
+    "strategy": "version-hash",
+    "check": "compare installed skill hash against manifest path hash",
+    "prompt": "show diff of what changed in skill before overwriting",
+    "preserve": [".craft/signal.yaml", ".craft/roles/signal/"]
+  },
+  "roles": {
+    "stock": "bundled with each skill — zero setup required",
+    "custom": ".craft/roles/signal/{role-name}/ROLE.md"
+  },
+  "artifacts": {
+    "pattern": "{topic}-{item}-{date}.md",
+    "root": "simulations/",
+    "topics": "simulations/TOPICS.md"
+  }
+}

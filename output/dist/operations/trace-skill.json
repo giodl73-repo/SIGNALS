@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "skill": "trace-skill",
+  "root": {
+    "type": "sequence",
+    "handle": "op-52",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-48",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-49",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "glob",
+        "handle": "op-50",
+        "pattern": "*"
+      },
+      {
+        "type": "grep",
+        "handle": "op-51",
+        "pattern": ""
+      }
+    ]
+  }
+}

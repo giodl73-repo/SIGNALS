@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "skill": "listen",
+  "root": {
+    "type": "sequence",
+    "handle": "op-38",
+    "steps": [
+      {
+        "type": "read-file",
+        "handle": "op-35",
+        "path": "*"
+      },
+      {
+        "type": "write-file",
+        "handle": "op-36",
+        "path": "*",
+        "content": ""
+      },
+      {
+        "type": "glob",
+        "handle": "op-37",
+        "pattern": "*"
+      }
+    ]
+  }
+}

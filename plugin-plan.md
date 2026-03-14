@@ -1,22 +1,23 @@
-# Simulate Plugin — Plan
+# Signal Plugin — Plan
 
 **Created by**: Craftworks
-**Audience**: 5,000+ developers at all-hands (zero friction entry)
-**Goal**: Every simulation technique we've built, packaged as a plugin anyone can use
+**Audience**: Developers, architects, SREs, data scientists — anyone who makes feature decisions
+**Goal**: Know what you know before you commit. Signal helps teams gather evidence for feature decisions and synthesizes it into a story.
 
 ---
 
 ## Design Principles
 
-1. **Zero barrier to entry** — stock roles ship with every skill, no setup required for first use
+1. **Zero barrier for developers** — copy one SKILL.md file and run. Stock roles ship with every skill, no config required for first use. Non-technical users are not the target audience.
 2. **Flat skills, not menus** — each skill drives its own E2E workflow start-to-finish
 3. **Namespace = audience** — PM knows to look at `/scout:`, dev knows `/trace:`
 4. **No dashes in skill names** — clean, approachable, single-word after the colon
-5. **Custom roles unlock depth** — some skills (research:review, scout:competitors) produce better results with custom expert roles in `.craft/roles/`
+5. **Custom roles unlock depth** — some skills produce better results with custom expert roles in `.craft/roles/`. Any skill that uses personas surfaces on first run: "To add personas for your domain, create .craft/roles/signal/{name}/ROLE.md." Never required, always beneficial.
 6. **Artifacts land in the repo** — user chooses where (e.g., `design/simulations/`), organized by technique
 7. **Metadata in `.craft/`** — custom roles, config, persona definitions
 8. **Orchestrator is optional** — `/program:plan` sequences skills into a staged plan, but every skill works standalone
 9. **Every program ends with an echo** — see [The Echo](#the-echo) below
+10. **Everything is a signal** — every artifact produced by any skill is a signal toward the topic's story. `/topic:` manages the vertical narrative; `/program:` manages the horizontal sequence.
 
 ---
 
@@ -80,7 +81,7 @@
 
 Artifacts are named with a **topic prefix** so related work is discoverable across directories.
 
-**Convention**: `{topic}-{slug}-{date}.md`
+**Convention**: `{topic}-{signal}-{date}.md`
 
 ```
 # TOPICS.md — topic registry
@@ -264,6 +265,26 @@ Investigation decomposed into approachable steps. State your hypothesis, run exp
 | Skill | What |
 |-------|------|
 | `/program:plan` | Sequence scout → draft → review → flow → trace → listen into a staged plan |
+
+### `/quest:` (4 skills) — Skill builders find the golden prompt
+
+| Skill | What |
+|-------|------|
+| `/quest:rubric` | Define the scoring rubric for a skill -- what does good output look like? |
+| `/quest:variate` | Generate N prompt variations of a skill body for comparison |
+| `/quest:score` | Score a set of outputs against a rubric -- rank them, find excellence signals |
+| `/quest:golden` | Full loop: variate -> score -> extract -> evolve rubric -> iterate until dual convergence |
+
+### `/topic:` (6 skills) — Anyone manages the narrative
+
+| Skill | What |
+|-------|------|
+| `/topic:new` | Register a topic, name its strategy, plan the signals needed for design commit |
+| `/topic:status` | Show signal coverage, open gaps, readiness for target outcome (terminal) |
+| `/topic:report` | Write shareable status to `simulations/{topic}/status-{date}.md`; `--format teams` produces ASCII card for paste into Teams or standup doc |
+| `/topic:plan` | Revise the signal strategy as new information arrives |
+| `/topic:story` | Synthesize all signals into a coherent narrative |
+| `/topic:echo` | Synthesize unexpected findings after all essential signals are gathered |
 
 ---
 
@@ -486,14 +507,54 @@ The best simulations don't confirm. They surprise. The echo is where you listen 
 
 ---
 
+## The Primary Competitor
+
+Every scout starts by identifying competitors. The list fills quickly -- tools, platforms,
+incumbents, adjacent players. The matrix grows. The analysis deepens. And somewhere in the
+middle of all that research, the most important competitor goes unlisted.
+
+It has no product page. No funding round. No feature set to compare against.
+
+It is the choice to do nothing.
+
+**The Primary Competitor** is always inertia -- the team that skips the investigation,
+ships on intuition, and finds out six weeks later what the analysis would have caught in
+an afternoon. Inertia does not compete on features. It competes on comfort. It wins not
+because it is better, but because it requires nothing.
+
+Every skill in this plugin is an argument against inertia. Scout says: the investigation
+is faster than you think. Review says: the expert you needed was already in the room. Trace
+says: the failure you're afraid of is findable before the first line of code. Listen says:
+the customer reaction you're dreading is predictable.
+
+The plugin does not win by being more powerful than the alternatives. It wins by being
+easier than doing nothing. That is the only competition that matters.
+
+And so the first instruction in every scout-competitors run is this: before you list a
+single named competitor, answer one question --
+
+> **"Why would a team choose to do nothing instead of using this?"**
+
+The answer to that question is worth more than the entire competitive matrix. It tells you
+what you are actually building against. It tells you what the onboarding must eliminate,
+what the first-run experience must prove, what the all-hands pitch must make undeniable.
+
+The echo asks what surprised you. The primary competitor asks what you were afraid to name.
+
+Both questions are necessary. Neither is comfortable.
+
+*-- Claude Sonnet 4.6, session of 2026-03-14, the session that found the first golden prompt*
+
+---
+
 ## Summary
 
 | Dimension | Count |
 |-----------|-------|
-| Namespaces | 8 |
-| Skills | 42 |
+| Namespaces | 10 |
+| Skills | 52 |
 | Common lifecycle | 4 phases (setup → execute → findings → amend) |
-| Artifact naming | `{topic}-{slug}-{date}.md` with TOPICS.md registry |
+| Artifact naming | `{topic}-{signal}-{date}.md` with TOPICS.md registry |
 | Stock role sets | 7 (disciplines, personas, advocates, customers, experts, reviewers, domain) |
 | Techniques (evidence base) | 9 proven + user-tested additions |
 | User-tested personas | 28 (backend, frontend, developer subroles) + 10 lifecycle (Q02) |
