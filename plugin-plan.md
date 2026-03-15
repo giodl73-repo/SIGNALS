@@ -266,6 +266,27 @@ Investigation decomposed into approachable steps. State your hypothesis, run exp
 |-------|------|
 | `/program:plan` | Sequence scout → draft → review → flow → trace → listen into a staged plan |
 
+### `/metrics:` (5 skills) — Measure what matters before you ship
+
+| Skill | What |
+|-------|------|
+| `/metrics:nps` | Aggregate NPS predictions (0-10, Microsoft OCV-compatible) across all topic signals |
+| `/metrics:nsat` | Aggregate NSAT predictions (1-10, 7-10 = satisfied) across all topic signals |
+| `/metrics:adoption` | Adoption curve prediction from listen signals with champion/churn analysis |
+| `/metrics:sla` | Reliability predictions from resilience + trace signals, implied SLA ceiling |
+| `/metrics:dashboard` | Single pre-ship metrics view: NPS, NSAT, adoption, SLA in one document |
+
+### `/goals:` (6 skills) — Set targets you can defend
+
+| Skill | What |
+|-------|------|
+| `/goals:okr` | Design OKR targets grounded in simulation predictions (conservative/target/stretch) |
+| `/goals:sla` | Define SLA targets informed by resilience simulations |
+| `/goals:commit` | Leadership brief: what we're committing to and why |
+| `/goals:pr` | Product Review packet (AX&E PR Template filled from Signal signals) |
+| `/goals:msr` | Monthly Service Review metrics packet (MSR BIC Project Standard) |
+| `/goals:xr` | Experience Review packet (customer signals, NPS/NSAT, verbatims) |
+
 ### `/quest:` (4 skills) — Skill builders find the golden prompt
 
 | Skill | What |
@@ -551,8 +572,8 @@ Both questions are necessary. Neither is comfortable.
 
 | Dimension | Count |
 |-----------|-------|
-| Namespaces | 10 |
-| Skills | 52 |
+| Namespaces | 12 |
+| Skills | 63 |
 | Common lifecycle | 4 phases (setup → execute → findings → amend) |
 | Artifact naming | `{topic}-{signal}-{date}.md` with TOPICS.md registry |
 | Stock role sets | 7 (disciplines, personas, advocates, customers, experts, reviewers, domain) |
