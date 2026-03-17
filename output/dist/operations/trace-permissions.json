@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "trace-permissions",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-44",
+    "prompt": "RBAC walk-through tracing who can do what with privilege escalation detection."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-prove-prototype",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-51",
+    "prompt": "Smallest-possible prototype with defined measure and predicted vs actual results."
+  }
+}

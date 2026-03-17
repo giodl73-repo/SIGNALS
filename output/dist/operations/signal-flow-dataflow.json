@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-flow-dataflow",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-37",
+    "prompt": "ETL pipeline and sync process tracing with data loss and schema mismatch detection."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-org",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-13",
+    "prompt": "Org namespace: role registry (/signal-org-roles), org chart (/signal-org-chart), org review (/signal-org-review), committee simulation (/signal-org-committee).\n"
+  }
+}

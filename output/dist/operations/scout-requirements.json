@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scout-requirements",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-22",
+    "prompt": "Requirements extraction with MoSCoW prioritization and dependency graph."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-trace-state",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-42",
+    "prompt": "State transition hand-compilation with preconditions, postconditions, and invariant checks."
+  }
+}

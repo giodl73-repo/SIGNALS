@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-review",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-3",
+    "prompt": "Team validates the design. Expert and discipline review of specs and code. Persona walkthrough for usability. 12-customer-persona evaluation for adoption. Full default.\n"
+  }
+}

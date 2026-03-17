@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "evidence",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-5",
+    "prompt": "Gather full evidence for a hypothesis. Runs the complete prove suite across all 9\nprove skills in the correct investigation order.\n\nCovers:\n- prove-hypothesis   -> frame the hypothesis with claim, falsification, confidence\n- prove-websearch    -> gather web evidence with quotes and source strength ratings\n- prove-intelligence -> search internal sources with file-path citations\n- prove-prototype    -> build the smallest prototype with predicted vs actual results\n- prove-analysis     -> analyze data patterns distinguishing correlation from causation\n- prove-interview    -> simulate stakeholder interviews grounded in documented roles\n- prove-synthesize   -> answer-first synthesis with confidence and counter-evidence\n- prove-publish      -> write-up as paper with abstract, method, findings, limitations\n- prove-topic        -> full campaign summary tying all evidence threads together\n\nOutput: a complete evidence dossier. The hypothesis is either supported, refuted,\nor marked insufficient-evidence with a clear..."
+  }
+}

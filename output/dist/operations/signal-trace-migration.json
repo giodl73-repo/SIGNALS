@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-trace-migration",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-46",
+    "prompt": "Schema change tracing with before/after data state and data loss detection."
+  }
+}

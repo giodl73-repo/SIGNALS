@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-org-chart",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-72",
+    "prompt": "Org structure generation with areas, committees, and operating rhythms."
+  }
+}

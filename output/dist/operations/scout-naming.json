@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scout-naming",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-17",
+    "prompt": "Name generation and evaluation with multi-persona scoring."
+  }
+}

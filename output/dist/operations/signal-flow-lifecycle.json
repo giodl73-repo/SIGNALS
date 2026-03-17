@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-flow-lifecycle",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-34",
+    "prompt": "Multi-step business document lifecycle simulation with phase contracts and exception flows."
+  }
+}

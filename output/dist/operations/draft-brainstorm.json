@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "draft-brainstorm",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-26",
+    "prompt": "Idea pool generation with inertia baseline and peer-comparison scoring."
+  }
+}

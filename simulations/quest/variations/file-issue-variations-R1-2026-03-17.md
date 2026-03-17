@@ -1,0 +1,401 @@
+Artifact written to `simulations/quest/variations/file-issue-variations-R1-2026-03-17.md` (440 lines).
+
+---
+
+## file-issue — Round 1 Variations
+
+**5 complete, runnable skill body prompts:**
+
+---
+
+### V-01 — Phrasing Register: Conversational / Ask-First
+**Axis**: Phrasing register (single-axis)
+**Hypothesis**: Asking the four required questions one at a time before drafting surfaces context (topic, invocation chain) that templates miss, improving C-06 and C-09 without sacrificing C-01/C-02. Five steps: intake → enrichment → draft issue → write artifact → offer to open.
+
+---
+
+### V-02 — Output Format: Table-Driven Intake
+**Axis**: Output format (single-axis)
+**Hypothesis**: A visible table with one row per required field makes C-01/C-02 failures impossible to overlook — an empty Severity cell is immediately caught. Severity tone rules are enumerated inline to enforce C-08.
+
+---
+
+### V-03 — Lifecycle Emphasis: Explicit 4-Phase Boundaries
+**Axis**: Lifecycle emphasis (single-axis)
+**Hypothesis**: Naming SETUP / EXECUTE / FINDINGS / AMEND explicitly prevents the skill from collapsing into a one-pass fill. The FINDINGS phase forces a self-check against C-01, C-02, C-05, C-06, C-08 before any artifact is written — the phase boundary is the quality gate.
+
+---
+
+### V-04 — Role Sequence + Output Format: Reporter / Maintainer Handoff *(combination)*
+**Axes**: Role sequence + output format
+**Hypothesis**: Two sequential roles — a Reporter who captures faithfully and a Maintainer who asks "can I act on this?" — produces higher-quality issues than any single-pass approach. The Maintainer role has an explicit checklist table targeting C-06 and C-09, which single-role prompts consistently underweight.
+
+---
+
+### V-05 — Inertia Framing + Phrasing Register: Severity-Led Triage *(combination)*
+**Axes**: Inertia framing + phrasing register
+**Hypothesis**: The primary competitor to filing an issue is not filing one at all. Triage-first (pick severity from a numbered list before anything else) lowers that friction to a single choice. Severity-gated templates then enforce C-08 structurally — each severity has a different body schema, so tone mismatch becomes impossible.
+
+---
+
+**Key differentiators across variations:**
+
+| | C-01/C-02 defense | C-06 defense | C-08 defense | C-09 defense |
+|---|---|---|---|---|
+| V-01 | ask-first blocks gaps | enrichment step | tone note | enrichment asks |
+| V-02 | table cell = visible | invocation row | tone rules inline | Related row |
+| V-03 | SETUP gate | FINDINGS check | FINDINGS check | SETUP notes context |
+| V-04 | Reporter required fields table | Maintainer reproducibility check | Maintainer tone check | Maintainer context check |
+| V-05 | triage confirms enum first | per-severity Reproduction section | per-severity template schema | References/Environment fields |
+skill-name}
+
+Body: the full GitHub issue text.
+
+**Step 5 -- Offer to open:**
+
+Ask: "Would you like me to open this as a GitHub issue at the Signal repo?
+I can run: `gh issue create --title '...' --body '...'`"
+
+---
+
+## V-02 -- Output Format: Table-Driven Intake
+
+**Axis**: Output format
+**Hypothesis**: A table-based intake forces explicit field completion before any prose is
+written. Empty cells are immediately visible, making C-01 and C-02 failures impossible to
+overlook. The table creates a natural diff surface for reviewers comparing issue quality
+across runs.
+
+---
+
+Capture a Signal skill issue. Populate the intake table, then generate the GitHub issue.
+
+**Intake table -- fill every row before proceeding:**
+
+| Field      | Value                                                             |
+|------------|-------------------------------------------------------------------|
+| Skill      | which skill ran -- exact name                                     |
+| Expected   | what should have happened                                         |
+| Actual     | what did happen -- paste output if available                      |
+| Severity   | crash / wrong-output / missing-feature / improvement -- pick one  |
+| Topic      | topic name, or "untracked"                                        |
+| Invocation | the exact command or input used                                   |
+| Related    | other skills or artifacts involved, or "none"                     |
+
+If the user has not supplied any field, ask for it before proceeding. Severity must be
+one of the four enum values; reject any other value and ask again.
+
+**GitHub issue -- generate from the table:**
+
+  Title: [{severity}] {skill}: {symptom derived from Expected vs Actual delta}
+
+  Skill: `{skill}`
+  Severity: `{severity}`
+
+  **Expected**
+  {expected}
+
+  **Actual**
+  {actual}
+
+  **Steps to reproduce**
+  Invocation: `{invocation}`
+  Topic: {topic}
+  Related: {related}
+
+  **Context**
+  {any version, date, chain, or artifact context}
+
+Severity tone rules:
+- `crash`: "This skill is non-functional for the following input. Immediate triage needed."
+- `wrong-output`: "The skill completes but produces incorrect output."
+- `missing-feature`: "The skill lacks a capability that the spec implies."
+- `improvement`: "The skill works but the following enhancement would increase quality."
+
+**Local artifact:**
+
+Write to `simulations/feedback/{skill}-issue-{YYYY-MM-DD}.md`
+Frontmatter: skill, topic, item (= "issue"), date, severity, target_skill.
+Body: the complete GitHub issue text.
+
+**Repo offer:**
+
+Print:
+  Artifact written. Open as GitHub issue?
+  gh issue create --title "[{severity}] {skill}: {symptom}" --body-file {artifact-path}
+
+---
+
+## V-03 -- Lifecycle Emphasis: Explicit 4-Phase Boundaries
+
+**Axis**: Lifecycle emphasis
+**Hypothesis**: Making the four Signal lifecycle phases (SETUP / EXECUTE / FINDINGS / AMEND)
+explicit and mandatory prevents the skill from collapsing into a single-pass template fill.
+The FINDINGS phase forces evaluation before delivery; AMEND surfaces one improvement.
+This structure defends C-06 (reproducibility) and C-08 (severity-appropriate framing).
+
+---
+
+You are executing the `file-issue` skill. Run all four lifecycle phases explicitly.
+
+---
+
+### PHASE 1 -- SETUP
+
+Identify what you have from the user message:
+- Skill name: present / absent
+- Expected behavior: present / absent
+- Actual behavior: present / absent
+- Severity: present / absent / invalid enum
+
+For each absent or invalid field, ask the user before continuing. Do not proceed to Phase 2
+until all four required fields are present and severity is exactly one of:
+crash, wrong-output, missing-feature, improvement.
+
+Also note any enriching context already provided: topic name, invocation, related skills,
+artifact paths, date of occurrence.
+
+---
+
+### PHASE 2 -- EXECUTE
+
+Draft the GitHub issue:
+
+Title: [{severity}] {skill}: {symptom}
+-- title must name the skill and the observable symptom; reject generic titles
+
+Body sections (all required):
+- **Skill** -- exact skill name
+- **Severity** -- enum value
+- **Expected** -- what the user described as expected behavior
+- **Actual** -- what the user described as the actual outcome
+- **Steps to reproduce** -- invocation, input, and any sequence information provided
+- **Context** -- topic, related skills, version/date, or linked artifacts
+
+Severity-appropriate tone:
+- `crash`: urgent; request immediate reproduction steps
+- `wrong-output`: factual; describe the delta between expected and actual precisely
+- `missing-feature`: scoped; define the capability boundary
+- `improvement`: constructive; frame as a proposal, not a complaint
+
+---
+
+### PHASE 3 -- FINDINGS
+
+Before writing the artifact, evaluate the draft:
+
+1. Are all four required fields present and non-empty? (C-01)
+2. Is severity exactly one of the four valid enum values? (C-02)
+3. Does the title name the skill AND the symptom? (C-05)
+4. Is there enough detail for a maintainer to reproduce or investigate? (C-06)
+5. Does the tone match the severity? (C-08)
+
+If any check fails, revise before proceeding.
+
+---
+
+### PHASE 4 -- AMEND
+
+Write the artifact to `simulations/feedback/{skill}-issue-{YYYY-MM-DD}.md`
+
+Frontmatter:
+  skill: file-issue
+  topic: {topic or "untracked"}
+  item: issue
+  date: {YYYY-MM-DD}
+  severity: {severity}
+  target_skill: {skill}
+
+Body: the complete GitHub issue text from Phase 2 (post-revision if Phase 3 found gaps).
+
+Offer: "Artifact written to simulations/feedback/{skill}-issue-{date}.md.
+Would you like to open this as a GitHub issue?
+  gh issue create --title '[{severity}] {skill}: {symptom}' --body-file {artifact-path}"
+
+---
+
+## V-04 -- Role Sequence + Output Format: Reporter / Maintainer Handoff
+
+**Axis**: Role sequence + output format (combination)
+**Hypothesis**: Running two roles sequentially -- a Reporter who captures the raw issue and a
+Maintainer who reviews it for actionability -- produces higher-quality output than a single-pass
+template. The Maintainer lens specifically targets C-06 (reproducibility) and C-09 (context
+enrichment), which single-role approaches consistently underweight.
+
+---
+
+You are running `file-issue` in two-role mode: **Reporter** then **Maintainer**.
+
+---
+
+**REPORTER -- Capture the issue**
+
+Job: faithfully record what the user experienced. Ask for anything missing.
+
+Required fields (all must be present before handing off):
+
+| Field    | Requirement                                                        |
+|----------|--------------------------------------------------------------------|
+| Skill    | Exact skill name                                                   |
+| Expected | What should have happened                                          |
+| Actual   | What did happen (verbatim output preferred)                        |
+| Severity | Exactly one of: crash, wrong-output, missing-feature, improvement  |
+
+Reporter draft format:
+
+  [REPORTER DRAFT]
+  Title: [{severity}] {skill}: {symptom}
+  Skill: {skill}
+  Severity: {severity}
+  Expected: {expected}
+  Actual: {actual}
+  Invocation / Input: {what the user ran or typed}
+  Topic: {topic or unknown}
+  Related: {other skills or artifacts, or none}
+
+---
+
+**MAINTAINER -- Review for actionability**
+
+The Maintainer reads the Reporter draft and asks: "Can I act on this?"
+
+| Check             | Pass condition                         | Action if fail               |
+|-------------------|----------------------------------------|------------------------------|
+| Title specificity | Names skill + symptom, not generic     | Rewrite title                |
+| Reproducibility   | Enough to reproduce or investigate     | Add steps or ask user        |
+| Severity tone     | Matches the enum value                 | Reframe body tone            |
+| Context           | At least one item beyond the 4 fields  | Add topic/date/chain/artifact |
+| Severity enum     | Exactly one valid value                | Correct if wrong             |
+
+Final GitHub issue format (after Maintainer review):
+
+  Title: [{severity}] {skill}: {symptom}
+
+  Skill: `{skill}`
+  Severity: `{severity}`
+
+  **Expected**
+  {expected}
+
+  **Actual**
+  {actual}
+
+  **Steps to reproduce**
+  {invocation, input, sequence}
+
+  **Context**
+  {topic, related skills, version, artifact paths -- at least one item}
+
+---
+
+**LOG -- Write local artifact**
+
+Path: `simulations/feedback/{skill}-issue-{YYYY-MM-DD}.md`
+Frontmatter: skill, topic, item ("issue"), date, severity, target_skill.
+Body: Maintainer-approved issue text.
+
+**OFFER -- Open at repo**
+
+  Issue logged: simulations/feedback/{skill}-issue-{date}.md
+  Open as GitHub issue? Run:
+    gh issue create --title "[{severity}] {skill}: {symptom}" --body-file {artifact-path}
+
+---
+
+## V-05 -- Inertia Framing + Phrasing Register: Severity-Led Triage, Formal/Technical
+
+**Axis**: Inertia framing + phrasing register (combination)
+**Hypothesis**: Most users who encounter a skill problem say nothing -- the inertia is to move
+on rather than file a report. Starting with severity triage (rather than free-form capture)
+lowers filing friction by making the entry point a single binary choice. Formal/technical
+register aligns with how developers read issue trackers, improving C-05 and C-08 adoption.
+
+---
+
+Signal skill issue reporter. Entry point: severity triage.
+
+**Triage -- select severity first:**
+
+What best describes the problem?
+
+  [1] crash           -- The skill threw an error or could not produce any output.
+  [2] wrong-output    -- The skill completed, but the output was incorrect or misleading.
+  [3] missing-feature -- The skill ran, but a capability that should exist was absent.
+  [4] improvement     -- The skill worked correctly, but a specific enhancement would improve it.
+
+Once severity is confirmed, collect the three remaining required fields:
+- **Skill**: which skill ran (exact name, e.g. `draft-spec`, `flow-trigger`)
+- **Expected**: the behavior or output the user anticipated
+- **Actual**: what was produced or what failed (verbatim error or description)
+
+Collect any available enriching context without extra prompting:
+topic name, invocation string, related artifacts, skill version or date.
+
+---
+
+**Issue construction -- severity-gated templates:**
+
+If `crash`:
+
+  Title: [crash] {skill}: unhandled error -- {one-line description}
+  Severity: crash | Skill: `{skill}` | Priority: HIGH -- skill non-functional
+
+  **Expected**: {expected}
+  **Actual**: {actual} -- include any error message or stack trace verbatim.
+  **Reproduction**: Invocation: `{invocation}` | Input: {input summary} | Env: {topic, date, chain}
+  **Impact**: {describe what workflow is blocked}
+
+If `wrong-output`:
+
+  Title: [wrong-output] {skill}: {field or section} -- expected {X}, got {Y}
+  Severity: wrong-output | Skill: `{skill}`
+
+  **Expected**: {expected}
+  **Actual**: {actual}
+  **Delta**: {precise description of the difference}
+  **Reproduction**: {invocation, input, topic}
+
+If `missing-feature`:
+
+  Title: [missing-feature] {skill}: {capability} not present
+  Severity: missing-feature | Skill: `{skill}`
+
+  **Expected**: {describe the capability that should exist}
+  **Actual**: {confirm the capability is absent, not just undiscovered}
+  **Scope**: {what inputs trigger the gap, what outputs are affected}
+  **References**: {any spec, rubric, or related skill that implies this capability}
+
+If `improvement`:
+
+  Title: [improvement] {skill}: {specific enhancement proposal}
+  Severity: improvement | Skill: `{skill}`
+
+  **Current behavior**: {what the skill does today}
+  **Proposed behavior**: {what it should do, with enough precision to implement}
+  **Rationale**: {why this matters -- user workflow, rubric criteria, downstream quality}
+  **Acceptance condition**: {how you would know the improvement was implemented}
+
+---
+
+**Local artifact:**
+
+Write to `simulations/feedback/{skill}-issue-{YYYY-MM-DD}.md`
+
+Frontmatter:
+  skill: file-issue
+  topic: {topic or "untracked"}
+  item: issue
+  date: {YYYY-MM-DD}
+  severity: {severity}
+  target_skill: {skill}
+
+Body: full issue text from the severity-gated template above.
+
+**Offer:**
+
+  Artifact written: simulations/feedback/{skill}-issue-{date}.md
+  To open at the Signal repo:
+    gh issue create \
+      --title "[{severity}] {skill}: {symptom}" \
+      --label "{severity}" \
+      --body-file simulations/feedback/{skill}-issue-{date}.md

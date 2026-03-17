@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "track",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-6",
+    "prompt": "Manage the topic narrative and program plan. Combines topic + program into a single\ndashboard command for topic health and signal coverage.\n\nCovers:\n- topic-new    -> register the topic with strategy planning and signal coverage plan\n- topic-plan   -> revise signal strategy as new information arrives\n- topic-status -> terminal coverage display computed from signal glob against strategy\n- topic-story  -> editorial synthesis of all signals into a coherent narrative\n- topic-echo   -> unexpected findings: what did we learn that we did not expect?\n\nOutput: a topic dashboard showing signal coverage, narrative synthesis, and the echo\n(what we learned that we did not plan to learn). Includes a readiness statement:\nready to commit, needs these signals, or blocked on this decision.\n\nUse at the start of a topic (topic-new), after each signal run (topic-status), and\nat decision time (topic-story + topic-echo). The dashboard is the PM's artifact.\n"
+  }
+}

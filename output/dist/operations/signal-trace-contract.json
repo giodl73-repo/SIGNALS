@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-trace-contract",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-43",
+    "prompt": "Expected vs actual output comparison using three-directory pattern with mismatch severity."
+  }
+}

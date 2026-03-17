@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-scout-stakeholders",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-23",
+    "prompt": "Stakeholder mapping with power/interest grid and veto risk ranking."
+  }
+}

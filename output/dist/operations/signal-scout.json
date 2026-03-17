@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-scout",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-1",
+    "prompt": "PM proves the idea. Market positioning, competitive landscape, feasibility, naming validation, compliance scan, market sizing, stakeholder alignment, positioning pitch, and requirements validation. Lightweight default.\n"
+  }
+}

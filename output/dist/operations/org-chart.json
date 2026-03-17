@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "org-chart",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-69",
+    "prompt": "Org structure generation with areas, committees, and operating rhythms."
+  }
+}

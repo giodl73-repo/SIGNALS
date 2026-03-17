@@ -3,7 +3,7 @@
   "skill": "artifact-writer",
   "root": {
     "type": "llm-call",
-    "handle": "op-70",
+    "handle": "op-73",
     "prompt": "Writes signal artifacts with standard frontmatter (skill, topic, item, date, skill_version, input). Enforces topic-item-date naming convention. Supports --json sidecar flag.\n"
   }
 }

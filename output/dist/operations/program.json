@@ -2,31 +2,8 @@
   "version": 1,
   "skill": "program",
   "root": {
-    "type": "sequence",
-    "handle": "op-43",
-    "steps": [
-      {
-        "type": "read-file",
-        "handle": "op-39",
-        "path": "*"
-      },
-      {
-        "type": "write-file",
-        "handle": "op-40",
-        "path": "*",
-        "content": ""
-      },
-      {
-        "type": "edit-file",
-        "handle": "op-41",
-        "path": "*",
-        "edits": []
-      },
-      {
-        "type": "glob",
-        "handle": "op-42",
-        "pattern": "*"
-      }
-    ]
+    "type": "llm-call",
+    "handle": "op-8",
+    "prompt": "Lead orchestrates all. Sequences scout -> draft -> review -> flow -> trace -> listen into a staged program plan with gates and topic tracking. Full default.\n"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "default": "signal",
+  "projects": {
+    "signal": {
+      "craftPath": ".craft",
+      "historyPath": ".craft/HISTORY.md",
+      "clientSlug": "signal",
+      "projectName": "signal",
+      "projectType": "plugin",
+      "sourcePath": ".",
+      "testsPath": "simulations",
+      "baselinePath": "output",
+      "description": "Signal - AI-first feature decision intelligence plugin",
+      "plugin": "signal",
+      "stack": "claude-code",
+      "agent": "claude-sonnet-4-6"
+    }
+  }
+}

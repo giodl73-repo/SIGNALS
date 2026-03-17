@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-org-committee",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-74",
+    "prompt": "Committee meeting simulation for ROB, shiproom, or architecture board."
+  }
+}

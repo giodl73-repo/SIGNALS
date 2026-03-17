@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "prove-topic",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-53",
+    "prompt": "Full prove evidence campaign orchestrating hypothesis through synthesis in one command."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-prove",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-6",
+    "prompt": "Prove what you believe. Hypothesis-first investigation decomposed into approachable steps -- state, research, prototype, analyze, interview, synthesize, publish. Full default.\n"
+  }
+}

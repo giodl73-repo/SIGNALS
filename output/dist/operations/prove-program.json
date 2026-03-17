@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "prove-program",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-54",
+    "prompt": "General-purpose research orchestrator for open-ended research questions."
+  }
+}

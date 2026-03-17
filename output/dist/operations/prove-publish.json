@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "prove-publish",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-52",
+    "prompt": "Investigation write-up as paper with abstract, method, findings, and limitations."
+  }
+}

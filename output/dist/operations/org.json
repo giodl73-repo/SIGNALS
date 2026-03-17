@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "org",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-12",
+    "prompt": "### Step 1: Prepare\n\nGather any required inputs for the org operation.\n\n### Step 2: Execute\n\nOrg namespace -- 4 skills for organizational simulation.\n\n/org-roles      -> typed role registry with orientation, lens, and expertise\n/org-chart      -> org structure with areas, committees, and operating rhythms\n/org-review     -> full org review running artifact through all relevant roles\n/org-committee  -> committee meeting simulation for ROB, shiproom, or architecture board\n\nRun any sub-skill directly, or describe your organizational need and the most relevant skill will run.\n\n\n### Step 3: Report\n\nConfirm the result to the user.\n"
+  }
+}

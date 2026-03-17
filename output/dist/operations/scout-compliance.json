@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scout-compliance",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-18",
+    "prompt": "Regulatory and policy constraint scan before design begins."
+  }
+}

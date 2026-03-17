@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-scout-feasibility",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-19",
+    "prompt": "Technical feasibility assessment with traffic-light ratings and budget chain."
+  }
+}

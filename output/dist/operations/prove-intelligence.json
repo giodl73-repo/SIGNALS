@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "prove-intelligence",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-47",
+    "prompt": "Internal source evidence search with file-path citations and relevance assessment."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-prove-program",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-57",
+    "prompt": "General-purpose research orchestrator for open-ended research questions."
+  }
+}

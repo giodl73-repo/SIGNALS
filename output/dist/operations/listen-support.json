@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "listen-support",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-56",
+    "prompt": "Top support ticket prediction for first 90 days with gap analysis."
+  }
+}

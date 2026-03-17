@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-draft-proposal",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-27",
+    "prompt": "Proposal or ADR with three-option minimum and recommendation rationale."
+  }
+}

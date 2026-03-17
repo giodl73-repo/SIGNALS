@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "flow-lifecycle",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-31",
+    "prompt": "Multi-step business document lifecycle simulation with phase contracts and exception flows."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-flow",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-4",
+    "prompt": "Domain developer simulates the process. Business lifecycle flows, agent conversations, automation triggers, data pipelines, integrations, throttle limits, and resilience under failure. Full default.\n"
+  }
+}

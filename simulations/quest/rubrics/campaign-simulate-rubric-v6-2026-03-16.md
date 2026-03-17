@@ -1,0 +1,338 @@
+## Extraction Analysis
+
+Two new patterns emerge from R5 that are not captured by existing criteria:
+
+1. **V-05 vs V-04 delta**: V-04 passes C-19+C-20+C-21 by co-locating them in an OBSERVATIONAL DISCIPLINE section. V-05 goes further — declaring the three as a single *structural axis* (row 5 in the axis declaration table), co-equal with the other four. Three scattered aspirational passes ≠ one unified structural commitment. **→ C-22**
+
+2. **V-05 "row 7 requires citation of a T-1 rejection"**: C-20 requires T-1 to be *stated*. V-05 requires evidence it *fired* — a named observation that was evaluated, failed T-1, and was withheld. A rule with no rejection citations is unfalsified. **→ C-23**
+
+The architecture bonus (fired/partial/not-fired sub-claims) is explicitly excluded by the scorecard ("no new criteria needed").
+
+Scoring update: 13 → 15 aspirational criteria → raw max 110, divisor 1.10.
+
+---
+
+```markdown
+# Quest Rubric — campaign-simulate (v6)
+
+## Rubric Version
+
+**v6** — Adds C-22 and C-23 extracted from Round 5 excellence signals.
+Prior history: C-19/C-20/C-21 extracted from Round 4 (v5); C-16/C-17/C-18
+extracted from Round 3 (v4); C-09–C-15 from earlier rounds.
+
+---
+
+## Scoring Model
+
+| Pool | Criteria | Points Each | Subtotal |
+|------|----------|-------------|---------|
+| Essential | C-01–C-05 | 10 | 50 |
+| Recommended | C-06–C-08 | 10 | 30 |
+| Aspirational | C-09–C-23 (15 criteria) | 2 | 30 |
+| **Raw max** | | | **110** |
+| **Divisor** | | | **1.10** |
+| **Normalized max** | | | **100** |
+
+---
+
+## Essential Criteria (50 points total, 10 pts each)
+
+### C-01 — Structural Axis Declaration Present
+- **Weight**: essential
+- **Category**: format
+- **Text**: The report opens with a Structural Axis Declaration table that names the
+  structural axes the campaign will enforce. The table is the first substantive section
+  of the report and must appear before any execution log or findings section.
+- **Pass condition**: A named table or section titled "Structural Axis Declaration" (or
+  equivalent) is present and precedes the execution log. The table lists at least the
+  four core axes (execution order, report synthesis, blast-radius ranking,
+  findings-anchoring). Fail if the declaration is absent or if it appears after evidence
+  collection has begun.
+
+### C-02 — Sub-Skill Execution Order Enforced
+- **Weight**: essential
+- **Category**: format
+- **Text**: Sub-skills are executed and reported in the specified order: flow-lifecycle →
+  flow-conversation → trace-state → trace-contract → trace-permissions. Later findings
+  may reference earlier ones but not vice versa.
+- **Pass condition**: Section headers or execution log shows the five skills in order with
+  no reordering. Fail if the sequence is shuffled or if later skills appear before earlier
+  ones in the report structure.
+
+### C-03 — Findings Report Produced
+- **Weight**: essential
+- **Category**: format
+- **Text**: A consolidated findings report document is output. It must be a single unified
+  artifact (not five separate skill outputs) that synthesizes results across all
+  sub-skills.
+- **Pass condition**: Output is a single report with a title, date, topic context, and a
+  multi-skill findings section. Fail if the output is a raw dump of five independent
+  skill outputs without synthesis.
+
+### C-04 — Blast Radius Ranking Applied
+- **Weight**: essential
+- **Category**: correctness
+- **Text**: Findings are ranked by blast radius — the scope of downstream impact if the
+  finding is ignored. High blast radius = many flows/components affected; low = isolated.
+  The ranking must be explicit, not implied.
+- **Pass condition**: Report contains a ranked findings list (numbered or tiered) with
+  blast radius as the stated sort key. At least one finding is labeled or annotated with
+  its blast radius scope. Fail if findings are unranked, alphabetical, or sorted by any
+  other key without blast radius justification.
+
+### C-05 — At Least One Spec Gap or Contract Violation Identified
+- **Weight**: essential
+- **Category**: coverage
+- **Text**: The report surfaces at least one concrete spec gap (something underspecified
+  or missing from the target spec) or contract violation (a boundary condition where
+  caller and callee assumptions diverge). The finding must name the specific spec location
+  or contract boundary affected.
+- **Pass condition**: Report contains at least one finding with: (a) finding type labeled
+  as spec-gap or contract-violation, (b) specific reference to where in the spec the gap
+  or violation occurs, (c) description of what is missing or mismatched. Fail if all
+  findings are vague observations without spec anchoring.
+
+---
+
+## Recommended Criteria (30 points total, 10 pts each)
+
+### C-06 — Finding Depth: Source + Location + Impact
+- **Weight**: recommended
+- **Category**: depth
+- **Text**: Each finding includes three fields as distinct labeled entries: (1) source
+  sub-skill that discovered it, (2) spec/contract location where it was found, (3) impact
+  description of what breaks if unresolved. Impact must be a standalone labeled field —
+  merging impact into the problem description field does not satisfy this criterion.
+- **Pass condition**: At least 80% of findings include all three fields as separately
+  labeled entries. Pass if the report uses a consistent finding schema (e.g., table or
+  structured list) that captures source, location, and impact as distinct columns or
+  fields. Partial pass (half credit) if fields are present but inconsistently populated
+  or if impact is merged with the problem description.
+
+### C-07 — Cross-Sub-Skill Coverage (Findings Span Multiple Skills)
+- **Weight**: recommended
+- **Category**: coverage
+- **Text**: The ranked findings list draws from at least three of the five sub-skills,
+  demonstrating that the campaign exercised the full skill set rather than concentrating
+  findings in one area.
+- **Pass condition**: Findings section attributes results to three or more distinct
+  sub-skills by name. Fail if all findings are attributed to one or two sub-skills or if
+  sub-skill attribution is absent. Partial pass (half credit) if attribution is present
+  for exactly two sub-skills.
+
+### C-08 — Remediation Guidance Present
+- **Weight**: recommended
+- **Category**: depth
+- **Text**: Each finding includes a remediation field — a concrete recommended action,
+  spec update, or contract clarification that would close the finding. The remediation
+  must be a standalone labeled field, not folded into the impact or description field.
+- **Pass condition**: At least 80% of findings include a populated remediation field as a
+  distinct labeled entry. Partial pass (half credit) if remediation is present but merged
+  with impact or is a generic placeholder ("address this") rather than a concrete action.
+
+---
+
+## Aspirational Criteria (30 points total, 2 pts each)
+
+### C-09 — Severity Classification Applied
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Each finding carries an explicit severity label (e.g., critical/high/medium/
+  low or equivalent named scale). The scale is defined or cited in the report.
+- **Pass condition**: All findings have a severity label from a declared scale. Fail if
+  severity is absent or if the scale is applied inconsistently without a definition.
+
+### C-10 — Finding Count by Sub-Skill Reported
+- **Weight**: aspirational
+- **Category**: coverage
+- **Text**: The report includes a summary table or section listing finding counts per
+  sub-skill, including sub-skills that produced zero findings.
+- **Pass condition**: A count table or equivalent section is present with a row or entry
+  for each of the five sub-skills, including zeroes. Fail if any sub-skill is absent from
+  the summary.
+
+### C-11 — Empty Sub-Skill Handling Declared
+- **Weight**: aspirational
+- **Category**: format
+- **Text**: Sub-skills that produce no findings explicitly declare "no findings" with a
+  brief rationale (e.g., "scope clean under current spec") rather than being silently
+  omitted.
+- **Pass condition**: Every sub-skill section — including zero-finding sub-skills —
+  contains an explicit disposition. Fail if any sub-skill section is absent or contains
+  only a blank space (a "no findings" declaration without rationale is a partial pass for
+  half credit).
+
+### C-12 — Filter Log Present
+- **Weight**: aspirational
+- **Category**: format
+- **Text**: The report includes a filter log (or observation log) that records evidence
+  units evaluated but not elevated to findings, so the elevation decision is auditable.
+- **Pass condition**: A filter log section is present with at least one entry. The log
+  must show: item observed, sub-skill source, and reason not elevated. Fail if the filter
+  log is absent or contains no entries (even a single-entry log satisfies the criterion).
+
+### C-13 — Discriminating Rejection Evidence Present
+- **Weight**: aspirational
+- **Category**: correctness
+- **Text**: The filter log contains at least one entry where an observation was evaluated
+  and explicitly rejected from finding status, with the rejection reason stated. The
+  rejection reason must discriminate — it must explain why this observation did not meet
+  the elevation threshold, not merely note it was reviewed.
+- **Pass condition**: At least one filter log entry shows an item that was evaluated,
+  failed elevation, and carries a specific rejection reason tied to the threshold
+  condition. Fail if every log entry either auto-elevates or gives a generic "not
+  significant" dismissal.
+
+### C-14 — Scope Attribution in Filter Log
+- **Weight**: aspirational
+- **Category**: format
+- **Text**: Each filter log entry is attributed to the sub-skill scope in which it was
+  observed. Scope attribution enables cross-scope filtering patterns to be identified.
+- **Pass condition**: Every filter log entry carries a sub-skill scope label. Partial pass
+  (half credit) if attribution is present for the majority of entries but missing for
+  some.
+
+### C-15 — Finding Lifecycle Labels Applied
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Findings are labeled with lifecycle status (e.g., new, confirmed, amended,
+  closed) to support multi-round campaign tracking. The label schema is declared or cited
+  in the report.
+- **Pass condition**: All findings carry a lifecycle label from a declared schema. Partial
+  pass (half credit) if labels are present but the schema is undeclared.
+
+### C-16 — Structural Symmetry Across Sub-Skills
+- **Weight**: aspirational
+- **Category**: format
+- **Text**: Each of the five sub-skill sections uses the same structural template — same
+  section headings, same field labels, same empty-state language. A reader should be
+  unable to tell which sub-skill section they are reading based on structural variation
+  alone.
+- **Pass condition**: All five sub-skill sections share identical heading structure and
+  field labels. Fail if any sub-skill section uses different headings or omits fields
+  present in others.
+
+### C-17 — Structural Declaration Table Matches Execution
+- **Weight**: aspirational
+- **Category**: correctness
+- **Text**: Every structural commitment declared in the Structural Axis Declaration table
+  (C-01) is demonstrably fulfilled in the execution log or findings section. The
+  declaration and the execution must be consistent — a declared axis that is absent from
+  execution is a structural lie.
+- **Pass condition**: Each row in the Structural Axis Declaration table has a
+  corresponding artifact or section in the body of the report that fulfills the declared
+  commitment. Fail if any declared axis is absent from execution.
+
+### C-18 — Compliance Checklist Present and Enforced
+- **Weight**: aspirational
+- **Category**: format
+- **Text**: The report concludes with a compliance checklist that maps declared structural
+  axes to pass/fail verdicts with evidence citations. The checklist is not decorative — at
+  least one row must cite a specific artifact location (section, table, or finding ID) as
+  evidence.
+- **Pass condition**: A compliance checklist is present with rows for each declared
+  structural axis and at least one row containing a specific artifact citation. Fail if
+  the checklist is absent or if all rows are binary pass/fail without evidence.
+
+### C-19 — Domain Vocabulary Coherence
+- **Weight**: aspirational
+- **Category**: format
+- **Text**: The entire report — headers, field labels, empty-state templates, log entries
+  — uses vocabulary from a single named genre. The report should be genre-identifiable
+  from its structure alone. Partial pass for genre-coherent structural sections with
+  mixed prose. The gap C-19 closes: C-16/C-17/C-18 enforce structural symmetry and
+  declaration, but a structurally symmetric report with mixed vocabulary (half "findings",
+  half "deficiencies", half "observations") signals incoherent authorial intent.
+- **Pass condition**: A genre declaration section or row names the vocabulary genre and
+  cites at least two structural examples (e.g., specific headers or labels) that trace to
+  the declared genre. Fail if vocabulary is mixed without declaration. Partial pass (half
+  credit) if structural sections are genre-coherent but prose sections are mixed.
+
+### C-20 — Observation-to-Finding Qualification Threshold as Structural Rule
+- **Weight**: aspirational
+- **Category**: correctness
+- **Text**: The threshold separating observations from findings must be stated as a named
+  rule (T-1 or equivalent), not implied by clean output. The rule must be stated as a
+  falsifiable if-and-only-if condition: an observation becomes a finding if and only if
+  [named condition]. Gap over C-05: C-05 requires one anchored finding; C-20 requires
+  the anchoring requirement to be an explicit rule that is falsifiable. A gate with a
+  stated rule can be violated and detected; a gate implied by quality output cannot.
+- **Pass condition**: Report contains a named threshold rule (e.g., T-1) stated as an
+  if-and-only-if condition before any sub-skill fires. The rule must be findable as a
+  standalone declaration, not reconstructed from examples. Fail if the threshold is
+  implied by output quality alone.
+
+### C-21 — Per-Scope Filter Gate Embedding
+- **Weight**: aspirational
+- **Category**: format
+- **Text**: Each sub-skill scope carries its own embedded filter gate co-located with its
+  evidence, not deferred to a centralized table. Gap over C-13: C-13 requires
+  discriminating rejection evidence to exist somewhere; C-21 requires it at each scope
+  boundary so cross-scope filtering patterns are visible.
+- **Pass condition**: Each of the five sub-skill sections contains its own embedded filter
+  gate section with at least one entry (or an explicit "gate passed — no observations
+  withheld" declaration). Fail if filtering is handled only by a centralized log with
+  no per-scope gate sections. Partial pass (half credit) if per-scope gates are present
+  for three or more sub-skills but not all five.
+
+### C-22 — Observational Discipline Declared as Unified Structural Axis
+- **Weight**: aspirational
+- **Category**: format
+- **Text**: The three observational discipline properties (genre vocabulary coherence C-19,
+  observation-to-finding threshold rule C-20, per-scope filter gate embedding C-21) are
+  declared as a single named structural axis in the Structural Axis Declaration table —
+  not as three independent post-hoc checks. A row for observational discipline appears
+  co-equally alongside the other structural axes before execution begins. Gap over
+  C-19+C-20+C-21 each passing independently: those three can each be satisfied while
+  remaining architecturally scattered across the report. C-22 requires integration — one
+  axis declaration row that commits to all three as a unified system, so violations of
+  any one are detectable as a structural axis failure rather than a floating aspirational
+  miss.
+- **Pass condition**: The Structural Axis Declaration table (C-01) contains a row for
+  observational discipline (or equivalent name) that explicitly references or subsumes
+  genre coherence, threshold rule, and per-scope gates as its three sub-claims. The row
+  must appear before execution. Fail if the three properties are scattered across
+  post-execution sections with no unified axis declaration. Partial pass (half credit) if
+  an observational discipline section exists but is not declared as a structural axis row
+  in the declaration table.
+
+### C-23 — T-1 Application Demonstrated by Rejection Citation
+- **Weight**: aspirational
+- **Category**: correctness
+- **Text**: The compliance checklist or filter log includes at least one concrete citation
+  of an observation that was evaluated against the T-1 threshold, failed, and was
+  withheld from the findings list — with the specific observation named and the T-1 test
+  result stated. Gap over C-20: C-20 requires T-1 to be declared as a named rule; C-23
+  requires evidence the rule was applied. A T-1 rule with no rejection citations is
+  unfalsified — it could be a dead declaration that was never tested against actual
+  evidence.
+- **Pass condition**: At least one named observation appears in the filter log or
+  checklist with an explicit T-1 evaluation result (e.g., "T-1: not met — observation
+  lacks specific spec location") that results in withholding from the findings list. The
+  observation must be named (not described generically) and the T-1 failure reason must
+  be specific. Fail if no T-1 rejections are cited anywhere in the report. Partial pass
+  (half credit) if a T-1 rejection is cited but the reason is generic rather than tied
+  to the specific observation.
+
+---
+
+## Version History
+
+| Version | New Criteria | Source Round | Aspirational Count | Raw Max |
+|---------|-------------|--------------|-------------------|---------|
+| v1 | C-01–C-08 | — | 0 | 80 |
+| v2 | C-09–C-12 | R1/R2 | 4 | 88 |
+| v3 | C-13–C-15 | R2/R3 | 7 | 94 |
+| v4 | C-16–C-18 | R3 | 10 | 100 |
+| v5 | C-19–C-21 | R4 | 13 | 106 |
+| **v6** | **C-22–C-23** | **R5** | **15** | **110** |
+```
+
+---
+
+**Two new criteria extracted:**
+
+- **C-22** closes the gap between "three aspirational checks each passing" and "a unified structural commitment." V-04 proved the three can co-exist in a section; V-05 proved the section can be elevated to an axis. The delta is architectural, not qualitative.
+
+- **C-23** closes the gap between "rule declared" (C-20) and "rule applied." The R5 V-05 checklist row requiring a T-1 rejection citation is the signal — a rule that never rejects anything is unverifiable.

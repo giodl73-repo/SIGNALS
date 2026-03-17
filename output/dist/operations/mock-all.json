@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "mock-all",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-65",
+    "prompt": "Synthetic signal artifacts for all 9 namespaces with coverage picture."
+  }
+}

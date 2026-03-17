@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-scout-requirements",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-25",
+    "prompt": "Requirements extraction with MoSCoW prioritization and dependency graph."
+  }
+}

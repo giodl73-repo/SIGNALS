@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-trace-deployment",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-45",
+    "prompt": "Deployment sequence tracing with pre-checks, validation, and rollback path."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "quest",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-10",
+    "prompt": "### Step 1: Prepare\n\nGather any required inputs for the quest operation.\n\n### Step 2: Execute\n\nQuest namespace -- 4 skills for prompt engineering and golden prompt discovery.\n\n/quest-rubric  -> define what good output looks like: ranked criteria with pass conditions\n/quest-variate -> generate N prompt variations of a skill body for comparison\n/quest-score   -> score skill outputs against a rubric with leaderboard and failure patterns\n/quest-golden  -> find the golden prompt through systematic variation and scoring\n\nRun any sub-skill directly, or describe your optimization goal and the most relevant quest skill will run.\n\n\n### Step 3: Report\n\nConfirm the result to the user.\n"
+  }
+}

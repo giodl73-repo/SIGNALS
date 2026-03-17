@@ -2,31 +2,8 @@
   "version": 1,
   "skill": "draft",
   "root": {
-    "type": "sequence",
-    "handle": "op-12",
-    "steps": [
-      {
-        "type": "read-file",
-        "handle": "op-8",
-        "path": "*"
-      },
-      {
-        "type": "write-file",
-        "handle": "op-9",
-        "path": "*",
-        "content": ""
-      },
-      {
-        "type": "edit-file",
-        "handle": "op-10",
-        "path": "*",
-        "edits": []
-      },
-      {
-        "type": "glob",
-        "handle": "op-11",
-        "pattern": "*"
-      }
-    ]
+    "type": "llm-call",
+    "handle": "op-2",
+    "prompt": "Author writes the design. Guided authoring of specifications, proposals with trade-off analysis, and pitch deck narratives. Lightweight default.\n"
   }
 }

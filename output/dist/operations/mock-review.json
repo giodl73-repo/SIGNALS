@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "mock-review",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-67",
+    "prompt": "Mock coverage review writing MOCK-ACCEPTED or REAL-REQUIRED per namespace."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "prove-analysis",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-49",
+    "prompt": "Data pattern analysis distinguishing correlation from causation with source attribution."
+  }
+}

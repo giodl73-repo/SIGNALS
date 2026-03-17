@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-scout-naming",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-20",
+    "prompt": "Name generation and evaluation with multi-persona scoring."
+  }
+}

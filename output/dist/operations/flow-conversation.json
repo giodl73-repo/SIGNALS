@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "flow-conversation",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-32",
+    "prompt": "Multi-turn agent conversation simulation through topic graph with dead-end and loop detection."
+  }
+}

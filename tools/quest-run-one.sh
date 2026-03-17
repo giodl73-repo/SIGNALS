@@ -14,21 +14,26 @@ REPO="C:/src/sim"
 QUEST_DIR="$REPO/simulations/quest"
 TRACE_DIR="$REPO/simulations/trace/skill"
 SPEC_FILE="$REPO/simulations/draft/specs/signal-scout-$TODAY.md"
-MAX_ROUNDS=4
+MAX_ROUNDS=20  # experimental -- let the rubric discover
 
 echo "=== quest-run-one: $SKILL_ID ==="
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
-ask() {
-  # ask SYSTEM_FILE USER_PROMPT OUTPUT_FILE
-  local sys_file="$1"
-  local user_prompt="$2"
-  local out_file="$3"
-  local full_prompt
-
-  full_prompt="$(cat "$sys_file")"$'\n\n'"$user_prompt"
-  claude -p "$full_prompt" > "$out_file"
+# claude_ask: write prompt to temp file, pipe via stdin to claude --print
+# bypasses shell ARG_MAX / "Argument list too long" for large rubrics/variations
+# Uses bash redirection directly -- avoids Python subprocess stdin issues in relay context
+claude_ask() {
+  local prompt="$1"
+  local out_file="$2"
+  local tmp_prompt
+  # Use explicit POSIX path for temp file -- mktemp may return Windows paths in relay context
+  tmp_prompt="/tmp/claude-ask-$$.txt"
+  printf '%s' "$prompt" > "$tmp_prompt"
+  claude --print < "$tmp_prompt" > "$out_file"
+  local rc=$?
+  rm -f "$tmp_prompt"
+  return $rc
 }
 
 # ── Step 1: find trace artifact ───────────────────────────────────────────────
@@ -90,7 +95,7 @@ date: $TODAY
 version: 1
 ---"
 
-claude -p "$RUBRIC_PROMPT" > "$RUBRIC_FILE"
+claude_ask "$RUBRIC_PROMPT" "$RUBRIC_FILE"
 echo "Rubric written: $RUBRIC_FILE"
 
 # ── Quest loop ────────────────────────────────────────────────────────────────
@@ -129,7 +134,7 @@ Variation axes to explore (pick 3 for single-axis, then combine):
 
 Output as Markdown."
 
-  claude -p "$VARIATE_PROMPT" > "$VARIATIONS_FILE"
+  claude_ask "$VARIATE_PROMPT" "$VARIATIONS_FILE"
   echo "Variations written: $VARIATIONS_FILE"
 
   # Step B: score variations
@@ -160,7 +165,7 @@ Use empty array if no new patterns: {\"top_score\": 85, \"all_essential_pass\": 
 
 Output as Markdown."
 
-  claude -p "$SCORE_PROMPT" > "$SCORECARD_FILE"
+  claude_ask "$SCORE_PROMPT" "$SCORECARD_FILE"
   echo "Scorecard written: $SCORECARD_FILE"
 
   # Parse result
@@ -229,12 +234,80 @@ Extract the new excellence patterns from the scorecard and add them as new
 aspirational criteria (C-NN). Bump the rubric version to v$RUBRIC_VERSION.
 Output the complete updated rubric as Markdown."
 
-      claude -p "$EVOLVE_PROMPT" > "$NEW_RUBRIC_FILE"
+      claude_ask "$EVOLVE_PROMPT" "$NEW_RUBRIC_FILE"
       RUBRIC_FILE="$NEW_RUBRIC_FILE"
       echo "Rubric evolved to v$RUBRIC_VERSION: $NEW_RUBRIC_FILE"
     fi
   fi
 done
+
+# ── Step 3.5: QU5 simplification pass ────────────────────────────────────────
+
+echo "--- Step 3.5: QU5 simplification (minimum viable golden prompt)"
+SIMPLIFIED_FILE="$QUEST_DIR/variations/${SKILL_ID}-simplified-$TODAY.md"
+
+# Write QU5 prompt to temp file using python to avoid heredoc/arg-length issues
+QU5_PROMPT_FILE=$(mktemp /tmp/qu5-prompt-XXXXXX.txt)
+VARS_CONTENT=$(cat "$LAST_VARIATIONS" | head -100)
+RUBRIC_CONTENT=$(cat "$RUBRIC_FILE" | head -60)
+python -c "
+import sys
+skill = sys.argv[1]
+rubric_v = sys.argv[2]
+variations = open(sys.argv[3]).read()
+rubric = open(sys.argv[4]).read()
+prompt = f'''You are running QU5 -- the simplification pass for Signal skill: {skill}.
+
+The quest loop found the COMPLETE golden prompt. Now find the MINIMAL golden prompt:
+the shortest version that still passes all essential rubric criteria.
+
+Winning variation (the complete golden prompt):
+{variations[:3000]}
+
+Final rubric (v{rubric_v}):
+{rubric[:2000]}
+
+Task:
+1. Identify every sentence or phrase in the winning prompt that is doing NO work
+2. Remove those sentences/phrases
+3. Verify: does the simplified version still pass all essential criteria? YES/NO
+4. Report: word count before vs. after, what was removed and why
+
+Goal: 20-40% word reduction with zero essential criteria lost.
+Output the simplified prompt body and the simplification report.
+
+End with this JSON:
+\`\`\`json
+{{\"simplified_word_count\": NUMBER, \"original_word_count\": NUMBER, \"all_essential_still_pass\": BOOLEAN}}
+\`\`\`'''
+open(sys.argv[5], 'w').write(prompt)
+" "$SKILL_ID" "$RUBRIC_VERSION" "$LAST_VARIATIONS" "$RUBRIC_FILE" "$QU5_PROMPT_FILE"
+
+claude --print < "$QU5_PROMPT_FILE" > "$SIMPLIFIED_FILE" || {
+  echo "QU5 failed -- skipping simplification, proceeding to golden prompt with original"
+  cp "$LAST_VARIATIONS" "$SIMPLIFIED_FILE"
+}
+rm -f "$QU5_PROMPT_FILE"
+echo "Simplification written: $SIMPLIFIED_FILE"
+
+# Check if simplification succeeded
+SIMPLIFIED_PASS=$(python -c "
+import re, json
+txt = open('$SIMPLIFIED_FILE').read()
+m = re.search(r'\`\`\`json\s*({[^}]+})\s*\`\`\`', txt, re.DOTALL)
+if m:
+    d = json.loads(m.group(1))
+    if d.get('all_essential_still_pass', False):
+        orig = d.get('original_word_count', 0)
+        simp = d.get('simplified_word_count', 0)
+        pct = round((1 - simp/orig) * 100) if orig > 0 else 0
+        print(f'PASS ({pct}% reduction)')
+    else:
+        print('FAIL (essential criteria lost -- use original)')
+else:
+    print('PARSE_FAILED (use original)')
+" 2>/dev/null || echo "UNKNOWN")
+echo "Simplification: $SIMPLIFIED_PASS"
 
 # ── Step 4: write golden prompt ───────────────────────────────────────────────
 
@@ -244,8 +317,14 @@ mkdir -p "$QUEST_DIR/golden"
 
 GOLDEN_PROMPT="You are finalizing a quest run for Signal skill: $SKILL_ID
 
+Simplification result: $SIMPLIFIED_PASS
+Use the SIMPLIFIED prompt body if simplification passed. Otherwise use the winning variation.
+
+Simplified prompt (prefer this if PASS):
+$(cat "$SIMPLIFIED_FILE" | head -80)
+
 Final scorecard (Round $ROUND):
-$(cat "$LAST_SCORECARD" | head -150)
+$(cat "$LAST_SCORECARD" | head -100)
 
 Final variations:
 $(cat "$LAST_VARIATIONS" | head -150)
@@ -273,7 +352,7 @@ status: GOLDEN
 
 Output as Markdown."
 
-claude -p "$GOLDEN_PROMPT" > "$GOLDEN_FILE"
+claude_ask "$GOLDEN_PROMPT" "$GOLDEN_FILE"
 echo "Golden prompt written: $GOLDEN_FILE"
 
 # ── Step 5: update signal.skills.yaml ────────────────────────────────────────

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-program",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-8",
+    "prompt": "Lead orchestrates all. Sequences scout -> draft -> review -> flow -> trace -> listen into a staged program plan with gates and topic tracking. Full default.\n"
+  }
+}

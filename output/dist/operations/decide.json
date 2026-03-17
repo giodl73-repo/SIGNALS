@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "decide",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-1",
+    "prompt": "Run the full decision intelligence suite for a topic. Combines scout + prove into a\ncomplete pre-commitment analysis.\n\nCovers:\n- scout-competitors  -> competitive landscape + inertia as primary competitor\n- scout-feasibility  -> technical feasibility + traffic-light ratings\n- scout-market       -> market sizing + segment ranking by fit score\n- prove-hypothesis   -> hypothesis framing with falsification condition\n- prove-websearch    -> web evidence with direct quotes and strength-of-evidence\n- prove-synthesize   -> answer-first synthesis with confidence and counter-evidence\n\nOutput: a complete decision brief covering market landscape, technical viability,\nevidence base, and a synthesized recommendation with stated confidence.\n\nUse before committing to build. The decision brief is the artifact you present to get\nalignment before writing a spec.\n"
+  }
+}

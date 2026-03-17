@@ -1,0 +1,1636 @@
+# Signal v0.1 — Prefixed Binding
+# Usage: /signal-scout-competitors, /signal-trace-contract, /signal-draft-spec
+# All 62 skills + 12 namespace aggregators prefixed with "signal-"
+# Use this binding in multi-plugin environments to avoid command name collisions.
+version: 1
+plugin: signal
+model: claude-sonnet-4-6
+workspace: signal
+target_platform: claude-code
+agents:
+  emit: true
+  model: claude-sonnet-4-6
+  orchestration: false
+tiers:
+- id: root
+  path: .claude/
+  parent: null
+parameters:
+  definitions:
+  - name: depth
+    type: enum
+    values:
+    - quick
+    - standard
+    - deep
+    default: standard
+    description: Controls thoroughness. quick=fast scan, standard=thorough, deep=exhaustive adversarial.
+    inject: block
+    block_text: 'depth: {value}
+
+      # quick   -> fast scan, 5+ findings, prioritize obvious issues
+
+      # standard -> thorough, 15+ findings, full coverage (default)
+
+      # deep    -> exhaustive adversarial audit, 25+ findings, treat missing as failure
+
+      '
+  - name: confidence
+    type: enum
+    values:
+    - low
+    - standard
+    - strict
+    default: standard
+    description: Evidence threshold per finding. strict=cite specific line/section or omit.
+    inject: block
+    block_text: 'confidence: {value}
+
+      # low    -> include findings without citation
+
+      # standard -> cite source section for each finding (default)
+
+      # strict  -> only include findings with quotable specific evidence
+
+      '
+  - name: for
+    type: enum
+    values:
+    - pm
+    - engineer
+    - exec
+    - team
+    description: Audience calibration. Shifts salience and vocabulary to match role perspective.
+    inject: block
+    block_text: 'for: {value}
+
+      # pm       -> adoption, user value, competitive positioning
+
+      # engineer -> implementation, edge cases, technical debt
+
+      # exec     -> risk, cost, strategic alignment
+
+      # team     -> shared understanding, action items, ownership
+
+      '
+  - name: iterations
+    type: int
+    min: 1
+    max: 3
+    default: 1
+    description: Run the skill N times independently. Marginal finding rate drops ~50% per pass.
+    inject: block
+    block_text: 'iterations: {value}  # run {value}x independently, aggregate findings, mark new vs confirmed
+
+      '
+  param_sets:
+  - name: lean
+    params:
+    - depth
+    applies_to:
+    - flow
+    - topic
+    - quest
+    rationale: Structure-focused skills where audience/confidence don't change what's found
+  - name: standard
+    params:
+    - depth
+    - for
+    applies_to:
+    - scout
+    - draft
+    - program
+    rationale: Discovery/planning skills where audience changes which signals matter
+  - name: analysis
+    params:
+    - depth
+    - confidence
+    applies_to:
+    - trace
+    rationale: Contract/state verification -- evidence threshold matters, audience doesn't
+  - name: full
+    params:
+    - depth
+    - confidence
+    - for
+    - iterations
+    applies_to:
+    - review
+    - prove
+    - listen
+    rationale: Research-grade skills where all quality axes are meaningful
+commands:
+# =============================================================================
+# CAMPAIGN COMMANDS — full-stack orchestrators (signal- prefix)
+# =============================================================================
+- name: signal-decide
+  description: 'Run the full pre-commitment decision campaign. Orchestrates: scout-competitors (inertia first), scout-feasibility,
+    scout-market, prove-hypothesis, prove-websearch, prove-synthesize in sequence. Output: a complete decision brief with
+    market landscape, technical viability, evidence base, and a recommendation with stated confidence. Use when you need to
+    decide whether to build something.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-decide.md
+  param_set: full
+- name: signal-simulate
+  description: 'Run the full technical simulation campaign. Orchestrates: flow-lifecycle, flow-conversation, trace-state,
+    trace-contract, trace-permissions in sequence. Output: simulation findings report ranked by blast radius. Use before implementation
+    to find spec gaps and contract violations.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-simulate.md
+  param_set: full
+- name: signal-validate
+  description: 'Run the full design validation campaign. Orchestrates: review-design, review-users, review-customers, listen-feedback,
+    listen-adoption in sequence. Output: validation brief with findings ranked by adoption impact. Use to validate a design
+    before committing to spec.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-validate.md
+  param_set: full
+- name: signal-specify
+  description: 'Run the full specification campaign. Orchestrates: draft-spec, draft-proposal, draft-pitch in sequence. Output:
+    complete specification package covering technical spec, business proposal, and executive pitch. Use when you need the
+    full written artifact suite for a feature.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-specify.md
+  param_set: standard
+- name: signal-evidence
+  description: 'Run the full evidence campaign. Orchestrates all prove skills in sequence: prove-hypothesis, prove-websearch,
+    prove-intelligence, prove-analysis, prove-synthesize. Output: complete evidence brief with confidence levels and falsification
+    status. Use for thorough research questions that need the full investigation.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-evidence.md
+  param_set: full
+- name: signal-track
+  description: 'Run the full topic narrative campaign. Orchestrates: topic-new (register), topic-roadmap (plan signals), topic-status
+    (current coverage), topic-story (narrative synthesis). Output: complete topic dashboard showing what signals exist, what
+    is missing, and the narrative arc. Use at the start and end of a signal-gathering session.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-track.md
+  param_set: standard
+# =============================================================================
+# NAMESPACE AGGREGATORS — prefixed
+# =============================================================================
+- name: signal-scout
+  description: 'PM proves the idea. Market positioning, competitive landscape, feasibility, naming validation, compliance
+    scan, market sizing, stakeholder alignment, positioning pitch, and requirements validation. Lightweight default.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - WebSearch
+  - WebFetch
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-competitors.md
+  param_set: standard
+- name: signal-draft
+  description: 'Author writes the design. Guided authoring of specifications, proposals with trade-off analysis, and pitch
+    deck narratives. Lightweight default.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/draft-spec.md
+  param_set: standard
+- name: signal-review
+  description: 'Team validates the design. Expert and discipline review of specs and code. Persona walkthrough for usability.
+    12-customer-persona evaluation for adoption. Full default.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/review-design.md
+  param_set: full
+- name: signal-flow
+  description: 'Domain developer simulates the process. Business lifecycle flows, agent conversations, automation triggers,
+    data pipelines, integrations, throttle limits, and resilience under failure. Full default.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-lifecycle.md
+  param_set: lean
+- name: signal-trace
+  description: 'System developer simulates the platform. Request tracing, state validation, contract testing, component trees,
+    deployment impact, migration safety, and permission walk-through. Full default.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-request.md
+  param_set: analysis
+- name: signal-prove
+  description: 'Prove what you believe. Hypothesis-first investigation decomposed into approachable steps -- state, research,
+    prototype, analyze, interview, synthesize, publish. Full default.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - WebSearch
+  - WebFetch
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-hypothesis.md
+  param_set: full
+- name: signal-listen
+  description: 'Team simulates post-ship feedback. Customer reactions, support ticket forecasts, and adoption curve simulation
+    before the feature ships. Lightweight default.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/listen-feedback.md
+  param_set: full
+- name: signal-program
+  description: 'Lead orchestrates all. Sequences scout -> draft -> review -> flow -> trace -> listen into a staged program
+    plan with gates and topic tracking. Full default.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - ProgramPlan
+  dependencies: []
+  body_file: signals/program-plan.md
+  param_set: standard
+- name: signal-topic
+  description: 'Anyone manages the topic narrative. Register topics, plan signal strategy, check coverage status, write shareable
+    reports, synthesize the story, and capture the echo. Lightweight default.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Topic
+  - Signal
+  dependencies: []
+  body_file: signals/topic-new.md
+  param_set: lean
+- name: signal-trace-skill
+  description: 'Hand-compile a skill execution before building it. Given a skill spec and a test invocation, trace the 4-phase
+    lifecycle (setup, execute, findings, amend) step by step -- producing the expected artifact as if the skill had run. Read
+    the spec. Simulate setup (auto-detect from repo context). Run each stock role through their lens. Synthesize findings
+    into the artifact. List 3 amend options. Deliver a verdict: useful or needs redesign? The hand-compiled artifact becomes
+    the scenario baseline for testing. Findings feed back to the skill spec before implementation.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - SkillSpec
+  - TraceInput
+  outputs:
+  - TraceOutput
+  - SkillFinding
+  dependencies: []
+  body_file: signals/trace-skill.md
+  param_set: lean
+- name: signal-quest
+  description: 'Quest namespace: define rubrics (/signal-quest-rubric), generate variations (/signal-quest-variate), score
+    outputs (/signal-quest-score), find the golden prompt (/signal-quest-golden).
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - SkillSpec
+  - TraceInput
+  outputs:
+  - TraceOutput
+  - SkillFinding
+  dependencies: []
+  body_file: signals/quest-golden.md
+  param_set: lean
+- name: signal-mock
+  description: 'Mock namespace: synthetic signal artifacts (/signal-mock-all), single namespace mock (/signal-mock-ns),
+    coverage review (/signal-mock-review).
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/mock-all.md
+  param_set: lean
+- name: signal-org
+  description: 'Org namespace: role registry (/signal-org-roles), org chart (/signal-org-chart), org review (/signal-org-review),
+    committee simulation (/signal-org-committee).
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/org-roles.md
+  param_set: standard
+# =============================================================================
+# INDIVIDUAL SKILLS — all 62, prefixed
+# =============================================================================
+- name: signal-quest-rubric
+  description: 'Define what good output looks like for a skill. Given a skill spec and sample outputs, produce a scoring rubric:
+    a ranked list of criteria (C-01, C-02...) each with a pass condition, weight, and category (correctness, depth, format,
+    coverage). The rubric is the objective function for /signal-quest-golden. Start with 3-5 essential criteria; the rubric
+    grows as /signal-quest-golden discovers excellence patterns.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - SkillSpec
+  - TraceOutput
+  outputs:
+  - Rubric
+  dependencies: []
+  body_file: signals/quest-rubric.md
+  param_set: lean
+- name: signal-quest-variate
+  description: 'Generate N prompt variations of a skill body for comparison. Given a skill description and variation axes
+    (role sequence, output format, lifecycle emphasis, stock role selection, phrasing), produce N distinct prompt formulations
+    of the same skill. Each variation is a complete, runnable skill body -- not a diff. Variation axes are independent; combinations
+    are intentional. Default N=5.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  inputs:
+  - SkillSpec
+  outputs:
+  - SkillVariation
+  dependencies: []
+  body_file: signals/quest-variate.md
+  param_set: lean
+- name: signal-quest-score
+  description: 'Score a set of skill outputs against a rubric. Given outputs from N skill runs and a rubric file, evaluate
+    each output against every criterion. Produce: per-criterion pass/fail per output, composite score per output, ranked leaderboard,
+    excellence signals (outputs scoring unusually high on specific criteria), and failure patterns (criteria that fail consistently
+    across all outputs -- rubric gap or skill gap?).
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - SkillVariation
+  - Rubric
+  - TraceOutput
+  outputs:
+  - QuestScorecard
+  dependencies: []
+  body_file: signals/quest-score.md
+  param_set: lean
+- name: signal-quest-golden
+  description: 'Find the golden prompt for a skill through systematic variation and scoring. Full loop: (1) load rubric or
+    call signal-quest-rubric to create one, (2) call signal-quest-variate to generate N variations, (3) call signal-quest-score
+    to rank them, (4) identify excellence signals -- what made the top output better?, (5) extract the pattern, propose a
+    rubric criterion update, (6) apply the update, (7) iterate from step 2 until dual convergence: all scenarios pass AND
+    no new excellence patterns emerge across 2 consecutive rounds. Write the converged prompt as the skill body.
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - SkillSpec
+  - TraceInput
+  outputs:
+  - TraceOutput
+  - SkillFinding
+  dependencies: []
+  body_file: signals/quest-golden.md
+  param_set: lean
+- name: signal-scout-competitors
+  description: Competitive landscape analysis leading with inertia as primary competitor.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-competitors.md
+  param_set: standard
+- name: signal-scout-feasibility
+  description: Technical feasibility assessment with traffic-light ratings and budget chain.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-feasibility.md
+  param_set: standard
+- name: signal-scout-naming
+  description: Name generation and evaluation with multi-persona scoring.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-naming.md
+  param_set: standard
+- name: signal-scout-compliance
+  description: Regulatory and policy constraint scan before design begins.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-compliance.md
+  param_set: standard
+- name: signal-scout-market
+  description: Market sizing and segment ranking by fit score.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-market.md
+  param_set: standard
+- name: signal-scout-stakeholders
+  description: Stakeholder mapping with power/interest grid and veto risk ranking.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-stakeholders.md
+  param_set: standard
+- name: signal-scout-positioning
+  description: Per-audience positioning statements with competitive differentiation.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-positioning.md
+  param_set: standard
+- name: signal-scout-requirements
+  description: Requirements extraction with MoSCoW prioritization and dependency graph.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-requirements.md
+  param_set: standard
+- name: signal-draft-spec
+  description: Specification authoring with guided section structure and self-review.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/draft-spec.md
+  param_set: standard
+- name: signal-draft-proposal
+  description: Proposal or ADR with three-option minimum and recommendation rationale.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/draft-proposal.md
+  param_set: standard
+- name: signal-draft-pitch
+  description: Pitch deck narrative in exec, developer, and maker versions.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/draft-pitch.md
+  param_set: standard
+- name: signal-draft-brainstorm
+  description: Idea pool generation with inertia baseline and peer-comparison scoring.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/draft-brainstorm.md
+  param_set: standard
+- name: signal-review-design
+  description: Multi-expert design review through 6 disciplines and domain-selected experts.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/review-design.md
+  param_set: full
+- name: signal-review-code
+  description: Multi-discipline code review with file-level annotations and pass/fail per discipline.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/review-code.md
+  param_set: full
+- name: signal-review-users
+  description: Five persona advocates walk through design with usability scores and cross-persona synthesis.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/review-users.md
+  param_set: full
+- name: signal-review-customers
+  description: Twelve customer personas evaluate feature for usefulness, clarity, and would-adopt.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/review-customers.md
+  param_set: full
+- name: signal-flow-lifecycle
+  description: Multi-step business document lifecycle simulation with phase contracts and exception flows.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-lifecycle.md
+  param_set: lean
+- name: signal-flow-conversation
+  description: Multi-turn agent conversation simulation through topic graph with dead-end and loop detection.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-conversation.md
+  param_set: lean
+- name: signal-flow-trigger
+  description: Automation trigger simulation showing fire order and side effects per field/event change.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-trigger.md
+  param_set: lean
+- name: signal-flow-dataflow
+  description: ETL pipeline and sync process tracing with data loss and schema mismatch detection.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-dataflow.md
+  param_set: lean
+- name: signal-flow-integration
+  description: Cross-system integration tracing through connectors and APIs with gap analysis.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-integration.md
+  param_set: lean
+- name: signal-flow-throttle
+  description: Rate-limit throughput simulation showing backpressure propagation and burst path gaps.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-throttle.md
+  param_set: lean
+- name: signal-flow-resilience
+  description: Degraded-condition simulation covering offline, partial failure, and eventual consistency.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-resilience.md
+  param_set: lean
+- name: signal-trace-request
+  description: Request hand-compilation through service boundaries with no boundary skipped.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-request.md
+  param_set: analysis
+- name: signal-trace-state
+  description: State transition hand-compilation with preconditions, postconditions, and invariant checks.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-state.md
+  param_set: analysis
+- name: signal-trace-contract
+  description: Expected vs actual output comparison using three-directory pattern with mismatch severity.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-contract.md
+  param_set: analysis
+- name: signal-trace-component
+  description: User action tracing through UI component tree, state management, and re-render chain.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-component.md
+  param_set: analysis
+- name: signal-trace-deployment
+  description: Deployment sequence tracing with pre-checks, validation, and rollback path.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-deployment.md
+  param_set: analysis
+- name: signal-trace-migration
+  description: Schema change tracing with before/after data state and data loss detection.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-migration.md
+  param_set: analysis
+- name: signal-trace-permissions
+  description: RBAC walk-through tracing who can do what with privilege escalation detection.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-permissions.md
+  param_set: analysis
+- name: signal-prove-hypothesis
+  description: Hypothesis framing with claim, falsification condition, confidence, and experiment list.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-hypothesis.md
+  param_set: full
+- name: signal-prove-websearch
+  description: Web evidence gathering with direct quotes, URLs, and strength-of-evidence rating per source.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  - WebFetch
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-websearch.md
+  param_set: full
+- name: signal-prove-intelligence
+  description: Internal source evidence search with file-path citations and relevance assessment.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-intelligence.md
+  param_set: full
+- name: signal-prove-prototype
+  description: Smallest-possible prototype with defined measure and predicted vs actual results.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Bash
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-prototype.md
+  param_set: full
+- name: signal-prove-analysis
+  description: Data pattern analysis distinguishing correlation from causation with source attribution.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-analysis.md
+  param_set: full
+- name: signal-prove-interview
+  description: Persona-driven stakeholder interview simulation grounded in documented role knowledge.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-interview.md
+  param_set: full
+- name: signal-prove-synthesize
+  description: Answer-first evidence synthesis with confidence rating and counter-evidence.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-synthesize.md
+  param_set: full
+- name: signal-prove-publish
+  description: Investigation write-up as paper with abstract, method, findings, and limitations.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-publish.md
+  param_set: full
+- name: signal-prove-topic
+  description: Full prove evidence campaign orchestrating hypothesis through synthesis in one command.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-topic.md
+  param_set: full
+- name: signal-prove-program
+  description: General-purpose research orchestrator for open-ended research questions.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-program.md
+  param_set: full
+- name: signal-listen-feedback
+  description: Pre-ship customer reaction simulation with per-persona NPS prediction and threshold gate.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/listen-feedback.md
+  param_set: full
+- name: signal-listen-support
+  description: Top support ticket prediction for first 90 days with gap analysis.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/listen-support.md
+  param_set: full
+- name: signal-listen-adoption
+  description: Adoption curve simulation across Rogers archetypes with chasm analysis.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/listen-adoption.md
+  param_set: full
+- name: signal-program-plan
+  description: Staged program plan generation with gates and topic tracking.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/program-plan.md
+  param_set: standard
+- name: signal-topic-new
+  description: Topic registration with strategy planning and signal coverage plan.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Topic
+  - Signal
+  dependencies: []
+  body_file: signals/topic-new.md
+  param_set: lean
+- name: signal-topic-status
+  description: Terminal coverage display computed from signal glob against strategy.
+  tier: T1
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - Topic
+  outputs: []
+  dependencies: []
+  body_file: signals/topic-status.md
+  param_set: lean
+- name: signal-topic-report
+  description: Shareable status document with progress table and readiness statement.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/topic-report.md
+  param_set: lean
+- name: signal-topic-plan
+  description: Signal strategy revision as new information arrives with user confirmation.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Topic
+  dependencies: []
+  body_file: signals/topic-plan.md
+  param_set: lean
+- name: signal-topic-story
+  description: Editorial synthesis of all signals into a coherent narrative with recommendation.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/topic-story.md
+  param_set: lean
+- name: signal-topic-echo
+  description: Unexpected findings synthesis asking what we learned that we did not expect.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/topic-echo.md
+  param_set: lean
+- name: signal-mock-all
+  description: Synthetic signal artifacts for all 9 namespaces with coverage picture.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/mock-all.md
+  param_set: lean
+- name: signal-mock-ns
+  description: Mock artifact for a single namespace with category annotation.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/mock-ns.md
+  param_set: lean
+- name: signal-mock-review
+  description: Mock coverage review writing MOCK-ACCEPTED or REAL-REQUIRED per namespace.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/mock-review.md
+  param_set: lean
+- name: signal-org-roles
+  description: Typed role registry generation for a domain with orientation, lens, and expertise.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/org-roles.md
+  param_set: standard
+- name: signal-org-chart
+  description: Org structure generation with areas, committees, and operating rhythms.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/org-chart.md
+  param_set: standard
+- name: signal-org-review
+  description: Full org review running artifact through all relevant roles from .craft/roles/.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/org-review.md
+  param_set: full
+- name: signal-org-committee
+  description: Committee meeting simulation for ROB, shiproom, or architecture board.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/org-committee.md
+  param_set: standard
+entities:
+- name: Topic
+  fields:
+  - name: name
+    type: string
+  - name: description
+    type: string
+  - name: started
+    type: date
+  - name: status
+    type: string
+    default: active
+  - name: target_outcome
+    type: string
+- name: Strategy
+  fields:
+  - name: topic
+    type: string
+  - name: essential_signals
+    type: array
+  - name: recommended_signals
+    type: array
+  - name: optional_signals
+    type: array
+- name: Signal
+  fields:
+  - name: topic
+    type: string
+  - name: item
+    type: string
+  - name: skill
+    type: string
+  - name: date
+    type: date
+  - name: skill_version
+    type: string
+  - name: input
+    type: string
+  - name: namespace
+    type: string
+- name: SkillSpec
+  fields:
+  - name: name
+    type: string
+  - name: namespace
+    type: string
+  - name: description
+    type: string
+  - name: roles
+    type: array
+  - name: lifecycle
+    type: string
+  - name: artifact_pattern
+    type: string
+- name: TraceInput
+  fields:
+  - name: skill
+    type: string
+  - name: invocation
+    type: string
+  - name: repo_context
+    type: string
+  - name: scenario
+    type: string
+- name: TraceOutput
+  fields:
+  - name: skill
+    type: string
+  - name: scenario
+    type: string
+  - name: setup_result
+    type: string
+  - name: execute_result
+    type: string
+  - name: artifact
+    type: string
+  - name: verdict
+    type: string
+- name: SkillFinding
+  fields:
+  - name: skill
+    type: string
+  - name: severity
+    type: string
+  - name: finding
+    type: string
+  - name: recommendation
+    type: string
+- name: ProgramPlan
+  fields:
+  - name: topic
+    type: string
+  - name: stages
+    type: array
+  - name: created_at
+    type: date
+  - name: status
+    type: string
+    default: draft
+workers:
+- name: signal-lifecycle
+  description: '4-phase lifecycle (setup/execute/findings/amend) shared by all skills. Lightweight mode merges execute+findings,
+    makes amend optional. Full mode runs all 4 phases explicitly.
+
+    '
+  commands:
+  - signal-scout
+  - signal-draft
+  - signal-review
+  - signal-flow
+  - signal-trace
+  - signal-prove
+  - signal-listen
+  - signal-program
+  - signal-topic
+  tier: T1
+- name: artifact-writer
+  description: 'Writes signal artifacts with standard frontmatter (skill, topic, item, date, skill_version, input). Enforces
+    topic-item-date naming convention. Supports --json sidecar flag.
+
+    '
+  commands:
+  - signal-scout
+  - signal-draft
+  - signal-review
+  - signal-flow
+  - signal-trace
+  - signal-prove
+  - signal-listen
+  - signal-topic
+  tier: T1
+- name: topic-scanner
+  description: 'Discovers all signals for a topic by globbing simulations/**/topic-* files. Computes coverage against strategy.md
+    planned signals.
+
+    '
+  commands:
+  - signal-topic
+  tier: T1
+- name: skill-tracer
+  description: 'Executes the trace-skill hand-compilation protocol. Reads the skill spec, runs each lifecycle phase against
+    the test input, writes the hand-compiled artifact, and produces a verdict with any findings.
+
+    '
+  commands:
+  - signal-trace-skill
+  tier: T1
+- name: quest-engine
+  description: 'Runs the quest loop: variate -> score -> extract -> evolve rubric -> repeat until dual convergence. Tracks
+    rounds, rubric versions, and excellence patterns. Produces a convergence report with the golden prompt and the final rubric
+    that defines what golden means for this skill.
+
+    '
+  commands:
+  - signal-quest-golden
+  tier: T1
+roles:
+- name: signal-pm
+  tier: root
+  scope: workspace
+  archetype: experiential
+  orientation:
+    frame: 'Sees the feature decision as a risk reduction problem. Every signal gathered is one less unknown at commit time.
+
+      '
+    serves: 'Product managers who need to justify feature investments with evidence and anticipate customer reactions before
+      ship.
+
+      '
+  lens:
+    verify:
+    - Is the competitive landscape signal gathered before drafting?
+    - Does the requirements signal confirm we are building the right thing?
+    - Does the listen signal predict adoption or friction before ship?
+    simplify:
+    - Scout and listen are lightweight -- PMs want speed to insight
+    - The topic story is the PM deliverable, not the individual signals
+  expertise:
+    depth: 'Feature prioritization, market analysis, customer development, GTM strategy, and product positioning.
+
+      '
+    relevance: 'PM signals drive scout and listen. Without them the topic story lacks market and customer grounding.
+
+      '
+- name: signal-dev
+  tier: root
+  scope: workspace
+  archetype: craft
+  orientation:
+    frame: 'Sees every feature as a flow of data and operations through the system. Hand-compilation is the gold standard.
+
+      '
+    serves: 'Developers who implement features and need validated expected outputs before writing a line of code.
+
+      '
+  lens:
+    verify:
+    - Is the state signal covering all starting states and transitions?
+    - Does the flow signal identify all domain process exceptions?
+    - Are trace signals covering the actual system path, not the happy path?
+    simplify:
+    - Flow and trace are full by default -- developers need all 4 phases
+    - A trace that skips a system boundary is not a trace
+  expertise:
+    depth: 'Dataverse plugin pipeline, Power Platform connectors, backend service integration, state machine design, hand-compilation
+      methodology.
+
+      '
+    relevance: 'Developer signals drive flow and trace. The quality of hand-compiled expected outputs determines the quality
+      of implementation.
+
+      '
+state:
+  fields:
+  - name: initialized
+    type: boolean
+    default: false
+  - name: topics_registered
+    type: number
+    default: 0
+  - name: signals_produced
+    type: number
+    default: 0
+  version: 1

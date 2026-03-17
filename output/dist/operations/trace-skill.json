@@ -2,30 +2,8 @@
   "version": 1,
   "skill": "trace-skill",
   "root": {
-    "type": "sequence",
-    "handle": "op-52",
-    "steps": [
-      {
-        "type": "read-file",
-        "handle": "op-48",
-        "path": "*"
-      },
-      {
-        "type": "write-file",
-        "handle": "op-49",
-        "path": "*",
-        "content": ""
-      },
-      {
-        "type": "glob",
-        "handle": "op-50",
-        "pattern": "*"
-      },
-      {
-        "type": "grep",
-        "handle": "op-51",
-        "pattern": ""
-      }
-    ]
+    "type": "llm-call",
+    "handle": "op-10",
+    "prompt": "Hand-compile a skill execution before building it. Given a skill spec and a test invocation, trace the 4-phase lifecycle (setup, execute, findings, amend) step by step -- producing the expected artifact as if the skill had run. Read the spec. Simulate setup (auto-detect from repo context). Run each stock role through their lens. Synthesize findings into the artifact. List 3 amend options. Deliver a verdict: useful or needs redesign? The hand-compiled artifact becomes the scenario baseline for testing. Findings feed back to the skill spec before implementation.\n"
   }
 }

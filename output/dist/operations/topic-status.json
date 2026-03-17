@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "topic-status",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-60",
+    "prompt": "Terminal coverage display computed from signal glob against strategy."
+  }
+}

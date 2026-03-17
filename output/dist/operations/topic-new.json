@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "topic-new",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-59",
+    "prompt": "Topic registration with strategy planning and signal coverage plan."
+  }
+}

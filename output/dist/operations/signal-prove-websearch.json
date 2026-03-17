@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-prove-websearch",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-49",
+    "prompt": "Web evidence gathering with direct quotes, URLs, and strength-of-evidence rating per source."
+  }
+}

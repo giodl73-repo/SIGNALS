@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-topic-report",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-64",
+    "prompt": "Shareable status document with progress table and readiness statement."
+  }
+}

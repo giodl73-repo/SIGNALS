@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-topic",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-9",
+    "prompt": "Anyone manages the topic narrative. Register topics, plan signal strategy, check coverage status, write shareable reports, synthesize the story, and capture the echo. Lightweight default.\n"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "validate",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-3",
+    "prompt": "Validate a design against users and customers. Combines review + listen into a complete\nvalidation brief covering expert opinion, user usability, customer adoption, and\npost-ship signal prediction.\n\nCovers:\n- review-design     -> multi-expert design review through 6 disciplines\n- review-users      -> 5 persona advocates walk through design with usability scores\n- review-customers  -> 12 customer personas evaluate for usefulness and would-adopt\n- listen-feedback   -> pre-ship customer reaction with per-persona NPS prediction\n- listen-adoption   -> adoption curve simulation across Rogers archetypes with chasm analysis\n\nOutput: a validation brief with expert findings, per-persona usability scores,\ncustomer adoption prediction, and NPS forecast. Includes a go/no-go readiness\nsignal with the top 3 blockers if the answer is no-go.\n\nUse after drafting a spec and before committing to engineering scope. The validation\nbrief surfaces the riskiest assumptions before they become shipped bugs.\n"
+  }
+}

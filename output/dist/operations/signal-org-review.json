@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-org-review",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-73",
+    "prompt": "Full org review running artifact through all relevant roles from .craft/roles/."
+  }
+}

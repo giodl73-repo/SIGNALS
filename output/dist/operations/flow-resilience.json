@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "flow-resilience",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-37",
+    "prompt": "Degraded-condition simulation covering offline, partial failure, and eventual consistency."
+  }
+}

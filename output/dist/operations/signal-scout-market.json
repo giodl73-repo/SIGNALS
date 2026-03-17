@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-scout-market",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-22",
+    "prompt": "Market sizing and segment ranking by fit score."
+  }
+}

@@ -1,6 +1,6 @@
 # Draft Specification
 
-**Topic**: sim
+**Topic**: signal
 **Namespace**: /draft:
 **Skills**: 3
 **Default mode**: Lightweight
@@ -24,7 +24,7 @@ Draft answers "What exactly are we building?" by producing structured design doc
 - Findings: Coverage gap report -- requirements with no spec section. Contradiction flags -- places where two requirements conflict in the spec. Complexity hotspots -- spec sections that are disproportionately complex relative to their requirement priority.
 - Amend: User can restructure sections, resolve contradictions, add/remove requirements from scope, or change the spec template.
 **Lightweight**: Single-pass. Architect writes the spec in one shot. PM and Strategy review inline (annotations, not separate passes). No iterative refinement loop -- the spec is complete on first pass, with findings noted at the bottom for the author to address.
-**Artifact**: `draft/spec/sim-spec-{slug}-{date}.md`
+**Artifact**: `simulations/draft/specs/{topic}-spec-{date}.md`
 **Example**:
 ```
 User: /draft:spec --from scout/requirements/sim-requirements-simulation-plugin-2026-03-14.md
@@ -74,7 +74,7 @@ User: /draft:spec --from scout/requirements/sim-requirements-simulation-plugin-2
 - Findings: Assumption register -- every assumption the recommendation depends on, with a plan to validate each. Risk register -- top 5 risks per option, with probability and impact. Decision criteria -- the 4-6 dimensions that matter most, with weights.
 - Amend: User can add options, adjust decision criteria weights, challenge assumptions, or request deeper analysis on a specific option.
 **Lightweight**: Single-pass. PM frames, Strategy presents options, Architect scores. No option deep-dive -- top-level comparison only. Recommendation delivered with the matrix, not after iterative deliberation.
-**Artifact**: `draft/proposal/sim-proposal-{slug}-{date}.md`
+**Artifact**: `simulations/draft/proposals/{topic}-proposal-{date}.md`
 **Example**:
 ```
 User: /draft:proposal "should we build a simulation plugin or extend the existing test framework"
@@ -119,7 +119,7 @@ User: /draft:proposal "should we build a simulation plugin or extend the existin
 - Findings: Narrative gap analysis -- claims without proof points. Audience calibration check -- jargon level appropriate for target? Ask clarity check -- is the ask specific and actionable?
 - Amend: User can adjust the audience, add proof points, change the narrative arc, or strengthen specific claims.
 **Lightweight**: Single-pass. Strategy writes the narrative, PM and Architect annotate. No audience testing -- single best pitch for the stated audience. No slide deck generation -- Markdown narrative only.
-**Artifact**: `draft/pitch/sim-pitch-{slug}-{date}.md`
+**Artifact**: `simulations/draft/pitches/{topic}-pitch-{date}.md`
 **Example**:
 ```
 User: /draft:pitch "simulate plugin" --audience "VP Engineering (internal sponsor)"

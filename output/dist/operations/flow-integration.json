@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "flow-integration",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-35",
+    "prompt": "Cross-system integration tracing through connectors and APIs with gap analysis."
+  }
+}

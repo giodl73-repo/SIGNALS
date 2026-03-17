@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-quest",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-11",
+    "prompt": "Quest namespace: define rubrics (/signal-quest-rubric), generate variations (/signal-quest-variate), score outputs (/signal-quest-score), find the golden prompt (/signal-quest-golden).\n"
+  }
+}

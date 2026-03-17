@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-mock",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-12",
+    "prompt": "Mock namespace: synthetic signal artifacts (/signal-mock-all), single namespace mock (/signal-mock-ns), coverage review (/signal-mock-review).\n"
+  }
+}

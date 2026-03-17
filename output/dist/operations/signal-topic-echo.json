@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-topic-echo",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-67",
+    "prompt": "Unexpected findings synthesis asking what we learned that we did not expect."
+  }
+}

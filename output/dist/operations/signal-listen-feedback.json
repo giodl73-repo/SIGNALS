@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-listen-feedback",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-58",
+    "prompt": "Pre-ship customer reaction simulation with per-persona NPS prediction and threshold gate."
+  }
+}

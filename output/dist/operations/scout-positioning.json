@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scout-positioning",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-21",
+    "prompt": "Per-audience positioning statements with competitive differentiation."
+  }
+}

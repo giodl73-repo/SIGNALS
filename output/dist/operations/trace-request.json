@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "trace-request",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-38",
+    "prompt": "Request hand-compilation through service boundaries with no boundary skipped."
+  }
+}

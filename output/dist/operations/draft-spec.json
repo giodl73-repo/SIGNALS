@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "draft-spec",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-23",
+    "prompt": "Specification authoring with guided section structure and self-review."
+  }
+}

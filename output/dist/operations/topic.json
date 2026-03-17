@@ -2,25 +2,8 @@
   "version": 1,
   "skill": "topic",
   "root": {
-    "type": "sequence",
-    "handle": "op-47",
-    "steps": [
-      {
-        "type": "read-file",
-        "handle": "op-44",
-        "path": "*"
-      },
-      {
-        "type": "write-file",
-        "handle": "op-45",
-        "path": "*",
-        "content": ""
-      },
-      {
-        "type": "glob",
-        "handle": "op-46",
-        "pattern": "*"
-      }
-    ]
+    "type": "llm-call",
+    "handle": "op-9",
+    "prompt": "Anyone manages the topic narrative. Register topics, plan signal strategy, check coverage status, write shareable reports, synthesize the story, and capture the echo. Lightweight default.\n"
   }
 }

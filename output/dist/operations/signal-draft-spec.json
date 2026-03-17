@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-draft-spec",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-26",
+    "prompt": "Specification authoring with guided section structure and self-review."
+  }
+}

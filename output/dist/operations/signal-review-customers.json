@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-review-customers",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-33",
+    "prompt": "Twelve customer personas evaluate feature for usefulness, clarity, and would-adopt."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "program-plan",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-58",
+    "prompt": "Staged program plan generation with gates and topic tracking."
+  }
+}

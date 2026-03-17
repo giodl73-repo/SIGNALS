@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-trace",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-5",
+    "prompt": "System developer simulates the platform. Request tracing, state validation, contract testing, component trees, deployment impact, migration safety, and permission walk-through. Full default.\n"
+  }
+}

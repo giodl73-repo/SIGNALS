@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-topic-story",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-66",
+    "prompt": "Editorial synthesis of all signals into a coherent narrative with recommendation."
+  }
+}

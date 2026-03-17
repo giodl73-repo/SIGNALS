@@ -1,0 +1,67 @@
+```markdown
+---
+skill: quest-rubric
+skill_target: campaign-evidence
+date: 2026-03-16
+version: 8
+---
+```
+
+**Two new aspirational criteria added:**
+
+**C-25 — Gate record surfaced as a required output artifact**
+C-24 requires per-stage entry/exit conditions but is silent on form and persistence. V-01 implements them as formal Pass/Fail tables and makes the aggregated gate record a named section in the final brief. Prose conditions embedded in stage narrative satisfy C-24; a standalone gate record section makes the full gate trail inspectable without re-reading every stage.
+
+**C-26 — Consolidated invocation audit table in final output**
+C-23 makes individual invocations countable via stage-index suffixes. V-02 goes further: the output includes a consolidated table listing every rule invocation (rule, stage, form, pass/fail). Also encodes the defect V-02 revealed: the table row count must be *derived from the coverage map*, not pre-declared as a fixed integer — a hardcoded count that drifts from the actual coverage commitment is an internal inconsistency detectable only at final audit.
+
+**Denominator: 17 → 19.** Scoring formula updated:
+```
+composite = (essential_pass/4 * 60) + (recommended_pass/3 * 30) + (aspirational_pass/19 * 10)
+```
+f is self-contained** | format | The output is a single coherent document (not a collection of raw dumps). It has a title, topic context, and synthesized narrative — a reader unfamiliar with the run can understand what was investigated and what was found. |
+
+## Recommended Criteria (30 pts)
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-05 | **Source attribution per claim** | depth | Claims are linked to their source stage (e.g., "per web search", "per intelligence review"). At least 70% of material claims carry stage attribution. |
+| C-06 | **Synthesis section distinguishes consensus from conflict** | depth | The synthesize stage output explicitly identifies where prove-websearch and prove-intelligence agree vs. diverge, not just lists findings side-by-side. |
+| C-07 | **Confidence levels are calibrated, not uniform** | correctness | Confidence ratings vary across findings — a brief where every finding is "Medium" fails this criterion. Distribution must show at least two distinct levels used meaningfully. |
+
+## Aspirational Criteria (10 pts)
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-08 | **Gaps and open questions surfaced** | coverage | The brief closes with an explicit list of what remains unknown or under-evidenced after the full campaign, enabling a follow-up investigation to pick up cleanly. |
+| C-09 | **Decision readiness signal included** | behavior | The brief includes a final verdict on whether the evidence is sufficient to proceed (e.g., "Ready to commit", "Needs more investigation on X") — not just findings but an actionable posture statement. |
+| C-10 | **Hypotheses declared post-evidence** | correctness | Hypotheses are finalized or formally stated *after* the web search and intelligence stages complete — not pre-committed before evidence gathering. Falsification decisions grounded in actual findings rather than confirmed against pre-anchored assumptions. A campaign that states hypotheses only in prove-hypothesis *before* any evidence gathering fails this criterion. |
+| C-11 | **Explicit calibration anti-pattern guard** | correctness | The brief or its process includes an explicit check against uniform confidence ratings — e.g., a stated rule or reviewer note that "if all findings carry the same confidence level, calibration is insufficient." A bare scale definition without an anti-uniformity guard does not pass. |
+| C-12 | **Decision readiness compressed to a single verdict sentence** | behavior | The decision readiness signal (C-09) is expressed as one actionable sentence that names a posture and, if not ready, names the specific gap — e.g., "Ready to proceed" or "Needs more investigation on regulatory approval timeline before committing." Multi-paragraph readiness discussions do not pass; the compression itself is the signal. |
+| C-13 | **Named rules declared at preamble and invoked at point of use** | correctness | The brief's governing rules (falsification, attribution, calibration) are declared as named identifiers in a preamble or header block and then explicitly invoked by name at the step where they apply — not only embedded as inline prose warnings. A brief with unnamed in-place notes but no declared rule identifiers does not pass. |
+| C-14 | **Hypothesis reordering rationale stated** | correctness | When the campaign places hypothesis declaration after evidence gathering (C-10), the brief explicitly states *why* — a rationale sentence such as "A hypothesis anchored before evidence gathering is a bias, not a hypothesis." Passing C-10 by reordering stages without encoding the underlying principle does not pass this criterion. |
+| C-15 | **Evidence-first sequencing formalized as a named rule** | correctness | When the campaign uses evidence-first ordering (C-10), the sequencing decision is declared as a named rule (e.g., SEQUENCING RULE) in the preamble alongside the other governance rules — not left as an unnamed structural convention. The rule must be referenceable by identifier at each stage it governs. An evidence-first campaign where the sequencing choice is structural but unnamed does not pass; the decision must be promotable to a rule that any reader can cite by name. |
+| C-16 | **Zero-gap rule invocation — no applicable stage left untagged** | correctness | Every declared governance rule is invoked by name at every stage where it applies — no stage silently applies a rule without an explicit invocation tag. A brief where rules are declared at the preamble but invoked only at synthesis, or invoked at some applicable stages but not all, does not pass. Full invocation coverage means: ATTRIBUTION at every evidence-gathering stage, CALIBRATION at analysis and synthesis, FALSIFICATION at hypothesis declaration and synthesis, SEQUENCING at every stage whose ordering the rule governs. |
+| C-17 | **Coverage mapping declared prospectively, before stage execution** | correctness | The rule-to-stage coverage map (or equivalent structure) is declared at the brief's outset — before any evidence stage runs — committing to which rules apply at which stages. A coverage audit assembled retrospectively after all stages complete does not pass; the commitment must precede execution so gaps cannot be concealed by post-hoc fills. A pre-declared matrix where any cell can be verified against actual stage output passes; an audit table populated after the fact does not. |
+| C-18 | **All governance rules occupy peer tier in preamble** | correctness | Every declared governance rule appears at the same structural tier in the preamble — none elevated as primary while others are demoted to secondary notes or inline prose. A preamble that lists CALIBRATION, FALSIFICATION, and ATTRIBUTION as named rules but embeds SEQUENCING only as a structural convention, or vice versa, does not pass. Rule parity means any reader can cite any rule by identifier without needing to know which rules were originally primary. The test: remove all rule labels — if the resulting prose treats any rule's content differently from the others, parity is absent. |
+| C-19 | **Coverage map immutability explicitly declared** | correctness | The coverage map includes an explicit statement that it is finalized before Stage 1 begins and cannot be modified after any stage executes. C-17 requires prospective declaration but is silent on immutability; a map created in advance but lacking a formal lock can be silently adjusted post-hoc without detectable violation. The immutability declaration — distinguishing a commitment from a record — makes tampering structurally visible. A prospective coverage map that does not include an explicit "cannot be modified after execution begins" clause does not pass. |
+| C-20 | **Rule scope embedded inline in rule declaration** | correctness | Each governance rule declaration includes its stage applicability scope as an inline annotation (e.g., `[invoked at: Stage 1, Stage 2, Stage 5]`) within the rule body itself — not as a separate coverage table that references the rules from a distance. A separate coverage map satisfies C-17 but allows the map and the rules to drift independently; inline scope annotations make coverage inseparable from rule identity. A brief where any rule's applicability scope is declared only in a separate block, not within the rule declaration, does not pass. |
+| C-21 | **Interrogative invocation at critical rules** | correctness | At least one critical governance rule (CALIBRATION or FALSIFICATION) is invoked at its most critical stage via a verification question rather than a passive tag — e.g., `CALIBRATION RULE invoked: two distinct confidence levels present above?` A passive invocation tag signals the rule was remembered; an interrogative tag compels a binary answer and makes non-compliance structurally visible — the executor cannot close the field without answering. A brief where all rule invocations are passive tags, with no stage carrying an interrogative verification form, does not pass. |
+| C-22 | **Universal binary invocation format across all rules** | correctness | Every governance rule invocation — not only CALIBRATION and FALSIFICATION but also ATTRIBUTION and SEQUENCING — uses a binary yes/no verification form (e.g., `[ Yes / No ]`). C-21 requires interrogative form at least one critical rule; this criterion extends the requirement universally. The distinction: selective binary invocation leaves attribution and sequencing gaps addressable via passive tags; universal binary form means any invocation of any rule can fail visibly. A brief where any rule invocation at any applicable stage uses a passive tag rather than a binary verification does not pass. |
+| C-23 | **Stage-indexed invocation trail** | correctness | Every rule invocation carries a stage-index suffix (e.g., `[Stage N of 5]`) making the invocation trail countable and auditable. C-16 requires zero-gap coverage but does not specify how completeness is verified — without indexing, a reader must parse every stage and cross-reference the coverage map to detect a gap. Stage-indexed invocations make completeness verifiable by arithmetic: count invocations per rule, compare to the declared denominator, identify any missing stage without interpretation. A brief satisfying C-16 by narrative convention but lacking stage-index suffixes does not pass; the countability itself is the signal. |
+| C-24 | **Per-stage entry and exit conditions declared** | correctness | Each of the five evidence stages carries an explicit entry condition (what must be true before the stage may execute) and an exit condition (what the stage must produce before the next stage may begin). Stage sequencing governed only by narrative order or rule invocations can be silently violated — a stage appearing in output may have run with missing inputs or produced incomplete output. Formal entry/exit conditions make each stage boundary a verifiable gate: entry conditions prevent premature advancement; exit conditions prevent partial completion. A brief where any stage lacks both an entry condition and an exit condition does not pass. |
+| C-25 | **Gate record surfaced as a required output artifact** | correctness | The entry/exit gate conditions (C-24) are implemented as formal Pass/Fail tables and the aggregated gate record appears as a named section in the final output brief — not only embedded within individual stage narrative. C-24 requires that each stage carry entry and exit conditions; this criterion requires that the gate results survive stage execution and are readable as a standalone artifact. The distinction: prose conditions embedded in stage bodies satisfy C-24 but vanish when a reader scans the output; a gate record table in the brief makes the full gate trail inspectable without re-reading every stage. A brief where gate conditions appear only as stage-embedded narrative, with no consolidated gate record section in the final output, does not pass. |
+| C-26 | **Consolidated invocation audit table in final output** | correctness | The final output brief contains a consolidated audit table listing every rule invocation across all stages — each row specifying rule name, stage index, invocation form (binary/passive), and pass/fail result. C-23 makes individual invocations countable via stage-index suffixes; this criterion makes the complete trail inspectable from a single artifact. The table row count must be derived from the coverage map (rules × applicable stages), not pre-declared as a fixed integer independent of the map — a pre-declared count that drifts from the actual coverage commitment creates an internal inconsistency detectable only at final audit. A brief where invocations are distributed across stage narrative but no consolidated audit table appears in the output does not pass; a brief where the audit table declares a fixed row count not derivable from the coverage map does not pass. |
+
+---
+
+## Scoring
+
+```
+composite = (essential_pass/4 * 60) + (recommended_pass/3 * 30) + (aspirational_pass/19 * 10)
+```
+
+**Golden threshold**: all 4 essential pass AND composite >= 80.
+
+| Band | Score | Meaning |
+|------|-------|---------|

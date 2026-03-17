@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "prove-synthesize",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-51",
+    "prompt": "Answer-first evidence synthesis with confidence rating and counter-evidence."
+  }
+}

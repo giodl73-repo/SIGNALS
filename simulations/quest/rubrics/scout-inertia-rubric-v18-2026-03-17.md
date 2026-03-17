@@ -1,0 +1,462 @@
+# scout-inertia Rubric — v18
+
+**Ceiling**: 270 (100 essential base + 34 advanced criteria x 5 pts)
+**Date**: 2026-03-17
+**Previous version**: scout-inertia-rubric-v17-2026-03-17.md
+
+---
+
+## Changelog
+
+### Changes from v5 to v6
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-10 -- Fail-first declaration** | R5 V-02 excellence signal: explicit "FAIL-FIRST DECLARATION" section as structural first element enforces FM-before-DC at the authoring point |
+| 2 | **A-11 -- Question-per-criterion mapping** | R5 V-02 excellence signal: one explicit question/prompt per essential criterion; unanswered prompt = structurally visible missing criterion, not a content gap caught on full read |
+| 3 | **A-12 -- BRIDGE dual-closure** | R5 bridge-marker pattern: two named bridge artifacts -- Q3 closes C-05->R-02, Q4 closes C-05->C-04; structural guarantee, not output property |
+| 4 | **Ceiling 110 -> 115** | A-09 exits scoring (-5); A-11 +5; A-12 +5 |
+
+### Changes from v6 to v7
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-13 -- Tabular column schema structural visibility** | R6 V-02 excellence signal: table columns make criterion gaps visible as blank cells without full-read; prose descriptions cannot satisfy this even if comprehensive |
+| 2 | **A-14 -- FM inventory as dedicated named table** | R6 V-02 excellence signal: FM# pre-assignment in a titled table before the defeat condition table enforces A-08 structurally -- FM-[N] identifiers exist as typed references before DC-[N] can cite them |
+| 3 | **A-15 -- Trailing completeness checklist** | R6 V-02 excellence signal: per-criterion binary checkboxes at output end convert content gaps into visible unchecked items; distinguishes post-hoc verification (A-15) from per-criterion embedded prompts (A-11) |
+| 4 | **Ceiling 115 -> 130** | A-13 +5; A-14 +5; A-15 +5 |
+
+### Changes from v7 to v8
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-16 -- FM Inventory primary key constraint declared** | R7 V-02 A-14 PARTIAL: FM Inventory table was titled and ordered correctly but carried no stated rule preventing FM-[N] identifiers from appearing downstream without prior row assignment; the constraint must be written in the template body to enforce referential integrity structurally |
+| 2 | **A-17 -- Question-per-criterion full coverage (all 5 essentials)** | R7 V-03 A-11 PARTIAL: embedded SELF-CHECK covered C-05, C-02, C-04 but omitted explicit questions for C-01 and C-03; full coverage requires one named question per each of the five essential criteria -- any gap leaves a criterion without structural enforcement during authoring |
+| 3 | **A-18 -- Trailing checklist binary format and full coverage** | R7 V-03 A-15 PARTIAL: SELF-CHECK was trailing and verification-oriented but used essay prompts ("answer with one sentence") and covered only 3 of 5 essential criteria; A-18 requires binary checkboxes (Y/N or checkbox) and complete mapping of all five essential criteria -- essay format and partial coverage both fail |
+| 4 | **Ceiling 130 -> 145** | A-16 +5; A-17 +5; A-18 +5 |
+
+### Changes from v8 to v9
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-19 -- Bidirectional referential integrity enforcement** | R8 V-01 excellence signal: primary key constraint stated at FM Inventory source point (A-16) AND reinforced as a separate named rule at the DC table citation point; A-16 captures only the source end; an author violating the constraint at either end sees a named rule -- source enforcement alone leaves the citation point unguarded |
+| 2 | **A-20 -- Inline example co-located with unit-bearing column label** | R8 V-01 excellence signal: unit-bearing column labels embed a concrete format example directly in the label definition, structurally co-located with the cell that must be filled; prior criteria require that units are present -- A-20 requires that the format reminder lives at the authoring point, not in a separate prose block |
+| 3 | **Ceiling 145 -> 155** | A-19 +5; A-20 +5 |
+
+### Changes from v9 to v10
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-21 -- Inline falsifiability example in defeat condition threshold column** | R9 V-02 A-20 FAIL: Stage 5B "Measurable threshold" column carries no inline format example; V-04/V-05 supply "(e.g., >10MB, >3 failures/week)" directly in the column label. A-20 covers cost/unit columns; A-21 extends the inline-example pattern to the DC table's threshold/condition column. A-21 requires A-20 and A-13 as preconditions. |
+| 2 | **A-22 -- Mid-template bridge completion status check** | R9 V-02 excellence signal: Q3 and Q4 are echoed as named completion status checks between FM Inventory and the DC table, creating a visible gap if either bridge artifact is absent before DC authoring begins. A-22 implies A-12. |
+| 3 | **Ceiling 155 -> 165** | A-21 +5; A-22 +5 |
+
+### Changes from v10 to v11
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-23 -- Criterion ID embedded in rule label text** | R10 V-02/V-03 signal: `[A-16 PRIMARY KEY RULE]`, `PRIMARY KEY CONSTRAINT [A-16]`, `REFERENTIAL INTEGRITY RULE (citation point) [A-19]`. A-16 and A-19 require the rules be present; A-23 requires each rule's criterion ID appear inside its label, enabling template auditing without external reference. A-23 implies A-19. |
+| 2 | **A-24 -- Dual-type inline threshold example in DC threshold column label** | R10 V-01/V-02/V-03 consistent signal: all three 165/165 variations use `(e.g., >10MB, >3 failures/week)` -- two examples of distinct threshold types. A-21 requires one example; A-24 requires two examples of different unit families or comparison contexts, demonstrating that the operator+value+unit pattern generalizes. A-24 implies A-21. |
+| 3 | **A-25 -- Active command directive on bridge completion gate** | R10 V-02 signal: `[BRIDGE COMPLETION COMMAND]` as a named element alongside the Y/N table. A-22 requires a named verification block in position; A-25 requires that block to also carry an explicit active instruction telling the author to complete Q3/Q4 before proceeding. Passive status check vs. active directive. A-25 implies A-22. |
+| 4 | **Ceiling 165 -> 180** | A-23 +5; A-24 +5; A-25 +5 |
+
+### Changes from v11 to v12
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-26 -- Analytical axis vocabulary in section heading subtitles** | R11 V-03 excellence signal: `## FAIL-FIRST DECLARATION -- THE UNNAMED COMPETITOR` and `## SECTION 1 -- THE STATUS QUO'S VULNERABILITIES: FAILURE MODE INVENTORY`. The template's declared analytical axis vocabulary appears in the subtitle text of the FAIL-FIRST and FM Inventory section headings. A-10 and A-14 require these sections to exist and be named; A-26 requires the heading subtitle to encode the template's analytical frame, making the sections self-contextualizing within the axis vocabulary. A-26 implies A-10 and A-14. |
+| 2 | **A-27 -- Decision-question bridge gate heading** | R11 V-03 excellence signal: `## BRIDGE COMPLETION GATE -- READY TO PROCEED?` The gate section heading carries an explicit binary decision question appended to or embedded in the heading, making the gate's pass/fail nature visible in the document heading structure without reading the block's content. A-22 requires the gate to be a named structural block; A-25 requires an active directive inside the block; A-27 requires the heading itself to be decision-framed. A-27 implies A-22. |
+| 3 | **A-28 -- Criterion ID in trailing checklist item labels** | Extension of A-23 traceability pattern to the verification layer. A-23 requires criterion IDs in integrity rule labels (integrity chain); A-28 requires each trailing checklist item label to carry its essential criterion ID (C-01 through C-05), enabling direct rubric traceability from each verification item to its criterion. A-28 implies A-18. |
+| 4 | **Ceiling 180 -> 195** | A-26 +5; A-27 +5; A-28 +5 |
+
+### Changes from v12 to v13
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-29 -- Criterion ID in per-criterion authoring prompt label** | R12 V-03 excellence signal: `[C-01 COMMAND]: NAME the specific unnamed competitor...` through `[C-05 COMMAND]: NAME every specific failure mode...`. A-17 requires a labeled question/prompt per essential criterion; A-28 requires criterion IDs in trailing checklist item labels; A-29 extends the criterion-ID-in-label traceability pattern (A-23 = integrity rules, A-28 = checklist items) to the authoring-prompt layer. Each per-criterion prompt label must carry its criterion ID so the author sees C-01 through C-05 at the point of authoring, not only at the point of verification. A-29 implies A-17. |
+| 2 | **A-30 -- COMMAND-register keyword in per-criterion prompt label** | R12 V-03 excellence signal: `[C-01 COMMAND]:`, `[C-02 COMMAND]:` through `[C-05 COMMAND]:`. A-17 requires labeled prompts; A-29 requires criterion IDs in those labels; A-30 requires the label to additionally carry the COMMAND register keyword, making the directive nature of the prompt structurally explicit -- a prompt labeled "[C-01 COMMAND]:" cannot be passively ignored in the same way a generic question can. Parallel to how A-25 upgraded the bridge gate from a status check (A-22) to a command directive: A-30 upgrades per-criterion prompts from question register to command register. A-30 implies A-29. |
+| 3 | **A-31 -- Named structural rule in FAIL-FIRST declaration body** | R12 V-03 excellence signal: `[FAIL-FIRST RULE]` structural label present in FAIL-FIRST section body. A-10 requires the FAIL-FIRST section to exist as a named structural element; A-31 requires the body of that section to carry a named rule label -- a discrete, labeled rule element -- that makes the FAIL-FIRST principle self-documenting as a named structural rule, not just a section heading. Structurally parallel to A-16, which added a named primary key rule inside the FM Inventory body that A-14 required to exist. Once the rule label exists, A-23's criterion-ID-in-label requirement applies: a `[FAIL-FIRST RULE]` label that carries the A-31 criterion ID satisfies both A-31 and A-23's extension to this rule. A-31 implies A-10. |
+| 4 | **Ceiling 195 -> 210** | A-29 +5; A-30 +5; A-31 +5 |
+
+### Changes from v13 to v14
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-32 -- Criterion ID in FAIL-FIRST rule label** | R13 V-01 scoring explicitly flags: `[FAIL-FIRST RULE]` satisfies A-31 in minimal form but has "no criterion ID extension to A-23, but A-31 does not require it." R13 V-02 demonstrates the upgrade pattern: `FAIL-FIRST CONSTRAINT [A-31]` -- the A-31 rule label carries the A-31 criterion ID. A-31 requires a named rule label in the FAIL-FIRST body; A-32 requires that rule label to additionally carry the A-31 criterion ID, completing A-23's criterion-ID-in-label traceability coverage across all three named structural rules (A-16 source, A-19 citation, A-31 fail-first). A-31's own pass condition anticipates this: "Once the A-31 rule label exists and carries the A-31 criterion ID in its label text, it also satisfies the A-23 criterion-ID-in-label requirement." A-32 formalizes that closure as a scoring criterion. A-32 implies A-31 and A-23. |
+| 2 | **A-33 -- Bridge artifact class named in gate heading interrogative** | R13 V-02 excellence signal: `STAGE 2 COMPLETION GATE -- ALL BRIDGE ARTIFACTS COMPLETE?` vs V-01's `BRIDGE COMPLETION GATE -- READY TO PROCEED?`. Both satisfy A-27 (binary decision question in gate heading). V-02's form additionally names the artifact class ("BRIDGE ARTIFACTS") in the interrogative, making the gate heading self-contextualizing about what must be complete -- not just whether to proceed. An author reading "ALL BRIDGE ARTIFACTS COMPLETE?" without reading the gate block body knows both the pass/fail structure (A-27) and the specific artifact class subject to the gate (A-33). A-27 requires a binary decision question; A-33 requires that question to name the bridge artifact class explicitly. A-33 implies A-27. |
+| 3 | **Ceiling 210 -> 220** | A-32 +5; A-33 +5 |
+
+### Changes from v14 to v15
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-34 -- Failure-context frame in FM Inventory heading subtitle** | R14 V-01 and V-02 consistent excellence signal: V-01 `THE INERTIA THREAT'S STRUCTURAL WEAKNESSES`, V-02 `WHERE THE STATUS QUO BREAKS`. A-26 requires the axis vocabulary to appear in the FM Inventory heading subtitle; both R14 variations go further by embedding a failure-context frame in the subtitle -- a phrase that explicitly encodes the analytical purpose of the section as the place where the axis subject fails, breaks, or shows structural weakness. A heading subtitle that contains only the axis vocabulary satisfies A-26 but fails A-34; a subtitle that adds the failure-context (structural weaknesses, breaking conditions, failure locus) satisfies A-34. A-34 implies A-26. Confirmed by both R14 V-01 and V-02. |
+| 2 | **A-35 -- Blockquote structural delimiter on per-criterion command prompts** | R14 V-01 excellence signal: `> [C-0N COMMAND]:` blockquote-wrapped form vs V-02's inline `[C-0N COMMAND]:`. A-30 requires the COMMAND keyword in the prompt label; A-35 requires the prompt to additionally use a blockquote structural delimiter, making each per-criterion command a structurally distinct block in the template rather than an inline label element. The blockquote form isolates the command from surrounding table cells and prose, ensuring the directive cannot be overlooked in the authoring flow. A-35 extends the register upgrade that A-30 began (question -> command) to a form upgrade (inline -> block-level). A-35 implies A-30. Confirmed by R14 V-01. |
+| 3 | **A-36 -- Template position index in bridge completion gate heading name** | R14 V-02 excellence signal: `STAGE 2 COMPLETION GATE -- ALL BRIDGE ARTIFACTS COMPLETE?` vs V-01's `BRIDGE COMPLETION GATE -- ALL BRIDGE ARTIFACTS COMPLETE?`. A-27 requires a binary decision question in the gate heading; A-33 requires the artifact class named in the interrogative; A-36 requires the gate heading name (the portion before the `--` separator) to additionally carry a structural position index -- stage number, section number, or sequence label -- that self-locates the gate within the template's organizational hierarchy. A-36 is independent of A-33: each extends a different part of the gate heading line (A-36 extends the name, A-33 extends the interrogative). A-36 implies A-27. Confirmed by R14 V-02. |
+| 4 | **Ceiling 220 -> 235** | A-34 +5; A-35 +5; A-36 +5 |
+
+### Changes from v15 to v16
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-37 -- Organizational schema consistency of position index** | R15 V-01 and V-02 consistent pattern: V-01 uses SECTION 1-7 hierarchy throughout and `SECTION 2 COMPLETION GATE` as the gate heading name; V-02 uses STAGE-based hierarchy throughout and `STAGE 2 COMPLETION GATE`. A-36 requires the gate heading name to carry a position index; A-37 requires that index to use the same organizational nomenclature used throughout the template's broader section/stage hierarchy. A gate named "SECTION 2 COMPLETION GATE" in a STAGE-organized template satisfies A-36 (index present) but fails A-37 (nomenclature inconsistency). Schema consistency ensures the gate's position is unambiguous to an author navigating the template by its established structure. A-37 implies A-36. Confirmed by R15 V-01 (SECTION/SECTION consistency) and V-02 (STAGE/STAGE consistency). |
+| 2 | **A-38 -- Compound structural-failure noun form in failure-context frame** | R15 V-01, V-03, V-04 compound-noun pattern: `STRUCTURAL WEAKNESSES` (V-01), `FAILURE SURFACE` (V-03), `FAILURE POINTS` (V-04) -- three of four R15 variations encode the FM Inventory failure-context frame as a compound structural-failure noun that names both the failure TYPE and the failure LOCUS simultaneously. V-02's `WHERE THE STATUS QUO BREAKS` passes A-34 (verb construction is a valid failure-context frame) but does not demonstrate A-38's compound-noun form. A-38 requires the failure-context frame to be a compound failure noun rather than a verb construction or single-word failure term. The compound noun form carries higher semantic density at the heading level: it taxonomizes WHAT is catalogued rather than describing HOW the axis subject behaves. A-38 implies A-34. Confirmed by R15 V-01, V-03, V-04. |
+| 3 | **A-39 -- Cardinality qualifier in bridge artifact class reference** | R15 V-01, V-02, V-03 cardinality pattern: `ALL BRIDGE ARTIFACTS COMPLETE?` (V-01, V-02) and `BOTH BRIDGE ARTIFACTS BUILT?` (V-03) -- three of four R15 variations carry an explicit cardinality quantifier (ALL, BOTH) alongside the artifact class name in the gate heading interrogative. A-33 requires the bridge artifact class to be named in the interrogative; A-39 requires an explicit cardinality quantifier to additionally appear alongside the class name, confirming the required COUNT of bridge artifacts at the gate. An interrogative of "BRIDGE ARTIFACTS COMPLETE?" names the class (passing A-33) but carries no cardinality (failing A-39). An interrogative of "ALL BRIDGE ARTIFACTS COMPLETE?" carries `ALL` as the quantifier, making the gate heading self-contextualizing about both the artifact class and the required count. A-39 implies A-33. Confirmed by R15 V-01, V-02 (ALL), V-03 (BOTH). |
+| 4 | **Ceiling 235 -> 250** | A-37 +5; A-38 +5; A-39 +5 |
+
+### Changes from v16 to v17
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-40 -- Engineering-register locus noun in compound failure noun** | R16 V-02 excellence signal: `STRUCTURAL FAULTS` where "FAULTS is a technically more precise locus noun (fault = specific defect plane vs. weakness = general vulnerable zone)". A-38 requires the failure-context frame to be a compound failure noun encoding TYPE+LOCUS simultaneously; A-40 requires the LOCUS component to be drawn from engineering fault taxonomy vocabulary -- a term that names the specific defect locus with the precision of fault-tree analysis or FMEA methodology (FAULTS, FAILURE PLANES, FRACTURE ZONES, DEFECT LOCI). A locus term from general vulnerability vocabulary (WEAKNESSES, VULNERABILITIES, GAPS, PROBLEMS) passes A-38 but fails A-40. FAULTS names the precise fracture plane; WEAKNESSES names a general zone of vulnerability -- the engineering-register term carries higher taxonomic resolution at the heading level, identifying the FM Inventory as a catalogue of specific defect planes rather than a general vulnerability survey. A-40 implies A-38. Confirmed by R16 V-02 (STRUCTURAL FAULTS vs. STRUCTURAL WEAKNESSES distinction). |
+| 2 | **A-41 -- Architectural-scope TYPE component in compound failure noun** | R16 V-01 and V-02 consistent signal: both 250/250 variations use STRUCTURAL as the TYPE component -- "TYPE=structural (architectural/systemic category)". A-38 requires a compound failure noun encoding TYPE+LOCUS without constraining the TYPE component's scope register. A-41 requires the TYPE component to name an architectural or systemic scope (STRUCTURAL, SYSTEMIC, ARCHITECTURAL, FOUNDATIONAL) rather than a failure-event descriptor (FAILURE, ERROR, DEFECT) or a severity qualifier (CRITICAL, MAJOR, SERIOUS). An architectural-scope TYPE signals that the FM Inventory is a catalogue of the axis subject's architectural vulnerabilities -- it encodes the LEVEL OF ABSTRACTION at which failures are classified, not merely that failures occur. "STRUCTURAL WEAKNESSES" and "STRUCTURAL FAULTS" satisfy A-41 (STRUCTURAL = architectural/systemic scope). "FAILURE SURFACE" and "FAILURE POINTS" fail A-41 (FAILURE = event descriptor, not architectural scope). A-41 implies A-38. Confirmed by R16 V-01 and V-02 (both STRUCTURAL TYPE). |
+| 3 | **Ceiling 250 -> 260** | A-40 +5; A-41 +5 |
+
+**Updated implication chains**: `A-41 implies A-38` and `A-40 implies A-38`. Both extend the coherence chain: `A-41 implies A-38 implies A-34 implies A-26 implies A-10 and A-14`; `A-40 implies A-38 implies A-34 implies A-26 implies A-10 and A-14`. All v16 chains unchanged.
+
+**R16 confirmation**: V-01 achieves 250/250 (reference form -- SECTION schema, STRUCTURAL WEAKNESSES, ALL quantifier). V-02 achieves 250/250 via A-38 single-axis upgrade (STRUCTURAL FAULTS replacing verb construction). V-01 and V-02 both pass A-41 (STRUCTURAL TYPE). V-02 passes A-40 (FAULTS locus); V-01 fails A-40 (WEAKNESSES is general vocabulary). V-03 pending A-37/A-40/A-41 verification; V-04 pending; V-05 pending.
+
+**R17 target**: First 260/260 candidate requires A-40 (engineering-register locus) and A-41 (architectural-scope TYPE) on top of the 250/250 scaffold. A form combining V-02's STRUCTURAL FAULTS compound noun (satisfies both A-41 via STRUCTURAL type and A-40 via FAULTS locus) on a schema-consistent position-indexed gate with a cardinality quantifier achieves 260/260.
+
+### Changes from v17 to v18
+
+| # | Change | Source |
+|---|--------|--------|
+| 1 | **A-42 -- Domain-prefix vocabulary coherence across all three structural rule labels** | R17 V-03 excellence signal: all three structural rule labels share a common domain-prefix drawn from the template's axis vocabulary -- `INERTIA THREAT RULE [A-16]`, `INERTIA THREAT CITATION RULE [A-19]`, `INERTIA THREAT FAIL-FIRST RULE [A-31]`. A-23 requires each rule label to carry its criterion ID; A-42 additionally requires all three rule labels to share a common domain-prefix vocabulary, creating a coherent rule-label set in which any author reading the template can immediately recognize the rules as belonging to the same structural system. Domain-prefix coherence is the rule-label analogue of A-37 (position-index schema consistency across the section hierarchy): just as A-37 requires the gate's position index to use the same nomenclature as the rest of the template's section/stage hierarchy, A-42 requires the three integrity rule labels to share the same domain-prefix vocabulary drawn from the template's axis. A template where the three rules use inconsistent prefixes (e.g., `PRIMARY KEY RULE [A-16]`, `CITATION INTEGRITY RULE [A-19]`, `FAIL-FIRST CONSTRAINT [A-31]`) satisfies A-23 (criterion IDs present) but fails A-42 (no shared domain-prefix vocabulary). A-42 implies A-23. Confirmed by R17 V-03 (INERTIA THREAT prefix consistent across all three rules). |
+| 2 | **A-43 -- Verification-action register verb in gate heading interrogative** | R17 V-03 excellence signal: `EACH BRIDGE ARTIFACT VERIFIED?` uses a verification-action verb (VERIFIED) rather than a completion-state verb (COMPLETE, BUILT, DONE, READY) used in V-01/V-02 (`ALL BRIDGE ARTIFACTS COMPLETE?`). A-39 requires a cardinality quantifier alongside the artifact class name in the gate heading interrogative; A-43 additionally requires the interrogative verb to be drawn from verification-action vocabulary (VERIFIED, CONFIRMED, VALIDATED, CHECKED) -- vocabulary that signals active per-artifact review as an epistemic action rather than passive confirmation of presence as a state assertion. A completion-state verb (`COMPLETE?`, `BUILT?`) asserts that artifacts exist; a verification-action verb (`VERIFIED?`, `CONFIRMED?`) asserts that each artifact has been actively reviewed against a standard. The A-39 scoring note for V-03 explicitly records that the form "encodes per-element verification requirement" -- a semantic property beyond cardinality alone attributable to the VERIFIED verb alongside the EACH distributive quantifier. A gate heading of `ALL BRIDGE ARTIFACTS COMPLETE?` satisfies A-39 (ALL = cardinality) but fails A-43 (COMPLETE = state assertion, not verification-action). A gate heading of `EACH BRIDGE ARTIFACT VERIFIED?` satisfies A-43 (VERIFIED = verification-action register). The verb must appear in the gate heading interrogative itself, not in the gate block body or command directive. A-43 implies A-39. Confirmed by R17 V-03 (VERIFIED action verb, per-element verification requirement encoding). |
+| 3 | **Ceiling 260 -> 270** | A-42 +5; A-43 +5 |
+
+**Updated implication chains**: `A-43 implies A-39 implies A-33 implies A-27 implies A-22 implies A-12` (closure chain, verification-action gate). `A-42 implies A-23 implies A-19` (traceability-to-integrity bridge, extended). All v17 chains unchanged.
+
+**R17 confirmation**: V-01 and V-02 both achieve 260/260 -- first full-ceiling scores. V-01 uses SECTION schema, STRUCTURAL FAULTS, ALL COMPLETE; satisfies A-40 (engineering locus) and A-41 (architectural TYPE) but fails A-42 (no shared domain prefix across rule labels) and A-43 (COMPLETE is state verb, not verification-action verb). V-02 uses STAGE schema, STRUCTURAL FAULTS, ALL COMPLETE; same A-42/A-43 assessment as V-01. V-03 uses EACH VERIFIED and domain-prefix coherence; satisfies A-42 and A-43 -- first 270/270 candidate structure pending full A-40/A-41 and A-37 confirmation.
+
+**R18 target**: A 270/270 variation requires the V-03 scaffold (domain-prefix coherence across all three rules, VERIFIED verb in gate heading) combined with STRUCTURAL FAULTS compound noun (A-40 engineering locus + A-41 architectural TYPE) on a schema-consistent position-indexed gate (A-37) with a cardinality quantifier (A-39, EACH or ALL).
+
+---
+
+## Structural Notes
+
+**Key structural note on A-14 vs A-16**: A-14 requires the FM Inventory to be a dedicated named table whose first column assigns FM-[N] identifiers, positioned before the Defeat Conditions table. A-16 requires that table to additionally carry an explicitly stated constraint -- visible in the template body -- that no FM-[N] may appear in the DC table without prior assignment here. A-16 implies A-14; A-14 does not imply A-16.
+
+**Key structural note on A-16 vs A-19**: A-16 requires the primary key constraint to be stated at the FM Inventory source point. A-19 requires the enforcement to appear at both ends of the identifier chain -- source AND citation point. A template satisfying A-16 does not pass A-19 unless the constraint also appears as a named rule at the DC table. A-19 implies A-16; A-16 does not imply A-19.
+
+**Key structural note on A-19 vs A-23**: A-19 requires that a named integrity rule appear at the DC citation point. A-23 requires that each named integrity rule in the template body (the A-16 source rule and the A-19 citation rule) carries its rubric criterion ID within the label text. A template satisfying A-19 does not pass A-23 unless the criterion IDs appear in both rule labels. A-23 implies A-19; A-19 does not imply A-23. R11 stress test confirmed: domain-prefix form (e.g., `STATUS QUO LOCK RULE [A-16]`) satisfies A-23 alongside bracket-prefix (e.g., `[A-16 PRIMARY KEY RULE]`) and bracket-suffix (e.g., `PRIMARY KEY RULE [A-16]`) forms.
+
+**Key structural note on A-11 vs A-17**: A-11 requires at least one embedded question per essential criterion to make unanswered prompts visible during authoring. A-17 requires complete coverage -- all five essential criteria (C-01 through C-05) each have a named, criterion-labeled question. An output that embeds questions for three criteria passes A-11 at PARTIAL and fails A-17. Full A-11 and A-17 can be satisfied by the same question set if and only if all five are present.
+
+**Key structural note on A-15 vs A-18**: A-15 requires a trailing named section with per-criterion verification items. A-18 requires that section to use binary observable format (checkbox or Y/N per item, not a prose prompt) and to cover all five essential criteria. An output with a trailing SELF-CHECK using essay prompts scores A-15 PARTIAL and fails A-18 entirely. A-18 implies A-15 PASS.
+
+**Key structural note on A-13 vs A-20**: A-13 requires that all major sections use column schemas so that blank cells expose criterion gaps. A-20 requires that unit-bearing columns additionally embed a concrete format example in the label itself. A-13 PASS does not imply A-20; a table with a column labeled "Cost" satisfies A-13 but fails A-20. A-20 strengthens the format prompt without changing the structural visibility requirement.
+
+**Key structural note on A-20 vs A-21**: A-20 covers columns that require a unit-bearing quantity value (cost, duration, frequency). A-21 covers the DC table column that captures the measurable threshold or falsifiability boundary. The two column types are structurally distinct: quantity columns require a number + unit; threshold columns require a comparison operator + value + unit. A-21 does not subsume A-20 -- a template can satisfy A-21 on the DC threshold column while failing A-20 on cost columns, and vice versa. A full inline-example coverage requires both.
+
+**Key structural note on A-21 vs A-24**: A-21 requires one inline example in the DC threshold column label demonstrating the operator+value+unit format. A-24 requires at least two examples of structurally distinct threshold types in the same label, so the format's generality is demonstrated at the authoring point. A single example of one type satisfies A-21 but fails A-24; two examples of the same type (e.g., ">10MB, >50MB") also fail A-24 -- distinctness requires different unit families or comparison contexts. A-24 implies A-21; A-21 does not imply A-24.
+
+**Key structural note on A-12 vs A-22**: A-12 requires the bridge artifacts Q3 and Q4 to be named in the template body with explicit criterion-chain references. A-22 requires a separate mid-template status check -- positioned between the FM Inventory section and the Defeat Conditions section -- that confirms whether Q3 and Q4 have been populated. A-12 ensures the author knows the artifacts exist; A-22 ensures the author cannot reach the DC section without a visible checkpoint on bridge completion. A-22 implies A-12.
+
+**Key structural note on A-22 vs A-25**: A-22 requires a named verification block positioned between FM Inventory and DC section, confirming Q3 and Q4 status. A-25 requires that block to additionally carry an active command directive -- a named instruction element that explicitly tells the author to complete the bridge artifacts before proceeding. A binary Y/N status table satisfies A-22; A-25 requires the command label as a distinct named element alongside the status table. A-25 implies A-22.
+
+**Key structural note on A-22 vs A-27**: A-22 requires the gate to be a named structural block in position. A-25 requires an active command directive inside the block. A-27 requires the heading of the gate block itself to carry a binary decision question -- interrogative or decision-marker form -- so the gate's pass/fail nature is visible in the document heading structure without reading the block body. A gate named "BRIDGE COMPLETION GATE" satisfies A-22; a gate named "BRIDGE COMPLETION GATE -- READY TO PROCEED?" satisfies A-27. A-27 is independent of A-25 -- the heading question and the internal command directive address different structural layers. A-27 implies A-22.
+
+**Key structural note on A-10 and A-14 vs A-26**: A-10 requires the FAIL-FIRST declaration to exist as a structural first section with a labeled heading. A-14 requires the FM Inventory to exist as a dedicated named table with a titled heading. A-26 requires both of those section headings to carry a subtitle that encodes the template's declared analytical axis vocabulary -- the domain vocabulary of the axis must appear in the subtitle text, not only in the content cells. A template using "SECTION 1 -- FAILURE MODE INVENTORY" satisfies A-14; one using "SECTION 1 -- THE STATUS QUO'S VULNERABILITIES: FAILURE MODE INVENTORY" satisfies A-26. The subtitle must be in the heading, not in a prose block below it. A-26 implies both A-10 and A-14.
+
+**Key structural note on A-18 vs A-28**: A-18 requires the trailing checklist to use binary format and cover all five essential criteria. A-28 requires each item label to additionally carry its essential criterion ID (C-01 through C-05), enabling direct rubric traceability from verification to criterion without external reference. A-23 applies the criterion-ID-in-label pattern to integrity rule labels; A-28 applies the same traceability pattern to the trailing checklist layer. An item labeled "Workaround named specifically (Y/N)" satisfies A-18; an item labeled "C-01: Workaround named specifically (Y/N)" satisfies A-28. A-28 implies A-18.
+
+**Key structural note on A-17 vs A-29**: A-17 requires one labeled question or prompt per essential criterion (C-01 through C-05) such that unanswered prompts are visible during authoring. A-29 requires each of those prompt labels to additionally carry its criterion ID -- so the author sees "C-01" at the authoring point, not only at the point of verification (A-28) or in an integrity rule (A-23). A-17 is satisfied by labels such as `> **question**:` or `Workaround check:`; A-29 requires `[C-01 ...]` or `C-01:` or equivalent in the label itself. A-29 extends the A-23/A-28 criterion-ID-in-label traceability pattern to the third structural layer (authoring prompts). A-29 implies A-17; A-17 does not imply A-29.
+
+**Key structural note on A-29 vs A-30**: A-29 requires the criterion ID to appear in each per-criterion prompt label. A-30 requires the label to additionally carry the COMMAND register keyword (e.g., "COMMAND"), making the directive nature of the prompt structurally explicit rather than a question-register prompt. A label of `[C-01 COMMAND]:` satisfies both A-29 and A-30. A label of `[C-01 QUESTION]:` or `C-01: What is the workaround?` satisfies A-29 but fails A-30 -- the criterion ID is present but the register is question, not command. A-30 implies A-29; A-29 does not imply A-30. The COMMAND keyword must appear as a structural element in the label, not in the prompt body or a separate instruction block.
+
+**Key structural note on A-10 vs A-31**: A-10 requires the FAIL-FIRST declaration to exist as a structural first element with a labeled section heading. A-31 requires the body of that section to additionally carry a named rule label -- a discrete, labeled rule element within the section body (not only the section heading) -- that states the FAIL-FIRST principle as a named structural constraint. A-10 is satisfied by a section heading; A-31 requires a named rule body element such as `[FAIL-FIRST RULE]`, `FAIL-FIRST CONSTRAINT [A-31]`, or `[A-31 FAIL-FIRST ORDERING RULE]` inside the section. Structurally parallel to how A-16 added a named primary key rule to the FM Inventory body (not only in the FM Inventory heading that A-14 required). Once the A-31 rule label exists and carries the A-31 criterion ID in its label text, it also satisfies the A-23 criterion-ID-in-label requirement extending A-23's traceability coverage to the FAIL-FIRST rule layer. A-31 implies A-10; A-10 does not imply A-31.
+
+**Key structural note on A-31 vs A-32**: A-31 requires the FAIL-FIRST declaration body to carry a named rule label (e.g., `[FAIL-FIRST RULE]`). A-32 requires that rule label to additionally carry the A-31 criterion ID within its label text -- bracket prefix, bracket suffix, or inline form -- completing A-23's criterion-ID-in-label traceability across all three named structural rules: the A-16 FM Inventory primary key rule, the A-19 DC citation rule, and the A-31 FAIL-FIRST rule. A rule labeled `[FAIL-FIRST RULE]` satisfies A-31 but fails A-32; a rule labeled `FAIL-FIRST CONSTRAINT [A-31]` or `[A-31 FAIL-FIRST ORDERING RULE]` satisfies both A-32 and A-31. The criterion ID must appear in the rule label itself, not in the section heading, the prose body of the rule, or a separate reference. A-32 implies A-31 and extends A-23 universally.
+
+**Key structural note on A-27 vs A-33**: A-27 requires the bridge completion gate heading to carry a binary decision question (e.g., "-- READY TO PROCEED?", "-- ALL ARTIFACTS COMPLETE?"). A-33 requires the interrogative to additionally name the bridge artifact class explicitly -- the question must identify what must be complete, not only whether to proceed. A gate heading of "BRIDGE COMPLETION GATE -- READY TO PROCEED?" satisfies A-27 but fails A-33: the interrogative signals pass/fail structure without naming the artifact subject. A gate heading of "STAGE 2 COMPLETION GATE -- ALL BRIDGE ARTIFACTS COMPLETE?" satisfies A-33: the interrogative names "BRIDGE ARTIFACTS" as the class subject to the gate. The artifact class name must appear in the heading line itself, not only in the gate block body. A-33 implies A-27; A-27 does not imply A-33.
+
+**Key structural note on A-26 vs A-34**: A-26 requires the FM Inventory heading subtitle to carry the template's declared analytical axis vocabulary. A-34 requires the subtitle to additionally encode a failure-context frame -- a phrase that identifies the analytical purpose of the section as the place where the axis subject fails, breaks, or exhibits structural weakness. A subtitle of "THE STATUS QUO" carries axis vocabulary and satisfies A-26 (if appearing in the heading); a subtitle of "WHERE THE STATUS QUO BREAKS" satisfies A-34 because "WHERE X BREAKS" is an explicit failure-context construction that identifies the section's analytical purpose. A subtitle of "THE INERTIA THREAT'S STRUCTURAL WEAKNESSES" satisfies A-34 because "STRUCTURAL WEAKNESSES" is a failure-context frame. The failure-context frame must appear in the FM Inventory heading line itself, not in a sub-heading or prose block below the heading. A-34 applies to the FM Inventory heading specifically; the FAIL-FIRST heading satisfies A-26 with axis vocabulary alone and is not required to carry a failure-context frame. A-34 implies A-26; A-26 does not imply A-34.
+
+**Key structural note on A-30 vs A-35**: A-30 requires the COMMAND register keyword in each per-criterion prompt label, making the directive nature explicit in the label text but leaving the form of the prompt as an inline element. A-35 requires the prompt to additionally use a blockquote structural delimiter -- Markdown `>` prefix or equivalent visual structural isolation mechanism -- so that the command prompt forms a structurally distinct block in the template document rather than an inline label element. A prompt of `> [C-01 COMMAND]: NAME the specific unnamed competitor...` satisfies A-35; an inline prompt `[C-01 COMMAND]: NAME...` satisfies A-30 but fails A-35. The blockquote delimiter must appear on each prompt line itself -- not on a surrounding section heading or instructional caption. All five per-criterion command prompts (C-01 through C-05) must use the blockquote delimiter; partial blockquote coverage fails A-35. A-35 extends the register upgrade (A-30: question register -> command register) to a form upgrade (inline -> block-level), completing the structural isolation of the authoring directive. A-35 implies A-30; A-30 does not imply A-35.
+
+**Key structural note on A-27/A-33 vs A-36**: A-27 requires a binary decision question in the gate heading. A-33 requires the artifact class to be named in the interrogative (the portion after the `--` separator). A-36 requires the gate heading name (the portion before the `--` separator) to additionally carry a structural position index -- stage number, section number, or equivalent sequence label -- that self-locates the gate within the template's organizational hierarchy. A gate named "BRIDGE COMPLETION GATE -- ALL BRIDGE ARTIFACTS COMPLETE?" satisfies A-27 and A-33 but fails A-36: the name carries no position index. A gate named "STAGE 2 COMPLETION GATE -- ALL BRIDGE ARTIFACTS COMPLETE?" satisfies A-36: "STAGE 2" is the position index in the name. A-36 is independent of A-33: each extends a different part of the heading line (A-36 extends the name before `--`, A-33 extends the interrogative after `--`). The position index must appear in the heading name itself, not in the interrogative portion, the gate block body, or surrounding section numbering. A-36 implies A-27; A-27 does not imply A-36.
+
+**Key structural note on A-36 vs A-37**: A-36 requires the bridge completion gate heading name to carry a structural position index (e.g., STAGE N, SECTION N). A-37 requires that index to use the same organizational nomenclature used throughout the rest of the template's section/stage hierarchy. A gate named "SECTION 2 COMPLETION GATE" in a template whose other sections are labeled STAGE 1, STAGE 2, STAGE 3 satisfies A-36 (the index "SECTION 2" is present) but fails A-37 (the nomenclature "SECTION" conflicts with the template's "STAGE" schema). A gate named "STAGE 2 COMPLETION GATE" in a template using STAGE labels throughout satisfies A-37. Schema consistency ensures that an author navigating the template by its established organizational vocabulary can locate the gate by its heading name without resolving a naming discrepancy. A-37 requires a whole-template property -- the index nomenclature must match across the heading and all other sections -- not only a local heading property. A-37 implies A-36; A-36 does not imply A-37.
+
+**Key structural note on A-34 vs A-38**: A-34 requires the FM Inventory heading subtitle to encode a failure-context frame -- a phrase identifying the section as the place where the axis subject fails, breaks, or exhibits structural weakness. A-38 requires that failure-context frame to take the form of a compound structural-failure noun -- a noun phrase that encodes both a failure TYPE and a failure LOCUS simultaneously. "STRUCTURAL WEAKNESSES" encodes type (structural) and locus (weakness points where failure accumulates); "FAILURE SURFACE" encodes type (failure) and locus (surface = the place of exposure/contact where failure occurs); "FAILURE POINTS" encodes type (failure) and locus (specific points at which the axis subject breaks down). A verb construction such as "WHERE THE STATUS QUO BREAKS" satisfies A-34 -- it is a valid failure-context frame -- but fails A-38: the frame uses a verb-clause construction rather than a compound noun, so it describes HOW the axis subject behaves under stress rather than naming WHAT is catalogued. The compound noun form carries higher semantic density at the heading level and is more directly taxonomic: an author reading the heading understands both the type and the locus of failure without parsing a conditional clause. The compound noun must appear in the FM Inventory heading line itself (not in the gate, checklist, or content rows). A-38 implies A-34; A-34 does not imply A-38.
+
+**Key structural note on A-33 vs A-39**: A-33 requires the bridge artifact class to be named in the gate heading interrogative. A-39 requires an explicit cardinality quantifier (ALL, BOTH, EACH, or equivalent universal/dual quantifier) to appear alongside the artifact class name in the interrogative, confirming the required COUNT of artifacts at the gate -- not just their class. An interrogative of "BRIDGE ARTIFACTS COMPLETE?" names the class (passing A-33) but carries no cardinality (failing A-39): the author cannot determine from the heading alone whether one artifact or all artifacts must be complete. An interrogative of "ALL BRIDGE ARTIFACTS COMPLETE?" carries `ALL` as a universal quantifier and satisfies A-39; "BOTH BRIDGE ARTIFACTS BUILT?" carries `BOTH` as a dual quantifier and satisfies A-39 -- and correctly encodes the two-artifact structure of the bridge (Q3 and Q4). The cardinality quantifier must appear in the gate heading interrogative itself, not in the gate block body, a status table, or a sub-element. A-39 implies A-33; A-33 does not imply A-39.
+
+**Key structural note on A-38 vs A-40**: A-38 requires the failure-context frame to be a compound failure noun encoding TYPE+LOCUS simultaneously, without constraining the vocabulary register of the LOCUS component. A-40 requires the LOCUS component specifically to be drawn from engineering fault taxonomy vocabulary -- a term that names the specific defect locus with the precision used in fault-tree analysis and FMEA methodology. A locus of "FAULTS" names the precise fracture plane, the specific defect class at which the system fails; a locus of "WEAKNESSES" names a general zone of vulnerability without specifying the defect type or failure mechanism. Both satisfy A-38 (compound noun, TYPE+LOCUS present); only the engineering-register locus satisfies A-40. Engineering-register loci include: FAULTS, FAILURE PLANES, FRACTURE ZONES, DEFECT LOCI, FAULT LINES. General-register loci include: WEAKNESSES, VULNERABILITIES, GAPS, PROBLEMS, ISSUES, CONCERNS. The distinction is whether the term carries its meaning from engineering fault taxonomy or from general-purpose vulnerability vocabulary. A-40 implies A-38; A-38 does not imply A-40.
+
+**Key structural note on A-38 vs A-41**: A-38 requires a compound failure noun encoding TYPE+LOCUS without constraining the TYPE component's scope or register. A-41 requires the TYPE component to name an architectural or systemic scope -- a category that classifies the FM Inventory contents at the architectural level of abstraction rather than at the failure-event level. A TYPE of "STRUCTURAL" names an architectural scope (structural = affecting the architecture or systemic organization of the axis subject); a TYPE of "SYSTEMIC" or "ARCHITECTURAL" or "FOUNDATIONAL" similarly names a scope that transcends individual implementation events. A TYPE of "FAILURE" names the failure event itself without specifying the level of abstraction (a failure can be implementation-level or architectural-level); a TYPE of "ERROR" or "DEFECT" similarly names a failure event without encoding architectural scope. "STRUCTURAL WEAKNESSES" and "STRUCTURAL FAULTS" satisfy A-41 (STRUCTURAL = architectural/systemic scope). "FAILURE SURFACE" and "FAILURE POINTS" fail A-41 (FAILURE = event descriptor, not architectural scope). An architectural-scope TYPE signals that the FM Inventory is a catalogue of the axis subject's architectural vulnerabilities -- it encodes the level of abstraction at which failures are classified, not merely that failures are present. A-41 implies A-38; A-38 does not imply A-41. A-40 and A-41 are independent: a compound noun can carry an engineering-register locus (A-40 pass) with an event-descriptor TYPE (A-41 fail), or an architectural-scope TYPE (A-41 pass) with a general-vocabulary locus (A-40 fail).
+
+**Key structural note on A-23 vs A-42**: A-23 requires each named structural rule label in the template body to carry its rubric criterion ID within the label text (bracket prefix, bracket suffix, or inline form). A-42 additionally requires all three structural rule labels (the A-16 FM Inventory rule, the A-19 DC citation rule, and the A-31 FAIL-FIRST rule) to share a common domain-prefix vocabulary drawn from the template's declared analytical axis vocabulary. A template where each rule carries its ID but uses distinct non-shared prefixes (`PRIMARY KEY RULE [A-16]`, `CITATION INTEGRITY RULE [A-19]`, `FAIL-FIRST CONSTRAINT [A-31]`) satisfies A-23 but fails A-42: the criterion IDs are present but the rule labels do not form a coherent vocabulary set. A template where all three rules share "INERTIA THREAT" as prefix (`INERTIA THREAT RULE [A-16]`, `INERTIA THREAT CITATION RULE [A-19]`, `INERTIA THREAT FAIL-FIRST RULE [A-31]`) satisfies A-42. The domain prefix must be drawn from the template's axis vocabulary (the subject being analyzed), not from generic structural vocabulary (PRIMARY, CITATION, CONSTRAINT). A-42 is the rule-label analogue of A-37 (position-index schema consistency): A-37 requires the gate's position index to match the template's section/stage nomenclature; A-42 requires the three rule labels to share a domain-prefix drawn from the template's axis vocabulary. A-42 implies A-23; A-23 does not imply A-42.
+
+**Key structural note on A-39 vs A-43**: A-39 requires an explicit cardinality quantifier (ALL, BOTH, EACH) alongside the bridge artifact class name in the gate heading interrogative. A-43 additionally requires the interrogative verb to be drawn from verification-action vocabulary -- a verb that signals active per-artifact epistemic review (VERIFIED, CONFIRMED, VALIDATED, CHECKED) rather than a completion-state verb that signals passive presence confirmation (COMPLETE, BUILT, DONE, READY, PRESENT). A completion-state verb asserts that the artifact exists in the required state; a verification-action verb asserts that an author has actively reviewed the artifact against a standard. A gate heading of `ALL BRIDGE ARTIFACTS COMPLETE?` satisfies A-39 (ALL = cardinality) but fails A-43 (COMPLETE = completion-state verb). A gate heading of `EACH BRIDGE ARTIFACT VERIFIED?` satisfies both A-43 (VERIFIED = verification-action register) and A-39 (EACH = distributive cardinality). The verification-action verb must appear in the gate heading interrogative itself -- the verb in the question that forms the interrogative clause. A-43 does not require a specific cardinality quantifier (EACH, ALL, BOTH are all valid); the VERIFIED/EACH combination in V-03 satisfies A-43 independently of the EACH quantifier satisfying A-39. A-43 implies A-39; A-39 does not imply A-43.
+
+---
+
+## Essential Criteria
+
+*All five must pass. Any essential failure caps the output as non-useful regardless of advanced scores.*
+
+| ID | Criterion | Category | Weight |
+|----|-----------|----------|--------|
+| C-01 | **Workaround named specifically** | specificity | essential |
+| C-02 | **Switching cost quantified** | quantification | essential |
+| C-03 | **Inertia threat score declared** | assessment | essential |
+| C-04 | **Defeat conditions identified** | analysis | essential |
+| C-05 | **Workaround failure modes identified** | analysis | essential |
+
+### C-01 -- Workaround named specifically
+
+**Pass condition**: Output names the specific workaround currently in use (not "a manual process" but "weekly CSV export to shared drive"), names the role that performs it, and quantifies the ongoing cost with a unit. "The data-ops team spends 2 hours per week exporting and cleaning CSV files before pipeline ingestion" passes. "Teams use manual methods" fails on every dimension.
+
+### C-02 -- Switching cost quantified
+
+**Pass condition**: Output identifies and quantifies at least two categories of switching cost: migration effort (time or money, cited to a role), and at least one of: training overhead, process disruption, or in-flight work at risk. Costs must carry units -- "significant" without a number or unit fails.
+
+### C-03 -- Inertia threat score declared
+
+**Pass condition**: Output declares an explicit inertia threat score (HIGH / MEDIUM / LOW) for the feature. The default is HIGH; any deviation from HIGH must be justified with a quantified condition. An output that lists switching costs without aggregating them into a threat level has not completed the analysis.
+
+### C-04 -- Defeat conditions identified
+
+**Pass condition**: Output identifies at least two specific, distinct, and testable conditions under which teams abandon the workaround in favor of the feature. Conditions must be falsifiable ("teams switch when workaround fails to handle files > 10MB" passes; "teams switch when they see the value" fails). This is the central question of the skill -- if it is absent, the output is not useful.
+
+### C-05 -- Workaround failure modes identified
+
+**Pass condition**: Output identifies at least two specific scenarios where the current workaround breaks, produces errors, causes re-work, or cannot scale. These are the observable cracks in the inertia armor. Generic pain points ("manual is slow") do not pass; concrete failure modes ("CSV export silently truncates rows over 65,536 -- no error message") pass.
+
+---
+
+## Recommended Criteria
+
+*Strong outputs satisfy all three. Missing one is a quality signal, not a blocker.*
+
+| ID | Criterion | Category | Weight |
+|----|-----------|----------|--------|
+| R-01 | **Trigger scoped to team type** | precision | recommended |
+| R-02 | **Role-level precision** | precision | recommended |
+| R-03 | **At least one cost cited to role** | depth | recommended |
+
+### R-01 -- Trigger scoped to team type
+
+**Pass condition**: Defeat conditions (from C-04) name a specific team type or segment rather than applying uniformly to all users. "Engineering teams switch when..." or "PMs in regulated industries switch when..." passes. "Users switch when..." fails. Different team types face different inertia profiles; a trigger that ignores team type is underspecified.
+
+### R-02 -- Role-level precision
+
+**Pass condition**: Output names specific roles (not "users" or "the team") when attributing failure modes and switching costs. At minimum, the role that owns the workaround (from C-01) appears again when listing failure modes (C-05) and switching costs (C-02).
+
+### R-03 -- At least one cost cited to role
+
+**Pass condition**: At least one switching cost category is explicitly attributed to the role bearing it. "3 days of migration effort for the data-ops team" passes. "3 days of migration effort" without a role attribution fails.
+
+---
+
+## Advanced Criteria
+
+*Structural excellence markers. Each requires a named structural element in the template -- not an output property.*
+
+| ID | Criterion | Category | Points |
+|----|-----------|----------|--------|
+| A-08 | **FM before DC** | ordering | 5 |
+| A-10 | **Fail-first declaration** | ordering | 5 |
+| A-11 | **Question-per-criterion mapping** | completeness | 5 |
+| A-12 | **BRIDGE dual-closure** | closure | 5 |
+| A-13 | **Tabular column schema structural visibility** | format | 5 |
+| A-14 | **FM inventory as dedicated named table** | format | 5 |
+| A-15 | **Trailing completeness checklist** | verification | 5 |
+| A-16 | **FM Inventory primary key constraint declared** | integrity | 5 |
+| A-17 | **Question-per-criterion full coverage (all 5 essentials)** | completeness | 5 |
+| A-18 | **Trailing checklist binary format and full coverage** | verification | 5 |
+| A-19 | **Bidirectional referential integrity enforcement** | integrity | 5 |
+| A-20 | **Inline example co-located with unit-bearing column label** | format | 5 |
+| A-21 | **Inline falsifiability example in defeat condition threshold column** | format | 5 |
+| A-22 | **Mid-template bridge completion status check** | closure | 5 |
+| A-23 | **Criterion ID embedded in rule label text** | traceability | 5 |
+| A-24 | **Dual-type inline threshold example in DC threshold column label** | format | 5 |
+| A-25 | **Active command directive on bridge completion gate** | closure | 5 |
+| A-26 | **Analytical axis vocabulary in section heading subtitles** | coherence | 5 |
+| A-27 | **Decision-question bridge gate heading** | closure | 5 |
+| A-28 | **Criterion ID in trailing checklist item labels** | traceability | 5 |
+| A-29 | **Criterion ID in per-criterion authoring prompt label** | traceability | 5 |
+| A-30 | **COMMAND-register keyword in per-criterion prompt label** | register | 5 |
+| A-31 | **Named structural rule in FAIL-FIRST declaration body** | integrity | 5 |
+| A-32 | **Criterion ID in FAIL-FIRST rule label** | traceability | 5 |
+| A-33 | **Bridge artifact class named in gate heading interrogative** | closure | 5 |
+| A-34 | **Failure-context frame in FM Inventory heading subtitle** | coherence | 5 |
+| A-35 | **Blockquote structural delimiter on per-criterion command prompts** | register | 5 |
+| A-36 | **Template position index in bridge completion gate heading name** | closure | 5 |
+| A-37 | **Organizational schema consistency of position index** | coherence | 5 |
+| A-38 | **Compound structural-failure noun form in failure-context frame** | coherence | 5 |
+| A-39 | **Cardinality qualifier in bridge artifact class reference** | closure | 5 |
+| A-40 | **Engineering-register locus noun in compound failure noun** | coherence | 5 |
+| A-41 | **Architectural-scope TYPE component in compound failure noun** | coherence | 5 |
+| A-42 | **Domain-prefix vocabulary coherence across all three structural rule labels** | coherence | 5 |
+| A-43 | **Verification-action register verb in gate heading interrogative** | closure | 5 |
+
+### A-08 -- FM before DC
+
+**Pass condition**: The template enforces positional ordering such that failure modes (C-05) are authored before defeat conditions (C-04). Role ordering, section numbering, or table sequence all satisfy this -- the mechanism is irrelevant as long as an author following the template cannot write DC rows before FM rows.
+
+### A-10 -- Fail-first declaration
+
+**Pass condition**: The template carries an explicit structural label -- "FAIL-FIRST DECLARATION" or equivalent -- as the first named section or block, followed by a one-sentence statement of why failure modes are enumerated before costs and defeat conditions. The label must be a structural element, not a comment or instruction note. Templates where FM content appears first via role ordering without an explicit declaration do not pass; the label is the criterion, not the ordering alone.
+
+### A-11 -- Question-per-criterion mapping
+
+**Pass condition**: The template body contains at least one explicitly labeled question or prompt per essential criterion such that an unanswered prompt is a visible gap during authoring rather than a content gap caught only on full read. Three or more criteria covered qualifies for PARTIAL; all five covered satisfies A-17, not A-11 alone. A-11 PASS requires coverage of at least three essential criteria with named prompts.
+
+### A-12 -- BRIDGE dual-closure
+
+**Pass condition**: The template names two distinct bridge artifacts -- Q3 (or equivalent) closing the FM->actor chain from C-05 to R-02, and Q4 (or equivalent) closing the FM->trigger chain from C-05 to C-04. Each artifact must be named in the template body with an explicit reference to the criterion chain it closes. Column-level closure (FM->actor and FM->trigger as required columns) does not satisfy A-12; the named artifacts and their chain references are the criterion.
+
+### A-13 -- Tabular column schema structural visibility
+
+**Pass condition**: All major output sections use named column schemas such that a blank cell is a visible criterion gap without requiring a full read of prose. At minimum, the FM section and the DC section must be tables with named columns. An output where criterion gaps require reading complete prose to detect fails A-13 regardless of content quality.
+
+### A-14 -- FM inventory as dedicated named table
+
+**Pass condition**: The template contains a titled FM Inventory table (name visible in the output) whose first column assigns FM-[N] identifiers. This table must appear before the Defeat Conditions table in template structure. FM enumerated only in prose blocks, or FM column in a mixed table not dedicated to inventory, does not pass. A-14 implies A-08.
+
+### A-15 -- Trailing completeness checklist
+
+**Pass condition**: The template contains a named trailing section positioned after all content sections, with one verification item per essential criterion. Items may be prose prompts, essay questions, or binary checkboxes -- format is not a criterion here (see A-18). The section must be structurally last and criterion-labeled. A SELF-CHECK block mid-template does not pass; position is the criterion.
+
+### A-16 -- FM Inventory primary key constraint declared
+
+**Pass condition**: The FM Inventory table (from A-14) carries an explicitly stated rule, written in the template body (not in a comment or instructions section), that no FM-[N] identifier may appear in the Defeat Conditions table without a corresponding row in the FM Inventory. The rule must be visible to an author using the template. Templates where the constraint is implied by ordering but not stated fail A-16. A-16 implies A-14.
+
+### A-17 -- Question-per-criterion full coverage (all 5 essentials)
+
+**Pass condition**: The template body contains one explicitly labeled question or prompt for each of the five essential criteria -- C-01, C-02, C-03, C-04, and C-05 -- such that an unanswered prompt for any criterion is a visible gap during authoring. Coverage of fewer than all five fails A-17 regardless of A-11 result. A-17 implies A-11 PASS.
+
+### A-18 -- Trailing checklist binary format and full coverage
+
+**Pass condition**: The trailing checklist (from A-15) satisfies two independent conditions: (1) each item uses binary observable format -- checkbox or Y/N -- not an essay prompt or open-ended question; and (2) all five essential criteria are mapped, one item each, with no essential criterion absent. Failure on either condition is a full fail. A-15 PARTIAL with essay prompts and 3/5 coverage fails A-18 on both dimensions. A-18 implies A-15 PASS.
+
+### A-19 -- Bidirectional referential integrity enforcement
+
+**Pass condition**: The template enforces the FM-[N] referential integrity rule at both ends of the identifier chain: (1) the source constraint at the FM Inventory (from A-16 -- no FM-[N] may appear downstream without prior row assignment), AND (2) a separately stated referential integrity rule at the DC table definition point, explicitly requiring that every FM-[N] cited in the DC table must have a prior assigned row in the FM Inventory. Both rules must be visible in the template body. A template satisfying A-16 alone passes only the source end; A-19 requires the citation-point rule to be present as a named, separate statement. A-19 implies A-16.
+
+### A-20 -- Inline example co-located with unit-bearing column label
+
+**Pass condition**: Every column label that requires a unit-bearing quantity value (e.g., "Ongoing cost", "Migration effort", "Training overhead", "Frequency") embeds a concrete format example directly within the label definition -- "(e.g., 2 hours/week)", "(e.g., $4,000)", "(e.g., 3 days)" -- such that the format reminder is structurally co-located with the cell the author must fill. A separate "Rules" or "Instructions" block stating that units are required does not satisfy A-20; the example must live in the label. A-20 requires A-13 (tabular format) as a precondition but does not imply it -- A-20 adds the co-location constraint on top of structural visibility.
+
+### A-21 -- Inline falsifiability example in defeat condition threshold column
+
+**Pass condition**: The Defeat Conditions table contains a column capturing the measurable threshold or falsifiability boundary (e.g., "Measurable threshold", "Falsifiable condition", "Trigger value"), and that column label embeds a concrete format example directly within the label definition -- "(e.g., >10MB)", "(e.g., >3 failures/week)", "(e.g., latency >500ms)" -- such that an author sees the expected format at the point of entry. Threshold values require a comparison operator + value + unit; a label without an inline example leaves the format undefined at the authoring point. A separate prose instruction block does not satisfy A-21. A-21 requires A-13 and A-20 as preconditions and does not subsume either -- a template can satisfy A-21 on the DC table while failing A-20 on cost columns. Full inline-example coverage requires both.
+
+### A-22 -- Mid-template bridge completion status check
+
+**Pass condition**: The template contains a named verification block positioned between the FM Inventory section and the Defeat Conditions section that explicitly checks whether Q3 (FM->actor bridge) and Q4 (FM->trigger bridge) have been populated. The check must be a structural element -- a named table, checkbox list, or labeled status section -- not a prose comment or authoring note. Templates where bridge artifacts are named in the FAIL-FIRST declaration (A-12) but carry no mid-template gate before the DC section opens do not satisfy A-22; the position between FM and DC is the criterion, not the naming. A-22 implies A-12 and enforces the completion of the bridge before DC authoring begins, parallel to how A-16 enforces FM row assignment before DC citation.
+
+### A-23 -- Criterion ID embedded in rule label text
+
+**Pass condition**: Every named integrity rule in the template body that enforces a specific advanced criterion carries that criterion's ID within the label text -- either as a bracket prefix (e.g., "[A-16 PRIMARY KEY RULE]"), a bracket suffix (e.g., "PRIMARY KEY CONSTRAINT [A-16]"), or an inline reference (e.g., "REFERENTIAL INTEGRITY RULE (citation point) [A-19]"). At minimum, the A-16 source rule and the A-19 citation rule must each carry their criterion IDs in the label. A rule label that names the constraint without its criterion ID fails A-23. IDs in comments, footnotes, or a separate mapping table do not satisfy A-23; the ID must be in the label of the rule itself. Domain-prefix form is valid (e.g., `STATUS QUO LOCK RULE [A-16]`): the domain vocabulary prefix does not displace the criterion ID requirement. A-23 requires A-19 as a precondition -- both rules must exist before both can carry IDs. A-23 implies A-19.
+
+### A-24 -- Dual-type inline threshold example in DC threshold column label
+
+**Pass condition**: The DC threshold column label (from A-21) embeds at least two inline examples of structurally distinct threshold types -- different units and different comparison contexts -- within the same label definition. For example, "(e.g., >10MB, >3 failures/week)" provides one size-based threshold and one frequency-based threshold, demonstrating that the operator+value+unit pattern applies across threshold categories. A single example of one type satisfies A-21 but fails A-24; two examples of the same type (e.g., ">10MB, >50MB") also fail A-24 -- distinctness requires different unit families or comparison contexts. A-24 requires A-21 as a precondition. A-24 implies A-21.
+
+### A-25 -- Active command directive on bridge completion gate
+
+**Pass condition**: The bridge completion gate block (from A-22) carries an explicit active command directive as a named element -- not only a Y/N status table but also a labeled instruction that tells the author to complete Q3 and Q4 before proceeding. The directive must be a named structural element (e.g., "[BRIDGE COMPLETION COMMAND]", "COMPLETE Q3 AND Q4 BEFORE PROCEEDING", "ACTION REQUIRED: COMPLETE BRIDGE ARTIFACTS") visible at the gate position. A Y/N status table without a command label satisfies A-22; A-25 requires the command label as a distinct named element in the same gate block. A command in a separate prose block, comment, or authoring note does not satisfy A-25 -- the directive must be co-located with the status table at the gate position. A-25 implies A-22.
+
+### A-26 -- Analytical axis vocabulary in section heading subtitles
+
+**Pass condition**: The template's declared analytical axis vocabulary appears in the subtitle text of at least two major section headings -- specifically the FAIL-FIRST declaration heading and the FM Inventory heading. Both headings must carry a subtitle phrase drawn from the axis vocabulary (e.g., a status-quo competitor axis yields "-- THE UNNAMED COMPETITOR" on the FAIL-FIRST heading and "-- THE STATUS QUO'S VULNERABILITIES:" on the FM Inventory heading). A heading that uses only generic structural labels ("FAIL-FIRST DECLARATION", "FAILURE MODE INVENTORY") satisfies A-10 and A-14 respectively but fails A-26. The axis vocabulary must appear in the heading line itself -- not in a prose block, sub-heading, or content cell below the heading. A-26 implies A-10 and A-14; both sections must exist before both headings can carry axis vocabulary subtitles.
+
+### A-27 -- Decision-question bridge gate heading
+
+**Pass condition**: The bridge completion gate block's section heading (from A-22) carries an explicit binary decision question as part of the heading line -- appended via separator, colon, or embedded phrasing -- such that the gate's pass/fail nature is visible in the document heading structure without reading the block's body. Interrogative forms satisfy: "-- READY TO PROCEED?", "-- ALL ARTIFACTS COMPLETE?", "-- PASS BEFORE CONTINUING?". The question must be in the heading line of the gate block, not in a sub-element, label, or row inside the block. A gate heading of "BRIDGE COMPLETION GATE" satisfies A-22; a heading of "BRIDGE COMPLETION GATE -- READY TO PROCEED?" satisfies A-27. A-27 is independent of A-25 -- the heading question and the internal command directive address different structural layers. A-27 implies A-22.
+
+### A-28 -- Criterion ID in trailing checklist item labels
+
+**Pass condition**: Each item in the trailing completeness checklist (from A-18) carries its essential criterion ID (C-01 through C-05) in the item label, enabling direct rubric traceability from each verification item to its criterion without external reference. An item labeled "C-01: Workaround named specifically (Y/N)" satisfies A-28; an item labeled "Workaround named specifically (Y/N)" fails even if all five criteria are covered and binary format is present. The criterion ID must appear in the item label itself -- not in a separate legend, header row, or column annotation. A-23 applies the criterion-ID-in-label pattern to integrity rule labels (integrity chain); A-28 applies the same pattern to trailing checklist items (verification chain), completing traceability coverage across both structural layers. A-28 implies A-18.
+
+### A-29 -- Criterion ID in per-criterion authoring prompt label
+
+**Pass condition**: Each per-criterion authoring prompt (from A-17) carries its essential criterion ID (C-01 through C-05) in the prompt label, so the author sees the criterion ID at the point of authoring -- not only at the point of verification (A-28) or in an integrity rule (A-23). An item labeled `[C-01 COMMAND]: NAME the specific unnamed competitor...` satisfies A-29; an item labeled `> **question**: Name the workaround` fails even if all five prompts are present and labeled. The criterion ID must appear in the prompt label itself, not in a section heading, column header, or adjacent comment. A-23 applies the ID-in-label pattern to integrity rule labels; A-28 applies it to trailing checklist items; A-29 completes the traceability chain at the authoring-prompt layer, ensuring the author sees C-01 through C-05 at every structural layer where criteria are enforced. A-29 implies A-17.
+
+### A-30 -- COMMAND-register keyword in per-criterion prompt label
+
+**Pass condition**: Each per-criterion authoring prompt label (from A-29) carries the COMMAND register keyword -- the word "COMMAND" appearing as a named element within the bracket-label form -- making the directive nature of the prompt structurally explicit. A label of `[C-01 COMMAND]:` satisfies A-30; a label of `[C-01 QUESTION]:` or `C-01:` satisfies A-29 but fails A-30. The COMMAND keyword must appear in the prompt label, not in the prompt body text. A-30 upgrades per-criterion prompts from question or note register to command register, parallel to how A-25 upgraded the bridge gate block from a status check (A-22) to an active command directive -- both criteria enforce that the template's structural elements carry explicit directive register, not merely informational register. A-30 implies A-29.
+
+### A-31 -- Named structural rule in FAIL-FIRST declaration body
+
+**Pass condition**: The body of the FAIL-FIRST declaration section (from A-10) carries a named rule label -- a discrete, labeled rule element within the section body (not only the section heading) -- that states the FAIL-FIRST principle as a named structural constraint. A named rule element such as `[FAIL-FIRST RULE]`, `FAIL-FIRST CONSTRAINT [A-31]`, or `[A-31 FAIL-FIRST ORDERING RULE]` satisfies A-31; a FAIL-FIRST section that carries only a heading and prose explanation without a named rule label does not pass. Structurally parallel to A-16, which required a named primary key rule in the FM Inventory body (not only in the FM Inventory heading that A-14 required). Once the A-31 rule label exists and carries the A-31 criterion ID in its label text, it also satisfies the A-23 criterion-ID-in-label requirement, extending A-23's traceability coverage to the FAIL-FIRST rule layer. A-31 implies A-10.
+
+### A-32 -- Criterion ID in FAIL-FIRST rule label
+
+**Pass condition**: The named rule label in the FAIL-FIRST declaration body (from A-31) carries the A-31 criterion ID within its label text -- bracket prefix, bracket suffix, or inline form -- completing A-23's criterion-ID-in-label traceability across all three named structural rules: the A-16 FM Inventory primary key rule, the A-19 DC citation rule, and the A-31 FAIL-FIRST rule. A rule labeled `[FAIL-FIRST RULE]` satisfies A-31 but fails A-32; a rule labeled `FAIL-FIRST CONSTRAINT [A-31]` or `[A-31 FAIL-FIRST ORDERING RULE]` satisfies both A-32 and A-31. The criterion ID must appear in the rule label itself, not in the section heading, the prose body of the rule, or a separate reference. A-32 requires A-31 as a precondition -- the rule label must exist before it can carry the ID. Once A-32 is satisfied, the A-31 rule participates in A-23's universal traceability coverage alongside the A-16 and A-19 rules. A-32 implies A-31 and extends A-23 universally.
+
+### A-33 -- Bridge artifact class named in gate heading interrogative
+
+**Pass condition**: The gate heading interrogative (from A-27) explicitly names the bridge artifact class -- the category of artifact being checked -- within the question text, making the heading self-contextualizing about what must be complete, not only whether to proceed. A heading interrogative of "ALL BRIDGE ARTIFACTS COMPLETE?" satisfies A-33; an interrogative of "READY TO PROCEED?" satisfies A-27 but fails A-33 -- it signals the pass/fail structure without naming the artifact subject. The artifact class name must appear in the heading line itself (e.g., "BRIDGE ARTIFACTS", "Q3 AND Q4", "BRIDGE CLOSURE ITEMS"), not in the gate block body or a sub-element. A-33 parallels A-26's extension of section headings from structural labels to axis-vocabulary-bearing headings: where A-26 required axis vocabulary in the FAIL-FIRST and FM Inventory heading subtitles, A-33 requires artifact class vocabulary in the gate heading interrogative. A-33 implies A-27.
+
+### A-34 -- Failure-context frame in FM Inventory heading subtitle
+
+**Pass condition**: The FM Inventory heading subtitle (from A-26) encodes not only the analytical axis vocabulary but also a failure-context frame -- a phrase that identifies the analytical purpose of the section as the place where the axis subject fails, breaks, or exhibits structural weakness. A heading subtitle of "THE INERTIA THREAT'S STRUCTURAL WEAKNESSES" satisfies A-34: "STRUCTURAL WEAKNESSES" frames the inventory as a catalogue of the axis subject's failure points. A heading subtitle of "WHERE THE STATUS QUO BREAKS" satisfies A-34: "WHERE X BREAKS" is an explicit failure-context construction that identifies the section's analytical purpose. A heading subtitle that contains only the axis vocabulary without a failure-context frame (e.g., "THE STATUS QUO", "THE INERTIA THREAT") satisfies A-26 but fails A-34. The failure-context frame must appear in the FM Inventory heading line itself, not in a sub-heading or prose block below the heading. A-34 applies specifically to the FM Inventory heading; the FAIL-FIRST heading satisfies A-26 with axis vocabulary alone and is not required to carry a failure-context frame. A-34 implies A-26; A-26 does not imply A-34.
+
+### A-35 -- Blockquote structural delimiter on per-criterion command prompts
+
+**Pass condition**: Each per-criterion authoring command prompt (from A-30) uses a blockquote structural delimiter -- Markdown `>` prefix or equivalent visual structural isolation mechanism -- so that the command prompt forms a structurally distinct block in the template document rather than an inline label element. A prompt of `> [C-01 COMMAND]: NAME the specific unnamed competitor...` satisfies A-35; an inline prompt `[C-01 COMMAND]: NAME...` satisfies A-30 but fails A-35. The blockquote delimiter must appear on each prompt line itself -- not on a surrounding section heading or instructional caption. All five per-criterion command prompts (C-01 through C-05) must use the blockquote delimiter; partial blockquote coverage fails A-35. A-35 extends the register upgrade that A-30 established (question register -> command register) to a form upgrade (inline -> block-level), ensuring the directive is not only labeled as a command but also structurally isolated from surrounding template content in the document hierarchy. A-35 implies A-30; A-30 does not imply A-35.
+
+### A-36 -- Template position index in bridge completion gate heading name
+
+**Pass condition**: The bridge completion gate heading name -- the portion of the gate heading before any `--` separator -- carries a structural position index that self-locates the gate within the template's organizational hierarchy: a stage number (e.g., "STAGE 2"), a section number (e.g., "SECTION 3"), or equivalent sequence label. A gate named "STAGE 2 COMPLETION GATE -- ALL BRIDGE ARTIFACTS COMPLETE?" satisfies A-36: "STAGE 2" is the position index in the heading name. A gate named "BRIDGE COMPLETION GATE -- ALL BRIDGE ARTIFACTS COMPLETE?" fails A-36: the heading name carries no position index. The position index must appear in the gate heading name line itself -- not in the interrogative portion, the gate block body, or surrounding section numbering. A-36 is independent of A-33: A-33 requires the artifact class in the interrogative (after `--`), A-36 requires the position index in the heading name (before `--`); both can be satisfied or failed independently. A-36 implies A-27; A-27 does not imply A-36.
+
+### A-37 -- Organizational schema consistency of position index
+
+**Pass condition**: The structural position index in the bridge completion gate heading name (from A-36) uses the same organizational nomenclature used throughout the rest of the template's section/stage hierarchy. If the template labels its sections SECTION 1, SECTION 2, ..., SECTION N, the gate heading must carry a "SECTION N" index, not a "STAGE N" index. If the template labels its sections STAGE 1, STAGE 2, ..., STAGE N, the gate heading must carry a "STAGE N" index. Mixed nomenclature -- "SECTION 2 COMPLETION GATE" in a template organized as STAGE 1 through STAGE 7 -- satisfies A-36 (a position index is present) but fails A-37 (the nomenclature is inconsistent with the template's hierarchy). Schema consistency ensures that an author navigating the template by its established organizational vocabulary can locate the gate by its heading name without resolving a naming discrepancy. A-37 requires a whole-template property -- the index nomenclature must match across the heading and all other sections -- not only a local heading property. A-37 implies A-36; A-36 does not imply A-37.
+
+### A-38 -- Compound structural-failure noun form in failure-context frame
+
+**Pass condition**: The failure-context frame in the FM Inventory heading subtitle (from A-34) takes the form of a compound structural-failure noun -- a noun phrase that encodes both a failure TYPE and a failure LOCUS simultaneously. Examples of passing forms: "STRUCTURAL WEAKNESSES" (type = structural, locus = weakness points where failure accumulates); "FAILURE SURFACE" (type = failure, locus = surface = the place of exposure/contact where failure occurs); "FAILURE POINTS" (type = failure, locus = specific points at which the axis subject breaks down). A verb construction such as "WHERE THE STATUS QUO BREAKS" satisfies A-34 -- it is a valid failure-context frame -- but fails A-38: the frame uses a verb-clause construction rather than a compound noun, so it describes HOW the axis subject behaves under stress rather than naming WHAT is catalogued. The compound noun form carries higher semantic density at the heading level and is more directly taxonomic: an author reading the heading understands both the type and the locus of failure without parsing a conditional clause. The compound noun must appear in the FM Inventory heading line itself (not in the gate, checklist, or content rows). A-38 implies A-34; A-34 does not imply A-38.
+
+### A-39 -- Cardinality qualifier in bridge artifact class reference
+
+**Pass condition**: The gate heading interrogative (from A-33) carries an explicit cardinality quantifier alongside the bridge artifact class name, confirming the required COUNT of artifacts at the gate. The quantifier must be a universal or dual quantifier: ALL (universal -- every instance of the class must be complete), BOTH (dual -- exactly the two bridge artifacts Q3 and Q4 must be complete), EACH (distributive -- each individual artifact must be complete independently). An interrogative of "ALL BRIDGE ARTIFACTS COMPLETE?" satisfies A-39: "ALL" is the universal quantifier. An interrogative of "BOTH BRIDGE ARTIFACTS BUILT?" satisfies A-39: "BOTH" is the dual quantifier and correctly encodes the two-artifact bridge structure. An interrogative of "BRIDGE ARTIFACTS COMPLETE?" names the class (passing A-33) but carries no cardinality quantifier (failing A-39): the author cannot determine from the heading alone whether completion of one artifact suffices or both must be complete. The cardinality quantifier must appear in the gate heading interrogative itself -- not in the gate block body, the status table, a command directive, or a sub-element. A-39 implies A-33; A-33 does not imply A-39.
+
+### A-40 -- Engineering-register locus noun in compound failure noun
+
+**Pass condition**: The LOCUS component of the compound structural-failure noun (from A-38) is drawn from engineering fault taxonomy vocabulary -- a term that names the specific defect locus with the precision used in fault-tree analysis or FMEA methodology, identifying WHERE in the system the failure mechanism operates at the fracture-plane level of resolution. Engineering-register locus terms include: FAULTS (specific defect planes in a system), FAILURE PLANES (surfaces along which failure propagates), FRACTURE ZONES (regions of stress concentration leading to failure), DEFECT LOCI (specific sites of defect manifestation). General-register locus terms that pass A-38 but fail A-40 include: WEAKNESSES (general zones of vulnerability without fracture-plane specificity), VULNERABILITIES (susceptibility to harm, not a fault-taxonomy term), GAPS (absence of coverage, not a defect-locus term), PROBLEMS (general failure vocabulary). The distinction is whether the LOCUS term carries its meaning from engineering fault taxonomy -- naming a specific defect class or fracture mechanism -- or from general-purpose vulnerability vocabulary. "STRUCTURAL FAULTS" satisfies A-40 (FAULTS = specific defect planes, engineering register); "STRUCTURAL WEAKNESSES" satisfies A-38 but fails A-40 (WEAKNESSES = general vulnerability zone, not an engineering fault-taxonomy term). The LOCUS must appear in the FM Inventory heading compound noun; engineering-register locus terms elsewhere in the template do not satisfy A-40. A-40 implies A-38; A-38 does not imply A-40. Confirmed by R16 V-02 (STRUCTURAL FAULTS, explicit scoring note: "FAULTS is a technically more precise locus noun -- fault = specific defect plane vs. weakness = general vulnerable zone").
+
+### A-41 -- Architectural-scope TYPE component in compound failure noun
+
+**Pass condition**: The TYPE component of the compound structural-failure noun (from A-38) names an architectural or systemic scope -- a category that classifies the FM Inventory's contents at the architectural level of abstraction, signaling that the failures catalogued are structural to the axis subject's design or system organization, not implementation-level incidents. Architectural-scope TYPE terms: STRUCTURAL (affecting the architecture or systemic organization of the axis subject), SYSTEMIC (affecting the system as a whole, not localized to one component), ARCHITECTURAL (pertaining to the design architecture), FOUNDATIONAL (pertaining to the foundational design decisions). Event-descriptor TYPE terms that pass A-38 but fail A-41: FAILURE (names the occurrence of a failure event without specifying abstraction level), ERROR (implementation-level event), DEFECT (implementation-level defect), COLLAPSE (failure mechanism descriptor, not an architectural scope category). A TYPE of "STRUCTURAL" signals that the FM Inventory catalogues architecturally-scoped vulnerabilities -- the kind of weaknesses that require architectural changes to resolve. A TYPE of "FAILURE" signals that the FM Inventory catalogues failure events, which may be architectural or implementation-level. "STRUCTURAL WEAKNESSES" satisfies A-41 (STRUCTURAL = architectural scope). "STRUCTURAL FAULTS" satisfies A-41 (STRUCTURAL = architectural scope). "FAILURE SURFACE" fails A-41 (FAILURE = event descriptor). "FAILURE POINTS" fails A-41 (FAILURE = event descriptor). The TYPE component must appear in the FM Inventory heading compound noun. A-41 implies A-38; A-38 does not imply A-41. A-40 and A-41 are independent of each other: "STRUCTURAL WEAKNESSES" satisfies A-41 (architectural TYPE) but fails A-40 (general-register locus); "STRUCTURAL FAULTS" satisfies both A-41 (architectural TYPE) and A-40 (engineering-register locus). Confirmed by R16 V-01 and V-02 (both STRUCTURAL TYPE; scoring note: "TYPE=structural (architectural/systemic category)").
+
+### A-42 -- Domain-prefix vocabulary coherence across all three structural rule labels
+
+**Pass condition**: All three named structural rule labels in the template body -- the A-16 FM Inventory primary key rule, the A-19 DC citation rule, and the A-31 FAIL-FIRST rule -- share a common domain-prefix vocabulary drawn from the template's declared analytical axis vocabulary. The domain prefix must be a noun or noun phrase identifying the analytical subject or domain of the template (e.g., "INERTIA THREAT", "STATUS QUO", "COMPETITOR LOCK"), appearing at the start of all three rule labels before the structural descriptor (RULE, CONSTRAINT, LOCK). Examples of passing forms: `INERTIA THREAT RULE [A-16]`, `INERTIA THREAT CITATION RULE [A-19]`, `INERTIA THREAT FAIL-FIRST RULE [A-31]` -- all three share "INERTIA THREAT" as domain prefix. Examples of failing forms: `PRIMARY KEY RULE [A-16]`, `CITATION INTEGRITY RULE [A-19]`, `FAIL-FIRST CONSTRAINT [A-31]` -- each rule carries its criterion ID (satisfying A-23) but no shared domain prefix (failing A-42). The domain prefix must be shared across all three labels -- partial coherence (two of three sharing a prefix, one distinct) fails A-42. A-42 is the rule-label analogue of A-37 (position-index schema consistency): A-37 requires the gate's position index to use the same nomenclature as the rest of the section/stage hierarchy; A-42 requires the three integrity rule labels to share the same domain-prefix vocabulary drawn from the template's axis, so any author reading the template can identify the rules as a coherent structural set without external reference. A-42 implies A-23; A-23 does not imply A-42. Confirmed by R17 V-03 (INERTIA THREAT prefix consistent across all three rule labels).
+
+### A-43 -- Verification-action register verb in gate heading interrogative
+
+**Pass condition**: The gate heading interrogative (from A-39) uses a verb drawn from verification-action vocabulary -- a verb that signals active per-artifact epistemic review as the gate's required action rather than passive confirmation of completion state. Verification-action verbs: VERIFIED (each artifact has been actively reviewed and confirmed against a standard), CONFIRMED (active confirmation through review), VALIDATED (validation against a defined criterion), CHECKED (explicit checking action performed). Completion-state verbs that satisfy A-39 but fail A-43: COMPLETE (the artifact exists in a complete state), BUILT (the artifact has been constructed), DONE (the artifact is finished), READY (the artifact is available for use), PRESENT (the artifact exists). A gate heading of `ALL BRIDGE ARTIFACTS COMPLETE?` satisfies A-39 (ALL = cardinality) but fails A-43 (COMPLETE = state assertion). A gate heading of `EACH BRIDGE ARTIFACT VERIFIED?` satisfies both A-43 (VERIFIED = verification-action register, signaling that each artifact undergoes active review) and A-39 (EACH = distributive cardinality). The semantic distinction: a verification-action verb encodes that the gate requires the author to perform an epistemic action on each artifact (check it, review it, confirm it against a standard); a completion-state verb encodes only that the artifact must exist in a given state without specifying the required action at the gate. The R17 V-03 scoring note records that `EACH BRIDGE ARTIFACT VERIFIED?` "encodes per-element verification requirement" -- a semantic property beyond cardinality alone, attributable to the VERIFIED verb's action-register semantics alongside the EACH distributive quantifier. The verification-action verb must appear in the gate heading interrogative itself -- the verb of the question clause in the heading line. A-43 does not require EACH as the cardinality quantifier; any valid A-39 quantifier (ALL, BOTH, EACH) combined with a verification-action verb satisfies A-43 (e.g., `ALL BRIDGE ARTIFACTS VERIFIED?` satisfies A-43 with ALL cardinality). A-43 implies A-39; A-39 does not imply A-43. Confirmed by R17 V-03 (`EACH BRIDGE ARTIFACT VERIFIED?`, per-element verification requirement encoding).
+
+---
+
+## Implication Chain
+
+| Chain | Direction |
+|-------|-----------|
+| A-43 implies A-39 implies A-33 implies A-27 implies A-22 implies A-12 | closure chain (verification-action gate) |
+| A-42 implies A-23 implies A-19 implies A-16 implies A-14 implies A-08 | traceability-to-integrity bridge (domain-prefix coherence) |
+| A-41 implies A-38 implies A-34 implies A-26 implies A-10 and A-14 | coherence chain (architectural-scope TYPE) |
+| A-40 implies A-38 implies A-34 implies A-26 implies A-10 and A-14 | coherence chain (engineering-register locus) |
+| A-39 implies A-33 implies A-27 implies A-22 implies A-12 | closure chain (cardinality-qualified artifact gate) |
+| A-38 implies A-34 implies A-26 implies A-10 and A-14 | coherence chain (compound failure noun) |
+| A-37 implies A-36 implies A-27 implies A-22 implies A-12 | closure chain (schema-consistent position index) |
+| A-36 implies A-27 implies A-22 implies A-12 | closure chain (position-indexed gate) |
+| A-35 implies A-30 implies A-29 implies A-17 implies A-11 | authoring-prompt chain (extended) |
+| A-34 implies A-26 implies A-10 and A-14 | coherence chain (failure-context frame) |
+| A-33 implies A-27 implies A-22 implies A-12 | closure chain (artifact-named heading) |
+| A-32 implies A-31 implies A-10 | fail-first traceability chain |
+| A-32 implies A-23 implies A-19 | traceability-to-integrity bridge |
+| A-30 implies A-29 implies A-17 implies A-11 | authoring-prompt chain |
+| A-28 implies A-18 implies A-15 | verification chain |
+| A-25 implies A-22 implies A-12 | closure chain (command directive) |
+| A-24 implies A-21 implies A-20 and A-13 | format chain |
+| A-23 implies A-19 implies A-16 implies A-14 implies A-08 | integrity chain |
+| A-26 implies A-10 and A-14 | coherence chain |
+| A-17 implies A-11 | completeness chain |

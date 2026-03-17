@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "prove-websearch",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-46",
+    "prompt": "Web evidence gathering with direct quotes, URLs, and strength-of-evidence rating per source."
+  }
+}

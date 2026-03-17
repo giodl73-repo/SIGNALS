@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "review-design",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-27",
+    "prompt": "Multi-expert design review through 6 disciplines and domain-selected experts."
+  }
+}

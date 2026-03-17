@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "mock-ns",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-66",
+    "prompt": "Mock artifact for a single namespace with category annotation."
+  }
+}

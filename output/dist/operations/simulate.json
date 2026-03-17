@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "simulate",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-2",
+    "prompt": "Simulate the technical behavior of a system. Combines flow + trace into a complete\nbehavioral simulation covering both domain process and platform mechanics.\n\nCovers:\n- flow-lifecycle    -> business document lifecycle with phase contracts and exception flows\n- flow-conversation -> multi-turn agent conversation with dead-end and loop detection\n- trace-state       -> state machine transitions with preconditions and invariants\n- trace-contract    -> expected vs actual output comparison with mismatch severity\n- trace-permissions -> RBAC walk-through with privilege escalation detection\n\nOutput: a simulation findings report with identified gaps, exception paths, and\nstate machine anomalies. Each finding includes system boundary and severity.\n\nUse when you have a spec and want to know what breaks before writing code. The\nsimulate output becomes the baseline for test scenario design.\n"
+  }
+}

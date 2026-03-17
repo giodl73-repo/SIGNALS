@@ -2,20 +2,8 @@
   "version": 1,
   "skill": "quest-variate",
   "root": {
-    "type": "sequence",
-    "handle": "op-59",
-    "steps": [
-      {
-        "type": "read-file",
-        "handle": "op-57",
-        "path": "*"
-      },
-      {
-        "type": "write-file",
-        "handle": "op-58",
-        "path": "*",
-        "content": ""
-      }
-    ]
+    "type": "llm-call",
+    "handle": "op-12",
+    "prompt": "Generate N prompt variations of a skill body for comparison. Given a skill description and variation axes (role sequence, output format, lifecycle emphasis, stock role selection, phrasing), produce N distinct prompt formulations of the same skill. Each variation is a complete, runnable skill body -- not a diff. Variation axes are independent; combinations are intentional. Default N=5.\n"
   }
 }

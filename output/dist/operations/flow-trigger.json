@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "flow-trigger",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-33",
+    "prompt": "Automation trigger simulation showing fire order and side effects per field/event change."
+  }
+}

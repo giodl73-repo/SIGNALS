@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-scout-positioning",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-24",
+    "prompt": "Per-audience positioning statements with competitive differentiation."
+  }
+}

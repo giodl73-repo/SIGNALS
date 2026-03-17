@@ -1,0 +1,156 @@
+Reading the v5 rubric and the R6 scorecard to extract the three new patterns before writing.
+
+The R6 patterns to promote:
+1. `domain-contextual-disqualifier-without-inertia-passes-c19` — C-19 satisfied by domain-vocabulary disqualifiers, no inertia narrative required
+2. `conversational-register-orthogonal-to-template-path` — C-14/C-16/C-18 pass regardless of colloquial vs formal label vocabulary
+3. `minimum-viable-template-bare-field-labels` — template-path ceiling reached with bare field labels only, no inline instruction prose
+
+C-19 also gets a pattern update to reflect the extended source orthogonality.
+
+---
+
+```markdown
+# Rubric: trace-deployment (v6)
+
+**Skill**: `trace:deployment`
+**Version**: 6 (updated from R6 scorecard — 3 excellence patterns promoted to C-20/C-21/C-22; C-19 pattern reference extended)
+**Date**: 2026-03-14
+**Criteria**: 22 across 4 tiers | **Total**: 160 pts
+**Golden**: All of C-01–C-05 pass AND composite >= 80.
+
+---
+
+## What This Rubric Evaluates
+
+A `trace:deployment` output must do more than narrate a deployment sequence. It must enumerate
+pre-deploy checks with failure conditions, order steps explicitly, specify post-deploy validation,
+define a concrete rollback path, and identify at least one gap per phase. The hard discriminator
+(C-05) forces gap analysis across all four phases — not just a happy-path trace.
+
+---
+
+## Essential Criteria (60 pts — all must pass)
+
+Failure on any single essential criterion sets the composite to 0 regardless of other scores.
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-01 | **Pre-deploy checks enumerated** | coverage | Output lists at least 3 concrete pre-deploy checks. Each check names what is being verified and what failure looks like. "Verify the environment" does not pass. |
+| C-02 | **Deployment sequence is step-by-step** | correctness | Output presents an ordered, numbered sequence of deployment steps. Steps are discrete and ordered — not a summary paragraph. At least 4 steps present. |
+| C-03 | **Post-deploy validation specified** | coverage | Output identifies at least 2 specific post-deploy validation actions (e.g., smoke tests, health checks, data integrity probes). "Test that it works" does not pass. |
+| C-04 | **Rollback path is defined** | correctness | Output describes a concrete rollback path: what triggers rollback, what steps undo the deployment, and how to verify rollback succeeded. Absence of any rollback content fails. |
+| C-05 | **At least one gap identified per phase** | behavior | Output calls out at least one missing or weak element in pre-deploy, sequence, post-deploy, and rollback — four gaps minimum, one per phase. Pure happy-path trace with no gap analysis fails. |
+
+---
+
+## Recommended Criteria (30 pts — better with these)
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-06 | **Deployment order dependencies made explicit** | depth | Output calls out at least one ordering dependency — steps that must complete before others can start (e.g., "database migration must precede service restart"). Implicit ordering in a list does not satisfy this. |
+| C-07 | **Domain framing applied** | depth | Output uses Commerce or Operations deployment vocabulary appropriate to the solution context (e.g., catalog sync, order pipeline, inventory lock, tenant provisioning). Generic cloud-deploy framing without domain anchoring does not pass. |
+| C-08 | **Gaps are actionable, not just named** | correctness | For each identified gap, the output states what should be added or changed — not just that something is missing. "No rollback trigger defined — add a health-check threshold that fires the revert script" passes; "missing rollback trigger" alone does not. |
+
+---
+
+## Aspirational Criteria (70 pts — structural excellence)
+
+C-09 through C-18 carried over from v5 unchanged. C-19 updated to reflect R6 source-orthogonality
+confirmation. C-20, C-21, and C-22 promoted from R6 excellence patterns.
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-09 | **Gaps prioritized by deployment risk** | depth | Output ranks or labels identified gaps by severity or blast radius (e.g., critical / moderate / low, or "blocks rollback" vs "cosmetic"). Unranked gap lists do not satisfy this. |
+| C-10 | **Automation hooks identified** | behavior | Output identifies at least one place in the deployment lifecycle where automation could enforce a check that is currently manual or absent (e.g., CI gate, pre-deploy script, post-deploy canary assertion). |
+| C-11 | **Vocabulary list anchored in role block** | depth | Output (or the prompt producing it) includes a named list of domain terms in the role/persona block rather than relying on a generic domain label. A bare "Commerce/Operations expert" role does not pass; a role block that enumerates terms like "catalog sync, inventory lock, order pipeline drain, tenant provisioning" does. Per-phase vocabulary distribution is not a substitute — role-block placement is load-bearing. *(Pattern: vocabulary-list-in-role)* |
+| C-12 | **Status-quo baseline established before gap analysis** | behavior | Output grounds gap analysis in current practice — not an abstract ideal. A STATUS-QUO BASELINE section (or equivalent, e.g., named fields in the ROLE block such as "Current practice / Known failure mode") states what the team currently does before identifying what is missing. Gap analysis that compares against an unstated ideal does not pass. *(Pattern: status-quo-anchor)* |
+| C-13 | **Cross-phase gap summary table present** | correctness | Output includes a summary table (or equivalent structured block) that consolidates all identified gaps across phases with at least Rank, Severity, and Why columns. Per-phase gap lists without a cross-phase rollup do not satisfy this — the structural forcing of a summary table is what closes C-09 reliably. *(Pattern: cross-phase-gap-summary)* |
+| C-14 | **Front-loaded gap skeleton with comparative return instruction** | behavior | Output (or the prompt producing it) places the cross-phase gap summary table as an empty skeleton *before* Phase 1, includes an explicit do-not-pre-fill guard, and includes a return instruction that mandates cross-gap comparison — "compare this gap against the others" — not merely per-phase severity justification in isolation. A post-trace gap table satisfies C-13 but not C-14; upfront commitment plus comparative forcing is the additional requirement. *(Pattern: front-loaded-gap-skeleton)* |
+| C-15 | **Prose-instruction saturation closes structural criteria** | correctness | Output (or the prompt producing it) achieves C-12 and C-13 through explicit prose instructions alone — naming required output elements, stating comparison requirements, and disqualifying weak compliance by example — without structural template apparatus (named sections, template fields, or gate markers). Specificity of instruction is the floor: prose must name columns and mandate cross-gap comparison to qualify. Vague prose ("include a gap analysis") does not pass. *(Pattern: prose-instruction-saturation)* |
+| C-16 | **Gate-free essential coverage via template field scaffolding** | behavior | Output (or the prompt producing it) achieves all five essential criteria (C-01–C-05) and C-10 through template field count alone — without GATE enforcement text. The field count floors must be met (≥3 Check-NN fields, ≥4 Step-NN fields, ≥2 Validation-NN fields, Trigger + Rollback-NN + Verification fields, gap block per phase). Automation hook fields must be present to satisfy C-10. Prompts that include gate markers alongside fields do not fail C-16, but also do not pass — gate-free architecture is the distinguishing condition. *(Pattern: gate-markers-not-load-bearing)* |
+| C-17 | **C-15 achieved at minimum prose density** | correctness | C-15 passes AND the prose instructions satisfy all three C-15 structural requirements at single-paragraph-per-phase density or less — confirming that specificity, not verbosity, is the floor. A C-15-passing prompt that exceeds single-paragraph-per-phase density does not satisfy C-17. The three requirements (named output elements, cross-gap comparison mandate, disqualifying example) must be present at compressed density; any one requirement satisfied only through verbosity expansion fails. *(Pattern: c15-compression-confirms-specificity-floor)* |
+| C-18 | **C-14 and C-16 satisfied simultaneously** | behavior | Output (or the prompt producing it) passes both C-14 and C-16 in the same variation — demonstrating that the front-loaded skeleton commitment device and gate-free field scaffolding are orthogonal structural properties. The distinguishing condition: a front-loaded empty table with a do-not-pre-fill guard is not GATE enforcement text, so its presence does not disqualify C-16. Variations that satisfy C-14 but include explicit "GATE N: Do not proceed until..." blocks fail C-16 and therefore fail C-18. *(Pattern: skeleton-and-gate-free-orthogonal)* |
+| C-19 | **C-15 disqualifier satisfied by contextual failure-mode framing** | correctness | C-15 passes AND the disqualifying example is expressed as a contextual failure-mode statement — naming a specific weak response pattern in domain terms (e.g., "'someone notices it looks bad' does not pass", "'keep an eye on error rates' does not name a probe or threshold") rather than an abstract criterion label. The distinguishing condition: disqualifier source is not load-bearing for C-15 compliance; both inertia narrative framing and domain-contextual framing (without any incident reference) satisfy C-15's disqualifying-example requirement with equivalent force. Variations whose C-15 pass relies solely on abstract disqualifiers do not fail C-19, but also do not pass — contextual framing in domain vocabulary is the distinguishing condition. *(Patterns: inertia-framing-disqualifier-passes-c15; domain-contextual-disqualifier-without-inertia-passes-c19)* |
+| C-20 | **C-19 passes without inertia narrative source** | correctness | C-19 passes AND the contextual disqualifying example is grounded in domain deployment vocabulary alone — naming a specific wrong pattern in deployment terms without reference to any incident, postmortem, or "we learned" framing (e.g., "'keep an eye on error rates' does not name a probe or threshold" rather than "after the outage we learned that monitoring thresholds had to be explicit"). The distinguishing condition: inertia narrative framing is one generator of contextual disqualifiers; domain-contextual framing without incident narrative is a second independent generator. Variations that pass C-19 only through inertia-sourced disqualifiers do not fail C-20, but also do not pass — non-inertia domain vocabulary is the distinguishing condition. *(Pattern: domain-contextual-disqualifier-without-inertia-passes-c19)* |
+| C-21 | **Template path passes under colloquial register** | behavior | C-14, C-16, and C-18 all pass AND the prompt uses colloquial field labels and section headers rather than formal patterns (e.g., "check-1:", "step-1:", "Before you touch anything:" rather than "## PHASE 1 — PRE-DEPLOY", "Check-NN:"). The distinguishing condition: template-path criteria are register-agnostic; structural requirements (field count, skeleton position, do-not-pre-fill guard, vocabulary list in role block, return instruction) are satisfied regardless of label formality. Variations using formal labels do not fail C-21, but also do not pass — colloquial register is the distinguishing condition. *(Pattern: conversational-register-orthogonal-to-template-path)* |
+| C-22 | **Template-path ceiling reached with bare field labels** | behavior | The template path (C-14, C-16, C-18) passes AND the prompt contains no inline prose instructions within fields, no illustrative examples, and no explicit guards beyond the skeleton structure itself. Pass condition: field labels are bare identifiers only (e.g., "Check-NN:", "Step-NN:", "Gap-NN:"); no embedded instruction prose appears inside any field; the skeleton, return instruction, vocabulary list in role block, baseline fields, and hook fields constitute the complete apparatus. The distinguishing condition: instruction richness within fields is optional for the 130/145 ceiling — field count plus skeleton architecture is sufficient. Prompts with inline field prose do not fail C-22, but also do not pass — bare-label structure is the distinguishing condition. *(Pattern: minimum-viable-template-bare-field-labels)* |
+
+---
+
+## Scoring Summary
+
+| Tier | Criteria | Points Available |
+|------|----------|-----------------|
+| Essential | C-01 through C-05 (all must pass) | 60 |
+| Recommended | C-06 through C-08 | 30 |
+| Aspirational | C-09 through C-22 (5 pts each) | 70 |
+| **Total** | | **160** |
+
+---
+
+## Architectural Split (updated R6)
+
+Two structural paths reach equal ceilings at 130/160 until C-20/C-21/C-22 are jointly tested.
+R6 adds one criterion per path (C-20 on prose, C-21+C-22 on template):
+
+```
+Template path:  C-09 C-10 C-11 C-12 C-13 C-14      C-16           C-18 C-21 C-22 = 10 x 5 = 50 pts
+Prose path:     C-09 C-10 C-11 C-12 C-13      C-15      C-17 C-19 C-20           =  9 x 5 = 45 pts
+Template ceiling:  60 (essential) + 30 (recommended) + 50 (aspirational) = 140/160
+Prose ceiling:     60 (essential) + 30 (recommended) + 45 (aspirational) = 135/160
+
+R6 findings:
+  V-01: C-19 source = domain-contextual (no inertia) SATISFIES C-19 and C-20
+        -> Inertia framing is one source of contextual disqualifiers, not the only source
+  V-03: Colloquial register ("check-1:", "Before you touch anything:") SATISFIES C-14, C-16, C-18, C-21
+        -> Template-path criteria are register-agnostic
+  V-04: Minimum viable template (bare field labels only) reaches 130/145 ceiling
+        -> Field count + skeleton + vocabulary list + baseline + hook fields is sufficient
+        -> C-21 + C-22 simultaneous pass (colloquial bare labels) untested — open question for R7
+
+V-05 delta:     Prose path minus C-12 (baseline instruction removed) = 130 - 5 = 125
+                Parallel to R5 V-05 C-11 isolation on template path.
+
+Hard ceiling:   C-14 requires structural apparatus; C-15 requires absence of apparatus
+                -> C-18/C-21/C-22 (require C-14+C-16) and C-19/C-20 (require C-15) cannot coexist
+                -> 140/160 (template) / 135/160 (prose) are the per-path hard ceilings
+```
+
+---
+
+### Cross-Variation Criterion Summary (R6)
+
+| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|-----------|------|------|------|------|------|
+| C-01 | PASS | PASS | PASS | PASS | PASS |
+| C-02 | PASS | PASS | PASS | PASS | PASS |
+| C-03 | PASS | PASS | PASS | PASS | PASS |
+| C-04 | PASS | PASS | PASS | PASS | PASS |
+| C-05 | PASS | PASS | PASS | PASS | PASS |
+| C-06 | PASS | PASS | PASS | PASS | PASS |
+| C-07 | PASS | PASS | PASS | PASS | PASS |
+| C-08 | PASS | PASS | PASS | PASS | PASS |
+| C-09 | PASS | PASS | PASS | PASS | PASS |
+| C-10 | PASS | PASS | PASS | PASS | PASS |
+| C-11 | PASS | PASS | PASS | PASS | PASS |
+| **C-12** | PASS | PASS | PASS | PASS | **FAIL** |
+| C-13 | PASS | PASS | PASS | PASS | PASS |
+| **C-14** | FAIL | FAIL | **PASS** | **PASS** | FAIL |
+| **C-15** | **PASS** | **PASS** | FAIL | FAIL | **PASS** |
+| **C-16** | FAIL | FAIL | **PASS** | **PASS** | FAIL |
+| **C-17** | **PASS** | **PASS** | FAIL | FAIL | **PASS** |
+| **C-18** | FAIL | FAIL | **PASS** | **PASS** | FAIL |
+| **C-19** | **PASS** | **PASS** | FAIL | FAIL | **PASS** |
+| **C-20** | **PASS** | FAIL | FAIL | FAIL | FAIL |
+| **C-21** | FAIL | FAIL | **PASS** | FAIL | FAIL |
+| **C-22** | FAIL | FAIL | FAIL | **PASS** | FAIL |
+| **Score** | **130** | **125** | **130** | **130** | **125** |
+
+Prose path (C-15+C-17+C-19+C-20): V-01 only (V-02 misses C-20; V-05 misses C-12+C-20).
+Template path (C-14+C-16+C-18): V-03 adds C-21; V-04 adds C-22.
+V-01 vs V-02: 5-pt delta on C-20 — inertia framing is not required but absent-inertia is the
+  distinguishing condition for C-20 pass; V-02 uses inertia framing and therefore does not pass C-20.
+V-03 vs V-04: same score — C-21 (colloquial) and C-22 (bare labels) are mutually non-overlapping
+  in the tested variations; simultaneous pass (colloquial + bare) untested.
+```
+```

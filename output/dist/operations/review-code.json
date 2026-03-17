@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "review-code",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-28",
+    "prompt": "Multi-discipline code review with file-level annotations and pass/fail per discipline."
+  }
+}

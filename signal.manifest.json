@@ -1,42 +1,1014 @@
 {
+  "version": "0.1",
   "plugin": "signal",
-  "version": "0.1.0",
-  "description": "Signal gathering for feature design — 10 namespaces, 52 skills",
-  "homepage": "https://github.com/giodl_microsoft/sim",
-  "install": {
-    "target": ".claude/skills",
-    "pattern": "{namespace}-{skill}",
-    "config": ".craft/signal.yaml"
-  },
+  "skill_count": 67,
+  "user_facing": 63,
+  "golden_count": 62,
   "skills": [
-    { "id": "scout",    "namespace": "scout",   "path": "skills/scout/SKILL.md",    "version": "0.1.0", "audience": "pm",         "default_mode": "lightweight" },
-    { "id": "draft",    "namespace": "draft",   "path": "skills/draft/SKILL.md",    "version": "0.1.0", "audience": "pm",         "default_mode": "lightweight" },
-    { "id": "review",   "namespace": "review",  "path": "skills/review/SKILL.md",   "version": "0.1.0", "audience": "team",       "default_mode": "full" },
-    { "id": "flow",     "namespace": "flow",    "path": "skills/flow/SKILL.md",     "version": "0.1.0", "audience": "dev",        "default_mode": "full" },
-    { "id": "trace",    "namespace": "trace",   "path": "skills/trace/SKILL.md",    "version": "0.1.0", "audience": "dev",        "default_mode": "full" },
-    { "id": "prove",    "namespace": "prove",   "path": "skills/prove/SKILL.md",    "version": "0.1.0", "audience": "pm",         "default_mode": "full" },
-    { "id": "listen",   "namespace": "listen",  "path": "skills/listen/SKILL.md",   "version": "0.1.0", "audience": "team",       "default_mode": "lightweight" },
-    { "id": "program",  "namespace": "program", "path": "skills/program/SKILL.md",  "version": "0.1.0", "audience": "lead",       "default_mode": "full" },
-    { "id": "topic",    "namespace": "topic",   "path": "skills/topic/SKILL.md",    "version": "0.1.0", "audience": "anyone",     "default_mode": "lightweight" },
-    { "id": "achieve",  "namespace": "achieve", "path": "skills/achieve/SKILL.md",  "version": "0.1.0", "audience": "anyone",     "default_mode": "lightweight" },
-    { "id": "quest-rubric",  "namespace": "quest", "path": "skills/quest-rubric/SKILL.md",  "version": "0.1.0", "audience": "skill-builder", "default_mode": "full" },
-    { "id": "quest-variate", "namespace": "quest", "path": "skills/quest-variate/SKILL.md", "version": "0.1.0", "audience": "skill-builder", "default_mode": "full" },
-    { "id": "quest-score",   "namespace": "quest", "path": "skills/quest-score/SKILL.md",   "version": "0.1.0", "audience": "skill-builder", "default_mode": "full" },
-    { "id": "quest-golden",  "namespace": "quest", "path": "skills/quest-golden/SKILL.md",  "version": "0.1.0", "audience": "skill-builder", "default_mode": "full" }
-  ],
-  "upgrade": {
-    "strategy": "version-hash",
-    "check": "compare installed skill hash against manifest path hash",
-    "prompt": "show diff of what changed in skill before overwriting",
-    "preserve": [".craft/signal.yaml", ".craft/roles/signal/"]
-  },
-  "roles": {
-    "stock": "bundled with each skill — zero setup required",
-    "custom": ".craft/roles/signal/{role-name}/ROLE.md"
-  },
-  "artifacts": {
-    "pattern": "{topic}-{item}-{date}.md",
-    "root": "simulations/",
-    "topics": "simulations/TOPICS.md"
-  }
+    {
+      "id": "scout-competitors",
+      "namespace": "scout",
+      "stem": "competitors",
+      "names": {
+        "flat": "/scout-competitors",
+        "bare": "/competitors",
+        "signal": "/signal-competitors",
+        "grouped": "/scout"
+      },
+      "description": "Auto-detect domain from repo context. Do not prompt unless context absent. THE P",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "scout-feasibility",
+      "namespace": "scout",
+      "stem": "feasibility",
+      "names": {
+        "flat": "/scout-feasibility",
+        "bare": "/feasibility",
+        "signal": "/signal-feasibility",
+        "grouped": "/scout"
+      },
+      "description": "Assess whether a product idea is technically feasible given current constraints.",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "scout-naming",
+      "namespace": "scout",
+      "stem": "naming",
+      "names": {
+        "flat": "/scout-naming",
+        "bare": "/naming",
+        "signal": "/signal-naming",
+        "grouped": "/scout"
+      },
+      "description": "Generate and evaluate candidate names using multi-persona scoring. Supports --va",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "scout-compliance",
+      "namespace": "scout",
+      "stem": "compliance",
+      "names": {
+        "flat": "/scout-compliance",
+        "bare": "/compliance",
+        "signal": "/signal-compliance",
+        "grouped": "/scout"
+      },
+      "description": "Identify regulatory and policy constraints before design begins. Infer applicabl",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "scout-market",
+      "namespace": "scout",
+      "stem": "market",
+      "names": {
+        "flat": "/scout-market",
+        "bare": "/market",
+        "signal": "/signal-market",
+        "grouped": "/scout"
+      },
+      "description": "Size the addressable market and rank segments by fit. Use developer headcount fo",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "scout-stakeholders",
+      "namespace": "scout",
+      "stem": "stakeholders",
+      "names": {
+        "flat": "/scout-stakeholders",
+        "bare": "/stakeholders",
+        "signal": "/signal-stakeholders",
+        "grouped": "/scout"
+      },
+      "description": "Map the stakeholder landscape for a product decision. If CODEOWNERS is absent, e",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "scout-positioning",
+      "namespace": "scout",
+      "stem": "positioning",
+      "names": {
+        "flat": "/scout-positioning",
+        "bare": "/positioning",
+        "signal": "/signal-positioning",
+        "grouped": "/scout"
+      },
+      "description": "Define how a product should be positioned per audience. If a prior scout-competi",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "scout-requirements",
+      "namespace": "scout",
+      "stem": "requirements",
+      "names": {
+        "flat": "/scout-requirements",
+        "bare": "/requirements",
+        "signal": "/signal-requirements",
+        "grouped": "/scout"
+      },
+      "description": "Extract and prioritize requirements from a product concept. Search for prior sco",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "scout-risk",
+      "namespace": "scout",
+      "stem": "risk",
+      "names": {
+        "flat": "/scout-risk",
+        "bare": "/risk",
+        "signal": "/signal-risk",
+        "grouped": "/scout"
+      },
+      "description": "Risk register for a feature or decision. What could go wrong? Lists top risks ac",
+      "golden": true,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "scout-inertia",
+      "namespace": "scout",
+      "stem": "inertia",
+      "names": {
+        "flat": "/scout-inertia",
+        "bare": "/inertia",
+        "signal": "/signal-inertia",
+        "grouped": "/scout"
+      },
+      "description": "Deep analysis of the inertia competitor -- the option to do nothing. Why would t",
+      "golden": true,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "scout-size",
+      "namespace": "scout",
+      "stem": "size",
+      "names": {
+        "flat": "/scout-size",
+        "bare": "/size",
+        "signal": "/signal-size",
+        "grouped": "/scout"
+      },
+      "description": "Feature sizing and effort estimation. Estimates: surface area (how many integrat",
+      "golden": false,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "draft-spec",
+      "namespace": "draft",
+      "stem": "spec",
+      "names": {
+        "flat": "/draft-spec",
+        "bare": "/spec",
+        "signal": "/signal-spec",
+        "grouped": "/draft"
+      },
+      "description": "Author a specification from intent with guided section structure. Pulls context",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "draft-proposal",
+      "namespace": "draft",
+      "stem": "proposal",
+      "names": {
+        "flat": "/draft-proposal",
+        "bare": "/proposal",
+        "signal": "/signal-proposal",
+        "grouped": "/draft"
+      },
+      "description": "Author a proposal or ADR with options and trade-offs. Three options minimum (inc",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "draft-pitch",
+      "namespace": "draft",
+      "stem": "pitch",
+      "names": {
+        "flat": "/draft-pitch",
+        "bare": "/pitch",
+        "signal": "/signal-pitch",
+        "grouped": "/draft"
+      },
+      "description": "Author a pitch deck narrative in exec, developer, and maker versions. Pulls from",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "draft-brainstorm",
+      "namespace": "draft",
+      "stem": "brainstorm",
+      "names": {
+        "flat": "/draft-brainstorm",
+        "bare": "/brainstorm",
+        "signal": "/signal-brainstorm",
+        "grouped": "/draft"
+      },
+      "description": "Generate a pool of ideas for any topic -- more than you need, so you can rank an",
+      "golden": true,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "review-design",
+      "namespace": "review",
+      "stem": "design",
+      "names": {
+        "flat": "/review-design",
+        "bare": "/design",
+        "signal": "/signal-design",
+        "grouped": "/review"
+      },
+      "description": "Multi-expert review of a design artifact through 6 standard disciplines and auto",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "review-code",
+      "namespace": "review",
+      "stem": "code",
+      "names": {
+        "flat": "/review-code",
+        "bare": "/code",
+        "signal": "/signal-code",
+        "grouped": "/review"
+      },
+      "description": "Multi-discipline code review of source files, PRs, or diffs. If a spec is provid",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "review-users",
+      "namespace": "review",
+      "stem": "users",
+      "names": {
+        "flat": "/review-users",
+        "bare": "/users",
+        "signal": "/signal-users",
+        "grouped": "/review"
+      },
+      "description": "5 persona advocates walk through a design from their user perspective. Each pers",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "review-customers",
+      "namespace": "review",
+      "stem": "customers",
+      "names": {
+        "flat": "/review-customers",
+        "bare": "/customers",
+        "signal": "/signal-customers",
+        "grouped": "/review"
+      },
+      "description": "12 customer personas (C-01 through C-12) evaluate a feature for usefulness, clar",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "flow-lifecycle",
+      "namespace": "flow",
+      "stem": "lifecycle",
+      "names": {
+        "flat": "/flow-lifecycle",
+        "bare": "/lifecycle",
+        "signal": "/signal-lifecycle",
+        "grouped": "/flow"
+      },
+      "description": "Simulate the full business process lifecycle and flow behavior. Use --focus to z",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "flow-conversation",
+      "namespace": "flow",
+      "stem": "conversation",
+      "names": {
+        "flat": "/flow-conversation",
+        "bare": "/conversation",
+        "signal": "/signal-conversation",
+        "grouped": "/flow"
+      },
+      "description": "Simulate a multi-turn agent conversation through a topic graph. Walk the dialog",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "flow-stress",
+      "namespace": "flow",
+      "stem": "stress",
+      "names": {
+        "flat": "/flow-stress",
+        "bare": "/stress",
+        "signal": "/signal-stress",
+        "grouped": "/flow"
+      },
+      "description": "Simulate degraded conditions: offline, partial failure, eventual consistency. Fo",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "trace-request",
+      "namespace": "trace",
+      "stem": "request",
+      "names": {
+        "flat": "/trace-request",
+        "bare": "/request",
+        "signal": "/signal-request",
+        "grouped": "/trace"
+      },
+      "description": "Hand-compile a request through service boundaries, APIs, and middleware. Step by",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "trace-state",
+      "namespace": "trace",
+      "stem": "state",
+      "names": {
+        "flat": "/trace-state",
+        "bare": "/state",
+        "signal": "/signal-state",
+        "grouped": "/trace"
+      },
+      "description": "Hand-compile state transitions: starting state, operations applied, expected out",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "trace-contract",
+      "namespace": "trace",
+      "stem": "contract",
+      "names": {
+        "flat": "/trace-contract",
+        "bare": "/contract",
+        "signal": "/signal-contract",
+        "grouped": "/trace"
+      },
+      "description": "Verify implementation against spec contract. Use --type to target a specific ver",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "trace-permissions",
+      "namespace": "trace",
+      "stem": "permissions",
+      "names": {
+        "flat": "/trace-permissions",
+        "bare": "/permissions",
+        "signal": "/signal-permissions",
+        "grouped": "/trace"
+      },
+      "description": "Trace who can do what through RBAC, security roles, teams, and field-level secur",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "prove-hypothesis",
+      "namespace": "prove",
+      "stem": "hypothesis",
+      "names": {
+        "flat": "/prove-hypothesis",
+        "bare": "/hypothesis",
+        "signal": "/signal-hypothesis",
+        "grouped": "/prove"
+      },
+      "description": "State what you believe and what would change your mind. Entry point to a prove i",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "prove-websearch",
+      "namespace": "prove",
+      "stem": "websearch",
+      "names": {
+        "flat": "/prove-websearch",
+        "bare": "/websearch",
+        "signal": "/signal-websearch",
+        "grouped": "/prove"
+      },
+      "description": "Search the public web for evidence supporting or refuting the hypothesis. For ea",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "prove-intelligence",
+      "namespace": "prove",
+      "stem": "intelligence",
+      "names": {
+        "flat": "/prove-intelligence",
+        "bare": "/intelligence",
+        "signal": "/signal-intelligence",
+        "grouped": "/prove"
+      },
+      "description": "Search internal sources (repo files, design docs, scenarios, prior signals) for",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "prove-analysis",
+      "namespace": "prove",
+      "stem": "analysis",
+      "names": {
+        "flat": "/prove-analysis",
+        "bare": "/analysis",
+        "signal": "/signal-analysis",
+        "grouped": "/prove"
+      },
+      "description": "Analyze existing data, telemetry, schemas, or scenarios for patterns that bear o",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "prove-synthesize",
+      "namespace": "prove",
+      "stem": "synthesize",
+      "names": {
+        "flat": "/prove-synthesize",
+        "bare": "/synthesize",
+        "signal": "/signal-synthesize",
+        "grouped": "/prove"
+      },
+      "description": "Merge all investigation signals into an answer-first synthesis. Structure: answe",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "prove-topic",
+      "namespace": "prove",
+      "stem": "topic",
+      "names": {
+        "flat": "/prove-topic",
+        "bare": "/topic",
+        "signal": "/signal-topic",
+        "grouped": "/prove"
+      },
+      "description": "Run the full prove evidence campaign for a topic in one command. Orchestrates: p",
+      "golden": true,
+      "param_set": "full",
+      "internal": false
+    },
+    {
+      "id": "prove-orchestrate",
+      "namespace": "prove",
+      "stem": "orchestrate",
+      "names": {
+        "flat": "/prove-orchestrate",
+        "bare": "/orchestrate",
+        "signal": "/signal-orchestrate",
+        "grouped": "/prove"
+      },
+      "description": "Orchestrate a full prove evidence campaign. Runs: prove-hypothesis, prove-websea",
+      "golden": true,
+      "param_set": "full",
+      "internal": false
+    },
+    {
+      "id": "listen-feedback",
+      "namespace": "listen",
+      "stem": "feedback",
+      "names": {
+        "flat": "/listen-feedback",
+        "bare": "/feedback",
+        "signal": "/signal-feedback",
+        "grouped": "/listen"
+      },
+      "description": "Simulate customer reactions to a spec or design before it ships. All 12 customer",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "listen-support",
+      "namespace": "listen",
+      "stem": "support",
+      "names": {
+        "flat": "/listen-support",
+        "bare": "/support",
+        "signal": "/signal-support",
+        "grouped": "/listen"
+      },
+      "description": "Predict the top support tickets filed in the first 90 days. For each predicted t",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "listen-adoption",
+      "namespace": "listen",
+      "stem": "adoption",
+      "names": {
+        "flat": "/listen-adoption",
+        "bare": "/adoption",
+        "signal": "/signal-adoption",
+        "grouped": "/listen"
+      },
+      "description": "Simulate the adoption curve across team archetypes. Map personas to Rogers arche",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "mock-coverage",
+      "namespace": "mock",
+      "stem": "coverage",
+      "names": {
+        "flat": "/mock-coverage",
+        "bare": "/coverage",
+        "signal": "/signal-coverage",
+        "grouped": "/mock"
+      },
+      "description": "Generate synthetic signal artifacts for all 9 namespaces in a single pass. Each",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "mock-preview",
+      "namespace": "mock",
+      "stem": "preview",
+      "names": {
+        "flat": "/mock-preview",
+        "bare": "/preview",
+        "signal": "/signal-preview",
+        "grouped": "/mock"
+      },
+      "description": "Generate a mock artifact for a single namespace. Same annotation and category ru",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "mock-accept",
+      "namespace": "mock",
+      "stem": "accept",
+      "names": {
+        "flat": "/mock-accept",
+        "bare": "/accept",
+        "signal": "/signal-accept",
+        "grouped": "/mock"
+      },
+      "description": "Step 2 of mock-first workflow: review mock coverage picture and produce MOCK-ACC",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "program-commitment",
+      "namespace": "program",
+      "stem": "commitment",
+      "names": {
+        "flat": "/program-commitment",
+        "bare": "/commitment",
+        "signal": "/signal-commitment",
+        "grouped": "/program"
+      },
+      "description": "Sequence skills into a staged program plan with gates and topic tracking. Genera",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "signal",
+      "namespace": "topic",
+      "stem": "signal",
+      "names": {
+        "flat": "/signal",
+        "bare": "/signal",
+        "signal": "/signal-signal",
+        "grouped": "/topic"
+      },
+      "description": "Show the Signal command index. Lists all available skills organized by namespace",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "signal-setup",
+      "namespace": "topic",
+      "stem": "setup",
+      "names": {
+        "flat": "/signal-setup",
+        "bare": "/setup",
+        "signal": "/signal-setup",
+        "grouped": "/topic"
+      },
+      "description": "Configure Signal in your workspace after installation. Checks for existing CLAUD",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "signal-layout",
+      "namespace": "topic",
+      "stem": "layout",
+      "names": {
+        "flat": "/signal-layout",
+        "bare": "/layout",
+        "signal": "/signal-layout",
+        "grouped": "/topic"
+      },
+      "description": "Show or change your Signal navigation layout. Five variants: A) grouped (9 names",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "topic-status",
+      "namespace": "topic",
+      "stem": "status",
+      "names": {
+        "flat": "/topic-status",
+        "bare": "/status",
+        "signal": "/signal-status",
+        "grouped": "/topic"
+      },
+      "description": "Show the current state of a topic in the terminal. Signal coverage, open gaps, r",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "topic-roadmap",
+      "namespace": "topic",
+      "stem": "roadmap",
+      "names": {
+        "flat": "/topic-roadmap",
+        "bare": "/roadmap",
+        "signal": "/signal-roadmap",
+        "grouped": "/topic"
+      },
+      "description": "Revise the signal strategy as new information arrives. Read current strategy.md",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "topic-story",
+      "namespace": "topic",
+      "stem": "story",
+      "names": {
+        "flat": "/topic-story",
+        "bare": "/story",
+        "signal": "/signal-story",
+        "grouped": "/topic"
+      },
+      "description": "Synthesize all signals into a coherent narrative. NOT a summary of each signal -",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "topic-reflect",
+      "namespace": "topic",
+      "stem": "reflect",
+      "names": {
+        "flat": "/topic-reflect",
+        "bare": "/reflect",
+        "signal": "/signal-reflect",
+        "grouped": "/topic"
+      },
+      "description": "Synthesize unexpected findings after all essential signals are gathered. Asks on",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "topic-retro",
+      "namespace": "topic",
+      "stem": "retro",
+      "names": {
+        "flat": "/topic-retro",
+        "bare": "/retro",
+        "signal": "/signal-retro",
+        "grouped": "/topic"
+      },
+      "description": "Post-commitment retrospective on a topic's signals. Reviews: which signals were",
+      "golden": false,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "quest-rubric",
+      "namespace": "quest",
+      "stem": "rubric",
+      "names": {
+        "flat": "/quest-rubric",
+        "bare": "/rubric",
+        "signal": "/signal-rubric",
+        "grouped": "/quest"
+      },
+      "description": "Define what good output looks like for a skill. Given a skill spec and sample ou",
+      "golden": true,
+      "param_set": "lean",
+      "internal": true
+    },
+    {
+      "id": "quest-variate",
+      "namespace": "quest",
+      "stem": "variate",
+      "names": {
+        "flat": "/quest-variate",
+        "bare": "/variate",
+        "signal": "/signal-variate",
+        "grouped": "/quest"
+      },
+      "description": "Generate N distinct prompt variations of a skill body. Each variation is a compl",
+      "golden": true,
+      "param_set": "lean",
+      "internal": true
+    },
+    {
+      "id": "quest-score",
+      "namespace": "quest",
+      "stem": "score",
+      "names": {
+        "flat": "/quest-score",
+        "bare": "/score",
+        "signal": "/signal-score",
+        "grouped": "/quest"
+      },
+      "description": "Score N skill outputs against a rubric. Per-criterion PASS/PARTIAL/FAIL with evi",
+      "golden": true,
+      "param_set": "lean",
+      "internal": true
+    },
+    {
+      "id": "quest-golden",
+      "namespace": "quest",
+      "stem": "golden",
+      "names": {
+        "flat": "/quest-golden",
+        "bare": "/golden",
+        "signal": "/signal-golden",
+        "grouped": "/quest"
+      },
+      "description": "Find the golden prompt through systematic variation and scoring. Full loop: load",
+      "golden": false,
+      "param_set": "lean",
+      "internal": true
+    },
+    {
+      "id": "corps-scan",
+      "namespace": "corps",
+      "stem": "scan",
+      "names": {
+        "flat": "/corps-scan",
+        "bare": "/scan",
+        "signal": "/signal-scan",
+        "grouped": "/corps"
+      },
+      "description": "Walk a repo and produce a draft org.yaml -- the org configuration contract. Pivo",
+      "golden": true,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "corps-build",
+      "namespace": "corps",
+      "stem": "build",
+      "names": {
+        "flat": "/corps-build",
+        "bare": "/build",
+        "signal": "/signal-build",
+        "grouped": "/corps"
+      },
+      "description": "Read a confirmed org.yaml and generate the full org. Outputs: (1) org-chart.md w",
+      "golden": true,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "corps-product-review",
+      "namespace": "corps",
+      "stem": "product-review",
+      "names": {
+        "flat": "/corps-product-review",
+        "bare": "/product-review",
+        "signal": "/signal-product-review",
+        "grouped": "/corps"
+      },
+      "description": "Run Review of Business (ROB) stages. Stages: leadership (exec briefing), teams (",
+      "golden": true,
+      "param_set": "full",
+      "internal": false
+    },
+    {
+      "id": "corps-pull-request",
+      "namespace": "corps",
+      "stem": "pull-request",
+      "names": {
+        "flat": "/corps-pull-request",
+        "bare": "/pull-request",
+        "signal": "/signal-pull-request",
+        "grouped": "/corps"
+      },
+      "description": "Run a PR through the full org. Selects reviewers based on files changed -- compi",
+      "golden": true,
+      "param_set": "full",
+      "internal": false
+    },
+    {
+      "id": "crew-roles",
+      "namespace": "crew",
+      "stem": "roles",
+      "names": {
+        "flat": "/crew-roles",
+        "bare": "/roles",
+        "signal": "/signal-roles",
+        "grouped": "/crew"
+      },
+      "description": "Generate a typed role registry for a domain. Analyzes product/codebase to determ",
+      "golden": true,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "corps-chart",
+      "namespace": "corps",
+      "stem": "chart",
+      "names": {
+        "flat": "/corps-chart",
+        "bare": "/chart",
+        "signal": "/signal-chart",
+        "grouped": "/corps"
+      },
+      "description": "Generate org structure for a product or domain: areas, divisions, committees, op",
+      "golden": true,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "crew-check",
+      "namespace": "crew",
+      "stem": "check",
+      "names": {
+        "flat": "/crew-check",
+        "bare": "/check",
+        "signal": "/signal-check",
+        "grouped": "/crew"
+      },
+      "description": "Run any artifact through the full org. Reads .craft/roles/ and selects relevant",
+      "golden": true,
+      "param_set": "full",
+      "internal": false
+    },
+    {
+      "id": "corps-committee",
+      "namespace": "corps",
+      "stem": "committee",
+      "names": {
+        "flat": "/corps-committee",
+        "bare": "/committee",
+        "signal": "/signal-committee",
+        "grouped": "/corps"
+      },
+      "description": "Simulate a committee meeting before the real one. Types: ROB (product review, se",
+      "golden": true,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "topic-achievements",
+      "namespace": "topic",
+      "stem": "achievements",
+      "names": {
+        "flat": "/topic-achievements",
+        "bare": "/achievements",
+        "signal": "/signal-achievements",
+        "grouped": "/topic"
+      },
+      "description": "Scan all signal artifacts for a topic and compute earned achievements. Shows: ea",
+      "golden": false,
+      "param_set": "lean",
+      "internal": false
+    },
+    {
+      "id": "campaign-decide",
+      "namespace": "campaign",
+      "stem": "decide",
+      "names": {
+        "flat": "/campaign-decide",
+        "bare": "/decide",
+        "signal": "/signal-decide",
+        "grouped": "/campaign"
+      },
+      "description": "Run the full pre-commitment decision campaign. Orchestrates: scout-competitors (",
+      "golden": true,
+      "param_set": "full",
+      "internal": false
+    },
+    {
+      "id": "campaign-behavior",
+      "namespace": "campaign",
+      "stem": "behavior",
+      "names": {
+        "flat": "/campaign-behavior",
+        "bare": "/behavior",
+        "signal": "/signal-behavior",
+        "grouped": "/campaign"
+      },
+      "description": "Run the full technical simulation campaign. Orchestrates: flow-lifecycle, flow-c",
+      "golden": false,
+      "param_set": "full",
+      "internal": false
+    },
+    {
+      "id": "campaign-validate",
+      "namespace": "campaign",
+      "stem": "validate",
+      "names": {
+        "flat": "/campaign-validate",
+        "bare": "/validate",
+        "signal": "/signal-validate",
+        "grouped": "/campaign"
+      },
+      "description": "Run the full design validation campaign. Orchestrates: review-design, review-use",
+      "golden": true,
+      "param_set": "full",
+      "internal": false
+    },
+    {
+      "id": "campaign-blueprint",
+      "namespace": "campaign",
+      "stem": "blueprint",
+      "names": {
+        "flat": "/campaign-blueprint",
+        "bare": "/blueprint",
+        "signal": "/signal-blueprint",
+        "grouped": "/campaign"
+      },
+      "description": "Run the full specification campaign. Orchestrates: draft-spec, draft-proposal, d",
+      "golden": true,
+      "param_set": "standard",
+      "internal": false
+    },
+    {
+      "id": "campaign-evidence",
+      "namespace": "campaign",
+      "stem": "evidence",
+      "names": {
+        "flat": "/campaign-evidence",
+        "bare": "/evidence",
+        "signal": "/signal-evidence",
+        "grouped": "/campaign"
+      },
+      "description": "Run the full evidence campaign. Orchestrates all prove skills in sequence: prove",
+      "golden": true,
+      "param_set": "full",
+      "internal": false
+    },
+    {
+      "id": "campaign-brief",
+      "namespace": "campaign",
+      "stem": "brief",
+      "names": {
+        "flat": "/campaign-brief",
+        "bare": "/brief",
+        "signal": "/signal-brief",
+        "grouped": "/campaign"
+      },
+      "description": "Run the full topic narrative campaign. Orchestrates: topic-new (register), topic",
+      "golden": true,
+      "param_set": "lean",
+      "internal": false
+    }
+  ]
 }

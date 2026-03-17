@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "specify",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-4",
+    "prompt": "Generate the complete specification suite for a topic. Covers the full draft namespace.\n\nCovers:\n- draft-spec      -> technical specification with guided section structure and self-review\n- draft-proposal  -> proposal or ADR with three-option minimum and recommendation rationale\n- draft-pitch     -> pitch deck narrative in exec, developer, and maker versions\n\nOutput: a spec package -- the technical spec as the source of truth, the proposal as\nthe decision record, and the pitch as the communication layer. All three are grounded\nin the same topic signals.\n\nUse when you have enough scout and prove signals to begin writing. The spec package\nis the complete written artifact set for a feature before engineering begins.\n"
+  }
+}

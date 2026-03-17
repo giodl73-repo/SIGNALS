@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "draft-pitch",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-25",
+    "prompt": "Pitch deck narrative in exec, developer, and maker versions."
+  }
+}

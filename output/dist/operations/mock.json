@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "mock",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-11",
+    "prompt": "### Step 1: Prepare\n\nGather any required inputs for the mock operation.\n\n### Step 2: Execute\n\nMock namespace -- 3 skills for synthetic signal generation.\n\n/mock-all     -> synthetic signal artifacts for all 9 namespaces with coverage picture\n/mock-ns      -> mock artifact for a single namespace with category annotation\n/mock-review  -> coverage review writing MOCK-ACCEPTED or REAL-REQUIRED per namespace\n\nRun any sub-skill directly, or describe your coverage need and the most relevant mock skill will run.\n\n\n### Step 3: Report\n\nConfirm the result to the user.\n"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-listen",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-7",
+    "prompt": "Team simulates post-ship feedback. Customer reactions, support ticket forecasts, and adoption curve simulation before the feature ships. Lightweight default.\n"
+  }
+}

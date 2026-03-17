@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "review-users",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-29",
+    "prompt": "Five persona advocates walk through design with usability scores and cross-persona synthesis."
+  }
+}

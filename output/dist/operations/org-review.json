@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "org-review",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-70",
+    "prompt": "Full org review running artifact through all relevant roles from .craft/roles/."
+  }
+}

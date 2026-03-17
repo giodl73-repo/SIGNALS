@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-review-code",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-31",
+    "prompt": "Multi-discipline code review with file-level annotations and pass/fail per discipline."
+  }
+}

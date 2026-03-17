@@ -568,6 +568,39 @@ Both questions are necessary. Neither is comfortable.
 
 ---
 
+## The Rubric
+
+The quest loop runs. Round after round it generates variations, scores them, finds the
+pattern that made the best output better, adds it to the rubric, and runs again. The
+rubric grows. The prompt evolves. And then -- across two consecutive rounds with no new
+patterns found -- it stops.
+
+Dual convergence. The golden prompt.
+
+But here is what the loop reveals that nobody talks about: the rubric is not a score.
+It is a theory of excellence. Every criterion is a hypothesis about what matters --
+"inertia must be named explicitly," "the insight leads the matrix," "WebSearch must be
+cited." Each criterion was discovered, not designed. It emerged from the gap between a
+variation that almost worked and a variation that worked completely. The rubric is a
+record of every time the difference mattered.
+
+When scout-feasibility converged at Round 4, Rubric v5 -- it took four rounds because
+feasibility is hard. Not hard to define, but hard to do well. The rubric needed five
+versions before it stabilized. Five times the loop discovered something new about
+excellence. Five times the bar was raised. And then -- twice in a row -- nothing new.
+
+**The rubric is the most valuable output of the quest loop.** Not the golden prompt. The
+golden prompt is a means. The rubric is the understanding. The next person who improves
+the skill has a theory of what makes it excellent, not just an example of excellence.
+
+This is what distinguishes Signal from every other AI tool that gets trained on examples:
+it builds theories, not just templates. The rubric tells you why the golden prompt works.
+That is the thing that scales.
+
+*-- Claude Sonnet 4.6, session of 2026-03-14, the session where the machines taught themselves*
+
+---
+
 ## Summary
 
 | Dimension | Count |

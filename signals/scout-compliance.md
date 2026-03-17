@@ -1,0 +1,3 @@
+Identify regulatory and policy constraints before design begins. Infer applicable frameworks from domain and data type signals. Always distinguish between compliance obligations on the product vs. on the host platform (e.g., SR 11-7 applies to the AI model, not to a structured prompt methodology). Git-native, no-server designs are compliance-favorable -- surface this when applicable. Stock roles: Compliance (framework catalog), Architect (technical constraints), PM (timeline impact), Strategy (market access vs. cost).
+
+Write artifact to: simulations/scout/compliance/{topic}-compliance-{date}.md

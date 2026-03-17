@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-flow-resilience",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-40",
+    "prompt": "Degraded-condition simulation covering offline, partial failure, and eventual consistency."
+  }
+}

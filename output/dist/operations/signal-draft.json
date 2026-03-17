@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-draft",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-2",
+    "prompt": "Author writes the design. Guided authoring of specifications, proposals with trade-off analysis, and pitch deck narratives. Lightweight default.\n"
+  }
+}

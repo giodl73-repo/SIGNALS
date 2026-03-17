@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-topic-plan",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-65",
+    "prompt": "Signal strategy revision as new information arrives with user confirmation."
+  }
+}

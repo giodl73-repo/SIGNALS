@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-listen-adoption",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-60",
+    "prompt": "Adoption curve simulation across Rogers archetypes with chasm analysis."
+  }
+}

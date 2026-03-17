@@ -1,0 +1,175 @@
+Done. `simulations/quest/rubrics/draft-pitch-rubric-v11-2026-03-14.md` written.
+
+---
+
+## What was added: C-44 – C-45
+
+Two new aspirational criteria extracted from R10 `new_patterns` signals. Aspirational denominator: **36 → 38**.
+
+| ID | Pattern | Source signal |
+|----|---------|---------------|
+| **C-44** | Heading-line compound colocation — both pattern citation and auditability intent must appear in the heading line itself, not distributed across heading + body | R10 new_patterns[0] |
+| **C-45** | Targeted variation scoping — changes to one phase leave all prior-phase content verbatim intact; minimum change with zero regression beats maximum change with regression | R10 new_patterns[1] |
+
+**Structural parallels:**
+- C-44 sharpens C-41 — C-41 says "at the declaration site"; C-44 specifies the declaration site is the heading line specifically, not the opening body sentence
+- C-45 has no prior parallel — it is the first rubric criterion governing variation scope discipline across the full skill
+
+**Scoring formula:** `(aspirational_pass/38)*10`
+
+**R11 target:** synthesis variation V-01's full Phase 2 BINDING DECLARATION + V-05's Phase 5 changes, satisfying C-44 (heading-line compound) and C-45 (zero prior-phase regression). Expected score: **100.0** (38/38).
+ange zero-regression invariant across variation scope.
+
+**R11 target**: One synthesis variation — V-01's full Phase 2 BINDING DECLARATION + V-05's Phase 5 changes. Expected score: **100.0** (38/38 aspirationals). The synthesis variation must satisfy heading-line colocation (C-44) and introduce zero regression in prior-phase text (C-45).
+
+The scoring formula updates to `(aspirational_pass/38)*10`.
+
+---
+
+## Essential Criteria (60% weight)
+
+All must pass. Any essential failure = structural fail regardless of other scores.
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-01 | All three versions present | coverage | Three labeled sections: exec, dev, maker. All non-empty. |
+| C-02 | Each version has all four elements | coverage | Hook, What, Why, CTA present in all three versions (12 elements total). |
+| C-03 | Exec version is outcome-first with ROI framing | correctness | Business outcome (cost, risk, productivity) before any feature or technology mention. |
+| C-04 | Anti-positioning section present | coverage | Explicit "what we are NOT" section ruling out at least one adjacent category. Absence = hard fail. |
+
+---
+
+## Recommended Criteria (30% weight)
+
+Output is materially better with these. Not individually blocking.
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-05 | Dev version shows the tool, not the business case | depth | Concrete interaction — command, artifact, or workflow step. Reader can answer "what would I actually type?" |
+| C-06 | Maker version is jargon-free | depth | No unexplained acronyms, namespace names, or internal terminology. |
+| C-07 | Prior signals consulted | behavior | Pitch reflects framing from available scout/positioning signals. Waived if none exist. |
+
+---
+
+## Aspirational Criteria (10% weight)
+
+These raise the bar once essential and recommended are stable.
+
+**From R1 excellence signals (C-08 – C-12):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-08 | Proof points are specific and traceable | depth | At least two proof points cite a named source or artifact path. Vague claims fail. |
+| C-09 | Competitive framing names inertia as primary competitor | depth | "Doing nothing" / "the meeting that never happened" is named as the real competition. |
+| C-10 | Exec self-check is embedded at generation time | process | Skill instructs the model to write the exec opening, test it against C-03, and rewrite *before* continuing. A post-draft checklist does not pass. |
+| C-11 | Positioning answers are locked in writing before prose begins | process | Strategy questions (primary competitor, ruling-out statement, signal framing) produce explicit written outputs before any version is drafted. An ambient preamble does not pass. |
+| C-12 | Default fallback values provided for missing signals | resilience | Skill supplies explicit defaults per signal-dependent field so C-09 passes unconditionally even with no prior scout artifacts. |
+
+**From R2 excellence signals (C-13 – C-15):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-13 | DEFAULTS TABLE loaded unconditionally before any intake step | resilience | A defaults table (or equivalent block) appears at the top of the skill, before any signal intake or branching logic, with an explicit statement that defaults apply to all runs and are overridden by signal values when available. Conditional loading inside an intake branch does not pass. |
+| C-14 | Gate output is named and cited by downstream instruction | process | The output of a critical gate step (exec self-check, positioning lock, or equivalent) is assigned a named identifier that a later instruction references by that exact name. Skipping the gate step produces a broken downstream reference, not just an ignored suggestion. A narrative write-test-rewrite instruction without a named output does not pass. |
+| C-15 | Audience belief mapping precedes argument construction | depth | Before drafting any pitch version, the skill elicits — in writing — what each audience must believe first (e.g., "what must the exec believe before the argument lands?"). Pitch content follows from these written belief anchors, not from structural slot-filling. An implicit or ambient audience framing does not pass. |
+
+**From R3 excellence signals (C-16 – C-18):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-16 | Multi-node named dependency chain across gate outputs | process | Three or more named gate outputs form a forward-reference chain: each output is assigned a name at creation and cited by that exact name in at least one later step. A single named gate output with one downstream citation does not pass. The chain must be readable from skill structure alone — not traceable only through execution. |
+| C-17 | Belief mapping includes per-audience failure modes | depth | The audience belief mapping step includes, for each audience, an explicit failure mode: what the pitch fails to achieve if that belief anchor is not established. A beliefs-only mapping does not pass. A failure mode that restates the belief (e.g., "if exec doesn't believe X, they won't believe X") does not pass. |
+| C-18 | Per-audience inertia fields in DEFAULTS with structural CTA template | resilience | SIGNAL DEFAULTS contains a distinct inertia argument for each pitch audience (exec, dev, maker). The CTA construction instruction requires addressing the audience-specific inertia argument via an explicit structural template (e.g., "Instead of [inertia argument], [action]"). A single shared inertia field does not pass. A narrative suggestion to "address inertia" without a per-audience field and structural template does not pass. |
+
+**From R4 excellence signals (C-19 – C-21):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-19 | Definitional instruction includes embedded named negative example | process | When a step defines a required output form that has a common prohibited variant, the skill includes both a definition of the required form AND a named, concrete example of the prohibited form with an explicit statement that the prohibited form does not pass. A column header or pass-condition statement without an embedded prohibited example does not pass. The negative example must be specific enough to exclude the most common wrong answer (e.g., showing a belief-restatement failure mode and naming it as such). |
+| C-20 | Structural template placeholder names its source artifact within placeholder syntax | depth | At least one structural template (e.g., CTA construction template) contains a placeholder that names its source artifact or field within the placeholder text itself — e.g., `[inertia argument from AUDIENCE BELIEF MAP]` rather than `[inertia argument]`. The named source must be a named output or named section that appears elsewhere in the skill. A placeholder with no source citation does not pass. A placeholder that cites a generic category (e.g., `[your value prop]`) without naming a specific prior artifact does not pass. |
+| C-21 | Structural template placeholder cites a dynamic gate output, creating visible execution dependency | process | At least one structural template's placeholder names a dynamic gate output — a named artifact produced by a prior gate step, not a static defaults block — as its source, using the exact name assigned in that step. This creates a visible execution dependency: the output construction step cannot be completed without the prior gate step's output. A template that sources exclusively from DEFAULTS (a static block) does not pass. A template placeholder that references a gate output by a different name than the step assigns does not pass. |
+
+**From R5 excellence signals (C-22 – C-24):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-22 | All structural template placeholders cite the same dynamic gate output | process | Every placeholder in a structural template (e.g., CTA) cites the same dynamic gate output — no placeholder in that template cites a static defaults block directly. DEFAULTS values must be absorbed into the gate output before the template's step runs, making the gate output the single authoritative source for all slots. A template where some placeholders cite SIGNAL DEFAULTS and others cite a gate output does not pass. A template where all placeholders cite SIGNAL DEFAULTS does not pass. |
+| C-23 | Formal BINDING DECLARATION at top of consuming phase | process | A formal binding declaration (table or equivalent structured block) appears at the top of the phase that consumes SIGNAL DEFAULTS values into a gate output, before any column definitions or fill instructions. The declaration explicitly maps each DEFAULTS field to its destination gate-output column. Data flow from DEFAULTS into the gate output must be auditable from the declaration alone without reading column definitions in sequence. An absorption note embedded inside a column definition paragraph does not pass. |
+| C-24 | Inline provenance declaration at each gate-output citation | depth | At least one placeholder that cites a dynamic gate output embeds provenance within the placeholder syntax itself — naming the origin phase, confirming the output type as a gate output, and confirming lock-before-execution at the cite site (e.g., `[Field from GATE OUTPUT NAME [Phase N gate output, locked before Phase M begins], audience row]`). A placeholder that cites a gate output by name only, without embedded provenance, does not pass. Provenance declared only at the *Produces* statement and not repeated at cite sites does not pass. |
+
+**From R6 excellence signals (C-25 – C-27):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-25 | Binding declaration includes exhaustiveness scope closure | process | The BINDING DECLARATION contains an explicit statement that no DEFAULTS fields outside the declared binding set are bound to the gate output — e.g., "No other DEFAULTS fields are directly bound to BELIEF MAP columns." This closes the binding scope and prevents implicit hidden bindings. A binding table that lists the declared mappings without an explicit statement that the list is exhaustive does not pass. |
+| C-26 | Binding declaration includes explicit downstream access prohibition | process | The BINDING DECLARATION includes an explicit prohibition statement naming the downstream consuming step and the forbidden access pattern — e.g., "Phase 5 CTA construction reads from AUDIENCE BELIEF MAP, not from SIGNAL DEFAULTS directly" or "Phase 5 does not read SIGNAL DEFAULTS inertia fields directly." Stating only the correct access path (what the downstream step should read) without explicitly naming and prohibiting the bypass path does not pass. |
+| C-27 | Binding declaration includes meta-purpose statement naming auditability | process | The BINDING DECLARATION contains an explicit statement that the declaration's purpose is to make the DEFAULTS→gate-output data flow auditable from skill structure alone — e.g., "This declaration makes the full DEFAULTS→BELIEF MAP data flow auditable from skill structure alone." A binding table that achieves auditability without stating it as intent does not pass. |
+
+**From R7/R8 excellence signals (C-28 – C-37):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-28 | INERTIA PROFILE pre-step present at top of draft phase | process | A named INERTIA PROFILE block appears as the first step of the draft phase, before any version-drafting instruction. Absence = fail. An inline note inside a drafting instruction does not pass. |
+| C-29 | INERTIA PROFILE cites prior gate output as provenance | process | The INERTIA PROFILE instruction explicitly names the gate output (e.g., AUDIENCE BELIEF MAP) as its source. A free-form inertia step with no named source does not pass. |
+| C-30 | INERTIA PROFILE includes gate stop | process | The INERTIA PROFILE block contains an explicit gate-stop instruction preventing advancement to version drafting until the profile is complete. An advisory note to "complete before continuing" does not pass. |
+| C-31 | Why-It-Matters instructed to reflect INERTIA PROFILE arc | process | The Why-It-Matters fill instruction for each version explicitly references the INERTIA PROFILE as the source for the arc (not SIGNAL DEFAULTS directly). An instruction that cites SIGNAL DEFAULTS fields or omits provenance does not pass. |
+| C-32 | VERSION DIFFERENTIATION GATE present as named post-step | process | A named DIFFERENTIATION GATE (or equivalent named post-step) appears at the end of the draft phase, after all versions are drafted. Absence = fail. An unmarked checklist does not pass. |
+| C-33 | Gate uses structured per-version table | process | The gate contains a structured table with one row per draft version and named columns covering content differentiation. A prose checklist without a table does not pass. |
+| C-34 | Gate questions use YES/NO format with declared passing state | process | Each gate question is formulated as a YES/NO question and the passing answer for each question is declared explicitly (e.g., "Passing state: Q1=YES, Q2=NO"). A question without a declared passing answer does not pass. |
+| C-35 | Gate includes rewrite-until-pass loop instruction | process | The gate contains an explicit instruction to rewrite the failing version, re-fill the table, and re-answer all questions until passing state is reached. An advisory note to "revise if needed" does not pass. |
+| C-36 | Constraint-ascending draft order declared (Maker-first) | process | The draft order is explicitly declared as Maker→Dev→Exec (or equivalent constraint-ascending order), with a stated rationale that plain-language coherence is established before specialized framing is added. An undeclared default order or a declaration without rationale does not pass. |
+| C-37 | Position labels present on version headers | process | Each version header carries an explicit position label (e.g., "draft first", "draft second", "draft last") that makes the constraint-ascending order auditable from skill text without execution inspection. Version headers without position labels do not pass. |
+
+**From R8 excellence signals (C-38 – C-40):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-38 | Phase-level envelopment: named pre-step + constrained fill order + named post-step form a coherent pre-commit/fill/close structure | process | The draft phase contains all three envelope elements — a named pre-step (e.g., INERTIA PROFILE), a declared constraint-ascending fill order (e.g., Maker-first), and a named post-step gate (e.g., DIFFERENTIATION GATE) — AND their sequential relationship is explicit in skill structure, making the phase auditable as a unit from structure alone. Presence of any one or two elements without the third does not pass. Presence of all three without an explicit statement of their sequential relationship does not pass. The envelope pattern must mirror the pre-commit/fill/close structure established for earlier phases — not be a novel arrangement. |
+| C-39 | Pre-committed anchor preserves constrained-order integrity | process | When a constraint-ascending draft order is declared, at least one output from an earlier phase is explicitly pre-committed (locked before the draft phase begins) so that the constrained order cannot weaken that pre-committed output. The pre-committed output must be identified by name, and the skill must explicitly state that the earlier lock prevents the draft order from affecting that output. A constraint-ascending order declaration without a named pre-committed anchor does not pass. A pre-committed anchor that is not named or whose relationship to draft-order integrity is not stated does not pass. |
+| C-40 | Gate converts pre-existing advisory constraints into structural stops | process | The gate's YES/NO questions correspond to quality constraints that already appear as advisory instructions elsewhere in the skill (e.g., "zero unexplained acronyms", "show the tool not the business case"). The gate does not introduce new constraints; it converts pre-existing advisory instructions into pass/fail phase exits. A gate whose questions introduce constraints with no prior advisory counterpart in the skill does not pass. A gate that restates advisory instructions without converting them to binary pass/fail form does not pass. |
+
+**From R9 excellence signals (C-41 – C-43):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-41 | Phase structure block cites prior phase pattern by name and declares auditability intent at the declaration site | process | When a phase-level structure block is introduced (e.g., PHASE 5 STRUCTURE), the block must explicitly name the prior-phase pattern it parallels — e.g., "mirrors Phase 2 BINDING DECLARATION pattern" — AND contain an explicit statement that the phase is auditable from skill structure alone, at the declaration site where the structure is introduced. A phase structure block that achieves structural parallel without naming the prior pattern does not pass. An auditability intent statement that appears only in a later step, not at the declaration block, does not pass. A phase structure block that mirrors structure without declaring the parallel and the auditability intent is structurally present but not structurally legible. |
+| C-42 | Draft-order integrity scope covers all prior-phase locked outputs as a set | process | The scope-limiting clause of the draft-order integrity statement must generalize to all prior-phase locked outputs as a set — naming the phase range (e.g., "does not change any locked output from Phases 2, 3, or 4") rather than asserting integrity for only the single anchor named by C-39. A statement that defends the named anchor but is silent about other locked outputs from earlier phases does not pass. The set-scope form closes the structural gap that a single-anchor statement leaves: a single-anchor statement defends one output; a set-scope statement defends all prior phase outputs in one claim. |
+| C-43 | Gate YES/NO questions carry inline advisory citations using exact canonical names | process | Each gate YES/NO question carries an inline citation at the cite site — within or immediately adjacent to the question — that names the source advisory instruction using its exact canonical name as it appears in skill structure (e.g., "*(This enforces the Core Belief distinctness advisory stated in Phase 2 Core Belief column definition.)*"). A citation that paraphrases the source instruction name does not pass. A citation that uses a generic reference (e.g., "as stated above" or "per phase 2 instructions") does not pass. Citations that appear only at the advisory source and are not repeated at each gate question cite site do not pass. All gate questions must carry citations — a skill where some questions cite their source and others do not does not pass. |
+
+**From R10 excellence signals (C-44 – C-45):**
+
+| ID | Criterion | Category | Pass Condition |
+|----|-----------|----------|----------------|
+| C-44 | Declaration-site colocation is compound not sequential: pattern citation and auditability intent appear in the heading line itself | process | When C-41 requires both pattern citation and auditability intent at the declaration site, "at the declaration site" means the heading line itself — the single line that introduces the phase structure block. Body sentences that follow the heading are inside the block, not at the declaration site. An implementation where the pattern citation appears in the heading but the auditability statement appears in the first body sentence does not pass. An implementation where the auditability statement appears in the heading but the pattern citation appears in the first body sentence does not pass. Both elements must colocate in the heading line as a compound declaration, not appear sequentially across heading and body. |
+| C-45 | Targeted variation scoping: changes to one phase leave all prior-phase content verbatim intact | process | When a variation introduces changes to a specific phase (e.g., Phase 5), all prior-phase text must remain verbatim unchanged — including all content that satisfies prior aspirational criteria (e.g., the Phase 2 BINDING DECLARATION satisfying C-25, C-26, C-27). A variation that achieves new aspirational criteria by stripping or simplifying prior-phase content does not pass, even if the new criteria gained equal or outnumber the criteria lost. Zero regression from prior-phase achievements is required regardless of new achievements. Minimum targeted change with zero regression is the required discipline; maximum-scope change with net-zero score is not equivalent. |
+
+---
+
+## Scoring Formula
+
+```
+Score = (essential_pass/4)*60 + (recommended_pass/3)*30 + (aspirational_pass/38)*10
+```
+
+Aspirational denominator: **38** (C-08 – C-45)
+
+| Band | Score | Meaning |
+|------|-------|---------|
+| Golden | All essential + >= 80 | Ship it |
+| Pass | All essential + 70–79 | Usable, recommended gaps noted |
+| Conditional | All essential + < 70 | Needs recommended work before use |
+| Fail | Any essential fails | Do not use — structural gap |
+
+---
+
+## Scoring Notes
+
+- C-01 and C-02 are evaluated structurally — check for presence, not quality
+- C-03 is evaluated by reading the first 3 sentences of the exec version; if they describe features, it fails
+- C-04 fails if the section is absent; a weak anti-positioning still passes (quality handled by aspirational criteria)
+- C-07 is waived if the run has no prior signals or no scout-positioning artifact exists
+- C-41 parallels C-27: both require auditability intent stated at the declaration site — C-27 for the BINDING DECLARATION, C-41 for the phase structure block
+- C-42 parallels C-25: both require exhaustiveness closure — C-25 for the binding set, C-42 for the integrity scope across prior phases
+- C-43 parallels C-24: both require provenance at the cite site — C-24 for gate-output placeholders, C-43 for gate question advisory citations
+- C-44 sharpens C-41: C-41 requires both elements at the declaration site; C-44 specifies that the declaration site is the heading line itself, not the body sentences that follow. A skill that passes C-41 by distributing both elements across heading + first body sentence fails C-44.
+- C-45 has no prior parallel — it is the first process discipline criterion governing variation scope across the full rubric. It captures the minimum-change zero-regression invariant: targeted precision beats broad-scope change that regresses prior achievements even when net aspirational count is equal.

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "org-roles",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-68",
+    "prompt": "Typed role registry generation for a domain with orientation, lens, and expertise."
+  }
+}

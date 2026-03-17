@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scout-competitors",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-15",
+    "prompt": "Competitive landscape analysis leading with inertia as primary competitor."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-prove-interview",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-53",
+    "prompt": "Persona-driven stakeholder interview simulation grounded in documented role knowledge."
+  }
+}

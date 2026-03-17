@@ -2,30 +2,8 @@
   "version": 1,
   "skill": "review",
   "root": {
-    "type": "sequence",
-    "handle": "op-17",
-    "steps": [
-      {
-        "type": "read-file",
-        "handle": "op-13",
-        "path": "*"
-      },
-      {
-        "type": "write-file",
-        "handle": "op-14",
-        "path": "*",
-        "content": ""
-      },
-      {
-        "type": "glob",
-        "handle": "op-15",
-        "pattern": "*"
-      },
-      {
-        "type": "grep",
-        "handle": "op-16",
-        "pattern": ""
-      }
-    ]
+    "type": "llm-call",
+    "handle": "op-3",
+    "prompt": "Team validates the design. Expert and discipline review of specs and code. Persona walkthrough for usability. 12-customer-persona evaluation for adoption. Full default.\n"
   }
 }

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-trace-component",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-44",
+    "prompt": "User action tracing through UI component tree, state management, and re-render chain."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-prove-hypothesis",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-48",
+    "prompt": "Hypothesis framing with claim, falsification condition, confidence, and experiment list."
+  }
+}

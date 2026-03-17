@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-prove-intelligence",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-50",
+    "prompt": "Internal source evidence search with file-path citations and relevance assessment."
+  }
+}

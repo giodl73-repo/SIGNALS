@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "flow-throttle",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-36",
+    "prompt": "Rate-limit throughput simulation showing backpressure propagation and burst path gaps."
+  }
+}
