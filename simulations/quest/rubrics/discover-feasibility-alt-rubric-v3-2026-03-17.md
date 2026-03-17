@@ -1,0 +1,101 @@
+Written to `simulations/quest/rubrics/discover-feasibility-alt-rubric-v3-2026-03-17.md`.
+
+---
+
+**Three new criteria added (C-14, C-15, C-16):**
+
+| ID | Source | Upgrades | Pass condition |
+|----|--------|----------|----------------|
+| C-14 | V-04/V-05 R2 AMEND PROTOCOL block | C-10 | 4-step protocol (parse / identify-affected / re-weave-only / update-VERDICT) + explicit "Unaffected sections: [list]" declaration. C-10 PASS without this = C-14 FAIL. |
+| C-15 | V-03/V-05 R2 arithmetic economics | C-13 | Do-nothing cost expressed as `base + focus_adjustment (unit rate by type) = total`. Verifiable by inspection. Prose-based C-13 PASS does not satisfy C-15. |
+| C-16 | V-02/V-04 R2 tabular routing | C-11 | Pre-section orientation uses a table (Constraint / Section / Effect) before any heading. Prose routing satisfies C-11 but not C-16 — distinction is binary, no PARTIAL. |
+
+**Scoring formula:** aspirational denominator shifts from `/5` to `/8`. All-pass score remains 100.
+
+**Evaluation note pattern for each:** C-14/C-15/C-16 are upgrade criteria — score the base criterion (C-10/C-13/C-11) first, then check whether the stronger mechanism is present.
+structural rather than prose-dependent | Pre-section orientation step uses a table mapping each constraint to downstream section + stated effect, not prose bullets |
+
+**Scoring formula updated:** aspirational denominator changes from `/5` to `/8`. A variation that passes all 5 essential + all 3 recommended + all 8 aspirational now scores 100.
+
+---
+
+## Essential Criteria
+
+| ID | Criterion | Category | Weight | Pass Condition |
+|----|-----------|----------|--------|----------------|
+| C-01 | INFERENCE GATE has all three required fields | completeness | essential | Feature, Team, and Timeline are all present and non-empty in the INFERENCE GATE section before any analysis begins. Focus is optional; its absence does not fail C-01. |
+| C-02 | VERDICT has score + label consistent with range, prerequisites iff FEASIBLE WITH CAVEATS + RED | correctness | essential | VERDICT contains a numeric score (0-100) and a label (NOT FEASIBLE, FEASIBLE WITH CAVEATS, or FEASIBLE) both present. Label is consistent with score range: <50 = NOT FEASIBLE, 50-74 = FEASIBLE WITH CAVEATS, >=75 = FEASIBLE. Prerequisites listed iff label is FEASIBLE WITH CAVEATS and at least one RED component exists. |
+| C-03 | ARCHITECT table has traffic-light ratings with RED Blockers | correctness | essential | Every component row in the ARCHITECT table carries GREEN, YELLOW, or RED. Every RED-rated component has a corresponding RED Blockers entry with all three sub-fields: blocker statement, Lift condition, and Do-nothing cost. "No RED components." is acceptable iff no RED rows exist. |
+| C-04 | Inertia surfaces in all four required locations | coverage | essential | All four inertia surfaces present: (1) INERTIA: STATUS QUO section with Baseline sentence, (2) Do-nothing cost column in ARCHITECT table with a value on every row, (3) "Not building this means:" line in VERDICT, (4) "Inertia saved:" line on every amendment in AMENDMENTS. Any surface omitted fails this criterion. |
+| C-05 | When focus is active, focus content is woven into existing sections | behavior | essential | If a focus value is provided (compliance, stakeholders, requirements, naming, size, or other), the focus-specific content appears integrated within the relevant existing sections -- not appended as a new standalone section after AMENDMENTS. E.g., compliance focus adds regulatory constraints to ARCHITECT ratings, not a "## COMPLIANCE" block at the end. Fails if focus content is additive-only (appended block). Passes automatically (N/A) if no focus is active. |
+
+---
+
+## Recommended Criteria
+
+| ID | Criterion | Category | Weight | Pass Condition |
+|----|-----------|----------|--------|----------------|
+| C-06 | AMENDMENTS are traceable to RED or YELLOW components | depth | recommended | Every amendment names the specific component it addresses, states the color transition (e.g., "moves X from RED to YELLOW"), and includes a score-delta estimate ("raising score by approximately N pts"). Amendments not tied to a rated component, or missing the color transition, fail this criterion. |
+| C-07 | Focus integration visibly influences the base analysis | depth | recommended | When focus is active, the focus content demonstrably changes the base analysis -- not just accompanies it. E.g., a compliance focus produces different ARCHITECT ratings or VERDICT prerequisites than a no-focus run on the same topic. If the base sections are identical to what a no-focus run would produce, this criterion fails. Passes automatically (N/A) if no focus is active. |
+| C-08 | STRATEGY: BUILD-VS-BUY covers at least half of components | coverage | recommended | At least 50% of the components listed in the ARCHITECT table carry an explicit Build / Buy / Use existing recommendation in the STRATEGY section. A section with fewer than half covered fails. |
+
+---
+
+## Aspirational Criteria
+
+| ID | Criterion | Category | Weight | Pass Condition |
+|----|-----------|----------|--------|----------------|
+| C-09 | Focus signal propagates coherently across sections | depth | aspirational | A constraint or risk introduced by the focus dimension creates a traceable signal through at least two downstream sections. Example: a compliance constraint surfaced in ARCHITECT produces a matching prerequisite in VERDICT and an inertia-savings estimate in AMENDMENTS. Signal propagates rather than sitting isolated in one section. Passes automatically (N/A) if no focus is active. |
+| C-10 | AMEND path is responsive to focus shift and threshold changes | behavior | aspirational | When AMEND is invoked to shift focus (e.g., compliance -> stakeholders) or adjust confidence thresholds, the output re-weaves the relevant sections and updates VERDICT accordingly. Sections unaffected by the shift are not re-run unnecessarily. |
+| C-11 | Pre-section focus summary explicitly routes at least one constraint to named downstream sections | depth | aspirational | When focus is active, the output opens with a pre-section orientation step (before any section heading begins) that identifies at least one specific focus-introduced constraint and explicitly names the downstream sections where it will surface -- e.g., "SOC 2 certification gap: surfaces in ARCHITECT (RED rating), VERDICT (prerequisite), and AMENDMENTS (inertia savings)." A general statement that the focus lens is active without forward routing fails. This criterion is the propagation anchor for C-09: explicit routing is what separates C-09 PASS from PARTIAL. Passes N/A if no focus is active. |
+| C-12 | Focus content declaration names the specific additive failure mode to avoid | behavior | aspirational | When focus is active, the output includes at least one explicit rejection of the additive-section pattern -- either by naming a specific section heading that will not be appended (e.g., "no ## COMPLIANCE section will appear after AMENDMENTS") or by a redirect note where focus content was explicitly moved from a standalone framing into an existing section. Structural correctness alone (C-05 PASS) without failure-mode specificity does not satisfy this criterion. This pattern is more reliable than abstract "weave focus in" guidance because it anticipates and names the specific error. Passes N/A if no focus is active. |
+| C-13 | Competitive inertia framing makes the focus lens reshape the feasibility calculation | depth | aspirational | When focus is active and the INERTIA section frames the status quo as a named competing alternative (not generic "not building"), the focus lens demonstrably shifts the competitive calculation: the status quo's do-nothing cost or the feature's inertia-saved value changes because of the focus dimension -- not only because of technical complexity. Example: a compliance focus raises the status quo's do-nothing cost because the current workaround carries an ongoing compliance liability. If the competitive calculation is identical to a no-focus run (same costs, same competitor identity, same VERDICT score), this criterion fails. Passes N/A if no focus is active or if no competitive inertia framing is used. |
+| C-14 | AMEND PROTOCOL uses explicit 4-step structure with named unaffected-sections declaration | behavior | aspirational | When AMEND is invoked, the response follows a named 4-step protocol: (1) parse the focus shift or threshold change, (2) identify affected sections, (3) re-weave only affected sections, (4) update VERDICT. Additionally, the protocol must explicitly declare a named list of unaffected sections that will not be rewritten -- e.g., "Unaffected sections: INFERENCE GATE, ARCHITECT, STRATEGY. These will not be rewritten." A response that passes C-10 (correct selective re-weave output) without this explicit protocol structure and unaffected-sections declaration fails C-14. Passes N/A if AMEND is never invoked. |
+| C-15 | Focus economics expressed as verifiable arithmetic formula | depth | aspirational | When focus is active and competitive inertia framing is used, the do-nothing cost in INERTIA and AMENDMENTS is expressed as a decomposable arithmetic formula: base_cost (no-focus run value) + focus_adjustment (explicit unit rate by focus type, e.g., "compliance: +$X/yr per open gap; stakeholders: +N weeks per approval cycle") = focus-adjusted total. The formula must be verifiable by inspection -- not a prose statement that focus raises cost. A response that passes C-13 (economics shift exists) via prose but cannot be verified arithmetically fails C-15. Passes N/A if no focus is active or if no competitive inertia framing is used. |
+| C-16 | Propagation contract takes tabular form before INFERENCE GATE | depth | aspirational | When focus is active, the pre-section orientation step (the same step that satisfies C-11) expresses the constraint-to-section routing as a table with at least three columns: Constraint, Downstream Section(s), and Stated Effect. A prose-based routing (e.g., "SOC 2 gap surfaces in ARCHITECT and VERDICT") does not satisfy C-16 even if it satisfies C-11. The table must appear before any section heading. Passes N/A if no focus is active. |
+
+---
+
+## Scoring
+
+```
+Composite = (essential_pass    / 5 * 60)
+          + (recommended_pass  / 3 * 30)
+          + (aspirational_pass / 8 * 10)
+```
+
+PARTIAL scores count as 0.5 for the formula. PARTIAL on any essential criterion fails the Golden threshold regardless of composite score.
+
+**Golden threshold**: all 5 essential criteria pass (no PARTIALs) AND composite >= 80.
+
+| Band | Score | Meaning |
+|------|-------|---------|
+| Golden | all essential (no PARTIAL) + >= 80 | Ship-ready; alt version validates the unified hypothesis |
+| Passing | all essential (PARTIAL allowed) + 60-79 | Usable, recommended gaps noted |
+| Failing | any essential fails or PARTIAL | Not useful as a feasibility artifact |
+
+---
+
+## Evaluation Notes
+
+- **C-05 is the diagnostic criterion for the A/B test**: the entire point of the alt version is that focus is woven in, not appended. Score C-05 strictly -- a new section added after AMENDMENTS is a structural failure even if the content is correct.
+- **C-07 and C-05 are complementary**: C-05 checks structure (where focus content lives), C-07 checks effect (whether it changed the analysis). An output can pass C-05 (focus is woven in) but fail C-07 (the base sections are unchanged). The alt version wins the A/B test only if both pass.
+- **C-04 partial pattern**: the golden baseline revealed Do-nothing cost in the ARCHITECT table is the most frequently omitted inertia surface. Score each row independently -- one blank cell in a multi-row table is a PARTIAL.
+- **C-09 is a propagation test, not a presence test**: the focus-introduced constraint must appear in at least two downstream sections. Identify the constraint, trace it forward; if it does not recur, score FAIL.
+- **C-11 is the propagation anchor**: C-11 operationalizes what C-09 requires but cannot enforce alone. When C-11 passes (explicit routing in pre-section step), C-09 is far more likely to pass. When C-11 is absent, C-09 typically lands at PARTIAL (multi-section presence structurally implied but not explicitly chained). Score C-11 first; use its result to calibrate C-09 strictness.
+- **C-12 requires naming, not just correctness**: an output that cleanly weaves focus content with zero meta-commentary fails C-12, even if C-05 passes. The criterion tests failure-mode specificity -- did the output actively name the error it was avoiding? This is a higher bar than structural compliance.
+- **C-13 is a calculation test, not a framing test**: scoring C-13 requires identifying whether competitive framing exists (is there a named status quo competitor?) and then asking whether the focus lens changed the *economics* of that competition -- not just the section labels. Compare the do-nothing costs and inertia-saved values to what a no-focus run would produce. If they are the same, the focus lens decorated rather than reshaped.
+- **C-14 upgrades C-10**: score C-10 first. A C-10 PASS via selective re-weave without a named protocol or unaffected-sections declaration is C-14 FAIL. The 4-step AMEND PROTOCOL block with explicit "Unaffected sections: [list]" is the only pattern that produced C-10 PASS reliably across tested R2 variations; treat its absence as a structural gap even when the output is correct.
+- **C-15 upgrades C-13**: score C-13 first. C-13 PASS via prose (model states the focus raises do-nothing cost plausibly) does not satisfy C-15. C-15 requires arithmetic separability: a reader must be able to verify the delta by subtracting base from focus-adjusted total and matching the unit rate. V-01 R2 C-13 PASS is prose-based (C-15 FAIL); V-03/V-05 R2 C-13 PASS is arithmetic (C-15 PASS). When both C-13 and C-15 are present, V-05's selection preference stands: arithmetic is more reliable in production than prose.
+- **C-16 upgrades C-11**: score C-11 first. Prose routing satisfies C-11; only tabular form (table with Constraint / Section / Effect columns appearing before any section heading) satisfies C-16. V-05 R2 prose Step 0 = C-11 PASS, C-16 FAIL. V-02/V-04 R2 tabular routing = C-11 PASS, C-16 PASS. Score C-16 FAIL (not PARTIAL) when prose routing is used -- the distinction is binary.
+- **N/A handling**: C-05, C-07, C-09, C-11, C-12, C-13, C-14, C-15, and C-16 all pass as N/A when no focus is active. A degenerate or empty no-focus run fails C-01 regardless. C-13/C-15 additionally pass N/A if no competitive inertia framing is used. C-14 passes N/A if AMEND is never invoked. C-16 passes N/A if no focus is active.
+
+---
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| v1 | 2026-03-17 | Initial rubric: C-01 through C-10, 5 essential / 3 recommended / 2 aspirational |
+| v2 | 2026-03-17 | Added C-11 (pre-section routing), C-12 (named failure-mode prohibition), C-13 (competitive inertia calculation); aspirational denominator /2 -> /5; extended evaluation notes |
+| v3 | 2026-03-17 | Added C-14 (4-step AMEND PROTOCOL with unaffected-sections declaration), C-15 (focus economics arithmetic formula), C-16 (tabular propagation contract); aspirational denominator /5 -> /8; added C-14/C-15/C-16 upgrade notes |

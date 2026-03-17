@@ -1,6 +1,6 @@
 # Signal — Command Index
 
-**52 skills** across 14 namespaces. Type `/signal` in Claude Code to see this index interactively.
+**57 skills** across 14 namespaces. Type `/signal` in Claude Code to see this index interactively.
 
 Quick start: `/decide` (full decision campaign) or `/competitors` (inertia-first competitive analysis)
 
@@ -13,27 +13,32 @@ Quick start: `/decide` (full decision campaign) or `/competitors` (inertia-first
 | `/accept` | `/tools-accept` | tools | Step 2 of mock-first workflow: review mock coverage picture and p ✓ |
 | `/adoption` | `/validate-adoption` | validate | Simulate the adoption curve across team archetypes. Map personas ✓ |
 | `/analysis` | `/discover-analysis` | discover | Analyze existing data, telemetry, schemas, or scenarios for patte ✓ |
-| `/behavior` | `/govern-behavior` | govern | Run the full technical simulation campaign. Orchestrates: flow-li |
-| `/brainstorm` | `/specify-brainstorm` | specify | Generate a pool of ideas for any topic -- more than you need, so ✓ |
-| `/brief` | `/govern-brief` | govern | Run the full topic narrative campaign. Orchestrates: topic-new (r ✓ |
+| `/behavior` | `/narrate-behavior` | narrate | Run the full technical simulation campaign. Orchestrates: flow-li |
+| `/brainstorm` | `/discover-brainstorm` | discover | Generate a pool of ideas for any topic -- more than you need, so ✓ |
+| `/brief` | `/narrate-brief` | narrate | Run the full topic narrative campaign. Orchestrates: topic-new (r ✓ |
 | `/build` | `/govern-build` | govern | Read a confirmed org.yaml and generate the full org. Outputs: (1) ✓ |
+| `/causal` | `/discover-causal` | discover | Test whether the causal mechanism linking your feature to the cla |
 | `/chart` | `/govern-chart` | govern | Generate org structure for a product or domain: areas, divisions, ✓ |
 | `/check` | `/govern-check` | govern | Run any artifact through the full org. Reads .craft/roles/ and se ✓ |
+| `/check` | `/signal-check` | signal | Self-check your signals before committing. Analyzes all signal ar |
 | `/code` | `/validate-code` | validate | Multi-discipline code review of source files, PRs, or diffs. If a ✓ |
+| `/coherence` | `/discover-coherence` | discover | Check whether your discover signals agree with each other. Surfac |
 | `/commitment` | `/specify-commitment` | specify | Sequence skills into a staged program plan with gates and topic t ✓ |
 | `/committee` | `/govern-committee` | govern | Simulate a committee meeting before the real one. Types: ROB (pro ✓ |
+| `/compare` | `/discover-compare` | discover | Structured A vs B comparison for two approaches, features, or opt |
 | `/competitors` | `/discover-competitors` | discover | Competitive landscape analysis with inertia-first framing. Use -- ✓ |
 | `/contract` | `/simulate-contract` | simulate | Verify implementation against spec contract. Use --type to target ✓ |
 | `/conversation` | `/simulate-conversation` | simulate | Simulate a multi-turn agent conversation through a topic graph. W ✓ |
 | `/coverage` | `/tools-coverage` | tools | Generate synthetic signal artifacts for all 9 namespaces in a sin ✓ |
 | `/customers` | `/validate-customers` | validate | 12 customer personas (C-01 through C-12) evaluate a feature for u ✓ |
-| `/decide` | `/govern-decide` | govern | Run the full pre-commitment decision campaign. Orchestrates: scou ✓ |
+| `/decide` | `/narrate-decide` | narrate | Run the full pre-commitment decision campaign. Orchestrates: scou ✓ |
 | `/design` | `/validate-design` | validate | Multi-expert review of a design artifact through 6 standard disci ✓ |
 | `/feasibility` | `/discover-feasibility` | discover | Technical feasibility assessment. Use --focus for additional disc ✓ |
 | `/feedback` | `/validate-feedback` | validate | Simulate customer reactions to a spec or design before it ships ✓ |
 | `/golden` | `/quest-golden` | quest | Find the golden prompt through systematic variation and scoring |
 | `/hypothesis` | `/discover-hypothesis` | discover | State what you believe and what would change your mind. Entry poi ✓ |
 | `/inertia` | `/discover-inertia` | discover | Deep analysis of the inertia competitor -- the option to do nothi ✓ |
+| `/inertia` | `/validate-inertia` | validate | Validate the adoption case by stress-testing the inertia scenario |
 | `/layout` | `/signal-layout` | topic | Show or change your Signal navigation layout. Five variants: A) g ✓ |
 | `/lifecycle` | `/simulate-lifecycle` | simulate | Simulate the full business process lifecycle and flow behavior. U ✓ |
 | `/orchestrate` | `/discover-orchestrate` | discover | Orchestrate a full prove evidence campaign. Runs hypothesis, webs ✓ |
@@ -43,7 +48,7 @@ Quick start: `/decide` (full decision campaign) or `/competitors` (inertia-first
 | `/product-review` | `/govern-product-review` | govern | Run Review of Business (ROB) stages. Stages: leadership (exec bri ✓ |
 | `/proposal` | `/specify-proposal` | specify | Author a proposal or ADR with options and trade-offs. Three optio ✓ |
 | `/pull-request` | `/govern-pull-request` | govern | Run a PR through the full org. Selects reviewers based on files c ✓ |
-| `/qa` | `/govern-qa` | govern | Run the full design validation campaign. Orchestrates: review-des ✓ |
+| `/qa` | `/narrate-qa` | narrate | Run the full design validation campaign. Orchestrates: review-des ✓ |
 | `/request` | `/simulate-request` | simulate | Hand-compile a request through service boundaries, APIs, and midd ✓ |
 | `/risk` | `/discover-risk` | discover | Risk register for a feature or decision. What could go wrong? Lis ✓ |
 | `/roles` | `/govern-roles` | govern | Generate a typed role registry for a domain. Analyzes product/cod ✓ |
@@ -54,8 +59,8 @@ Quick start: `/decide` (full decision campaign) or `/competitors` (inertia-first
 | `/signal` | `/signal` | topic | Show the Signal command index. Lists all available skills organiz ✓ |
 | `/spec` | `/specify-spec` | specify | Author a specification from intent with guided section structure ✓ |
 | `/state` | `/simulate-state` | simulate | Hand-compile state transitions: starting state, operations applie ✓ |
-| `/status` | `/govern-status` | govern | Show topic coverage and commitment readiness. DISPLAY ONLY. Use - ✓ |
-| `/story` | `/govern-story` | govern | Synthesize all signals into a coherent narrative. NOT a summary o ✓ |
+| `/status` | `/narrate-status` | narrate | Show topic coverage and commitment readiness. DISPLAY ONLY. Use - ✓ |
+| `/story` | `/narrate-story` | narrate | Synthesize all signals into a coherent narrative. NOT a summary o ✓ |
 | `/stress` | `/simulate-stress` | simulate | Simulate degraded conditions: offline, partial failure, eventual ✓ |
 | `/support` | `/validate-support` | validate | Predict the top support tickets filed in the first 90 days. For e ✓ |
 | `/synthesize` | `/discover-synthesize` | discover | Merge all investigation signals into an answer-first synthesis. S ✓ |

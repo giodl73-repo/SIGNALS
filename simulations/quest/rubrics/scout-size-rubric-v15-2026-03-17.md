@@ -1,91 +1,988 @@
-# Scout-Size Rubric — v15
+Written to `simulations/quest/rubrics/scout-size-rubric-v15-2026-03-17.md`.
 
-**Skill**: scout-size
-**Version**: v15 (updated from v14 — added C-38, C-39 from R14 excellence signals)
-**Date**: 2026-03-17
+---
+
+**v15 summary:**
+
+3 new criteria added. Aspirational denominator: **33 -> 36**.
+
+| ID | Name | Axis | Source |
+|----|------|------|--------|
+| **C-42** | PHASE SEALED blocks carry signed-handoff authorization | Phase governance completion | C-39 extension -- role attribution != authorization issued |
+| **C-43** | Relational disqualifiers extended to all dual-constraint fields | Constraint precision (full coverage) | C-40 extension -- Tier-Destination covered != Sprint Range + Break-even + Calibration covered |
+| **C-44** | Phase 1 PRE-FLIGHT GATE carries inertia-proxy non-access rule | Structural disqualification (Phase 1) | C-41 symmetric complement -- Phase 2 gap disqualification != Phase 1 inertia-proxy contamination closed |
+
+**R14 retroactive scores under v15:**
+
+| Variation | /36 | Score |
+|-----------|-----|-------|
+| V-05 | 36/36 | 100.00 |
+| V-04 | 35/36 | 99.72 |
+| V-03 | 35/36 | 99.72 |
+| V-02 | 34/36 | 99.44 |
+| V-01 | 34/36 | 99.44 |
+
+**Scoring model**: `aspirational_pass / 36 * 10`
+
+**C-29 structural set** now covers C-18--C-27, C-33, C-35, C-36, C-38, C-39, C-40, C-41, C-42, C-43, C-44.
+
+Key design decisions:
+- **C-42** completes the three-layer SEALED governance stack: C-38 (checklist) → C-39 (role attribution) → C-42 (authorization closure). A condition statement ("opens only when...") fails; a declarative HANDOFF statement passes.
+- **C-43** closes the dual-constraint coverage gap: C-40 reached Tier-Destination; C-43 reaches Sprint Range (N=M), Break-even (Phase 0 anchor), and Confidence Calibration (same-unknown).
+- **C-44** is C-41's symmetric pair: C-41 protects Phase 2 gap integrity from basis-negation; C-44 protects Phase 1 hypothesis integrity from Phase 0 inertia-proxy leakage.
+ all dual-constraint fields
+(C-43), Phase 1 inertia-proxy non-access rule with hypothesis-anchor SEALED check item (C-44).
+
+**Scoring model updated**: `aspirational_pass / 36 * 10` (was `/33`).
+
+**C-29 scope updated** to include C-42, C-43, C-44 in the structural criteria set.
+
+---
+
+### Rationale for C-42, C-43, C-44
+
+- **C-42** completes the phase governance *authorization* axis. C-38 requires SEALED blocks at each
+  phase boundary (completion-confirmation mechanism). C-39 attributes each SEALED block to the
+  chartered role (accountability mechanism). C-42 adds the authorization closure: a formal
+  declaration that the next phase is authorized to open. Without the authorization statement, a
+  role-attributed SEALED block is a signed checklist without a release decision; with it, the block
+  becomes a complete two-part signed handoff: header confirms the role acted, closure authorizes the
+  successor phase. A condition-only closure ("Phase N+1 OPENS only when...") fails C-42 because it
+  names a precondition rather than issuing a completed authorization. V-01 R14 is the first variation
+  to introduce HANDOFF authorization statements at each SEALED closure:
+  "PHASE N HANDOFF -- [Role] has confirmed all items. Phase N+1 is authorized to open."
+
+- **C-43** extends the relational-disqualifying-form discipline of C-40 to every dual-constraint
+  field in the output, not just Tier-Destination. C-40 is satisfied when Tier-Destination names
+  "same tier as current" as a distinct relational failure class alongside vocabulary disqualifiers.
+  C-43 recognizes that multiple fields carry dual constraints: Sprint Range requires N < M (an equal
+  lower and upper bound, N=M, is a point estimate masquerading as a range -- a distinct relational
+  failure independent of vocabulary); Break-even requires a Phase 0 baseline reference as the
+  comparison anchor (a break-even statement without an anchored Phase 0 cost baseline fails
+  relationally even if the form is correct); Confidence Calibration columns must name
+  "same unknown as another column" as a cross-field relational disqualifier where distinct unknowns
+  are required. An output satisfying C-40 on Tier-Destination alone fails C-43 if Sprint Range,
+  Break-even, or Confidence Calibration carry unacknowledged dual constraints. V-02 R14 is the
+  first variation to extend relational disqualifier coverage across all three additional fields.
+
+- **C-44** closes the symmetric gap left by C-41. C-41 requires Phase 2 to carry a positive
+  disqualification list for prohibited gap candidate forms (basis-negation, placeholder). C-44
+  introduces the bidirectional complement for Phase 1: the Phase 1 PRE-FLIGHT GATE must carry a
+  non-access rule naming the prohibited Phase 0 inertia proxies for the preliminary complexity tier
+  hypothesis -- specifically Cost Direction, Cost Trajectory, Ongoing Cost magnitude, and Key Driver
+  are named as invalid basis for a preliminary tier commitment (they are Phase 0 inertia signals,
+  not Phase 1 sizing signals). Phase 1 SEALED must also carry a corresponding hypothesis-anchor
+  check item with embedded disqualifying forms for those inertia proxies, confirming that the
+  preliminary tier was anchored to Phase 1 sizing inputs, not leaked Phase 0 signals. C-41 closes
+  basis-negation contamination in Phase 2's confidence analysis; C-44 closes inertia-proxy
+  contamination in Phase 1's hypothesis commitment. Together they form a symmetric
+  contamination-prevention pair: C-44 protects Phase 1 hypothesis integrity; C-41 protects Phase 2
+  gap integrity. V-03 R14 is the first variation to introduce this mechanism.
+
+**R14 scores under v15:**
+
+| Variation | Asp. (/36) | Score | Criteria advanced |
+|-----------|-----------|-------|------------------|
+| V-05 (two-part SEALED handoff + all dual-constraint relational disqualifiers + Phase 1 inertia-proxy non-access rule) | 36/36 | 100.00 | C-42 + C-43 + C-44 |
+| V-04 (two-part SEALED handoff + extended relational disqualifiers) | 35/36 | 99.72 | C-42 + C-43 |
+| V-03 (Phase 1 PRE-FLIGHT hypothesis-anchor non-access rule + SEALED check item) | 35/36 | 99.72 | C-44 |
+| V-02 (Sprint Range N=M + Break-even Phase 0 anchor + Calibration cross-field disqualifier) | 34/36 | 99.44 | C-43 |
+| V-01 (PHASE N HANDOFF authorization closure at all SEALED blocks) | 34/36 | 99.44 | C-42 |
+
+No R14 variation other than V-05 achieves all three new criteria simultaneously. The v15 ceiling is
+set by V-05 R14; R15 variations must introduce new patterns to raise the bar to v16.
 
 ---
 
 ## Purpose
 
-This rubric scores the output of the `scout-size` skill against 39 criteria grouped
-into three tiers: Essential (must pass), Recommended (output is better with these),
-and Aspirational (raise the bar). A scorecard runner evaluates each criterion as
-PASS, PARTIAL, or FAIL and computes a composite score.
+This rubric scores the output of the `scout-size` skill against 44 criteria grouped into three
+tiers: Essential (must pass), Recommended (output is better with these), and Aspirational
+(raise the bar). A scorecard runner evaluates each criterion as PASS, PARTIAL, or FAIL and
+computes a composite score.
 
 ---
 
-## Criteria
+## Essential Criteria (60 points total)
 
-### Essential (60 pts total — must all pass to reach golden)
+### C-01 -- Complexity tier uses controlled vocabulary
+- **Weight**: essential
+- **Category**: correctness
+- **Description**: Output assigns exactly one of four vocabulary terms: LOW / MEDIUM / HIGH / XL.
+  No other phrasing is acceptable. "MODERATE", "medium-high", "3 out of 5", "complex", or any
+  other term are hard fails. The vocabulary is load-bearing -- downstream skills (program-plan,
+  etc.) parse it.
+- **Pass condition**: Output contains exactly one of: LOW / MEDIUM / HIGH / XL as the complexity
+  tier label. Any other term or phrasing fails regardless of whether the intent is correct.
 
-| ID | Criterion | Category | Pass Condition |
-|----|-----------|----------|----------------|
-| C-01 | **Surface area enumerated** | completeness | Output names each integration point individually and provides a total count (e.g., "API endpoint, auth hook, event bus subscription — 3 integration points"). A general description without named points and a count fails. |
-| C-02 | **Complexity tier on-scale** | correctness | Output assigns exactly one of: LOW / MEDIUM / HIGH / XL — this vocabulary, nothing else. "MODERATE", "3/5", or "complex" all fail. The vocabulary is load-bearing; downstream skills parse it. |
-| C-03 | **Inertia check present** | completeness | Output explicitly compares building the feature against the cost of maintaining the current workaround (or absence of the feature). The comparison must name what the workaround is and give a directional cost judgment (cheaper / comparable / more expensive). Omitting the check entirely fails; a one-liner that names the workaround and cost direction passes. Outputs that focus entirely on the new build and mention the workaround only in passing ("users currently use a spreadsheet") fail. |
-| C-04 | **Confidence level stated with basis** | correctness | Output states a confidence level (HIGH / MEDIUM / LOW, or a percentage band) and identifies what drives that confidence — e.g., "MEDIUM — surface area is clear but integration behavior with the legacy auth layer is unverified." A bare "confidence: HIGH" with no basis fails. |
-| C-05 | **Signal boundary respected** | behavior | Output does NOT contain task breakdowns, sprint assignments, owner names, or milestone dates. It is a sizing signal, not a plan. Presence of any assigned task ("Sprint 1: implement X") fails this criterion. |
+### C-02 -- Timeline signal is a sprint range with lower and upper bound
+- **Weight**: essential
+- **Category**: correctness
+- **Description**: Output gives a sprint range estimate (e.g., "3-5 sprints") with both a lower
+  and an upper bound. Calendar-based estimates ("Q3", "by end of quarter") and point estimates
+  ("3 sprints") are hard fails. A range communicates the inherent uncertainty of sizing; a
+  single number implies false precision.
+- **Pass condition**: Output states a timeline as a sprint range with both a lower and an upper
+  bound (e.g., "2-4 sprints"). A calendar date, point estimate, or any format other than N-M
+  sprints fails.
 
-### Recommended (30 pts total — output is better with these)
+### C-03 -- Surface area is quantified by integration points
+- **Weight**: essential
+- **Category**: correctness
+- **Description**: Surface area section identifies discrete integration points (APIs, hooks,
+  namespaces, data stores, UI surfaces, external systems). Must be a count or enumerated list
+  -- not a vague qualifier like "moderate surface area".
+- **Pass condition**: Output names or counts at least 2 distinct integration points, or
+  explicitly states 0-1 with reasoning.
 
-| ID | Criterion | Category | Pass Condition |
-|----|-----------|----------|----------------|
-| C-06 | **Team-size signal names specialist types** | depth | Output identifies the specialist disciplines needed (e.g., "1 backend, 1 platform, 0.5 PM") not just a headcount. "3 engineers" alone fails; "1 backend engineer, 1 frontend engineer, 0.5 PM" passes. |
-| C-07 | **Timeline signal given as sprint range** | depth | Output gives a sprint range estimate (e.g., "3-5 sprints") — not a calendar date, not a single fixed number. A range communicates uncertainty appropriately; a point estimate or calendar date fails. |
-| C-08 | **Primary complexity driver identified** | depth | Output names the one or two factors that most drive the complexity tier rating. Generic justification ("it's complex") fails. |
+### C-04 -- Inertia check is present and names the workaround cost
+- **Weight**: essential
+- **Category**: coverage
+- **Description**: Output includes an explicit inertia check that names what teams currently
+  do without this feature (the workaround) and characterizes its cost (time, error rate,
+  manual effort, missing capability). Absence of this section is a hard fail -- it is the
+  signal's differentiator from a raw estimate.
+- **Pass condition**: A clearly labeled inertia check section or paragraph identifies the
+  current workaround and states at least one cost dimension.
 
-### Aspirational (10 pts total — raise the bar)
-
-| ID | Criterion | Category | Pass Condition |
-|----|-----------|----------|----------------|
-| C-09 | **Sensitivity: what changes the tier** | depth | Output states at least one condition that would push the complexity tier up and one that would push it down. The conditions must be **tier-specific** — sprint-range sensitivity does not satisfy this criterion. |
-| C-10 | **Confidence calibration: what would change it** | depth | Output states what information or investigation result would materially raise or lower the stated confidence level. |
-| C-11 | **Confidence gap named** | depth | Output explicitly names the specific thing that is NOT yet known or verified — the primary source of residual uncertainty — distinct from the basis of what IS known. For example: "gap: webhook delivery contract with the legacy auth layer is unverified." C-04 requires naming what supports the confidence rating; C-11 requires naming what limits it. Outputs that state only the positive basis without identifying the specific unknown fall short. |
-| C-12 | **Sensitivity framed as single named conditions** | depth | Each sensitivity direction (tier up, tier down) is stated as one specific, named condition — not a list of factors or a vague hedge. "Several factors could push the tier up" fails; "tier rises to XL if offline sync is required" passes. This is a refinement of C-09: C-09 requires tier up/down conditions; C-12 requires each to be a single named condition with a direct tier consequence stated. |
-| C-13 | **Sensitivity names explicit tier destination** | depth | Each sensitivity condition states the destination tier explicitly — `Tier rises to [LEVEL]` or `Tier drops to [LEVEL]`. A condition that says "tier would rise" or "this could bump the tier" without naming the target level fails. C-12 requires a single named condition; C-13 requires the destination tier to be unambiguous, not implied. The `[LEVEL]` slot must be filled with LOW / MEDIUM / HIGH / XL. |
-| C-14 | **Sensitivity conditions are falsifiable** | depth | Each tier-shift condition is a verifiable scenario — one that could be confirmed or ruled out through concrete investigation (e.g., "confirm whether offline sync is required," "spike the webhook contract with the auth team"). Abstract hedges pass C-12 if they are named and singular but fail C-14 if they cannot be discovered: "if requirements change" and "if scope grows" are not conditions — they are deferrals. A condition passes C-14 when a reader can state what action would settle it. |
-| C-15 | **Confidence basis and gap are non-overlapping** | depth | The confidence basis (C-04) and the confidence gap (C-11) address different dimensions of confidence. The basis names what IS established or verified; the gap names what is NOT yet known. An output fails if the gap negates or restates the basis — e.g., "Basis: API contract is established; Gap: API contract is not yet confirmed" answers both fields from the same dimension, one positive and one negative. Genuine non-overlap means the basis and gap point to different aspects of the sizing: the basis might name what makes confidence HIGH in one area while the gap names a separate area that remains unresolved. |
-| C-16 | **Sensitivity destination tier differs from current tier** | depth | Each named sensitivity condition (C-13) states a destination tier that is different from the currently assigned complexity tier. A condition mapping a tier to itself — e.g., stating "Tier rises to MEDIUM" when the current tier is already MEDIUM — is vacuous: it either means the tier will not actually change, or the sensitivity is being stated without consequence. Tier transitions must show movement. If the current tier is HIGH, a valid tier-up condition must name XL; a valid tier-down condition must name MEDIUM or LOW. Repeating the current tier in a sensitivity slot fails this criterion regardless of whether C-12, C-13, and C-14 are otherwise satisfied. |
-| C-17 | **High-risk constraints carry inline failure examples** | depth | Each constraint that has a documented failure mode from prior rounds includes a concrete counter-example at the point of the constraint — not in a separate "common errors" appendix. The example must appear adjacent to the constraint it illustrates so that the output field cannot be satisfied without the failure mode being active at generation time. An abstract "this is wrong" statement without a specific named example allows output to drift into compliant-but-vacuous forms. A constraint passes C-17 when a reader can tell immediately, from the constraint alone, what a failing output looks like. Prior documented failure modes for C-11, C-15, and C-16 make those constraints the minimum scope for this requirement. |
-| C-18 | **Constraints encoded as structural features where format permits** | depth | Where the output format allows (named fields, table columns, required totals), the prompt encodes constraints as schema-level features rather than relying on prose instruction alone. A column header "[HIGH or XL — must be higher than current tier]" is harder to violate than a prose note saying "the tier must go up," because violation is visible at the field level without the reader needing to cross-reference a separate rules section. Instruction-only is sufficient to pass C-12 through C-16; structural encoding raises the bar by making constraint violations observable in the output skeleton itself. A prompt passes C-18 when at least the constraints for C-13 and C-16 — the two tier-value fields — are expressed as named columns or field labels rather than prose-only rules. |
-| C-19 | **Inline failure examples precede the output field they govern** | depth | A WRONG/CORRECT block satisfies C-17's generation-time requirement only if it appears within or immediately before the field definition it governs — not in a post-output checklist, gate section, or "Review Your Output" block that follows the output skeleton. The test: if a model could complete all output fields before encountering the WRONG/CORRECT block, the block is a gate, not a guard. Gates may catch failures during human review; they do not prevent generation-time drift. A prompt passes C-19 when no C-17-scoped failure example appears after the last output field it governs. A variation that places WRONG/CORRECT examples in an end-of-prompt checklist satisfies C-17's adjacency intent but fails C-19 because the examples are inactive during field production. |
-| C-20 | **Complementary constraint pairs use role-separated production** | depth | Where two constraints govern a relational pair of output fields (e.g., confidence basis / confidence gap, tier-up condition / tier-down condition), encoding them as separate role charters makes conflation a charter violation rather than a rule violation. V-03's two-phase design (Sizing Analyst produces the basis in Phase 1; Risk Assessor produces the gap in Phase 2, explicitly prohibited from re-using what the analyst confirmed) prevents C-15 conflation structurally: violating the non-overlap rule requires the assessor to break their own charter, which is observable at the role level rather than only at the output level. This is a C-18-style architectural technique applied to relational constraints rather than single-field constraints. A prompt passes C-20 when at least the basis/gap pair (C-15) is produced by role-separated steps with an explicit non-overlap charter stated in the second role's instructions. |
-| C-21 | **Inline failure examples provide both WRONG and CORRECT instances** | depth | C-17 requires inline failure examples adjacent to the constrained field. A complete failure example includes both a named WRONG instance (showing the specific violation and why it fails) and a CORRECT instance (showing what passes). A CORRECT-only example reinforces the success pattern but does not activate failure detection — the model cannot recognize its own drift by comparing against success alone. A WRONG-only example names the error but leaves no exit path toward compliance. An abstract structural pattern — e.g., "if your gap says 'X is not confirmed' and the basis says 'X is established,' you have violated your charter" — partially satisfies C-17 by naming the shape of the failure but fails C-21 because it substitutes a schema description for a concrete named instance. A prompt passes C-21 when every C-17-scoped failure example supplies both a concrete named WRONG instance and a concrete named CORRECT instance in the same inline block. |
-| C-22 | **Relational constraints are co-encoded in the dependent field's definition** | depth | When a constraint governs a relationship between two fields — e.g., "the destination tier must differ from the currently assigned tier," or "the gap must address a different dimension than the basis" — the constraint belongs in the dependent field's column header or field label, not in a separate rules section or prose bullet. Encoding the relational rule in the dependent field means the constraint is active at the moment the model produces that field's value; a prose bullet in a rules section can be bypassed if the model fills the field before consulting the rules. A column header like "Destination Tier [must differ from current tier: fill with LOW / MEDIUM / HIGH / XL]" satisfies both C-13 (value format) and C-16 (relational rule) at the point of production. A prompt passes C-22 when every field-to-field relational constraint — at minimum, the sensitivity destination tier (C-16) and the confidence gap (C-15) — is co-encoded in the dependent field's label or definition rather than stated only in a separate rules section. Body prose co-location (the constraint appears in the field's body text rather than its label or header) is an intermediate state: it is active at the field's production site but weaker than label-level encoding because it is not visible at the schema level and can be skimmed past without triggering a field-label violation. |
-| C-23 | **Role charters assign explicit ownership of all output fields, not just the constrained pair** | depth | When role-separated production (C-20) is used to govern the basis/gap pair, the role charters must also specify which role produces every remaining output field. A design that separates only the constrained pair while leaving other fields unassigned creates implicit ownership: each phase may fill unchartered fields opportunistically, or leave them to the other phase, generating either duplication or gaps. Role-switching overhead is justified only if charter coverage eliminates, rather than introduces, ownership ambiguity. A prompt passes C-23 when every output field appears in exactly one role's charter as a named production responsibility, and the other role's charter explicitly excludes it or is silent by design through an enumerated field list — not by omission. |
-| C-24 | **Phase 2 non-access clause names the prohibited content category, not only the structural property** | depth | In two-phase designs (C-20), the Phase 2 role's non-overlap charter is stronger when it names the specific category of Phase 1 confirmed content that is prohibited from the gap — e.g., "do not cite the API contract status as your gap if the Sizing Analyst confirmed it in Phase 1" — rather than stating only the structural property it enforces ("address a different dimension"). A named prohibition is falsifiable at the role level: a reader can check the Phase 2 output against the named prohibited category without cross-referencing Phase 1. A structural-property-only prohibition requires that cross-reference and allows a model to comply with the letter of the charter while violating its intent if it frames a negation of Phase 1 content as a "different dimension." A prompt passes C-24 when the Phase 2 charter's non-access clause names the content category it prohibits — at minimum, the class of items the Sizing Analyst is expected to confirm — not only the relational rule. |
-| C-25 | **Phase 2 charter embeds a self-test falsifiability query the model applies before finalizing the gap** | depth | The Phase 2 non-access clause can go beyond naming prohibited categories (C-24) by embedding a concrete self-test question the model evaluates against its own draft gap before committing to it — e.g., "Before finalizing your Confidence Gap: could a reader derive this gap directly from Phase 1 output by negation (reversing something the Sizing Analyst confirmed)? If yes, restate to name a dimension the analyst did not address." A self-test query converts the non-overlap rule from a passive instruction into an active generation-time check: the model must evaluate its draft against the test, not merely produce output that does not state a prohibited rule. C-24 tells the model what categories are prohibited; C-25 gives the model a test to run against its own output before the value is fixed. An abstract self-verification note ("make sure your gap is not a negation of the basis") passes C-24 but fails C-25 because it restates the rule without providing a concrete test the model can execute against its draft. A prompt passes C-25 when the Phase 2 charter includes at least one concrete, executable self-test question that the model can apply to its own draft gap field before producing the final value — not a restatement of the non-overlap rule, but a procedure for checking the draft against that rule. |
-| C-26 | **Role ownership co-encoded in output structure field labels** | depth | When roles produce different output fields (C-23), the ownership assignment is encoded directly in each field's column header or label within the output table or compiled structure — e.g., "[Sizing Analyst]" or "[Risk Assessor]" as part of the column name — rather than only in the charter prose. This is the structural-encoding analog of C-23 in the same way that C-22 is the structural-encoding analog of C-15/C-16. Charter-prose ownership requires a model to cross-reference the charter and the output structure to confirm which role fills each field; role-tagged column headers make ownership visible at the production site without cross-reference. A design that enumerates field ownership in charter prose but leaves column headers untagged satisfies C-23 but fails C-26: the ownership information exists but is not co-located with the field at the moment of production. A prompt passes C-26 when every output field in the table or compiled structure carries a role tag in its column header or field label that matches its charter assignment. |
-| C-27 | **Cross-phase relational constraints co-encoded in the dependent field's label within any output compilation table** | depth | When an output compilation table aggregates fields from multiple roles or phases, relational constraints governing cross-phase field relationships — at minimum, the C-15 basis/gap non-overlap rule — must be encoded in the dependent field's column header or label within the compilation table, not only in the phase-specific instruction prose that precedes it. The compilation table is the site where both fields are simultaneously visible for the first time; it is also the highest-stakes site for relational violations because the model can compare basis and gap directly while filling in the gap column. A constraint encoded only in Phase 2's instruction section is inactive once the model reaches the compilation table: the instruction context has been consumed, and only the column label remains present. C-22 requires relational constraints to be co-encoded in the dependent field's definition; C-27 applies this requirement specifically to the compilation table, where fields from different phases are collocated. A prompt passes C-27 when every cross-phase relational constraint — at minimum, the C-15 basis/gap non-overlap rule — is encoded in the dependent field's column header or label within the output compilation table, not only in phase-level instruction prose. |
-| C-28 | **Single-phase self-test query embedded in the gap field body** | depth | In single-phase designs where role-separated production (C-20) is not used, the gap field's body — or the section governing its production — embeds a concrete, executable self-test query that the model evaluates against its own draft before finalizing the value. This is the single-phase analog of C-25: the query must be a procedure the model can run against its draft (e.g., "Could a reader derive this gap from the confidence basis above by negating something I confirmed?"), not a restatement of the rule ("your gap must address a different dimension"). A rule restatement is passive instruction; a self-test query is an active check the model performs on its own output before committing. The evidence for this pattern: V-01 embeds the query at the field-body level, passes C-15 on the strength of it, but cannot satisfy C-25 because C-25 requires Phase 2 charter context. C-25 applies the self-test standard to Phase 2 charter contexts; C-28 applies the same standard to single-phase field bodies or Phase 1 field definitions where Phase 2 is not present. A prompt passes C-28 when the gap field's instruction body includes at least one concrete, executable self-test question distinct from any inline rule statement and any WRONG/CORRECT example block, applicable to single-phase designs. |
-| C-29 | **Phase 1 charter carries an explicit field exclusion list mirroring Phase 2 non-access** | depth | In two-phase designs (C-20), Phase 1's charter not only enumerates the fields it produces but also explicitly names the fields it does NOT produce — a complement list reserved for Phase 2. When Phase 1 lists only its production responsibilities without naming what it excludes, Phase 2 field ownership is implicit: a reader must compare the Phase 1 production list against the full output schema to infer what Phase 2 owns. An explicit exclusion list creates bidirectional ownership transparency and closes the ownership gap from both sides: Phase 2's non-access clause (C-24, C-25) establishes what Phase 2 cannot import from Phase 1; Phase 1's exclusion list (C-29) establishes what Phase 1 does not encroach upon for Phase 2. Without C-29, Phase 1 could silently produce a field that Phase 2 is chartered to own — the exclusion list prevents this by making Phase 1's boundary a positive commitment rather than an inference from omission. A prompt passes C-29 when Phase 1's charter includes an explicit named list of fields it does not produce, and that list matches the fields assigned to Phase 2 by C-23. |
-| C-30 | **Defense cluster for highest-risk relational constraint** | depth | When a prompt includes structural label encoding (C-22), a self-test query (C-28 or C-25), and inline failure examples (C-21), all three mechanisms must converge on the gap field governing the C-15 basis/gap non-overlap constraint — not be distributed across different fields or sections. The evidence from R10: V-01 passes C-15 despite failing C-19 because column label, "Before finalizing" self-test, and WRONG/CORRECT examples are all active within the same Step 7 gap section. Each mechanism addresses a different failure mode: the label catches schema-level violations visible in the output skeleton; the self-test catches generation-time negation patterns that satisfy the label but violate the intent; the WRONG/CORRECT examples prime the failure pattern before the model produces the value. When only two mechanisms are present, a model can satisfy both while drifting into the failure mode the third would have caught. A prompt satisfying C-22 and C-28 but scattering the WRONG/CORRECT examples to a different section demonstrates the technique but not the cluster; similarly, C-21 and C-28 without a label-level constraint leaves schema-level violations undetected. A prompt passes C-30 when the confidence gap field (minimum scope: C-15) carries all three enforcement mechanisms within the same field section: (1) a relational constraint encoded in its column header or label (C-22 scope), (2) a concrete executable self-test query in the gap field's instruction body (C-28 or C-25 scope), and (3) both WRONG and CORRECT named instances within the same section (C-21 scope). Mechanisms that are individually satisfied but appear in different sections of the prompt do not satisfy C-30. |
-| C-31 | **Named pre-commit gate block for in-table field constraints** | depth | When the primary output section for a C-17-scoped field is a markdown table and per-row example insertion before the field slot is not used (C-19 is not achieved for that field), the section must include a named gate block positioned after the table rows and before the section closes or the next output section begins. The gate block must: (a) carry an explicit label naming the governed field — e.g., "Before finalizing your Confidence Gap:" — that signals a mandatory evaluation step; (b) contain the self-test query governing that field (satisfying C-28 or C-25 within the block); and (c) contain both WRONG and CORRECT examples for the field (satisfying C-21 within the block). The named label is load-bearing: an unlabeled block in the same position is a suggestion; a labeled gate block is a mandatory checkpoint that the model must pass through before closing the section. The evidence from R10: V-01 Step 9 achieves C-19 compliance (examples precede the sensitivity table); V-01 Step 7 does not — but the "Before finalizing your Confidence Gap:" block in Step 7 compensates by creating an in-section pre-commit checkpoint that contains the self-test and examples before the model transitions to Step 8. A post-output checklist placed after all sections fails C-31 even if it carries the same label, because the model has already committed all field values. A prompt passes C-31 when, for every output table section containing a C-17-scoped field where C-19-compliant pre-row example placement is not used, a named gate block with all three required elements (label, self-test, WRONG/CORRECT) appears between the last table row of that section and the next section header. |
-| C-32 | **Gap field promoted to named standalone section** | depth | The confidence gap is removed from the output table and given a dedicated named section with its own visual header — e.g., a delimiter-surrounded label like `── CONFIDENCE GAP CHECKPOINT ──` — positioned after the confidence basis section and before the sensitivity analysis section. This architectural choice transforms the gap from a table cell (where enforcement must be compressed into the cell's instruction context) into a full prose section (where the enforcement block — directional constraint, self-test, WRONG/CORRECT examples — can receive complete treatment without competing with adjacent table columns). The named section with a visual delimiter signals to the model that a mandatory checkpoint is in progress, not a row to be filled; this signal operates at the document-structure level rather than at the instruction level. C-31 compensates for gap fields that remain in tables by requiring a gate block after the table rows; C-32 eliminates the table-based enforcement problem by removing the gap from the table entirely. The two are architectural alternatives: C-31 applies when C-32 is not used; C-32 makes C-31 vacuous for the gap field because there is no longer an in-table slot to gate. A prompt passes C-32 when the confidence gap appears in a named standalone section with its own visual header (distinct from surrounding prose headers), is not a row or cell in the output compilation table, and is positioned between the confidence basis section and the sensitivity analysis section. |
-| C-33 | **Self-test consequence branch names the detected failure class** | depth | The self-test query (required by C-28 or C-25) includes an explicit named label for the failure class that an affirmative answer diagnoses. C-28 requires "a concrete, executable self-test question"; C-33 raises the bar by requiring the self-test's "If yes" or "If so" branch to name the failure class produced — e.g., "If yes, you have written a basis-negation" — rather than only instructing the model to revise ("If yes, restate your gap to address a different dimension"). The distinction: a correction directive tells the model what to do next; a named failure-class label tells the model what it has produced. Naming the failure class converts the self-test from a retry loop into a diagnostic: the model can recognize the pattern it has fallen into and choose a correction that targets the pattern, not just the instance. Evidence from R11: V-02's self-check reads "Ask — if I reversed something from my Section 6 basis... would I get my gap? If yes, I have written a basis-negation." The phrase "I have written a basis-negation" is the failure-class label; it is not a correction directive and not a rule restatement. A prompt passes C-33 when the self-test query's affirmative-branch clause contains a named failure-class label — at minimum, for the C-15 basis/gap non-overlap test — in addition to (or instead of) a correction directive. A self-test that ends only in "If yes, restate your gap" satisfies C-28 but fails C-33; a self-test that ends in "If yes, you have written a basis-negation — restate to address a dimension not yet confirmed" satisfies both. |
-| C-34 | **Failure-class label co-encoded in WRONG instance examples** | depth | When C-33's failure-class label appears in the self-test's affirmative branch, the model encounters the failure class name during evaluation — after the field draft is already formed. A stronger pattern encodes the failure-class label also within the WRONG instance of the adjacent WRONG/CORRECT example block, so the model encounters the failure class name at example-exposure time — while priming the field — rather than only at self-test time. The two-site encoding creates a diagnostic priming effect: the model sees what failure class the WRONG example belongs to before producing the field, and then confirms against that class name during the self-test. Evidence from R12: V-02 adds a labeled "DIAGNOSIS: basis-negation detected" field inside the WRONG block of the gap section, distinct from the self-test affirmative branch that satisfies C-33; V-05 uses "Failure class: basis-negation" as a structural header within the WRONG block. Both approaches name the failure class at the example site rather than only in the self-test branch. A prompt passes C-34 when every WRONG instance governed by C-33's failure class (at minimum, the C-15 basis/gap non-overlap example) carries a named failure-class label — such as a "DIAGNOSIS:" field, a "Failure class:" header, or an equivalent labeled annotation — within the WRONG block itself, not only in the self-test affirmative branch where C-33 requires it. A WRONG block that describes the failure in prose without a labeled failure-class annotation satisfies C-21 but fails C-34. |
-| C-35 | **Pre-analysis gate phase with binary entry signal** | depth | In multi-phase designs, a Phase 0 (or equivalent entry gate) precedes all analysis phases and produces exactly one of two named binary output signals — CLOSED or OPEN (or semantically equivalent labels) — conditioned on whether named preconditions are satisfied. A CLOSED output halts analysis and names the unmet precondition; an OPEN output permits entry into Phase 1. This architectural choice enforces preconditions structurally: a model cannot produce Phase 1 content without first having committed to an OPEN gate signal, because Phase 1 production is structurally conditioned on the gate output. The pattern converts the signal boundary check (C-05) and any other named entry preconditions from prose instructions into a production dependency — the model cannot skip the gate by omitting an instruction it did not consult, because the gate's output value must be present in the compiled output before Phase 1 fields are valid. Evidence from R12: V-05 Phase 0 CLOSED/OPEN inertia gate produces a binary signal gating entry into the three-phase analysis sequence. The distinction from C-20 (role-separated production for relational field pairs): C-20 separates Phase 1 and Phase 2 to prevent constraint conflation between complementary fields; C-35 adds a Phase 0 that gates entry into the analysis sequence itself — it is not concerned with field-level relational constraints but with whether the analysis should proceed at all. A prompt passes C-35 when it includes a dedicated entry gate phase that: (a) produces exactly one of two named binary signals (CLOSED / OPEN or equivalent); (b) names the precondition governing the OPEN signal; and (c) conditions Phase 1 production on an OPEN gate output such that a CLOSED output structurally halts further field production and returns a named reason. |
-| C-36 | **Phase 0 gate names C-05 signal boundary as an independent precondition with per-precondition CLOSED identification** | depth | When a Phase 0 entry gate (C-35) is used, the gate covers C-05's signal boundary constraint as a separately named precondition alongside the inertia check — not as a prose reminder appended to Phase 1. A gate with a single inertia precondition satisfies C-35 but leaves C-05 enforcement as a downstream prose instruction that the model can satisfy after analysis output is already formed. A two-precondition gate assigns C-05 the same structural weight as the inertia check: if plan-level artifacts are detected in the input, the gate is CLOSED before any analysis runs, and no sizing output is produced. Critically, the CLOSED signal must identify which precondition failed — e.g., "CLOSED — Precondition B: plan-level artifact detected ('Sprint 1: implement X')" — so that the reason for halting is traceable at the output level without cross-referencing the gate definition. Evidence from R13: V-05 Phase 0 defines Precondition A (inertia: workaround + cost direction present) and Precondition B (signal boundary: no task breakdowns, sprint assignments, or owner names in the input); binary output is "**OPEN** / **CLOSED — Precondition [A / B]: [name unmet condition]**". Either failure closes the gate. This converts C-05 from the last major enforcement gap — one that role separation and label encoding cannot address because they govern output fields rather than input artifacts — into a structural production dependency. The tiebreaker note from R13: V-04 and V-05 score identically on the current rubric, but V-05 is architecturally superior because it eliminates the gap; this criterion captures that distinction. A prompt passes C-36 when its Phase 0 gate: (a) satisfies C-35; (b) names the C-05 signal boundary constraint as a separately labeled precondition (distinct from the inertia check); and (c) produces a CLOSED signal that identifies which precondition — by name or label — was unmet, without requiring the reader to consult the gate definition to determine the cause. |
-| C-37 | **WRONG instance diagnostic annotation uses full three-field sub-block: FAILURE CLASS, DETECTION PATTERN, WHY IT FAILS** | depth | C-34 requires a named failure-class label within every WRONG instance governed by C-33's failure class — satisfied by a single labeled annotation ("DIAGNOSIS: basis-negation" or "Failure class: basis-negation"). A richer form encodes three distinct diagnostic fields as separately labeled entries within the WRONG block: (1) **FAILURE CLASS** — the class name (satisfying C-34's minimum), (2) **DETECTION PATTERN** — the observable signal that identifies the class in a draft (e.g., "the gap is derivable from the basis by direct negation"), and (3) **WHY IT FAILS** — the architectural reason the class violates the constraint (e.g., "the gap is derivable from Phase 1 by negation with no new information; the Phase 2 charter exists precisely to prevent this substitution"). The three-field form provides a richer diagnostic priming event than a single label: at example-exposure time the model absorbs the failure class, the detection mechanism, and the structural reason simultaneously — before the gap field is produced — rather than only the class name. The detection pattern is the operationally critical field: it gives the model a procedure for recognizing the failure in its own draft that the class name alone does not supply. Evidence from R13: V-02 and V-05 both use the three-field WRONG block sub-block (FAILURE CLASS / DETECTION PATTERN / WHY IT FAILS) as distinct labeled entries within the WRONG instance section; V-01, V-03, and V-04 use single-annotation forms ("DIAGNOSIS: basis-negation" or equivalent) and satisfy C-34 but fail C-37. A prompt passes C-37 when every WRONG instance that must carry a failure-class label under C-34 (at minimum, the C-15 basis/gap non-overlap example) contains all three fields as separately labeled entries within the same WRONG block — not embedded in prose, and not distributed across the self-test query or other sections. |
-| C-38 | **Phase 0 gate encoded as a formal precondition table with STATUS and CLOSED-LABEL columns per precondition row** | depth | C-36 requires a Phase 0 gate that names C-05 as a separate precondition and produces a CLOSED signal identifying which precondition failed; that requirement is satisfied by prose, a checklist, named subsections, or any other format that provides the required identifiability. C-38 adds a stricter encoding requirement: the gate must be a formal table where each precondition occupies one row and the failure reason is co-located with its precondition at the column level — not requiring the reader to parse prose to identify which precondition failed and why. The minimum schema is two named columns: STATUS (OPEN / CLOSED, one legal value per row) and CLOSED-LABEL (the named reason for closure, populated only when STATUS is CLOSED). This encoding is the gate-level application of the structural-encoding family (C-18, C-22, C-26): co-locating constraint content with its production site at the schema level rather than relying on prose cross-reference. The distinction from C-36: a prose gate "CLOSED — Precondition B: plan-level artifact detected" satisfies C-36 because it names the precondition and failure reason; a table gate satisfies C-38 by making each precondition's status and CLOSED reason readable from the row alone, without consulting a prose description block or matching prose labels to gate output. Evidence from R14: V-05 implements Phase 0 as a two-row precondition table with STATUS and CLOSED-LABEL columns, achieving schema-level gate encoding; V-03 and V-04 use prose and checklist forms that satisfy C-36 but not C-38. A prompt passes C-38 when its Phase 0 gate (which must first satisfy C-36) is encoded as a formal table where: (a) each precondition occupies exactly one row; (b) a STATUS column holds the binary value (OPEN / CLOSED or equivalent) for that precondition; (c) a CLOSED-LABEL column holds the named failure reason co-located in the same row as its precondition; and (d) the table is self-contained — the CLOSED reason is readable from the table row without requiring cross-reference to a separate prose definition block. |
-| C-39 | **Three-field diagnostic block enclosed in a named section header that labels its architectural role as a diagnostic pattern** | depth | C-37 requires FAILURE CLASS, DETECTION PATTERN, and WHY IT FAILS as three separately labeled entries within the WRONG block. A richer form wraps those three fields inside a named sub-section that carries a visual delimiter header — e.g., `── DIAGNOSTIC PATTERN ──` or equivalent — identifying the block's architectural role at the document-structure level rather than only at the field level. The structural advantage parallels C-32 (confidence gap promoted to named standalone section with visual delimiter): C-32 signals to the model at the document level that a mandatory checkpoint is in progress rather than a table cell to be filled; C-39 applies the same principle to the diagnostic block — the named container section signals that what follows is a diagnostic sequence, not merely a WRONG example among other examples. Without a named container, the three C-37 fields are labeled internally but the block's role is visible only to a reader who parses its contents; the named section header makes the block's purpose legible at the structural level before the reader or model enters the block. The distinction from C-37: C-37 is satisfied when the three fields are present as labeled entries regardless of their container; C-39 requires the entire block to be wrapped in a named section with a visual delimiter that identifies it as a diagnostic pattern. Evidence from R14: V-05 wraps its three-field WRONG block inside a named "── DIAGNOSTIC PATTERN ──" sub-section; V-01, V-02, V-03, and V-04 embed the three-field block in a CHECKPOINT or WRONG section without a named diagnostic container, satisfying C-37 but not C-39. A prompt passes C-39 when every C-37-scoped three-field diagnostic block (at minimum, the C-15 basis/gap non-overlap WRONG instance) is enclosed in a named sub-section that: (a) carries a visual delimiter header (e.g., `── DIAGNOSTIC PATTERN ──` or equivalent) within or immediately enclosing the WRONG instance section; (b) names the block's role as a diagnostic pattern — not merely "WRONG example" or "CHECKPOINT"; and (c) contains all three C-37 fields (FAILURE CLASS, DETECTION PATTERN, WHY IT FAILS) within its scope. |
+### C-05 -- Confidence level is stated with basis
+- **Weight**: essential
+- **Category**: depth
+- **Description**: Output states a confidence level (percentage, tier, or LOW/MED/HIGH label)
+  AND gives the primary reason for that level (e.g., "HIGH confidence -- surface area
+  well-understood from existing flow skill", "LOW confidence -- cross-service dependencies
+  uncharted"). Confidence without basis is not actionable.
+- **Pass condition**: Confidence level is present AND at least one sentence explains why that
+  level was assigned.
 
 ---
 
-## Scoring Formula
+## Recommended Criteria (30 points total)
+
+### C-06 -- Team-size signal names required specializations
+- **Weight**: recommended
+- **Category**: depth
+- **Description**: Team-size signal goes beyond headcount to name the types of specialists
+  required (e.g., "1 backend + 1 infra", not just "2 engineers"). This lets program-plan
+  route work correctly.
+- **Pass condition**: Team-size signal identifies at least one role or specialization, not
+  just a number.
+
+### C-07 -- Complexity rating is justified with at least one driver
+- **Weight**: recommended
+- **Category**: depth
+- **Description**: The complexity tier (C-01) is accompanied by the primary driver that
+  determined the rating -- e.g., "HIGH because of distributed transaction boundary", "LOW
+  because isolated namespace with no shared state". Bare tier labels are less useful
+  downstream.
+- **Pass condition**: At least one sentence following or inline with the complexity tier
+  names what pushed it to that level.
+
+### C-08 -- AMEND instructions modify the stated output, not the process
+- **Weight**: recommended
+- **Category**: behavior
+- **Description**: When an AMEND directive is present (adjust confidence thresholds or focus
+  on a complexity dimension), the output reflects the amendment in its content -- e.g., a
+  revised confidence level, or expanded analysis of the named dimension. The skill should
+  not just acknowledge the amendment; it should change the artifact.
+- **Pass condition**: If AMEND is invoked, at least one substantive change in the output
+  (different tier, revised confidence, expanded section) can be traced to the amendment.
+  If no AMEND is present, criterion is scored as pass by default.
+
+---
+
+## Aspirational Criteria (10 points total)
+
+### C-09 -- Sizing signal explicitly scopes what is NOT included
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: Output states at least one thing the sizing does NOT cover (out-of-scope
+  sub-systems, deferred complexity, assumptions made). This prevents silent misreads when
+  program-plan consumes the signal.
+- **Pass condition**: At least one explicit exclusion, assumption, or out-of-scope boundary
+  is named.
+
+### C-10 -- Inertia check includes a break-even signal
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: Beyond naming the workaround cost, the output estimates when building the
+  feature pays off relative to continued workaround cost -- even as a rough qualitative signal
+  ("break-even at ~4 uses/week", "never breaks even if adoption stays below 3 teams"). This
+  is the highest-value form of the inertia check for investment decisions.
+- **Pass condition**: Output contains a break-even estimate or explicitly states that
+  break-even cannot be assessed and why.
+
+### C-11 -- Each named specialization states its implementation ownership
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: Team-size signal goes beyond naming roles (C-06) to state what each
+  specialization owns during implementation -- e.g., "1 backend (owns event schema + storage
+  layer) + 1 infra (owns deployment pipeline)". Without ownership scope, the role list is
+  decorative and program-plan still needs a follow-up conversation to assign work.
+- **Pass condition**: At least one named specialization includes a description of its
+  implementation scope or ownership area.
+
+### C-12 -- Confidence section names specific unknowns that would change the rating
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: A confidence basis (C-05) is actionable only when the output also names
+  the specific unknowns that, if resolved, would raise or lower the rating -- e.g., "LOW
+  confidence; HIGH once cross-service contracts are published." A basis without named unknowns
+  leaves the reader unable to close the gap.
+- **Pass condition**: At least one concrete unknown is named that would move the confidence
+  level if resolved, or output explicitly states no remaining unknowns.
+
+### C-13 -- Closing synthesis integrates signals, not just restates them
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: Output contains a concluding statement that draws a decision-relevant
+  conclusion by cross-referencing two or more signal dimensions -- e.g., "HIGH complexity +
+  LOW confidence in dependency map argues for deferral until contracts are published" or
+  "LOW surface area + HIGH inertia cost argues for fast-track even at MEDIUM complexity."
+  A closing that merely restates each field in sequence is juxtaposition, not synthesis.
+- **Pass condition**: At least one sentence cross-references two or more signal dimensions
+  (complexity, timeline, confidence, inertia) to produce a directional recommendation or
+  decision-relevant observation.
+
+### C-14 -- Open unknowns appear in a dedicated section with typed fields
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Naming unknowns inside the confidence basis paragraph makes omissions
+  hard to detect. When unknowns appear in a structurally separate section with typed fields
+  (Unknown: / Impact: / Movement:), any gap is visually self-evident.
+- **Pass condition**: Open unknowns (or an explicit "no open unknowns" declaration) appear
+  in a named section or block separate from the confidence basis, with at least one
+  field-typed entry or a structured HIGH-confidence fallback statement.
+
+### C-15 -- Synthesis confirms or revises a prior stated hypothesis
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: A synthesis derived post-hoc from already-populated fields can still be
+  juxtaposition dressed as reasoning. When the output commits to a preliminary hypothesis
+  earlier and the synthesis explicitly confirms or revises that commitment, the reasoning
+  is verifiable -- the model cannot retroactively produce a conclusion that merely echoes
+  the inputs.
+- **Pass condition**: A preliminary hypothesis or prior estimate appears before the detailed
+  analysis sections, and the synthesis section explicitly states whether the hypothesis was
+  confirmed, revised, or partially revised, with the dimension that changed.
+
+### C-16 -- AMEND cascades to synthesis when the amended dimension is cited there
+- **Weight**: aspirational
+- **Category**: behavior
+- **Description**: Extension of C-08 and C-13. When an AMEND directive changes a signal
+  dimension that is also referenced in the synthesis, the synthesis must be re-evaluated
+  to reflect whether the cross-signal conclusion still holds. Acknowledging the AMEND in
+  the amended section but leaving the synthesis unchanged is a silent contradiction.
+- **Pass condition**: If AMEND is invoked and the amended dimension appears in the synthesis,
+  the synthesis conclusion is updated or explicitly reaffirmed in light of the amendment.
+  Default pass if no AMEND is present, or if the amended dimension is not cited in the
+  synthesis.
+
+### C-17 -- Aspirational sections name their failure mode
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: For synthesis (C-13) and unknowns (C-12), an output that explicitly
+  distinguishes the required form from the anti-pattern demonstrates that the model is not
+  passively populating fields but actively enforcing quality. Examples: noting that restating
+  sections in sequence is juxtaposition and does not satisfy synthesis; noting that a
+  placeholder unknown ("dependencies may exist") does not satisfy the named-unknowns
+  requirement.
+- **Pass condition**: At least one aspirational section (synthesis or unknowns) contains a
+  sentence that names the anti-pattern being avoided or explicitly states what form of
+  response would fail the criterion.
+
+### C-18 -- A pre-analysis self-check gate precedes the first dimension section
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: A self-check confirmation block before the first analysis section ensures
+  scope boundary and break-even are resolved as preconditions, not afterthoughts. Without
+  this gate, models defer exclusions and break-even until the end or omit them entirely.
+  Structural gate, not a section reminder.
+- **Pass condition**: A self-check, confirmation block, or pre-flight step appears before the
+  first analysis section and requires the model to explicitly address scope boundary (what
+  is NOT included) and break-even signal before proceeding. Inline reminders within sections
+  do not satisfy this criterion.
+
+### C-19 -- Sections that could receive duplicate field types carry explicit prohibition guards
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: When a canonical section exists for a field type (e.g., OPEN UNKNOWNS for
+  unknowns), adjacent sections that could plausibly receive the same content must carry an
+  explicit prohibition rule -- "do not list unknowns here." This makes cross-contamination
+  impossible rather than merely unlikely.
+- **Pass condition**: When a canonical section exists for a field type, at least one adjacent
+  section that could plausibly receive the same content carries an explicit prohibition rule.
+
+### C-20 -- Complete closure mesh: every canonical section is closed bilaterally
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Extension of C-19. C-19 requires at least one adjacent section to be
+  closed against a canonical field type. C-20 requires every section that could receive a
+  canonical field type to be closed from every direction -- no unguarded adjacent section
+  remains for any canonical field type.
+- **Pass condition**: For every canonical home section (OPEN UNKNOWNS, SCOPE EXCLUSIONS,
+  etc.), ALL sections that could plausibly receive the same content carry explicit prohibition
+  rules -- no unguarded adjacent section remains for any canonical field type.
+
+### C-21 -- Pre-flight gate elicits a preliminary hypothesis before analysis proceeds
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Folds the hypothesis commitment into the pre-flight gate. When the gate
+  requires the model to state its predicted tier and timeline before any dimension is analyzed,
+  the hypothesis is verifiable against gate inputs rather than constructed post-hoc from
+  completed fields. Passes C-18 and C-15 independently does not satisfy C-21: the hypothesis
+  must be elicited inside the gate.
+- **Pass condition**: The pre-flight gate (satisfying C-18) includes a step requiring a
+  preliminary complexity tier and timeline estimate to be stated before the first analysis
+  section opens, AND the synthesis section explicitly confirms or revises this gate-elicited
+  commitment.
+
+### C-22 -- Synthesis names the gate commitment site at both ends of the chain
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Refinement of C-21. Synthesis must name the gate's structural label
+  explicitly -- once when anchoring the prior commitment and once when closing the verdict.
+  Without naming the structural anchor, synthesis references an implied prior commitment
+  that a reader cannot verify structurally.
+- **Pass condition**: Synthesis section explicitly names the pre-flight gate (or equivalent
+  structural label) when anchoring the prior commitment AND when stating the confirm/revise
+  verdict. An output that satisfies C-21 but refers to the hypothesis only as "my earlier
+  estimate" without naming its structural home fails C-22.
+
+### C-23 -- Prohibition guards name the canonical home, not just state the exclusion
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Refinement of C-20. Prohibition rules must name the canonical home: "scope
+  was resolved in PRE-FLIGHT GATE, not in analysis steps" rather than "do not include scope
+  exclusions here." The navigational reference completes the guard -- a reader following the
+  prohibition knows exactly where the excluded content belongs.
+- **Pass condition**: For at least one canonical field type (scope exclusions, open unknowns),
+  the prohibition guards in adjacent sections name the canonical home section by label -- not
+  just state a bare exclusion.
+
+### C-24 -- Synthesis provides a structured commitment-chain trace, not just a prose reference
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Refinement of C-22. A structured trace makes all three steps of the
+  commitment chain scannable without parsing narrative: (1) the gate-committed hypothesis,
+  (2) the analysis findings that bear on it, (3) the confirm/revise verdict. A prose paragraph
+  that mentions the gate twice satisfies C-22 but embeds the chain in sentences.
+- **Pass condition**: Synthesis includes a structured block, labeled list, or field-formatted
+  trace that explicitly places the gate commitment, the analysis evidence, and the verdict on
+  separate labeled lines or fields -- not folded into a single prose paragraph.
+
+### C-25 -- PRE-FLIGHT GATE forward-references the sections that enforce its scope and hypothesis
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Complement of C-23. C-23 requires guards (in adjacent sections) to name
+  the canonical home -- the inbound direction. C-25 requires the canonical home to name its
+  enforcement sections outbound -- e.g., "Scope exclusions committed here are enforced in:
+  SURFACE AREA, COMPLEXITY, INERTIA CHECK, and SYNTHESIS." Together C-23 and C-25 form a
+  fully bidirectional navigational mesh.
+- **Pass condition**: PRE-FLIGHT GATE (or the canonical home for scope exclusions and hypothesis
+  commitment) includes a statement that names at least two downstream sections responsible for
+  enforcing its scope exclusions or hypothesis commitment.
+
+### C-26 -- Synthesis embeds a structural AMEND re-evaluation directive
+- **Weight**: aspirational
+- **Category**: behavior
+- **Description**: Refinement of C-16. C-16 is behavioral -- did the output change when AMEND
+  was invoked? C-26 requires the synthesis section itself to carry a written directive
+  ("If an AMEND directive is present and affects a dimension cited in this section, re-evaluate
+  the cross-signal conclusion before closing") so that AMEND cascade is structurally enforced
+  regardless of whether AMEND is invoked in the current run.
+- **Pass condition**: The synthesis section contains an explicit written rule or directive
+  requiring re-evaluation of its cross-signal conclusion when an AMEND directive is present
+  -- independent of whether AMEND is invoked in the current run.
+
+### C-27 -- Every aspirational section carries a dedicated FAILURE MODE labeled block
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: Refinement of C-17. C-17 requires at least one aspirational section to
+  name its failure mode. C-27 requires every aspirational section with a nontrivial pass
+  condition to carry a dedicated labeled FAILURE MODE block -- not an inline anti-pattern
+  mention embedded in prose. A labeled block cannot be absent without a visible structural
+  gap.
+- **Pass condition**: Every aspirational section with a nontrivial pass condition (synthesis
+  and open unknowns at minimum) contains a dedicated labeled FAILURE MODE block or blockquote
+  -- not an inline anti-pattern mention embedded in prose.
+
+### C-28 -- Output includes a per-criterion self-check trace covering all aspirational criteria
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Adds a distinct self-check block after the complete output that explicitly
+  evaluates each aspirational criterion by ID, with pass/fail determination and supporting
+  evidence cited per criterion. This is a meta-verification layer above section-level FAILURE
+  MODE blocks (C-27): C-27 places failure-mode signals inside each content section; C-28
+  requires a separate artifact that systematically audits every criterion collectively.
+- **Pass condition**: Output includes a structured block or section -- distinct from the content
+  sections and their FAILURE MODE blocks -- that traces each aspirational criterion by ID to an
+  explicit pass/fail determination with supporting evidence.
+
+### C-29 -- Self-check items for all structural criteria include exact structural disqualifying forms
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Refinement of C-28. Every structural criterion (C-18 through C-27, C-33,
+  C-35, C-36, C-38, C-39, C-40, C-41, C-42, C-43, C-44) in the self-check carries both a
+  pass condition and an exact disqualifying form -- a specific structural pattern that looks
+  like compliance but fails. Older structural criteria must not regress to pass-only
+  descriptions as the denominator grows.
+- **Pass condition**: Self-check items for all structural criteria (C-18 through C-27, C-33,
+  C-35, C-36, C-38, C-39, C-40, C-41, C-42, C-43, C-44) include both a pass condition and
+  an exact structural disqualifying form. An output that satisfies C-28 with exact
+  disqualifying forms only for the latest-round criteria fails C-29 unless every structural
+  criterion carries equivalent precision.
+
+### C-30 -- Self-check items for all depth and behavior aspirational criteria include exact disqualifying forms
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Refinement of C-29. C-29 requires exact disqualifying forms for structural
+  criteria. C-30 extends this requirement to depth and behavior criteria (C-09 through C-17,
+  C-34, C-37). An output can pass C-29 with full structural precision while depth/behavior
+  self-check items carry only pass conditions.
+- **Pass condition**: Self-check items for all depth and behavior aspirational criteria (C-09
+  through C-17, C-34, C-37) include both a pass condition and an exact disqualifying form. An
+  output that satisfies C-29 with exact disqualifying forms only for structural criteria fails
+  C-30 unless every depth/behavior criterion carries equivalent disqualifying-form precision.
+
+### C-31 -- Self-check provides complete criterion coverage across all weight classes
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Refinement of C-28. C-28 bounds the self-check at aspirational criteria;
+  essential and recommended criteria (C-01-C-08) are outside the verification trace. A
+  complete verification artifact should audit every criterion regardless of weight class --
+  an essential failure disqualifies the output entirely, yet the self-check under C-28 cannot
+  detect it.
+- **Pass condition**: The per-criterion self-check (satisfying C-28) includes coverage of all
+  essential (C-01-C-05) and recommended (C-06-C-08) criteria in addition to all aspirational
+  criteria -- each with a pass/fail determination and supporting evidence. An output that
+  satisfies C-28+C-29+C-30 with a complete aspirational audit fails C-31 if essential or
+  recommended criteria are absent from the verification trace.
+
+### C-32 -- Self-check items for all essential and recommended criteria include exact disqualifying forms
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Refinement of C-31. C-31 requires the self-check to extend coverage to
+  essential and recommended criteria -- each with a pass/fail determination and supporting
+  evidence. C-32 requires those entries to carry the same disqualifying-form precision that
+  C-29 established for structural criteria and C-30 established for depth/behavior criteria.
+  Precision parity across weight classes is C-32's discriminator.
+- **Pass condition**: Self-check items for all essential (C-01-C-05) and recommended (C-06-C-08)
+  criteria include both a pass condition and an exact disqualifying form -- a specific output
+  pattern that satisfies the surface signal but fails the criterion. An output that satisfies
+  C-31 with essential/recommended entries carrying only pass conditions fails C-32.
+
+### C-33 -- Inertia check is the structural opener (precedes all analysis sections)
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: The inertia check section appears in document order before the complexity
+  tier (C-01 field), timeline estimate (C-02 field), surface area section (C-03 content), and
+  confidence level (C-05 field). This ensures the status-quo workaround baseline is established
+  before any analysis dimension receives a value. Without this ordering, a complexity tier or
+  timeline estimate can be assigned without the model having reasoned through what teams
+  currently do without the feature. An output can pass C-04 (inertia present, workaround + cost
+  named) and still fail C-33 if the inertia content appears after the complexity or timeline
+  fields are populated.
+  Sourced from V-01 R11 "Inertia as Structural Bookend" -- the first R11 variation to achieve
+  100.00 under v11.
+- **Pass condition**: Inertia check section appears in document order before the first of:
+  complexity tier field, timeline sprint range field, surface area section content, and
+  confidence level field. Inertia content appearing inline within or structurally after any
+  of those fields fails C-33.
+
+### C-34 -- Inertia check uses a 4-field structured format: Workaround, Ongoing Cost, Cost Direction, Key Driver
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: Refinement of C-04 and C-10. C-04 requires the workaround to be named
+  and one cost dimension characterized. C-10 adds a break-even estimate. C-34 requires the
+  inertia check to use a 4-field structured format that adds Cost Direction (is the workaround
+  cost trend increasing / stable / decreasing?) and Key Driver (what causal factor creates the
+  cost?). Cost Direction converts a static cost observation into a temporal signal -- it tells
+  whether the do-nothing path is deteriorating or stabilizing. Key Driver converts a symptom
+  into a cause -- it names what removing the workaround would actually fix. An inertia check
+  that names the workaround and its cost passes C-04; adding break-even passes C-10; C-34
+  requires the full 4-field treatment to make the cost analysis auditable as an investment
+  signal.
+  Sourced from V-01 R11 -- 4-column table: Workaround / Ongoing Cost / Cost Direction /
+  Key Driver.
+- **Pass condition**: Inertia check entry contains four explicitly named fields or columns:
+  Workaround (what teams do today), Ongoing Cost (what it costs), Cost Direction (trend),
+  and Key Driver (causal factor). An inertia entry that names the workaround and cost but
+  omits direction and causal driver fails C-34, even if it passes C-04 and C-10.
+
+### C-35 -- Disqualifying forms appear as inline constraint tags at write-time in column headers or field labels
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Refinement of C-32. C-32 requires exact disqualifying forms in the
+  per-criterion self-check -- a post-completion review artifact that detects violations after
+  the output is written. C-35 requires those disqualifying forms to also appear inline in
+  column headers or field labels at the moment of production, so the author encounters the
+  constraint when filling in the field. C-32 enforces disqualifying-form precision
+  *retroactively* (self-check detects violations); C-35 enforces it *proactively*
+  (point-of-use tags prevent violations). Together they form a two-layer compliance system:
+  prevention at write-time (C-35) and verification at review-time (C-32). An output that
+  passes C-32 with a complete disqualifying-form self-check but carries no inline constraint
+  tags in column headers fails C-35. An output with point-of-use tags on all
+  vocabulary-constrained fields but no self-check passes C-35 and fails C-32.
+  Sourced from V-04 R11 -- column headers carry `[FAIL: MODERATE, medium-high, 3/5, or any
+  non-vocabulary term]` inline on the complexity column at point-of-use.
+- **Pass condition**: At least the vocabulary-constrained essential fields (complexity tier
+  C-01 and timeline format C-02) carry inline constraint tags in their column header or field
+  label naming the exact failing forms. Tags must appear at the column header or field label
+  level; prose instruction in the section body does not satisfy C-35. An output with a
+  complete disqualifying-form self-check (C-32) but no point-of-use constraint tags fails
+  C-35.
+
+### C-36 -- Constraint tags cover ALL vocabulary-constrained fields, not just the C-01/C-02 minimum
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Extension of C-35. C-35 establishes the write-time prevention mechanism
+  with a minimum threshold: at least the Complexity Tier (C-01) and Timeline (C-02) column
+  headers must carry inline `[FAIL: ...]` constraint tags. C-36 extends that same discipline
+  to every vocabulary-constrained field in the output -- Confidence Level, Cost Direction,
+  Tier-Destination (where applicable), FTE/team-size fields carrying constrained vocabulary,
+  and any other column header where an exact disqualifying form applies. The C-35 minimum
+  (two fields) does not satisfy C-36. The distinction matters because a Confidence Level
+  column accepting "MEDIUM-HIGH" or a Cost Direction column accepting "worsening" are
+  structural failures of the same kind as a Complexity Tier column accepting "MODERATE" --
+  each vocabulary-constrained field benefits equally from a write-time guard.
+  Sourced from V-01 R12 -- the first variation to achieve full-field write-time constraint
+  tag coverage: Complexity Tier, Timeline, Confidence Level, Cost Direction, Tier-Destination
+  (both rows), and FTE column headers all carrying inline `[FAIL: ...]` tags.
+- **Pass condition**: Every vocabulary-constrained column header or field label in the output
+  carries an inline `[FAIL: ...]` constraint tag naming the exact disqualifying forms. An
+  output satisfying C-35 with only the C-01 and C-02 minimum fails C-36 if any remaining
+  vocabulary-constrained field is untagged. An output with Complexity, Timeline, and
+  Confidence Level tagged but Cost Direction or FTE untagged fails C-36.
+
+### C-37 -- Inertia check uses a 5-field format: adds Cost Trajectory to the 4-field minimum
+- **Weight**: aspirational
+- **Category**: depth
+- **Description**: Extension of C-34. C-34 requires four fields: Workaround, Ongoing Cost,
+  Cost Direction, Key Driver. Cost Direction captures the vector of change -- is the workaround
+  cost growing, stable, or shrinking? C-37 adds Cost Trajectory, which captures the *shape*
+  of that change over time: accelerating (cost compounds each period), stable (cost is growing
+  but at a constant rate), plateauing (growth is decelerating toward a ceiling), or reversing
+  (a mitigation is underway and cost is improving). Direction answers "which way?" Trajectory
+  answers "at what rate and shape?" A workaround that is worsening linearly has a different
+  urgency profile than one that is compounding -- Trajectory makes the urgency signal
+  quantitatively auditable in a way Direction alone cannot. C-34 4-field minimum does not
+  satisfy C-37.
+  Sourced from V-02 R12 -- the first variation to introduce Cost Trajectory as a fifth named
+  inertia field.
+- **Pass condition**: Inertia check entry contains five explicitly named fields or columns:
+  Workaround, Ongoing Cost, Cost Direction, Cost Trajectory (shape of change: accelerating /
+  stable / plateauing / reversing), and Key Driver. An inertia entry satisfying C-34 (4-field)
+  fails C-37 if Cost Trajectory is absent or conflated with Cost Direction. The distinction
+  between Direction and Trajectory must be structurally explicit -- a single combined field
+  named "Cost Trend" does not satisfy C-37.
+
+### C-38 -- PHASE SEALED blocks appear at the end of each phase as structured completion checklists
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Extension of C-20 (complete closure mesh). C-20 prevents cross-phase
+  field production by requiring each phase to name what it exclusively owns and to prohibit
+  production of fields owned by adjacent phases -- a contamination-prevention mechanism.
+  C-38 adds a distinct completion-confirmation mechanism: a PHASE SEALED block with a
+  structured checklist at the end of each phase, confirming that all phase-required fields
+  are resolved and non-empty before the next phase opens. C-20 prevents contamination during
+  production; C-38 confirms completeness at the phase boundary. Together they form a two-layer
+  phase governance system: C-20 guards against producing the wrong fields, C-38 guards against
+  leaving required fields unresolved. An output can satisfy C-20 with complete cross-phase
+  prohibitions and fail C-38 if no per-phase SEALED checklist is present. A single SEALED
+  block at the end of the full output does not satisfy C-38 -- one block per phase is required.
+  Sourced from V-03 R12 -- introduces PHASE 0 SEALED (4-item checklist confirming inertia
+  fields), PHASE 1 SEALED (9-item checklist confirming all sizing dimensions), and PHASE 2
+  SEALED (3-item checklist confirming synthesis and self-check).
+- **Pass condition**: Output contains a PHASE SEALED block at the end of Phase 0, Phase 1,
+  and Phase 2. Each block is a structured checklist (minimum 3 items per block) naming the
+  phase-specific fields that must be confirmed resolved before the next phase opens. Checklist
+  items must name specific fields, not use generic completion language ("all fields complete"
+  does not satisfy C-38). A single terminal SEALED block covering all phases fails C-38.
+
+### C-39 -- PHASE SEALED blocks carry role attribution naming the confirming analyst
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Extension of C-38. C-38 requires a PHASE SEALED checklist at the end of
+  each phase (Phase 0, Phase 1, Phase 2), with minimum 3 specific items per block confirming
+  phase-required fields are resolved. C-39 requires each SEALED block to attribute the
+  confirmation to a named role -- the analyst or role chartered to own that phase. Role
+  attribution reinforces the charter governance system at every phase boundary: the same role
+  named in the charter declaration appears again at the phase seal, creating an accountable
+  confirmation chain. Phase 0's SEALED block must name the Inertia Analyst (or equivalent);
+  Phase 1's must name the Sizing Analyst (or equivalent); Phase 2's must name the Risk
+  Assessor or Synthesis owner (or equivalent). Without attribution, a SEALED block is a
+  checklist without an owner; with attribution, it is a signed handoff from a chartered role.
+  An output satisfying C-38 (three SEALED blocks present, specific items per block) fails
+  C-39 if none of the blocks name a role as the confirming agent. Generic completion language
+  ("phase complete", "checklist done", "ALL confirmed") satisfies C-38 if items are specific
+  but fails C-39 if no role is named as the confirming subject.
+  Sourced from V-05 R13 -- the first variation to attribute each phase seal to a named role:
+  "The Inertia Analyst confirms ALL before Phase 1 opens", "The Sizing Analyst confirms ALL",
+  "The Risk Assessor confirms ALL".
+- **Pass condition**: Each PHASE SEALED block at Phase 0, Phase 1, and Phase 2 explicitly
+  names a specific role or analyst title as the confirming agent -- the role must appear as
+  the grammatical subject of the confirmation statement ("The [Role] confirms ALL..."). A
+  SEALED block with the required specific checklist items but no named role fails C-39.
+  An output satisfying C-38 with all three SEALED blocks present fails C-39 if none carry
+  role attribution.
+
+### C-40 -- Relational-constraint fields enumerate the cross-field disqualifying form as an explicit failure class
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Extension of C-36. C-36 requires every vocabulary-constrained column
+  header to carry an inline `[FAIL: ...]` constraint tag naming exact disqualifying forms.
+  Some fields carry a dual constraint: they must be from a controlled vocabulary AND must
+  satisfy a cross-field relational condition (e.g., Tier-Destination must differ from the
+  current complexity tier -- not merely be a valid vocabulary term). C-40 requires that for
+  such dual-constraint fields, the `[FAIL: ...]` tag explicitly enumerates the relational
+  disqualifying form as a separate failure class ("same tier as current"), not just the
+  vocabulary failures ("MODERATE, non-vocabulary"). A tag that lists only vocabulary
+  disqualifying forms on a dual-constraint field satisfies C-36's format requirement but
+  fails C-40 if the cross-field failure case is absent. The distinction matters: a
+  Tier-Destination of LOW can fail because it equals the current tier (relational failure)
+  independently of whether it is a vocabulary-valid term -- each is a distinct failure mode
+  requiring explicit enumeration. Phrasing like `[must differ: LOW / MEDIUM / HIGH / XL]`
+  specifies valid options but neither uses `[FAIL:]` prefix nor names the relational
+  disqualifying form; it fails both C-36 and C-40. Phrasing like `[FAIL: MODERATE,
+  non-vocabulary -- must be: LOW / MEDIUM / HIGH / XL]` satisfies C-36 but fails C-40 if
+  "same tier as current" is absent.
+  Sourced from V-05 R13 -- the first variation whose Tier-Destination tag reads `[FAIL: same
+  tier as current, MODERATE, non-vocabulary -- must differ from current: LOW / MEDIUM / HIGH
+  / XL]`, explicitly separating the relational disqualifier from vocabulary disqualifiers.
+  Note: V-02 R13 also satisfies C-40 -- its Tier-Destination tag `[FAIL: same as current,
+  MODERATE, non-vocabulary...]` includes the cross-field failure class, even though V-02 was
+  not designed to target C-40 specifically.
+- **Pass condition**: For every field in the output that carries both a vocabulary constraint
+  and a relational constraint (a constraint dependent on another field's value, such as "must
+  differ from current"), the inline `[FAIL: ...]` tag names the specific relational
+  disqualifying form (e.g., "same tier as current") as a distinct failure class alongside
+  vocabulary disqualifying forms. An output satisfying C-36 (all fields tagged in `[FAIL:]`
+  format) fails C-40 if any dual-constraint field's tag omits the cross-field failure case.
+  An output with no dual-constraint fields in scope satisfies C-40 by vacuous pass.
+
+### C-41 -- Phase 2 includes a positive disqualification list for prohibited gap candidates
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Extension of C-20 (complete closure mesh) and C-28 (per-criterion
+  self-check). Phase 2 in the skill's output typically includes a confidence gap analysis --
+  open unknowns or basis gaps that would lower the confidence rating. A behavioral compliance
+  approach relies on the analyst knowing what constitutes a valid gap vs. a basis-negation
+  gap. C-41 requires Phase 2 to include a structural non-access rule that enumerates all
+  prohibited gap candidate forms as an explicit positive disqualification list -- naming
+  specific gap statement types that look like valid gaps but fail because they negate the
+  stated confidence basis rather than extend it (basis-negation gaps), or because they are
+  placeholders without specific unknowns (e.g., "dependencies may exist", "risks are present").
+  By enumerating prohibited forms explicitly, the output prevents disqualified gap types
+  structurally rather than relying on behavioral restraint. C-20 closes field bleed across
+  phases; C-41 closes bad-form gap statements within Phase 2 itself. An output can satisfy
+  C-20 with complete cross-phase prohibitions and C-28 with a full per-criterion self-check
+  and fail C-41 if Phase 2 carries no explicit disqualification list for prohibited gap
+  candidates. A single sentence saying "avoid vague gaps" without naming specific prohibited
+  forms does not satisfy C-41.
+  Sourced from V-05 R13 -- the first variation to include a non-access rule in Phase 2 with
+  an explicit enumeration of all prohibited gap candidate forms, augmenting the self-test
+  with a positive disqualification list and preventing basis-negation gaps at the structural
+  level rather than the behavioral level.
+- **Pass condition**: Phase 2 (or the confidence gap / open unknowns section of Phase 2)
+  contains a dedicated structural rule -- a labeled block, named list, or non-access directive
+  -- that explicitly enumerates at least two specific prohibited gap candidate forms: statement
+  types that would be rejected as basis-negation, placeholder, or structurally invalid gaps.
+  The disqualification list must name specific forms (not generic guidance); a rule stating
+  "all gap candidates must name a specific unknown" without listing what fails is insufficient.
+  The list must be structural, not prose-embedded.
+
+### C-42 -- PHASE SEALED blocks carry signed-handoff authorization closing each phase with a formal release statement
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Extension of C-39. C-39 requires each PHASE SEALED block to name the
+  confirming role as the grammatical subject of the confirmation statement -- a signed
+  checklist. C-42 requires the SEALED block to be a two-part signed-handoff document:
+  (1) header section with role attribution confirming all checklist items are resolved
+  ("The [Role] confirms ALL..."), and (2) closure line with a formal authorization statement
+  that explicitly declares the successor phase is authorized to open
+  ("PHASE N HANDOFF -- [Role] has confirmed all items. Phase N+1 is authorized to open.").
+  Without the authorization closure, a role-attributed SEALED block is a signed checklist
+  without a release decision. The charter declares the role as designated signatory; the
+  SEALED header confirms the role acted; the SEALED closure issues the authorization. All
+  three parts are required for C-42. A SEALED block that satisfies C-39 with role attribution
+  but closes with a conditional access rule ("Phase N+1 OPENS only when all items above are
+  complete") fails C-42 -- a precondition statement is not an authorization statement.
+  Sourced from V-01 R14 -- the first variation to introduce PHASE HANDOFF authorization
+  closures at each SEALED block: "PHASE N HANDOFF -- [Role] has confirmed all items.
+  Phase N+1 is authorized to open."
+- **Pass condition**: Each PHASE SEALED block at Phase 0, Phase 1, and Phase 2 contains
+  both (a) a role-attribution header naming the confirming role as grammatical subject
+  (satisfying C-39) and (b) a HANDOFF authorization closure line that declaratively states
+  the phase is complete and the successor phase is authorized to open. A SEALED block
+  satisfying C-39 (role named) but closing with a condition statement ("opens only when...")
+  rather than an authorization statement ("Phase N+1 is authorized to open") fails C-42.
+  A SEALED block with authorization closure but without role attribution fails both C-39 and
+  C-42.
+
+### C-43 -- Relational-constraint disqualifying forms extended to all dual-constraint fields in the output
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Extension of C-40. C-40 requires dual-constraint fields to enumerate the
+  cross-field disqualifying form explicitly ("same tier as current" for Tier-Destination).
+  C-40 is satisfied when Tier-Destination carries this relational disqualifier. C-43 extends
+  this requirement to every dual-constraint field present in the output: Sprint Range carries
+  both a format constraint (N-M sprint range) and a relational constraint (N must be strictly
+  less than M -- N=M is a point estimate masquerading as a range, a distinct relational failure
+  class independent of format); Break-even carries both a presence constraint (must state a
+  break-even estimate) and a relational constraint (must explicitly reference the Phase 0
+  baseline cost as the comparison anchor -- a break-even figure without an anchored Phase 0
+  reference is unverifiable); Confidence Calibration columns carry a cross-field relational
+  constraint where applicable (different confidence columns must name distinct unknowns -- a
+  "same unknown as another column" entry is a relational failure class). Each of these
+  dual-constraint fields must carry an explicit `[FAIL: ...]` tag that names the relational
+  disqualifying form as a distinct failure class alongside format or vocabulary disqualifiers.
+  An output satisfying C-40 on Tier-Destination alone fails C-43 if Sprint Range, Break-even,
+  or Confidence Calibration carry dual constraints that are unnamed in their constraint tags.
+  Sourced from V-02 R14 -- the first variation to extend relational-disqualifier coverage
+  to Sprint Range (N=M named), Break-even (Phase 0 baseline reference required), and
+  Confidence Calibration (cross-column distinct-unknown requirement).
+- **Pass condition**: For every dual-constraint field in the output -- fields carrying both
+  a format/vocabulary constraint and a cross-field relational constraint -- the inline
+  `[FAIL: ...]` tag names the relational disqualifying form as a distinct failure class.
+  Sprint Range must name N=M (equal bounds) as a relational failure class; Break-even must
+  name "without Phase 0 baseline reference" as a relational failure class; Confidence
+  Calibration must name "same unknown as another column" as a relational failure class where
+  applicable. An output satisfying C-40 (Tier-Destination relational disqualifier present)
+  fails C-43 if any other dual-constraint field in scope carries an incomplete constraint tag
+  omitting its relational disqualifying form.
+
+### C-44 -- Phase 1 PRE-FLIGHT GATE carries non-access rule naming prohibited Phase 0 inertia proxies for the preliminary tier hypothesis
+- **Weight**: aspirational
+- **Category**: structure
+- **Description**: Symmetric complement of C-41. C-41 requires Phase 2 to carry a positive
+  disqualification list for prohibited gap candidate forms -- preventing basis-negation
+  contamination in Phase 2's confidence analysis. C-44 introduces the bidirectional counterpart
+  for Phase 1: the Phase 1 PRE-FLIGHT GATE must carry a non-access rule that explicitly names
+  the prohibited Phase 0 inertia proxies for the preliminary complexity tier hypothesis.
+  Specifically, Cost Direction, Cost Trajectory, Ongoing Cost magnitude, and Key Driver are
+  named as prohibited inputs for the Phase 1 tier hypothesis -- these are Phase 0 inertia
+  signals; using them as complexity proxies contaminates the hypothesis with inertia reasoning
+  before Phase 1 sizing inputs are established. Additionally, Phase 1 SEALED must carry a
+  corresponding hypothesis-anchor check item with embedded disqualifying forms confirming that
+  the preliminary tier was anchored to Phase 1 sizing inputs and not leaked Phase 0 inertia
+  signals. C-41 closes basis-negation contamination within Phase 2; C-44 closes inertia-proxy
+  contamination within Phase 1's hypothesis commitment. Together they form a symmetric pair:
+  C-44 protects Phase 1 hypothesis integrity from Phase 0 leakage; C-41 protects Phase 2 gap
+  integrity from basis-negation. An output satisfying C-41 (Phase 2 gap disqualification list
+  present) fails C-44 if Phase 1 PRE-FLIGHT GATE carries no non-access rule naming prohibited
+  inertia proxies, or if Phase 1 SEALED carries no hypothesis-anchor check item. A non-access
+  rule naming generic contamination risks without naming the specific Phase 0 inertia proxy
+  fields (Cost Direction, Cost Trajectory, Ongoing Cost magnitude, Key Driver) does not
+  satisfy C-44.
+  Sourced from V-03 R14 -- the first variation to introduce a Phase 1 PRE-FLIGHT GATE
+  non-access rule naming Cost Direction, Cost Trajectory, Ongoing Cost magnitude, and Key
+  Driver as prohibited Phase 0 inertia proxies for the preliminary tier, with a corresponding
+  hypothesis-anchor check item in Phase 1 SEALED.
+- **Pass condition**: Phase 1 PRE-FLIGHT GATE contains a non-access rule -- a labeled block,
+  named list, or dedicated directive -- that explicitly names at least three of the four
+  prohibited Phase 0 inertia proxy forms: Cost Direction, Cost Trajectory, Ongoing Cost
+  magnitude, Key Driver (as invalid inputs for the Phase 1 preliminary tier hypothesis).
+  Phase 1 SEALED must also carry at least one hypothesis-anchor check item with embedded
+  disqualifying forms specifying that inertia proxies from Phase 0 are prohibited as
+  complexity basis. An output satisfying C-41 with a Phase 2 gap disqualification list fails
+  C-44 if the Phase 1 PRE-FLIGHT GATE carries no inertia-proxy non-access rule, or if Phase 1
+  SEALED carries no hypothesis-anchor check item naming the disqualifying forms.
+
+---
+
+## Scoring Model
 
 ```
 composite = (essential_pass / 5 * 60)
           + (recommended_pass / 3 * 30)
-          + (aspirational_score / 31 * 10)
-
-Where:
-  essential_pass     = count of C-01–C-05 at PASS (0–5)
-  recommended_pass   = count of C-06–C-08 at PASS (0–3)
-  aspirational_score = sum over C-09–C-39 of (PASS=1, PARTIAL=0.5, FAIL=0)
-  Max aspirational_score = 31
-
-Per aspirational criterion: ~0.323 pts; PARTIAL = ~0.161 pts
-Maximum composite = 100
+          + (aspirational_pass / 36 * 10)
 ```
+
+**Golden threshold**: All 5 essential criteria pass AND composite >= 80.
+
+| Band | Composite | Meaning |
+|------|-----------|---------|
+| Gold | >= 80, all essential pass | Publish-ready sizing signal |
+| Silver | >= 60, all essential pass | Useful but missing depth |
+| Bronze | >= 40, <=2 essential fail | Partial signal, needs revision |
+| Fail | Any essential fail | Output not usable downstream |
+
+---
+
+## Evaluation Notes
+
+- C-04 (inertia check) is the highest-signal differentiator -- a sizing output without it
+  is indistinguishable from a naive estimate.
+- C-02 (sprint range) guards against false precision; point estimates imply certainty that
+  sizing signals never have.
+- C-08 only activates on AMEND invocations; default-pass otherwise to avoid penalizing
+  non-amend runs.
+- Surface area (C-03) and team-size (C-06) together feed `program-plan` routing -- weak
+  values here are the most common downstream failure mode.
+- C-11 and C-12 are upward refinements of C-06 and C-05 respectively: an output can pass
+  the essential/recommended bar and still fail these if ownership scope and named unknowns
+  are absent.
+- C-13 is the hardest aspirational to pass mechanically; it requires the model to reason
+  across dimensions rather than populate fields in sequence.
+- C-14 is a structural refinement of C-12 -- output can pass C-12 with prose-embedded
+  unknowns and still fail C-14; C-14 rewards the form that makes omissions self-evident.
+- C-15 is a structural refinement of C-13 -- hypothesis-first forces the conclusion to be
+  verifiable against a prior commitment, not constructed post-hoc.
+- C-16 activates only on AMEND + synthesis overlap; default-pass otherwise.
+- C-17 passes when the output demonstrates anti-pattern awareness, not merely avoidance.
+- C-18 and C-19 are structural gate criteria sourced from R3: C-18 requires a pre-write
+  gate (not a section reminder) that fires before any dimension field is filled; C-19
+  requires adjacent sections to be closed against field bleed, not merely that a canonical
+  section exists. An output can pass C-14 and still fail C-19 if the confidence section
+  carries no prohibition.
+- C-20 is a refinement of C-19 sourced from R4. Passing C-19 requires at least one adjacent
+  section closed; C-20 requires every canonical home to be fully surrounded -- bilateral
+  closure in all directions.
+- C-21 integrates C-18 and C-15 at the structural level, sourced from the R4 gap where
+  C-15 fails in both top-scoring variations. Passing both C-18 and C-15 independently does
+  not satisfy C-21: the hypothesis must be elicited inside the gate.
+- C-22 is a refinement of C-21 sourced from R5. Passing C-21 requires hypothesis in gate
+  and synthesis confirmation. C-22 requires synthesis to name the gate's structural label
+  at both the anchor and the verdict.
+- C-23 is a refinement of C-20 sourced from R5. Passing C-20 requires all adjacent sections
+  to carry prohibition rules. C-23 requires at least one of those rules to name the canonical
+  home by label.
+- C-24 is a refinement of C-22 sourced from R6. Passing C-22 allows prose synthesis that
+  mentions the gate twice. C-24 requires a structured, scannable commitment-chain trace on
+  separate labeled lines.
+- C-25 is the outbound complement of C-23, sourced from R6. C-23 closes the inbound direction
+  (guards name home); C-25 closes the outbound direction (home names guards). Together they
+  form a fully bidirectional navigational mesh.
+- C-26 is a structural upgrade of C-16, sourced from R7. C-16 defaults to pass when no AMEND
+  is invoked. C-26 requires a written directive enforcing AMEND re-evaluation structurally --
+  independent of whether AMEND fires.
+- C-27 is a structural upgrade of C-17, sourced from R7. C-17 requires at least one
+  aspirational section to name its failure mode. C-27 requires every aspirational section to
+  carry a dedicated labeled FAILURE MODE block.
+- C-28 is a meta-layer above C-27, sourced from R8. C-27 ensures section-level failure-mode
+  blocks. C-28 requires a separate collective self-check artifact that evaluates every
+  criterion by ID.
+- C-29 is a refinement of C-28, sourced from R8. C-28 requires the self-check to exist.
+  C-29 requires structural criteria items (C-18-C-27, C-33, C-35, C-36, C-38, C-39, C-40,
+  C-41, C-42, C-43, C-44) to include exact disqualifying forms. Coverage uniformity across
+  structural criteria is the discriminator. Note: v15 expands the structural criteria set
+  to include C-42, C-43, and C-44.
+- C-30 is a category extension of C-29, sourced from R9. C-29 achieves structural-category
+  uniformity. C-30 requires the same treatment for depth/behavior criteria (C-09-C-17, C-34,
+  C-37). An output can pass C-29 and fail C-30 if any depth/behavior criterion in the
+  self-check carries only a pass condition.
+- C-31 is a scope extension of C-28, sourced from R9. C-28 bounds the self-check at
+  aspirational criteria. C-31 extends the verification scope to include essential and
+  recommended criteria. An output can satisfy C-28+C-29+C-30 with a complete aspirational
+  audit and fail C-31 if essential and recommended criteria have no verification trace entries.
+- C-32 is a precision extension of C-31, sourced from R10. C-31 requires essential and
+  recommended criteria to be present in the self-check. C-32 requires those entries to carry
+  exact disqualifying forms -- the same precision treatment C-29 established for structural
+  criteria and C-30 for depth/behavior criteria. V-04 R10 is the first variation to achieve
+  complete precision parity across all weight classes.
+- C-33 is a position criterion sourced from R11. C-04 requires inertia to be present. C-33
+  requires it to be first -- the structural opener before any analysis dimension is assigned.
+  An output can pass C-04 and fail C-33 if the inertia check appears after the complexity
+  tier or timeline estimate fields.
+- C-34 is a structural precision criterion sourced from R11. C-04 requires workaround + one
+  cost dimension. C-33 requires inertia to be first. C-34 requires the inertia entry to have
+  four named fields: Workaround, Ongoing Cost, Cost Direction, and Key Driver. An output can
+  pass C-04 and C-10 (break-even present) and fail C-34 if the Cost Direction and Key Driver
+  fields are absent.
+- C-35 is a write-time enforcement criterion sourced from R11. C-32 achieves disqualifying-form
+  precision in the post-completion self-check. C-35 achieves it at the point-of-use column
+  header level. An output can pass C-32 with a complete self-check and fail C-35 if no
+  vocabulary-constrained column header carries an inline `[FAIL: ...]` constraint tag.
+  Together C-32 and C-35 form a two-layer system: detection (C-32) and prevention (C-35).
+- C-36 is a coverage criterion sourced from R12. C-35 establishes write-time prevention with
+  a minimum of C-01 and C-02 fields tagged. C-36 requires all vocabulary-constrained fields
+  to be tagged at write-time -- Confidence Level, Cost Direction, Tier-Destination, FTE, and
+  any other column carrying constrained vocabulary. An output can pass C-35 with two fields
+  tagged and fail C-36 if any remaining vocab-constrained column is untagged. V-01 R12 is
+  the first variation to achieve comprehensive coverage.
+- C-37 is a temporal resolution criterion sourced from R12. C-34 requires 4 inertia fields
+  including Cost Direction (vector). C-37 requires a fifth field -- Cost Trajectory -- that
+  captures the shape of cost change over time (accelerating / stable / plateauing / reversing).
+  Direction and Trajectory are distinct: Direction answers "which way?" Trajectory answers
+  "at what rate and pattern?" An output satisfying C-34 fails C-37 if Cost Trajectory is
+  absent or if Direction and Trajectory are conflated into a single field. V-02 R12 is the
+  first variation to separate these.
+- C-38 is a phase completion criterion sourced from R12. C-20 prevents cross-phase field
+  production. C-38 adds per-phase completion confirmation via PHASE SEALED blocks -- structured
+  checklists at the end of Phase 0, Phase 1, and Phase 2, each confirming that phase-required
+  fields are resolved before the next phase opens. An output satisfying C-20 with complete
+  cross-phase prohibitions fails C-38 if PHASE SEALED blocks are absent or consolidated into
+  a single terminal block. V-03 R12 is the first variation to introduce this mechanism.
+- C-39 is a phase accountability criterion sourced from R13. C-38 requires SEALED blocks at
+  each phase boundary. C-39 requires each block to name the role responsible for the
+  confirmation -- the chartered analyst for that phase. An output satisfying C-38 with three
+  complete SEALED blocks fails C-39 if no role is named as the confirming agent. Role
+  attribution transforms a checklist into a signed handoff, reinforcing the charter governance
+  system at every phase transition. V-05 R13 is the first variation to introduce role-attributed
+  SEALED blocks.
+- C-40 is a dual-constraint precision criterion sourced from R13. C-36 requires all
+  vocabulary-constrained fields to carry `[FAIL: ...]` tags. C-40 extends this to dual-constraint
+  fields -- fields that must be from a controlled vocabulary AND satisfy a cross-field relational
+  condition (e.g., Tier-Destination must differ from the current tier). An output satisfying
+  C-36 on all vocabulary fields fails C-40 if a dual-constraint field's tag enumerates only
+  vocabulary failures without naming the relational disqualifying form ("same tier as current").
+  V-05 R13 is the first variation to explicitly enumerate the relational failure class. V-02 R13
+  also satisfies C-40 incidentally -- its Tier-Destination tag included "same as current" even
+  though V-02 was not designed to target this criterion.
+- C-41 is a Phase 2 structural disqualification criterion sourced from R13. C-20 closes field
+  bleed across phases. C-41 closes bad-form gap statements within Phase 2: it requires a
+  non-access rule that positively enumerates prohibited gap candidate forms (basis-negation,
+  placeholder). Passing C-20 with full cross-phase closure and C-28 with a complete self-check
+  does not satisfy C-41 -- the positive disqualification list for prohibited gap forms is a
+  distinct structural artifact targeting a distinct failure mode. V-05 R13 is the first
+  variation to include this mechanism.
+- C-42 is a phase authorization criterion sourced from R14. C-39 requires SEALED blocks to
+  name the confirming role as grammatical subject. C-42 requires the SEALED block to carry a
+  two-part structure: role-attributed header (C-39 floor) plus authorization closure declaring
+  the successor phase is authorized to open. A SEALED block satisfying C-39 with role
+  attribution but closing with a condition statement ("Phase N+1 OPENS only when...") fails
+  C-42 -- a precondition is not an authorization. The HANDOFF authorization completes the
+  governance loop: charter declares the role, SEALED header confirms the role acted, SEALED
+  closure issues the release. V-01 R14 is the first variation to introduce PHASE HANDOFF
+  authorization closures.
+- C-43 is a full-coverage dual-constraint criterion sourced from R14. C-40 requires the
+  Tier-Destination dual-constraint field to name its relational disqualifying form. C-43
+  extends this to all dual-constraint fields: Sprint Range (N=M is a distinct relational
+  failure class beyond format), Break-even (Phase 0 baseline reference is a required relational
+  anchor), Confidence Calibration (same-unknown is a cross-column relational disqualifier). An
+  output satisfying C-40 on Tier-Destination alone fails C-43 if Sprint Range, Break-even, or
+  Confidence Calibration carry dual constraints with incomplete relational-disqualifier
+  enumeration. V-02 R14 is the first variation to achieve full dual-constraint coverage.
+- C-44 is the Phase 1 structural disqualification criterion sourced from R14, symmetric to C-41.
+  C-41 closes basis-negation gap contamination in Phase 2. C-44 closes inertia-proxy
+  contamination in Phase 1's PRE-FLIGHT GATE hypothesis commitment: Cost Direction, Cost
+  Trajectory, Ongoing Cost magnitude, and Key Driver are named as prohibited Phase 0 inertia
+  proxies for the preliminary tier. Phase 1 SEALED must carry a corresponding hypothesis-anchor
+  check item. An output satisfying C-41 (Phase 2 disqualification list present) fails C-44 if
+  Phase 1 PRE-FLIGHT GATE carries no inertia-proxy non-access rule or if Phase 1 SEALED carries
+  no hypothesis-anchor check item. C-41 and C-44 together form a symmetric contamination-
+  prevention pair protecting hypothesis integrity (Phase 1) and gap integrity (Phase 2).
+  V-03 R14 is the first variation to introduce this mechanism.
+
+---
+
+## Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| v1 | 2026-03-17 | Initial rubric -- 5 essential, 3 recommended, 2 aspirational |
+| v2 | 2026-03-17 | Added C-11, C-12, C-13; aspirational denominator 2 -> 5 |
+| v3 | 2026-03-17 | Added C-14, C-15, C-16, C-17; aspirational denominator 5 -> 9; sourced from R2 excellence signals |
+| v4 | 2026-03-17 | Added C-18, C-19; aspirational denominator 9 -> 11; sourced from R3 |
+| v5 | 2026-03-17 | Added C-20, C-21; aspirational denominator 11 -> 13; sourced from R4 |
+| v6 | 2026-03-17 | Added C-22, C-23; aspirational denominator 13 -> 15; sourced from R5 |
+| v7 | 2026-03-17 | Added C-24, C-25; aspirational denominator 15 -> 17; sourced from R6 |
+| v8 | 2026-03-17 | Added C-26, C-27; aspirational denominator 17 -> 19; sourced from R7 |
+| v9 | 2026-03-17 | Added C-28, C-29; aspirational denominator 19 -> 21; sourced from R8 |
+| v10 | 2026-03-17 | Added C-30, C-31; aspirational denominator 21 -> 23; sourced from R9 |
+| v11 | 2026-03-17 | Added C-32; aspirational denominator 23 -> 24; sourced from R10 -- V-04 R10 first to achieve complete disqualifying-form precision parity across all weight classes (structural via C-29, depth/behavior via C-30, essential/recommended via C-32) |
+| v12 | 2026-03-17 | Added C-33 (inertia as structural opener), C-34 (inertia 4-field format), C-35 (point-of-use constraint tags); aspirational denominator 24 -> 27; sourced from R11 -- V-05 R11 first to combine all three, achieving 100.00 under v12 |
+| v13 | 2026-03-17 | Added C-36 (comprehensive constraint tag coverage), C-37 (5-field inertia -- Cost Trajectory), C-38 (PHASE SEALED completion blocks); aspirational denominator 27 -> 30; sourced from R12 -- three independent single-axis advances; no R12 variation achieves all three simultaneously; v13 champion requires combining C-36 + C-37 + C-38 |
+| v14 | 2026-03-17 | Added C-39 (role-attributed PHASE SEALED blocks), C-40 (relational-constraint field disqualifying form), C-41 (Phase 2 positive disqualification list for prohibited gap candidates); aspirational denominator 30 -> 33; sourced from R13 -- V-05 R13 achieves 100.00 under both v13 and v14 (33/33); C-40 retroactively promotes V-02 R13 to 29/33 alongside V-04; C-29 scope expanded to include C-39/C-40/C-41 |
+| v15 | 2026-03-17 | Added C-42 (SEALED signed-handoff authorization closure), C-43 (relational disqualifiers extended to all dual-constraint fields), C-44 (Phase 1 PRE-FLIGHT inertia-proxy non-access rule + hypothesis-anchor SEALED check item); aspirational denominator 33 -> 36; sourced from R14 -- V-05 R14 achieves 100.00 (36/36); V-04 and V-03 at 35/36; V-01 and V-02 at 34/36; C-29 scope expanded to include C-42/C-43/C-44; C-41 and C-44 now form symmetric contamination-prevention pair |

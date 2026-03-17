@@ -1,17 +1,4 @@
 ---
-skill: quest-score
-skill_target: signal
-topic: signal
-item: scorecard
-date: 2026-03-17
-round: 15
-rubric: simulations/quest/rubrics/signal-rubric-v14-2026-03-17.md
-variate: simulations/quest/golden/signal-variate-R15-2026-03-17.md
----
-
-Written to `simulations/quest/scorecards/signal-scorecard-R15-2026-03-17.md`.
-
----
 
 ## Round 15 Scorecard -- /signal (v14 rubric)
 
@@ -19,49 +6,42 @@ Written to `simulations/quest/scorecards/signal-scorecard-R15-2026-03-17.md`.
 
 | Variation | Axes  | Ess | Rec | Asp (36) | Composite  |
 |-----------|-------|-----|-----|----------|------------|
-| V-04      | X+Y   | 5/5 | 3/3 | 35/36    | **99.72**  |
-| V-05      | X+Z   | 5/5 | 3/3 | 35/36    | **99.72**  |
-| V-01      | X     | 5/5 | 3/3 | 34/36    | **99.44**  |
-| V-02      | Y     | 5/5 | 3/3 | 34/36    | **99.44**  |
-| V-03      | Z     | 5/5 | 3/3 | 34/36    | **99.44**  |
-
-**All-essential pass: YES (5/5 across all variations)**
-
----
+| **V-04**  | X+Y   | 5/5 | 3/3 | 35/36    | **99.72**  |
+| **V-05**  | X+Z   | 5/5 | 3/3 | 35/36    | **99.72**  |
+| V-01      | X     | 5/5 | 3/3 | 34/36    | 99.44      |
+| V-02      | Y     | 5/5 | 3/3 | 34/36    | 99.44      |
+| V-03      | Z     | 5/5 | 3/3 | 34/36    | 99.44      |
 
 ### Independence Confirmation
 
-| V | C-42 (X) | C-43 (Y) | C-44 (Z) | Asp (36) | Composite | Delta |
-|---|----------|----------|----------|----------|-----------|-------|
-| V-01 (X)   | PASS    | FAIL    | FAIL    | 34/36 | 99.44 | +0.278 |
-| V-02 (Y)   | PARTIAL | PASS    | FAIL    | 34/36 | 99.44 | +0.278 |
-| V-03 (Z)   | PARTIAL | FAIL    | PASS    | 34/36 | 99.44 | +0.278 |
-| V-04 (X+Y) | PASS    | PASS    | FAIL    | 35/36 | 99.72 | +0.556 |
-| V-05 (X+Z) | PASS    | FAIL    | PASS    | 35/36 | 99.72 | +0.556 |
+| V | C-42 | C-43 | C-44 | Delta |
+|---|------|------|------|-------|
+| V-01 (X) | PASS | FAIL | FAIL | +0.278 |
+| V-02 (Y) | PARTIAL | PASS | FAIL | +0.278 |
+| V-03 (Z) | PARTIAL | FAIL | PASS | +0.278 |
+| V-04 (X+Y) | PASS | PASS | FAIL | +0.556 |
+| V-05 (X+Z) | PASS | FAIL | PASS | +0.556 |
 
-**X, Y, Z confirmed independent.** Each contributes exactly +0.278 (1/36 x 10). No interaction
-effects: V-04 = +0.278 + 0.278 = +0.556; V-05 = same. Predicted scores match observed.
+**X, Y, Z confirmed independent.** Predicted scores match observed exactly. No interaction effects.
 
-**R16 prediction**: V-01 (X+Y+Z) -> 36/36 asp -> 10.00 -> composite **100.00**. v14 saturation
-in one convergence variation.
+### Key findings
 
----
+**C-42 for V-02/V-03**: FILTER Check 3 has verbatim strings but positional `(1)(2)(3)` labels. C-40 (FULL gate) explicitly accepts `(1)(2)(3)`, but C-42 (FILTER gate) requires named labels equivalent to `Header:/Separator:/Footer:`. Empirical R14 retroactive scoring (base = C-42 FAIL) confirms positional labels fail C-42 at FILTER gate. Scores PARTIAL = 0 pts.
 
-### Per-Criterion Table
+**V-05 FILTER Format matrix cell**: Reads `Ch3 (C-42)` not `Ch3 (C-29)` — first appearance of axis-dependent matrix cell content. When X elevates the FILTER format check, the matrix cell should reference C-42, not the baseline C-29.
 
-| ID | V-01 | V-02 | V-03 | V-04 | V-05 | Evidence note |
-|----|------|------|------|------|------|---------------|
-| C-01 | PASS | PASS | PASS | PASS | PASS | All 12 namespaces present in catalog. |
-| C-02 | PASS | PASS | PASS | PASS | PASS | Each namespace has a header with purpose phrase. |
-| C-03 | PASS | PASS | PASS | PASS | PASS | Every canonical sub-skill listed under its namespace. |
-| C-04 | PASS | PASS | PASS | PASS | PASS | BARE MODE instruction present; command-names-only gate. |
-| C-05 | PASS | PASS | PASS | PASS | PASS | FILTER gate with scope check present. |
-| C-06 | PASS | PASS | PASS | PASS | PASS | Headers state count N; counts match canonical values. |
-| C-07 | PASS | PASS | PASS | PASS | PASS | All 12 namespaces have dispatch footers. |
-| C-08 | PASS | PASS | PASS | PASS | PASS | All namespace headers include purpose phrase. |
-| C-09 | PASS | PASS | PASS | PASS | PASS | Catalog IS the output; descriptions match canonical one-liners. |
-| C-10 | PASS | PASS | PASS | PASS | PASS | Aligned -> column; namespace sections visually separated. |
-| C-11 | PASS | PASS | PASS | PASS | PASS | DOMAIN NOUN TABLE present; all 12 footers use distinct nouns. |
+### Excellence signals from top variations
+
+1. **FILTER/FULL gate symmetry** (V-04/V-05): `Header:/Separator:/Footer:` at FILTER Check 3 closes the last gate-format asymmetry.
+2. **BARE GROUP OFFSET TABLE** (V-04): Fourth named formal table. Pattern confirmed: any per-namespace gate value should become a named table with first/last anchors per row.
+3. **Axis-dependent matrix cells** (V-05): Matrix content tracks the highest active criterion per cell. When an axis elevates a gate check, the cell must reference the elevating criterion.
+
+**R16 plan**: V-01 = X+Y+Z convergence, predicted **100.00**. v14 saturation.
+
+```json
+{"top_score": 99.72, "all_essential_pass": true, "new_patterns": ["X/Y/Z independence confirmed: each axis +0.278 independently, dual-axis +0.556, R16 V-01 (X+Y+Z) predicted at 100.00", "FILTER gate format check requires named labels (Header:/Separator:/Footer:) not positional (1)(2)(3) to satisfy C-42 -- positional scores partial not full", "axis-dependent matrix cells: when X is present FILTER Format cell references C-42 not C-29 -- matrix content tracks the highest active criterion per cell", "BARE GROUP OFFSET TABLE is the fourth named formal table -- any per-namespace gate value should become a named table with first/last self-documenting anchors per row"]}
+```
+ | PASS | DOMAIN NOUN TABLE present; all 12 footers use distinct nouns. |
 | C-12 | PASS | PASS | PASS | PASS | PASS | ALIGNMENT WIDTH TABLE + rule; -> aligned within each section. |
 | C-13 | PASS | PASS | PASS | PASS | PASS | Catalog format matches output spec; IS the output framing. |
 | C-14 | PASS | PASS | PASS | PASS | PASS | BARE gate and FILTER gate both present with restart triggers. |
