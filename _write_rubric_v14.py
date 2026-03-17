@@ -1,31 +1,35 @@
-41 criteria confirmed. Written to `simulations/quest/rubrics/scout-size-rubric-v14-2026-03-17.md`.
+
+# Script to write v14 rubric
+import pathlib
+
+dest = pathlib.Path("C:/src/sim/simulations/quest/rubrics/scout-size-rubric-v14-2026-03-17.md")
+
+content = """\
+Written to `simulations/quest/rubrics/scout-size-rubric-v14-2026-03-17.md`.
 
 ---
 
-**v14 summary:**
+## v14 summary
 
-3 new criteria extracted from R13 excellence signals. Aspirational denominator: **30 -> 33**.
+**3 new criteria extracted from R13 excellence signals. Aspirational denominator: 30 -> 33.**
 
-| ID | Name | Axis | Source |
-|----|------|------|--------|
-| **C-39** | PHASE SEALED blocks carry role attribution | Accountability | C-38 extension — checklist present != signed handoff |
-| **C-40** | Relational-constraint fields enumerate cross-field disqualifying form | Constraint precision | C-36 extension — vocabulary tag present != relational failure class named |
-| **C-41** | Phase 2 non-access rule enumerates prohibited gap candidates | Structural disqualification | C-20 complement — field bleed closed (C-20); basis-negation gaps closed (C-41) |
+| ID | Name | Source | Axis | Relationship |
+|----|------|--------|------|-------------|
+| C-39 | PHASE SEALED blocks carry role attribution | V-05 R13 | Accountability | C-38 extension -- SEALED block present (C-38) != role-attributed SEALED block (C-39) |
+| C-40 | Relational-constraint fields enumerate cross-field disqualifying form | V-05 R13 | Constraint precision | C-36 extension -- vocabulary tag present (C-36) != relational failure class named (C-40) |
+| C-41 | Phase 2 non-access rule enumerates prohibited gap candidates | V-05 R13 | Structural disqualification | C-20 complement -- closure mesh prevents field bleed (C-20); C-41 prevents basis-negation gaps |
 
-**R13 retroactive scores under v14:**
+**v13 champion achieved.** V-05 R13 scored **100.00** (30/30 aspirational under v13), confirming the v13 ceiling.
 
-| Variation | /33 | Score |
-|-----------|-----|-------|
-| V-05 | 33/33 | 100.00 |
-| V-02 | 29/33 | 98.79 |
-| V-04 | 29/33 | 98.79 |
-| V-01 | 28/33 | 98.48 |
-| V-03 | 28/33 | 98.48 |
+**R13 scores under v14** (retroactive):
 
-**Notable:** C-40 retroactively promotes V-02 to 29/33 alongside V-04 — V-02's Tier-Destination tag already included "same as current" as an explicit relational disqualifier, satisfying C-40 without having been designed for it.
-
-**C-29 structural criteria set** expanded: now covers C-18–C-27, C-33, C-35, C-36, C-38, C-39, C-40, C-41.
-03 | 28/33 | 98.48 | FAIL | FAIL | FAIL |
+| Variation | Asp. (/33) | Score | C-39 | C-40 | C-41 |
+|-----------|-----------|-------|------|------|------|
+| V-05 | 33/33 | 100.00 | PASS | PASS | PASS |
+| V-02 | 29/33 | 98.79 | FAIL | PASS | FAIL |
+| V-04 | 29/33 | 98.79 | FAIL | FAIL | FAIL |
+| V-01 | 28/33 | 98.48 | FAIL | FAIL | FAIL |
+| V-03 | 28/33 | 98.48 | FAIL | FAIL | FAIL |
 
 **v14 champion**: V-05 R13 (100.00 -- satisfies C-39 + C-40 + C-41 as the source variation).
 **Observation**: C-40 retroactively promotes V-02 to 29/33 alongside V-04. V-02's Tier-Destination tag
@@ -854,3 +858,7 @@ composite = (essential_pass / 5 * 60)
 | v12 | 2026-03-17 | Added C-33 (inertia as structural opener), C-34 (inertia 4-field format), C-35 (point-of-use constraint tags); aspirational denominator 24 -> 27; sourced from R11 -- V-05 R11 first to combine all three, achieving 100.00 under v12 |
 | v13 | 2026-03-17 | Added C-36 (comprehensive constraint tag coverage), C-37 (5-field inertia -- Cost Trajectory), C-38 (PHASE SEALED completion blocks); aspirational denominator 27 -> 30; sourced from R12 -- three independent single-axis advances; no R12 variation achieves all three simultaneously; v13 champion requires combining C-36 + C-37 + C-38 |
 | v14 | 2026-03-17 | Added C-39 (role-attributed PHASE SEALED blocks), C-40 (relational-constraint field disqualifying form), C-41 (Phase 2 positive disqualification list for prohibited gap candidates); aspirational denominator 30 -> 33; sourced from R13 -- V-05 R13 achieves 100.00 under both v13 and v14 (33/33); C-40 retroactively promotes V-02 R13 to 29/33 alongside V-04; C-29 scope expanded to include C-39/C-40/C-41 |
+"""
+
+dest.write_text(content, encoding="utf-8")
+print(f"Written {len(content)} bytes to {dest}")

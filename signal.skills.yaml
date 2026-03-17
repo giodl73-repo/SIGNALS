@@ -1,7 +1,7 @@
 version: 1
 plugin: signal
 updated: 2026-03-16
-skills_count: 52
+skills_count: 55
 namespaces:
 - discover
 - specify
@@ -1084,3 +1084,66 @@ skills:
     (current coverage), topic-story (narrative synthesis). Output: complete topic dashboard showing what signals exist, what
     is missing, and the narrative arc. Use at the start and end of a signal-gathering session.'
   artifact: simulations/campaign/{topic}-brief-{date}.md
+- id: signal-check
+  namespace: signal
+  audience: team
+  default_mode: full
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal health report
+  golden: null
+  rubric: simulations/quest/rubrics/signal-check-rubric-2026-03-17.md
+  quest_status: RUBRIC
+  param_set: lean
+  description: 'Self-check your signals before committing. Analyzes all signal artifacts for a topic across 4 dimensions:
+    SEQUENCE (did you discover before specifying?), COHERENCE (do your signals agree with each other?), STALENESS (are signals
+    recent enough to trust?), CAUSAL GAP (do you have evidence for the mechanism linking feature to outcome?). Not punitive
+    -- coaching. Surfaces what looks inconsistent so you can decide whether to address it before committing. Run before /specify-commitment
+    or any major decision.'
+  artifact: simulations/signal/check/{topic}-check-{date}.md
+- id: discover-causal
+  namespace: discover
+  audience: pm+researcher
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  inputs:
+  - Topic
+  - Hypothesis or feature claim
+  outputs:
+  - Causal validity signal
+  golden: null
+  rubric: null
+  quest_status: QUEUED
+  param_set: standard
+  description: 'Test whether the causal mechanism linking your feature to the claimed outcome is actually sound. Given: hypothesis
+    X causes Y, this skill asks: what is the causal pathway? what would falsify the mechanism? is there evidence the mechanism
+    holds in your context? The inertia check applies here too -- does doing nothing also produce Y? This is the most commonly
+    skipped eval in feature decisions. AMEND: narrow the causal claim, add mechanism pathway, add falsification condition.'
+  artifact: simulations/discover/causal/{topic}-causal-{date}.md
+- id: discover-coherence
+  namespace: discover
+  audience: team
+  default_mode: full
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Coherence report
+  golden: null
+  rubric: null
+  quest_status: QUEUED
+  param_set: lean
+  description: 'Check whether your discover signals agree with each other. Surfaces contradictions: if discover-competitors
+    rates inertia MEDIUM but discover-inertia finds switching cost HIGH, those disagree. If discover-hypothesis predicts adoption
+    but validate-customers shows NPS 4, those disagree. Lists each contradiction with both signals side by side, severity
+    (blocking vs advisory), and the most likely resolution. Run after gathering multiple discover signals before specifying.'
+  artifact: simulations/discover/coherence/{topic}-coherence-{date}.md
