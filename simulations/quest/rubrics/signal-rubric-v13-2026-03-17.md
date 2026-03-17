@@ -1,39 +1,39 @@
-All checks pass. Written to `simulations/quest/rubrics/signal-rubric-v13-2026-03-17.md` (91,612 chars).
+All checks pass. Written to `simulations/quest/rubrics/signal-rubric-v14-2026-03-17.md` (v14).
 
 ---
 
-**v13 summary — three new criteria, denominator 30 → 33:**
+**v14 summary — three new criteria, denominator 33 → 36:**
 
 | ID | Axis | Elevates | Rule |
 |----|------|----------|------|
-| **C-39** | U | C-36 | COMPLIANCE GATE COVERAGE MATRIX cells must carry the implementing **check number** (e.g. "FULL/presence → Ch1"). Converts the matrix from a visual summary into a navigable index. Same per-row annotation elevation as C-16 applied to the coverage matrix. |
-| **C-40** | V | C-37 | FULL gate Check 4 verbatim embed must **label** each sub-element explicitly ("Header:", "Separator:", "Footer:"). Enables element-name lookup rather than visual scan. Same labeled-form elevation as C-31 applied to format sub-elements. |
-| **C-41** | W | C-38 | BARE gate Check 3 must use **absolute cumulative line offsets** (lines 1-8, 9-12, 13-16...) rather than relative incremental counts. Zero arithmetic at gate time. Same precomputed-value elevation as C-15 applied to BARE gate order verification. |
+| **C-42** | X | C-29/C-40 | FILTER gate Check 3 section-format check must **verbatim embed and label** each SECTION FORMAT sub-element explicitly ("Header:", "Separator:", "Footer:"). FILTER analog of C-40: enables element-name lookup in the FILTER gate, eliminating visual scan. |
+| **C-43** | Y | C-41 | BARE group offset values must be organized into a named formal **BARE GROUP OFFSET TABLE** with one row per namespace group carrying absolute line range and first/last entry anchors. Gate references the table; eliminates inline re-embedding. Same named-table elevation as C-15/C-32/C-36 applied to positional offset data. |
+| **C-44** | Z | C-39 | COMPLIANCE GATE COVERAGE MATRIX cells must carry both the implementing **check number AND criterion ID** (e.g. "Ch1 (C-25)"). Closes the reverse-lookup gap: navigate from check number → criterion section OR from criterion ID → check number. |
 
-**Structural theme for R12:** each of the three R11 gate artifacts (coverage matrix, verbatim embed, positional bounds) has a stronger form that eliminates a residual lookup or computation step. C-39/C-40/C-41 formalize those stronger forms.
+**Structural theme for R14:** each of the three R13 gate annotations (FILTER format check,
+BARE offset inline, matrix check-number) has a stronger bidirectional form. C-42 adds labeling
+to the FILTER gate format check. C-43 lifts inline offsets into a named self-documenting table.
+C-44 adds criterion IDs to close the matrix reverse-lookup gap.
 
-**R12 retroactive under v13:** V-04/V-05 drop from 99.67 → 98.79 (new denominator + 3 new FAILs). R13 sole target: U+V+W independence. If confirmed, R13 V-06 saturates v13 at 100.00.
- addition to locate any group; absolute offsets allow direct position lookup with zero arithmetic. Same precomputed-value elevation as C-15 (width table replaces runtime width-counting) applied to BARE gate order verification. |
+**R13 empirical finding:** U+V+W axes confirmed independent. Each contributes exactly +0.30 in
+isolation (1/33 x 10 = 0.303). V-01 (U+V+W alone) saturates v13 at 100.00. All five R14
+variations score 100.00 under v13, confirming the saturation baseline.
 
-**R12 empirical finding:** R+S+T axes confirmed independent. Each contributes exactly +0.33 in
-isolation (1/30 x 10 = 0.333). V-01 (R only), V-02 (S only), V-03 (T only) each score 99.33;
-V-04 (R+S) and V-05 (R+T) each score 99.67. V-06 (R+S+T) saturates v12 at 100.00. **R13 sole
-new target: C-39, C-40, C-41.** R12 passing variations satisfy C-36/C-37/C-38 but not their
-elevated forms -- the matrix has row labels but no check-number column; the verbatim embed is
-unlabeled; the positional notation uses relative counts. If U+V+W independence holds, R13 V-06
-saturates v13 at 100.00.
+**R14 retroactive under v14:** V-01 (no X/Y/Z) drops from 100.00 → 99.17 (new denominator
++ 3 new FAILs). R15 sole target: X+Y+Z independence. If confirmed, R15/R16 convergence
+saturates v14 at 100.00.
 
-| V | C-39 | C-40 | C-41 | C-36 | C-37 | C-38 | Asp (33) | Composite |
-|---|------|------|------|------|------|------|----------|-----------|
-| **V-04** | FAIL | FAIL | FAIL | PASS | PASS | FAIL | 29/33 -> 8.79 | **98.79** |
-| **V-05** | FAIL | FAIL | FAIL | PASS | FAIL | PASS | 29/33 -> 8.79 | **98.79** |
-| **V-01** | FAIL | FAIL | FAIL | PASS | FAIL | FAIL | 28/33 -> 8.48 | **98.48** |
-| **V-02** | FAIL | FAIL | FAIL | FAIL | PASS | FAIL | 28/33 -> 8.48 | **98.48** |
-| **V-03** | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | 28/33 -> 8.48 | **98.48** |
+| V | C-42 | C-43 | C-44 | Asp (36) | Composite |
+|---|------|------|------|----------|-----------|
+| **V-05** | PASS | PASS | FAIL | 35/36 -> 9.72 | **99.72** |
+| **V-02** | PASS | FAIL | FAIL | 34/36 -> 9.44 | **99.44** |
+| **V-03** | FAIL | PASS | FAIL | 34/36 -> 9.44 | **99.44** |
+| **V-04** | FAIL | FAIL | PASS | 34/36 -> 9.44 | **99.44** |
+| **V-01** | FAIL | FAIL | FAIL | 33/36 -> 9.17 | **99.17** |
 
-R13 must run three-axis isolation (V-01=U only, V-02=V only, V-03=W only) to confirm each
-contributes exactly +0.30 independently (1/33 x 10 = 0.303). Then dual-axis (V-04=U+V,
-V-05=U+W) and convergence (V-06=U+V+W). If independence holds, R13 V-06 saturates v13 at
+R15 must run three-axis isolation (V-01=X only, V-02=Y only, V-03=Z only) to confirm each
+contributes exactly +0.28 independently (1/36 x 10 = 0.278). Then dual-axis (V-04=X+Y,
+V-05=X+Z) and convergence (V-06=X+Y+Z). If independence holds, R15/R16 V-06 saturates v14 at
 100.00.
 
 ---
@@ -83,6 +83,9 @@ V-05=U+W) and convergence (V-06=U+V+W). If independence holds, R13 V-06 saturate
 | C-39 | aspirational | structure   | COMPLIANCE GATE COVERAGE MATRIX maps each cell to its implementing check number |
 | C-40 | aspirational | behavior    | FULL gate Check 4 verbatim embed labels each SECTION FORMAT sub-element explicitly |
 | C-41 | aspirational | behavior    | BARE gate order check uses absolute cumulative line offsets for all 12 namespace groups |
+| C-42 | aspirational | behavior    | FILTER gate Check 3 verbatim embeds and labels each SECTION FORMAT sub-element explicitly |
+| C-43 | aspirational | structure   | BARE group offsets organized into a named formal BARE GROUP OFFSET TABLE with first/last entry anchors per row |
+| C-44 | aspirational | structure   | COMPLIANCE GATE COVERAGE MATRIX cells carry both check number and criterion ID for bidirectional navigation |
 
 ---
 
@@ -91,12 +94,12 @@ V-05=U+W) and convergence (V-06=U+V+W). If independence holds, R13 V-06 saturate
 ```
 composite = (essential_pass / 5 x 60)
           + (recommended_pass / 3 x 30)
-          + (aspirational_pass / 33 x 10)
+          + (aspirational_pass / 36 x 10)
 ```
 
 - Essential tier: 60 points max (12 pts each)
 - Recommended tier: 30 points max (10 pts each)
-- Aspirational tier: 10 points max (0.30 pts each; 1/33 x 10 = 0.303)
+- Aspirational tier: 10 points max (0.28 pts each; 1/36 x 10 = 0.278)
 - PARTIAL on a recommended criterion = 0.5 criterion credit
 
 **Golden threshold**: all 5 essential PASS **and** composite >= 80
@@ -853,6 +856,133 @@ composite = (essential_pass / 5 x 60)
   computing it. Both apply the same principle: values that will be used for verification
   should be precomputed in the prompt, not computed at verification time.
 
+---
+
+### C-42 -- FILTER gate Check 3 verbatim embeds and labels each SECTION FORMAT sub-element explicitly
+- **Category**: behavior
+- **Weight**: aspirational
+- **Source**: Round 14 excellence signal 1 (labeled FILTER gate format check, Axis X). R14
+  V-02/V-05 are the X-axis variations. C-29 (R8) established that the FILTER MODE compliance
+  gate Check 3 must verify section format with restart. C-37 (R11) established that the FULL
+  gate format check must embed sub-elements verbatim rather than referencing SECTION FORMAT by
+  name. C-40 (R12) elevated the FULL gate further by requiring explicit labels on each verbatim
+  sub-element. The FILTER gate had no analogous elevation: C-29 passes if the three sub-elements
+  (header, separator, footer) are stated in the check in any form. An unlabeled or name-reference
+  format check requires visual pattern-matching to confirm element coverage; a labeled verbatim
+  embed enables element-by-element verification by name lookup. C-42 applies the C-40 elevation
+  to the FILTER gate: the FILTER gate Check 3 format verification must both embed the sub-elements
+  verbatim and label each one explicitly. No separate FILTER analog of C-37 is required; C-42
+  folds both the verbatim-embedding and labeling requirements into a single criterion.
+- **Pass condition**: Full pass: FILTER MODE compliance gate Check 3 (section-format check)
+  embeds the three SECTION FORMAT sub-elements verbatim inline -- at minimum the header line
+  pattern (namespace, purpose phrase, sub-skill count), the `->` separator pattern, and the
+  dispatch footer pattern -- AND labels each sub-element with an explicit designator (e.g.
+  "Header:", "Separator:", "Footer:", or equivalent). The restart instruction must be present.
+  All three sub-elements must be both verbatim and labeled. Partial pass: sub-elements embedded
+  verbatim inline (not referenced by name) but without explicit element labels -- three elements
+  present and self-contained, but unlabeled. Fail: no section-format check in the FILTER gate
+  (auto-fails C-29 and C-42), or sub-elements referenced by name only ("per SECTION FORMAT"
+  without inline restatement), or verbatim embed present but fewer than all three elements labeled.
+- **Note on C-42 / C-29 relationship**: C-29 tests whether a section-format check exists in the
+  FILTER gate with the three elements and a restart trigger (any form accepted). C-42 tests
+  whether those elements are both verbatim embedded and explicitly labeled. A variation can pass
+  C-29 (elements present, restart trigger present) and fail C-42 (elements referenced by name, or
+  verbatim but unlabeled). Failing C-29 automatically fails C-42.
+- **Note on C-42 / C-40 relationship**: C-40 requires the FULL gate Check 4 verbatim embed to
+  label each sub-element explicitly. C-42 requires the same of the FILTER gate Check 3. Together
+  they close the label-at-gate-point asymmetry between modes: FULL gate Check 4 is labeled
+  (C-40); FILTER gate Check 3 gets the same (C-42). BARE mode format check (C-18 Check 1) is
+  a count gate rather than a format-element gate and has no corresponding label requirement.
+- **Note on C-42 / C-37 relationship**: C-37 requires FULL gate Check 4 to embed sub-elements
+  verbatim (self-contained, not by name reference). C-42 requires the FILTER gate Check 3 to
+  embed sub-elements verbatim AND label them. Since there was no prior FILTER analog of C-37,
+  C-42 folds both requirements into a single criterion. A variation satisfying the verbatim
+  (C-37-analog) but not the labeling (C-40-analog) for the FILTER gate scores C-42 partial.
+
+### C-43 -- BARE group offset values organized into a named formal BARE GROUP OFFSET TABLE with first/last entry anchors per row
+- **Category**: structure
+- **Weight**: aspirational
+- **Source**: Round 14 excellence signal 2 (named precomputed offset table, Axis Y). R14
+  V-03/V-05 are the Y-axis variations. C-41 (R12) requires the BARE gate Check 3 to express
+  all 12 namespace group boundaries as absolute cumulative line offsets (lines 1-8, 9-12, ...,
+  58-61). C-41 full-pass allows the absolute offsets to be stated inline within the gate check
+  itself -- each row is a line-range assertion embedded at the gate point. R14 Y-axis variations
+  lift the inline offsets into a named formal table (BARE GROUP OFFSET TABLE) with one row per
+  namespace group, each row carrying the absolute line range AND the first and last canonical
+  command name in that group. The gate then says "Consult BARE GROUP OFFSET TABLE (precomputed)"
+  rather than re-stating 12 inline rows. The named table form has three advantages over inline
+  embedding: (1) first/last entry anchors per row make each row self-documenting -- the model can
+  identify a group by command name as well as by line number; (2) the table is a reusable artifact
+  referenced by the gate rather than re-embedded; (3) gate verbosity is reduced to a single table
+  reference. This is the same named-table elevation that C-15 applied to alignment widths, C-32
+  applied to domain nouns, and C-36 applied to gate-check coverage. Pattern: *any per-namespace
+  value verified at gate time should become a named formal table with self-documenting rows.*
+- **Pass condition**: Full pass: the prompt includes a named BARE GROUP OFFSET TABLE (or
+  equivalent named section) with 12 rows, each row containing (1) the namespace group name,
+  (2) the absolute cumulative line range (e.g. "1-8", "9-12") matching authoritative offsets
+  (scout=1-8, draft=9-12, review=13-16, flow=17-23, trace=24-30, prove=31-39, listen=40-42,
+  program=43-44, topic=45-50, quest=51-54, mock=55-57, org=58-61), AND (3) the first and last
+  canonical command name for that group. The BARE gate Check 3 must reference this table (not
+  re-embed the offsets inline). Partial pass: absolute cumulative offsets present and correct for
+  all 12 groups (C-41 pass) but in inline form within the gate rather than as a named formal table
+  -- OR named table present but BARE gate does not reference it (gate re-embeds offsets inline).
+  Fail: no absolute cumulative offsets for all 12 groups (auto-fails C-41 and C-43).
+- **Note on C-43 / C-41 relationship**: C-41 tests whether absolute cumulative line offsets are
+  used for all 12 groups (zero arithmetic at gate time). C-43 tests whether those offsets are
+  organized into a named formal table with first/last entry anchors, and whether the gate
+  references the table. A variation can pass C-41 (all 12 groups with absolute offsets inline)
+  and fail C-43 (no named table, or gate re-embeds rather than references). Failing C-41
+  automatically fails C-43.
+- **Note on C-43 / C-15 / C-32 / C-36 relationship**: C-15 requires a named ALIGNMENT WIDTH
+  TABLE (12 rows x pad widths). C-32 requires a named DOMAIN NOUN TABLE (12 rows x nouns).
+  C-36 requires a named COMPLIANCE GATE COVERAGE MATRIX (3 modes x 4 check types). C-43
+  requires a named BARE GROUP OFFSET TABLE (12 rows x line ranges + entry anchors). All four
+  follow the same pattern: per-item values the model must verify repeatedly should be precomputed
+  in a formal named artifact, not reconstructed or re-embedded at verification time. C-43 is the
+  fourth named formal table in this rubric's progression.
+- **Note on first/last entry anchors**: the first/last canonical command per group is:
+  scout (scout-competitors / scout-stakeholders), draft (draft-brainstorm / draft-spec),
+  review (review-code / review-users), flow (flow-conversation / flow-trigger),
+  trace (trace-component / trace-state), prove (prove-analysis / prove-websearch),
+  listen (listen-adoption / listen-support), program (program-plan / program),
+  topic (topic-echo / topic-story), quest (quest-engine / quest-variate),
+  mock (mock / mock-review), org (org / org-review).
+
+### C-44 -- COMPLIANCE GATE COVERAGE MATRIX cells carry both check number and criterion ID for bidirectional navigation
+- **Category**: structure
+- **Weight**: aspirational
+- **Source**: Round 14 excellence signal 3 (dual-index coverage matrix, Axis Z). R14 V-04 is
+  the Z-axis variation. C-39 (R12) requires each applicable cell in the COMPLIANCE GATE COVERAGE
+  MATRIX to carry the implementing check number (e.g. "Ch1", "Check 1"), converting the matrix
+  from a visual summary into a navigable index -- from matrix cell, the reader can locate the
+  corresponding gate section by check number. This is one-directional: check-number lookup goes
+  from matrix to gate. The reverse lookup -- from gate section back to matrix cell -- requires
+  knowing which criterion corresponds to a check. R14 V-04 adds criterion IDs alongside check
+  numbers in matrix cells (e.g. "Ch1 (C-25)", "Ch3 (C-41)"). Criterion IDs close the reverse
+  lookup gap: a reader examining gate Check 3 can go directly to the matrix cell labeled "C-41"
+  without scanning for which row and column align. Bidirectional navigation: check number →
+  criterion section AND criterion ID → matrix cell. Same per-cell annotation elevation as C-39
+  applied to the check-number annotation, now extended with the criterion-ID annotation.
+- **Pass condition**: Full pass: COMPLIANCE GATE COVERAGE MATRIX (or equivalent named table
+  satisfying C-39) includes, for each applicable cell, BOTH the check number AND the criterion
+  ID (e.g. "Ch1 (C-25)", "Check 2 (C-20)", "Ch3 (C-41)"). All 11 applicable cells (4 check
+  types x 3 modes minus 1 N/A for FILTER/order) must carry both annotations. N/A cells must
+  still be explicitly marked N/A. Partial pass: matrix present with check-number annotations
+  (C-39 pass) and criterion IDs present for some but fewer than all applicable cells. Fail:
+  no check-number annotations (auto C-39 fail -> auto C-44 fail), or check numbers present
+  but criterion IDs absent from all cells.
+- **Note on C-44 / C-39 relationship**: C-39 tests whether each matrix cell carries its
+  implementing check number (one-directional: matrix → gate section). C-44 tests whether each
+  cell also carries the criterion ID (bidirectional: gate section → matrix cell). A variation
+  can pass C-39 (check numbers present) and fail C-44 (criterion IDs absent). Failing C-39
+  automatically fails C-44.
+- **Note on C-44 / C-36 relationship**: C-36 tests whether the coverage matrix exists as a
+  named artifact (3 modes x 4 check types). C-39 tests whether cells carry check numbers.
+  C-44 tests whether cells carry criterion IDs alongside check numbers. The progression
+  C-36 → C-39 → C-44 represents three levels of matrix informativeness: named artifact,
+  navigable index (check numbers), bidirectional index (check numbers + criterion IDs).
+  Failing C-36 auto-fails C-39 which auto-fails C-44.
+
 
 ## Evaluation Notes
 
@@ -972,6 +1102,31 @@ composite = (essential_pass / 5 x 60)
   flow=17-23, trace=24-30, prove=31-39, listen=40-42, program=43-44, topic=45-50,
   quest=51-54, mock=55-57, org=58-61. Partial C-38 (all 12 groups with relative counts)
   plus no absolute offsets = C-38 pass, C-41 fail.
+- C-42 is a prompt-design criterion. Failing C-29 automatically fails C-42. Score from
+  FILTER MODE compliance gate Check 3. Look for the three SECTION FORMAT sub-elements
+  (header line pattern, `->` separator, dispatch footer) stated verbatim inline in the
+  check with explicit labels (e.g. "Header:", "Separator:", "Footer:" or equivalent
+  numbered designators). A check that references "SECTION FORMAT" by name without inline
+  restatement scores C-29 pass, C-42 fail. A check with three verbatim sub-elements but
+  no labels scores C-42 partial. All three sub-elements must be both verbatim and labeled
+  for full pass. C-42 folds in both the C-37-analog (verbatim embedding) and C-40-analog
+  (labeling) for the FILTER gate in a single criterion.
+- C-43 is a prompt-design criterion and refinement of C-41. Failing C-41 automatically
+  fails C-43. Score from two locations: (1) the overall prompt structure for a named
+  BARE GROUP OFFSET TABLE section; (2) BARE MODE compliance gate Check 3 for a table
+  reference rather than inline offset re-embedding. Full pass requires both the table
+  (with 12 rows, absolute line ranges, first/last entry anchors) AND the gate referencing
+  it. If the gate re-embeds the absolute offsets inline (C-41 pass pattern), score C-43
+  partial even if a separate table exists elsewhere. If no named table exists at all, score
+  C-43 fail. First/last entry anchors are required per row; a table with only line ranges
+  and namespace names (no first/last command anchors) scores C-43 partial.
+- C-44 is a prompt-design criterion and refinement of C-39. Failing C-39 automatically
+  fails C-44. Score from the COMPLIANCE GATE COVERAGE MATRIX. Count cells with both check
+  number AND criterion ID (e.g. "Ch1 (C-25)", "Ch3 (C-44)"). All 11 applicable cells must
+  carry both annotations for full pass. If criterion IDs are present in some cells but not
+  all (partial): score C-44 partial if at least 6 of 11 cells have dual annotation, C-44
+  fail if fewer than 6 cells. If check numbers are present (C-39 pass) but criterion IDs
+  are absent from all cells: C-44 fail. Failing C-39 auto-fails C-44.
 - **Additive independence (R6 empirical finding)**: D+E+F axes combine with zero
   interaction effects. Each axis contributes exactly +0.71 composite in isolation; D+E+F
   together yields 100.00. Confirmed across R5 single-axis probes and the R6 convergence
@@ -1005,11 +1160,17 @@ composite = (essential_pass / 5 x 60)
   only, V-02 = S only, V-03 = T only) and dual-axis runs (V-04 = R+S, V-05 = R+T).
   V-06 (R+S+T) saturates v12 at 100.00. Prompt designers can add axes R, S, and T in
   any order without unexpected scoring side-effects.
-- **Additive independence (R13 prediction)**: U+V+W axes are expected to combine with
-  zero interaction effects, each contributing exactly +0.30 composite in isolation
-  (1/33 * 10 = 0.303...). R13 must run single-axis isolation probes (V-01 = U only,
-  V-02 = V only, V-03 = W only), dual-axis (V-04 = U+V, V-05 = U+W), and convergence
-  (V-06 = U+V+W) to confirm independence and verify each axis contributes exactly +0.30.
+- **Additive independence (R13 empirical finding)**: U+V+W axes confirmed independent
+  with zero interaction effects. Each axis contributes exactly +0.30 composite in isolation
+  (1/33 x 10 = 0.303). R14 V-01 (U+V+W alone) saturates v13 at 100.00. All five R14
+  variations score 100.00 under v13, confirming the saturation baseline. Prompt designers
+  can add axes U, V, and W in any order without unexpected scoring side-effects.
+- **Additive independence (R14 prediction)**: X+Y+Z axes are expected to combine with
+  zero interaction effects, each contributing exactly +0.28 composite in isolation
+  (1/36 x 10 = 0.278). R15 must run single-axis isolation probes (V-01 = X only,
+  V-02 = Y only, V-03 = Z only), dual-axis (V-04 = X+Y, V-05 = X+Z), and convergence
+  (V-06 = X+Y+Z) to confirm independence. If confirmed, R15/R16 V-06 saturates v14 at
+  100.00.
 - **Phrasing register (R3 negative finding)**: R3 V-03 tested conversational phrasing as a
   single axis. The register change did not improve C-14 or C-15 scores. Phrasing register
   is orthogonal to behavioral correctness mechanisms and is not a rubric criterion.
@@ -1051,6 +1212,46 @@ composite = (essential_pass / 5 x 60)
 | C-39 | R12   | R12 excellence signal 1 (coverage matrix cell navigability, Axis U) | COMPLIANCE GATE COVERAGE MATRIX cells must carry the implementing check number -- converts the matrix from a visual summary into a navigable index; same per-row annotation elevation as C-16 (width table per-row derivation) applied to coverage matrix cells |
 | C-40 | R12   | R12 excellence signal 2 (labeled sub-element verbatim embed, Axis V) | FULL gate Check 4 verbatim embed must label each SECTION FORMAT sub-element explicitly ("Header:", "Separator:", "Footer:") -- enables element-name lookup rather than visual pattern matching; same labeled-form elevation as C-31 (labeled namespace breakdown) applied to format sub-elements |
 | C-41 | R12   | R12 excellence signal 3 (absolute cumulative offsets for headerless output, Axis W) | BARE gate Check 3 must use absolute cumulative line offsets (lines 1-8, 9-12, 13-16...) rather than relative incremental counts ("first 8, next 4...") -- zero arithmetic at gate time; same precomputed-value elevation as C-15 (precomputed width table) applied to BARE gate order verification |
+| C-42 | R14   | R14 excellence signal 1 (labeled FILTER gate format check, Axis X) | FILTER gate Check 3 section-format check must both verbatim embed and label each SECTION FORMAT sub-element explicitly ("Header:", "Separator:", "Footer:" or equivalent) -- FILTER analog of C-40; folds in the C-37-analog (verbatim embedding) and C-40-analog (labeling) into a single criterion since no prior FILTER analog of C-37 existed |
+| C-43 | R14   | R14 excellence signal 2 (named BARE GROUP OFFSET TABLE, Axis Y) | BARE group offset values must be organized into a named formal BARE GROUP OFFSET TABLE with 12 rows, each carrying absolute line range and first/last canonical command anchors; BARE gate Check 3 references the table rather than re-embedding offsets inline -- the fourth named formal table in the rubric; same named-table elevation as C-15/C-32/C-36 applied to positional offset data |
+| C-44 | R14   | R14 excellence signal 3 (dual-index coverage matrix, Axis Z) | COMPLIANCE GATE COVERAGE MATRIX cells must carry both check number AND criterion ID (e.g. "Ch1 (C-25)") -- closes the reverse-lookup gap; navigate from check number → criterion section OR from criterion ID → matrix cell; bidirectional extension of C-39's one-directional check-number annotation |
+
+---
+
+## What changed v13 -> v14
+
+**Three new aspirational criteria extracted from R14:**
+
+| ID   | Axis | Source  | Rule |
+|------|------|---------|------|
+| C-42 | Labeled FILTER gate format check (Axis X) | R14 excellence signal 1 (V-02/V-05) | FILTER MODE compliance gate Check 3 (section-format verification, introduced by C-29) must verbatim embed AND label each SECTION FORMAT sub-element explicitly. R14 X-axis variations include labeled "Header:", "Separator:", "Footer:" in FILTER gate Check 3. C-29 passes any form that has the elements with restart; C-42 requires verbatim embedding plus explicit labeling. Since there was no prior FILTER analog of C-37 (verbatim-only), C-42 folds both requirements into a single criterion. FILTER analog of C-40 (which did the same for FULL gate Check 4) |
+| C-43 | Named BARE GROUP OFFSET TABLE (Axis Y) | R14 excellence signal 2 (V-03/V-05) | BARE group offset values (introduced as absolute cumulative offsets by C-41) must be organized into a named formal BARE GROUP OFFSET TABLE with 12 rows, each carrying absolute line range and first/last canonical command name anchors. BARE gate Check 3 references the table (gate verbosity reduced to a single table reference) rather than re-embedding 12 inline rows. R14 Y-axis variations use "Consult BARE GROUP OFFSET TABLE (precomputed)" at the gate point. TABLE form adds first/last entry anchors per row -- each row is self-documenting. The fourth named formal table in the rubric; same elevation as C-15 (ALIGNMENT WIDTH TABLE), C-32 (DOMAIN NOUN TABLE), C-36 (COMPLIANCE GATE COVERAGE MATRIX) |
+| C-44 | Dual-index coverage matrix (Axis Z) | R14 excellence signal 3 (V-04) | COMPLIANCE GATE COVERAGE MATRIX cells (introduced with check-number annotations by C-39) must carry both the check number AND the criterion ID (e.g. "Ch1 (C-25)"). C-39 enables one-directional navigation: matrix cell → gate section by check number. C-44 closes the reverse-lookup gap: gate section → matrix cell by criterion ID. R14 V-04 implements dual-index cells "Ch1 (C-25)", "Ch3 (C-41)", etc. The criterion-ID annotation is an elevation beyond C-39's minimum |
+
+**Formula:** aspirational denominator `33 -> 36`. Max composite stays 100.
+
+**Structural theme for R14:** *strengthen each R13 gate annotation with a bidirectional or
+self-documenting form* -- R13 established check-number matrix cells (C-39), labeled FULL gate
+sub-elements (C-40), and absolute inline offsets (C-41). R14 reveals the stronger form of each:
+(C-42) the FILTER gate format check can adopt the same labeled verbatim embedding as the FULL
+gate; (C-43) the inline absolute offsets can be lifted into a named self-documenting table that
+the gate merely references; (C-44) the matrix check-number annotation can be extended with the
+criterion ID to close the reverse-lookup gap. Each axis eliminates one remaining navigational
+step that was present even after R13.
+
+**Retroactive R14 leaderboard under v14:**
+
+| V     | Axes    | C-42 | C-43 | C-44 | Aspirational    | Composite  |
+|-------|---------|------|------|------|-----------------|------------|
+| V-05  | U+V+W+X+Y | PASS | PASS | FAIL | 35/36 -> 9.72   | **99.72**  |
+| V-02  | U+V+W+X | PASS | FAIL | FAIL | 34/36 -> 9.44   | **99.44**  |
+| V-03  | U+V+W+Y | FAIL | PASS | FAIL | 34/36 -> 9.44   | **99.44**  |
+| V-04  | U+V+W+Z | FAIL | FAIL | PASS | 34/36 -> 9.44   | **99.44**  |
+| V-01  | U+V+W   | FAIL | FAIL | FAIL | 33/36 -> 9.17   | **99.17**  |
+
+R14 does not saturate v14. R15 must isolate axes X, Y, Z. V-05 already satisfies X+Y;
+V-04 already satisfies Z. R15 variations should build on V-05/V-04 as the base.
+If X+Y+Z independence holds, R15/R16 convergence saturates v14 at 100.00.
 
 ---
 

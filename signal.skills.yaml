@@ -1,25 +1,18 @@
 version: 1
 plugin: signal
 updated: 2026-03-16
-skills_count: 67
+skills_count: 52
 namespaces:
-- scout
-- draft
-- review
-- flow
-- trace
-- prove
-- listen
-- program
-- topic
-- quest
-- mock
-- crew
-- corps
-- campaign
+- discover
+- specify
+- validate
+- simulate
+- govern
+- signal
+- tools
 skills:
-- id: scout-competitors
-  namespace: scout
+- id: discover-competitors
+  namespace: discover
   audience: pm
   default_mode: lightweight
   tools:
@@ -32,22 +25,16 @@ skills:
   - Topic
   outputs:
   - Signal
-  golden: simulations/quest/golden/scout-competitors-golden-simplified-2026-03-15.md
+  golden: simulations/quest/golden/discover-competitors-golden-simplified-2026-03-15.md
   rubric: simulations/quest/rubrics/scout-competitors-rubric-v2-2026-03-14.md
   quest_status: GOLDEN (Round 2, score 100)
-  description: 'Auto-detect domain from repo context. Do not prompt unless context absent. THE PRIMARY COMPETITOR: assess
-    "none / status quo" first -- why do teams do nothing? Score threat always HIGH. Inertia is the primary competitor. Named
-    competitors (5-8): feature overlap, positioning, technical moat, distribution, overall threat (HIGH/MEDIUM/LOW each).
-    Use WebSearch to verify at least one claim per major competitor, cite source inline. FINDINGS as a brief: (1) The Primary
-    Competitor -- why inertia is the real threat, (2) The Whitespace -- what no competitor owns, (3) The Table Stakes -- what
-    any entrant must have, (4) The Competitive Matrix -- supporting evidence, (5) --mode risk -- cost of not acting, for exec
-    audiences. AMEND: 3 specific adjustments each with what changes in the output.
-
-    '
+  description: 'Competitive landscape analysis with inertia-first framing. Use --focus to expand scope: --focus market (sizing
+    + segments), --focus positioning (framework + category). Default: named competitors + inertia analysis. THE PRIMARY COMPETITOR:
+    always assess status quo first, always HIGH threat. AMEND: 3 adjustments to shift the analysis.'
   artifact: simulations/scout/competitors/{topic}-competitors-{date}.md
   spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-competitors
-- id: scout-feasibility
-  namespace: scout
+- id: discover-feasibility
+  namespace: discover
   audience: pm+architect
   default_mode: lightweight
   tools:
@@ -59,152 +46,16 @@ skills:
   - Topic
   outputs:
   - Signal
-  description: 'Assess whether a product idea is technically feasible given current constraints. Scan repo for stack signals
-    (package.json, tsconfig.json, Cargo.toml). Always surface inferred team size and timeline explicitly -- never silently
-    infer. Traffic-light rating per component (green/yellow/red). Overall feasibility score 0-100. Stock roles: Architect
-    (complexity scoring), PM (timeline overlay), Strategy (build-vs-buy per component).
-
-    '
+  description: 'Technical feasibility assessment. Use --focus for additional discovery dimensions: --focus compliance (regulatory
+    constraints), --focus stakeholders (power/interest map), --focus requirements (extraction + ambiguity flags), --focus
+    naming (validation + trademark), --focus size (effort estimation). Default: team/timeline/complexity feasibility with
+    traffic-light ratings.'
   artifact: simulations/scout/feasibility/{topic}-feasibility-{date}.md
   spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-feasibility
-  golden: simulations/quest/golden/scout-feasibility-golden-simplified-2026-03-15.md
+  golden: simulations/quest/golden/discover-feasibility-golden-simplified-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: scout-naming
-  namespace: scout
-  audience: pm
-  default_mode: lightweight
-  tools:
-  - Read
-  - Write
-  - WebSearch
-  inputs:
-  - Topic
-  outputs:
-  - Signal
-  description: 'Generate and evaluate candidate names using multi-persona scoring. Supports --validate <name> to pin an existing
-    name at row 1 and produce a validation summary alongside alternatives. Generate 10-15 candidates. Score across PM (memorability),
-    Design (visual weight), UX (speakability), GTM (searchability), Strategy (positioning fit). Collision check against package
-    registries and domains. Stock roles: PM, Design, UX, GTM, Strategy.
-
-    '
-  artifact: simulations/scout/naming/{topic}-naming-{date}.md
-  spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-naming
-  golden: simulations/quest/golden/scout-naming-golden-2026-03-14.md
-  quest_status: GOLDEN (synced 2026-03-17)
-- id: scout-compliance
-  namespace: scout
-  audience: pm+compliance
-  default_mode: lightweight
-  tools:
-  - Read
-  - Write
-  - Glob
-  inputs:
-  - Topic
-  outputs:
-  - Signal
-  description: 'Identify regulatory and policy constraints before design begins. Infer applicable frameworks from domain and
-    data type signals. Always distinguish between compliance obligations on the product vs. on the host platform (e.g., SR
-    11-7 applies to the AI model, not to a structured prompt methodology). Git-native, no-server designs are compliance-favorable
-    -- surface this when applicable. Stock roles: Compliance (framework catalog), Architect (technical constraints), PM (timeline
-    impact), Strategy (market access vs. cost).
-
-    '
-  artifact: simulations/scout/compliance/{topic}-compliance-{date}.md
-  spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-compliance
-  golden: simulations/quest/golden/scout-compliance-golden-2026-03-14.md
-  quest_status: GOLDEN (synced 2026-03-17)
-- id: scout-market
-  namespace: scout
-  audience: pm
-  default_mode: lightweight
-  tools:
-  - Read
-  - Write
-  - WebSearch
-  inputs:
-  - Topic
-  outputs:
-  - Signal
-  description: 'Size the addressable market and rank segments by fit. Use developer headcount for tooling segments, dollar
-    TAM for platform/enterprise segments -- do not mix units in the same table. Scoring: pain severity, WTP, accessibility
-    on 1-10 scale, equal weights, composite = average. Composite rank = fit score + (10 - GTM difficulty). Recommend beachhead
-    segment with rationale. Stock roles: Strategy (TAM/SAM/SOM), PM (segment fit), GTM (go-to-market difficulty).
-
-    '
-  artifact: simulations/scout/market/{topic}-market-{date}.md
-  spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-market
-  golden: simulations/quest/golden/scout-market-golden-2026-03-14.md
-  quest_status: GOLDEN (synced 2026-03-17)
-- id: scout-stakeholders
-  namespace: scout
-  audience: pm+lead
-  default_mode: lightweight
-  tools:
-  - Read
-  - Write
-  - Glob
-  inputs:
-  - Topic
-  outputs:
-  - Signal
-  description: 'Map the stakeholder landscape for a product decision. If CODEOWNERS is absent, extract org context from the
-    invocation string. If invocation context is also insufficient, ask one question: "What org or team is this decision for?"
-    Never silently infer an org structure. Power/interest grid, veto risks ranked by probability, champion identification,
-    communication strategy per quadrant. Stock roles: PM (power/interest mapping), Strategy (conflicts), UX (journeys).
-
-    '
-  artifact: simulations/scout/stakeholders/{topic}-stakeholders-{date}.md
-  spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-stakeholders
-  golden: simulations/quest/golden/scout-stakeholders-golden-simplified-2026-03-15.md
-  quest_status: GOLDEN (synced 2026-03-17)
-- id: scout-positioning
-  namespace: scout
-  audience: pm
-  default_mode: lightweight
-  tools:
-  - Read
-  - Write
-  - Glob
-  inputs:
-  - Topic
-  outputs:
-  - Signal
-  description: 'Define how a product should be positioned per audience. If a prior scout-competitors run exists, load it --
-    positioning built without competitor context degrades silently. If no prior run found: note the degradation, run competitor
-    identification inline, flag "run scout-competitors for richer positioning." Per-audience positioning statements, competitive
-    differentiation matrix, messaging hierarchy, anti-positioning. Stock roles: Strategy (framework), GTM (per-audience value
-    props), PM (reality check), Design (narrative coherence).
-
-    '
-  artifact: simulations/scout/positioning/{topic}-positioning-{date}.md
-  spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-positioning
-  golden: simulations/quest/golden/scout-positioning-golden-2026-03-14.md
-  quest_status: GOLDEN (synced 2026-03-17)
-- id: scout-requirements
-  namespace: scout
-  audience: pm+architect
-  default_mode: lightweight
-  tools:
-  - Read
-  - Write
-  - Glob
-  inputs:
-  - Topic
-  outputs:
-  - Signal
-  description: 'Extract and prioritize requirements from a product concept. Search for prior scout signals in BOTH simulations/scout/
-    (real runs) AND simulations/trace/skill/ (hand-compiled traces) -- never silently skip the trace directory. MoSCoW prioritization.
-    Dependency graph (which requirements block others). Ambiguity flags (requirements needing clarification). Suspicious silences
-    (areas with no requirements). Stock roles: PM (user-facing), Architect (technical), UX (usability), Compliance (regulatory).
-
-    '
-  artifact: simulations/scout/requirements/{topic}-requirements-{date}.md
-  spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-requirements
-  golden: simulations/quest/golden/scout-requirements-golden-2026-03-14.md
-  quest_status: GOLDEN (synced 2026-03-17)
-- id: scout-risk
-  namespace: scout
+- id: discover-risk
+  namespace: discover
   param_set: standard
   tools:
   - Read
@@ -216,11 +67,11 @@ skills:
     timeline (schedule risk). Each risk gets: severity (HIGH/MEDIUM/LOW), likelihood, mitigation. The inertia risk is always
     listed first -- the risk that the status quo was good enough and you built the wrong thing. AMEND: focus on specific risk
     dimension, adjust severity thresholds.'
-  golden: simulations/quest/golden/scout-risk-golden-2026-03-16.md
+  golden: simulations/quest/golden/discover-risk-golden-2026-03-16.md
   rubric: simulations/quest/rubrics/scout-risk-rubric-v20-2026-03-16.md
   quest_status: GOLDEN (Round 20, score 188)
-- id: scout-inertia
-  namespace: scout
+- id: discover-inertia
+  namespace: discover
   param_set: standard
   tools:
   - Read
@@ -232,24 +83,11 @@ skills:
     threat score (always HIGH by default), specific conditions under which inertia loses. This is the most important analysis
     in Signal. Every feature decision must answer: why does inertia lose? If you cannot answer that, stop. AMEND: quantify
     switching costs, identify specific workaround failure modes.'
-  golden: simulations/quest/golden/scout-inertia-golden-2026-03-16.md
+  golden: simulations/quest/golden/discover-inertia-golden-2026-03-16.md
   rubric: simulations/quest/rubrics/scout-inertia-rubric-v21-2026-03-16.md
   quest_status: GOLDEN (Round 20, score 290)
-- id: scout-size
-  namespace: scout
-  param_set: standard
-  tools:
-  - Read
-  - Write
-  - Glob
-  artifact: simulations/scout/size/{topic}-size-{date}.md
-  description: 'Feature sizing and effort estimation. Estimates: surface area (how many integration points), implementation
-    complexity (LOW/MEDIUM/HIGH/XL), team-size signal (how many specialists needed), timeline signal (sprint range estimate),
-    confidence level. Does NOT produce a project plan -- produces a sizing signal that feeds program-plan. Inertia check:
-    always compare against the cost of maintaining the current workaround. AMEND: adjust confidence thresholds, focus on specific
-    complexity dimension.'
-- id: draft-spec
-  namespace: draft
+- id: specify-spec
+  namespace: specify
   audience: pm+architect
   default_mode: lightweight
   tools:
@@ -269,10 +107,10 @@ skills:
     '
   artifact: simulations/draft/specs/{topic}-spec-{date}.md
   spec: simulations/draft/specs/signal-draft-2026-03-14.md#draft-spec
-  golden: simulations/quest/golden/draft-spec-golden-2026-03-15.md
+  golden: simulations/quest/golden/specify-spec-golden-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: draft-proposal
-  namespace: draft
+- id: specify-proposal
+  namespace: specify
   audience: pm+architect
   default_mode: lightweight
   tools:
@@ -292,10 +130,10 @@ skills:
     '
   artifact: simulations/draft/proposals/{topic}-proposal-{date}.md
   spec: simulations/draft/specs/signal-draft-2026-03-14.md#draft-proposal
-  golden: simulations/quest/golden/draft-proposal-golden-2026-03-14.md
+  golden: simulations/quest/golden/specify-proposal-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: draft-pitch
-  namespace: draft
+- id: specify-pitch
+  namespace: specify
   audience: pm
   default_mode: lightweight
   tools:
@@ -315,10 +153,10 @@ skills:
     '
   artifact: simulations/draft/pitches/{topic}-pitch-{date}.md
   spec: simulations/draft/specs/signal-draft-2026-03-14.md#draft-pitch
-  golden: simulations/quest/golden/draft-pitch-golden-2026-03-14.md
+  golden: simulations/quest/golden/specify-pitch-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: draft-brainstorm
-  namespace: draft
+- id: specify-brainstorm
+  namespace: specify
   param_set: standard
   tools:
   - Read
@@ -327,10 +165,10 @@ skills:
   description: 'Generate a pool of ideas for any topic -- more than you need, so you can rank and filter. Each idea gets:
     name, one-line pitch, category, rationale. Produce 20-40 candidates. Group by category. Mark top 5 with ** for immediate
     viability. Inertia check: include do nothing as a candidate. AMEND: 3 adjustments to shift the pool.'
-  golden: simulations/quest/golden/draft-brainstorm-golden-2026-03-16.md
+  golden: simulations/quest/golden/specify-brainstorm-golden-2026-03-16.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: review-design
-  namespace: review
+- id: validate-design
+  namespace: validate
   audience: team
   default_mode: full
   tools:
@@ -352,10 +190,10 @@ skills:
     '
   artifact: simulations/review/design/{topic}-design-{date}.md
   spec: simulations/draft/specs/signal-review-2026-03-14.md#review-design
-  golden: simulations/quest/golden/review-design-golden-simplified-2026-03-15.md
+  golden: simulations/quest/golden/validate-design-golden-simplified-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: review-code
-  namespace: review
+- id: validate-code
+  namespace: validate
   audience: dev
   default_mode: full
   tools:
@@ -375,10 +213,10 @@ skills:
     '
   artifact: simulations/review/code/{topic}-code-{date}.md
   spec: simulations/draft/specs/signal-review-2026-03-14.md#review-code
-  golden: simulations/quest/golden/review-code-golden-2026-03-14.md
+  golden: simulations/quest/golden/validate-code-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: review-users
-  namespace: review
+- id: validate-users
+  namespace: validate
   audience: pm+ux
   default_mode: full
   tools:
@@ -398,10 +236,10 @@ skills:
     '
   artifact: simulations/review/users/{topic}-users-{date}.md
   spec: simulations/draft/specs/signal-review-2026-03-14.md#review-users
-  golden: simulations/quest/golden/review-users-golden-2026-03-14.md
+  golden: simulations/quest/golden/validate-users-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: review-customers
-  namespace: review
+- id: validate-customers
+  namespace: validate
   audience: pm
   default_mode: full
   tools:
@@ -421,10 +259,10 @@ skills:
     '
   artifact: simulations/review/customers/{topic}-customers-{date}.md
   spec: simulations/draft/specs/signal-review-2026-03-14.md#review-customers
-  golden: simulations/quest/golden/review-customers-golden-2026-03-14.md
+  golden: simulations/quest/golden/validate-customers-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: flow-lifecycle
-  namespace: flow
+- id: simulate-lifecycle
+  namespace: simulate
   audience: dev
   default_mode: full
   tools:
@@ -442,15 +280,15 @@ skills:
     a targeted simulation finding rather than a full lifecycle trace.'
   artifact: simulations/flow/lifecycle/{topic}-lifecycle-{date}.md
   spec: simulations/draft/specs/signal-flow-2026-03-14.md#flow-lifecycle
-  golden: simulations/quest/golden/flow-lifecycle-golden-2026-03-16.md
+  golden: simulations/quest/golden/simulate-lifecycle-golden-2026-03-16.md
   quest_status: GOLDEN (synced 2026-03-17)
   param_inline:
     depth:
       quick: 3 phases
       standard: full lifecycle
       deep: full lifecycle + all focus dimensions
-- id: flow-conversation
-  namespace: flow
+- id: simulate-conversation
+  namespace: simulate
   audience: dev
   default_mode: full
   tools:
@@ -469,10 +307,10 @@ skills:
     '
   artifact: simulations/flow/conversation/{topic}-conversation-{date}.md
   spec: simulations/draft/specs/signal-flow-2026-03-14.md#flow-conversation
-  golden: simulations/quest/golden/flow-conversation-golden-2026-03-15.md
+  golden: simulations/quest/golden/simulate-conversation-golden-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: flow-stress
-  namespace: flow
+- id: simulate-stress
+  namespace: simulate
   audience: dev
   default_mode: full
   tools:
@@ -492,9 +330,9 @@ skills:
     '
   artifact: simulations/flow/resilience/{topic}-resilience-{date}.md
   spec: simulations/draft/specs/signal-flow-2026-03-14.md#flow-resilience
-  golden: simulations/quest/golden/flow-stress-golden-simplified-2026-03-15.md
-- id: trace-request
-  namespace: trace
+  golden: simulations/quest/golden/simulate-stress-golden-simplified-2026-03-15.md
+- id: simulate-request
+  namespace: simulate
   audience: dev
   default_mode: full
   tools:
@@ -515,10 +353,10 @@ skills:
     '
   artifact: simulations/trace/request/{topic}-request-{date}.md
   spec: simulations/draft/specs/signal-trace-2026-03-14.md#trace-request
-  golden: simulations/quest/golden/trace-request-golden-2026-03-14.md
+  golden: simulations/quest/golden/simulate-request-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: trace-state
-  namespace: trace
+- id: simulate-state
+  namespace: simulate
   audience: dev
   default_mode: full
   tools:
@@ -538,10 +376,10 @@ skills:
     '
   artifact: simulations/trace/state/{topic}-state-{date}.md
   spec: simulations/draft/specs/signal-trace-2026-03-14.md#trace-state
-  golden: simulations/quest/golden/trace-state-golden-2026-03-15.md
+  golden: simulations/quest/golden/simulate-state-golden-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: trace-contract
-  namespace: trace
+- id: simulate-contract
+  namespace: simulate
   audience: dev
   default_mode: full
   tools:
@@ -559,15 +397,15 @@ skills:
     architecture (Automate/Expert) with 7-gate manifest applies to all types.'
   artifact: simulations/trace/contract/{topic}-contract-{date}.md
   spec: simulations/draft/specs/signal-trace-2026-03-14.md#trace-contract
-  golden: simulations/quest/golden/trace-contract-golden-2026-03-15.md
+  golden: simulations/quest/golden/simulate-contract-golden-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
   param_inline:
     depth:
       quick: essential gates only
       standard: full 7-gate manifest
       deep: full manifest + all type variants
-- id: trace-permissions
-  namespace: trace
+- id: simulate-permissions
+  namespace: simulate
   audience: dev
   default_mode: full
   tools:
@@ -587,11 +425,11 @@ skills:
     '
   artifact: simulations/trace/permissions/{topic}-permissions-{date}.md
   spec: simulations/draft/specs/signal-trace-2026-03-14.md#trace-permissions
-  golden: simulations/quest/golden/trace-permissions-golden-2026-03-17.md
+  golden: simulations/quest/golden/simulate-permissions-golden-2026-03-17.md
   rubric: simulations/quest/rubrics/trace-permissions-rubric-v20-2026-03-16.md
   quest_status: GOLDEN (Round 20, score 100.0)
-- id: prove-hypothesis
-  namespace: prove
+- id: discover-hypothesis
+  namespace: discover
   audience: pm+researcher
   default_mode: full
   tools:
@@ -610,10 +448,10 @@ skills:
     '
   artifact: simulations/prove/investigations/{topic}-hypothesis-{date}.md
   spec: simulations/draft/specs/signal-prove-2026-03-14.md#prove-hypothesis
-  golden: simulations/quest/golden/prove-hypothesis-golden-2026-03-14.md
+  golden: simulations/quest/golden/discover-hypothesis-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: prove-websearch
-  namespace: prove
+- id: discover-websearch
+  namespace: discover
   audience: pm+researcher
   default_mode: full
   tools:
@@ -633,33 +471,10 @@ skills:
     '
   artifact: simulations/prove/investigations/{topic}-websearch-{date}.md
   spec: simulations/draft/specs/signal-prove-2026-03-14.md#prove-websearch
-  golden: simulations/quest/golden/prove-websearch-golden-2026-03-14.md
+  golden: simulations/quest/golden/discover-websearch-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: prove-intelligence
-  namespace: prove
-  audience: pm+researcher
-  default_mode: full
-  tools:
-  - Read
-  - Write
-  - Glob
-  - Grep
-  inputs:
-  - Topic
-  - Signal
-  outputs:
-  - Signal
-  description: 'Search internal sources (repo files, design docs, scenarios, prior signals) for evidence. For each source:
-    file path, relevant excerpt, relevance to hypothesis, strength of evidence. Internal evidence is often stronger than public
-    evidence for product-specific hypotheses.
-
-    '
-  artifact: simulations/prove/investigations/{topic}-intelligence-{date}.md
-  spec: simulations/draft/specs/signal-prove-2026-03-14.md#prove-intelligence
-  golden: simulations/quest/golden/prove-intelligence-golden-2026-03-14.md
-  quest_status: GOLDEN (synced 2026-03-17)
-- id: prove-analysis
-  namespace: prove
+- id: discover-analysis
+  namespace: discover
   audience: dev+researcher
   default_mode: full
   tools:
@@ -679,10 +494,10 @@ skills:
     '
   artifact: simulations/prove/investigations/{topic}-analysis-{date}.md
   spec: simulations/draft/specs/signal-prove-2026-03-14.md#prove-analysis
-  golden: simulations/quest/golden/prove-analysis-golden-simplified-2026-03-15.md
+  golden: simulations/quest/golden/discover-analysis-golden-simplified-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: prove-synthesize
-  namespace: prove
+- id: discover-synthesize
+  namespace: discover
   audience: pm+researcher
   default_mode: full
   tools:
@@ -702,25 +517,10 @@ skills:
     '
   artifact: simulations/prove/investigations/{topic}-synthesis-{date}.md
   spec: simulations/draft/specs/signal-prove-2026-03-14.md#prove-synthesize
-  golden: simulations/quest/golden/prove-synthesize-golden-2026-03-14.md
+  golden: simulations/quest/golden/discover-synthesize-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: prove-topic
-  namespace: prove
-  param_set: full
-  tools:
-  - Read
-  - Write
-  - Glob
-  - WebSearch
-  artifact: simulations/prove/investigations/{topic}-prove-campaign-{date}.md
-  description: 'Run the full prove evidence campaign for a topic in one command. Orchestrates: prove-hypothesis, prove-websearch,
-    prove-intelligence, prove-analysis, prove-synthesize in sequence. Reads prior scout signals to ground the hypothesis.
-    Final output: synthesized evidence brief ready for topic-story.'
-  golden: simulations/quest/golden/prove-topic-golden-2026-03-16.md
-  rubric: simulations/quest/rubrics/prove-topic-rubric-v20-2026-03-16.md
-  quest_status: GOLDEN (Round 20, score 88.88)
-- id: prove-orchestrate
-  namespace: prove
+- id: discover-orchestrate
+  namespace: discover
   param_set: full
   tools:
   - Read
@@ -728,13 +528,13 @@ skills:
   - Glob
   - WebSearch
   artifact: simulations/prove/research/{topic}-research-{date}.md
-  description: 'Orchestrate a full prove evidence campaign. Runs: prove-hypothesis, prove-websearch, prove-intelligence, prove-analysis,
-    prove-synthesize in sequence. Extended campaign adds --focus prototype (prototype evaluation), --focus publish (research
-    publication review), --focus interview (simulated expert interview). Default campaign covers the core 5-step evidence
-    arc. Extended focuses are for deep research validation scenarios.'
-  golden: simulations/quest/golden/prove-orchestrate-golden-2026-03-15.md
-- id: listen-feedback
-  namespace: listen
+  description: 'Orchestrate a full prove evidence campaign. Runs hypothesis, websearch, intelligence, analysis, synthesize
+    in sequence. Use --focus to add specialized steps: --focus intelligence (competitive intel synthesis), --focus topic (topic-scoped
+    evidence), --focus prototype (prototype evaluation), --focus publish (research publication review), --focus interview
+    (simulated expert interview). Default: 5-step core evidence arc.'
+  golden: simulations/quest/golden/discover-orchestrate-golden-2026-03-15.md
+- id: validate-feedback
+  namespace: validate
   audience: pm+ux
   default_mode: lightweight
   tools:
@@ -754,10 +554,10 @@ skills:
     '
   artifact: simulations/listen/feedback/{topic}-feedback-{date}.md
   spec: simulations/draft/specs/signal-listen-2026-03-14.md#listen-feedback
-  golden: simulations/quest/golden/listen-feedback-golden-2026-03-14.md
+  golden: simulations/quest/golden/validate-feedback-golden-2026-03-14.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: listen-support
-  namespace: listen
+- id: validate-support
+  namespace: validate
   audience: pm+sre
   default_mode: lightweight
   tools:
@@ -776,10 +576,10 @@ skills:
     '
   artifact: simulations/listen/support/{topic}-support-{date}.md
   spec: simulations/draft/specs/signal-listen-2026-03-14.md#listen-support
-  golden: simulations/quest/golden/listen-support-golden-2026-03-15.md
+  golden: simulations/quest/golden/validate-support-golden-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: listen-adoption
-  namespace: listen
+- id: validate-adoption
+  namespace: validate
   audience: pm
   default_mode: lightweight
   tools:
@@ -799,10 +599,10 @@ skills:
     '
   artifact: simulations/listen/adoption/{topic}-adoption-{date}.md
   spec: simulations/draft/specs/signal-listen-2026-03-14.md#listen-adoption
-  golden: simulations/quest/golden/listen-adoption-golden-simplified-2026-03-15.md
+  golden: simulations/quest/golden/validate-adoption-golden-simplified-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: mock-coverage
-  namespace: mock
+- id: tools-coverage
+  namespace: tools
   param_set: lean
   tools:
   - Read
@@ -812,10 +612,10 @@ skills:
   description: 'Generate synthetic signal artifacts for all 9 namespaces in a single pass. Each mock follows the structural
     requirements of its golden rubric. Automatic pre-flagging: EVIDENCE-HEAVY namespaces get REAL-REQUIRED, compliance namespaces
     flagged at all tiers. Coverage summary table at end. Supports --tier 1|2|3 and --compliance flags.'
-  golden: simulations/quest/golden/mock-coverage-golden-2026-03-16.md
+  golden: simulations/quest/golden/tools-coverage-golden-2026-03-16.md
   quest_status: GOLDEN (copied from mock-all)
-- id: mock-preview
-  namespace: mock
+- id: tools-preview
+  namespace: tools
   param_set: lean
   tools:
   - Read
@@ -824,11 +624,11 @@ skills:
   artifact: simulations/mock/{topic}-{namespace}-mock-{date}.md
   description: Generate a mock artifact for a single namespace. Same annotation and category rules as mock-all. Use --skill
     to target a specific skill within the namespace. Supports --tier 1|2|3.
-  golden: simulations/quest/golden/mock-preview-golden-2026-03-17.md
+  golden: simulations/quest/golden/tools-preview-golden-2026-03-17.md
   rubric: simulations/quest/rubrics/mock-ns-rubric-v20-2026-03-16.md
   quest_status: GOLDEN (copied from mock-ns)
-- id: mock-accept
-  namespace: mock
+- id: tools-accept
+  namespace: tools
   param_set: lean
   tools:
   - Read
@@ -839,10 +639,10 @@ skills:
   description: 'Step 2 of mock-first workflow: review mock coverage picture and produce MOCK-ACCEPTED or REAL-REQUIRED decisions
     per namespace. WRITES updated Status fields back into source mock artifact (only permitted in-place edit in Signal). Reason
     codes: STRUCTURAL-COVERAGE-SUFFICIENT or DOMAIN-KNOWLEDGE-CONSISTENT. Produces next-steps list.'
-  golden: simulations/quest/golden/mock-accept-golden-2026-03-16.md
+  golden: simulations/quest/golden/tools-accept-golden-2026-03-16.md
   quest_status: GOLDEN (copied from mock-review)
-- id: program-commitment
-  namespace: program
+- id: specify-commitment
+  namespace: specify
   audience: lead
   default_mode: full
   tools:
@@ -863,7 +663,7 @@ skills:
     '
   artifact: simulations/program/plans/{topic}-program-{date}.md
   spec: simulations/draft/specs/signal-program-2026-03-14.md#program-plan
-  golden: simulations/quest/golden/program-commitment-golden-2026-03-16.md
+  golden: simulations/quest/golden/specify-commitment-golden-2026-03-16.md
 - id: signal
   namespace: topic
   audience: all
@@ -926,8 +726,8 @@ skills:
     runs the appropriate install script. Called with recommend: analyzes which skills you have used most and suggests the
     best layout for your pattern. Use after install to explore different navigation styles.'
   artifact: null
-- id: topic-status
-  namespace: topic
+- id: govern-status
+  namespace: govern
   audience: anyone
   default_mode: lightweight
   tools:
@@ -936,39 +736,15 @@ skills:
   inputs:
   - Topic
   outputs: []
-  description: 'Show the current state of a topic in the terminal. Signal coverage, open gaps, readiness for target outcome.
-    Does NOT write a file -- display only. For a written artifact use topic-report. Globs simulations/**/{topic}-* to discover
-    all signals. Cross-references against strategy.md planned signals. Computes coverage percentage.
-
-    '
+  description: 'Show topic coverage and commitment readiness. DISPLAY ONLY. Use --view for supplementary perspectives: --view
+    roadmap (what signals still needed), --view reflect (what did we learn unexpectedly), --view retro (post-ship retrospective),
+    --view achievements (milestones earned on this topic). Default: coverage exposure computation with per-namespace status.'
   artifact: none (terminal display only)
   spec: simulations/draft/specs/signal-topic-2026-03-14.md#topic-status
-  golden: simulations/quest/golden/topic-status-golden-simplified-2026-03-15.md
+  golden: simulations/quest/golden/govern-status-golden-simplified-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: topic-roadmap
-  namespace: topic
-  audience: anyone
-  default_mode: lightweight
-  tools:
-  - Read
-  - Write
-  - Glob
-  inputs:
-  - Topic
-  - Signal
-  outputs:
-  - Topic
-  description: 'Revise the signal strategy as new information arrives. Read current strategy.md and all gathered signals.
-    Identify what has changed since the strategy was written, what signals revealed unexpected dimensions needing coverage.
-    Propose additions, removals, re-prioritizations. User confirms. strategy.md updated.
-
-    '
-  artifact: simulations/{topic}/strategy.md (updated)
-  spec: simulations/draft/specs/signal-topic-2026-03-14.md#topic-plan
-  golden: simulations/quest/golden/topic-roadmap-golden-2026-03-16.md
-  quest_status: GOLDEN (copied from topic-plan)
-- id: topic-story
-  namespace: topic
+- id: govern-story
+  namespace: govern
   audience: anyone
   default_mode: lightweight
   tools:
@@ -988,44 +764,8 @@ skills:
     '
   artifact: simulations/{topic}/{topic}-story-{date}.md
   spec: simulations/draft/specs/signal-topic-2026-03-14.md#topic-story
-  golden: simulations/quest/golden/topic-story-golden-2026-03-15.md
+  golden: simulations/quest/golden/govern-story-golden-2026-03-15.md
   quest_status: GOLDEN (synced 2026-03-17)
-- id: topic-reflect
-  namespace: topic
-  audience: anyone
-  default_mode: lightweight
-  tools:
-  - Read
-  - Write
-  - Glob
-  inputs:
-  - Topic
-  - Signal
-  outputs:
-  - Signal
-  description: 'Synthesize unexpected findings after all essential signals are gathered. Asks one question: "What did we learn
-    that we did not expect?" Not a summary of findings -- a synthesis of surprises. Each surprise: name it, trace it to its
-    source signal, assess its impact on the design direction. The echo is institutional memory for the next team that walks
-    this path.
-
-    '
-  artifact: simulations/{topic}/{topic}-echo-{date}.md
-  spec: simulations/draft/specs/signal-topic-2026-03-14.md#topic-echo
-  golden: simulations/quest/golden/topic-reflect-golden-2026-03-16.md
-  rubric: simulations/quest/rubrics/topic-echo-rubric-v21-2026-03-16.md
-  quest_status: GOLDEN (copied from topic-echo)
-- id: topic-retro
-  namespace: topic
-  param_set: lean
-  tools:
-  - Read
-  - Write
-  - Glob
-  artifact: simulations/topic/retro/{topic}-retro-{date}.md
-  description: 'Post-commitment retrospective on a topic''s signals. Reviews: which signals were gathered, which predictions
-    were correct, which were wrong, what was learned that wasn''t expected. Structured as: Signal accuracy (predicted vs actual),
-    Gaps (signals that would have changed the decision), Echo (the one unexpected thing). Run after a feature ships to improve
-    future signal quality. AMEND: focus on specific signal type, adjust time window.'
 - id: quest-rubric
   namespace: quest
   audience: internal
@@ -1116,8 +856,8 @@ skills:
     '
   artifact: simulations/quest/golden/{skill}-golden-{date}.md
   spec: simulations/draft/specs/signal-quest-2026-03-14.md#quest-golden
-- id: corps-scan
-  namespace: corps
+- id: govern-scan
+  namespace: govern
   audience: lead+architect
   default_mode: full
   tools:
@@ -1128,7 +868,7 @@ skills:
   - Repo path (optional)
   outputs:
   - org.yaml draft
-  golden: simulations/quest/golden/corps-scan-golden-QU5-simplified-2026-03-16.md
+  golden: simulations/quest/golden/govern-scan-golden-QU5-simplified-2026-03-16.md
   rubric: null
   quest_status: GOLDEN (copied from org-scan)
   param_set: standard
@@ -1138,8 +878,8 @@ skills:
     first. AMEND: adjust pivot mode, exec office name, group structure.'
   artifact: simulations/corps/{topic}-scan-{date}.md
   spec: simulations/draft/specs/signal-corp-2026-03-15.md#org-scan
-- id: corps-build
-  namespace: corps
+- id: govern-build
+  namespace: govern
   audience: lead+exec
   default_mode: full
   tools:
@@ -1151,7 +891,7 @@ skills:
   outputs:
   - org-chart.md
   - .craft/roles/ directory
-  golden: simulations/quest/golden/corps-build-golden-2026-03-16.md
+  golden: simulations/quest/golden/govern-build-golden-2026-03-16.md
   rubric: null
   quest_status: GOLDEN (copied from org-build)
   param_set: standard
@@ -1162,8 +902,8 @@ skills:
     change group structure.'
   artifact: design/corp/org-chart.md
   spec: simulations/draft/specs/signal-corp-2026-03-15.md#corp-build
-- id: corps-product-review
-  namespace: corps
+- id: govern-product-review
+  namespace: govern
   audience: lead+exec
   default_mode: full
   tools:
@@ -1175,7 +915,7 @@ skills:
   - Topic or artifact
   outputs:
   - ROB stage documents
-  golden: simulations/quest/golden/corps-product-review-golden-2026-03-16.md
+  golden: simulations/quest/golden/govern-product-review-golden-2026-03-16.md
   rubric: simulations/quest/rubrics/corps-rob-rubric-v20-2026-03-16.md
   quest_status: GOLDEN (Round 20, score 330)
   param_set: full
@@ -1186,8 +926,8 @@ skills:
     AMEND: re-run specific stage, adjust scope.'
   artifact: simulations/corps/{topic}-rob-{stage}-{date}.md
   spec: simulations/draft/specs/signal-corp-2026-03-15.md#org-rob
-- id: corps-pull-request
-  namespace: corps
+- id: govern-pull-request
+  namespace: govern
   audience: dev+lead
   default_mode: full
   tools:
@@ -1199,7 +939,7 @@ skills:
   - PR number or diff path
   outputs:
   - PR review from org
-  golden: simulations/quest/golden/corps-pull-request-golden-2026-03-17.md
+  golden: simulations/quest/golden/govern-pull-request-golden-2026-03-17.md
   rubric: simulations/quest/rubrics/corps-pr-rubric-v18-2026-03-16.md
   quest_status: GOLDEN (Round 20, score 100)
   param_set: full
@@ -1209,8 +949,8 @@ skills:
     definitions. AMEND: add specific reviewer, change scope.'
   artifact: simulations/corps/{topic}-pr-review-{date}.md
   spec: simulations/draft/specs/signal-corp-2026-03-15.md#org-pr
-- id: crew-roles
-  namespace: crew
+- id: govern-roles
+  namespace: govern
   param_set: standard
   tools:
   - Read
@@ -1220,11 +960,11 @@ skills:
   description: 'Generate a typed role registry for a domain. Analyzes product/codebase to determine what expert perspectives
     are needed. Each role gets: orientation, lens (verify + simplify), expertise, scope, collaborates_with. Output is .craft/roles/{area}/
     directory of markdown role files. Inertia-advocate always included. AMEND: add more roles, adjust level distribution.'
-  golden: simulations/quest/golden/crew-roles-golden-2026-03-17.md
+  golden: simulations/quest/golden/govern-roles-golden-2026-03-17.md
   rubric: simulations/quest/rubrics/crew-roles-rubric-v15-2026-03-17.md
   quest_status: GOLDEN (Round 20, score 10.0)
-- id: corps-chart
-  namespace: corps
+- id: govern-chart
+  namespace: govern
   param_set: standard
   tools:
   - Read
@@ -1234,10 +974,10 @@ skills:
   description: 'Generate org structure for a product or domain: areas, divisions, committees, operating rhythms. Reads existing
     .craft/roles/ to build from real roles. Output: org-chart.md with ASCII org box, headcount by area, committee charters,
     operating rhythm table. AMEND: adjust headcount, reorganize teams.'
-  golden: simulations/quest/golden/corps-chart-golden-QU5-simplified-2026-03-16.md
+  golden: simulations/quest/golden/govern-chart-golden-QU5-simplified-2026-03-16.md
   quest_status: GOLDEN (copied from org-chart)
-- id: crew-check
-  namespace: crew
+- id: govern-check
+  namespace: govern
   param_set: full
   tools:
   - Read
@@ -1247,10 +987,10 @@ skills:
   description: 'Run any artifact through the full org. Reads .craft/roles/ and selects relevant reviewers based on artifact
     type. Each role reviews from their perspective. Produces review matrix: role, findings, severity, recommendation. --depth
     deep runs all roles; standard runs relevant roles only. AMEND: add specific reviewer, change scope.'
-  golden: simulations/quest/golden/crew-check-golden-2026-03-17.md
+  golden: simulations/quest/golden/govern-check-golden-2026-03-17.md
   quest_status: GOLDEN (copied from org-review)
-- id: corps-committee
-  namespace: corps
+- id: govern-committee
+  namespace: govern
   param_set: standard
   tools:
   - Read
@@ -1261,30 +1001,10 @@ skills:
     arch-board (architecture decision review). Reads committee charter from .craft/roles/. Each participant reviews from their
     role perspective. Output: mock meeting minutes with decisions, action items, dissenting opinions. AMEND: add attendees,
     change scope.'
-  golden: simulations/quest/golden/corps-committee-golden-2026-03-16.md
+  golden: simulations/quest/golden/govern-committee-golden-2026-03-16.md
   quest_status: GOLDEN (copied from org-committee)
-- id: topic-achievements
-  namespace: topic
-  audience: team
-  default_mode: lightweight
-  tools:
-  - Read
-  - Glob
-  inputs:
-  - Topic
-  outputs:
-  - Achievement report
-  golden: null
-  rubric: null
-  quest_status: QUEUED
-  param_set: lean
-  description: 'Scan all signal artifacts for a topic and compute earned achievements. Shows: earned (with date), in-progress
-    (how close), locked (what still needs doing), next recommended action. Categories: exploration, depth, coverage, quality,
-    chain, discovery, corps/crew. The Falsified achievement is the most important -- it rewards intellectual honesty. Surfaces
-    automatically in topic-status; run directly for the full achievement picture.'
-  artifact: simulations/topic/achievements/{topic}-achievements-{date}.md
-- id: campaign-decide
-  namespace: campaign
+- id: govern-decide
+  namespace: govern
   audience: pm+team
   default_mode: full
   tools:
@@ -1296,17 +1016,16 @@ skills:
   - Topic
   outputs:
   - Decision brief
-  golden: simulations/quest/golden/campaign-decide-golden-2026-03-16.md
+  golden: simulations/quest/golden/govern-decide-golden-2026-03-16.md
   rubric: simulations/quest/rubrics/campaign-decide-rubric-v20-2026-03-16.md
   quest_status: GOLDEN (Round 20, score 110.5)
   param_set: full
-  description: 'Run the full pre-commitment decision campaign. Orchestrates: scout-competitors (inertia first), scout-feasibility,
-    scout-market, prove-hypothesis, prove-websearch, prove-synthesize in sequence. Output: a complete decision brief with
-    market landscape, technical viability, evidence base, and a recommendation with stated confidence. Use when you need to
-    decide whether to build something.'
+  description: 'Run the full pre-commitment decision campaign. Orchestrates: scout-competitors, scout-feasibility, scout-risk,
+    prove-hypothesis, prove-websearch, prove-synthesize. Use --scope to narrow: --scope evidence (evidence only), --scope
+    blueprint (spec package only). Default: full decision brief with recommendation and stated confidence.'
   artifact: simulations/campaign/{topic}-decide-{date}.md
-- id: campaign-behavior
-  namespace: campaign
+- id: govern-behavior
+  namespace: govern
   audience: dev+architect
   default_mode: full
   tools:
@@ -1325,8 +1044,8 @@ skills:
     trace-contract, trace-permissions in sequence. Output: simulation findings report ranked by blast radius. Use before implementation
     to find spec gaps and contract violations.'
   artifact: simulations/campaign/{topic}-simulate-{date}.md
-- id: campaign-validate
-  namespace: campaign
+- id: govern-qa
+  namespace: govern
   audience: pm+ux+team
   default_mode: full
   tools:
@@ -1337,7 +1056,7 @@ skills:
   - Topic or design
   outputs:
   - Validation brief
-  golden: simulations/quest/golden/campaign-validate-golden-2026-03-16.md
+  golden: simulations/quest/golden/govern-qa-golden-2026-03-16.md
   rubric: simulations/quest/rubrics/campaign-validate-rubric-v5-2026-03-16.md
   quest_status: GOLDEN (Round 6, score 155)
   param_set: full
@@ -1345,49 +1064,8 @@ skills:
     listen-adoption in sequence. Output: validation brief with findings ranked by adoption impact. Use to validate a design
     before committing to spec.'
   artifact: simulations/campaign/{topic}-validate-{date}.md
-- id: campaign-blueprint
-  namespace: campaign
-  audience: pm+architect
-  default_mode: full
-  tools:
-  - Read
-  - Write
-  - Glob
-  inputs:
-  - Topic
-  outputs:
-  - Specification package
-  golden: simulations/quest/golden/campaign-blueprint-golden-2026-03-17.md
-  rubric: simulations/quest/rubrics/campaign-blueprint-rubric-v4-2026-03-17.md
-  quest_status: GOLDEN (Round 5, score 140)
-  param_set: standard
-  description: 'Run the full specification campaign. Orchestrates: draft-spec, draft-proposal, draft-pitch in sequence. Output:
-    complete specification package covering technical spec, business proposal, and executive pitch. Use when you need the
-    full written artifact suite for a feature.'
-  artifact: simulations/campaign/{topic}-blueprint-{date}.md
-- id: campaign-evidence
-  namespace: campaign
-  audience: researcher+pm
-  default_mode: full
-  tools:
-  - Read
-  - Write
-  - Glob
-  - WebSearch
-  inputs:
-  - Research question or hypothesis
-  outputs:
-  - Evidence brief
-  golden: simulations/quest/golden/campaign-evidence-golden-2026-03-17.md
-  rubric: simulations/quest/rubrics/campaign-evidence-rubric-v21-2026-03-16.md
-  quest_status: GOLDEN (Round 20, score 100.75)
-  param_set: full
-  description: 'Run the full evidence campaign. Orchestrates all prove skills in sequence: prove-hypothesis, prove-websearch,
-    prove-intelligence, prove-analysis, prove-synthesize. Output: complete evidence brief with confidence levels and falsification
-    status. Use for thorough research questions that need the full investigation.'
-  artifact: simulations/campaign/{topic}-evidence-{date}.md
-- id: campaign-brief
-  namespace: campaign
+- id: govern-brief
+  namespace: govern
   audience: pm+team
   default_mode: full
   tools:
@@ -1398,7 +1076,7 @@ skills:
   - Topic
   outputs:
   - Topic narrative dashboard
-  golden: simulations/quest/golden/campaign-brief-golden-2026-03-16.md
+  golden: simulations/quest/golden/govern-brief-golden-2026-03-16.md
   rubric: simulations/quest/rubrics/campaign-brief-rubric-v20-2026-03-16.md
   quest_status: GOLDEN (Round 20, score 390)
   param_set: lean
