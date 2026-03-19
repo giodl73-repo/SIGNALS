@@ -20,7 +20,7 @@ G2=(specify-spec specify-proposal specify-pitch specify-commitment
 
 G3=(simulate-lifecycle simulate-request simulate-state simulate-contract
     simulate-conversation simulate-permissions simulate-stress
-    rhythm-status rhythm-story rhythm-decide rhythm-behavior rhythm-qa rhythm-brief rhythm-achievements)
+    rhythm-status rhythm-story rhythm-decide rhythm-behavior rhythm-qa rhythm-brief achievements)
 
 G4=(roles-scan roles-build roles-chart roles-generate roles-create roles-check
     roles-committee roles-product-review roles-pull-request roles-leaderboard
