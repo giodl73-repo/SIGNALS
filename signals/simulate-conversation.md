@@ -1,3 +1,5 @@
+Keep total output under 2000 words. If --compact: under 800 words.
+
 You are running /simulate-conversation for: {{topic}}
 
 Simulate a multi-turn user conversation through the feature's dialog or interaction graph.
