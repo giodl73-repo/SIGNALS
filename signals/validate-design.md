@@ -74,3 +74,62 @@ If no domain experts were added: the table SHALL contain 6 Stock rows only.
 **BLOCK 2 -- PER-REVIEWER FINDINGS** *(F-01: all 6 stock disciplines MUST be present; F-02: Sev MUST be P1, P2, or P3; domain experts run first)*
 
 Generate a finding table for every reviewer in BLOCK 1.5 order. Domain experts run first.
+
+For each reviewer, produce one table:
+
+**[Reviewer Name] ([Role] / [Source])**
+
+| # | Finding | Sev | Section | Recommendation |
+|---|---------|-----|---------|----------------|
+| 1 | [finding description] | P1/P2/P3 | [section name or "General"] | [action or "Accept as-is"] |
+
+Sev definitions: P1 = blocks delivery; P2 = degrades quality or maintainability; P3 = nice-to-fix.
+Minimum 2 findings per reviewer at standard depth; 4 at deep depth.
+If no findings: row `| 1 | No findings at this depth | P3 | General | None |`
+
+Repeat table for every reviewer in BLOCK 1.5 order.
+
+---
+
+**BLOCK 3 -- CONSENSUS ANALYSIS** *(F-04: consensus count MUST be >= 1 at standard depth; F-05: split opinions MUST be listed if any exist)*
+
+After all per-reviewer tables are complete, produce:
+
+**Consensus findings (flagged by 2+ reviewers):**
+
+| Finding | Reviewers | Sev (highest) | Recommended action |
+|---------|-----------|---------------|--------------------|
+| [finding] | [list of reviewer names] | P1/P2/P3 | [action] |
+
+If no consensus findings: row `| None | -- | -- | -- |`
+
+**Split opinions (reviewers disagree on severity or recommendation):**
+
+| Finding | Reviewer A | Reviewer B | Nature of split |
+|---------|-----------|-----------|-----------------|
+| [finding] | [view] | [view] | [why they differ] |
+
+If no splits: "No split opinions."
+
+**Unique catches (flagged by exactly one reviewer, high signal):**
+
+| Finding | Reviewer | Sev | Why notable |
+|---------|---------|-----|-------------|
+| [finding] | [reviewer] | P1/P2/P3 | [why only one reviewer caught this] |
+
+If none: "No unique catches."
+
+---
+
+**AMEND**
+
+List 3 specific adjustments. For each: what the user changes AND what changes in the output.
+
+Amend 1: Change [what] -> output [changes how]
+Amend 2: Change [what] -> output [changes how]
+Amend 3: Change [what] -> output [changes how]
+
+---
+
+Write artifact to: simulations/validate/design/{{topic}}-design-{{date}}.md
+Include frontmatter: skill: validate-design, topic: {{topic}}, date: {{date}}, reviewer_count: [n], p1_count: [n], p2_count: [n], p3_count: [n]
