@@ -1,17 +1,20 @@
 #!/bin/bash
 # github-test-one.sh -- Test a Signal .prompt.md via copilot -p relay
 # Usage: {"script":"tools/github-test-one.sh","args":["discover-competitors","ai-code-review"],"cwd":"C:/src/sim"}
+#
+# Runs copilot from sim-test/ (clean workspace, minimal signals/) to avoid OOM
+# when copilot globs the signals/ directory.
 
 set -e
 SKILL_ID="${1:-discover-competitors}"
 TOPIC="${2:-payment-reminders}"
 TODAY=$(date +%Y-%m-%d)
 REPO="C:/src/sim"
-PROMPT_DIR="$REPO/../sim-test/.github/prompts"
+TEST_DIR="C:/src/sim-test"    # copilot runs here -- has .github/prompts + sparse signals/
 OUTPUT_DIR="$REPO/simulations/quest/scorecards"
 mkdir -p "$OUTPUT_DIR"
 
-PROMPT_FILE="$PROMPT_DIR/${SKILL_ID}.prompt.md"
+PROMPT_FILE="$TEST_DIR/.github/prompts/${SKILL_ID}.prompt.md"
 OUTPUT_FILE="$OUTPUT_DIR/github-${SKILL_ID}-${TOPIC}-${TODAY}.md"
 
 echo "=== github-test-one: $SKILL_ID / $TOPIC ==="
@@ -37,9 +40,11 @@ TMP=$(mktemp /tmp/copilot-XXXXXX.txt)
 
 echo "Prompt: $(wc -c < "$TMP") bytes, $(wc -l < "$TMP") lines"
 
-# Use stdin redirect like claude-run.py does
+# Run copilot from TEST_DIR (sparse workspace, avoids OOM from large signals/ repo)
+cd "$TEST_DIR"
 copilot -p "$(cat "$TMP")" --yolo > "$OUTPUT_FILE" 2>&1
 STATUS=$?
+cd - > /dev/null
 
 rm -f "$TMP"
 
