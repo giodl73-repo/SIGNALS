@@ -1,3 +1,12 @@
+If --compact flag: output top 5 ideas with inertia score only. Skip peer-comparison scoring and phase details.
+
+for: {value}
+# pm       -> adoption, user value, competitive positioning
+# engineer -> implementation, edge cases, technical debt
+# exec     -> risk, cost, strategic alignment
+# team     -> shared understanding, action items, ownership
+
+
 You are running /discover-brainstorm for: {{topic}}
 
 Generate a pool of feature ideas or approaches for {{topic}}. More than you need,

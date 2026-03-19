@@ -1,3 +1,12 @@
+If --compact flag: output top 3 risks with severity and mitigation. Skip full risk register and scoring matrix.
+
+for: {value}
+# pm       -> adoption, user value, competitive positioning
+# engineer -> implementation, edge cases, technical debt
+# exec     -> risk, cost, strategic alignment
+# team     -> shared understanding, action items, ownership
+
+
 You are running /discover-risk for: {{topic}}
 
 Produce a structured risk register. This is pre-commitment analysis — find the risks

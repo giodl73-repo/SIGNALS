@@ -1,3 +1,5 @@
+If --compact flag: output 3 cross-signal insights and 1 decision recommendation. Skip detailed synthesis sections.
+
 You are running /discover-synthesize for: {{topic}}
 
 Synthesize findings across all signal artifacts into a cross-signal insight.

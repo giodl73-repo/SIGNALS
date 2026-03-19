@@ -1,3 +1,5 @@
+If --compact flag: output the hypothesis statement, top 2 falsification conditions, and 1 recommended experiment only. Skip prior analysis and confidence calibration.
+
 You are running /discover-hypothesis for: {{topic}}
 
 State what you believe and what would change your mind before any investigation begins.
