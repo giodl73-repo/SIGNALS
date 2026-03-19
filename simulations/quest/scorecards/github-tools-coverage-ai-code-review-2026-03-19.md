@@ -1,93 +1,103 @@
-● List directory signals
-  └ 140 files found
+● Search (glob)
+  │ "signals/**/*.md"
+  └ 39 files found
 
 ● Search (glob)
   │ "signals/**/ai-code-review-*-*.md"
-  └ 17 files found
+  └ 39 files found
 
-Now let me check the skills catalog for gap recommendations:
+Now let me classify these artifacts by namespace:
 
-● Read signal.skills.yaml
-  └ L1:80 (80 lines read)
+● List directory signals
+  └ 8 files found
 
-● Search (grep)
-  │ "^- id: (prove|listen|topic)-" (signal.skills.yaml)
-  └ No matches found
+● List directory signals\discover
+  └ 13 files found
 
-● Search (grep)
-  │ "^- id:" (signal.skills.yaml)
-  └ 62 lines found
+● List directory signals\specify
+  └ 3 files found
 
-● Read signal.manifest.json
-  └ 1 line read
+● List directory signals\review
+  └ 3 files found
 
-● Read namespaces from manifest (shell)
-  │ python -c "import json; d=json.load(open('C:/src/sim/signal.manifest.json'));
-  │ print('Namespaces:', d.get('namespaces', 'N/A')); [print(f'  {ns}') for ns in
-  │ d.get('namespaces', [])]"
-  └ 2 lines...
+● List directory signals\roles
+  └ 6 files found
 
-● Check manifest keys (shell)
-  │ python -c "import json; d=json.load(open('C:/src/sim/signal.manifest.json'));
-  │ print(list(d.keys())[:20])"
-  └ 2 lines...
+● List directory signals\draft
+  └ 1 file found
 
-● Extract unique namespaces from manifest (shell)
-  │ python -c "
-  │ import json
-  │ d=json.load(open('C:/src/sim/signal.manifest.json'))
-  │ ns = set()
-  │ for s in d['skills']:…
-  └ 5 lines...
+● List directory signals\rhythm
+  └ 3 files found
 
-● List signal namespace directories (shell)
-  │ Get-ChildItem C:\src\sim\signals -Directory | Select-Object -ExpandProperty Name
-  └ 7 lines...
+● List directory signals\validate
+  └ 7 files found
 
-Now I have all the data. Let me compile the results.
+● List directory signals\simulate
+  └ 3 files found
 
 ```
 SIGNAL COVERAGE: ai-code-review
 =========================================
 Namespace     | Skills run | Artifacts | Last run   | Status
-discover      | 6          | 6         | 2026-03-19 | COVERED
-specify       | 1          | 1         | 2026-03-18 | COVERED
-validate      | 2          | 4         | 2026-03-19 | COVERED
-simulate      | 1          | 2         | 2026-03-19 | COVERED
-prove         | 0          | 0         | --         | EMPTY
-listen        | 0          | 0         | --         | EMPTY
-rhythm        | 1          | 2         | 2026-03-19 | COVERED
-roles         | 1          | 2         | 2026-03-19 | COVERED
-topic         | 0          | 0         | --         | EMPTY
+--------------+------------+-----------+------------+---------
+discover      | 13         | 13        | 2026-03-19 | COVERED
+specify       |  4         |  4        | 2026-03-19 | COVERED
+validate      |  4         |  6        | 2026-03-19 | COVERED
+simulate      |  3         |  3        | 2026-03-19 | COVERED
+prove         |  0         |  0        |     —      | EMPTY
+listen        |  4         |  4        | 2026-03-19 | COVERED
+rhythm        |  3         |  3        | 2026-03-19 | COVERED
+roles         |  6         |  6        | 2026-03-19 | COVERED
+topic         |  0         |  0        |     —      | EMPTY
 
-Total: 6/9 namespaces covered | 12 skills run | 17 artifacts
+Total: 7/9 namespaces covered | 37 skills run | 39 artifacts
 
+NAMESPACE DETAIL:
+  discover (13): brainstorm, causal, coherence, compare, competitors,
+                 competitors-alt, feasibility, feasibility-alt, hypothesis,
+                 inertia, risk, synthesize, websearch
+  specify   (4): proposal, pitch, commitment (specify/), spec (draft/)
+  validate  (6): code, customers, design (validate/),
+                 users, design, customers (review/)
+  simulate  (3): contract, lifecycle, request
+  listen    (4): adoption, adoption-blocker, feedback, support (validate/)
+  rhythm    (3): behavior, decide, story
+  roles     (6): build, create, generate, product-review, pull-request, scan
 
 COVERAGE GAPS:
-  -> /prove-hypothesis ai-code-review       (evidence-backed claim validation)
-  -> /listen-feedback ai-code-review        (user sentiment + adoption signal)
-  -> /topic-status ai-code-review           (narrative synthesis across signals)
-
+  → /prove-hypothesis ai-code-review   (falsifiable claim + experiment design)
+  → /topic-new ai-code-review          (register topic + roadmap planning)
 
 COMMITMENT READINESS:
-  [x] discover   (competition + feasibility scoped)
-  [x] specify    (proposal written)
-  [x] validate   (design + customers reviewed)
+  [x] discover  (competition + feasibility scoped — 13 signals deep)
+  [x] specify   (spec + proposal + pitch written)
+  [x] validate  (design + code + customer reviewed)
+  ──────────────────────────────────
+  Readiness: 3/3 essential namespaces covered ✓
 
-  Readiness: 3/3 essential namespaces covered
-  Note: prove, listen, topic strengthen the story but are not blockers.
+  Bonus coverage:
+  [x] simulate  (lifecycle + contract + request traced)
+  [x] listen    (feedback + support + adoption predicted)
+  [x] rhythm    (decide + behavior + story synthesized)
+  [x] roles     (6 role artifacts generated)
+  [ ] prove     (no evidence campaign yet)
+  [ ] topic     (no topic registration yet)
+
+NOTE: All 39 artifacts produced in a single day (2026-03-19).
+      Storage layout uses mixed directories — listen-* outputs
+      stored under validate/, draft-* under both specify/ and draft/.
 ```
 
-**Summary:** ai-code-review has strong essential coverage (3/3). Discovery is especially thorough with 6 skills. Three narrative/evidence namespaces remain empty — `prove` (for tested claims), `listen` (for user feedback signal), and `topic` (for cross-signal synthesis). These deepen confidence but aren't required to commit.
+---
 
 QUALITY: 4
 COPILOT_COMPATIBLE: Y
-NOTES: Pure read-only glob + grep scan — no tool compatibility issues. Copilot handles this identically to Claude Code.
+NOTES: Glob scanning worked perfectly on Windows. Directory structure deviates from the canonical 9-namespace model (extra `review/` and `draft/` dirs; listen artifacts stored under `validate/`), requiring manual skill-to-namespace mapping. No issues specific to Copilot vs Claude Code — both would need the same heuristic to classify artifacts. Minor deduction: the spec's 9-namespace list doesn't include `review` or `draft` as first-class namespaces, so any tool automating this needs a mapping table.
 
 
 Total usage est:        6 Premium requests
-API time spent:         1m 25s
-Total session time:     1m 40s
+API time spent:         2m 7s
+Total session time:     2m 13s
 Total code changes:     +0 -0
 Breakdown by AI model:
- claude-opus-4.6-1m       279.9k in, 3.2k out, 260.9k cached (Est. 6 Premium requests)
+ claude-opus-4.6-1m       139.4k in, 7.6k out, 115.7k cached (Est. 6 Premium requests)

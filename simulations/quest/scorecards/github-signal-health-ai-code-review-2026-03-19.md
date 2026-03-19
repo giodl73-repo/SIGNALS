@@ -1,145 +1,129 @@
 ● List directory .
-  └ 27 files found
+  └ 13 files found
 
-● Search (glob)
-  │ ".claude/skills/**/*"
-  └ No matches found
+● Check CLAUDE.md and signals/ (shell)
+  │ Test-Path "C:\src\sim-test\CLAUDE.md" ; Test-Path "C:\src\sim-test\signals"
+  └ 3 lines...
 
-● Search (glob)
-  │ "signals/**/*.md"
-  └ 151 files found
-
-Now let me check for skills and examine the namespace subdirectories more closely.
+● Check skills directory (shell)
+  │ Test-Path "C:\src\sim-test\.claude\skills" ; if (Test-Path "C:\src\sim-test\.claude\skills") {
+  │ Get-ChildItem "C:\src\sim-test\.claude\skills" -Directory | Measure-Object | Select-Object
+  │ -ExpandProperty Count } else { "no-skills-dir" }
+  └ 3 lines...
 
 ● List directory signals
-  └ 140 files found
+  └ 8 files found
 
-● List directory .claude
-  └ 2 files found
+● List skill directories (shell)
+  │ # Count total skill directories
+  │ Get-ChildItem "C:\src\sim-test\.claude\skills" -Directory | Select-Object -ExpandProperty Name |
+  │ Sort-Object
+  └ 286 lines...
 
-● List namespaced artifact files with dates (shell)
-  │ Get-ChildItem -Path "C:\src\sim\signals" -Recurse -Filter "*.md" -File | Where-Object {
-  │ $_.FullName -match "\\signals\\[a-z]+\\[a-z]+\\" } | Select-Object FullName, LastWriteTime |
-  │ Sort-Object LastWriteTime -Descending
-  └ 20 lines...
+● Inventory artifacts per namespace (shell)
+  │ # Count .md files per namespace and get dates
+  │ Get-ChildItem "C:\src\sim-test\signals" -Directory | ForEach-Object {
+  │ $ns = $_.Name
+  │ $files = Get-ChildItem $_.FullName -Filter "*.md" -ErrorAction SilentlyContinue
+  │ $count = ($files | Measure-Object).Count…
+  └ 22 lines...
 
-● Read signal.manifest.json
-  └ 1 line read
+● Count all signal artifacts recursively (shell)
+  │ # Check for any .md files deeper in signals/ (maybe nested)
+  │ Get-ChildItem "C:\src\sim-test\signals" -Recurse -Filter "*.md" | Measure-Object | Select-Object
+  │ -ExpandProperty Count
+  └ 2 lines...
 
-● Read signal.skills.yaml
-  └ L1:50 (50 lines read)
+● Count skill variants (shell)
+  │ # Count unique skill names (excluding .t3 variants)
+  │ $all = Get-ChildItem "C:\src\sim-test\.claude\skills" -Directory | Select-Object
+  │ -ExpandProperty Name
+  │ $base = $all | Where-Object { $_ -notmatch '\.t3$' }
+  │ "Total skill dirs: $($all.Count)"…
+  └ 6 lines...
 
-● Count artifacts per namespace for ai-code-review (shell)
-  │ # Count artifacts per namespace subdirectory for topic ai-code-review
-  │ $namespaces = @('discover','specify','validate','simulate','scout','trace','flow','prove','top
-  │ ic','rhythm','roles')
-  │ foreach ($ns in $namespaces) {
-  │ $path = "C:\src\sim\signals\$ns"…
-  └ 28 lines...
+● List all signal artifacts with dates (shell)
+  │ # Show the 38 artifacts with their namespaces
+  │ Get-ChildItem "C:\src\sim-test\signals" -Recurse -Filter "*.md" | ForEach-Object {
+  │ $ns = $_.Directory.Name
+  │ $parent = if ($_.Directory.Parent.Name -eq "signals") { $ns } else {
+  │ "$($_.Directory.Parent.Name)/$ns" }…
+  └ 47 lines...
 
-● Read signal.manifest.json
-  └ L1:40 (40 lines read)
-
-● Count skills and check .claude contents (shell)
-  │ # Count all skill definitions in signal.skills.yaml
-  │ $content = Get-Content "C:\src\sim\signal.skills.yaml" -Raw
-  │ $matches = [regex]::Matches($content, '- id: ')
-  │ Write-Output "Total skills defined in signal.skills.yaml: $($matches.Count)"…
-  └ 27 lines...
-
-● Analyze manifest namespaces (shell)
-  │ # Get all unique namespaces from manifest
-  │ $json = Get-Content "C:\src\sim\signal.manifest.json" -Raw | ConvertFrom-Json
-  │ $namespaces = $json.skills | ForEach-Object { $_.namespace } | Sort-Object -Unique
-  │ Write-Output "Namespaces in manifest.json:"
-  │ $namespaces | ForEach-Object { Write-Output "  - $_" }…
-  └ 38 lines...
-
-Now I have all the data. Here's the health check:
+Now I have everything. Let me compile the health report.
 
 ---
 
-## `/signal-health` — Topic: ai-code-review
+# 🏥 Signal Health Check — `ai-code-review`
 
-### 1. Skills Installed?
+## 1. Skills Installed?
 
-**No `.claude/skills/` directory found.** Skills are defined externally in:
-- `signal.skills.yaml` — 62 skills across 10 namespaces (discover, specify, validate, simulate, rhythm, roles, signal, tools, topic, quest)
-- `signal.manifest.json` — 67 skills (63 user-facing) across 14 namespaces (scout, draft, review, flow, listen, prove, trace, topic, quest, program, mock, campaign, corps, crew)
+✅ **285 skill directories** found in `.claude/skills/`
+- **220** base skills
+- **65** `.t3` variants
 
-**Result:** 0 skills installed in `.claude/skills/` / 62-67 defined in config files. Skills operate as prompt-based definitions, not installed skill directories.
+All critical namespaces covered: discover, draft, flow, listen, mock, org, prove, quest, review, rhythm, roles, scout, signal, simulate, specify, topic, trace, validate.
 
-### 2. signals/ Directory Present?
+## 2. signals/ Directory Present?
 
-**Present.** Subdirectories with `ai-code-review` artifacts:
+✅ **Present** — 8 top-level namespaces found:
+`discover`, `draft`, `review`, `rhythm`, `roles`, `simulate`, `specify`, `validate`
 
-| Subdirectory | Status |
-|---|---|
-| `discover/` | ✓ (6 artifacts) |
-| `specify/` | ✓ (1 artifact) |
-| `validate/` | ✓ (4 artifacts) |
-| `simulate/` | ✓ (2 artifacts) |
-| `rhythm/` | ✓ (2 artifacts) |
-| `roles/` | ✓ (2 artifacts) |
-| scout/, trace/, flow/, prove/, topic/ | Not created |
+## 3. CLAUDE.md Present?
 
-Also contains ~100+ skill definition `.md` files at signals/ root level.
+✅ **Present** at workspace root.
 
-### 3. CLAUDE.md Present?
+## 4. Artifact Inventory
 
-**Present** at `C:\src\sim\CLAUDE.md`. ✓
+| Namespace | Artifact Count | Most Recent | Oldest |
+|-----------|---------------|-------------|--------|
+| discover | 13 | brainstorm (07:19) | competitors (06:28) |
+| draft | 1 | spec (06:29) | spec (06:29) |
+| review | 3 | customers (07:12) | design (07:06) |
+| rhythm | 3 | behavior (07:02) | websearch-story (06:51) |
+| roles | 5 | pull-request (07:38) | scan (06:29) |
+| simulate | 3 | request (07:41) | contract (06:42) |
+| specify | 3 | commitment (06:38) | proposal (06:32) |
+| validate | 7 | customers (07:31) | adoption (06:50) |
+| **Total** | **38** | **request (07:41)** | **competitors (06:28)** |
 
-### 4. Artifact Inventory — Topic: `ai-code-review`
+All artifacts dated **2026-03-19**, spanning ~1h13m of activity.
 
-| Namespace | Count | Most Recent | Oldest |
-|-----------|-------|-------------|--------|
-| discover | 6 | 2026-03-19 | 2026-03-18 |
-| specify | 1 | 2026-03-18 | 2026-03-18 |
-| validate | 4 | 2026-03-19 | 2026-03-18 |
-| simulate | 2 | 2026-03-19 | 2026-03-18 |
-| scout | 0 | — | — |
-| trace | 0 | — | — |
-| flow | 0 | — | — |
-| prove | 0 | — | — |
-| topic | 0 | — | — |
-| rhythm | 2 | 2026-03-19 | 2026-03-18 |
-| roles | 2 | 2026-03-19 | 2026-03-18 |
-| **Total** | **17** | **2026-03-19** | **2026-03-18** |
-
-### Health Score
+## Health Score
 
 | Check | Status | Notes |
 |-------|--------|-------|
-| Skills installed | **WARN** | No `.claude/skills/` dir; skills defined in YAML/JSON config files only |
-| signals/ present | **OK** | Present with 6 active namespace subdirs + ~100 skill definition files |
-| CLAUDE.md present | **OK** | Present at workspace root |
-| Artifact count ≥ 1 | **WARN** | 17 artifacts across 6/10 namespaces; 4 namespaces empty (scout, trace, flow, prove) |
+| Skills installed | ✅ **OK** | 220 base + 65 t3 = 285 dirs |
+| signals/ present | ✅ **OK** | 8 namespaces, 38 artifacts |
+| CLAUDE.md present | ✅ **OK** | Present at root |
+| Artifact count ≥ 1 | ✅ **OK** | 38 artifacts across all namespaces |
 
-**Overall: DEGRADED**
+### Overall: 🟢 HEALTHY
 
-### Recommendations
+## Observations
 
-1. **Run scout, trace, flow, prove skills** — 4 namespaces have zero artifacts for `ai-code-review`. Running `/scout-competitors`, `/trace-contract`, `/flow-lifecycle`, `/prove-hypothesis` would fill coverage gaps.
-2. **Create `/topic-status` artifact** — No topic-namespace artifact exists to synthesize the 17 signals gathered so far. Run `/topic-status ai-code-review` to get a readiness assessment.
-3. **Add more specify artifacts** — Only 1 proposal exists. Consider `/specify-spec` or `/specify-commitment` to strengthen the specification layer.
-4. **Consider `.claude/skills/` installation** — If Claude Code skill dispatch is desired, skill `.md` files need to be placed in `.claude/skills/`. Current setup relies on YAML/JSON config which works for prompt-based invocation.
+- **Deep coverage** in `discover` (13 artifacts) — full discovery campaign completed.
+- **Validate** is strong at 7 artifacts including adoption-blocker analysis.
+- **No `flow/`, `prove/`, `listen/`, `scout/`, `trace/`, `topic/` namespace artifacts** in signals/ — these namespaces have no subdirectories yet. Skills exist but haven't been run for this topic.
+- All work happened in a single day — this is a freshly-spun campaign.
+
+## Recommendations
+
+1. **Run `prove-hypothesis`** — no prove-namespace artifacts yet; grounding claims with evidence would strengthen the case.
+2. **Run `flow-lifecycle` or `flow-conversation`** — no flow artifacts; behavioral simulations would validate integration paths.
+3. **Run `listen-feedback`** — no listen artifacts; pre-ship customer reaction simulation adds validation depth.
+4. **Run `topic-new` → `topic-status`** — no topic artifacts; registering the topic enables roadmap tracking.
 
 ---
 
-```
 QUALITY: 4
 COPILOT_COMPATIBLE: Y
-NOTES: Copilot resolved all paths and glob patterns correctly on Windows.
-  Dual skill registries (YAML vs JSON manifest) with different namespace
-  mappings may cause confusion -- the health check used actual directory
-  structure as ground truth. No issues with tool availability; grep/glob/view
-  all functioned as expected.
-```
+NOTES: All filesystem checks work identically in Copilot CLI. Parallel tool calls for directory scanning performed well. No Copilot-specific issues encountered — `Get-ChildItem` and `Test-Path` are reliable across both runtimes.
 
 
 Total usage est:        6 Premium requests
-API time spent:         1m 24s
-Total session time:     1m 49s
+API time spent:         1m 0s
+Total session time:     1m 36s
 Total code changes:     +0 -0
 Breakdown by AI model:
- claude-opus-4.6-1m       171.5k in, 4.1k out, 151.5k cached (Est. 6 Premium requests)
+ claude-opus-4.6-1m       161.9k in, 2.6k out, 141.6k cached (Est. 6 Premium requests)
