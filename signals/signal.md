@@ -16,33 +16,29 @@ DISCOVERY:
   /discover-coherence     /discover-orchestrate  /discover-causal
 
 SPECIFICATION:
-  /draft-spec  /draft-proposal  /draft-pitch  /draft-brainstorm
+  /specify-spec  /specify-proposal  /specify-pitch  /specify-commitment
 
 VALIDATION:
-  /validate-design  /validate-users  /validate-customers  /validate-code
+  /validate-design  /validate-code  /validate-users  /validate-customers
 
 EVIDENCE:
-  /discover-hypothesis  /discover-websearch  /prove-intelligence  /discover-analysis
-  /discover-synthesize  /prove-prototype     /prove-publish       /prove-interview
+  /discover-hypothesis  /discover-websearch  /discover-analysis  /discover-synthesize
+  /discover-causal      /discover-coherence  /discover-compare   /discover-orchestrate
 
 SIMULATION:
-  /flow-lifecycle  /flow-conversation  /flow-dataflow  /flow-integration
-  /flow-trigger    /flow-throttle      /flow-resilience
-
-VERIFICATION:
-  /trace-request  /trace-state  /trace-contract  /trace-component
-  /trace-deployment  /trace-migration  /trace-permissions  /trace-skill
+  /simulate-lifecycle  /simulate-request  /simulate-state  /simulate-contract
+  /simulate-conversation  /simulate-permissions  /simulate-stress
 
 ADOPTION:
-  /listen-feedback  /listen-support  /listen-adoption
+  /validate-adoption  /validate-adoption-blocker  /validate-feedback  /validate-support
 
 NARRATIVE:
-  /topic-new  /rhythm-status  /topic-roadmap  /topic-story  /topic-echo
-  /topic-report  /signal (this)
+  /rhythm-status  /rhythm-story  /rhythm-decide  /rhythm-qa  /rhythm-brief
+  /topic-new  /topic-story  /topic-echo  /topic-report  /signal (this)
 
 GOVERNANCE:
-  /roles-scan  /roles-build  /roles-product-review  /roles-pull-request
-  /org-chart   /org-committee  /org-roles  /signal-check  /org-review
+  /roles-scan  /roles-build  /roles-chart  /roles-create  /roles-check
+  /roles-product-review  /roles-pull-request  /roles-committee  /roles-leaderboard
 
 TOOLS:
   /signal-setup  /signal-health  /signal-layout  /tools-coverage  /tools-preview  /tools-accept
