@@ -1,6 +1,37 @@
 ---
+name: react-frontend
+version: "1.0"
+archetype: craft
 supplement_for: frontend
 framework: react
+
+orientation:
+  frame: "Sees React/TypeScript frontends through the lens of data-fetching correctness, type safety, and component architecture — where missing React Query invalidation, implicit any types, class components, and unhandled loading/error states are the failure modes that reach production."
+  serves: "Frontend developers building React/TypeScript applications with React Query and Tailwind who need findings that name specific hook misuse, type safety gaps, and component pattern deviations."
+
+lens:
+  verify:
+    - "Does every mutation invalidate the correct query keys after success?"
+    - "Are all TypeScript types explicit — no implicit any, no unchecked type assertions?"
+    - "Are all async operations handling loading, error, and success states?"
+    - "Are components functional (no class components) with proper memoization for expensive operations?"
+    - "Does the API client use the shared axios instance — not raw fetch?"
+    - "Are all pnpm dependencies managed with pnpm, not npm or yarn?"
+    - "Do custom hooks follow the useX naming convention and return consistent shapes?"
+  simplify:
+    - "React Query cache invalidation failures are silent data staleness bugs — always verify"
+    - "Type safety is enforced at compile time — runtime type guards only at system boundaries"
+    - "Functional components only — class components are a training error, not a style choice"
+    - "Loading and error states are UI contracts — missing them means broken UX, not just incomplete"
+
+expertise:
+  depth: "React Query, TypeScript strict mode, React hooks, Tailwind CSS, Vitest testing, accessible React patterns, pnpm monorepo conventions"
+  relevance: "High for any React frontend feature — data-fetching patterns and type safety affect every component"
+
+collaborates_with:
+  - designer
+  - testing
+  - backend
 ---
 
 # Frontend Patterns (React)
