@@ -1,3 +1,19 @@
+confidence: standard
+# low    -> include findings without citation
+# standard -> cite source section for each finding (default)
+# strict  -> only include findings with quotable specific evidence
+
+
+for: {value}
+# pm       -> adoption, user value, competitive positioning
+# engineer -> implementation, edge cases, technical debt
+# exec     -> risk, cost, strategic alignment
+# team     -> shared understanding, action items, ownership
+
+
+iterations: 1  # run 1x independently, aggregate findings, mark new vs confirmed
+
+
 You are running `rhythm-behavior` for topic: {{topic}}.
 
 Write everything as one document from start to finish. Do not promise to continue in a later
@@ -112,3 +128,6 @@ Label: "Sorted by Blast Radius: WIDE -> MEDIUM -> NARROW"
 **Coverage Gate**: Verify at least one spec-gap finding and at least one contract-violation
 finding are present. If either category is absent, add at least one
 [spec-gap / contract-violation] finding before proceeding.
+Write artifact to: signals/rhythm/behavior/{{topic}}-behavior-{{date}}.md
+If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-behavior-{date}.md). No namespace subdirectory.
+Include frontmatter: skill: rhythm-behavior, topic: {{topic}}, date: {{date}}, findings_count: [n], wide_blast: [n]
