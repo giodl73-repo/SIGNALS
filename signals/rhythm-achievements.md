@@ -69,6 +69,11 @@ For each namespace where an artifact exists, mark EARNED:
 - [ ] **Sharp Hypothesis** — discover-hypothesis/prove-hypothesis artifact contains "specific" and "falsifiable"
 - [ ] **The Echo** — rhythm-reflect artifact exists
 
+### DOMAIN
+- [ ] **Domain Pioneer** — any artifact produced with domain_roles_active field in frontmatter (at least 1 domain role was loaded during the run)
+- [ ] **Platform Expert** — validate-design artifact exists with reviewer_count >= 3 AND domain_roles_active is populated (domain expert reviewers were loaded)
+- [ ] **Cross-Domain** — artifacts produced with 2+ distinct domain role areas active (e.g., backend + msft, or backend + dynamics)
+
 ### CORP AND CREW
 - [ ] **First Review** — any roles-review, org-review, or crew-review artifact exists
 - [ ] **PR Reviewed** — any roles-pull-request or org-pr artifact exists
@@ -86,7 +91,7 @@ For each namespace where an artifact exists, mark EARNED:
 Achievements for: {{topic}}
 ================================================================
 
-EARNED (N of 35):
+EARNED (N of 38):
   [x] First Signal
   [x] Discover Pioneer
   [x] [other earned]
@@ -99,11 +104,16 @@ NEXT RECOMMENDED (unlocks the most achievements):
   -> /[skill] {{topic}}    (unlocks: [achievement names])
   -> /[skill] {{topic}}    (unlocks: [achievement names])
 
+DOMAIN WATCH:
+  Domain Pioneer: [NOT YET / EARNED] -- install domain roles in .craft/roles/ and run any skill.
+  Platform Expert: [NOT YET / EARNED] -- run /validate-design with 3+ domain roles active.
+
 DISCOVERY WATCH:
   Falsified: [NOT YET / EARNED] -- run /discover-hypothesis {{topic}} and investigate honestly.
   The Echo: [NOT YET / EARNED] -- run /rhythm-reflect {{topic}} after your session ends.
 
 Coverage: N/9 namespaces | N skills run | N artifacts
+Domain roles active: [none / list of role names]
 ================================================================
 ```
 
