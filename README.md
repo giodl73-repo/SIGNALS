@@ -9,7 +9,7 @@ Signal is a Claude Code plugin for gathering evidence before you commit to build
 ## Install
 
 ```bash
-git clone https://github.com/your-org/signal .signal-src && cd .signal-src
+git clone https://github.com/giodl_microsoft/signals .signal-src && cd .signal-src
 ```
 
 Choose a binding — each installs the same 60 skills with different invocation names.
@@ -199,8 +199,8 @@ Every `/scout-competitors` run assesses "none / status quo" first, always. Inert
 Found a bug? Unexpected output? Improvement idea?
 
 - **In Claude Code**: `/signal-feedback` — formats and submits a GitHub issue directly
-- **GitHub Issues**: [github.com/gim-home/signal/issues](https://github.com/gim-home/signal/issues)
-- **Discussions**: [github.com/gim-home/signal/discussions](https://github.com/gim-home/signal/discussions)
+- **GitHub Issues**: [github.com/giodl_microsoft/signals/issues](https://github.com/giodl_microsoft/signals/issues)
+- **Discussions**: [github.com/giodl_microsoft/signals/discussions](https://github.com/giodl_microsoft/signals/discussions)
 
 ## License / status
 
