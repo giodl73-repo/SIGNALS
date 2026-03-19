@@ -216,3 +216,47 @@ The methodology of a skill is defined once. How it is invoked is a binding decis
 | P-08 Heritage | Every skill traces to proven technique |
 | P-09 Provenance | Every artifact has frontmatter; --json for structured output |
 | P-10 Binding-Agnostic | Skills defined once; invocation shape is a binding decision |
+
+---
+
+## P-11: The Customer Test Is the Rubric
+
+The quality of a skill is not determined by its golden score. It is determined by whether
+a real person — unfamiliar with Signal, running it for the first time, trying to answer
+a genuine question — can complete their task without confusion.
+
+The rubric found by the quest loop is what the skill *should* do.
+The customer test found by simulation is whether it *actually* does it.
+
+Run the customer test before you ship. Run it again after every significant change.
+24 personas across 3 rounds found 16 bugs that 168 golden prompts did not. The quest
+loop builds the ship. The customer test confirms it floats.
+
+**What this means:**
+- Every skill with a golden prompt also needs a simulated customer run
+- Bugs found by customer test are higher priority than rubric gaps
+- "All essential criteria pass" is necessary but not sufficient
+- The test topic should be real: a feature a real team would actually consider
+- Negative test results (customer scores 1/5) are as valuable as positive ones --
+  they tell you exactly what to fix
+
+**The flair:** *The primary competitor in quality assurance is also inertia: the
+assumption that because the rubric passes, the user will too.*
+
+---
+
+## Summary
+
+| Principle | One Line |
+|-----------|----------|
+| P-01 Concurrent by Default | Multiple people, same repo, no collisions |
+| P-02 Append-Only Artifacts | New files, never overwrites |
+| P-03 Self-Contained Skills | No execution dependencies between skills |
+| P-04 Namespace = Audience | Routing is zero-effort |
+| P-05 Zero Barrier | First run produces results with no setup |
+| P-06 Echo | Every program ends with a reflection |
+| P-07 Naming Is a Contract | topic-signal-date, no exceptions |
+| P-08 Heritage | Every skill traces to proven technique |
+| P-09 Provenance | Every artifact has frontmatter; --json for structured output |
+| P-10 Binding-Agnostic | Skills defined once; invocation shape is a binding decision |
+| P-11 Customer Test Is the Rubric | The quest loop builds the ship. The customer test confirms it floats. |
