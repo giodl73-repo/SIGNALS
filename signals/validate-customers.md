@@ -1,3 +1,7 @@
+If --lightweight flag provided: run 4 personas only (C-01 maker, C-02 enterprise PM,
+  C-07 startup founder, C-11 regulated industry) and skip weighted scoring table.
+  Output: 4 persona cards + top adoption blocker + verdict. Faster, smaller output.
+
 You are running /validate-customers for: {{topic}}
 
 12 customer personas evaluate this feature for usefulness, clarity, and adoption likelihood. Primary audience weighted 3x, secondary 2x, non-target 1x.
