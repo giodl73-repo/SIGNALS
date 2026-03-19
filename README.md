@@ -9,66 +9,98 @@ Signal is a Claude Code plugin for gathering evidence before you commit to build
 ## Install
 
 ```bash
-# Clone the repo
-git clone https://github.com/your-org/signal .signal-src
-cd .signal-src
+git clone https://github.com/your-org/signal .signal-src && cd .signal-src
 ```
 
-### Claude Code
+Choose a binding — each installs the same 60 skills with different invocation names.
+Preview what you'll get, then run the install.
 
-Pick the binding that fits your team's style:
+---
+
+### Binding A — Bare (shortest names)
+
+```
+discover  /competitors  /feasibility  /risk  /inertia  /hypothesis  /websearch
+          /analysis  /synthesize  /orchestrate  /brainstorm  /causal  /coherence
+          /compare  /competitors-alt  /feasibility-alt
+specify   /spec  /proposal  /pitch  /commitment
+validate  /design  /code  /users  /customers  /feedback  /support  /adoption  /inertia
+simulate  /lifecycle  /conversation  /stress  /contract  /state  /permissions  /request
+rhythm    /status  /story  /decide  /behavior  /qa  /brief
+roles     /scan  /build  /chart  /generate  /create  /check  /committee
+          /product-review  /pull-request
+signal    /check
+tools     /coverage  /preview  /accept
+```
 
 ```bash
-# Bare — shortest possible names (/decide, /competitors, /hypothesis)
-./install/install-bare.sh
-
-# Flat — namespace-prefixed names (/scout-competitors, /draft-spec)
-./install/install-flat.sh
-
-# Signal-prefix — /signal-decide, /signal-competitors (multi-plugin repos)
-./install/install-signal.sh
-
-# Grouped — namespace menus (/scout shows all scout skills)
-./install/install-grouped.sh
-
-# Prefixed — full /signal-scout-competitors names
-./install/install-prefixed.sh
-
-# Domains — campaign entry points (/decide, /simulate, /validate)
-./install/install-domains.sh
+./install/install-bare.sh            # Claude Code  → .claude/skills/
+./install/install-bare-github.sh     # GitHub Copilot → .github/prompts/
 ```
 
-### GitHub Copilot
+---
+
+### Binding B — Flat (namespace-prefixed, default)
+
+```
+/discover-competitors   /discover-feasibility   /discover-risk   /discover-inertia
+/specify-spec           /specify-proposal        /specify-pitch   /specify-commitment
+/validate-design        /validate-customers      /validate-users  /validate-adoption
+/simulate-contract      /simulate-state          /simulate-lifecycle
+/rhythm-status          /rhythm-story            /rhythm-decide
+/roles-scan             /roles-build             /roles-pull-request  ...60 total
+```
 
 ```bash
-# Bare — decide.prompt.md, competitors.prompt.md
-./install/install-bare-github.sh
-
-# Flat — scout-competitors.prompt.md, draft-spec.prompt.md
-./install/install-flat-github.sh
-
-# Signal-prefix — signal-competitors.prompt.md, signal-decide.prompt.md
-./install/install-signal-github.sh
-
-# Grouped — namespace dispatch prompts
-./install/install-grouped-github.sh
-
-# Prefixed — signal-scout-competitors.prompt.md prompts
-./install/install-prefixed-github.sh
-
-# Domains — decide.prompt.md, simulate.prompt.md, validate.prompt.md
-./install/install-domains-github.sh
+./install/install-flat.sh            # Claude Code
+./install/install-flat-github.sh     # GitHub Copilot
 ```
+
+---
+
+### Binding C — Signal-prefix (multi-plugin safe)
+
+Same 60 skills, every command prefixed with `signal-`:
+
+```
+/signal-competitors   /signal-spec   /signal-decide   /signal-contract  ...60 total
+```
+
+```bash
+./install/install-signal.sh          # Claude Code
+./install/install-signal-github.sh   # GitHub Copilot
+```
+
+---
+
+### Binding D — Grouped (namespace menus)
+
+Adds namespace aggregators — type `/discover` to see all discover skills, or go direct:
+
+```
+/discover             → shows menu of all 15 discover skills
+/discover-competitors → runs directly (also available)
+/rhythm               → shows menu of 6 rhythm skills
+/roles                → shows menu of 9 roles skills
+... + all 60 individual skills
+```
+
+```bash
+./install/install-grouped.sh         # Claude Code
+./install/install-grouped-github.sh  # GitHub Copilot
+```
+
+---
 
 ### Not sure which to pick?
 
 | If you... | Use |
 |-----------|-----|
-| Want the simplest possible invocation | `install-bare.sh` -> `/decide`, `/competitors` |
-| Want to see which namespace each skill is in | `install-flat.sh` -> `/scout-competitors` |
-| Want `signal-` prefix (multi-plugin repos) | `install-signal.sh` -> `/signal-decide` |
-| Want namespace menus | `install-grouped.sh` -> `/scout` shows all scout skills |
-| Use GitHub Copilot | any `*-github.sh` variant |
+| Want the shortest possible commands | **bare** — `/decide`, `/competitors` |
+| Want to see the namespace on each command | **flat** — `/discover-competitors` |
+| Share `.claude/skills/` with other plugins | **signal** — `/signal-competitors` |
+| Prefer menus over memorizing names | **grouped** — `/discover` shows all |
+| Use GitHub Copilot | add `-github` to any of the above |
 
 ## The 9 namespaces
 
