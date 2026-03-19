@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "generate",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-45",
+    "prompt": "Generate a typed role registry for a domain. Analyzes product/codebase to determine what expert perspectives are needed."
+  }
+}

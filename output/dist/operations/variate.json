@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "variate",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-38",
+    "prompt": "Generate N distinct prompt variations of a skill body. Each variation is a complete, runnable skill body -- not a diff."
+  }
+}

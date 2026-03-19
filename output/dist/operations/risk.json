@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "risk",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-3",
+    "prompt": "Risk register for a feature or decision. What could go wrong? Lists top risks across dimensions: technical (implementati"
+  }
+}

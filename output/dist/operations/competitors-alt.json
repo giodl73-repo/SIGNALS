@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "competitors-alt",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-58",
+    "prompt": "UNIFIED VERSION (A/B test against discover-competitors). Single prompt handles base competitive analysis AND optional fo"
+  }
+}

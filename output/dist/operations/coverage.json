@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "coverage",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-28",
+    "prompt": "Generate synthetic signal artifacts for all 9 namespaces in a single pass. Each mock follows the structural requirements"
+  }
+}

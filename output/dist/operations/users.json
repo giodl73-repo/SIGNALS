@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "users",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-11",
+    "prompt": "5 persona advocates walk through a design from their user perspective. Each persona narrates in first person, flags conf"
+  }
+}

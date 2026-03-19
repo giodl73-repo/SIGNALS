@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "commitment",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-31",
+    "prompt": "Sequence skills into a staged program plan with gates and topic tracking. Generate program.yaml for the topic: stages (n"
+  }
+}

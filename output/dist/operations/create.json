@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "create",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-60",
+    "prompt": "Create a new role or sub-role in .craft/roles/. Three modes: (1) name only -- /roles-create backend:healthcare generates"
+  }
+}

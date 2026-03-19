@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "feedback",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-25",
+    "prompt": "Simulate customer reactions to a spec or design before it ships. All 12 customer personas (C-01 through C-12) read the s"
+  }
+}

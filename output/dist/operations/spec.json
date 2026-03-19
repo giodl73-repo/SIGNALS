@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "spec",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-5",
+    "prompt": "Author a specification from intent with guided section structure. Pulls context from any scout signals for the topic. Gu"
+  }
+}

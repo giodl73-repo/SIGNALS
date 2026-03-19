@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "orchestrate",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-24",
+    "prompt": "Orchestrate a full prove evidence campaign. Runs hypothesis, websearch, intelligence, analysis, synthesize in sequence."
+  }
+}

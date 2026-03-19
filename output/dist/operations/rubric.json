@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "rubric",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-37",
+    "prompt": "Define what good output looks like for a skill. Given a skill spec and sample outputs, produce a scoring rubric: ranked"
+  }
+}

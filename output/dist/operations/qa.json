@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "qa",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-51",
+    "prompt": "Run the full design validation campaign. Orchestrates: review-design, review-users, review-customers, listen-feedback, l"
+  }
+}

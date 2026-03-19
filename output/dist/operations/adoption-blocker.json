@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "adoption-blocker",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-57",
+    "prompt": "Validate the adoption case by stress-testing the inertia scenario. Why would users NOT adopt this feature even if it wor"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "request",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-16",
+    "prompt": "Hand-compile a request through service boundaries, APIs, and middleware. Step by step: entry point, authentication, rout"
+  }
+}

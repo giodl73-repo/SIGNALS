@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "customers",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-12",
+    "prompt": "12 customer personas (C-01 through C-12) evaluate a feature for usefulness, clarity, and would-adopt (all 1-5). Primary"
+  }
+}

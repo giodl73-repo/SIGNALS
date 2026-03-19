@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "accept",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-30",
+    "prompt": "Step 2 of mock-first workflow: review mock coverage picture and produce MOCK-ACCEPTED or REAL-REQUIRED decisions per nam"
+  }
+}

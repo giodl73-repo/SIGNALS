@@ -1,37 +1,77 @@
 ---
 name: decide
-description: "Run the full decision intelligence suite for a topic. Combines scout + prove into a
-complete pre-commitment analysis.
-
-Covers:
-- scout-competitors  -> competitive landscape + inertia as primary competitor
-- scout-feasibility  -> technical feasibility + traffic-light ratings
-- scout-market       -> market sizing + segment ranking by fit score
-- prove-hypothesis   -> hypothesis framing with falsification condition
-- prove-websearch    -> web evidence with direct quotes and strength-of-evidence
-- prove-synthesize   -> answer-first synthesis with confidence and counter-evidence
-
-Output: a complete decision brief covering market landscape, technical viability,
-evidence base, and a synthesized recommendation with stated confidence.
-
-Use before committing to build. The decision brief is the artifact you present to get
-alignment before writing a spec.
-"
-allowed-tools: [Read, Write, Glob, Grep, WebSearch, WebFetch]
+description: "Run the full pre-commitment decision campaign. Orchestrates: scout-competitors, scout-feasibility, scout-risk, prove-hyp"
+allowed-tools: [Read, Write, Glob, WebSearch]
 param_set: full
 ---
-Run the full pre-commitment intelligence suite for: {{topic}}
+depth: standard
+# quick   -> fast scan, 5+ findings, prioritize obvious issues
+# standard -> thorough, 15+ findings, full coverage (default)
+# deep    -> exhaustive adversarial audit, 25+ findings, treat missing as failure
 
-This domain skill runs the complete decision evidence campaign before feature commitment.
-Execute these skills in sequence, feeding each output to the next:
 
-1. **scout-competitors** — identify the competitive landscape and why inertia is the primary threat
-2. **scout-feasibility** — assess whether the feature is buildable given current constraints  
-3. **scout-market** — size the market and identify the target segment
-4. **prove-hypothesis** — frame the core product hypothesis and its falsification conditions
-5. **prove-websearch** — gather external evidence for the hypothesis
-6. **prove-synthesize** — synthesize all evidence into a decision brief
+confidence: standard
+# low    -> include findings without citation
+# standard -> cite source section for each finding (default)
+# strict  -> only include findings with quotable specific evidence
 
-For each skill: run it, capture the output as a signal artifact, then proceed.
-Final output: a decision brief at simulations/{{topic}}/decide-{{date}}.md summarizing
-the evidence and stating a clear recommendation: COMMIT / PAUSE / PIVOT / ABANDON.
+
+for: {value}
+# pm       -> adoption, user value, competitive positioning
+# engineer -> implementation, edge cases, technical debt
+# exec     -> risk, cost, strategic alignment
+# team     -> shared understanding, action items, ownership
+
+
+iterations: 1  # run 1x independently, aggregate findings, mark new vs confirmed
+
+
+You are running /rhythm-decide for: {{topic}}
+
+Run the full pre-commitment decision campaign. This orchestrates 6 skills in sequence.
+Each produces an artifact. At the end, synthesize into a decision brief.
+
+---
+
+## CAMPAIGN SEQUENCE
+
+Execute in order. Pass each output to the next step as context.
+
+### Step 1: Inertia and Competition
+Run discover-inertia and discover-competitors for {{topic}}.
+Key question: why would teams do nothing? What named alternatives exist?
+
+### Step 2: Feasibility and Risk  
+Run discover-feasibility and discover-risk for {{topic}}.
+Key question: can this be built? What are the top risks?
+
+### Step 3: Evidence
+Run discover-hypothesis for {{topic}}.
+Frame the core claim and its falsification conditions.
+Run discover-websearch to gather 3+ external sources.
+
+### Step 4: Synthesis
+Synthesize findings into a decision brief:
+
+**Decision Brief: {{topic}}**
+
+| Dimension | Signal | Confidence |
+|-----------|--------|-----------|
+| Inertia threat | [HIGH/MED/LOW] — [why] | HIGH/MED/LOW |
+| Feasibility | [assessment] | HIGH/MED/LOW |
+| Top risk | [risk name] — [mitigation] | HIGH/MED/LOW |
+| Hypothesis | [core claim] | HIGH/MED/LOW |
+| Evidence | [key finding] | HIGH/MED/LOW |
+
+**Recommendation**: COMMIT | PAUSE | PIVOT | ABANDON
+
+**Rationale**: [2-3 sentences connecting the signals to the recommendation]
+
+**Inertia verdict**: [explicitly state why inertia loses, or why it wins]
+
+---
+
+Write campaign artifact to: simulations/rhythm/decide/{{topic}}-decide-{{date}}.md
+Include frontmatter: skill: rhythm-decide, topic: {{topic}}, date: {{date}},
+  campaign: [discover-inertia, discover-competitors, discover-feasibility,
+             discover-risk, discover-hypothesis, discover-websearch]

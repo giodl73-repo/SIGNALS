@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "lifecycle",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-13",
+    "prompt": "Simulate the full business process lifecycle and flow behavior. Use --focus to zoom into a specific flow dimension: --fo"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "health",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-53",
+    "prompt": "Self-check your signals before committing. Analyzes all signal artifacts for a topic across 4 dimensions: SEQUENCE (did"
+  }
+}

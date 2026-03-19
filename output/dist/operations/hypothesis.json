@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "hypothesis",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-20",
+    "prompt": "State what you believe and what would change your mind. Entry point to a prove investigation. A hypothesis has: a claim"
+  }
+}

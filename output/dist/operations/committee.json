@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "committee",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-48",
+    "prompt": "Simulate a committee meeting before the real one. Types: ROB (product review, service review), shiproom (go/no-go), arch"
+  }
+}

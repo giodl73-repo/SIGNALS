@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "setup",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-33",
+    "prompt": "Configure Signal in your workspace after installation. Checks for existing CLAUDE.md and .github/copilot-instructions.md"
+  }
+}

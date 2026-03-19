@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "permissions",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-19",
+    "prompt": "Trace who can do what through RBAC, security roles, teams, and field-level security. For each operation: which roles can"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "conversation",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-14",
+    "prompt": "Simulate a multi-turn agent conversation through a topic graph. Walk the dialog path: user intents, agent responses, top"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "causal",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-54",
+    "prompt": "Test whether the causal mechanism linking your feature to the claimed outcome is actually sound. Given: hypothesis X cau"
+  }
+}

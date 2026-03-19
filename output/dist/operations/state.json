@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "state",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-17",
+    "prompt": "Hand-compile state transitions: starting state, operations applied, expected outcome at each step. For each operation: p"
+  }
+}

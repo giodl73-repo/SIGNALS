@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "coherence",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-55",
+    "prompt": "Check whether your discover signals agree with each other. Surfaces contradictions: if discover-competitors rates inerti"
+  }
+}

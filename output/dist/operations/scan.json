@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "scan",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-41",
+    "prompt": "Walk a repo and produce a draft org.yaml -- the org configuration contract. Pivot modes: directory, concept, service, do"
+  }
+}

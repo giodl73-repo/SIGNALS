@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "inertia",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-4",
+    "prompt": "Deep analysis of the inertia competitor -- the option to do nothing. Why would teams keep their current workaround inste"
+  }
+}

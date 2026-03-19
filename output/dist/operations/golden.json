@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "golden",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-40",
+    "prompt": "Find the golden prompt through systematic variation and scoring. Full loop: load or create rubric, generate variations,"
+  }
+}

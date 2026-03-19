@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "synthesize",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-23",
+    "prompt": "Merge all investigation signals into an answer-first synthesis. Structure: answer (yes/no/maybe), confidence (0-100), ke"
+  }
+}
