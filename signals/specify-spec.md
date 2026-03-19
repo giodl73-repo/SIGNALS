@@ -11,13 +11,13 @@ PM: scan workspace -> populate [SCOUT-STATUS-TABLE]:
   [SCOUT-STATUS-TABLE]
   Artifact Type        | Status       | File Path
   ---------------------|--------------|----------
-  scout-requirements   | LOADED / N/A |
-  scout-feasibility    | LOADED / N/A |
-  scout-compliance     | LOADED / N/A |
-  scout-market         | LOADED / N/A |
-  scout-stakeholders   | LOADED / N/A |
-  scout-naming         | LOADED / N/A |
-  scout-positioning    | LOADED / N/A |
+  scout-requirements / discover-requirements   | LOADED / N/A |
+  scout-feasibility / discover-feasibility    | LOADED / N/A |
+  scout-compliance / discover-compliance     | LOADED / N/A |
+  scout-market / discover-market         | LOADED / N/A |
+  scout-stakeholders / discover-stakeholders   | LOADED / N/A |
+  scout-naming / discover-naming         | LOADED / N/A |
+  scout-positioning / discover-positioning    | LOADED / N/A |
 
 PM: evaluate table -> execute first matching branch:
 
@@ -26,17 +26,17 @@ PM: evaluate table -> execute first matching branch:
   > sentence product description to extract requirements inline, or run
   > /scout:requirements first."
 
-  Branch B-1 — scout-requirements N/A, at least one other LOADED:
-  > VERBATIM RESPONSE: "scout-requirements not found. Requirements will be
+  Branch B-1 — scout-requirements / discover-requirements N/A, at least one other LOADED:
+  > VERBATIM RESPONSE: "scout-requirements / discover-requirements not found. Requirements will be
   > extracted inline from your product description. Other loaded artifacts
   > provide context."
 
-  Branch B-2 — scout-feasibility N/A, scout-requirements LOADED:
-  > VERBATIM RESPONSE: "scout-feasibility not found. Feasibility constraints
+  Branch B-2 — scout-feasibility / discover-feasibility N/A, scout-requirements / discover-requirements LOADED:
+  > VERBATIM RESPONSE: "scout-feasibility / discover-feasibility not found. Feasibility constraints
   > noted as open questions in Phase 3."
 
-  Branch B-3 — scout-compliance N/A, scout-requirements LOADED:
-  > VERBATIM RESPONSE: "scout-compliance not found. Compliance items flagged
+  Branch B-3 — scout-compliance / discover-compliance N/A, scout-requirements / discover-requirements LOADED:
+  > VERBATIM RESPONSE: "scout-compliance / discover-compliance not found. Compliance items flagged
   > as open questions in Phase 3."
 
   Branch B-catch — any other partial configuration:
@@ -55,7 +55,7 @@ ENTER Phase 1: [SCOUT-STATUS-TABLE] must be complete from Phase 0 EXIT.
 You are now entering Phase 1. Your goal is to anchor every requirement to a
 named spec section.
 
-PM: scan `scout-requirements` -> extract all R-IDs and Priority levels ->
+PM: scan `scout-requirements / discover-requirements` -> extract all R-IDs and Priority levels ->
   assign each R-ID to a planned section -> populate [PM-COVERAGE-TABLE]:
 
   [PM-COVERAGE-TABLE]
@@ -64,7 +64,7 @@ PM: scan `scout-requirements` -> extract all R-IDs and Priority levels ->
 
   Waiver Status values:
     COVERED     — R-ID maps to a named planned section.
-    C-03 WAIVER — scout-requirements absent or R-ID has no traceable section.
+    C-03 WAIVER — scout-requirements / discover-requirements absent or R-ID has no traceable section.
   C-03 WAIVER rows propagate to [IG-REGISTER] as:
     Elimination Path = "R-ID WAIVED (no requirements artifact)"
 
@@ -73,7 +73,7 @@ CASCADE TO: [IG-REGISTER] in Phase 2 (R-IDs carried forward as inertia gap
   of 2).
 
 Cross-namespace signal (location 1 of 2):
-  Signal: scout-requirements artifact confirmed for R-ID traceability.
+  Signal: scout-requirements / discover-requirements artifact confirmed for R-ID traceability.
   Source: {file path if LOADED, or INLINE}
 
 -> EMIT [PM-CONTRACT-SEAL] WHEN [PM-COVERAGE-TABLE] fully populated.
@@ -196,11 +196,11 @@ You are now entering Phase 3. Your goal is to author the specification itself.
 P0 coverage count: State count before any section prose:
   "P0 requirements carried forward: {n}"
 
-PM: scan `scout-requirements` -> scan R-01 through R-{n} -> flag contradictions.
+PM: scan `scout-requirements / discover-requirements` -> scan R-01 through R-{n} -> flag contradictions.
 Do not confirm "none found" without naming the scan range R-01 through R-{n}.
 
 Cross-namespace signal (location 2 of 2):
-  Signal: scout-requirements artifact confirmed for Phase 3 traceability.
+  Signal: scout-requirements / discover-requirements artifact confirmed for Phase 3 traceability.
   Source: {same path as location 1 of 2}
 
 Architect: Author five sections in prescribed order:
@@ -226,7 +226,7 @@ Architect: Author five sections in prescribed order:
 [SPEC-DRAFT-COMPLETE]
   INVALID IF [PM-CONTRACT-SEAL] is absent.
   INVALID IF [INERTIA-ANALYZED] is absent.
-  INVALID IF scout-requirements LOADED but signal absent at location 1 of 2
+  INVALID IF scout-requirements / discover-requirements LOADED but signal absent at location 1 of 2
     (Phase 1) or location 2 of 2 (Phase 3 Purpose section).
 
 EXIT Phase 3: emits [SPEC-DRAFT-COMPLETE]. Cascade: spec -> Phase 4.

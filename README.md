@@ -96,10 +96,10 @@ Adds namespace aggregators — type `/discover` to see all discover skills, or g
 
 | If you... | Use |
 |-----------|-----|
-| Want the shortest possible commands | **bare** — `/decide`, `/competitors` |
-| Want to see the namespace on each command | **flat** — `/discover-competitors` |
-| Share `.claude/skills/` with other plugins | **signal** — `/signal-competitors` |
-| Prefer menus over memorizing names | **grouped** — `/discover` shows all |
+| Want the shortest possible commands | **bare** — `/discover-competitors`, `/rhythm-decide` |
+| Want to see the namespace on each command | **flat** — `/discover-competitors`, `/specify-spec` |
+| Share `.claude/skills/` with other plugins | **signal** — `/signal-scout-competitors`, `/signal-draft-spec` |
+| Prefer menus over memorizing names | **grouped** — `/validate` shows all validate skills |
 | Use GitHub Copilot | add `-github` to any of the above |
 
 ## The 9 namespaces
@@ -136,13 +136,15 @@ Four steps from idea to first read on readiness:
 
 You do not have to start at step 1. Start where the pain is.
 
-| Situation | Start here |
-|-----------|-----------|
-| Feature idea, don't know if it's worth building | `/scout-competitors` |
-| Spec written, want a design review | `/review-design` |
-| Implementation done, want to verify it matches spec | `/trace-contract` |
-| Shipped, adoption is low | `/listen-adoption` |
-| Core assumption needs testing | `/prove-hypothesis` |
+Commands shown use flat binding names. Bare uses the same names. Signal uses `signal-scout-competitors`, `signal-review-design` etc. Grouped uses the same flat names for discover and specify.
+
+| Situation | Start here (flat / bare) | Signal binding |
+|-----------|--------------------------|----------------|
+| Feature idea, don't know if it's worth building | `/discover-competitors` | `/signal-scout-competitors` |
+| Spec written, want a design review | `/validate-design` | `/signal-review-design` |
+| Implementation done, want to verify it matches spec | `/simulate-contract` | `/simulate-contract` |
+| Shipped, adoption is low | `/validate-adoption` | `/signal-listen-adoption` |
+| Core assumption needs testing | `/discover-hypothesis` | `/signal-prove-hypothesis` |
 
 Every skill writes one dated artifact: `simulations/{namespace}/{skill}/{topic}-{signal}-{date}.md`. Two people running the same skill on the same topic produce two files, no collision. Skills are concurrent by default.
 
