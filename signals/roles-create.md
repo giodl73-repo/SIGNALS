@@ -1,35 +1,73 @@
+You are running /roles-create for: {{topic}}
+
+Create a new Signal-compatible role file in .craft/roles/. Three modes:
+- Name only: `/roles-create backend:healthcare` -- generates a healthcare-specialist backend role
+- With description: `/roles-create "fintech compliance reviewer"` -- infers domain from description
+- With context: `/roles-create security --for api-gateway` -- tailors lens.verify to the specific artifact type
+
 ---
-name: {area} inertia advocate
+
+## PHASE 1 -- ROLE IDENTIFICATION
+
+Determine from the invocation:
+- Role slug (e.g., `healthcare-backend`, `fintech-compliance`)
+- Domain directory (e.g., `.craft/roles/backend/`, `.craft/roles/compliance/`)
+- Primary artifact types this role will review
+- Who will use this role's findings (PM / engineer / exec / security)
+
+If .craft/roles/ does not exist: note it will be created.
+
+---
+
+## PHASE 2 -- GENERATE ROLE FILE
+
+Write a complete Signal role with all required fields:
+
+```yaml
+---
+name: {role-slug}
 version: "1.0"
-archetype: [match existing roles in the area]
+archetype: craft
+
 orientation:
-  frame: "Sees every change in {area} as requiring proof of necessity. Switching costs -- relearning, re-integration, debugging unfamiliar surfaces -- are real and must be named before any proposal proceeds."
-  serves: "Teams making adoption decisions in {area}: surfaces the hidden cost of change so the decision is made with full information, not optimism."
+  frame: "[What this role focuses on -- specific domain concern, not generic. Must name the failure modes this role catches that generic roles miss.]"
+  serves: "[Who benefits from this role's findings -- name the specific team or decision-maker and what question this role answers for them.]"
+
 lens:
   verify:
-    - "Is the cost of migrating existing {area} work to the new approach documented?"
-    - "Are the failure modes of the proposed change listed alongside its benefits?"
-    - "Is there a rollback path if the new approach underperforms?"
-    - "Has the team that will live with this change been consulted?"
+    - "[Specific check 1 -- names an exact thing to look for]"
+    - "[Specific check 2]"
+    - "[Specific check 3]"
+    - "[Specific check 4]"
+    - "[Specific check 5]"
+    - "[Specific check 6]"
   simplify:
-    - "Name the one thing the current approach does well that the new one must preserve."
-    - "State the switching cost in hours, not in abstract risk."
+    - "[Simplification principle 1 -- what this role deprioritizes so signal stays clean]"
+    - "[Simplification principle 2]"
+    - "[Simplification principle 3]"
+
 expertise:
-  depth: "Switching cost analysis, status-quo defense, risk enumeration for {area} change proposals"
-  relevance: "Any {area} decision involving migration, adoption, or replacement of current practice"
-scope: "{area}"
-collaborates_with: []
-artifacts:
-  - "inertia-report-{topic}-{date}.md"
-workflow:
-  - "Receive change proposal"
-  - "Enumerate switching costs and failure modes"
-  - "Name the one thing worth preserving from current approach"
-  - "Produce inertia report"
+  depth: "[Specific domain knowledge this role applies]"
+  relevance: "[When this role fires -- specific artifact types or topic domains that activate it]"
+
+collaborates_with:
+  - [role-slug-1]
+  - [role-slug-2]
+---
+```
+
+Minimum 6 lens.verify items. Each must name a specific, checkable condition -- not a category name.
+
 ---
 
-## {area} Inertia Advocate
+## PHASE 3 -- AMEND
 
-| Change Type / Domain | Switching Cost | Rollback Path | Verdict |
-|----------------------|----------------|---------------|---------|
-| [domain-specific change type] | [hours or effort] | [rollback description] | Hold / Proceed |
+Three targeted improvements to the generated role:
+1. [Sharpen lens.verify item that is most generic -- make it name a specific mechanism]
+2. [Add a lens.verify item that catches the most common failure mode for this domain]
+3. [Tighten orientation.frame -- ensure it names what generic roles miss]
+
+Write role to: .craft/roles/{domain}/{role-slug}.md
+Write artifact to: signals/roles/create/{{topic}}-roles-create-{{date}}.md
+If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-roles-create-{date}.md). No namespace subdirectory.
+Include frontmatter: skill: roles-create, topic: {{topic}}, date: {{date}}, role_created: {role-slug}, domain: {domain}

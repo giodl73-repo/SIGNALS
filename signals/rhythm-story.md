@@ -1,38 +1,57 @@
-[DERIVATION PACKET SEALED]
-  S0: {from E-1}
-  S3: {from E-3}
-  Net vector: {from E-3}
-  Evidence trajectory: {from E-3}
-  Signal extracts: {from E-2}
-  Rule applied: {VECTOR}/{WEIGHT_LEVEL} rule -- {consequence from E-4}
-  Contestation analysis:
-    Derivation (from E-8.5): Adjacent verb {ADJACENT_VERB} via pivot row `{artifact-name}`,
-      {CURRENT} -> {ALTERNATIVE}, {VECTOR}/{ALTERNATIVE_WEIGHT} rule fires
-    C-37 inline: PASS
-    Contestation rule: {VECTOR}/{WEIGHT_LEVEL} rule [verbatim from E-8.5]
-  C-35 verification: PASS
-  C-37 verification: PASS -- two-level (E-8.5 inline + E-8.75 cross-check)
-  C-38 compliance:
-    AXIOM: REVISED IS the E-8.5 re-derivation event (constitutive, C-39 PASS). Declaring
-      `Vector status: UNCHANGED` IS the UNCHANGED terminal outcome: E-8.5 absence declared,
-      not deferred.
-    Evaluation outcome: [REVISED -- Contestation re-derivation performed within step b;
-      E-8.5 re-run complete before step b finished; new Contestation output sealed] |
-      [UNCHANGED -- Contestation rule carried forward; no E-8.5 re-run; prior output
-      retained]
-  Branch Architecture Record:
-    REVISED branch: `Vector status: REVISED` IS E-8.5 (AXIOM constitutive). New
-      Contestation output produced within step b -> E-4 `Contestation rule:` updated ->
-      E-8.75 re-runs -> re-seal. Terminal state: new derivation sealed; prior superseded.
-      Causal chain: AXIOM constitutive -> E-8.5 within step b -> E-4 update ->
-      step b done -> E-8.75 -> re-seal.
-    UNCHANGED branch: `Vector status: UNCHANGED` IS the UNCHANGED outcome (AXIOM
-      constitutive). `Contestation rule:` carried forward verbatim -> E-8.75 re-runs ->
-      re-seal. Terminal state: prior derivation retained. Causal chain: AXIOM constitutive
-      -> no E-8.5 -> prior output retained -> step b done -> E-8.75 -> re-seal.
-  Pattern synthesis: {from E-6}
-  Band: {HIGH | MEDIUM | LOW}
-  Selected stance: {PROCEED | PAUSE | PIVOT | ABANDON}
-  IMMUTABLE -- contents fixed after this seal. Prose and recommendation preference
-    are prohibited inputs to retroactive revision.
-]
+You are running /rhythm-story for: {{topic}}
+
+Synthesize all signals gathered for this topic into a coherent narrative. This is NOT a
+summary of each signal. It is an editorial synthesis -- the story of what the investigation
+found, written in the author's voice, organized by insight rather than by skill.
+
+---
+
+## PHASE 1 -- SIGNAL ACQUISITION
+
+Glob: signals/**/{{topic}}-*
+Read every artifact. For each one, extract: (1) the key finding, (2) what changed about
+your understanding after reading it, (3) any surprises.
+
+---
+
+## PHASE 2 -- THREE-SECTION NARRATIVE
+
+Write in continuous prose. No bullet lists. Minimum 300 words per section.
+
+### Section 1: The Investigation Story
+
+Tell the story of what was learned, in the order the understanding evolved. Start with
+what the team believed at the start. Name the signal that changed that belief most. End
+with where the investigation stands now.
+
+The inertia finding belongs here: what does the investigation say about why teams would
+do nothing instead?
+
+### Section 2: The Decision Case
+
+What do the signals say together -- not individually? What pattern emerged across
+namespaces? If the signals agree, say so and say why that agreement is meaningful.
+If they conflict, name the conflict and take a position.
+
+State the commit/pause/pivot case as clearly as possible. What would have to be false
+for the opposite conclusion to be right?
+
+### Section 3: The Open Questions
+
+What does this investigation not yet know? Name 2-4 specific questions that remain
+genuinely open -- not observations about missing coverage, but real uncertainties about
+the feature's value, feasibility, or adoption. Each question should be falsifiable:
+what evidence would close it?
+
+---
+
+## PHASE 3 -- AMEND
+
+Three editorial improvements:
+1. [What's missing from Section 1 that would make the story more honest]
+2. [What the decision case in Section 2 is asserting without sufficient evidence]
+3. [Which open question in Section 3 is most urgent to answer before commitment]
+
+Write artifact to: signals/rhythm/story/{{topic}}-story-{{date}}.md
+If --output <path> was provided: write to <path>/{{topic}}-[skill]-{{date}}.md instead (flat, no namespace prefix).
+Include frontmatter: skill: rhythm-story, topic: {{topic}}, date: {{date}}

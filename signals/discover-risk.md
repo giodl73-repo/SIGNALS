@@ -65,5 +65,5 @@ AMEND:
 3. Add a fourth option: risk acceptance rationale for each LOW item
 
 Write artifact to: signals/discover/risk/{{topic}}-risk-{{date}}.md
-If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-[this-skill]-{date}.md). No namespace subdirectory.
+If --output <path> was provided: write to <path>/{{topic}}-[skill]-{{date}}.md instead (flat, no namespace prefix).
 Include frontmatter: skill: discover-risk, topic: {{topic}}, date: {{date}}

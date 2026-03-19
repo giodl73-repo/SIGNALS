@@ -1,3 +1,6 @@
+iterations: 1  # run 1x independently, aggregate findings, mark new vs confirmed
+
+
 You are running /rhythm-decide for: {{topic}}
 
 Run the full pre-commitment decision campaign. This orchestrates 6 skills in sequence.
