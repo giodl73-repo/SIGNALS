@@ -1,80 +1,100 @@
 You are running /signal-layout.
 
-Show or change your Signal navigation layout. Three modes:
+Signal skills can be installed with different command naming styles to match how you like to work. This skill shows what you currently have and what each style looks like so you can try a different one.
 
 ---
 
-## MODE 1: DISPLAY (called bare -- no arguments)
+## MODE 1: DISPLAY (bare -- just type /signal-layout)
 
-Show the current binding installed in .claude/skills/:
+Scan .claude/skills/ to identify your current layout:
 
-Scan .claude/skills/ for all SKILL.md files. Group by prefix pattern to identify the binding:
-- Names like /discover-competitors, /specify-spec -> FLAT binding
-- Names like /competitors, /spec -> BARE binding
-- Names like /signal-competitors, /signal-spec -> SIGNAL binding
-- Namespace aggregators (/discover, /specify) present -> GROUPED binding
-
-Display:
 ```
-Current layout: [FLAT / BARE / SIGNAL / GROUPED / UNKNOWN]
+YOUR CURRENT LAYOUT: [FLAT / BARE / SIGNAL / GROUPED / PREFIXED]
 
-Available skills by namespace:
-  discover  (N skills): /discover-competitors, /discover-feasibility, ...
-  specify   (N skills): /specify-spec, /specify-proposal, ...
-  [etc.]
+How your skills are named:
+  /discover-competitors    <- flat style (namespace-skill)
+  /specify-spec
+  /validate-design
+  ...
 
-Total: N skills installed
+This is how you run Signal skills in this workspace.
+```
 
-To switch layouts: /signal-layout switch <flat|bare|signal|grouped>
-To get a recommendation: /signal-layout recommend
+Detect by prefix pattern:
+- `/discover-competitors`, `/specify-spec`  -> FLAT
+- `/competitors`, `/spec`                   -> BARE
+- `/signal-competitors`, `/signal-spec`     -> SIGNAL prefix
+- Aggregator menus (`/discover`, `/specify`) present -> GROUPED
+
+---
+
+## MODE 2: COMPARE (type /signal-layout compare)
+
+Show all 4 styles side by side so you can see what each looks like:
+
+```
+SIGNAL LAYOUT STYLES
+================================
+
+FLAT (current default)          BARE (shortest)
+  /discover-competitors           /competitors
+  /specify-spec                   /spec
+  /validate-design                /design
+  /simulate-lifecycle             /lifecycle
+  /rhythm-status                  /status
+
+SIGNAL (prefix for multi-plugin) GROUPED (menus + direct)
+  /signal-competitors             /discover        <- shows menu
+  /signal-spec                    /discover-competitors
+  /signal-design                  /specify         <- shows menu
+  /signal-lifecycle               /specify-spec
+
+Which style fits you:
+  FLAT:    You want clear namespace context (/discover-X, /specify-X)
+  BARE:    You type a lot and want the shortest commands possible
+  SIGNAL:  You use multiple Claude Code plugins -- avoids name collisions
+  GROUPED: You're new to Signal and want discoverable menus
 ```
 
 ---
 
-## MODE 2: SWITCH (called with "switch <variant>")
+## MODE 3: SWITCH (type /signal-layout switch <style>)
 
 /signal-layout switch flat
 /signal-layout switch bare
 /signal-layout switch signal
 /signal-layout switch grouped
 
-Display the install command to run:
+Tell the user how to switch:
 ```
-To switch to [VARIANT] binding, run:
-  ./install/install-[variant].sh
+To switch to [STYLE]:
 
-This will reinstall all skills with [VARIANT] naming convention.
-Current skills will be replaced.
+  Run this from your project root:
+    bash <(curl -s https://raw.githubusercontent.com/your-org/signal/main/install/install-[style].sh)
 
-[VARIANT] naming:
-  flat:    /discover-competitors, /specify-spec, /validate-design
-  bare:    /competitors, /spec, /design
-  signal:  /signal-competitors, /signal-spec, /signal-design
-  grouped: /discover (menu), /discover-competitors (direct)
+  Or if you have Signal source locally:
+    bash /path/to/signal/install/install-[style].sh
+
+This replaces your current .claude/skills/ with the [STYLE] variant.
+Your signals/ artifacts are untouched -- only the command names change.
 ```
 
 ---
 
-## MODE 3: RECOMMEND (called with "recommend")
+## MODE 4: RECOMMEND (type /signal-layout recommend)
 
-/signal-layout recommend
+Look at how you work and suggest the best layout:
 
-Glob signals/**/*-*.md to see which skills have been used.
-Count runs per namespace. Identify usage pattern.
+Glob signals/**/*-*.md -- how many artifacts exist? Which namespaces have you used?
+Check if you use long or short invocations (inferred from artifact patterns).
 
 ```
-Usage analysis:
-  Most-used namespace: [namespace] (N runs)
-  Skill runs total: N
-  Cross-namespace sessions: N
+Based on your signals/ usage:
+  Skills run: N across M namespaces
+  Usage pattern: [focused (1-2 namespaces) / broad (5+ namespaces)]
 
 Recommendation: [FLAT / BARE / SIGNAL / GROUPED]
-Reason: [1-2 sentences explaining why this layout fits the usage pattern]
-
-  If heavy CLI user with many namespaces: FLAT (clear namespace prefix)
-  If minimal typers / single plugin: BARE (shortest commands)
-  If multi-plugin workspace: SIGNAL (collision-safe prefix)
-  If new users or teams who need discovery: GROUPED (menus)
+Why: [one sentence specific to your usage]
 ```
 
 DISPLAY ONLY -- no file written.
