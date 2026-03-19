@@ -26,52 +26,52 @@ Run any Signal skill for the first time.
 *Trigger: any skill completes successfully.*
 *Why it matters: every evidence campaign starts with a single run. This is yours.*
 
-**Scout Pioneer**
+**Discover Pioneer**
 Run your first scout skill.
-*Trigger: any scout-* skill completes (scout-competitors, scout-feasibility, scout-naming,
-scout-compliance, scout-market, scout-stakeholders, scout-positioning, scout-requirements).*
+*Trigger: any discover-* skill completes (discover-competitors, discover-feasibility, discover-naming,
+discover-compliance, discover-market, discover-stakeholders, discover-positioning, discover-requirements).*
 *Why it matters: the scout namespace is where you answer "why would teams do nothing?" --
 the question Signal exists to surface. Eight scout skills remain after this one.*
 
-**Draft Founder**
+**Specify Founder**
 Run your first draft skill.
-*Trigger: any draft-* skill completes (draft-spec, draft-proposal, draft-pitch, draft-brainstorm).*
+*Trigger: any specify-* skill completes (specify-spec, specify-proposal, specify-pitch, discover-brainstorm).*
 *Why it matters: drafting without prior signals is guessing. With them, it is grounded authorship.*
 
-**Design Reviewer**
+**Validate Reviewer**
 Run your first review skill.
-*Trigger: any review-* skill completes (review-design, review-code, review-users, review-customers).*
+*Trigger: any validate-* skill completes (validate-design, validate-code, validate-users, validate-customers).*
 *Why it matters: review is the first point where someone other than the author looks at the work.
 Signal routes this through structured personas, not ad-hoc feedback.*
 
-**Flow Tracer**
+**Simulate Tracer**
 Run your first flow skill.
-*Trigger: any flow-* skill completes (flow-lifecycle, flow-conversation, flow-trigger,
-flow-dataflow, flow-integration, flow-throttle, flow-resilience).*
+*Trigger: any simulate-* skill (flow) completes (simulate-lifecycle, simulate-conversation, simulate-trigger,
+simulate-dataflow, simulate-integration, simulate-throttle, simulate-stress).*
 *Why it matters: you have described what you are building. Now you have simulated how it
 actually behaves at runtime. These are different questions.*
 
-**Implementation Tracer**
+**Verify Tracer**
 Run your first trace skill.
-*Trigger: any trace-* skill completes (trace-request, trace-state, trace-contract, trace-component,
-trace-deployment, trace-migration, trace-permissions).*
+*Trigger: any simulate-* skill (trace) completes (simulate-request, simulate-state, simulate-contract, simulate-component,
+simulate-deployment, simulate-migration, simulate-permissions).*
 *Why it matters: tracing by hand finds what testing misses -- the gap between what the spec says
 and what the implementation does.*
 
-**Investigator**
+**Evidence Investigator**
 Run your first prove skill.
-*Trigger: any prove-* skill completes (prove-hypothesis, prove-websearch, prove-intelligence,
-prove-prototype, prove-analysis, prove-interview, prove-synthesize, prove-publish).*
+*Trigger: any discover-* skill (evidence) completes (discover-hypothesis, discover-websearch, prove-intelligence,
+prove-prototype, discover-analysis, prove-interview, discover-synthesize, prove-publish).*
 *Why it matters: you have a feature idea. prove asks whether the assumption underneath it is
 actually true. Most teams skip this. You did not.*
 
-**Signal Listener**
+**Adoption Listener**
 Run your first listen skill.
-*Trigger: any listen-* skill completes (listen-feedback, listen-support, listen-adoption).*
+*Trigger: any validate-* skill (adoption) completes (validate-feedback, validate-support, validate-adoption).*
 *Why it matters: you have simulated your users before they arrived. The support tickets you
 predict now are cheaper than the ones filed after ship.*
 
-**Program Planner**
+**Commitment Planner**
 Run your first program or topic skill.
 *Trigger: any program-* or topic-* skill completes.*
 *Why it matters: signals without a narrative are noise. program and topic are the namespaces
@@ -85,36 +85,36 @@ that turn a pile of artifacts into a decision.*
 
 **Full Scout**
 Run all 8 scout skills on one topic.
-*Trigger: scout-competitors, scout-feasibility, scout-naming, scout-compliance, scout-market,
-scout-stakeholders, scout-positioning, and scout-requirements all completed for the same topic.*
+*Trigger: discover-competitors, discover-feasibility, discover-naming, discover-compliance, discover-market,
+discover-stakeholders, discover-positioning, and discover-requirements all completed for the same topic.*
 *Why it matters: full scout is the most complete market and technical intelligence available
 before a spec is written. This is the intended practice for high-stakes features.*
 
 **Full Prove**
 Run all prove skills on one topic. The hardest evidence campaign in Signal.
-*Trigger: prove-hypothesis, prove-websearch, prove-intelligence, prove-prototype, prove-analysis,
-prove-interview, and prove-synthesize all completed for the same topic.*
+*Trigger: discover-hypothesis, discover-websearch, prove-intelligence, prove-prototype, discover-analysis,
+prove-interview, and discover-synthesize all completed for the same topic.*
 *Why it matters: a team that has done full prove has exhausted the hypothesis space before
 committing. They have not just believed a thing -- they have tested it.*
 
 **Full Flow**
 Run all 7 flow skills on one topic. You simulated the whole system.
-*Trigger: flow-lifecycle, flow-conversation, flow-trigger, flow-dataflow, flow-integration,
-flow-throttle, and flow-resilience all completed for the same topic.*
+*Trigger: simulate-lifecycle, simulate-conversation, simulate-trigger, simulate-dataflow, simulate-integration,
+simulate-throttle, and simulate-stress all completed for the same topic.*
 *Why it matters: a spec with full flow coverage has had its behavior -- state machine, data
 path, triggers, throttle behavior, failure modes -- played out before a line of implementation
 is written.*
 
 **Full Trace**
 Run all trace skills on one topic. Complete implementation verification.
-*Trigger: trace-request, trace-state, trace-contract, trace-component, trace-deployment,
-trace-migration, and trace-permissions all completed for the same topic.*
+*Trigger: simulate-request, simulate-state, simulate-contract, simulate-component, simulate-deployment,
+simulate-migration, and simulate-permissions all completed for the same topic.*
 *Why it matters: every failure mode class has been checked. This is the post-commitment
 analog of Full Scout -- as thorough as you can get on the implementation side.*
 
 **Deep Listen**
 Run all 3 listen skills on one topic. You know what users will say before they say it.
-*Trigger: listen-feedback, listen-support, and listen-adoption all completed for the same topic.*
+*Trigger: validate-feedback, validate-support, and validate-adoption all completed for the same topic.*
 *Why it matters: you have predicted the feedback before the feature ships, the support tickets
 before they are filed, and the adoption curve before the rollout begins.*
 
@@ -143,8 +143,8 @@ Cover 5 or more namespaces on a single topic.
 drafted, reviewed, and investigated in some combination. This is substantive coverage.*
 
 **Critical Path**
-Cover the 3 critical namespaces on one topic: scout-feasibility, any trace skill, and any listen skill.
-*Trigger: scout-feasibility + any trace-* + any listen-* all completed for the same topic.*
+Cover the 3 critical namespaces on one topic: discover-feasibility, any trace skill, and any listen skill.
+*Trigger: discover-feasibility + any trace-* + any listen-* all completed for the same topic.*
 *Why it matters: these three namespaces answer the questions that matter most for Tier 2 features --
 can we build it, does the implementation hold, and will teams adopt it.*
 
@@ -180,14 +180,14 @@ Any skill achieves essential-pass on the first run -- no prior run on this topic
 was rich. No iteration required. This is the aspirational standard.*
 
 **Inertia Identified**
-scout-competitors scores inertia as the primary or co-primary competitor.
-*Trigger: any scout-competitors run returns inertia / status quo as the primary competitive threat.*
+discover-competitors scores inertia as the primary or co-primary competitor.
+*Trigger: any discover-competitors run returns inertia / status quo as the primary competitive threat.*
 *Why it matters: this should be every run. Inertia is always the primary competitor for internal
 features. Earning it once is a reminder of the rule -- and a prompt to check if you understood it.*
 
 **Sharp Hypothesis**
-prove-hypothesis produces a hypothesis assessed as specific and falsifiable.
-*Trigger: prove-hypothesis output includes a hypothesis that names a specific mechanism and
+discover-hypothesis produces a hypothesis assessed as specific and falsifiable.
+*Trigger: discover-hypothesis output includes a hypothesis that names a specific mechanism and
 declares a specific, observable prediction (rubric criterion: hypothesis is falsifiable).*
 *Why it matters: a sharp hypothesis can be wrong in a specific way. "Teams with 5+ namespaces
 covered are 2x more likely to pass first code review" is sharp. "More coverage is better" is not.*
@@ -200,16 +200,16 @@ essential rubric criteria.*
 more useful than a longer one that does too.*
 
 **Evidence Grounded**
-prove-websearch produces 5 or more sources, all with direct quotes, using --confidence strict.
-*Trigger: prove-websearch run with --confidence strict returns >= 5 sources, each with a
+discover-websearch produces 5 or more sources, all with direct quotes, using --confidence strict.
+*Trigger: discover-websearch run with --confidence strict returns >= 5 sources, each with a
 directly quoted passage and URL.*
 *Why it matters: grounded evidence is evidence you can check. No paraphrase, no training data
 as fact -- only claims you can trace to a source.*
 
 **High-Fidelity Spec**
-draft-spec scores >= 75 on its rubric in the first run, with scout-feasibility and
-scout-requirements artifacts available as context.
-*Trigger: draft-spec run with both scout-feasibility and scout-requirements present for the same
+specify-spec scores >= 75 on its rubric in the first run, with discover-feasibility and
+discover-requirements artifacts available as context.
+*Trigger: specify-spec run with both discover-feasibility and discover-requirements present for the same
 topic, first-run score >= 75.*
 *Why it matters: a high-quality spec with prior context demonstrates the chain. Feasibility
 constraints and requirements were grounded, not assumed.*
@@ -221,29 +221,29 @@ constraints and requirements were grounded, not assumed.*
 *Run prerequisite skills before dependent skills on the same topic. Skill ordering matters.*
 
 **Scout-First Spec**
-Run scout-feasibility AND scout-requirements before draft-spec on the same topic.
-*Trigger: scout-feasibility and scout-requirements both completed before draft-spec runs on
+Run discover-feasibility AND discover-requirements before specify-spec on the same topic.
+*Trigger: discover-feasibility and discover-requirements both completed before specify-spec runs on
 the same topic, with those artifacts available as context.*
 *Why it matters: this is the intended pre-spec workflow. Scout-first specs have feasibility
 constraints and requirements grounded in investigation, not assumption.*
 
 **Evidence-Based Draft**
-Run prove-hypothesis before draft-spec on the same topic.
-*Trigger: prove-hypothesis completed before draft-spec runs on the same topic, with the
+Run discover-hypothesis before specify-spec on the same topic.
+*Trigger: discover-hypothesis completed before specify-spec runs on the same topic, with the
 hypothesis artifact available as context.*
 *Why it matters: a spec that starts from an investigated hypothesis asserts tested assumptions,
 not untested ones. "We hypothesized X and found it holds under Y conditions" is a stronger spec.*
 
 **Grounded Review**
-Run draft-spec before review-design on the same topic, with the draft artifact passed as context.
-*Trigger: draft-spec completed before review-design runs on the same topic, draft artifact
+Run specify-spec before validate-design on the same topic, with the draft artifact passed as context.
+*Trigger: specify-spec completed before validate-design runs on the same topic, draft artifact
 available to the review.*
 *Why it matters: the entire pre-commitment workflow depends on reviewing real artifacts, not
 feature descriptions. This is the minimum chain: have something real to review before reviewing it.*
 
 **Simulation-Before-Build**
-Run flow-lifecycle before any trace skill on the same topic.
-*Trigger: flow-lifecycle completed before any trace-* skill runs on the same topic.*
+Run simulate-lifecycle before any trace skill on the same topic.
+*Trigger: simulate-lifecycle completed before any simulate-* skill (trace) runs on the same topic.*
 *Why it matters: simulating behavior before tracing implementation catches design flaws before
 they are built in. Trace finds what was implemented. Flow found what should have been.*
 
@@ -261,9 +261,9 @@ Scouted, specced, reviewed. Evidence-before-commitment at its most direct.*
 *Unexpected findings. The category aligned most directly with Signal's epistemological principles.*
 
 **The Echo**
-Complete topic-echo. You found something you did not expect.
-*Trigger: topic-echo completes successfully for any topic.*
-*Why it matters: topic-echo asks "what did we learn that we did not expect?" The echo is
+Complete rhythm-reflect. You found something you did not expect.
+*Trigger: rhythm-reflect completes successfully for any topic.*
+*Why it matters: rhythm-reflect asks "what did we learn that we did not expect?" The echo is
 institutional memory -- what the next team finds when they search for prior work on this path.*
 
 **Unexpected Signal**
@@ -274,8 +274,8 @@ prior (e.g., a competitor the team thought was irrelevant is actually the primar
 expect. An achievement system that only rewards planned coverage misses this class of value entirely.*
 
 **Falsified**
-prove-hypothesis returns INCONCLUSIVE or REJECTED on any topic.
-*Trigger: prove-hypothesis output contains an outcome field of INCONCLUSIVE or REJECTED.*
+discover-hypothesis returns INCONCLUSIVE or REJECTED on any topic.
+*Trigger: discover-hypothesis output contains an outcome field of INCONCLUSIVE or REJECTED.*
 *Why it matters: this is the most important achievement in Signal. A hypothesis that is
 falsified is not a failed feature -- it is a learning that redirects effort before commitment,
 when redirection is cheap, not after, when it is expensive. A team that has never earned
@@ -285,7 +285,7 @@ events, not failures. Earn this. Mean it.*
 
 **Inertia Wins**
 Your inertia analysis concludes the status quo is sufficient. Stop. Pivot.
-*Trigger: scout-competitors run for a topic returns a finding that explicitly concludes the
+*Trigger: discover-competitors run for a topic returns a finding that explicitly concludes the
 current status quo or workaround is sufficient and the feature does not clear the adoption bar.*
 *Why it matters: this is the bravest achievement in Signal. Stopping before building because
 the evidence says to is harder than building anyway. The teams that earn this protect their
@@ -298,8 +298,8 @@ organization from features that would have shipped flat.*
 *Governance achievements. Signal at the org level.*
 
 **First Review**
-Run crew-review for the first time.
-*Trigger: crew-review completes successfully on any artifact.*
+Run roles-review for the first time.
+*Trigger: roles-review completes successfully on any artifact.*
 *Why it matters: the first time your org's roles see an artifact, you learn whether your
 role definitions are calibrated to the actual work. Every subsequent review gets sharper.*
 
@@ -345,7 +345,7 @@ by a PM, an engineer, and a designer. Perspective diversity is evidence diversit
 Two team members run the same skill on the same topic and reach different findings on a key dimension.
 *Trigger: two distinct contributors run the same skill on the same topic; their outputs contain
 divergent assessments of the same feature dimension.*
-*Why it matters: divergence is information. Two review-design runs that disagree about a section
+*Why it matters: divergence is information. Two validate-design runs that disagree about a section
 indicate either genuine ambiguity in the section or different interpretive frames in the reviewers.
 Either case is worth surfacing, not averaging away.*
 
