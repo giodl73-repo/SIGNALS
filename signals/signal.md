@@ -1,5 +1,5 @@
 Signal — Feature Decision Intelligence
-60 skills across 8 namespaces
+62 skills across 9 namespaces
 
 CAMPAIGNS (start here):
   /rhythm-decide          Full pre-commitment decision campaign
@@ -10,10 +10,10 @@ CAMPAIGNS (start here):
   /brief                  Topic narrative campaign
 
 DISCOVERY:
-  /discover-competitors   /discover-inertia     /discover-feasibility
-  /discover-risk          /discover-brainstorm  /scout-compliance
-  /scout-market           /scout-naming         /scout-positioning
-  /scout-stakeholders     /scout-requirements
+  /discover-competitors   /discover-inertia      /discover-feasibility
+  /discover-risk          /discover-brainstorm   /discover-hypothesis
+  /discover-websearch     /discover-synthesize   /discover-compare
+  /discover-coherence     /discover-orchestrate  /discover-causal
 
 SPECIFICATION:
   /draft-spec  /draft-proposal  /draft-pitch  /draft-brainstorm
@@ -45,7 +45,7 @@ GOVERNANCE:
   /org-chart   /org-committee  /org-roles  /signal-check  /org-review
 
 TOOLS:
-  /signal-setup  /tools-coverage  /tools-preview  /tools-accept
+  /signal-setup  /signal-health  /signal-layout  /tools-coverage  /tools-preview  /tools-accept
 
 Type /signal <namespace> for skills in that namespace.
 Type /signal --bare for the full alphabetical command list.
