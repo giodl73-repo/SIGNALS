@@ -1,39 +1,71 @@
-# BOUNDED BLOCK PROTOCOL -- Component 1: Header Index (C-41 + C-44 + C-47 + C-48 + C-50)
-# All 7 criteria covered (C-01 through C-07) -- essential and recommended violations
-# Format: 4-column pipe table as mandated by BOUNDED BLOCK PROTOCOL above
-# (NOT prose enumeration / NOT indented list / NOT bulleted entries)
-# Verify before finalizing this Component 1: NOT prose enumeration / NOT indented list / NOT bulleted entries / IS pipe table with 4 columns
-#
-# | Field type    | Criterion     | Exact tag string (full Why: per C-47)                                                 | C-42 back-ref                      |
-# |---------------|---------------|---------------------------------------------------------------------------------------|------------------------------------|
-# | gate_fail:    | C-04 (C-26)   | # WRONG C-04: Why: execution-history check, not artifact-verifiable                   | BOUNDED BLOCK PROTOCOL decl. above |
-# | name:         | C-06 (C-37)   | # WRONG C-06                                                                          | BOUNDED BLOCK PROTOCOL decl. above |
-# | skills: entry | C-03 (C-39)   | # WRONG C-03                                                                          | BOUNDED BLOCK PROTOCOL decl. above |
-# | this header   | C-38          | affirmative full-coverage claim (all 7 / C-01 through C-07)                           | BOUNDED BLOCK PROTOCOL decl. above |
+You are running /specify-commitment for: {{topic}}
 
-stages:                              # WRONG C-01: missing top-level program: key
-  - name: scout_and_draft            # WRONG C-06: namespace-label, not investigative purpose
-    skills:
-      - gather-requirements          # WRONG C-03: invented skill name, not in Signal catalog
-      - make-a-plan                  # WRONG C-03: invented skill name, not in Signal catalog
-    gate_fail: "done"                # WRONG C-04: Why: execution-history check, not artifact-verifiable
-    gate_pass: "discovery::scout-feasibility >= 2 AND scout:requirements artifact present"
-    gate: "done"
+Translate the gathered signals into a staged commitment plan. Scan what signals exist, sequence the remaining work into phases with artifact-verifiable gates, and produce a commitment document that answers: what are we committing to, in what order, and what must be true at each gate before proceeding?
 
-  - name: prove_and_review           # WRONG C-06: namespace-label, not investigative purpose
-    # WRONG C-05: review:design placed before any draft:spec stage has run
-    skills:
-      - review:design
-      - run-analysis                 # WRONG C-03: invented skill name, not in Signal catalog
-    gate_fail: "complete"            # WRONG C-04: Why: execution-history check, not artifact-verifiable
-    gate_pass: "stress-test::review-design >= 2 AND trace:contract artifact confirmed"
-    gate: "complete"
+---
 
-  - name: echo
-    # WRONG C-02: echo missing auto: true; skills: list is non-empty
-    skills:
-      - listen:adoption
-    # WRONG C-07: no plan identity -- no strategy:, purpose:, or framing element
+## PHASE 1 -- SIGNAL INVENTORY
 
-# BOUNDED BLOCK PROTOCOL -- Component 3: Exit Verification complete.
-# All annotation types from Component 1 header index confirmed present in block above.
+Glob: signals/**/{{topic}}-*
+List all artifacts found by namespace. Note which namespaces have zero coverage.
+
+| Namespace | Artifact count | Key findings |
+|-----------|---------------|--------------|
+| discover | | |
+| specify | | |
+| validate | | |
+| simulate | | |
+| prove | | |
+| listen | | |
+| rhythm | | |
+
+Coverage summary: N/9 namespaces covered. Commitment confidence: [HIGH / MEDIUM / LOW]
+
+---
+
+## PHASE 2 -- STAGED COMMITMENT PLAN
+
+For this topic, sequence the remaining work into 2-4 phases. Each phase has:
+- A purpose (what question this phase answers, not a namespace label)
+- Specific Signal skills to run (use actual skill names from the catalog)
+- An artifact-verifiable gate (what artifact must exist before the next phase starts)
+
+**Phase 1 -- [Purpose: e.g., "Establish feasibility and competitive position"]**
+Skills: /discover-competitors, /discover-feasibility, /discover-requirements
+Gate: discover-competitors + discover-feasibility artifacts both present for this topic
+If gate fails: [what to do -- e.g., "revisit the problem framing before proceeding"]
+
+**Phase 2 -- [Purpose]**
+Skills: [from Signal catalog]
+Gate: [artifact-verifiable condition]
+
+[continue for each phase]
+
+---
+
+## PHASE 3 -- COMMITMENT DECISION
+
+```
+Topic: {{topic}}
+Phases committed: N
+Estimated Signal sessions: N (each session ~4-6 skills)
+
+Commit to proceed: YES / NO / CONDITIONAL
+If CONDITIONAL: [what must be resolved before full commitment]
+
+The primary inertia risk: [what happens if the team delays this investigation]
+The primary signal gap: [which namespace's absence creates the most uncertainty]
+```
+
+---
+
+## PHASE 4 -- AMEND
+
+Three adjustments to sharpen the commitment plan:
+1. [Tighten the gate condition for Phase 1 -- make it more specific]
+2. [Add a signal that is missing but would change the commit/no-commit decision]
+3. [Identify the highest-uncertainty assumption in the current plan]
+
+Write artifact to: signals/specify/commitment/{{topic}}-commitment-{{date}}.md
+If --output <path> was provided: write to <path>/{{topic}}-[skill]-{{date}}.md instead (flat, no namespace prefix).
+Include frontmatter: skill: specify-commitment, topic: {{topic}}, date: {{date}}, phases: [n], coverage: [n]/9

@@ -54,6 +54,3 @@ Three targeted fixes:
 Write artifact to: signals/simulate/conversation/{{topic}}-conversation-{{date}}.md
 If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-conversation-{date}.md). No namespace subdirectory.
 Include frontmatter: skill: simulate-conversation, topic: {{topic}}, date: {{date}}
-Write artifact to: signals/simulate/conversation/{{topic}}-conversation-{{date}}.md
-If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-conversation-{date}.md). No namespace subdirectory.
-Include frontmatter: skill: simulate-conversation, topic: {{topic}}, date: {{date}}
