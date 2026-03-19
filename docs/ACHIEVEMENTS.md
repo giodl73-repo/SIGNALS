@@ -364,3 +364,21 @@ Ready** has documented that coverage was deliberate and complete.
 The achievement list is the curriculum. The unearned achievements are the path.
 
 Start with any skill. The first achievement costs nothing.
+
+## Calibration
+
+A focused session of 4-8 skills on one topic typically earns **11-15 achievements**. The
+EXPLORATION group (9 achievements) fills almost automatically once you cover 5 or more
+namespaces. The CHAIN group earns for free when you run skills in the recommended order.
+The DEPTH group rewards breadth within a namespace — running all 8 scout skills earns
+Full Scout without extra effort.
+
+The achievements that require deliberate attention are:
+
+- **Falsified** — requires an honest investigate-then-report on a hypothesis, not a confirmation
+- **The Echo** — requires running rhythm-reflect after the session ends
+- **Inertia Wins** — requires that your competitors scan actually conclude "do not build" (rare, brave, right when true)
+- **Full Coverage** — requires touching all 9 namespaces, which means intentionally covering rhythm/roles
+
+Run `/achievements <topic>` after any skill session to see your current count and the 2
+skills that would unlock the most remaining achievements.

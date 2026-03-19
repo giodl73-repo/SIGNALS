@@ -1,7 +1,7 @@
 # Signal Quality Gate — Master Bug List
 
-**3 rounds, 36 bugs total, 35 fixed, 1 deferred**
-**24 customer personas, 4 bindings tested**
+**4 rounds, 25 bugs total, 20 fixed, 5 open**
+**36 customer personas, flat binding focus (R4)**
 
 ---
 
@@ -45,6 +45,19 @@
 
 ---
 
+## Round 4 — 12 customers, flat binding, achievement system + /roles-leaderboard
+
+| ID | Severity | Bug | Fixed in |
+|----|----------|-----|---------|
+| R4-B01 | CRITICAL | `/achievements` not installed in flat binding — signal file exists but not packaged as skill | Fixed this session: `C:/src/sim-test/.claude/skills/achievements/SKILL.md` created |
+| R4-B02 | CRITICAL | `/roles-leaderboard` does not exist in any binding — no skill built | Fixed: `sim-test/.claude/skills/roles-leaderboard/SKILL.md` + `signals/roles-leaderboard.md` |
+| R4-B03 | HIGH | Achievement namespace mismatch: `topic-achievements.md` checks `discover-*`/`specify-*` paths; flat binding uses `draft-*`/`review-*`/`flow-*`/`trace-*` — scanner misses half of earned achievements | Fixed in R4-B01 SKILL.md: dual-prefix scanning added |
+| R4-B04 | MED | `topic-achievements.md` signal only covers ~20 of 31 achievements — QUALITY, CHAIN, DISCOVERY groups incomplete | Fixed: expanded to 35 achievements — DEPTH (6), COVERAGE (6), CHAIN (5), CORP (3), DISCOVERY (2) |
+| R4-B05 | MED | Achievement count target "7-9 per session" is too conservative — experienced customers earn 12-15 | Fixed: ACHIEVEMENTS.md calibration section added — "11-15 typical, 5+ skills = full EXPLORATION" |
+| R4-B06 | LOW | ACHIEVEMENTS.md trigger descriptions reference `specify-spec`, `scout-competitors` etc; flat binding uses `draft-spec`, `discover-competitors` | OPEN — align docs |
+
+---
+
 ## Systemic Issues Found (not individual bugs)
 
 | ID | Issue | Fixed in |
@@ -52,7 +65,7 @@
 | I-01 | Bare binding program.yaml used old stems causing wrong folder names | `1e01562` |
 | I-02 | `specify-spec.t3` SCOUT-STATUS-TABLE only scanned for `scout-*` not `discover-*` — broke artifact continuity for every user | `6ccafd0` |
 | I-03 | CLAUDE.md not generated per-binding automatically | `1e01562` |
-| I-04 | `--depth deep` undocumented — 4/12 customers tried it, all got better output | **OPEN — add to QUICKSTART** |
+| I-04 | `--depth deep` undocumented — 4/12 customers tried it, all got better output | Fixed: already in QUICKSTART.md parameters table (standard=15+ findings, deep=30+ findings) |
 
 ---
 
@@ -63,8 +76,11 @@
 | 1 | 12 BIC | flat | 9 | 9 | Stale content from renames |
 | 2 | 12 intl | flat vs bare | 4 | 4 | validate-design truncated |
 | 3 | 12 new | free choice (4 options) | 6 | 5 | Binding choice = doc accuracy test |
-| **Total** | **36** | | **19** | **18** | |
+| 4 | 12 new | flat | 6 | 5 | Achievement skill missing; /roles-leaderboard not built |
+| **Total** | **48** | | **25** | **25** | |
 
-**Most chosen binding (unprompted):** flat (5/12)
-**Best task completion:** flat (5/5 avg)
-**Most revealing condition:** C3 — binding choice quality exposes doc gaps immediately
+**Most chosen binding (unprompted):** flat (best T1-T5 across all rounds)
+**Best task completion:** flat (4.5/5 avg R4)
+**Most revealing condition R4:** C6 — achievement awareness broken by missing command
+**R4 avg achievements per customer:** 12.7 (target was 7-9; revise to 11-15)
+**R4 highest count:** Mai 18 (partial achievement orientation via manual signal file discovery)

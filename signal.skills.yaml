@@ -1,7 +1,7 @@
 version: 1
 plugin: signal
 updated: 2026-03-16
-skills_count: 60
+skills_count: 62
 namespaces:
 - discover
 - specify
@@ -1224,9 +1224,9 @@ skills:
   - 'Focus (optional: market|positioning)'
   outputs:
   - Signal
-  golden: null
-  rubric: null
-  quest_status: QUEUED
+  golden: simulations/quest/golden/discover-competitors-alt-golden-2026-03-18.md
+  rubric: simulations/quest/rubrics/discover-competitors-alt-rubric-v20-2026-03-18.md
+  quest_status: GOLDEN (Round 20, score 100.0)
   param_set: standard
   description: 'UNIFIED VERSION (A/B test against discover-competitors). Single prompt handles base competitive analysis AND
     optional focus dimensions (market sizing, positioning framework) in one coherent output. The focus is not appended --
@@ -1277,6 +1277,46 @@ skills:
     .craft/roles/{area}/{subrole}.md in exact craftworks format. The inertia-advocate sub-role is always suggested if not
     already present in the area. AMEND: adjust archetype, sharpen lens.verify questions, add domain specializations table.'
   artifact: .craft/roles/{area}/{subrole}.md
+- id: rhythm-achievements
+  namespace: rhythm
+  audience: team
+  default_mode: lightweight
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Achievement report
+  golden: null
+  rubric: null
+  quest_status: QUEUED
+  param_set: lean
+  description: Show earned achievements for a topic. Scans simulations/ for artifacts, checks 31 achievements across 7 categories
+    (exploration, depth, coverage, chain, quality, discovery, roles/corps). Shows EARNED, IN PROGRESS, NEXT RECOMMENDED (2
+    skills that unlock the most), and DISCOVERY WATCH (Falsified + The Echo always visible). Run after any skill session to
+    see progress and get oriented. The NEXT RECOMMENDED section always suggests the highest-value next step.
+  artifact: null
+- id: roles-leaderboard
+  namespace: roles
+  audience: team+lead
+  default_mode: full
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - (none — scans workspace)
+  outputs:
+  - Team achievement dashboard
+  golden: null
+  rubric: null
+  quest_status: QUEUED
+  param_set: lean
+  description: 'Team achievement leaderboard across all topics in the workspace. Shows: each contributor, their achievement
+    count, which achievements they earned, team milestones (shared coverage, first team signal), coverage gaps (namespaces
+    nobody has run yet), and recommended next actions for the team. Run at weekly syncs and sprint boundaries. Competitive
+    but constructive — the point is coverage gaps, not ranking.'
+  artifact: simulations/roles/achievements-{date}.md
 parameters:
   definitions:
   - name: focus
