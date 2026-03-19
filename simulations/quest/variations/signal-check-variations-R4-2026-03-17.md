@@ -1,985 +1,1496 @@
-Written to `simulations/quest/variations/signal-check-variations-R4-2026-03-17.md`.
+Written to `signal-check-variations-R4-2026-03-17.md`.
 
 ---
 
-## R4 Variations — Summary
+**R4 Summary**
 
-| # | Axis | Single/Combo | Key target |
-|---|------|-------------|------------|
-| **V-01** | Inventory-depth-gated census | Single | C-17 — census matrix only when ≥2 namespaces or ≥3 artifacts; inline list for sparse inventories |
-| **V-02** | Bidirectional register firewall | Single | C-16 sharpened — prohibition declared at block exit AND at coaching step entry |
-| **V-03** | Template-slot lifecycle | Single | C-13 sharpened — each dimension embeds PREDICTION/ANALYSIS/RESOLUTION as grammar; deferral is structurally impossible |
-| **V-04** | Census + register firewall | Combo | C-17 + C-16 sharpened — tests clean layering of both axes |
-| **V-05** | Full v4 synthesis | Combo | All five: C-17 conditional census, C-16 bidirectional, C-13 template-slot, C-14 /namespace:skill, C-15 calibrated threshold |
+**Axis matrix**:
 
-**Key design choices:**
+| V | C-43 | C-44 | C-45 | Expected |
+|---|------|------|------|----------|
+| V-01 | PASS | FAIL | FAIL | 35/37 → 99.46 |
+| V-02 | FAIL | PASS | FAIL | 34/37 → 99.19 |
+| V-03 | FAIL | FAIL | PASS | 34/37 → 99.19 |
+| V-04 | PASS | PASS | PASS | 37/37 → 100.0 |
+| V-05 | PASS | PASS | PASS | 37/37 → 100.0 |
 
-- **V-01 vs V-05 (R3):** R3's census was unconditional — always ran. V-01 adds a gate check after inventory collection. The census appears iff `namespaces ≥ 2 OR total artifacts ≥ 3`.
+**Key structural changes from R3 V-05 baseline**:
 
-- **V-02's insight:** The v4 C-16 sharpening requires the prohibition to be visible at two sites — where the internal block closes ("tier labels end here") AND where the coaching narrative opens ("tier labels do not appear in this step or after"). One declaration is v3; two declarations, one at each boundary, is v4.
+1. **C-43 differentiator** — STEP D annotation form. PASS: 5 independently self-standing per-input annotations. FAIL: single grouped annotation (`Required inputs -- do not re-derive [...]:`), which also entails C-28 FAIL at that step — hence V-02/V-03 score 34/37 rather than 35/37.
 
-- **V-03's structural move:** Instead of instructing "place the marker immediately after," V-03 makes the per-dimension lifecycle a fixed named template (PREDICTION → Analysis → RESOLUTION). A section missing the RESOLUTION slot is incomplete by its own structure — not a behavioral deviation from a cross-cutting rule.
+2. **C-44 differentiator** — terminal verdict line in STEP E. PASS: `Terminal readiness: [...] -> topic namespace` (arrow inline on verdict). FAIL: arrow on a separate following line as a consumer-side back-reference. C-41 (ARCHITECTURE table) remains PASS in all variations — isolating C-44 as a production-site annotation requirement distinct from the table entry.
 
-- **V-05 chain:** Census → severity table (with Pre-analysis expectation column) → PREDICTION slot (drawn explicitly from that column) → RESOLUTION at each production site. The evidentiary chain is explicit end-to-end. **This is the 100/100 candidate under v4.**
-eatures simultaneously. The census populates the severity table; the severity table populates the PREDICTION slot; the PREDICTION is resolved at each dimension's RESOLUTION slot. The chain is explicit end-to-end.
+3. **C-45 differentiator** — ARCHITECTURE meta-rule. PASS: names parseable completeness / independence as the positive standard. FAIL: names only the prohibition ("not grouped"). V-05 tests an alternative phrasing ("parseable in isolation — no shared header, no proximity reliance") to check whether the positive standard can be stated differently while still satisfying C-45.
 
-**V-05 is the 100/100 candidate under v4.**
+**Score asymmetry**: V-01 (35/37, 99.46) scores higher than V-02/V-03 (34/37, 99.19) because the C-43 degradation at STEP D entails C-28 co-failure — one structural choice at a grouped intermediate step fails two criteria. This is exactly the cluster property C-43 documents: it's one root failure, but two criterion counts.
+ve standard.
 
----
+**Locked structural additions over R3 V-05** (applied to all C-43/PASS variations):
+- STEP D per-input annotations are each explicitly labelled with their source step, making each annotation independently parseable. This is the C-43 compliance marker at the pipeline's highest-fan-in consuming step.
+- C-44 PASS form: the terminal verdict line is `Terminal readiness: [label + reason] -> topic namespace` — the arrow appears inline on the verdict line, not on a following consumer-side instruction line.
+- C-45 PASS form: the ARCHITECTURE meta-rule reads: "Each consuming step with N named inputs carries N independently self-standing per-input prohibitions — each annotation parseable as a complete statement without relying on proximity to other annotations (independence standard; not merely non-grouping)."
 
-## V-01 — Axis: Inventory-Depth-Gated Census
-
-**Hypothesis:** C-17 requires the census only when the inventory is non-trivial — defined as artifacts spanning ≥2 namespaces or ≥3 artifacts total. R3 V-05 ran the census unconditionally, which satisfies C-17 for non-trivial inventories but adds overhead for sparse ones. V-01 makes the gating explicit: the prompt checks inventory depth after collection and applies the full matrix only when warranted. Sparse inventories (1–2 artifacts total across all namespaces) skip the matrix and use an inline list. This makes C-17's conditional pass condition structurally verifiable and prevents the census from becoming boilerplate overhead on thin topics.
-
----
-
-You are running `/signal:check` for the topic: **{topic}**
-
-Coaching register throughout — surface observations, suggest next steps, let the team decide. Do not block or render verdicts.
-
----
-
-**STEP 1 — Inventory**
-
-Use Glob and Read to find every signal artifact under `simulations/` for this topic. Record each: namespace, skill name, creation date (from filename or frontmatter). List all artifacts found.
+**Research questions**:
+1. Does preserving independent per-input annotations at all intermediate multi-input steps (STEP 3, STEP C per-dim, STEP D) constitute C-43 compliance, while a grouped annotation at STEP D constitutes C-43 failure that entails C-28 co-failure? (V-01 vs V-02/V-03)
+2. Does the inline forward-declaration arrow on the terminal verdict line (`Terminal readiness: [...] -> topic namespace`) satisfy C-44 as a structurally distinct requirement from C-41 (ARCHITECTURE table) and from the following-line consumer back-reference notation? (V-02 vs V-01/V-03)
+3. Does explicitly naming independence (parseable completeness) as the positive standard in the ARCHITECTURE meta-rule — rather than only prohibiting grouping — constitute C-45 compliance? (V-03 vs V-01/V-02)
+4. Do all three together (V-04) close the remaining aspirational gaps in R3 V-05 at zero structural overhead — achieving 37/37? (V-04 vs R3 V-05 baseline)
+5. Does an alternative phrasing of the independence standard in the meta-rule (V-05) still satisfy C-45 when the core property (parseable completeness without proximity dependency) is preserved? (V-05 vs V-04)
 
 ---
 
-**STEP 2 — Evidence census (inventory-depth-gated)**
+## V-01 — Single Axis: C-43 (Pipeline-Wide Independence at All Multi-Input Consuming Steps)
 
-Count total artifacts found and the number of distinct namespaces with at least one artifact.
-
-**Gate check:**
-- Artifacts span **2 or more namespaces**, OR **total artifact count ≥ 3** → build the census matrix.
-- Total artifact count is **1 or 2 across all namespaces** → inline list only (census matrix exempt).
-
-**Census matrix (when gate condition is met):**
-
-| Namespace | Artifacts present | Dates | Count |
-|-----------|-------------------|-------|-------|
-| scout     | [list] or none    | ...   | n     |
-| draft     | [list] or none    | ...   | n     |
-| review    | [list] or none    | ...   | n     |
-| flow      | [list] or none    | ...   | n     |
-| trace     | [list] or none    | ...   | n     |
-| prove     | [list] or none    | ...   | n     |
-| listen    | [list] or none    | ...   | n     |
-| program   | [list] or none    | ...   | n     |
-| topic     | [list] or none    | ...   | n     |
-
-After the matrix: state total artifact count, date range (oldest to newest), namespaces with zero artifacts.
-
-The census is the shared reference for all dimension findings below. Dimension sections cite census entries directly.
-
-**Inline list (when gate condition is NOT met):**
-
-- `[artifact-name]` — namespace: X — date: YYYY-MM-DD
-
-(Census matrix not required for inventories with 1–2 total artifacts.)
+**Axes**: C-43 PASS (all multi-input consuming steps — STEP 3, STEP C per-dim, STEP D, STEP E — use independently self-standing per-input annotations). C-44 FAIL by design (terminal verdict uses separate-line arrow, not inline). C-45 FAIL by design (meta-rule says "not grouped" without naming independence as positive standard).
+**Hypothesis**: C-36's independence requirement, which R3 V-05 explicitly satisfied only at STEP E, must hold at every multi-input consuming step in the pipeline for C-43 to pass. V-01 confirms that STEP D's 5-input form and STEP C per-dim's 2-input form already satisfy the independence standard structurally — each annotation is a complete standalone statement without proximity dependency. The critical differentiator is that C-44 and C-45 are intentionally degraded: the terminal verdict carries no inline forward arrow (C-44 FAIL), and the meta-rule names only the prohibition ("not grouped") without the positive standard (C-45 FAIL). This isolates C-43's contribution — confirming that the pipeline-wide independence property can be satisfied structurally at intermediate steps while C-44 and C-45 remain unsatisfied.
 
 ---
 
-**STEP 3 — Staleness calibration with decision-velocity rationale**
+```markdown
+Signal-check for {{topic}}.
+Advisory -- observations the team can decide to act on, not a gate.
+
+ARCHITECTURE -- Named-Output Pipeline
+
+Each consuming step carries a separate "Required input -- do not re-derive: [label]"
+per named input -- not grouped across multiple inputs at the same step.
+[C-45 FAIL: meta-rule names the prohibition (not grouped) without naming the positive
+standard (independence / parseable completeness); single-axis C-43 isolation]
+
+| Named Output                                 | Produced by              | Consumed by                                                                                    |
+|----------------------------------------------|--------------------------|------------------------------------------------------------------------------------------------|
+| [MECHANISM VERDICT]                          | CAUSAL GAP               | SEQUENCE (verbatim); PART 2 STEP A (verbatim)                                                  |
+| Pre-specification gap: YES/NO                | SEQUENCE                 | STEP 3 (by label); PART 2 STEP C SEQUENCE (by label)                                           |
+| Mechanism-relevant contradiction: YES/NO     | COHERENCE                | STEP 3 (by label); PART 2 STEP C COHERENCE (by label)                                          |
+| Mechanism-stale: YES/NO                      | STALENESS                | STEP 3 (by label); PART 2 STEP C STALENESS (by label)                                          |
+| Root pattern: [label]                        | STEP 3                   | PART 2 STEP B (by name); PART 2 STEP C per-dim (by name); PART 2 STEP D (by name)              |
+| STEP C drift -- CAUSAL GAP: CLOSED/OPEN      | PART 2 STEP C CAUSAL GAP | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- SEQUENCE: CLOSED/OPEN        | PART 2 STEP C SEQUENCE   | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- COHERENCE: CLOSED/OPEN       | PART 2 STEP C COHERENCE  | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- STALENESS: CLOSED/OPEN       | PART 2 STEP C STALENESS  | PART 2 STEP D (by label)                                                                       |
+| Inertia case: BUILT/PARTIAL/OPEN             | PART 2 STEP A            | PART 2 STEP E (by label)                                                                       |
+| Confirmed readiness: READY/COND./NOT READY   | PART 2 STEP D            | PART 2 STEP E (by label)                                                                       |
+| Terminal readiness: PROCEED/LOOP/INVESTIGATE | PART 2 STEP E            | topic namespace (by label)                                                                     |
+
+Two parts in order. Do not merge.
+PART 1 -- ANALYTICAL RECORD: internal. Severity, mechanism analysis, ranked flags.
+PART 2 -- TEAM COACHING REPORT: advisory observations. No severity labels or scores.
+
+Locked structural features (architectural -- not instructional):
+1. Artifact inventory includes "Inertia Relevant?" column (yes / no per artifact).
+2. CAUSAL GAP opens with "Inertia-relevant pool: [list]" and evaluates that pool only.
+   Empty pool -> verdict absent by default; name what's needed.
+   Non-empty pool -> evaluate; state present / partial / absent.
+3. CAUSAL GAP ends with [MECHANISM VERDICT: ...]. SEQUENCE quotes it verbatim.
+4. SEQUENCE closes with: Pre-specification gap: [YES / NO + reason].
+5. PART 2 opens with STEP A: INERTIA CASE STRENGTH as a dedicated named section. STEP A
+   opens by quoting the MECHANISM VERDICT verbatim and closes with:
+   Inertia case: [BUILT / PARTIAL / OPEN + reason] -> STEP E (forward arrow).
+6. COHERENCE closes with: Mechanism-relevant contradiction: [YES / NO + reason].
+7. STALENESS closes with: Mechanism-stale: [YES / NO + reason].
+8. STEP 3 closes with: Root pattern: [SHORT NAME].
+9. PART 2 STEP C each dimension closes with STEP C drift: CLOSED/OPEN. PART 2 STEP D
+   opens by consuming all five named inputs by label -- one independent per-input annotation
+   each (C-43 PASS: pipeline-wide independence at this 5-input convergence step).
+10. PART 2 STEP D closes with:
+    Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY] -> STEP E (forward arrow).
+11. PART 2 STEP E opens with two independent per-input prohibitions (C-36 PASS; C-43 PASS):
+    Required input -- do not re-derive: Confirmed readiness from STEP D
+    Required input -- do not re-derive: Inertia case from STEP A
+    Each annotation is a complete standalone statement.
+12. PART 2 STEP E closes with [C-44 FAIL: no inline forward-declaration arrow on verdict line]:
+    Required output -- emit exactly:
+      Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason]
+      [C-44 FAIL: arrow on separate following line; not inline on verdict; single-axis C-43]
+    -> topic namespace: Required input -- do not re-derive: Terminal readiness. Consume by label.
+
+======================================================================
+PART 1 -- ANALYTICAL RECORD  (internal -- not for team use)
+======================================================================
+
+==== STEP 0: INERTIA ANCHOR  (~30 words) ====
+
+Before the inventory: what is the team doing today if {{topic}} does not ship?
+State the status-quo alternative in one sentence. This is the inertia competitor.
+
+==== STEP 1: ARTIFACT INVENTORY  (~150 words) ====
+
+| Artifact | Namespace | Date | Signal Carried | Inertia Relevant? |
+|----------|-----------|------|----------------|-------------------|
+(Inertia Relevant: does this artifact speak to the comparison between {{topic}} and
+the status-quo alternative -- competitors, benchmarks, usage data, mechanism evidence?
+Mark yes / no.)
+
+Empty namespaces (scout, draft, review, flow, trace, prove, listen, program, topic):
+  list each -- expected gap or meaningful blind spot?
+
+Inertia-relevant artifact count (from column above):
+  1 or more -> staleness threshold = 14 days
+  0         -> staleness threshold = 30 days
+
+==== STEP 2: DIMENSION ANALYSIS -- CAUSAL GAP FIRST  (~540 words) ====
+
+Analysis order: CAUSAL GAP -> SEQUENCE -> COHERENCE -> STALENESS.
+For each: cite artifacts by name, severity internally (not a gate), coaching
+observation, one concrete next action if flagged.
+
+### CAUSAL GAP
+
+Inertia-relevant pool: [list every artifact tagged yes in Step 1].
+Evaluate mechanism evidence from this pool only.
+
+Inertia anchor: [restate Step 0 in one phrase].
+
+If pool is EMPTY:
+  Mechanism verdict is absent by default. State explicitly. Name what artifact types
+  would populate the pool. Do not draw on non-pool artifacts.
+
+If pool is NON-EMPTY:
+  Is there evidence for the pathway from {{topic}} to its claimed outcome, specifically
+  better than the status-quo alternative? State: present / partial / absent.
+
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
 
-Examine the inventory or census. If any artifact is competitive or market-facing (listen namespace, or filename containing "competitor" or "market"):
+[MECHANISM VERDICT: present / partial / absent -- key gap if any: ___]
+<- SEQUENCE: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
+<- PART 2 STEP A: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
 
-> **Threshold: 14 days**
-> **Calibration rationale:** Inventory contains competitive or market signals, which track a moving landscape. Competitive positioning changes faster than structural signals (size, feasibility) — decisions on stale competitive data carry higher risk because the competitive environment can shift within days. 14 days reflects this higher decision velocity.
+### SEQUENCE
 
-Otherwise:
-
-> **Threshold: 30 days**
-> **Calibration rationale:** No competitive or market signals in inventory. Evidence types present have lower time-sensitivity — they reflect stable structural facts rather than moving dynamics. 30 days is proportionate to the decision velocity at this topic stage.
-
----
-
-**STEP 4 — Internal severity table**
-
-Before writing any team-facing narrative, populate this internal analysis table.
-
-> **--- INTERNAL ANALYSIS BLOCK ---**
-> **Severity ratings below are for your analytical reference only — they are not team-facing output and not blocking gates.**
-> **The coaching narrative in Step 6 is what the team reads.**
-> **This table structures your analysis before you write it.**
-
-| Dimension | Severity (internal) | Pre-analysis expectation |
-|-----------|---------------------|--------------------------|
-| CAUSAL GAP | clean / gap / concern | CLEAN / FLAG |
-| SEQUENCE | clean / gap / concern | CLEAN / FLAG |
-| COHERENCE | clean / gap / concern | CLEAN / FLAG |
-| STALENESS | clean / gap / concern | CLEAN / FLAG |
-
-**Severity definitions — internal reference only:**
-- **clean** — evidence is present and sufficient
-- **gap** — evidence is missing or thin; addressable before commitment
-- **concern** — evidence is absent in a high-stakes area; explicit team discussion warranted
-
-Severity labels from this block do not appear in the narrative below.
-
-> **--- END INTERNAL ANALYSIS BLOCK ---**
-
----
-
-**STEP 5 — Draft readiness summary (before analysis)**
-
-Based on the census or inline list and the internal severity table, write a 2–3 sentence draft readiness assessment. State which dimensions you expect to confirm clean and which to flag. Mark it:
-
-> **[DRAFT — to be confirmed or revised per dimension below]**
-
-For each dimension, state the pre-analysis prediction:
-- CAUSAL GAP: CLEAN or FLAG?
-- SEQUENCE: CLEAN or FLAG?
-- COHERENCE: CLEAN or FLAG?
-- STALENESS: CLEAN or FLAG?
-
-These predictions are what each dimension's inline lifecycle marker resolves.
-
----
-
-**STEP 6 — Dimension analysis**
-
-Analyze in this order. For each: write the finding with artifact evidence (cite census entries by name when a census matrix was built), state CLEAN or FLAG, and if flagged, provide at least one next action in `/namespace:skill` format. Immediately after each dimension's conclusion — before the next dimension begins — write the inline lifecycle marker:
-
-> **[CONFIRMED]** — finding matches the Step 5 prediction for this dimension, or
-> **[REVISED — reason]** — state what differed and why.
-
----
-
-**CAUSAL GAP (analyze first)**
-
-Two required sub-questions — both must be answered:
-
-1. Direct mechanism: Is there artifact evidence (in the census or inventory) that this feature causes the claimed outcome? Name specific artifacts if present; name the gap if not. Do not restate the hypothesis.
-
-2. Inertia check: Would doing nothing — or the current approach without this feature — also produce the claimed outcome? Cite any artifact addressing this. If none exist, flag the inertia gap explicitly even if the mechanism question looks clean.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:scout-inertia` to test whether the current approach already satisfies this need" or "Run `/signal:prove-hypothesis` to establish the causal link").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**SEQUENCE**
-
-Did discovery-type signals (scout, listen, prove namespaces) predate specification-type signals (draft, program namespaces)? Cite specific artifact dates or filename order. A SEQUENCE claim without artifact citation is not valid.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:scout-size` to establish a discovery baseline before advancing draft work").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**COHERENCE**
-
-Name at least two specific artifacts and state whether they agree or contradict on a specific claim. Impressions without named signal pairs are not findings.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:discover-compare` to reconcile the conflicting signals").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**STALENESS**
-
-Apply the threshold from Step 3 — state it again here: **[X days]** (because [one-phrase rationale recap]). List every artifact older than this threshold by name. For each, note whether it is the sole evidence for a key claim — that matters more than age alone.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:discover-competitors` to update the competitive landscape").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**STEP 7 — Cross-dimension pattern**
-
-If two or more dimensions are flagged, identify the root weakness they share. Name it explicitly. Do not recap the individual flags.
-
----
-
-**STEP 8 — Final readiness summary**
-
-Review the four per-dimension lifecycle markers. Write a consolidated readiness summary that reflects the full analysis. If any dimension was REVISED, the summary must incorporate those revisions — it cannot repeat the Step 5 draft verbatim.
-
----
-
-**STEP 9 — Namespace gap characterization**
-
-List every namespace with no artifact. For each, characterize: expected at this topic's stage, or a meaningful blind spot? One sentence per namespace.
-
----
-
-**Report structure:**
-1. Evidence census matrix (Step 2 — conditional on inventory depth) or inline artifact list
-2. Staleness threshold block (Step 3 — threshold and calibration rationale declared together)
-3. Internal severity table (Step 4 — bounded INTERNAL ANALYSIS BLOCK, not a gate)
-4. Draft readiness summary (Step 5 — marked DRAFT with per-dimension predictions)
-5. CAUSAL GAP section (with CONFIRMED/REVISED marker)
-6. SEQUENCE section (with CONFIRMED/REVISED marker)
-7. COHERENCE section (with CONFIRMED/REVISED marker)
-8. STALENESS section (with CONFIRMED/REVISED marker, threshold restated)
-9. Cross-dimension pattern (if two or more flagged)
-10. Final readiness summary
-11. Namespace gap characterization
-
-Format: Markdown. Save to `simulations/signal/check/{topic}-check-{date}.md`.
-
----
-
-## V-02 — Axis: Bidirectional Register Firewall
-
-**Hypothesis:** R3 V-04's C-16 enforcement was unidirectional — "severity labels from this block do not appear in the narrative below" was declared once, at the close of the INTERNAL ANALYSIS BLOCK. v4 sharpens C-16: the prohibition must be enforced throughout the full report, not only at the tier definition. V-02 makes the enforcement bidirectional by adding a second declaration at the coaching narrative step header — before writing any coaching section, the prompt explicitly states that severity tier labels do not appear here. The architectural separation is enforced at both production sites: the block exit and the coaching entry. Neither declaration alone satisfies v4; both together make the register boundary live at every transition point across the full report.
-
----
-
-You are running `/signal:check` for the topic: **{topic}**
-
-Coaching register throughout — surface observations, name next steps, let the team decide. Do not block the team or render verdicts.
-
----
-
-**STEP 1 — Inventory**
-
-Use Glob and Read to find every signal artifact under `simulations/` for this topic. Record each: namespace, skill name, creation date (from filename or frontmatter). List all artifacts found.
-
----
-
-**STEP 2 — Staleness calibration with decision-velocity rationale**
-
-Examine the inventory. If any artifact is competitive or market-facing (listen namespace, or filename containing "competitor" or "market"):
-
-> **Threshold: 14 days**
-> **Calibration rationale:** Inventory contains competitive or market signals, which track a moving landscape. Competitive positioning changes faster than structural signals (size, feasibility) — decisions on stale competitive data carry higher risk because the competitive environment can shift within days. 14 days reflects this higher decision velocity.
-
-Otherwise:
-
-> **Threshold: 30 days**
-> **Calibration rationale:** No competitive or market signals in inventory. Evidence types present have lower time-sensitivity — they reflect stable structural facts rather than moving dynamics. 30 days is proportionate to the decision velocity at this topic stage.
-
-Declare the threshold and rationale as a labeled block before proceeding.
-
----
-
-**STEP 3 — Internal severity table**
-
-Before writing any team-facing narrative, populate this internal analysis table.
-
-> **--- INTERNAL ANALYSIS BLOCK ---**
-> **Severity ratings below are for your analytical reference only — they are not team-facing output and not blocking gates.**
-> **The coaching narrative in Step 5 is what the team reads.**
-> **This table structures your analysis before you write it.**
-
-| Dimension | Severity (internal) | Pre-analysis expectation |
-|-----------|---------------------|--------------------------|
-| CAUSAL GAP | clean / gap / concern | CLEAN / FLAG |
-| SEQUENCE | clean / gap / concern | CLEAN / FLAG |
-| COHERENCE | clean / gap / concern | CLEAN / FLAG |
-| STALENESS | clean / gap / concern | CLEAN / FLAG |
-
-**Severity definitions — internal reference only:**
-- **clean** — evidence is present and sufficient
-- **gap** — evidence is missing or thin; addressable before commitment
-- **concern** — evidence is absent in a high-stakes area; explicit team discussion warranted
-
-> **The tier labels defined above (clean / gap / concern) do not cross into the coaching narrative.**
-> **Their analytical role ends at this block boundary. The coaching step begins below.**
-
-> **--- END INTERNAL ANALYSIS BLOCK ---**
-
----
-
-**STEP 4 — Draft readiness summary (before analysis)**
-
-Based on the inventory and the internal severity table, write a 2–3 sentence draft readiness assessment. State which dimensions you expect to confirm clean and which to flag. Mark it:
-
-> **[DRAFT — to be confirmed or revised per dimension below]**
-
----
-
-**STEP 5 — Dimension narrative (coaching register)**
-
-> **Register notice — this step is team-facing coaching only.**
-> **Severity tier labels (clean / gap / concern) from the INTERNAL ANALYSIS BLOCK do not appear in this step or anywhere after it.**
-> **Translate severity findings into observation language: describe what you see in the evidence, not what tier you assigned it.**
-
-Analyze in this order. For each: write the finding with artifact evidence, state CLEAN or FLAG as the dimension's outcome, and if flagged, provide at least one next action in `/namespace:skill` format. Immediately after each dimension's conclusion — before the next dimension begins — write the inline lifecycle marker:
-
-> **[CONFIRMED]** — finding matches the Step 4 draft prediction for this dimension, or
-> **[REVISED — reason]** — state what differed and why.
-
----
-
-**CAUSAL GAP (analyze first)**
-
-*Coaching narrative — observation language only.*
-
-Two required sub-questions — both must be answered:
-
-1. Direct mechanism: Is there artifact evidence that this feature causes the claimed outcome? Name specific artifacts if present; name the gap if not. Do not restate the hypothesis.
-
-2. Inertia check: Would doing nothing — or the current approach without this feature — also produce the claimed outcome? Cite any artifact addressing this. If none exist, flag the inertia gap explicitly even if the mechanism question looks clean.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:scout-inertia` to test whether the current approach already satisfies this need" or "Run `/signal:prove-hypothesis` to establish the causal link").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**SEQUENCE**
-
-*Coaching narrative — observation language only.*
-
-Did discovery-type signals (scout, listen, prove namespaces) predate specification-type signals (draft, program namespaces)? Cite specific artifact dates or filename order. A SEQUENCE claim without artifact citation is not valid.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:scout-size` to establish a discovery baseline before advancing draft artifacts").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**COHERENCE**
-
-*Coaching narrative — observation language only.*
-
-Name at least two specific artifacts and state whether they agree or contradict on a specific claim. Impressions without named signal pairs are not findings.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:discover-compare` to reconcile the conflicting signals").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**STALENESS**
-
-*Coaching narrative — observation language only.*
-
-Apply the threshold from Step 2 — state it again here: **[X days]** (because [one-phrase rationale recap]). List every artifact older than this threshold by name. For each, note whether it is the sole evidence for a key claim.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:discover-competitors` to refresh the competitive landscape").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**STEP 6 — Cross-dimension pattern**
-
-If two or more dimensions are flagged, identify the root weakness they share. Name it explicitly. Do not recap the individual flags.
-
----
-
-**STEP 7 — Final readiness summary**
-
-Review the four per-dimension lifecycle markers. Write a consolidated readiness summary that reflects the full analysis. If any dimension was REVISED, the summary must incorporate those revisions.
-
----
-
-**STEP 8 — Missing namespace inventory**
-
-List every namespace with no artifact. For each, characterize: expected at this topic's stage, or a meaningful blind spot? One sentence per namespace.
-
----
-
-**Report structure:**
-1. Staleness threshold block (Step 2 — threshold and calibration rationale declared together)
-2. Internal severity table (Step 3 — bounded INTERNAL ANALYSIS BLOCK with explicit exit declaration)
-3. Draft readiness summary (Step 4 — marked DRAFT)
-4. Register notice (Step 5 header — team-facing coaching only, tier labels prohibited)
-5. CAUSAL GAP section — coaching narrative (with CONFIRMED/REVISED marker)
-6. SEQUENCE section — coaching narrative (with CONFIRMED/REVISED marker)
-7. COHERENCE section — coaching narrative (with CONFIRMED/REVISED marker)
-8. STALENESS section — coaching narrative (with CONFIRMED/REVISED marker, threshold restated)
-9. Cross-dimension pattern (if two or more flagged)
-10. Final readiness summary
-11. Missing namespace inventory
-
-Format: Markdown. Save to `simulations/signal/check/{topic}-check-{date}.md`.
-
----
-
-## V-03 — Axis: Template-Slot Lifecycle
-
-**Hypothesis:** v4 sharpens C-13 by explicitly declaring that "a single overall CONFIRMED/REVISED check appended after all dimensions = fail." R3 V-04's language ("immediately after each dimension's conclusion — before the next dimension begins") is correct but instructional — it tells the model where to place the marker without making the placement structurally enforced. V-03 embeds the lifecycle as a fixed three-part template slot within each dimension section: PREDICTION (drawn from the severity table, declared before the analysis) → Analysis (coaching narrative) → RESOLUTION (CONFIRMED or REVISED, placed immediately after). Deferral becomes structurally impossible: a dimension section with a missing PREDICTION or RESOLUTION slot is incomplete by grammar, not merely by instruction. The link between the severity table, the per-dimension prediction, and the per-dimension resolution is made explicit at the section level.
-
----
-
-You are running `/signal:check` for the topic: **{topic}**
-
-Coaching register throughout — surface observations, suggest next steps, let the team decide. Do not block the team or render verdicts.
-
----
-
-**STEP 1 — Inventory**
-
-Use Glob and Read to find every signal artifact under `simulations/` for this topic. Record each: namespace, skill name, creation date (from filename or frontmatter). List all artifacts found.
-
----
-
-**STEP 2 — Staleness calibration with decision-velocity rationale**
-
-Examine the inventory. If any artifact is competitive or market-facing (listen namespace, or filename containing "competitor" or "market"):
-
-> **Threshold: 14 days**
-> **Calibration rationale:** Inventory contains competitive or market signals, which track a moving landscape. Competitive positioning changes faster than structural signals (size, feasibility) — decisions on stale competitive data carry higher risk because the competitive environment can shift within days. 14 days reflects this higher decision velocity.
-
-Otherwise:
-
-> **Threshold: 30 days**
-> **Calibration rationale:** No competitive or market signals in inventory. Evidence types present have lower time-sensitivity — they reflect stable structural facts rather than moving dynamics. 30 days is proportionate to the decision velocity at this topic stage.
-
----
-
-**STEP 3 — Internal severity table**
-
-Before writing any team-facing narrative, populate this internal analysis table.
-
-> **--- INTERNAL ANALYSIS BLOCK ---**
-> **Severity ratings below are for your analytical reference only — they are not team-facing output and not blocking gates.**
-> **The coaching narrative in Step 5 is what the team reads.**
-> **The PREDICTION slot in each dimension section below draws directly from this table.**
-
-| Dimension | Severity (internal) | Evidence summary |
-|-----------|---------------------|------------------|
-| CAUSAL GAP | clean / gap / concern | ... |
-| SEQUENCE | clean / gap / concern | ... |
-| COHERENCE | clean / gap / concern | ... |
-| STALENESS | clean / gap / concern | ... |
-
-**Severity definitions — internal reference only:**
-- **clean** — evidence is present and sufficient
-- **gap** — evidence is missing or thin; addressable before commitment
-- **concern** — evidence is absent in a high-stakes area; explicit team discussion warranted
-
-Severity labels from this block do not appear in the narrative below.
-
-> **--- END INTERNAL ANALYSIS BLOCK ---**
-
----
-
-**STEP 4 — Draft readiness summary (before analysis)**
-
-Based on the inventory and severity table, write a 2–3 sentence draft readiness assessment. Mark it:
-
-> **[DRAFT — to be confirmed or revised per dimension below]**
-
----
-
-**STEP 5 — Dimension lifecycle**
-
-Each dimension below follows a fixed three-part structure. Complete all three parts in sequence — do not omit any:
-
-```
-[PREDICTION]  — declared before the analysis, drawn from the severity table
-[ANALYSIS]    — coaching narrative with artifact evidence and CLEAN/FLAG outcome
-[RESOLUTION]  — CONFIRMED or REVISED, placed immediately after the analysis ends
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from above -- paste verbatim]"
+
+Cite 2+ artifacts with dates. Did discovery precede specification?
+Read ordering through mechanism lens: did inertia-relevant pool artifacts appear in
+the discovery phase, or did the team specify before mechanism evidence existed?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Pre-specification gap: [YES -- mechanism gap existed before earliest spec artifact /
+  NO -- mechanism evidence was present when team committed to spec]
+<- STEP 3: Required input -- do not re-derive: Pre-specification gap. Consume by label.
+<- PART 2 STEP C SEQUENCE: Required input -- do not re-derive: Pre-specification gap.
+
+### COHERENCE
+
+Name 2+ signals on a specific claim: aligned / contradicting / inconclusive.
+For each contradiction: name the two signals, state the specific disagreement, tag
+whether mechanism-relevant.
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-relevant contradiction: [YES -- name the contradiction and inertia-pool artifact /
+  NO -- no contradiction involves inertia-pool signals]
+<- STEP 3: Required input -- do not re-derive: Mechanism-relevant contradiction. Consume by label.
+<- PART 2 STEP C COHERENCE: Required input -- do not re-derive: Mechanism-relevant contradiction.
+
+### STALENESS
+
+Apply threshold from Step 1 (14 or 30 days). Inertia-pool artifacts inside / outside window?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-stale: [YES -- name inertia-pool artifact(s) outside threshold /
+  NO -- all inertia-pool artifacts within threshold]
+<- STEP 3: Required input -- do not re-derive: Mechanism-stale. Consume by label.
+<- PART 2 STEP C STALENESS: Required input -- do not re-derive: Mechanism-stale.
+
+==== STEP 3: CROSS-DIMENSION PATTERN  (~90 words) ====
+
+Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+Required input -- do not re-derive: Mechanism-stale from STALENESS
+Pool status: [empty / thin / adequate -- from CAUSAL GAP]
+[C-43 PASS: three independent per-input annotations at this 3-input consuming step]
+
+From these named outputs:
+- Pre-specification gap YES + thin/empty pool -> "Commitment before evidence"
+- Mechanism-stale YES + partial verdict -> "Stale mechanism comparison"
+- Mechanism-relevant contradiction YES + partial/absent verdict -> "Mechanism contradiction"
+- Empty pool -> "Empty inertia pool"
+- No shared root -> "Isolated flags" or "none"
+
+Root pattern: [SHORT NAME -- drawn from named outputs; do not describe in prose only]
+-> PART 2 STEP B: Required input -- do not re-derive: Root pattern. Reference by label.
+-> PART 2 STEP C per-dim: Required input -- do not re-derive: Root pattern.
+-> PART 2 STEP D: Required input -- do not re-derive: Root pattern. Reference by label.
+
+======================================================================
+PART 2 -- TEAM COACHING REPORT  (advisory -- no severity labels)
+======================================================================
+
+==== STEP A: INERTIA CASE STRENGTH  (~100 words) ====
+
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from PART 1 -- paste verbatim]"
+
+Based on that verdict and the full artifact record for {{topic}}, is the case
+that it beats doing nothing:
+  [ ] Clearly built -- mechanism evidence present, status-quo comparison addressed
+  [ ] Partially built -- some evidence exists but specific gaps remain; name the key one
+  [ ] Still open -- mechanism or comparison not established in the artifact record
+
+State which applies. Advisory -- not a gate.
+
+Inertia case: [BUILT / PARTIAL / OPEN + one-phrase reason]
+-> STEP E: Required input -- do not re-derive: Inertia case. Consume by label.
+
+==== STEP B: DRAFT READINESS  (~75 words) ====
+
+Required input -- do not re-derive: Root pattern from STEP 3
+
+From Part 1: which dimensions look clean, which have something worth noticing?
+If Root pattern is not "none" or "Isolated flags": name the Root pattern explicitly
+before individual observations -- the team sees the cross-dimension shape first.
+Label: [DRAFT -- to be confirmed after STEP D and finalized in STEP E]
+
+==== STEP C: DIMENSION OBSERVATIONS  (~340 words) ====
+
+CAUSAL GAP-first. Advisory. No severity, scores, or gates.
+Per-dimension: state Root pattern contribution and close with STEP C drift binary.
+
+CAUSAL GAP: [coaching observation -- pool status; if empty, name artifact types needed;
+  if non-empty, note what evidence exists and what is missing]
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [CAUSAL GAP contributed to Root pattern: "[label from STEP 3]"
+    / CAUSAL GAP is an isolated flag]
+  STEP C drift: [CLOSED -- CAUSAL GAP coaching aligns with Root pattern "[label]" /
+    OPEN -- CAUSAL GAP coaching diverges; reason: ...]
+  If flagged -> suggested next step:
+
+SEQUENCE: [coaching observation]
+  Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  [C-43 PASS: two independent per-input annotations at this 2-input consuming step]
+  Root pattern contribution: [SEQUENCE contributed to Root pattern: "[label]"
+    / SEQUENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+COHERENCE: [coaching observation]
+  Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  [C-43 PASS: two independent per-input annotations at this 2-input consuming step]
+  Root pattern contribution: [COHERENCE contributed to Root pattern: "[label]"
+    / COHERENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+STALENESS: [coaching observation]
+  Required input -- do not re-derive: Mechanism-stale from STALENESS
+  Required input -- do not re-derive: Root pattern from STEP 3
+  [C-43 PASS: two independent per-input annotations at this 2-input consuming step]
+  Root pattern contribution: [STALENESS contributed to Root pattern: "[label]"
+    / STALENESS is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+==== STEP D: CONFIRMED READINESS  (~90 words) ====
+
+Required input -- do not re-derive: Root pattern from STEP 3
+Required input -- do not re-derive: STEP C drift -- CAUSAL GAP from PART 2 STEP C
+Required input -- do not re-derive: STEP C drift -- SEQUENCE from PART 2 STEP C
+Required input -- do not re-derive: STEP C drift -- COHERENCE from PART 2 STEP C
+Required input -- do not re-derive: STEP C drift -- STALENESS from PART 2 STEP C
+[C-43 PASS: five independent per-input annotations at this 5-input convergence step;
+ each annotation is a complete standalone statement without proximity dependency]
+
+Drift summary (consume each from STEP C labels above -- do not re-infer from prose):
+  CAUSAL GAP: [CLOSED / OPEN]
+  SEQUENCE:   [CLOSED / OPEN]
+  COHERENCE:  [CLOSED / OPEN]
+  STALENESS:  [CLOSED / OPEN]
+
+If all CLOSED: per-dimension coaching confirmed Root pattern without divergence.
+If any OPEN: name dimension(s) and reason for divergence.
+
+Confirmed readiness: [READY -- all drift CLOSED, mechanism evidence sufficient /
+  CONDITIONALLY READY -- [list conditions]; one more loop recommended on [dimension] /
+  NOT READY -- [dimension] OPEN; mechanism or timing gap must be addressed]
+-> STEP E: Required input -- do not re-derive: Confirmed readiness. Consume by label.
+
+==== STEP E: TEAM READINESS POSITION  (~90 words) ====
+
+Required input -- do not re-derive: Confirmed readiness from STEP D
+Required input -- do not re-derive: Inertia case from STEP A
+
+From the two grounded inputs above -- state the team-facing position:
+
+1. Dimensions clean vs. flagged (count)
+2. Most useful thing to address before committing
+3. Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY]
+4. Inertia case: [BUILT / PARTIAL / OPEN]
+5. Overall read: proceed / loop once more / investigate further
+
+Required output -- emit exactly:
+  Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason]
+  [C-44 FAIL: forward-declaration arrow on separate line, not inline on verdict line]
+-> topic namespace: Required input -- do not re-derive: Terminal readiness. Consume by label.
 ```
 
-The RESOLUTION for each dimension must appear at that dimension's production site — before the next dimension begins. Post-hoc assembly of resolutions after all four dimensions is not valid.
+---
+
+## V-02 — Single Axis: C-44 (Inline Forward-Declaration Arrow on Terminal Verdict Line)
+
+**Axes**: C-44 PASS (terminal verdict line carries `-> topic namespace` inline: `Terminal readiness: [label + reason] -> topic namespace`). C-43 FAIL by design (STEP D uses grouped annotation — C-28 co-fails by structural entailment). C-45 FAIL by design (meta-rule says "not grouped" without naming independence as positive standard).
+**Hypothesis**: C-44 requires the forward-declaration arrow to appear on the terminal verdict line itself — making the register boundary exit locally visible at the STEP E production site without requiring a reader to cross-reference the ARCHITECTURE table's C-41 Consumed-by entry. The distinction from R3 V-05's passing form is subtle: in R3 V-05, the arrow (`-> topic namespace:`) appeared on a separate following line as a consumer-side instruction, not as an inline annotation on the verdict output. C-44 PASS requires the verdict line itself to carry the arrow: `Terminal readiness: LOOP -- mechanism absent -> topic namespace`. C-43 and C-45 are intentionally degraded to isolate C-44's contribution — STEP D uses a grouped annotation (C-43 FAIL + C-28 co-fail), and the meta-rule names only the prohibition.
 
 ---
 
-**CAUSAL GAP (analyze first)**
+```markdown
+Signal-check for {{topic}}.
+Advisory -- observations the team can decide to act on, not a gate.
 
-> **[PREDICTION]** — From Step 3 severity table: expect CLEAN or FLAG? (State the severity rating's implication in one phrase.)
+ARCHITECTURE -- Named-Output Pipeline
 
-*Analysis:*
+Each consuming step carries a separate "Required input -- do not re-derive: [label]"
+per named input -- not grouped across multiple inputs at the same step.
+[C-45 FAIL: meta-rule names the prohibition without naming independence as positive
+standard; single-axis C-44 isolation]
 
-Two required sub-questions — both must be answered:
+| Named Output                                 | Produced by              | Consumed by                                                                                    |
+|----------------------------------------------|--------------------------|------------------------------------------------------------------------------------------------|
+| [MECHANISM VERDICT]                          | CAUSAL GAP               | SEQUENCE (verbatim); PART 2 STEP A (verbatim)                                                  |
+| Pre-specification gap: YES/NO                | SEQUENCE                 | STEP 3 (by label); PART 2 STEP C SEQUENCE (by label)                                           |
+| Mechanism-relevant contradiction: YES/NO     | COHERENCE                | STEP 3 (by label); PART 2 STEP C COHERENCE (by label)                                          |
+| Mechanism-stale: YES/NO                      | STALENESS                | STEP 3 (by label); PART 2 STEP C STALENESS (by label)                                          |
+| Root pattern: [label]                        | STEP 3                   | PART 2 STEP B (by name); PART 2 STEP C per-dim (by name); PART 2 STEP D (by name)              |
+| STEP C drift -- CAUSAL GAP: CLOSED/OPEN      | PART 2 STEP C CAUSAL GAP | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- SEQUENCE: CLOSED/OPEN        | PART 2 STEP C SEQUENCE   | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- COHERENCE: CLOSED/OPEN       | PART 2 STEP C COHERENCE  | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- STALENESS: CLOSED/OPEN       | PART 2 STEP C STALENESS  | PART 2 STEP D (by label)                                                                       |
+| Inertia case: BUILT/PARTIAL/OPEN             | PART 2 STEP A            | PART 2 STEP E (by label)                                                                       |
+| Confirmed readiness: READY/COND./NOT READY   | PART 2 STEP D            | PART 2 STEP E (by label)                                                                       |
+| Terminal readiness: PROCEED/LOOP/INVESTIGATE | PART 2 STEP E            | topic namespace (by label)                                                                     |
 
-1. Direct mechanism: Is there artifact evidence that this feature causes the claimed outcome? Name specific artifacts if present; name the gap if not. Do not restate the hypothesis.
+Two parts in order. Do not merge.
+PART 1 -- ANALYTICAL RECORD: internal. Severity, mechanism analysis, ranked flags.
+PART 2 -- TEAM COACHING REPORT: advisory observations. No severity labels or scores.
 
-2. Inertia check: Would doing nothing — or the current approach without this feature — also produce the claimed outcome? Cite any artifact addressing this. If none exist, flag the inertia gap explicitly even if the mechanism question looks clean.
+Locked structural features (architectural -- not instructional):
+1. Artifact inventory includes "Inertia Relevant?" column (yes / no per artifact).
+2. CAUSAL GAP opens with "Inertia-relevant pool: [list]" and evaluates that pool only.
+   Empty pool -> verdict absent by default; name what's needed.
+   Non-empty pool -> evaluate; state present / partial / absent.
+3. CAUSAL GAP ends with [MECHANISM VERDICT: ...]. SEQUENCE quotes it verbatim.
+4. SEQUENCE closes with: Pre-specification gap: [YES / NO + reason].
+5. PART 2 opens with STEP A: INERTIA CASE STRENGTH as a dedicated named section. STEP A
+   opens by quoting the MECHANISM VERDICT verbatim and closes with:
+   Inertia case: [BUILT / PARTIAL / OPEN + reason] -> STEP E (forward arrow).
+6. COHERENCE closes with: Mechanism-relevant contradiction: [YES / NO + reason].
+7. STALENESS closes with: Mechanism-stale: [YES / NO + reason].
+8. STEP 3 closes with: Root pattern: [SHORT NAME].
+9. PART 2 STEP C each dimension closes with STEP C drift: CLOSED/OPEN. PART 2 STEP D
+   opens by consuming all five named inputs -- [C-43 FAIL by design: grouped annotation].
+10. PART 2 STEP D closes with:
+    Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY] -> STEP E (forward arrow).
+11. PART 2 STEP E opens with two independent per-input prohibitions (C-36 PASS):
+    Required input -- do not re-derive: Confirmed readiness from STEP D
+    Required input -- do not re-derive: Inertia case from STEP A
+    Each annotation is a complete standalone statement.
+12. PART 2 STEP E closes with [C-44 PASS: inline forward-declaration arrow on verdict line]:
+    Required output -- emit exactly:
+      Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason] -> topic namespace
+    [C-44 PASS: arrow is inline on the verdict line itself, naming external consumer by identity]
 
-State CLEAN or FLAG. If flagged, name a next action in `/namespace:skill` format (e.g., "Run `/signal:scout-inertia` to test whether the current approach already satisfies this need" or "Run `/signal:prove-hypothesis` to establish the causal link").
+======================================================================
+PART 1 -- ANALYTICAL RECORD  (internal -- not for team use)
+======================================================================
 
-> **[RESOLUTION]** — **[CONFIRMED]** (prediction held) or **[REVISED — reason]** (state what differed and why)
+==== STEP 0: INERTIA ANCHOR  (~30 words) ====
+
+Before the inventory: what is the team doing today if {{topic}} does not ship?
+State the status-quo alternative in one sentence. This is the inertia competitor.
+
+==== STEP 1: ARTIFACT INVENTORY  (~150 words) ====
+
+| Artifact | Namespace | Date | Signal Carried | Inertia Relevant? |
+|----------|-----------|------|----------------|-------------------|
+(Inertia Relevant: does this artifact speak to the comparison between {{topic}} and
+the status-quo alternative -- competitors, benchmarks, usage data, mechanism evidence?
+Mark yes / no.)
+
+Empty namespaces (scout, draft, review, flow, trace, prove, listen, program, topic):
+  list each -- expected gap or meaningful blind spot?
+
+Inertia-relevant artifact count (from column above):
+  1 or more -> staleness threshold = 14 days
+  0         -> staleness threshold = 30 days
+
+==== STEP 2: DIMENSION ANALYSIS -- CAUSAL GAP FIRST  (~540 words) ====
+
+Analysis order: CAUSAL GAP -> SEQUENCE -> COHERENCE -> STALENESS.
+For each: cite artifacts by name, severity internally (not a gate), coaching
+observation, one concrete next action if flagged.
+
+### CAUSAL GAP
+
+Inertia-relevant pool: [list every artifact tagged yes in Step 1].
+Evaluate mechanism evidence from this pool only.
+
+Inertia anchor: [restate Step 0 in one phrase].
+
+If pool is EMPTY:
+  Mechanism verdict is absent by default. State explicitly. Name what artifact types
+  would populate the pool. Do not draw on non-pool artifacts.
+
+If pool is NON-EMPTY:
+  Is there evidence for the pathway from {{topic}} to its claimed outcome, specifically
+  better than the status-quo alternative? State: present / partial / absent.
+
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+[MECHANISM VERDICT: present / partial / absent -- key gap if any: ___]
+<- SEQUENCE: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
+<- PART 2 STEP A: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
+
+### SEQUENCE
+
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from above -- paste verbatim]"
+
+Cite 2+ artifacts with dates. Did discovery precede specification?
+Read ordering through mechanism lens: did inertia-relevant pool artifacts appear in
+the discovery phase, or did the team specify before mechanism evidence existed?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Pre-specification gap: [YES -- mechanism gap existed before earliest spec artifact /
+  NO -- mechanism evidence was present when team committed to spec]
+<- STEP 3: Required input -- do not re-derive: Pre-specification gap. Consume by label.
+<- PART 2 STEP C SEQUENCE: Required input -- do not re-derive: Pre-specification gap.
+
+### COHERENCE
+
+Name 2+ signals on a specific claim: aligned / contradicting / inconclusive.
+For each contradiction: name the two signals, state the specific disagreement, tag
+whether mechanism-relevant.
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-relevant contradiction: [YES -- name the contradiction and inertia-pool artifact /
+  NO -- no contradiction involves inertia-pool signals]
+<- STEP 3: Required input -- do not re-derive: Mechanism-relevant contradiction. Consume by label.
+<- PART 2 STEP C COHERENCE: Required input -- do not re-derive: Mechanism-relevant contradiction.
+
+### STALENESS
+
+Apply threshold from Step 1 (14 or 30 days). Inertia-pool artifacts inside / outside window?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-stale: [YES -- name inertia-pool artifact(s) outside threshold /
+  NO -- all inertia-pool artifacts within threshold]
+<- STEP 3: Required input -- do not re-derive: Mechanism-stale. Consume by label.
+<- PART 2 STEP C STALENESS: Required input -- do not re-derive: Mechanism-stale.
+
+==== STEP 3: CROSS-DIMENSION PATTERN  (~90 words) ====
+
+Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+Required input -- do not re-derive: Mechanism-stale from STALENESS
+Pool status: [empty / thin / adequate -- from CAUSAL GAP]
+
+From these named outputs:
+- Pre-specification gap YES + thin/empty pool -> "Commitment before evidence"
+- Mechanism-stale YES + partial verdict -> "Stale mechanism comparison"
+- Mechanism-relevant contradiction YES + partial/absent verdict -> "Mechanism contradiction"
+- Empty pool -> "Empty inertia pool"
+- No shared root -> "Isolated flags" or "none"
+
+Root pattern: [SHORT NAME -- drawn from named outputs; do not describe in prose only]
+-> PART 2 STEP B: Required input -- do not re-derive: Root pattern. Reference by label.
+-> PART 2 STEP C per-dim: Required input -- do not re-derive: Root pattern.
+-> PART 2 STEP D: Required input -- do not re-derive: Root pattern. Reference by label.
+
+======================================================================
+PART 2 -- TEAM COACHING REPORT  (advisory -- no severity labels)
+======================================================================
+
+==== STEP A: INERTIA CASE STRENGTH  (~100 words) ====
+
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from PART 1 -- paste verbatim]"
+
+Based on that verdict and the full artifact record for {{topic}}, is the case
+that it beats doing nothing:
+  [ ] Clearly built -- mechanism evidence present, status-quo comparison addressed
+  [ ] Partially built -- some evidence exists but specific gaps remain; name the key one
+  [ ] Still open -- mechanism or comparison not established in the artifact record
+
+State which applies. Advisory -- not a gate.
+
+Inertia case: [BUILT / PARTIAL / OPEN + one-phrase reason]
+-> STEP E: Required input -- do not re-derive: Inertia case. Consume by label.
+
+==== STEP B: DRAFT READINESS  (~75 words) ====
+
+Required input -- do not re-derive: Root pattern from STEP 3
+
+From Part 1: which dimensions look clean, which have something worth noticing?
+If Root pattern is not "none" or "Isolated flags": name the Root pattern explicitly
+before individual observations -- the team sees the cross-dimension shape first.
+Label: [DRAFT -- to be confirmed after STEP D and finalized in STEP E]
+
+==== STEP C: DIMENSION OBSERVATIONS  (~340 words) ====
+
+CAUSAL GAP-first. Advisory. No severity, scores, or gates.
+Per-dimension: state Root pattern contribution and close with STEP C drift binary.
+
+CAUSAL GAP: [coaching observation -- pool status; if empty, name artifact types needed;
+  if non-empty, note what evidence exists and what is missing]
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [CAUSAL GAP contributed to Root pattern: "[label from STEP 3]"
+    / CAUSAL GAP is an isolated flag]
+  STEP C drift: [CLOSED -- CAUSAL GAP coaching aligns with Root pattern "[label]" /
+    OPEN -- CAUSAL GAP coaching diverges; reason: ...]
+  If flagged -> suggested next step:
+
+SEQUENCE: [coaching observation]
+  Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [SEQUENCE contributed to Root pattern: "[label]"
+    / SEQUENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+COHERENCE: [coaching observation]
+  Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [COHERENCE contributed to Root pattern: "[label]"
+    / COHERENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+STALENESS: [coaching observation]
+  Required input -- do not re-derive: Mechanism-stale from STALENESS
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [STALENESS contributed to Root pattern: "[label]"
+    / STALENESS is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+==== STEP D: CONFIRMED READINESS  (~90 words) ====
+
+Required inputs -- do not re-derive [Root pattern from STEP 3; STEP C drift -- CAUSAL GAP;
+  STEP C drift -- SEQUENCE; STEP C drift -- COHERENCE; STEP C drift -- STALENESS]:
+  consume all five by label above
+[C-43 FAIL: grouped annotation at 5-input intermediate step; C-28 co-fails by entailment;
+ single-axis C-44 isolation]
+
+Drift summary (consume each from STEP C labels above -- do not re-infer from prose):
+  CAUSAL GAP: [CLOSED / OPEN]
+  SEQUENCE:   [CLOSED / OPEN]
+  COHERENCE:  [CLOSED / OPEN]
+  STALENESS:  [CLOSED / OPEN]
+
+If all CLOSED: per-dimension coaching confirmed Root pattern without divergence.
+If any OPEN: name dimension(s) and reason for divergence.
+
+Confirmed readiness: [READY -- all drift CLOSED, mechanism evidence sufficient /
+  CONDITIONALLY READY -- [list conditions]; one more loop recommended on [dimension] /
+  NOT READY -- [dimension] OPEN; mechanism or timing gap must be addressed]
+-> STEP E: Required input -- do not re-derive: Confirmed readiness. Consume by label.
+
+==== STEP E: TEAM READINESS POSITION  (~90 words) ====
+
+Required input -- do not re-derive: Confirmed readiness from STEP D
+Required input -- do not re-derive: Inertia case from STEP A
+
+From the two grounded inputs above -- state the team-facing position:
+
+1. Dimensions clean vs. flagged (count)
+2. Most useful thing to address before committing
+3. Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY]
+4. Inertia case: [BUILT / PARTIAL / OPEN]
+5. Overall read: proceed / loop once more / investigate further
+
+Required output -- emit exactly:
+  Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason] -> topic namespace
+[C-44 PASS: forward-declaration arrow inline on verdict line; external consumer named by identity]
+```
 
 ---
 
-**SEQUENCE**
+## V-03 — Single Axis: C-45 (ARCHITECTURE Meta-Rule Names Independence as Positive Standard)
 
-> **[PREDICTION]** — From Step 3 severity table: expect CLEAN or FLAG?
-
-*Analysis:*
-
-Did discovery-type signals (scout, listen, prove namespaces) predate specification-type signals (draft, program namespaces)? Cite specific artifact dates or filename order. A SEQUENCE claim without artifact citation is not valid.
-
-State CLEAN or FLAG. If flagged, name a next action in `/namespace:skill` format (e.g., "Run `/signal:scout-size` to establish a discovery baseline before advancing draft artifacts").
-
-> **[RESOLUTION]** — **[CONFIRMED]** or **[REVISED — reason]**
+**Axes**: C-45 PASS (ARCHITECTURE meta-rule explicitly states: "each annotation parseable as a complete statement without relying on proximity to other annotations — independence standard, not merely non-grouping"). C-43 FAIL by design (STEP D grouped — C-28 co-fails by entailment). C-44 FAIL by design (terminal verdict uses separate-line arrow, not inline).
+**Hypothesis**: C-45 requires the ARCHITECTURE meta-rule to name the positive standard (independence / parseable completeness) rather than only prohibiting the negative form (grouping). The current R3 V-05 meta-rule — "not grouped across multiple inputs at the same step" — specifies what to avoid without specifying what to achieve. A prompt can satisfy "not grouped" with two syntactically separate lines that still semantically rely on proximity for interpretation; naming independence as the positive standard makes that partial compliance architecturally impermissible. C-43 and C-44 are intentionally degraded to isolate C-45 — STEP D is grouped (C-43 FAIL + C-28 co-fail) and the terminal verdict carries no inline forward arrow (C-44 FAIL).
 
 ---
 
-**COHERENCE**
+```markdown
+Signal-check for {{topic}}.
+Advisory -- observations the team can decide to act on, not a gate.
 
-> **[PREDICTION]** — From Step 3 severity table: expect CLEAN or FLAG?
+ARCHITECTURE -- Named-Output Pipeline
 
-*Analysis:*
+Each consuming step with N named inputs carries N independently self-standing per-input
+prohibitions -- each annotation parseable as a complete statement without relying on
+proximity to other annotations (independence standard; not merely non-grouping).
+[C-45 PASS: meta-rule names independence as positive standard, not only prohibition]
 
-Name at least two specific artifacts and state whether they agree or contradict on a specific claim. Impressions without named signal pairs are not findings.
+| Named Output                                 | Produced by              | Consumed by                                                                                    |
+|----------------------------------------------|--------------------------|------------------------------------------------------------------------------------------------|
+| [MECHANISM VERDICT]                          | CAUSAL GAP               | SEQUENCE (verbatim); PART 2 STEP A (verbatim)                                                  |
+| Pre-specification gap: YES/NO                | SEQUENCE                 | STEP 3 (by label); PART 2 STEP C SEQUENCE (by label)                                           |
+| Mechanism-relevant contradiction: YES/NO     | COHERENCE                | STEP 3 (by label); PART 2 STEP C COHERENCE (by label)                                          |
+| Mechanism-stale: YES/NO                      | STALENESS                | STEP 3 (by label); PART 2 STEP C STALENESS (by label)                                          |
+| Root pattern: [label]                        | STEP 3                   | PART 2 STEP B (by name); PART 2 STEP C per-dim (by name); PART 2 STEP D (by name)              |
+| STEP C drift -- CAUSAL GAP: CLOSED/OPEN      | PART 2 STEP C CAUSAL GAP | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- SEQUENCE: CLOSED/OPEN        | PART 2 STEP C SEQUENCE   | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- COHERENCE: CLOSED/OPEN       | PART 2 STEP C COHERENCE  | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- STALENESS: CLOSED/OPEN       | PART 2 STEP C STALENESS  | PART 2 STEP D (by label)                                                                       |
+| Inertia case: BUILT/PARTIAL/OPEN             | PART 2 STEP A            | PART 2 STEP E (by label)                                                                       |
+| Confirmed readiness: READY/COND./NOT READY   | PART 2 STEP D            | PART 2 STEP E (by label)                                                                       |
+| Terminal readiness: PROCEED/LOOP/INVESTIGATE | PART 2 STEP E            | topic namespace (by label)                                                                     |
 
-State CLEAN or FLAG. If flagged, name a next action in `/namespace:skill` format (e.g., "Run `/signal:discover-compare` to reconcile the conflicting signals").
+Two parts in order. Do not merge.
+PART 1 -- ANALYTICAL RECORD: internal. Severity, mechanism analysis, ranked flags.
+PART 2 -- TEAM COACHING REPORT: advisory observations. No severity labels or scores.
 
-> **[RESOLUTION]** — **[CONFIRMED]** or **[REVISED — reason]**
+Locked structural features (architectural -- not instructional):
+1. Artifact inventory includes "Inertia Relevant?" column (yes / no per artifact).
+2. CAUSAL GAP opens with "Inertia-relevant pool: [list]" and evaluates that pool only.
+   Empty pool -> verdict absent by default; name what's needed.
+   Non-empty pool -> evaluate; state present / partial / absent.
+3. CAUSAL GAP ends with [MECHANISM VERDICT: ...]. SEQUENCE quotes it verbatim.
+4. SEQUENCE closes with: Pre-specification gap: [YES / NO + reason].
+5. PART 2 opens with STEP A: INERTIA CASE STRENGTH as a dedicated named section. STEP A
+   opens by quoting the MECHANISM VERDICT verbatim and closes with:
+   Inertia case: [BUILT / PARTIAL / OPEN + reason] -> STEP E (forward arrow).
+6. COHERENCE closes with: Mechanism-relevant contradiction: [YES / NO + reason].
+7. STALENESS closes with: Mechanism-stale: [YES / NO + reason].
+8. STEP 3 closes with: Root pattern: [SHORT NAME].
+9. PART 2 STEP C each dimension closes with STEP C drift: CLOSED/OPEN. PART 2 STEP D
+   opens by consuming all five named inputs -- [C-43 FAIL by design: grouped annotation].
+10. PART 2 STEP D closes with:
+    Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY] -> STEP E (forward arrow).
+11. PART 2 STEP E opens with two independent per-input prohibitions (C-36 PASS):
+    Required input -- do not re-derive: Confirmed readiness from STEP D
+    Required input -- do not re-derive: Inertia case from STEP A
+    Each annotation is a complete standalone statement.
+12. PART 2 STEP E closes with [C-44 FAIL: no inline forward-declaration arrow on verdict]:
+    Required output -- emit exactly:
+      Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason]
+      [C-44 FAIL: arrow on separate following line; not inline on verdict; single-axis C-45]
+    -> topic namespace: Required input -- do not re-derive: Terminal readiness. Consume by label.
+
+======================================================================
+PART 1 -- ANALYTICAL RECORD  (internal -- not for team use)
+======================================================================
+
+==== STEP 0: INERTIA ANCHOR  (~30 words) ====
+
+Before the inventory: what is the team doing today if {{topic}} does not ship?
+State the status-quo alternative in one sentence. This is the inertia competitor.
+
+==== STEP 1: ARTIFACT INVENTORY  (~150 words) ====
+
+| Artifact | Namespace | Date | Signal Carried | Inertia Relevant? |
+|----------|-----------|------|----------------|-------------------|
+(Inertia Relevant: does this artifact speak to the comparison between {{topic}} and
+the status-quo alternative -- competitors, benchmarks, usage data, mechanism evidence?
+Mark yes / no.)
+
+Empty namespaces (scout, draft, review, flow, trace, prove, listen, program, topic):
+  list each -- expected gap or meaningful blind spot?
+
+Inertia-relevant artifact count (from column above):
+  1 or more -> staleness threshold = 14 days
+  0         -> staleness threshold = 30 days
+
+==== STEP 2: DIMENSION ANALYSIS -- CAUSAL GAP FIRST  (~540 words) ====
+
+Analysis order: CAUSAL GAP -> SEQUENCE -> COHERENCE -> STALENESS.
+For each: cite artifacts by name, severity internally (not a gate), coaching
+observation, one concrete next action if flagged.
+
+### CAUSAL GAP
+
+Inertia-relevant pool: [list every artifact tagged yes in Step 1].
+Evaluate mechanism evidence from this pool only.
+
+Inertia anchor: [restate Step 0 in one phrase].
+
+If pool is EMPTY:
+  Mechanism verdict is absent by default. State explicitly. Name what artifact types
+  would populate the pool. Do not draw on non-pool artifacts.
+
+If pool is NON-EMPTY:
+  Is there evidence for the pathway from {{topic}} to its claimed outcome, specifically
+  better than the status-quo alternative? State: present / partial / absent.
+
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+[MECHANISM VERDICT: present / partial / absent -- key gap if any: ___]
+<- SEQUENCE: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
+<- PART 2 STEP A: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
+
+### SEQUENCE
+
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from above -- paste verbatim]"
+
+Cite 2+ artifacts with dates. Did discovery precede specification?
+Read ordering through mechanism lens: did inertia-relevant pool artifacts appear in
+the discovery phase, or did the team specify before mechanism evidence existed?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Pre-specification gap: [YES -- mechanism gap existed before earliest spec artifact /
+  NO -- mechanism evidence was present when team committed to spec]
+<- STEP 3: Required input -- do not re-derive: Pre-specification gap. Consume by label.
+<- PART 2 STEP C SEQUENCE: Required input -- do not re-derive: Pre-specification gap.
+
+### COHERENCE
+
+Name 2+ signals on a specific claim: aligned / contradicting / inconclusive.
+For each contradiction: name the two signals, state the specific disagreement, tag
+whether mechanism-relevant.
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-relevant contradiction: [YES -- name the contradiction and inertia-pool artifact /
+  NO -- no contradiction involves inertia-pool signals]
+<- STEP 3: Required input -- do not re-derive: Mechanism-relevant contradiction. Consume by label.
+<- PART 2 STEP C COHERENCE: Required input -- do not re-derive: Mechanism-relevant contradiction.
+
+### STALENESS
+
+Apply threshold from Step 1 (14 or 30 days). Inertia-pool artifacts inside / outside window?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-stale: [YES -- name inertia-pool artifact(s) outside threshold /
+  NO -- all inertia-pool artifacts within threshold]
+<- STEP 3: Required input -- do not re-derive: Mechanism-stale. Consume by label.
+<- PART 2 STEP C STALENESS: Required input -- do not re-derive: Mechanism-stale.
+
+==== STEP 3: CROSS-DIMENSION PATTERN  (~90 words) ====
+
+Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+Required input -- do not re-derive: Mechanism-stale from STALENESS
+Pool status: [empty / thin / adequate -- from CAUSAL GAP]
+
+From these named outputs:
+- Pre-specification gap YES + thin/empty pool -> "Commitment before evidence"
+- Mechanism-stale YES + partial verdict -> "Stale mechanism comparison"
+- Mechanism-relevant contradiction YES + partial/absent verdict -> "Mechanism contradiction"
+- Empty pool -> "Empty inertia pool"
+- No shared root -> "Isolated flags" or "none"
+
+Root pattern: [SHORT NAME -- drawn from named outputs; do not describe in prose only]
+-> PART 2 STEP B: Required input -- do not re-derive: Root pattern. Reference by label.
+-> PART 2 STEP C per-dim: Required input -- do not re-derive: Root pattern.
+-> PART 2 STEP D: Required input -- do not re-derive: Root pattern. Reference by label.
+
+======================================================================
+PART 2 -- TEAM COACHING REPORT  (advisory -- no severity labels)
+======================================================================
+
+==== STEP A: INERTIA CASE STRENGTH  (~100 words) ====
+
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from PART 1 -- paste verbatim]"
+
+Based on that verdict and the full artifact record for {{topic}}, is the case
+that it beats doing nothing:
+  [ ] Clearly built -- mechanism evidence present, status-quo comparison addressed
+  [ ] Partially built -- some evidence exists but specific gaps remain; name the key one
+  [ ] Still open -- mechanism or comparison not established in the artifact record
+
+State which applies. Advisory -- not a gate.
+
+Inertia case: [BUILT / PARTIAL / OPEN + one-phrase reason]
+-> STEP E: Required input -- do not re-derive: Inertia case. Consume by label.
+
+==== STEP B: DRAFT READINESS  (~75 words) ====
+
+Required input -- do not re-derive: Root pattern from STEP 3
+
+From Part 1: which dimensions look clean, which have something worth noticing?
+If Root pattern is not "none" or "Isolated flags": name the Root pattern explicitly
+before individual observations -- the team sees the cross-dimension shape first.
+Label: [DRAFT -- to be confirmed after STEP D and finalized in STEP E]
+
+==== STEP C: DIMENSION OBSERVATIONS  (~340 words) ====
+
+CAUSAL GAP-first. Advisory. No severity, scores, or gates.
+Per-dimension: state Root pattern contribution and close with STEP C drift binary.
+
+CAUSAL GAP: [coaching observation -- pool status; if empty, name artifact types needed;
+  if non-empty, note what evidence exists and what is missing]
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [CAUSAL GAP contributed to Root pattern: "[label from STEP 3]"
+    / CAUSAL GAP is an isolated flag]
+  STEP C drift: [CLOSED -- CAUSAL GAP coaching aligns with Root pattern "[label]" /
+    OPEN -- CAUSAL GAP coaching diverges; reason: ...]
+  If flagged -> suggested next step:
+
+SEQUENCE: [coaching observation]
+  Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [SEQUENCE contributed to Root pattern: "[label]"
+    / SEQUENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+COHERENCE: [coaching observation]
+  Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [COHERENCE contributed to Root pattern: "[label]"
+    / COHERENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+STALENESS: [coaching observation]
+  Required input -- do not re-derive: Mechanism-stale from STALENESS
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [STALENESS contributed to Root pattern: "[label]"
+    / STALENESS is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+==== STEP D: CONFIRMED READINESS  (~90 words) ====
+
+Required inputs -- do not re-derive [Root pattern from STEP 3; STEP C drift -- CAUSAL GAP;
+  STEP C drift -- SEQUENCE; STEP C drift -- COHERENCE; STEP C drift -- STALENESS]:
+  consume all five by label above
+[C-43 FAIL: grouped annotation at 5-input intermediate step; C-28 co-fails by entailment;
+ single-axis C-45 isolation]
+
+Drift summary (consume each from STEP C labels above -- do not re-infer from prose):
+  CAUSAL GAP: [CLOSED / OPEN]
+  SEQUENCE:   [CLOSED / OPEN]
+  COHERENCE:  [CLOSED / OPEN]
+  STALENESS:  [CLOSED / OPEN]
+
+If all CLOSED: per-dimension coaching confirmed Root pattern without divergence.
+If any OPEN: name dimension(s) and reason for divergence.
+
+Confirmed readiness: [READY -- all drift CLOSED, mechanism evidence sufficient /
+  CONDITIONALLY READY -- [list conditions]; one more loop recommended on [dimension] /
+  NOT READY -- [dimension] OPEN; mechanism or timing gap must be addressed]
+-> STEP E: Required input -- do not re-derive: Confirmed readiness. Consume by label.
+
+==== STEP E: TEAM READINESS POSITION  (~90 words) ====
+
+Required input -- do not re-derive: Confirmed readiness from STEP D
+Required input -- do not re-derive: Inertia case from STEP A
+
+From the two grounded inputs above -- state the team-facing position:
+
+1. Dimensions clean vs. flagged (count)
+2. Most useful thing to address before committing
+3. Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY]
+4. Inertia case: [BUILT / PARTIAL / OPEN]
+5. Overall read: proceed / loop once more / investigate further
+
+Required output -- emit exactly:
+  Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason]
+  [C-44 FAIL: forward-declaration arrow on separate line; not inline on verdict]
+-> topic namespace: Required input -- do not re-derive: Terminal readiness. Consume by label.
+```
 
 ---
 
-**STALENESS**
+## V-04 — All Three Combined: C-43 + C-44 + C-45, Advisory Register (Canonical)
 
-> **[PREDICTION]** — From Step 3 severity table: expect CLEAN or FLAG?
-
-*Analysis:*
-
-Apply the threshold from Step 2 — state it here: **[X days]** (because [one-phrase rationale recap]). List every artifact older than this threshold by name. For each, note whether it is the sole evidence for a key claim.
-
-State CLEAN or FLAG. If flagged, name a next action in `/namespace:skill` format (e.g., "Run `/signal:discover-competitors` to refresh the competitive landscape").
-
-> **[RESOLUTION]** — **[CONFIRMED]** or **[REVISED — reason]**
+**Axes**: C-43 PASS (all multi-input consuming steps pipeline-wide use independently self-standing per-input annotations) + C-44 PASS (terminal verdict carries inline `-> topic namespace` forward-declaration arrow) + C-45 PASS (ARCHITECTURE meta-rule names independence as positive standard). Advisory register throughout.
+**Hypothesis**: V-04 is the canonical advisory form for R4. The three criteria complete the structural architecture at three independent points: C-45 elevates the ARCHITECTURE meta-rule from a prohibition to a positive contract (independence standard); C-43 generalizes C-36's independence requirement from STEP E to the full pipeline; C-44 closes the last asymmetric annotation gap at the terminal production site — the forward-declaration arrow is now inline on the verdict line, not only accessible via the ARCHITECTURE table's Consumed-by entry. Together they represent three distinct structural closes: one at the meta-rule level (C-45), one at intermediate steps (C-43 at STEP D), and one at the terminal production site (C-44). V-04 predicts 37/37 at zero structural overhead relative to R3 V-05.
 
 ---
 
-**STEP 6 — Readiness summary**
+```markdown
+Signal-check for {{topic}}.
+Advisory -- observations the team can decide to act on, not a gate.
 
-Review the four RESOLUTION markers. Write a 3–4 sentence readiness summary grounded in the resolutions. If any dimension was REVISED, the summary must incorporate those revisions.
+ARCHITECTURE -- Named-Output Pipeline
+
+Each consuming step with N named inputs carries N independently self-standing per-input
+prohibitions -- each annotation parseable as a complete statement without relying on
+proximity to other annotations (independence standard; not merely non-grouping).
+[C-45 PASS: meta-rule names independence as positive standard]
+
+| Named Output                                 | Produced by              | Consumed by                                                                                    |
+|----------------------------------------------|--------------------------|------------------------------------------------------------------------------------------------|
+| [MECHANISM VERDICT]                          | CAUSAL GAP               | SEQUENCE (verbatim); PART 2 STEP A (verbatim)                                                  |
+| Pre-specification gap: YES/NO                | SEQUENCE                 | STEP 3 (by label); PART 2 STEP C SEQUENCE (by label)                                           |
+| Mechanism-relevant contradiction: YES/NO     | COHERENCE                | STEP 3 (by label); PART 2 STEP C COHERENCE (by label)                                          |
+| Mechanism-stale: YES/NO                      | STALENESS                | STEP 3 (by label); PART 2 STEP C STALENESS (by label)                                          |
+| Root pattern: [label]                        | STEP 3                   | PART 2 STEP B (by name); PART 2 STEP C per-dim (by name); PART 2 STEP D (by name)              |
+| STEP C drift -- CAUSAL GAP: CLOSED/OPEN      | PART 2 STEP C CAUSAL GAP | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- SEQUENCE: CLOSED/OPEN        | PART 2 STEP C SEQUENCE   | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- COHERENCE: CLOSED/OPEN       | PART 2 STEP C COHERENCE  | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- STALENESS: CLOSED/OPEN       | PART 2 STEP C STALENESS  | PART 2 STEP D (by label)                                                                       |
+| Inertia case: BUILT/PARTIAL/OPEN             | PART 2 STEP A            | PART 2 STEP E (by label)                                                                       |
+| Confirmed readiness: READY/COND./NOT READY   | PART 2 STEP D            | PART 2 STEP E (by label)                                                                       |
+| Terminal readiness: PROCEED/LOOP/INVESTIGATE | PART 2 STEP E            | topic namespace (by label)                                                                     |
+
+Two parts in order. Do not merge.
+PART 1 -- ANALYTICAL RECORD: internal. Severity, mechanism analysis, ranked flags.
+PART 2 -- TEAM COACHING REPORT: advisory observations. No severity labels or scores.
+
+Locked structural features (architectural -- not instructional):
+1. Artifact inventory includes "Inertia Relevant?" column (yes / no per artifact).
+2. CAUSAL GAP opens with "Inertia-relevant pool: [list]" and evaluates that pool only.
+   Empty pool -> verdict absent by default; name what's needed.
+   Non-empty pool -> evaluate; state present / partial / absent.
+3. CAUSAL GAP ends with [MECHANISM VERDICT: ...]. SEQUENCE quotes it verbatim.
+4. SEQUENCE closes with: Pre-specification gap: [YES / NO + reason].
+5. PART 2 opens with STEP A: INERTIA CASE STRENGTH as a dedicated named section. STEP A
+   opens by quoting the MECHANISM VERDICT verbatim and closes with:
+   Inertia case: [BUILT / PARTIAL / OPEN + reason] -> STEP E (forward arrow).
+6. COHERENCE closes with: Mechanism-relevant contradiction: [YES / NO + reason].
+7. STALENESS closes with: Mechanism-stale: [YES / NO + reason].
+8. STEP 3 closes with: Root pattern: [SHORT NAME].
+9. PART 2 STEP C each dimension closes with STEP C drift: CLOSED/OPEN. PART 2 STEP D
+   opens by consuming all five named inputs by label -- one independent per-input annotation
+   each (C-43 PASS: pipeline-wide independence at this 5-input convergence step).
+10. PART 2 STEP D closes with:
+    Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY] -> STEP E (forward arrow).
+11. PART 2 STEP E opens with two independent per-input prohibitions (C-36 PASS; C-43 PASS):
+    Required input -- do not re-derive: Confirmed readiness from STEP D
+    Required input -- do not re-derive: Inertia case from STEP A
+    Each annotation is a complete standalone statement independently parseable without
+    relying on the other annotation for interpretation.
+12. PART 2 STEP E closes with [C-44 PASS + C-39 PASS: production-site annotation + inline arrow]:
+    Required output -- emit exactly:
+      Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason] -> topic namespace
+    [C-44 PASS: forward-declaration arrow inline on verdict line, naming external consumer]
+
+======================================================================
+PART 1 -- ANALYTICAL RECORD  (internal -- not for team use)
+======================================================================
+
+==== STEP 0: INERTIA ANCHOR  (~30 words) ====
+
+Before the inventory: what is the team doing today if {{topic}} does not ship?
+State the status-quo alternative in one sentence. This is the inertia competitor.
+
+==== STEP 1: ARTIFACT INVENTORY  (~150 words) ====
+
+| Artifact | Namespace | Date | Signal Carried | Inertia Relevant? |
+|----------|-----------|------|----------------|-------------------|
+(Inertia Relevant: does this artifact speak to the comparison between {{topic}} and
+the status-quo alternative -- competitors, benchmarks, usage data, mechanism evidence?
+Mark yes / no.)
+
+Empty namespaces (scout, draft, review, flow, trace, prove, listen, program, topic):
+  list each -- expected gap or meaningful blind spot?
+
+Inertia-relevant artifact count (from column above):
+  1 or more -> staleness threshold = 14 days
+  0         -> staleness threshold = 30 days
+
+==== STEP 2: DIMENSION ANALYSIS -- CAUSAL GAP FIRST  (~540 words) ====
+
+Analysis order: CAUSAL GAP -> SEQUENCE -> COHERENCE -> STALENESS.
+For each: cite artifacts by name, severity internally (not a gate), coaching
+observation, one concrete next action if flagged.
+
+### CAUSAL GAP
+
+Inertia-relevant pool: [list every artifact tagged yes in Step 1].
+Evaluate mechanism evidence from this pool only.
+
+Inertia anchor: [restate Step 0 in one phrase].
+
+If pool is EMPTY:
+  Mechanism verdict is absent by default. State explicitly. Name what artifact types
+  would populate the pool. Do not draw on non-pool artifacts.
+
+If pool is NON-EMPTY:
+  Is there evidence for the pathway from {{topic}} to its claimed outcome, specifically
+  better than the status-quo alternative? State: present / partial / absent.
+
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+[MECHANISM VERDICT: present / partial / absent -- key gap if any: ___]
+<- SEQUENCE: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
+<- PART 2 STEP A: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
+
+### SEQUENCE
+
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from above -- paste verbatim]"
+
+Cite 2+ artifacts with dates. Did discovery precede specification?
+Read ordering through mechanism lens: did inertia-relevant pool artifacts appear in
+the discovery phase, or did the team specify before mechanism evidence existed?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Pre-specification gap: [YES -- mechanism gap existed before earliest spec artifact /
+  NO -- mechanism evidence was present when team committed to spec]
+<- STEP 3: Required input -- do not re-derive: Pre-specification gap. Consume by label.
+<- PART 2 STEP C SEQUENCE: Required input -- do not re-derive: Pre-specification gap.
+
+### COHERENCE
+
+Name 2+ signals on a specific claim: aligned / contradicting / inconclusive.
+For each contradiction: name the two signals, state the specific disagreement, tag
+whether mechanism-relevant.
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-relevant contradiction: [YES -- name the contradiction and inertia-pool artifact /
+  NO -- no contradiction involves inertia-pool signals]
+<- STEP 3: Required input -- do not re-derive: Mechanism-relevant contradiction. Consume by label.
+<- PART 2 STEP C COHERENCE: Required input -- do not re-derive: Mechanism-relevant contradiction.
+
+### STALENESS
+
+Apply threshold from Step 1 (14 or 30 days). Inertia-pool artifacts inside / outside window?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-stale: [YES -- name inertia-pool artifact(s) outside threshold /
+  NO -- all inertia-pool artifacts within threshold]
+<- STEP 3: Required input -- do not re-derive: Mechanism-stale. Consume by label.
+<- PART 2 STEP C STALENESS: Required input -- do not re-derive: Mechanism-stale.
+
+==== STEP 3: CROSS-DIMENSION PATTERN  (~90 words) ====
+
+Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+Required input -- do not re-derive: Mechanism-stale from STALENESS
+Pool status: [empty / thin / adequate -- from CAUSAL GAP]
+[C-43 PASS: three independent per-input annotations at this 3-input consuming step]
+
+From these named outputs:
+- Pre-specification gap YES + thin/empty pool -> "Commitment before evidence"
+- Mechanism-stale YES + partial verdict -> "Stale mechanism comparison"
+- Mechanism-relevant contradiction YES + partial/absent verdict -> "Mechanism contradiction"
+- Empty pool -> "Empty inertia pool"
+- No shared root -> "Isolated flags" or "none"
+
+Root pattern: [SHORT NAME -- drawn from named outputs; do not describe in prose only]
+-> PART 2 STEP B: Required input -- do not re-derive: Root pattern. Reference by label.
+-> PART 2 STEP C per-dim: Required input -- do not re-derive: Root pattern.
+-> PART 2 STEP D: Required input -- do not re-derive: Root pattern. Reference by label.
+
+======================================================================
+PART 2 -- TEAM COACHING REPORT  (advisory -- no severity labels)
+======================================================================
+
+==== STEP A: INERTIA CASE STRENGTH  (~100 words) ====
+
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from PART 1 -- paste verbatim]"
+
+Based on that verdict and the full artifact record for {{topic}}, is the case
+that it beats doing nothing:
+  [ ] Clearly built -- mechanism evidence present, status-quo comparison addressed
+  [ ] Partially built -- some evidence exists but specific gaps remain; name the key one
+  [ ] Still open -- mechanism or comparison not established in the artifact record
+
+State which applies. Advisory -- not a gate.
+
+Inertia case: [BUILT / PARTIAL / OPEN + one-phrase reason]
+-> STEP E: Required input -- do not re-derive: Inertia case. Consume by label.
+
+==== STEP B: DRAFT READINESS  (~75 words) ====
+
+Required input -- do not re-derive: Root pattern from STEP 3
+
+From Part 1: which dimensions look clean, which have something worth noticing?
+If Root pattern is not "none" or "Isolated flags": name the Root pattern explicitly
+before individual observations -- the team sees the cross-dimension shape first.
+Label: [DRAFT -- to be confirmed after STEP D and finalized in STEP E]
+
+==== STEP C: DIMENSION OBSERVATIONS  (~340 words) ====
+
+CAUSAL GAP-first. Advisory. No severity, scores, or gates.
+Per-dimension: state Root pattern contribution and close with STEP C drift binary.
+
+CAUSAL GAP: [coaching observation -- pool status; if empty, name artifact types needed;
+  if non-empty, note what evidence exists and what is missing]
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [CAUSAL GAP contributed to Root pattern: "[label from STEP 3]"
+    / CAUSAL GAP is an isolated flag]
+  STEP C drift: [CLOSED -- CAUSAL GAP coaching aligns with Root pattern "[label]" /
+    OPEN -- CAUSAL GAP coaching diverges; reason: ...]
+  If flagged -> suggested next step:
+
+SEQUENCE: [coaching observation]
+  Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  [C-43 PASS: two independent per-input annotations at this 2-input consuming step]
+  Root pattern contribution: [SEQUENCE contributed to Root pattern: "[label]"
+    / SEQUENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+COHERENCE: [coaching observation]
+  Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  [C-43 PASS: two independent per-input annotations at this 2-input consuming step]
+  Root pattern contribution: [COHERENCE contributed to Root pattern: "[label]"
+    / COHERENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+STALENESS: [coaching observation]
+  Required input -- do not re-derive: Mechanism-stale from STALENESS
+  Required input -- do not re-derive: Root pattern from STEP 3
+  [C-43 PASS: two independent per-input annotations at this 2-input consuming step]
+  Root pattern contribution: [STALENESS contributed to Root pattern: "[label]"
+    / STALENESS is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+==== STEP D: CONFIRMED READINESS  (~90 words) ====
+
+Required input -- do not re-derive: Root pattern from STEP 3
+Required input -- do not re-derive: STEP C drift -- CAUSAL GAP from PART 2 STEP C
+Required input -- do not re-derive: STEP C drift -- SEQUENCE from PART 2 STEP C
+Required input -- do not re-derive: STEP C drift -- COHERENCE from PART 2 STEP C
+Required input -- do not re-derive: STEP C drift -- STALENESS from PART 2 STEP C
+[C-43 PASS: five independent per-input annotations at this 5-input convergence step;
+ each annotation is independently parseable without proximity dependency]
+
+Drift summary (consume each from STEP C labels above -- do not re-infer from prose):
+  CAUSAL GAP: [CLOSED / OPEN]
+  SEQUENCE:   [CLOSED / OPEN]
+  COHERENCE:  [CLOSED / OPEN]
+  STALENESS:  [CLOSED / OPEN]
+
+If all CLOSED: per-dimension coaching confirmed Root pattern without divergence.
+If any OPEN: name dimension(s) and reason for divergence.
+
+Confirmed readiness: [READY -- all drift CLOSED, mechanism evidence sufficient /
+  CONDITIONALLY READY -- [list conditions]; one more loop recommended on [dimension] /
+  NOT READY -- [dimension] OPEN; mechanism or timing gap must be addressed]
+-> STEP E: Required input -- do not re-derive: Confirmed readiness. Consume by label.
+
+==== STEP E: TEAM READINESS POSITION  (~90 words) ====
+
+Required input -- do not re-derive: Confirmed readiness from STEP D
+Required input -- do not re-derive: Inertia case from STEP A
+
+From the two grounded inputs above -- state the team-facing position:
+
+1. Dimensions clean vs. flagged (count)
+2. Most useful thing to address before committing
+3. Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY]
+4. Inertia case: [BUILT / PARTIAL / OPEN]
+5. Overall read: proceed / loop once more / investigate further
+
+Required output -- emit exactly:
+  Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason] -> topic namespace
+[C-44 PASS: forward-declaration arrow inline on verdict line, naming external consumer by identity]
+```
 
 ---
 
-**STEP 7 — Cross-dimension pattern**
+## V-05 — All Three Combined: C-43 + C-44 + C-45, Alternative Meta-Rule Phrasing
 
-If two or more dimensions were flagged, identify the root weakness they share. Name it explicitly. Do not recap the individual flags.
-
----
-
-**STEP 8 — Missing namespace inventory**
-
-List every namespace with no artifact. For each, characterize: expected at this topic's stage, or a meaningful blind spot? One sentence per namespace.
+**Axes**: C-43 PASS + C-44 PASS + C-45 PASS. Same structural properties as V-04 but with the ARCHITECTURE meta-rule phrased as a positive parseable-completeness contract (forward-stating the requirement) rather than as a negative-plus-positive form. Specifically: the meta-rule in V-05 reads "Pipeline-wide: each per-input annotation must be parseable as a complete `Required input -- do not re-derive: [label]` statement in isolation — without reading adjacent annotations or relying on a shared header for scope" rather than V-04's "each annotation parseable as a complete statement without relying on proximity to other annotations."
+**Hypothesis**: C-45 PASS requires the meta-rule to name the independence standard (parseable completeness) as the governing property for multi-input consuming steps. V-05 tests whether alternative phrasings of that standard — specifically a forward-statement ("each annotation must be parseable in isolation") rather than a negative-plus-positive form ("independence standard; not merely non-grouping") — still satisfy C-45 when the core property is preserved. The structural outcome is identical to V-04: all three new criteria pass. The question is whether the meta-rule's phrasing variation is semantically equivalent for C-45 purposes, or whether the specific "independence standard" terminology is required.
 
 ---
 
-**Report structure:**
-1. Staleness threshold block (Step 2 — threshold and calibration rationale declared together)
-2. Internal severity table (Step 3 — bounded INTERNAL ANALYSIS BLOCK, not a gate)
-3. Draft readiness summary (Step 4 — marked DRAFT)
-4. CAUSAL GAP section — [PREDICTION] / Analysis / [RESOLUTION]
-5. SEQUENCE section — [PREDICTION] / Analysis / [RESOLUTION]
-6. COHERENCE section — [PREDICTION] / Analysis / [RESOLUTION]
-7. STALENESS section — [PREDICTION] / Analysis / [RESOLUTION], threshold restated
-8. Readiness summary (Step 6)
-9. Cross-dimension pattern (if two or more flagged)
-10. Missing namespace inventory
+```markdown
+Signal-check for {{topic}}.
+Advisory -- observations the team can decide to act on, not a gate.
+
+ARCHITECTURE -- Named-Output Pipeline
+
+Pipeline-wide: each per-input annotation must be parseable as a complete
+"Required input -- do not re-derive: [label]" statement in isolation -- without
+reading adjacent annotations or relying on a shared header for scope.
+Grouping is a symptom of failing this standard, not the standard itself.
+[C-45 PASS: meta-rule states parseable-completeness-in-isolation as the positive standard]
+
+| Named Output                                 | Produced by              | Consumed by                                                                                    |
+|----------------------------------------------|--------------------------|------------------------------------------------------------------------------------------------|
+| [MECHANISM VERDICT]                          | CAUSAL GAP               | SEQUENCE (verbatim); PART 2 STEP A (verbatim)                                                  |
+| Pre-specification gap: YES/NO                | SEQUENCE                 | STEP 3 (by label); PART 2 STEP C SEQUENCE (by label)                                           |
+| Mechanism-relevant contradiction: YES/NO     | COHERENCE                | STEP 3 (by label); PART 2 STEP C COHERENCE (by label)                                          |
+| Mechanism-stale: YES/NO                      | STALENESS                | STEP 3 (by label); PART 2 STEP C STALENESS (by label)                                          |
+| Root pattern: [label]                        | STEP 3                   | PART 2 STEP B (by name); PART 2 STEP C per-dim (by name); PART 2 STEP D (by name)              |
+| STEP C drift -- CAUSAL GAP: CLOSED/OPEN      | PART 2 STEP C CAUSAL GAP | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- SEQUENCE: CLOSED/OPEN        | PART 2 STEP C SEQUENCE   | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- COHERENCE: CLOSED/OPEN       | PART 2 STEP C COHERENCE  | PART 2 STEP D (by label)                                                                       |
+| STEP C drift -- STALENESS: CLOSED/OPEN       | PART 2 STEP C STALENESS  | PART 2 STEP D (by label)                                                                       |
+| Inertia case: BUILT/PARTIAL/OPEN             | PART 2 STEP A            | PART 2 STEP E (by label)                                                                       |
+| Confirmed readiness: READY/COND./NOT READY   | PART 2 STEP D            | PART 2 STEP E (by label)                                                                       |
+| Terminal readiness: PROCEED/LOOP/INVESTIGATE | PART 2 STEP E            | topic namespace (by label)                                                                     |
+
+Two parts in order. Do not merge.
+PART 1 -- ANALYTICAL RECORD: internal. Severity, mechanism analysis, ranked flags.
+PART 2 -- TEAM COACHING REPORT: advisory observations. No severity labels or scores.
+
+Locked structural features (architectural -- not instructional):
+1. Artifact inventory includes "Inertia Relevant?" column (yes / no per artifact).
+2. CAUSAL GAP opens with "Inertia-relevant pool: [list]" and evaluates that pool only.
+   Empty pool -> verdict absent by default; name what's needed.
+   Non-empty pool -> evaluate; state present / partial / absent.
+3. CAUSAL GAP ends with [MECHANISM VERDICT: ...]. SEQUENCE quotes it verbatim.
+4. SEQUENCE closes with: Pre-specification gap: [YES / NO + reason].
+5. PART 2 opens with STEP A: INERTIA CASE STRENGTH as a dedicated named section. STEP A
+   opens by quoting the MECHANISM VERDICT verbatim and closes with:
+   Inertia case: [BUILT / PARTIAL / OPEN + reason] -> STEP E (forward arrow).
+6. COHERENCE closes with: Mechanism-relevant contradiction: [YES / NO + reason].
+7. STALENESS closes with: Mechanism-stale: [YES / NO + reason].
+8. STEP 3 closes with: Root pattern: [SHORT NAME].
+9. PART 2 STEP C each dimension closes with STEP C drift: CLOSED/OPEN. PART 2 STEP D
+   opens by consuming all five named inputs by label -- one independently parseable
+   per-input annotation each (pipeline-wide standard applies at this 5-input step).
+10. PART 2 STEP D closes with:
+    Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY] -> STEP E (forward arrow).
+11. PART 2 STEP E opens with two independently parseable per-input prohibitions (C-36 PASS):
+    Required input -- do not re-derive: Confirmed readiness from STEP D
+    Required input -- do not re-derive: Inertia case from STEP A
+    Each annotation stands alone: readable in isolation, no shared header, no proximity reliance.
+12. PART 2 STEP E closes with [C-44 PASS + C-39 PASS]:
+    Required output -- emit exactly:
+      Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason] -> topic namespace
+    [C-44 PASS: external consumer identity declared inline on verdict line at production site]
+
+======================================================================
+PART 1 -- ANALYTICAL RECORD  (internal -- not for team use)
+======================================================================
+
+==== STEP 0: INERTIA ANCHOR  (~30 words) ====
+
+Before the inventory: what is the team doing today if {{topic}} does not ship?
+State the status-quo alternative in one sentence. This is the inertia competitor.
+
+==== STEP 1: ARTIFACT INVENTORY  (~150 words) ====
+
+| Artifact | Namespace | Date | Signal Carried | Inertia Relevant? |
+|----------|-----------|------|----------------|-------------------|
+(Inertia Relevant: does this artifact speak to the comparison between {{topic}} and
+the status-quo alternative -- competitors, benchmarks, usage data, mechanism evidence?
+Mark yes / no.)
+
+Empty namespaces (scout, draft, review, flow, trace, prove, listen, program, topic):
+  list each -- expected gap or meaningful blind spot?
+
+Inertia-relevant artifact count (from column above):
+  1 or more -> staleness threshold = 14 days
+  0         -> staleness threshold = 30 days
+
+==== STEP 2: DIMENSION ANALYSIS -- CAUSAL GAP FIRST  (~540 words) ====
+
+Analysis order: CAUSAL GAP -> SEQUENCE -> COHERENCE -> STALENESS.
+For each: cite artifacts by name, severity internally (not a gate), coaching
+observation, one concrete next action if flagged.
+
+### CAUSAL GAP
+
+Inertia-relevant pool: [list every artifact tagged yes in Step 1].
+Evaluate mechanism evidence from this pool only.
+
+Inertia anchor: [restate Step 0 in one phrase].
+
+If pool is EMPTY:
+  Mechanism verdict is absent by default. State explicitly. Name what artifact types
+  would populate the pool. Do not draw on non-pool artifacts.
+
+If pool is NON-EMPTY:
+  Is there evidence for the pathway from {{topic}} to its claimed outcome, specifically
+  better than the status-quo alternative? State: present / partial / absent.
 
-Format: Markdown. Save to `simulations/signal/check/{topic}-check-{date}.md`.
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
 
----
+[MECHANISM VERDICT: present / partial / absent -- key gap if any: ___]
+<- SEQUENCE: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
+<- PART 2 STEP A: Required input -- do not re-derive: [MECHANISM VERDICT]. Quote verbatim.
 
-## V-04 — Combo: Conditional Census + Bidirectional Register Firewall
+### SEQUENCE
 
-**Hypothesis:** V-01's conditional census and V-02's bidirectional register firewall are independent structural additions. V-04 tests whether they layer cleanly — specifically, whether the census matrix (pre-analysis, gated on inventory depth) and the bidirectional prohibition (declared at block exit in Step 4 and at coaching entry in Step 6) create coherent report structure without visual noise or redundancy. The census provides the evidentiary foundation; the register firewall enforces clean separation between internal analysis and team-facing narrative. Both must operate simultaneously in a single report. If the combo is visually noisy or structurally awkward, V-05 will need to absorb it differently.
-
----
-
-You are running `/signal:check` for the topic: **{topic}**
-
-Coaching register throughout — surface observations, name next steps, let the team decide. Do not block the team or render verdicts.
-
----
-
-**STEP 1 — Inventory**
-
-Use Glob and Read to find every signal artifact under `simulations/` for this topic. Record each: namespace, skill name, creation date (from filename or frontmatter). List all artifacts found.
-
----
-
-**STEP 2 — Evidence census (inventory-depth-gated)**
-
-Count total artifacts found and the number of distinct namespaces with at least one artifact.
-
-**Gate check:**
-- Artifacts span **2 or more namespaces**, OR **total artifact count ≥ 3** → build the census matrix.
-- Total artifact count is **1 or 2 across all namespaces** → inline list only (census matrix exempt).
-
-**Census matrix (when gate condition is met):**
-
-| Namespace | Artifacts present | Dates | Count |
-|-----------|-------------------|-------|-------|
-| scout     | [list] or none    | ...   | n     |
-| draft     | [list] or none    | ...   | n     |
-| review    | [list] or none    | ...   | n     |
-| flow      | [list] or none    | ...   | n     |
-| trace     | [list] or none    | ...   | n     |
-| prove     | [list] or none    | ...   | n     |
-| listen    | [list] or none    | ...   | n     |
-| program   | [list] or none    | ...   | n     |
-| topic     | [list] or none    | ...   | n     |
-
-After the matrix: state total artifact count, date range, namespaces with zero artifacts.
-
-The census is the shared reference for all dimension findings below. Dimension sections cite census entries directly.
-
-**Inline list (when gate condition is NOT met):**
-
-- `[artifact-name]` — namespace: X — date: YYYY-MM-DD
-
----
-
-**STEP 3 — Staleness calibration with decision-velocity rationale**
-
-Examine the census or inventory. If any artifact is competitive or market-facing (listen namespace, or filename containing "competitor" or "market"):
-
-> **Threshold: 14 days**
-> **Calibration rationale:** Inventory contains competitive or market signals, which track a moving landscape. Competitive positioning changes faster than structural signals (size, feasibility) — decisions on stale competitive data carry higher risk because the competitive environment can shift within days. 14 days reflects this higher decision velocity.
-
-Otherwise:
-
-> **Threshold: 30 days**
-> **Calibration rationale:** No competitive or market signals in inventory. Evidence types present have lower time-sensitivity — they reflect stable structural facts rather than moving dynamics. 30 days is proportionate to the decision velocity at this topic stage.
-
----
-
-**STEP 4 — Internal severity table**
-
-Before writing any team-facing narrative, populate this internal analysis table from the census or inventory.
-
-> **--- INTERNAL ANALYSIS BLOCK ---**
-> **Severity ratings below are for your analytical reference only — they are not team-facing output and not blocking gates.**
-> **The coaching narrative in Step 6 is what the team reads.**
-> **This table structures your analysis before you write it.**
-
-| Dimension | Severity (internal) | Census/inventory evidence summary | Pre-analysis expectation |
-|-----------|---------------------|------------------------------------|--------------------------|
-| CAUSAL GAP | clean / gap / concern | [key entries] | CLEAN / FLAG |
-| SEQUENCE | clean / gap / concern | [key entries] | CLEAN / FLAG |
-| COHERENCE | clean / gap / concern | [key entries] | CLEAN / FLAG |
-| STALENESS | clean / gap / concern | [key entries] | CLEAN / FLAG |
-
-**Severity definitions — internal reference only:**
-- **clean** — evidence is present and sufficient
-- **gap** — evidence is missing or thin; addressable before commitment
-- **concern** — evidence is absent in a high-stakes area; explicit team discussion warranted
-
-> **The tier labels (clean / gap / concern) end here.**
-> **They informed your analysis above and do not cross into the coaching narrative below.**
-
-> **--- END INTERNAL ANALYSIS BLOCK ---**
-
----
-
-**STEP 5 — Draft readiness summary (before analysis)**
-
-Based on the census or inventory and the internal severity table, write a 2–3 sentence draft readiness assessment. State which dimensions you expect to confirm clean and which to flag. Mark it:
-
-> **[DRAFT — to be confirmed or revised per dimension below]**
-
-For each dimension, state the pre-analysis prediction:
-- CAUSAL GAP: CLEAN or FLAG?
-- SEQUENCE: CLEAN or FLAG?
-- COHERENCE: CLEAN or FLAG?
-- STALENESS: CLEAN or FLAG?
-
----
-
-**STEP 6 — Dimension narrative (coaching register)**
-
-> **Register notice — this step is team-facing coaching only.**
-> **Severity tier labels (clean / gap / concern) do not appear in this step or anywhere after it.**
-> **Translate internal findings into observation language: describe the evidence, not the tier.**
-
-Analyze in this order. For each: write the finding with artifact evidence (cite census entries by name when a matrix was built), state CLEAN or FLAG, and if flagged, provide at least one next action in `/namespace:skill` format. Immediately after each dimension's conclusion — before the next dimension begins — write the inline lifecycle marker:
-
-> **[CONFIRMED]** — finding matches the Step 5 prediction for this dimension, or
-> **[REVISED — reason]** — state what differed and why.
-
----
-
-**CAUSAL GAP (analyze first)**
-
-*Coaching narrative — observation language only.*
-
-Two required sub-questions — both must be answered:
-
-1. Direct mechanism: Is there artifact evidence (in the census or inventory) that this feature causes the claimed outcome? Name specific entries if present; name the gap if not. Do not restate the hypothesis.
-
-2. Inertia check: Would doing nothing — or the current approach without this feature — also produce the claimed outcome? Cite any artifact addressing this. If none exist, flag the inertia gap explicitly even if the mechanism question looks clean.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:scout-inertia` to test whether the current approach already satisfies this need" or "Run `/signal:prove-hypothesis` to establish the causal link").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**SEQUENCE**
-
-*Coaching narrative — observation language only.*
-
-From the census or inventory: did discovery-namespace artifacts (scout, listen, prove) appear before specification-namespace artifacts (draft, program)? Cite artifact dates or filename order directly. No citation = no valid finding.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:scout-size` to establish a discovery baseline before advancing draft artifacts").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**COHERENCE**
-
-*Coaching narrative — observation language only.*
-
-From the census or inventory: identify at least two artifacts and state whether they agree or contradict on a specific claim. Impressions without named pairs are not findings.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:discover-compare` to reconcile the conflicting signals").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**STALENESS**
-
-*Coaching narrative — observation language only.*
-
-Apply the threshold from Step 3 — state it here: **[X days]** (because [one-phrase rationale recap]). List every artifact older than the threshold by name. For each, note whether it is the sole evidence for a key claim.
-
-State CLEAN or FLAG. If flagged, name a next action (e.g., "Run `/signal:discover-competitors` to refresh the competitive landscape").
-
-> **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**STEP 7 — Cross-dimension pattern**
-
-If two or more dimensions are flagged, identify the root weakness they share. Name it explicitly — reference specific census or inventory gaps to ground the diagnosis. Do not recap the individual flags.
-
----
-
-**STEP 8 — Final readiness summary**
-
-Review the four per-dimension lifecycle markers. Write a consolidated readiness summary. If any dimension was REVISED, the summary must incorporate those revisions.
-
----
-
-**STEP 9 — Namespace gap characterization**
-
-Take every namespace with zero artifacts from the census or inventory. For each, characterize: expected at this topic's stage, or a meaningful blind spot? One sentence per namespace.
-
----
-
-**Report structure:**
-1. Evidence census matrix (Step 2 — conditional on inventory depth) or inline artifact list
-2. Staleness threshold block (Step 3 — threshold and calibration rationale declared together)
-3. Internal severity table (Step 4 — bounded INTERNAL ANALYSIS BLOCK, cross-step prohibition declared at block exit)
-4. Draft readiness summary (Step 5 — marked DRAFT with per-dimension predictions)
-5. Register notice (Step 6 header)
-6. CAUSAL GAP section — coaching narrative (with CONFIRMED/REVISED marker)
-7. SEQUENCE section — coaching narrative (with CONFIRMED/REVISED marker)
-8. COHERENCE section — coaching narrative (with CONFIRMED/REVISED marker)
-9. STALENESS section — coaching narrative (with CONFIRMED/REVISED marker, threshold restated)
-10. Cross-dimension pattern (if two or more flagged)
-11. Final readiness summary
-12. Namespace gap characterization
-
-Format: Markdown. Save to `simulations/signal/check/{topic}-check-{date}.md`.
-
----
-
-## V-05 — Full v4 Synthesis
-
-**Hypothesis:** The synthesis variation for v4. Combines all five criteria that must simultaneously pass for a clean 100/100 under v4: conditional census gated by inventory depth (C-17), bidirectional register firewall with prohibition at block exit and coaching entry (C-16 sharpened), template-slot lifecycle with PREDICTION/ANALYSIS/RESOLUTION embedded in each dimension section grammar (C-13 sharpened), `/namespace:skill` command format for all next actions (C-14), and calibrated staleness threshold with decision-velocity mechanism (C-15). Builds on R3 V-04's baseline (the v3 100/100 synthesis) and adds the three new v4 axes. The severity table now populates both the PRE-ANALYSIS EXPECTATION column (feeding the PREDICTION slot in each dimension) and the census grounds the severity assessment — the evidentiary chain from inventory to severity to prediction to resolution is continuous and explicit at every step.
-
----
-
-You are running `/signal:check` for the topic: **{topic}**
-
-Coaching register throughout — surface observations, name next steps, let the team decide. Do not block the team or render verdicts.
-
----
-
-**STEP 1 — Inventory**
-
-Use Glob and Read to find every signal artifact under `simulations/` for this topic. Record each: namespace, skill name, creation date (from filename or frontmatter). List all artifacts found.
-
----
-
-**STEP 2 — Evidence census (inventory-depth-gated)**
-
-Count total artifacts found and the number of distinct namespaces with at least one artifact.
-
-**Gate check:**
-- Artifacts span **2 or more namespaces**, OR **total artifact count ≥ 3** → build the census matrix.
-- Total artifact count is **1 or 2 across all namespaces** → inline list only (census matrix exempt).
-
-**Census matrix (when gate condition is met):**
-
-| Namespace | Artifacts present | Dates | Count |
-|-----------|-------------------|-------|-------|
-| scout     | [list] or none    | ...   | n     |
-| draft     | [list] or none    | ...   | n     |
-| review    | [list] or none    | ...   | n     |
-| flow      | [list] or none    | ...   | n     |
-| trace     | [list] or none    | ...   | n     |
-| prove     | [list] or none    | ...   | n     |
-| listen    | [list] or none    | ...   | n     |
-| program   | [list] or none    | ...   | n     |
-| topic     | [list] or none    | ...   | n     |
-
-After the matrix: state total artifact count, date range (oldest to newest), namespaces with zero artifacts.
-
-The census is the shared reference for all dimension findings below. Dimension sections cite census entries directly.
-
-**Inline list (when gate condition is NOT met):**
-
-- `[artifact-name]` — namespace: X — date: YYYY-MM-DD
-
----
-
-**STEP 3 — Staleness calibration with decision-velocity rationale**
-
-Examine the census or inventory. If any artifact is competitive or market-facing (listen namespace, or filename containing "competitor" or "market"):
-
-> **Threshold: 14 days**
-> **Calibration rationale:** Inventory contains competitive or market signals, which track a moving landscape. Competitive positioning changes faster than structural signals (size, feasibility) — decisions on stale competitive data carry higher risk because the competitive environment can shift within days. 14 days reflects this higher decision velocity.
-
-Otherwise:
-
-> **Threshold: 30 days**
-> **Calibration rationale:** No competitive or market signals in inventory. Evidence types present have lower time-sensitivity — they reflect stable structural facts rather than moving dynamics. 30 days is proportionate to the decision velocity at this topic stage.
-
-Declare the threshold and full rationale together as a labeled block before proceeding.
-
----
-
-**STEP 4 — Internal severity table**
-
-Before writing any team-facing narrative, populate this internal analysis table from the census or inventory.
-
-> **--- INTERNAL ANALYSIS BLOCK ---**
-> **Severity ratings below are for your analytical reference only — they are not team-facing output and not blocking gates.**
-> **The coaching narrative in Step 6 is what the team reads.**
-> **The PREDICTION slot in each dimension section draws directly from the Pre-analysis expectation column.**
-
-| Dimension | Severity (internal) | Census/inventory evidence | Pre-analysis expectation |
-|-----------|---------------------|---------------------------|--------------------------|
-| CAUSAL GAP | clean / gap / concern | [key census or inventory entries] | CLEAN / FLAG |
-| SEQUENCE | clean / gap / concern | [key census or inventory entries] | CLEAN / FLAG |
-| COHERENCE | clean / gap / concern | [key census or inventory entries] | CLEAN / FLAG |
-| STALENESS | clean / gap / concern | [key census or inventory entries] | CLEAN / FLAG |
-
-**Severity definitions — internal reference only:**
-- **clean** — evidence is present and sufficient
-- **gap** — evidence is missing or thin; addressable before commitment
-- **concern** — evidence is absent in a high-stakes area; explicit team discussion warranted
-
-> **The tier labels (clean / gap / concern) end here.**
-> **They inform the PREDICTION slot in each dimension section and do not cross into the coaching narrative.**
-
-> **--- END INTERNAL ANALYSIS BLOCK ---**
-
----
-
-**STEP 5 — Draft readiness summary (before analysis)**
-
-Based on the census or inventory and the internal severity table, write a 2–3 sentence draft readiness assessment. Mark it:
-
-> **[DRAFT — census-derived, to be confirmed or revised per dimension below]**
-
----
-
-**STEP 6 — Dimension analysis**
-
-Each dimension follows a fixed three-part structure: PREDICTION → Coaching narrative → RESOLUTION.
-
-> **Register notice — the coaching narrative in each section is team-facing only.**
-> **Severity tier labels (clean / gap / concern) do not appear in any coaching narrative section or anywhere after this notice.**
-> **Translate internal findings into observation language: describe what the evidence shows, not what tier you assigned.**
-
-The PREDICTION slot is drawn from the Pre-analysis expectation column in Step 4. The RESOLUTION slot is the per-dimension lifecycle marker — it must appear immediately after the analysis ends, before the next dimension begins. Post-hoc assembly of resolutions after all dimensions is not valid.
-
----
-
-**CAUSAL GAP (analyze first)**
-
-> **[PREDICTION]** — From Step 4 Pre-analysis expectation: CLEAN or FLAG? (State what the severity assessment implies in one phrase.)
-
-*Coaching narrative — observation language only:*
-
-This is the highest-stakes dimension. Two required sub-questions — both must be answered:
-
-1. Direct mechanism: Is there artifact evidence (in the census or inventory) that this feature causes the claimed outcome? Name specific entries if present; name the gap if not. Do not restate the hypothesis.
-
-2. Inertia check: Would doing nothing — or the current approach without this feature — also produce the claimed outcome? This is the question teams most commonly skip. Cite any artifact addressing this. If none exist, flag the inertia gap explicitly even if the mechanism question looks clean.
-
-State CLEAN or FLAG. If flagged, name a next action in `/namespace:skill` format (e.g., "Run `/signal:scout-inertia` to test whether the current approach already satisfies this need" or "Run `/signal:prove-hypothesis` to establish the causal link").
-
-> **[RESOLUTION]** — **[CONFIRMED]** (prediction held) or **[REVISED — reason]** (state what differed and why)
-
----
-
-**SEQUENCE**
-
-> **[PREDICTION]** — From Step 4 Pre-analysis expectation: CLEAN or FLAG?
-
-*Coaching narrative — observation language only:*
-
-From the census or inventory: did discovery-namespace artifacts (scout, listen, prove) predate specification-namespace artifacts (draft, program)? Cite artifact dates or filename order directly. No citation = no valid finding.
-
-State CLEAN or FLAG. If flagged, name a next action in `/namespace:skill` format (e.g., "Run `/signal:scout-size` to establish a discovery baseline before advancing draft artifacts").
-
-> **[RESOLUTION]** — **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**COHERENCE**
-
-> **[PREDICTION]** — From Step 4 Pre-analysis expectation: CLEAN or FLAG?
-
-*Coaching narrative — observation language only:*
-
-From the census or inventory: identify at least two specific artifacts and state whether they agree or contradict on a specific claim. Impressions without named signal pairs are not findings.
-
-State CLEAN or FLAG. If flagged, name a next action in `/namespace:skill` format (e.g., "Run `/signal:discover-compare` to reconcile the conflicting signals").
-
-> **[RESOLUTION]** — **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**STALENESS**
-
-> **[PREDICTION]** — From Step 4 Pre-analysis expectation: CLEAN or FLAG?
-
-*Coaching narrative — observation language only:*
-
-Apply the threshold from Step 3 — state it here: **[X days]** (because [one-phrase rationale recap]). List every artifact older than this threshold by name. For each, note whether it is the sole evidence for a key claim — that matters more than age alone.
-
-State CLEAN or FLAG. If flagged, name a next action in `/namespace:skill` format (e.g., "Run `/signal:discover-competitors` to refresh the competitive landscape").
-
-> **[RESOLUTION]** — **[CONFIRMED]** or **[REVISED — reason]**
-
----
-
-**STEP 7 — Cross-dimension pattern**
-
-If two or more dimensions were flagged, identify the root weakness they share. Name it explicitly — reference specific census or inventory gaps to ground the diagnosis. Example: "CAUSAL GAP and SEQUENCE both trace to a single root: the topic has size signals but no mechanism evidence — no prove or validate artifacts exist across any namespace." Do not recap the individual flags.
-
----
-
-**STEP 8 — Final readiness summary**
-
-Review the four per-dimension RESOLUTION markers. Write a consolidated readiness summary that reflects the full analysis. If any dimension was REVISED, the summary must incorporate those revisions — it cannot repeat the Step 5 draft verbatim.
-
----
-
-**STEP 9 — Namespace gap characterization**
-
-Take every namespace with zero artifacts from the census or inventory. For each, characterize: expected at this topic's stage, or a meaningful blind spot? One sentence per namespace.
-
----
-
-**Report structure:**
-1. Evidence census matrix (Step 2 — conditional on inventory depth) or inline artifact list
-2. Staleness threshold block (Step 3 — threshold and calibration rationale declared together)
-3. Internal severity table (Step 4 — bounded INTERNAL ANALYSIS BLOCK; tier labels end at block exit)
-4. Draft readiness summary (Step 5 — marked DRAFT, census-derived)
-5. Register notice (Step 6 header — coaching only, tier labels prohibited throughout)
-6. CAUSAL GAP section — [PREDICTION] / coaching narrative / [RESOLUTION]
-7. SEQUENCE section — [PREDICTION] / coaching narrative / [RESOLUTION]
-8. COHERENCE section — [PREDICTION] / coaching narrative / [RESOLUTION]
-9. STALENESS section — [PREDICTION] / coaching narrative / [RESOLUTION], threshold restated
-10. Cross-dimension pattern (if two or more flagged)
-11. Final readiness summary
-12. Namespace gap characterization
-
-Format: Markdown. Save to `simulations/signal/check/{topic}-check-{date}.md`.
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from above -- paste verbatim]"
+
+Cite 2+ artifacts with dates. Did discovery precede specification?
+Read ordering through mechanism lens: did inertia-relevant pool artifacts appear in
+the discovery phase, or did the team specify before mechanism evidence existed?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Pre-specification gap: [YES -- mechanism gap existed before earliest spec artifact /
+  NO -- mechanism evidence was present when team committed to spec]
+<- STEP 3: Required input -- do not re-derive: Pre-specification gap. Consume by label.
+<- PART 2 STEP C SEQUENCE: Required input -- do not re-derive: Pre-specification gap.
+
+### COHERENCE
+
+Name 2+ signals on a specific claim: aligned / contradicting / inconclusive.
+For each contradiction: name the two signals, state the specific disagreement, tag
+whether mechanism-relevant.
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-relevant contradiction: [YES -- name the contradiction and inertia-pool artifact /
+  NO -- no contradiction involves inertia-pool signals]
+<- STEP 3: Required input -- do not re-derive: Mechanism-relevant contradiction. Consume by label.
+<- PART 2 STEP C COHERENCE: Required input -- do not re-derive: Mechanism-relevant contradiction.
+
+### STALENESS
+
+Apply threshold from Step 1 (14 or 30 days). Inertia-pool artifacts inside / outside window?
+(internal: green / yellow / red)
+Observation: ...
+If yellow or red -> next action:
+
+Mechanism-stale: [YES -- name inertia-pool artifact(s) outside threshold /
+  NO -- all inertia-pool artifacts within threshold]
+<- STEP 3: Required input -- do not re-derive: Mechanism-stale. Consume by label.
+<- PART 2 STEP C STALENESS: Required input -- do not re-derive: Mechanism-stale.
+
+==== STEP 3: CROSS-DIMENSION PATTERN  (~90 words) ====
+
+Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+Required input -- do not re-derive: Mechanism-stale from STALENESS
+Pool status: [empty / thin / adequate -- from CAUSAL GAP]
+
+From these named outputs:
+- Pre-specification gap YES + thin/empty pool -> "Commitment before evidence"
+- Mechanism-stale YES + partial verdict -> "Stale mechanism comparison"
+- Mechanism-relevant contradiction YES + partial/absent verdict -> "Mechanism contradiction"
+- Empty pool -> "Empty inertia pool"
+- No shared root -> "Isolated flags" or "none"
+
+Root pattern: [SHORT NAME -- drawn from named outputs; do not describe in prose only]
+-> PART 2 STEP B: Required input -- do not re-derive: Root pattern. Reference by label.
+-> PART 2 STEP C per-dim: Required input -- do not re-derive: Root pattern.
+-> PART 2 STEP D: Required input -- do not re-derive: Root pattern. Reference by label.
+
+======================================================================
+PART 2 -- TEAM COACHING REPORT  (advisory -- no severity labels)
+======================================================================
+
+==== STEP A: INERTIA CASE STRENGTH  (~100 words) ====
+
+Required input -- do not re-derive: [MECHANISM VERDICT]
+Quoting mechanism verdict: "[MECHANISM VERDICT from PART 1 -- paste verbatim]"
+
+Based on that verdict and the full artifact record for {{topic}}, is the case
+that it beats doing nothing:
+  [ ] Clearly built -- mechanism evidence present, status-quo comparison addressed
+  [ ] Partially built -- some evidence exists but specific gaps remain; name the key one
+  [ ] Still open -- mechanism or comparison not established in the artifact record
+
+State which applies. Advisory -- not a gate.
+
+Inertia case: [BUILT / PARTIAL / OPEN + one-phrase reason]
+-> STEP E: Required input -- do not re-derive: Inertia case. Consume by label.
+
+==== STEP B: DRAFT READINESS  (~75 words) ====
+
+Required input -- do not re-derive: Root pattern from STEP 3
+
+From Part 1: which dimensions look clean, which have something worth noticing?
+If Root pattern is not "none" or "Isolated flags": name the Root pattern explicitly
+before individual observations -- the team sees the cross-dimension shape first.
+Label: [DRAFT -- to be confirmed after STEP D and finalized in STEP E]
+
+==== STEP C: DIMENSION OBSERVATIONS  (~340 words) ====
+
+CAUSAL GAP-first. Advisory. No severity, scores, or gates.
+Per-dimension: state Root pattern contribution and close with STEP C drift binary.
+
+CAUSAL GAP: [coaching observation -- pool status; if empty, name artifact types needed;
+  if non-empty, note what evidence exists and what is missing]
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [CAUSAL GAP contributed to Root pattern: "[label from STEP 3]"
+    / CAUSAL GAP is an isolated flag]
+  STEP C drift: [CLOSED -- CAUSAL GAP coaching aligns with Root pattern "[label]" /
+    OPEN -- CAUSAL GAP coaching diverges; reason: ...]
+  If flagged -> suggested next step:
+
+SEQUENCE: [coaching observation]
+  Required input -- do not re-derive: Pre-specification gap from SEQUENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [SEQUENCE contributed to Root pattern: "[label]"
+    / SEQUENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+COHERENCE: [coaching observation]
+  Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [COHERENCE contributed to Root pattern: "[label]"
+    / COHERENCE is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+STALENESS: [coaching observation]
+  Required input -- do not re-derive: Mechanism-stale from STALENESS
+  Required input -- do not re-derive: Root pattern from STEP 3
+  Root pattern contribution: [STALENESS contributed to Root pattern: "[label]"
+    / STALENESS is an isolated flag]
+  STEP C drift: [CLOSED / OPEN + reason]
+  If flagged -> suggested next step:
+
+==== STEP D: CONFIRMED READINESS  (~90 words) ====
+
+Required input -- do not re-derive: Root pattern from STEP 3
+Required input -- do not re-derive: STEP C drift -- CAUSAL GAP from PART 2 STEP C
+Required input -- do not re-derive: STEP C drift -- SEQUENCE from PART 2 STEP C
+Required input -- do not re-derive: STEP C drift -- COHERENCE from PART 2 STEP C
+Required input -- do not re-derive: STEP C drift -- STALENESS from PART 2 STEP C
+(each annotation parseable in isolation -- no shared header, no proximity reliance)
+
+Drift summary (consume each from STEP C labels above -- do not re-infer from prose):
+  CAUSAL GAP: [CLOSED / OPEN]
+  SEQUENCE:   [CLOSED / OPEN]
+  COHERENCE:  [CLOSED / OPEN]
+  STALENESS:  [CLOSED / OPEN]
+
+If all CLOSED: per-dimension coaching confirmed Root pattern without divergence.
+If any OPEN: name dimension(s) and reason for divergence.
+
+Confirmed readiness: [READY -- all drift CLOSED, mechanism evidence sufficient /
+  CONDITIONALLY READY -- [list conditions]; one more loop recommended on [dimension] /
+  NOT READY -- [dimension] OPEN; mechanism or timing gap must be addressed]
+-> STEP E: Required input -- do not re-derive: Confirmed readiness. Consume by label.
+
+==== STEP E: TEAM READINESS POSITION  (~90 words) ====
+
+Required input -- do not re-derive: Confirmed readiness from STEP D
+Required input -- do not re-derive: Inertia case from STEP A
+
+From the two grounded inputs above -- state the team-facing position:
+
+1. Dimensions clean vs. flagged (count)
+2. Most useful thing to address before committing
+3. Confirmed readiness: [READY / CONDITIONALLY READY / NOT READY]
+4. Inertia case: [BUILT / PARTIAL / OPEN]
+5. Overall read: proceed / loop once more / investigate further
+
+Required output -- emit exactly:
+  Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason] -> topic namespace
+[C-44 PASS: external consumer identity inline on verdict line; parseable-in-isolation standard
+ from meta-rule extends to this production site annotation as well]
+```

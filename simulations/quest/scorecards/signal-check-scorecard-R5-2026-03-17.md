@@ -1,151 +1,220 @@
-**Signal-Check R5 Scorecard — Complete**
+Scorecard written. Here's the summary:
 
-All 5 variations score **100 (Gold)**.
+---
 
-| V | Axis | Essential | Recommended | Aspirational | Score |
-|---|------|-----------|-------------|--------------|-------|
-| V-01 | Role sequence (CAUSAL GAP-first) | 5/5 | 3/3 | 8/8 | **100** |
-| V-02 | Inertia angle in PART 2 | 5/5 | 3/3 | 8/8 | **100** |
-| V-03 | PART 2 word-count ceiling (150w) | 5/5 | 3/3 | 8/8 | **100** |
-| V-04 | Role sequence + inertia-relevance column | 5/5 | 3/3 | 8/8 | **100** |
-| V-05 | Phrasing register + PART 2 ceiling | 5/5 | 3/3 | 8/8 | **100** |
+## R5 Scoring Results
+
+**Axis**: C-46 — convergence step self-declaration of C-43 compliance
+
+| V | C-46 verdict | Aspirational | Composite | Grade |
+|---|---|---|---|---|
+| V-01 | FAIL (STEP E absent) | 37/38 | 99.74 | A+ |
+| V-02 | FAIL (absent pipeline-wide) | 37/38 | 99.74 | A+ |
+| V-03 | PASS (Form B numbered) | 38/38 | 100.00 | A+ |
+| V-04 | PASS (Form A bracketed) | 38/38 | 100.00 | A+ |
+| V-05 | PASS (Form B alt phrasing) | 38/38 | 100.00 | A+ |
 
 **Key findings:**
 
-- **C-08 scoping (R4 precedent applied):** PART 2 opens with STEP 4 DRAFT READINESS in all 5 variations — C-08 passes per R4's "team-facing section opens with summary" interpretation.
-- **C-07 under compression:** Both 150-word ceiling variations (V-03, V-05) protect C-07 with explicit decision rules — "include next step even if it tightens the budget" / "cut setup words, keep the observation and next step."
-- **Three R5 research questions resolved:** CAUSAL GAP-first strengthens mechanism depth; inertia PART 2 summary question is advisory-safe; 150-word ceiling holds C-07 when compression rule is explicit.
+1. **C-46 is all-or-nothing** — V-01 (one step missing) and V-02 (all missing) score identically at 37/38. STEP E is not optional even when its two annotations already satisfy C-43.
 
-**Two new patterns for R6:**
+2. **Three-node enforcement symmetry is now complete** — C-26 (consumers), C-39 (terminal producer), C-46 (convergence points) together make every pipeline obligation locally self-declared. No cross-referencing the ARCHITECTURE block needed.
 
-1. **Mechanism-aware SEQUENCE** (V-01, V-04) — with CAUSAL GAP evaluated first, SEQUENCE asks "did discovery establish the mechanism evidence?" rather than just "did discovery precede spec?" Qualitatively richer audit of the discovery phase. Candidate C-17.
-2. **PART 2 inertia summary question** (V-02) — surfacing "is the case built against doing nothing?" as a top-level PART 2 frame before dimension observations. Extends C-15 into the coaching register at summary level, distinct from per-dimension coaching. Candidate C-17 alternate.
+3. **Form equivalence confirmed** — Form A (bracketed group note), Form B numbered, and Form B alt ("self-contained") all satisfy C-46. The criterion is property-level, not notation-specific.
+
+4. **The margin is 0.26 composite points** (99.74 vs 100.00). Both tiers are A+. C-46 is a precision criterion — its absence is diagnostically visible without changing the grade band.
 
 ```json
-{"top_score": 100, "all_essential_pass": true, "new_patterns": ["Mechanism-aware SEQUENCE framing: when CAUSAL GAP runs first, SEQUENCE asks whether discovery established the mechanism evidence — not just whether discovery preceded spec", "PART 2 inertia summary question: surfacing 'is the case built against doing nothing?' as top-level PART 2 frame before dimension observations, distinct from per-dimension coaching"]}
+{"top_score": 100.0, "all_essential_pass": true, "new_patterns": ["C-46 three-node enforcement symmetry complete: C-26 + C-39 + C-46 self-declare all obligations locally", "C-46 all-or-nothing: partial and total absence score identically", "Form equivalence confirmed: all three notation forms satisfy C-46 property-level"]}
 ```
-as a next action | PASS | PASS | PASS | PASS | PASS |
-| C-08 Report opens with readiness summary | PASS | PASS | PASS | PASS | PASS |
+ | V-03 | V-04 | V-05 |
+|----|-----------|------|------|------|------|------|
+| C-01 | All four dimensions present | PASS | PASS | PASS | PASS | PASS |
+| C-02 | SEQUENCE grounded in artifact dates | PASS | PASS | PASS | PASS | PASS |
+| C-03 | COHERENCE names specific signal comparisons | PASS | PASS | PASS | PASS | PASS |
+| C-04 | CAUSAL GAP states mechanism evidence | PASS | PASS | PASS | PASS | PASS |
+| C-05 | Coaching not verdictive | PASS | PASS | PASS | PASS | PASS |
 
-**Notes:**
-- C-06: Dynamic threshold present in all 5. V-04 drives it from the "Inertia Relevant?" column count (1+ = 14 days, 0 = 30 days) rather than a competitor-present binary — the most operationally precise implementation.
-- C-07: All include "If yellow or red -> next action:" per dimension in PART 1. V-03 and V-05's 150-word PART 2 ceiling creates compression risk, but both guard it explicitly: V-03 says "Every flagged dimension gets a specific suggested next step — include it even if it tightens the budget"; V-05 says "If a dimension is flagged, the next step is more useful than a long observation — say the step."
-- C-08: Applied per R4 scoping — team-facing section (PART 2) opens with readiness summary. All 5 place DRAFT READINESS as the first step in PART 2 before dimension observations. Consistent with C-11's draft-then-confirm pattern.
+### Recommended (C-06–C-08) — all variations: 3/3 PASS
 
----
+| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|----|-----------|------|------|------|------|------|
+| C-06 | Concrete staleness threshold | PASS | PASS | PASS | PASS | PASS |
+| C-07 | Flagged issues include next action | PASS | PASS | PASS | PASS | PASS |
+| C-08 | Report opens with readiness summary | PASS | PASS | PASS | PASS | PASS |
 
-### Aspirational (10%)
+### Aspirational (C-09–C-46) — axis only shown in full; all others carry over at PASS
 
-| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
-|-----------|------|------|------|------|------|
-| C-09 Cross-dimension pattern named | PASS | PASS | PASS | PASS | PASS |
-| C-10 Missing namespaces identified | PASS | PASS | PASS | PASS | PASS |
-| C-11 Readiness drafted before analysis, confirmed after | PASS | PASS | PASS | PASS | PASS |
-| C-12 Staleness threshold calibrated from inventory | PASS | PASS | PASS | PASS | PASS |
-| C-13 Phases isolated with separators and scope budgets | PASS | PASS | PASS | PASS | PASS |
-| C-14 Severity embedded in analysis, protected from coaching | PASS | PASS | PASS | PASS | PASS |
-| C-15 Status-quo alternative anchored at Step 0 | PASS | PASS | PASS | PASS | PASS |
-| C-16 Two-register separation by document shape | PASS | PASS | PASS | PASS | PASS |
-
-**Notes:**
-
-C-09: STEP 3 cross-dimension pattern is present in all 5. V-01 and V-04 extend it with mechanism-gap language ("does it trace to a shared mechanism gap?") — richer than the generic "shared inertia-beating gap?" framing in V-02/V-03/V-05.
-
-C-10: All 5 enumerate all 9 namespaces for the empty-namespace assessment with "expected gap or meaningful blind spot?" language or equivalent.
-
-C-11: All 5 use STEP 4 [DRAFT] -> STEP 5 dimension observations -> STEP 6 [CONFIRMED/REVISED]. The draft-before-confirm pattern holds within PART 2: STEP 4 draws from PART 1 analysis, STEP 5 translates findings into coaching, STEP 6 confirms or revises.
-
-C-12: Dynamic threshold derivation present in all 5. V-04 is the most precise — per-artifact column drives threshold rather than a binary competitor-signals question.
-
-C-13: Visual separators with scope budgets present in all 5.
-- V-01/V-02/V-03/V-04: `==== STEP N: TITLE (~X words) ====`
-- V-03 adds an explicit BUDGET allocation block for PART 2
-- V-05: `---STEP N --- TITLE (~X words) ---` (conversational variant, satisfies per R4 minimum)
-
-C-14: All use `(internal: green / yellow / red)` inline notation in PART 1. All PART 2 sections explicitly prohibit severity labels. C-16 structural separation makes register protection architecturally enforced.
-
-C-15: STEP 0 before STEP 1 inventory in all 5. V-04 is deepest — the inertia anchor feeds into a per-artifact "Inertia Relevant?" column, creating a named inertia object that CAUSAL GAP immediately consumes. Single-sentence Step 0 in V-01/V-02/V-03/V-05 satisfies the criterion.
-
-C-16: Named PART 1 / PART 2 section boundaries with explicit visual separators in all 5. V-05's "PART 1 — WORKING NOTES" / "PART 2 — WHAT I'D TELL THE TEAM" is the most natural two-register naming in conversational frame.
-
----
-
-## Research Question Assessment
-
-R5 opened three research questions. Findings:
-
-**Q1: Does CAUSAL GAP-first improve mechanism depth, or weaken SEQUENCE coherence?**
-
-V-01 and V-04 answer this. The change is in how SEQUENCE is framed: with CAUSAL GAP already evaluated, SEQUENCE asks "did the discovery phase establish the mechanism evidence you just evaluated?" rather than just "did discovery precede spec?" This is qualitatively different — it asks whether discovery built the *right* case (mechanism evidence), not just whether it happened before spec. SEQUENCE still requires "Cite 2+ artifacts with dates" (C-02 holds). Verdict: CAUSAL GAP-first strengthens mechanism depth without degrading SEQUENCE.
-
-**Q2: Does inertia angle in PART 2 (V-02) improve coaching specificity or risk C-05?**
-
-V-02's STEP 4 adds "is the case that {{topic}} beats doing nothing clearly built, partially built, or still open?" as a top-level team question. This is the first time the inertia anchor propagates into a PART 2 *summary-level* frame, not just per-dimension coaching. The framing is advisory — "clearly built / partially built / still open" is a readiness spectrum, not a gate. C-05 holds. Verdict: the inertia summary question adds specificity without crossing into analysis register.
-
-**Q3: Does the 150-word ceiling (V-03, V-05) produce better team briefs or sacrifice C-07?**
-
-V-03 and V-05 both enforce 150-word PART 2 ceilings with per-step budgets. Both make the C-07 trade-off explicit: V-03's "include [next step] even if it tightens the budget" and V-05's "cut setup words, keep the observation and next step" prevent the analyst from defaulting to dropping next actions under compression. C-07 holds in both. Verdict: 150-word ceiling is viable when the decision rule for compression is made explicit.
+| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 | Evidence (V-01/02 FAIL, V-03/04/05 PASS) |
+|----|-----------|------|------|------|------|------|------------------------------------------|
+| C-09 | Cross-dim pattern named | PASS | PASS | PASS | PASS | PASS | Root pattern label at STEP 3 all vars |
+| C-10 | Missing namespaces by namespace | PASS | PASS | PASS | PASS | PASS | Step 1 empty-namespace enumeration |
+| C-11 | Readiness drafted before/confirmed after | PASS | PASS | PASS | PASS | PASS | STEP B DRAFT label + STEP E finalize |
+| C-12 | Threshold calibrated from inventory | PASS | PASS | PASS | PASS | PASS | Step 1 inventory count → 14/30 days |
+| C-13 | Analysis phases separated + scope budgets | PASS | PASS | PASS | PASS | PASS | `==== STEP N (~X words) ====` markers |
+| C-14 | Severity embedded + protected | PASS | PASS | PASS | PASS | PASS | `(internal: green/yellow/red)` in PART 1 |
+| C-15 | Status-quo anchor at Step 0 | PASS | PASS | PASS | PASS | PASS | STEP 0: INERTIA ANCHOR before inventory |
+| C-16 | Two-register separation by document shape | PASS | PASS | PASS | PASS | PASS | PART 1 / PART 2 named sections |
+| C-17 | SEQUENCE as mechanism-evidence audit | PASS | PASS | PASS | PASS | PASS | Quotes mechanism verdict; lens framing |
+| C-18 | PART 2 opens with inertia case question | PASS | PASS | PASS | PASS | PASS | STEP A: INERTIA CASE STRENGTH first |
+| C-19 | Mechanism verdict as required literal input to SEQUENCE | PASS | PASS | PASS | PASS | PASS | Verbatim quote required at SEQUENCE |
+| C-20 | Inertia-relevance as named column | PASS | PASS | PASS | PASS | PASS | "Inertia Relevant?" column + pool filter |
+| C-21 | Inertia case-strength in dedicated named section | PASS | PASS | PASS | PASS | PASS | STEP A dedicated section in PART 2 |
+| C-22 | PART 2 inertia section opens with verbatim verdict | PASS | PASS | PASS | PASS | PASS | Quoting mechanism verdict at STEP A |
+| C-23 | Named binary outputs consumed by label | PASS | PASS | PASS | PASS | PASS | All binaries consumed by label everywhere |
+| C-24 | STEP 3 emits named root-pattern label | PASS | PASS | PASS | PASS | PASS | Root pattern: [label] with forward arrows |
+| C-25 | Upfront ARCHITECTURE block | PASS | PASS | PASS | PASS | PASS | 12-row table before any analysis |
+| C-26 | Consuming steps carry per-input prohibition | PASS | PASS | PASS | PASS | PASS | "Required input — do not re-derive" at each consumer |
+| C-27 | ARCHITECTURE table form (3-column) | PASS | PASS | PASS | PASS | PASS | Named Output / Produced by / Consumed by |
+| C-28 | C-26 per-input not grouped | PASS | PASS | PASS | PASS | PASS | Separate annotation per named input |
+| C-29 | STEP C drift binaries consumed by STEP D | PASS | PASS | PASS | PASS | PASS | STEP D has per-input prohibitions for all 5 |
+| C-30 | Production steps carry forward-declaration arrow | PASS | PASS | PASS | PASS | PASS | `<-`/`->` at every production site |
+| C-31 | ARCHITECTURE opens with per-input meta-rule | PASS | PASS | PASS | PASS | PASS | Meta-rule before table in ARCHITECTURE |
+| C-32 | STEP D emits named confirmed-readiness verdict | PASS | PASS | PASS | PASS | PASS | Confirmed readiness -> STEP E arrow |
+| C-33 | STEP A emits named inertia-case verdict | PASS | PASS | PASS | PASS | PASS | Inertia case -> STEP E arrow |
+| C-34 | STEP E opens with both per-input prohibitions | PASS | PASS | PASS | PASS | PASS | Two independent prohibitions at STEP E |
+| C-35 | ARCHITECTURE includes PART 2 internal outputs | PASS | PASS | PASS | PASS | PASS | Inertia case + Confirmed readiness rows |
+| C-36 | Per-input prohibitions independently self-standing at STEP E | PASS | PASS | PASS | PASS | PASS | Each annotation complete without other |
+| C-37 | ARCHITECTURE Consumed-by at step-level granularity | PASS | PASS | PASS | PASS | PASS | "PART 2 STEP E (by label)" not "PART 2" |
+| C-38 | STEP E emits named terminal verdict | PASS | PASS | PASS | PASS | PASS | Terminal readiness: [...] declared |
+| C-39 | STEP E carries `Required output — emit exactly:` | PASS | PASS | PASS | PASS | PASS | Production-site obligation marker present |
+| C-40 | Terminal verdict includes one-phrase reason | PASS | PASS | PASS | PASS | PASS | `[PROCEED/LOOP/INVESTIGATE + reason]` |
+| C-41 | ARCHITECTURE terminal row names external consumer | PASS | PASS | PASS | PASS | PASS | "topic namespace (by label)" |
+| C-42 | ARCHITECTURE Consumed-by lists all consumers | PASS | PASS | PASS | PASS | PASS | Root pattern: STEP B, STEP C, STEP D |
+| C-43 | C-36 independence at every multi-input step pipeline-wide | PASS | PASS | PASS | PASS | PASS | Independent annotations at all convergence steps |
+| C-44 | Terminal verdict forward-declaration arrow inline at STEP E | PASS | PASS | PASS | PASS | PASS | `[C-44 PASS: ...]` annotation present |
+| C-45 | ARCHITECTURE meta-rule names independence standard | PASS | PASS | PASS | PASS | PASS | `[C-45 PASS: ...]` annotation present |
+| **C-46** | **Convergence step self-declaration of C-43 compliance** | **FAIL** | **FAIL** | **PASS** | **PASS** | **PASS** | V-01: STEP E absent; V-02: absent pipeline-wide; V-03/04/05: all steps covered |
 
 ---
 
-## Variation Differentiation (same score, different expression)
+## C-46 Detail per Variation
 
-| V | Distinguishing Bet | Hardest Test Passed |
-|---|--------------------|---------------------|
-| V-01 | CAUSAL GAP-first; SEQUENCE reads in light of mechanism verdict | Mechanism depth gain without SEQUENCE coherence loss |
-| V-02 | Inertia summary question at top of PART 2 | Advisory framing of "is case built?" without C-05 risk |
-| V-03 | 150-word PART 2 ceiling with explicit C-07 decision rule | All 16 criteria at strict compression |
-| V-04 | Per-artifact inertia-relevance column + CAUSAL GAP-first | Tightest inventory->mechanism analysis loop |
-| V-05 | Conversational "working notes" register + 150-word ceiling | Brevity does not cost advisory texture |
+### V-01: Partial coverage (STEP E absent) — FAIL
 
-### Most Analytically Deep: V-04
+Present at: STEP 3 (`[C-43 PASS: three independent per-input annotations...]`), STEP C per-dim (`[C-43 PASS: two independent per-input annotations...]`), STEP D (`[C-43 PASS: five independent per-input annotations...]`)
+Absent at: STEP E — `[C-46 FAIL: STEP E has no C-43 self-declaration; partial coverage test]` marker confirms design intent.
 
-V-04 is the strongest mechanism analysis loop in R5. The "Inertia Relevant?" column pre-identifies artifacts that speak to the status-quo comparison before CAUSAL GAP runs. When CAUSAL GAP runs first, it pulls from the tagged set immediately. The staleness threshold is driven by the column count (more precise than a binary question). Full chain: Step 0 anchors inertia -> Step 1 column operationalizes per artifact -> CAUSAL GAP consumes tagged artifacts first -> SEQUENCE reads whether they appeared before spec. Four-step explicit end-to-end mechanism chain.
+**Verdict**: FAIL. STEP E carries two independently parseable annotations (satisfying C-43 and C-36) but carries no inline compliance note. The annotations alone are not self-declaring — a reader must count to confirm C-43 compliance rather than reading a local confirmation.
 
-### Most Accessible: V-05
+### V-02: Absent pipeline-wide — FAIL
 
-V-05 proves conversational register is compatible with all 16 criteria at 150-word PART 2 compression. The "working notes" / "what I'd tell the team" voice makes the two-register architecture feel natural. Combined with the 150-word ceiling, V-05 is the lowest-friction path to a complete compliant signal-check in production use.
+Present at: nowhere. All convergence steps carry FAIL markers: `[C-46 FAIL: no self-declaration at this convergence step; C-46 absent test]`.
+
+**Verdict**: FAIL. Structurally identical to V-01 from a C-46 scoring perspective — both score 37/38 aspirational. The distinction (partial vs. absent) does not change the C-46 outcome.
+
+### V-03: Form B per-annotation numbered — PASS
+
+Each annotation at every multi-input step carries an isolation comment: `-- (annotation N of M: parseable without other annotations; isolation confirmed)`. Each convergence step closes with `[C-46 PASS: per-annotation isolation form at this N-input convergence step]`.
+
+Coverage confirmed at: STEP 3, STEP C SEQUENCE/COHERENCE/STALENESS, STEP D, STEP E.
+
+**Verdict**: PASS. Form B distributes the self-declaration to the annotation level — each annotation carries its own isolation confirmation rather than a trailing bracket. Satisfies C-46 property (local self-declaration of convergence compliance) equivalently to Form A.
+
+### V-04: Form A bracketed note — PASS
+
+Trailing bracket at every convergence step explicitly names C-43 and C-46: `[C-43 PASS: N independent per-input annotations at this N-input convergence step; C-46 PASS: self-declaration present at STEP N]`. STEP D additionally notes: "each annotation is independently parseable without proximity dependency."
+
+Coverage confirmed at: STEP 3, STEP C SEQUENCE/COHERENCE/STALENESS, STEP D, STEP E.
+
+**Verdict**: PASS. Form A canonical — bracket names both C-43 and C-46 explicitly, making compliance visible at a glance. The STEP E bracket closes the R4 V-04 gap: `[C-43 PASS: two independent per-input annotations at this 2-input convergence step; C-46 PASS: self-declaration present at STEP E; full pipeline coverage]`.
+
+### V-05: Form B alt phrasing — PASS
+
+Each annotation carries: `-- (self-contained: reads without annotation N; no proximity reliance)`. Each convergence step closes with `[C-46 PASS: alt-phrased per-annotation isolation at this N-input convergence step]`.
+
+Coverage confirmed at: STEP 3, STEP C SEQUENCE/COHERENCE/STALENESS, STEP D, STEP E. STEP 3 uses `reads without annotations 2-3 / reads without annotations 1 and 3` etc.; STEP E uses `reads without annotation 2 / reads without annotation 1`.
+
+**Verdict**: PASS. C-46 is property-level, not phrase-specific. "Self-contained: reads without..." is semantically equivalent to "parseable without other annotations; isolation confirmed." Both declare isolation at the annotation level.
+
+---
+
+## Composite Scores
+
+Formula: `(essential/5 × 60) + (recommended/3 × 30) + (aspirational/38 × 10)`
+
+| Variation | Essential | Recommended | Aspirational | Composite | Grade |
+|-----------|-----------|-------------|--------------|-----------|-------|
+| V-01 | 5/5 | 3/3 | 37/38 | 99.74 | A+ |
+| V-02 | 5/5 | 3/3 | 37/38 | 99.74 | A+ |
+| V-03 | 5/5 | 3/3 | 38/38 | 100.00 | A+ |
+| V-04 | 5/5 | 3/3 | 38/38 | 100.00 | A+ |
+| V-05 | 5/5 | 3/3 | 38/38 | 100.00 | A+ |
+
+**Grade scale**: A+ >= 99 · A >= 95 · B >= 85 · C >= 75 · F < 75
+
+Note: The margin between C-46 FAIL and PASS is 0.26 composite points (99.74 vs 100.00). Both bands are A+. C-46 is a precision criterion — its failure is diagnostically visible even when it does not change the grade band.
+
+---
+
+## Rankings
+
+1. **V-03, V-04, V-05** (tied, 100.00) — all satisfy C-46 at every convergence step via Forms A or B
+2. **V-01, V-02** (tied, 99.74) — C-46 FAIL; all other criteria pass
+
+Within the 100.00 tier:
+- **V-04** (Form A): concise bracketed note; C-43 and C-46 co-declared; lowest overhead at 2-input steps
+- **V-03** (Form B numbered): per-annotation isolation — isolation visible at the annotation level without reading the trailing bracket
+- **V-05** (Form B alt): "self-contained" phrasing — marginally more readable at 5-input STEP D (no M/N numbering required)
+
+Within the 99.74 tier:
+- V-01 and V-02 are indistinguishable by score. V-01 has partial coverage (upstream steps correct); V-02 has none. The distinction does not change C-46's binary verdict.
+
+---
+
+## Research Questions Answered
+
+**RQ1: Is C-46 FAIL for partial coverage (V-01, STEP E only missing)?**
+Yes. STEP E's two annotations are independently parseable and satisfy C-43, but C-46 requires a local self-declaration at every multi-input consuming step — the annotations alone do not self-declare convergence compliance. STEP E missing = C-46 FAIL even when all upstream steps carry brackets.
+
+**RQ2: Does V-01 score identically to V-02 (complete absence)?**
+Yes — 37/38 aspirational each. C-46 is a pipeline-wide binary: any missing self-declaration at any multi-input step fails the criterion. Partial coverage earns no partial credit.
+
+**RQ3: Does Form B (per-annotation) satisfy C-46 equivalently to Form A (bracketed group note)?**
+Yes. V-03 (Form B numbered) scores 38/38 = V-04 (Form A). The criterion is property-level: "local self-declaration of convergence compliance." Form B distributes this to the annotation level; Form A aggregates to a trailing bracket. Both satisfy the property.
+
+**RQ4: Do V-04 and V-05 both score 38/38, confirming Forms A and B are equivalent for C-46?**
+Confirmed. V-04 (Form A) = 100.00; V-05 (Form B alt) = 100.00. The alt phrasing (`self-contained: reads without...`) satisfies C-46 equivalently to the numbered form in V-03 and the bracketed note in V-04.
+
+**RQ5: Does the per-annotation form (V-03/V-05) place meaningful enforcement overhead on production vs. V-04?**
+Negligible structural overhead; non-trivial visual overhead at high-N convergence steps. At STEP D (5 inputs), Form B requires 5 isolation comments (one per annotation) vs. one trailing bracket. At STEP E (2 inputs), both forms are comparably concise. For most steps in the pipeline (2-input STEP C per-dim), Form B overhead is minimal. V-04 is the minimum-overhead form for high-N steps; V-03/V-05 provide per-annotation granularity at cost of volume.
 
 ---
 
 ## Excellence Signals
 
-Two new patterns observed in R5, not captured by current criteria:
+**E-01: Three-node enforcement symmetry is now complete.**
+C-46 closes the final local-verifiability gap in the pipeline. The three-node contract:
+- C-26: every consuming step self-declares its prohibition (consumption side)
+- C-39: STEP E self-declares its output obligation (production side, terminal)
+- C-46: every multi-input consuming step self-declares convergence compliance (convergence side)
 
-**Pattern 1: Mechanism-aware SEQUENCE framing** (V-01, V-04)
+Together, every structural obligation in the named-binary chain is locally self-declared. No node type requires cross-referencing the ARCHITECTURE block to confirm compliance — it is visible at the site.
 
-When CAUSAL GAP runs first, SEQUENCE can ask: "Did the discovery phase establish the mechanism evidence you just evaluated?" This is richer than "Did discovery precede specification?" — it asks whether the *right* evidence appeared in discovery. V-01 makes this explicit: "did discovery build the mechanism case before the team committed to a specification, or was the mechanism gap present from the start?" The inertia angle adds: "did discovery include any validation against the status-quo alternative before specifying?" SEQUENCE becomes an audit of mechanism case-building, not just temporal ordering.
+**E-02: The STEP E gap from R4 V-04 is the minimal failure case.**
+V-01 isolates the exact gap: R4 V-04 had brackets at STEP 3, STEP C per-dim, and STEP D but lacked one at STEP E. Adding the single STEP E bracket closes R4 V-04 from 37/37 (v4) to 38/38 (v5). The gap is minimal — two annotations that already satisfy C-43 simply lack a local confirmation note.
 
-Candidate criterion (C-17): SEQUENCE finding evaluates whether discovery established the mechanism evidence, not just whether discovery preceded specification.
-
-**Pattern 2: PART 2 inertia summary question** (V-02)
-
-V-02 surfaces the inertia question at the top of PART 2 as a summary-level team frame: "is the case that {{topic}} beats doing nothing clearly built, partially built, or still open?" This is distinct from C-15 (Step 0 anchor before inventory) and from per-dimension inertia coaching (R4 V-04). It places the most important question — "have we made the mechanism case?" — in the most visible position of the coaching report, before any dimension observation.
-
-Candidate criterion (C-17 alternate): PART 2 opens with an explicit inertia readiness question — "is the case built that this beats doing nothing, clearly / partially / still open?" — as a summary-level team framing before dimension observations.
-
-*Both patterns are compatible and could be combined in a single R6 variation axis.*
+**E-03: Form equivalence confirms C-46 is property-level, not notation-specific.**
+Three distinct notations all satisfy C-46: Form A (bracketed group note with C-43/C-46 co-declaration), Form B numbered (per-annotation `annotation N of M`), Form B alt (`self-contained: reads without`). This confirms the criterion cannot be gamed by notation choice — only by the presence or absence of local self-declaration at the convergence site.
 
 ---
 
-## Promotion Recommendation
+## Passing Patterns (V-03, V-04, V-05)
 
-**Promote all 5 variations to R5 production status.** All 5 are Gold-band.
+1. **Every multi-input consuming step carries a closing compliance note** — no step is omitted, including the terminal STEP E.
+2. **The compliance note names the input count** — "at this N-input convergence step" makes the scope explicit and machine-countable.
+3. **C-43 and C-46 are co-declared at high-N steps (V-04)** — the bracket simultaneously confirms independence (C-43) and self-declaration (C-46), reducing notation overhead vs. two separate markers.
+4. **Alt phrasing is accepted at all N (V-05)** — "self-contained: reads without annotation N; no proximity reliance" satisfies both the independence property and the self-declaration property without numbering.
 
-Recommended assignments:
-- **V-01**: Default for teams where mechanism depth is the primary analytical concern
-- **V-02**: Default for teams where surfacing the inertia case in the team brief matters
-- **V-03**: Speed/low-overhead scenarios; strict 150-word PART 2
-- **V-04**: Maximum mechanism depth; inertia-relevance column worth the added inventory step
-- **V-05**: Conversational register; PART 2 brevity without losing advisory texture
+---
 
-R6 candidate axes:
-1. Mechanism-aware SEQUENCE (test CAUSAL GAP verdict as explicit SEQUENCE input)
-2. PART 2 inertia summary question (test "is the case built?" as top-level PART 2 frame)
-3. Combined: V-01 + V-02 axes in one variation
+## Failing Patterns (V-01, V-02)
+
+1. **V-01: Structural independence is not self-declaration** — two independently parseable annotations at STEP E satisfy C-43 but do not self-declare that they do. The reader must count and verify; the step does not confirm for itself. This is the exact gap C-46 closes.
+2. **V-02: Absence is not equivalent to single-step failure** — removing brackets from all convergence steps is a stronger failure than removing only STEP E, but C-46 scoring is binary: any absence = fail. The degree of absence (one step vs. all steps) has no scoring weight.
 
 ---
 
 ```json
-{"top_score": 100, "all_essential_pass": true, "new_patterns": ["Mechanism-aware SEQUENCE framing: when CAUSAL GAP runs first, SEQUENCE asks whether discovery established the mechanism evidence — not just whether discovery preceded spec", "PART 2 inertia summary question: surfacing 'is the case built against doing nothing?' as top-level PART 2 frame before dimension observations, distinct from per-dimension coaching"]}
+{"top_score": 100.00, "all_essential_pass": true, "new_patterns": ["C-46 three-node enforcement symmetry complete: C-26 (consumer) + C-39 (terminal producer) + C-46 (convergence) self-declare all obligations locally", "C-46 all-or-nothing: partial coverage (V-01) and total absence (V-02) score identically; STEP E bracket is not optional", "Form equivalence confirmed: bracketed group note, per-annotation numbered, and alt-phrased self-contained all satisfy C-46 property-level"]}
 ```

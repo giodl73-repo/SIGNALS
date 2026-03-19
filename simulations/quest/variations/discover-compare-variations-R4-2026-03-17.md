@@ -1,861 +1,1043 @@
-Written to `simulations/quest/variations/discover-compare-variations-R4-2026-03-17.md`.
+**R4 variations written** to `simulations/quest/variations/discover-compare-variations-R4-2026-03-17.md`.
 
 ---
 
-## Round 4 — discover-compare variations
+## discover-compare — Variations R4 Summary
 
-**Three single-axis variations:**
+R3 V-05 scored 100/100. R4 asks: *which parts of that 100/100 prompt are actually load-bearing?*
 
-**V-01** — Output format (C-15 target): RULE 4 evidence template upgraded to triple-slot machine-parseable format. Each citation entry is: `[Option × Dimension] = [finding] → [direction]` — finding and direction are separate named fields, not merged prose. All other elements identical to R3 V-04. Isolates whether the field split is the discriminating factor for C-15.
+### Variation axes
 
-**V-02** — Lifecycle emphasis (C-14 target): COMPETITIVE AXIS PRE-CHECK upgraded from prose bullet slots to a named-column table `| Axis Slot | Option A | Option B |`. Makes "explicit axis slots" unambiguous. RULE 4 template unchanged from R3 V-04. Isolates whether the tabular pre-check closes C-14's first mechanism gap.
+| Var | Axis | Change from R3-V05 | C-13 | C-14 | C-15 | C-16 |
+|-----|------|--------------------|------|------|------|------|
+| V-01 | Inertia framing | Blockquote template `"{insert exact ANCHOR[0] here}"` replaces "reproduce exact sentence — do not paraphrase" directive | PARTIAL | PASS | PASS | PASS |
+| V-02 | Phrasing register | `FAULT:` label instead of `VIOLATION:` | PASS | PASS | PASS | PASS |
+| V-03 | Lifecycle emphasis | All explanatory prose stripped; operative directives only (~50% word reduction) | PASS | PASS | PASS | PASS |
+| V-04 | Output format | Inline Phase 0 (no Part A/Part B split, no "commit first before anchor" label) | PASS | PASS | PASS | PASS |
+| V-05 | Combined | V-01+V-02+V-03+V-04 simultaneously | PARTIAL | PASS | PASS | PASS |
 
-**V-03** — Phrasing register (C-14 second mechanism): Inline "invalid — not incomplete, invalid" vocabulary added to each competitive section annotation header: `*(RULE 3 — confirmed axis: ___; if this axis also describes Option B, it is invalid — not incomplete, invalid; return to Pre-Check)*`. Tests whether the vocabulary must appear AT the competitive section (not just in the pre-analysis rules block) for C-14's second mechanism to pass.
+### Key discriminating tests
 
-**Two combined variations:**
+- **V-01/V-05 on C-13**: Is `"insert the exact ANCHOR[0] sentence"` inside a template slot sufficient, or must the no-paraphrase mandate be inside a TOKEN RECALL directive? R3 showed "recall" alone = PARTIAL; "reproduce exact sentence — do not paraphrase" = PASS. "Insert the exact sentence" lands between them.
+- **V-02 on C-14**: Does any named failure class co-located with TOKEN RECALL satisfy C-14, or does the specific label word (`VIOLATION` / `SCORING DEFECT`) carry semantic weight?
+- **V-03 across all**: If compressed V-05 scores 9/9, V-05's explanatory prose is overhead. Compressed becomes the preferred form.
+- **V-04 on C-15**: If inline Phase 0 (no precondition label) passes C-15, physical ordering alone satisfies it — the Part A/Part B split was defensive.
 
-**V-04** — V-01 + V-02: tabular pre-check (named slot columns) + triple-slot RULE 4 evidence. Predicted 130/130. Tests whether the two structural upgrades close both C-14 and C-15 without requiring the inline section-header annotation.
+### Projected composites
 
-**V-05** — Maximalist: V-04 + V-03 (inline section header "invalid") + typed AMEND protocols (Type 1/2/3 with full execution instructions) + CONVERGENCE UNRESOLVABLE with strategic forward interpretation. Belt-and-suspenders-and-belt on C-14. Predicted 130/130.
+All five are Golden. V-02/V-03/V-04 projected at **100**; V-01/V-05 at **~99.4** (C-13 PARTIAL). If V-02/V-03/V-04 all confirm at 100, the minimal viable 100/100 prompt becomes: compressed + inline Phase 0 + any named failure label + "do not paraphrase" in the recall directive (not a template slot).
+lure class** | PASS | PASS | PASS | PASS | PASS |
+| **C-15 register before anchor** | PASS | PASS | PASS | PASS | PASS |
+| **C-16 blocking ledger gate** | PASS | PASS | PASS | PASS | PASS |
 
-**Key isolation bets:**
-- If V-01 scores C-14 PASS → RULE 3 pre-analysis block counts as "point of competitive analysis"; inline annotation redundant for scoring
-- If V-02 scores C-15 PASS → R3 V-04 template already satisfied C-15; triple-slot is quality upgrade only
-- If both gaps are real → V-04/V-05 are required for 130/130
-ive section header annotation level
-4. Combine upgrades
-5. Maximize
+Key discriminating tests:
 
-**Three single-axis variations:**
-- **V-01** (output format) — RULE 4 triple-slot format: `[Option × Dimension] = [finding] → [direction]`
-- **V-02** (lifecycle emphasis) — tabular COMPETITIVE AXIS PRE-CHECK with named column headers: `| Axis Slot | Option A | Option B |`
-- **V-03** (phrasing register) — inline "invalid" vocabulary embedded in competitive section annotation header, not just in pre-analysis rules block
+- **V-01 on C-13**: "insert the exact ANCHOR[0] sentence" (template instruction) vs "reproduce exact sentence — do not paraphrase" (directive in recall slot). Is "exact sentence" inside a template sufficient, or must the no-paraphrase mandate be inside the TOKEN RECALL directive itself?
+- **V-02 on C-14**: `FAULT:` vs `VIOLATION:`. If both pass, C-14 is label-flexible — any named class co-located with TOKEN RECALL suffices.
+- **V-03 across all**: if compressed V-05 preserves 9/9, V-05's explanatory prose is overhead, not load-bearing.
+- **V-04 on C-15**: if inline Phase 0 (no "commit first before anchor" label) still passes C-15, then physical ordering alone is sufficient — the precondition label in R3-V05 is defensive, not required.
+- **V-05 combined**: if C-13 is the only partial, it confirms all other simplifications are independently safe.
 
-**Two combined variations:**
-- **V-04** — V-01 (triple-slot RULE 4) + V-02 (tabular pre-check): closes C-15 and strengthens C-14 first mechanism
-- **V-05** — V-04 + V-03 (inline section header) + typed AMEND protocols + CONVERGENCE UNRESOLVABLE strategic framing: full C-14 dual-mechanism + C-15 machine-parseable + all C-08 depth
-
-**Key design bets**:
-1. V-01 vs V-02 isolation: C-15 depends on the triple-slot field split, not on pre-check structure. V-02 keeps the R3 evidence format — if C-15 is still PARTIAL for V-02, the field-split is confirmed as the discriminating factor.
-2. V-03 isolation: C-14's second mechanism ("disqualification language at the point of competitive analysis") requires the "invalid" vocabulary to appear AT the competitive section, not just in the pre-analysis rules block. V-03 tests this without changing other elements.
-3. V-04 bet: tabular pre-check + triple-slot closes both C-14 and C-15 without requiring the inline header annotation. If V-04 scores 130/130, the inline annotation (V-03) is redundant for scoring — only adds belt-to-suspenders-to-belt.
-4. V-05 bet: all mechanisms simultaneously active; if V-04 reaches 130, V-05 is the canonical maximalist form of the full prompt.
-
----
-
-## V-01 — Triple-slot RULE 4 evidence template
-
-**Axis**: Output format — RULE 4 evidence template upgraded from single prose field to triple-slot machine-parseable format: `[Option × Dimension] = [finding] → [direction]`
-**Hypothesis**: R3 V-04's evidence template has the coordinate slot but merges finding and direction into a single fill-in field (`___ — drives the recommendation because ___`). C-15's pass condition requires explicitly named finding and direction slots as separate fields. Splitting them with the `= [finding] → [direction]` format creates the machine-parseable contract C-15 describes — each field has a bounded, named role, making it unambiguous what goes where. All other elements identical to R3 V-04.
-
----
-
-You are running `discover-compare` for: **{{topic}}**
-
-Options:
-- **Option A**: {{option_a}}
-- **Option B**: {{option_b}}
-
----
-
-**PRE-ANALYSIS RULES** — read before beginning analysis
-
-**RULE 1 — INERTIA GATE**: Each option must independently clear the inertia bar: "would a rational team choose to build this option rather than continue the current status quo behavior?" An option that does not clear is removed from the matrix and recommendation. If both fail, the comparison halts entirely — no matrix, no recommendation.
-
-**RULE 2 — RISK DISQUALIFICATION**: A risk that applies identically to both options is invalid — not "incomplete," invalid. Test each candidate risk: "Does this also apply to the other option?" If yes, discard and replace with the option-specific failure mode.
-
-**RULE 3 — COMPETITIVE AXIS DISQUALIFICATION**: A competitive positioning that claims the same primary axis as the other option is invalid — not "incomplete," invalid. Axes are declared before analysis begins and tested for convergence. If convergence is detected, distinct axes must be assigned before analysis proceeds.
-
-**RULE 4 — RECOMMENDATION TRACEABILITY**: The recommendation must cite at least two specific matrix cells using the named triple-slot evidence format. Each citation entry has three required named fields:
-
-```
-[Option × Dimension] = [finding] → [direction]
-```
-
-- `[Option × Dimension]` — the cell coordinate (e.g., "Option A × Risk")
-- `[finding]` — what the matrix cell says, verbatim or close paraphrase
-- `[direction]` — how this finding votes: "favors Option A," "rules out Option B," "supports neither," etc.
-
-Do not merge finding and direction into a prose sentence. Fill each slot separately.
-
----
-
-Produce the following sections in order. Do not skip or merge sections.
-
----
-
-### COMPETITIVE AXIS PRE-CHECK *(RULE 3 enforcement — runs before all option analysis)*
-
-Declare each option's primary competitive axis before writing any option analysis:
-
-- **Option A axis**: ___ (what does it beat, on what dimension?)
-- **Option B axis**: ___ (what does it beat, on what dimension?)
-
-**Convergence test**: same axis?
-
-- **[YES — both claim ___]**: **RULE 3: both axes claiming [same axis] are invalid.** Resolve before proceeding:
-  - Option A distinct axis: ___ (the axis Option A owns that Option B does not)
-  - Option B distinct axis: ___ (the axis Option B owns that Option A does not)
-  - If no distinct axes can be found: "CONVERGENCE UNRESOLVABLE — both options compete identically on [axis]. This is a strategic finding, not a comparison result. A third option claiming [different axis] may dominate. Return to option framing." Stop here.
-
-- **[NO — axes are distinct]**: axes confirmed. Proceed.
-
-*Confirmed axes are locked. Do not modify during option analysis.*
-
----
-
-### Option A — {{option_a}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option B? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — expand confirmed axis)*
-Build the strategic story on Option A's confirmed axis from the Pre-Check. Why does this axis matter for {{topic}}? What does winning on it deliver?
-
----
-
-### Option B — {{option_b}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option A? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — expand confirmed axis)*
-Build the strategic story on Option B's confirmed axis from the Pre-Check. Why does this axis matter for {{topic}}? What does winning on it deliver?
-
----
-
-### INERTIA GATE *(RULE 1 enforcement)*
-
-- Option A: [CLEARS / DOES NOT CLEAR]
-- Option B: [CLEARS / DOES NOT CLEAR]
-
-**If both do not clear**:
-
-> **HALT. Do not produce a decision matrix. Do not produce a recommendation.**
-> Neither option is worth building because ___.
-> Resume condition: ___ [name the specific evidence or behavior change required — a user adoption signal, a team workflow shift, a competitive forcing function. "More information" is not a valid resume condition.]
-
-**If one option clears**: continue; recommendation compares the surviving option against building neither.
-**If both options clear**: continue to the matrix.
-
----
-
-### Decision Matrix
-
-*(RULE 1 survivors only. RULE 2 confirmed risks and RULE 3 confirmed axes in their respective rows. You will complete RULE 4 citations from these cells — note the coordinate of any cell you may cite.)*
-
-| Dimension | Option A | Option B |
-|-----------|----------|----------|
-| Feasibility | | |
-| Inertia | | |
-| Risk | | |
-| Competitive | | |
-
-Brief signal phrases. No empty cells. Scannable in under 30 seconds.
-
----
-
-### Recommendation *(RULE 4 applies)*
-
-State the recommended option (or "build neither" if the gate halted or one option was removed).
-
-**Evidence** — complete two RULE 4 citation entries (fill all three named slots per entry):
-
-```
-[Option × Dimension] = [finding] → [direction]
-[Option × Dimension] = [finding] → [direction]
-```
-
-**Conclusion**: [One to two sentences. Do not hedge with "it depends" unless you name the specific condition and its threshold. If the recommendation diverges from the matrix plurality, state the reason explicitly.]
-
----
-
-### AMEND Paths
-
-Suggest at least one amendment:
-- A third option not yet considered (declare its axis in Pre-Check, apply all four rules, expand matrix)
-- A dimension that should carry more weight for this topic (state whether conclusion flips if it doubles)
-- An audience variant (exec leads with strategic implication; engineering leads with feasibility/risk delta)
-
-Save the output as: `simulations/discover/compare/{{topic}}-compare-{{date}}.md`
-
----
-
-## V-02 — Tabular axis pre-check
-
-**Axis**: Lifecycle emphasis — COMPETITIVE AXIS PRE-CHECK upgraded from prose bullet slots to a table with named column headers; axis slots become explicit named cells in a two-column table (`| Axis Slot | Option A | Option B |`) rather than prose fill-ins
-**Hypothesis**: C-14's first mechanism requires "explicit axis slots." The R3 V-04 format (`- **Option A axis**: ___ (what does it beat, on what dimension?)`) is a prose slot — the slot exists but is not a named, bounded field. A table with column headers creates unambiguous named slots: the cell at row "Primary axis" / column "Option A" is an explicit, addressable field. If C-14 is PARTIAL for R3 V-04 due to "explicit" ambiguity, the table form resolves it. RULE 4 evidence template unchanged from R3 V-04 to isolate C-14 effect.
-
----
-
-You are running `discover-compare` for: **{{topic}}**
-
-Options:
-- **Option A**: {{option_a}}
-- **Option B**: {{option_b}}
-
----
-
-**PRE-ANALYSIS RULES** — read before beginning analysis
-
-**RULE 1 — INERTIA GATE**: Each option must independently clear the inertia bar: "would a rational team choose to build this option rather than continue the current status quo behavior?" An option that does not clear is removed from the matrix and recommendation. If both fail, the comparison halts entirely — no matrix, no recommendation.
-
-**RULE 2 — RISK DISQUALIFICATION**: A risk that applies identically to both options is invalid — not "incomplete," invalid. Test each candidate risk: "Does this also apply to the other option?" If yes, discard and replace with the option-specific failure mode.
-
-**RULE 3 — COMPETITIVE AXIS DISQUALIFICATION**: A competitive positioning that claims the same primary axis as the other option is invalid — not "incomplete," invalid. Axes are declared and slot-filled in the Pre-Check table before analysis begins. If both options fill the same slot values, the claim is disqualified — distinct axes must be assigned before analysis proceeds.
-
-**RULE 4 — RECOMMENDATION TRACEABILITY**: The recommendation must cite at least two specific matrix cells by coordinate ([Option x Dimension]) as evidence. Asserting a winner without naming specific cells is insufficient.
-
----
-
-Produce the following sections in order. Do not skip or merge sections.
-
----
-
-### COMPETITIVE AXIS PRE-CHECK *(RULE 3 enforcement — runs before all option analysis)*
-
-*Fill all axis slots in the table below before writing any option analysis. Slot values are locked after this section.*
-
-| Axis Slot | Option A | Option B |
-|-----------|----------|----------|
-| Primary axis name | | |
-| What does it beat? | | |
-| On what dimension? | | |
-
-**Convergence test**: do both options claim the same primary axis name or the same dimension?
-
-- **[YES — both claim ___]**: **RULE 3: convergence detected — this axis claim is invalid.** Resolve before proceeding:
-  - Replace Option A "Primary axis name" slot with: ___ (an axis Option A owns that Option B does not)
-  - Replace Option B "Primary axis name" slot with: ___ (an axis Option B owns that Option A does not)
-  - If no distinct axes can be found: "CONVERGENCE UNRESOLVABLE — both options compete identically on [axis]. A third option claiming [different axis] may dominate. Return to option framing." Stop here.
-
-- **[NO — axes are distinct]**: slot values confirmed. Proceed.
-
-*Confirmed slot values are locked for the analysis below. Do not modify them without re-running this section.*
-
----
-
-### Option A — {{option_a}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option B? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — expand confirmed axis from Pre-Check table)*
-Build the strategic story on Option A's confirmed axis (from the "Primary axis name" slot). Why does this axis matter for {{topic}}? What does winning on it deliver?
-
----
-
-### Option B — {{option_b}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option A? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — expand confirmed axis from Pre-Check table)*
-Build the strategic story on Option B's confirmed axis (from the "Primary axis name" slot). Why does this axis matter for {{topic}}? What does winning on it deliver?
-
----
-
-### INERTIA GATE *(RULE 1 enforcement)*
-
-- Option A: [CLEARS / DOES NOT CLEAR]
-- Option B: [CLEARS / DOES NOT CLEAR]
-
-**If both do not clear**:
-
-> **HALT. Do not produce a decision matrix. Do not produce a recommendation.**
-> Neither option is worth building because ___.
-> Resume condition: ___ [name the specific evidence or behavior change required — a user adoption signal, a team workflow shift, a competitive forcing function. "More information" is not a valid resume condition.]
-
-**If one option clears**: continue; recommendation compares the surviving option against building neither.
-**If both options clear**: continue to the matrix.
-
----
-
-### Decision Matrix
-
-*(RULE 1 survivors only. RULE 2 confirmed risks and RULE 3 confirmed axis slot values in their respective rows. You will reference these cells by [Option x Dimension] in the recommendation.)*
-
-| Dimension | Option A | Option B |
-|-----------|----------|----------|
-| Feasibility | | |
-| Inertia | | |
-| Risk | | |
-| Competitive | | |
-
-Brief signal phrases. No empty cells. Scannable in under 30 seconds.
-
----
-
-### Recommendation *(RULE 4 applies)*
-
-State the recommended option (or "build neither" if the gate halted or one option was removed).
-
-**Evidence** — cite at least two matrix cells by coordinate:
-- **[Option x Dimension]**: ___ — drives the recommendation because ___
-- **[Option x Dimension]**: ___ — [supports or rules out] because ___
-
-**Conclusion**: [One to two sentences. Do not hedge with "it depends" unless you name the specific condition and its threshold. If the recommendation diverges from the matrix plurality, state the reason explicitly.]
-
----
-
-### AMEND Paths
-
-Suggest at least one amendment:
-- A third option not yet considered (add a row to the Pre-Check axis table for Option C, apply all four rules, expand matrix)
-- A dimension that should carry more weight for this topic (state whether conclusion flips if it doubles)
-- An audience variant (exec leads with strategic implication; engineering leads with feasibility/risk delta)
-
-Save the output as: `simulations/discover/compare/{{topic}}-compare-{{date}}.md`
-
----
-
-## V-03 — Inline section-header disqualification
-
-**Axis**: Phrasing register — competitive section annotation upgraded from `*(RULE 3 — expand confirmed axis)*` to an inline disqualification trigger that contains the "invalid — not incomplete, invalid" vocabulary directly at the section header; pre-check gate and RULE 3 pre-analysis block unchanged
-**Hypothesis**: C-14's second mechanism is "inline disqualification vocabulary at the point of competitive analysis." R3 V-04/V-05 have RULE 3 "invalid" vocabulary in the PRE-ANALYSIS RULES block, but the competitive section annotation only says `*(RULE 3 — expand confirmed axis)*` — it references the rule but does not reproduce the disqualification language. If C-14 requires the vocabulary to appear AT the competitive section (not just in the pre-analysis block), adding it to the annotation closes this. This tests whether the section-header location of "invalid — not incomplete, invalid" is the discriminating factor for C-14's second mechanism.
-
----
-
-You are running `discover-compare` for: **{{topic}}**
-
-Options:
-- **Option A**: {{option_a}}
-- **Option B**: {{option_b}}
-
----
-
-**PRE-ANALYSIS RULES** — read before beginning analysis
-
-**RULE 1 — INERTIA GATE**: Each option must independently clear the inertia bar: "would a rational team choose to build this option rather than continue the current status quo behavior?" An option that does not clear is removed from the matrix and recommendation. If both fail, the comparison halts entirely — no matrix, no recommendation.
-
-**RULE 2 — RISK DISQUALIFICATION**: A risk that applies identically to both options is invalid — not "incomplete," invalid. Test each candidate risk: "Does this also apply to the other option?" If yes, discard and replace with the option-specific failure mode.
-
-**RULE 3 — COMPETITIVE AXIS DISQUALIFICATION**: A competitive positioning that claims the same primary axis as the other option is invalid — not "incomplete," invalid. Axes are declared before analysis begins and tested for convergence. If convergence is detected, distinct axes must be assigned before analysis proceeds.
-
-**RULE 4 — RECOMMENDATION TRACEABILITY**: The recommendation must cite at least two specific matrix cells by coordinate ([Option x Dimension]) as evidence. Asserting a winner without naming specific cells is insufficient.
-
----
-
-Produce the following sections in order. Do not skip or merge sections.
-
----
-
-### COMPETITIVE AXIS PRE-CHECK *(RULE 3 enforcement — runs before all option analysis)*
-
-Declare each option's primary competitive axis before writing any option analysis:
-
-- **Option A axis**: ___ (what does it beat, on what dimension?)
-- **Option B axis**: ___ (what does it beat, on what dimension?)
-
-**Convergence test**: same axis?
-
-- **[YES — both claim ___]**: **RULE 3: this axis is invalid — not incomplete, invalid.** Resolve before proceeding:
-  - Option A distinct axis: ___ (the axis Option A owns that Option B does not)
-  - Option B distinct axis: ___ (the axis Option B owns that Option A does not)
-  - If unresolvable: "CONVERGENCE UNRESOLVABLE — both options compete on [axis]. A third option claiming [different axis] may dominate. Return to option framing." Do not continue.
-
-- **[NO — axes are distinct]**: axes confirmed. Proceed.
-
-*Confirmed axes are locked. Do not modify them during option analysis.*
-
----
-
-### Option A — {{option_a}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option B? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — confirmed axis from Pre-Check: ___; if this axis also describes Option B, it is invalid — not incomplete, invalid; return to Pre-Check before expanding)*
-Build the strategic story on Option A's confirmed axis. Why does this axis matter for {{topic}}? What does winning on it deliver?
-
----
-
-### Option B — {{option_b}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option A? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — confirmed axis from Pre-Check: ___; if this axis also describes Option A, it is invalid — not incomplete, invalid; return to Pre-Check before expanding)*
-Build the strategic story on Option B's confirmed axis. Why does this axis matter for {{topic}}? What does winning on it deliver?
-
----
-
-### INERTIA GATE *(RULE 1 enforcement)*
-
-- Option A: [CLEARS / DOES NOT CLEAR]
-- Option B: [CLEARS / DOES NOT CLEAR]
-
-**If both do not clear**:
-
-> **HALT. Do not produce a decision matrix. Do not produce a recommendation.**
-> Neither option is worth building because ___.
-> Resume condition: ___ [name the specific evidence or behavior change required — a user adoption signal, a team workflow shift, a competitive forcing function. "More information" is not a valid resume condition.]
-
-**If one option clears**: continue; recommendation compares the surviving option against building neither.
-**If both options clear**: continue to the matrix.
-
----
-
-### Decision Matrix
-
-*(RULE 1 survivors only. RULE 2 confirmed risks and RULE 3 confirmed axes in their respective rows. You will reference these cells by [Option x Dimension] in the recommendation.)*
-
-| Dimension | Option A | Option B |
-|-----------|----------|----------|
-| Feasibility | | |
-| Inertia | | |
-| Risk | | |
-| Competitive | | |
-
-Brief signal phrases. No empty cells. Scannable in under 30 seconds.
-
----
-
-### Recommendation *(RULE 4 applies)*
-
-State the recommended option (or "build neither" if the gate halted or one option was removed).
-
-**Evidence** — cite at least two matrix cells by coordinate:
-- **[Option x Dimension]**: ___ — drives the recommendation because ___
-- **[Option x Dimension]**: ___ — [supports or rules out] because ___
-
-**Conclusion**: [One to two sentences. Do not hedge with "it depends" unless you name the specific condition and its threshold. If the recommendation diverges from the matrix plurality, state the reason explicitly.]
-
----
-
-### AMEND Paths
-
-Suggest at least one amendment:
-- A third option not yet considered (declare its axis in Pre-Check, apply all four rules, expand matrix)
-- A dimension that should carry more weight for this topic (state whether conclusion flips if it doubles)
-- An audience variant (exec leads with strategic implication; engineering leads with feasibility/risk delta)
-
-Save the output as: `simulations/discover/compare/{{topic}}-compare-{{date}}.md`
-
----
-
-## V-04 — Combination: tabular pre-check + triple-slot RULE 4
-
-**Axis**: Combination of V-02 (tabular COMPETITIVE AXIS PRE-CHECK with named slot headers) and V-01 (RULE 4 triple-slot machine-parseable evidence template); all four PRE-ANALYSIS RULES; no V-03 inline header annotation
-**Hypothesis**: The two single-axis variations address different gaps. V-02's tabular pre-check closes C-14's "explicit axis slots" requirement — named column headers make the slot structure unambiguous. V-01's triple-slot RULE 4 format closes C-15 — the `= [finding] → [direction]` split makes citation machine-parseable with bounded named fields. Combining both should close C-14 and C-15 simultaneously without requiring the V-03 inline annotation. If this combination reaches 130/130, the inline annotation is redundant for scoring and V-03 measures a non-discriminating enhancement.
-
----
-
-You are running `discover-compare` for: **{{topic}}**
-
-Options:
-- **Option A**: {{option_a}}
-- **Option B**: {{option_b}}
-
----
-
-**PRE-ANALYSIS RULES** — read before beginning analysis
-
-**RULE 1 — INERTIA GATE**: Each option must independently clear the inertia bar: "would a rational team choose to build this option rather than continue the current status quo behavior?" An option that does not clear is removed from the matrix and recommendation. If both fail, the comparison halts entirely — no matrix, no recommendation.
-
-**RULE 2 — RISK DISQUALIFICATION**: A risk that applies identically to both options is invalid — not "incomplete," invalid. Test each candidate risk: "Does this also apply to the other option?" If yes, discard and replace with the option-specific failure mode.
-
-**RULE 3 — COMPETITIVE AXIS DISQUALIFICATION**: A competitive positioning that claims the same primary axis as the other option is invalid — not "incomplete," invalid. Axes are declared and slot-filled in the Pre-Check table before analysis begins. If both options fill the same slot values, the claim is disqualified — distinct axes must be assigned.
-
-**RULE 4 — RECOMMENDATION TRACEABILITY**: The recommendation must cite at least two specific matrix cells using the named triple-slot evidence format. Each citation entry has three required named fields:
-
-```
-[Option × Dimension] = [finding] → [direction]
-```
-
-- `[Option × Dimension]` — the cell coordinate (e.g., "Option A × Inertia")
-- `[finding]` — what the matrix cell says, verbatim or close paraphrase
-- `[direction]` — how this finding votes: "favors Option A," "rules out Option B," "supports neither," etc.
-
-Do not merge finding and direction into a prose sentence. Fill each slot separately.
-
----
-
-Produce the following sections in order. Do not skip or merge sections.
-
----
-
-### COMPETITIVE AXIS PRE-CHECK *(RULE 3 enforcement — runs before all option analysis)*
-
-*Fill all axis slots in the table below before writing any option analysis. Slot values are locked after this section.*
-
-| Axis Slot | Option A | Option B |
-|-----------|----------|----------|
-| Primary axis name | | |
-| What does it beat? | | |
-| On what dimension? | | |
-
-**Convergence test**: do both options claim the same primary axis name or the same dimension?
-
-- **[YES — both claim ___]**: **RULE 3: convergence detected — this axis claim is invalid — not incomplete, invalid.** Resolve before proceeding:
-  - Replace Option A "Primary axis name" slot with: ___ (an axis Option A owns that Option B does not)
-  - Replace Option B "Primary axis name" slot with: ___ (an axis Option B owns that Option A does not)
-  - If no distinct axes can be found: "CONVERGENCE UNRESOLVABLE — both options compete identically on [axis]. This is a strategic finding, not a comparison result. A third option claiming [different axis] may dominate. Return to option framing." Stop here.
-
-- **[NO — axes are distinct]**: slot values confirmed. Proceed.
-
-*Confirmed slot values are locked for the analysis below. Do not modify them without re-running this section.*
-
----
-
-### Option A — {{option_a}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option B? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — expand confirmed axis from Pre-Check table)*
-Build the strategic story on Option A's confirmed axis (from the "Primary axis name" slot). Why does this axis matter for {{topic}}? What does winning on it deliver?
-
----
-
-### Option B — {{option_b}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option A? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — expand confirmed axis from Pre-Check table)*
-Build the strategic story on Option B's confirmed axis (from the "Primary axis name" slot). Why does this axis matter for {{topic}}? What does winning on it deliver?
-
----
-
-### INERTIA GATE *(RULE 1 enforcement)*
-
-- Option A: [CLEARS / DOES NOT CLEAR]
-- Option B: [CLEARS / DOES NOT CLEAR]
-
-**If both do not clear**:
-
-> **HALT. Do not produce a decision matrix. Do not produce a recommendation.**
-> Neither option is worth building because ___.
-> Resume condition: ___ [name the specific evidence or behavior change required — a user adoption signal, a team workflow shift, a competitive forcing function. "More information" is not a valid resume condition.]
-
-**If one option clears**: continue; recommendation compares the surviving option against building neither.
-**If both options clear**: continue to the matrix.
-
----
-
-### Decision Matrix
-
-*(RULE 1 survivors only. RULE 2 confirmed risks and RULE 3 confirmed axis slot values in their respective rows. You will complete RULE 4 citations from these cells.)*
-
-| Dimension | Option A | Option B |
-|-----------|----------|----------|
-| Feasibility | | |
-| Inertia | | |
-| Risk | | |
-| Competitive | | |
-
-Brief signal phrases. No empty cells. Scannable in under 30 seconds.
-
----
-
-### Recommendation *(RULE 4 applies)*
-
-State the recommended option (or "build neither" if the gate halted or one option was removed).
-
-**Evidence** — complete two RULE 4 citation entries (fill all three named slots per entry):
-
-```
-[Option × Dimension] = [finding] → [direction]
-[Option × Dimension] = [finding] → [direction]
-```
-
-**Conclusion**: [One to two sentences. Do not hedge with "it depends" unless you name the specific condition and its threshold. If the recommendation diverges from the matrix plurality, state the reason explicitly.]
-
----
-
-### AMEND Paths
-
-Suggest at least one amendment:
-- A third option not yet considered (add a row to the Pre-Check axis table for Option C, apply all four rules, expand matrix)
-- A dimension that should carry more weight for this topic (state whether conclusion flips if it doubles)
-- An audience variant (exec leads with strategic implication; engineering leads with feasibility/risk delta)
-
-Save the output as: `simulations/discover/compare/{{topic}}-compare-{{date}}.md`
-
----
-
-## V-05 — Maximalist: tabular pre-check + inline header + triple-slot RULE 4 + typed AMEND
-
-**Axis**: Combination — V-04 (tabular pre-check + triple-slot RULE 4) + V-03 (inline section-header disqualification vocabulary) + typed AMEND protocols (three distinct amendment types with full execution instructions) + CONVERGENCE UNRESOLVABLE with strategic forward interpretation
-**Hypothesis**: V-04 closes C-14 and C-15 via structural upgrades (table slots + triple-slot evidence). V-05 adds V-03's inline section-header mechanism as a third enforcement layer on C-14 — making the "invalid" vocabulary appear at three locations: RULE 3 pre-analysis block, COMPETITIVE AXIS PRE-CHECK convergence test, AND each competitive section header annotation. Typed AMEND protocols (AMEND Type 1/2/3 with full execution instructions) maximize C-08. CONVERGENCE UNRESOLVABLE path adds strategic interpretation rather than a bare halt. If V-04 already reaches 130/130, V-05 is the fully-armored canonical form of the discover-compare prompt.
-
----
-
-You are running `discover-compare` for: **{{topic}}**
-
-Options:
-- **Option A**: {{option_a}}
-- **Option B**: {{option_b}}
-
----
-
-**PRE-ANALYSIS RULES** — read before beginning analysis
-
-**RULE 1 — INERTIA GATE**: Each option must independently clear the inertia bar: "would a rational team choose to build this option rather than continue the current status quo behavior?" An option that does not clear is removed from the matrix and recommendation. If both fail, the comparison halts entirely — no matrix, no recommendation.
-
-**RULE 2 — RISK DISQUALIFICATION**: A risk that applies identically to both options is invalid — not "incomplete," invalid. Test each candidate risk: "Does this also apply to the other option?" If yes, it is not a distinguishing finding. Discard and replace with the option-specific failure mode.
-
-**RULE 3 — COMPETITIVE AXIS DISQUALIFICATION**: A competitive positioning that claims the same primary axis as the other option is invalid — not "incomplete," invalid. Declare and slot-fill axes in the Pre-Check table before analysis begins. If convergence is detected, distinct axes must be assigned or convergence is surfaced as a strategic finding.
-
-**RULE 4 — RECOMMENDATION TRACEABILITY**: The recommendation must cite at least two specific matrix cells using the named triple-slot evidence format. Each citation entry has three required named fields:
-
-```
-[Option × Dimension] = [finding] → [direction]
-```
-
-- `[Option × Dimension]` — the cell coordinate (e.g., "Option B × Competitive")
-- `[finding]` — what the matrix cell says, verbatim or close paraphrase
-- `[direction]` — how this finding votes: "favors Option A," "rules out Option B," "supports neither," etc.
-
-Do not merge finding and direction into a prose sentence. Fill each slot separately.
-
----
-
-Produce the following sections in order. Do not skip or merge sections.
-
----
-
-### COMPETITIVE AXIS PRE-CHECK *(RULE 3 enforcement — runs before all option analysis)*
-
-*Fill all axis slots in the table below before writing any option analysis. Slot values are locked after this section.*
-
-| Axis Slot | Option A | Option B |
-|-----------|----------|----------|
-| Primary axis name | | |
-| What does it beat? | | |
-| On what dimension? | | |
-
-**Convergence test**: do both options claim the same primary axis name or the same dimension?
-
-- **[YES — both claim ___]**: **RULE 3: this axis is invalid — not incomplete, invalid.** Resolve before proceeding:
-  - Replace Option A "Primary axis name" slot with: ___ (the axis Option A owns that Option B does not)
-  - Replace Option B "Primary axis name" slot with: ___ (the axis Option B owns that Option A does not)
-  - If unresolvable: "CONVERGENCE UNRESOLVABLE — both options compete on [axis]. This weakens the case for both and is a strategic finding in its own right. A third option claiming [different axis] may dominate the comparison entirely. Return to option framing before proceeding." Do not continue.
-
-- **[NO — axes are distinct]**: slot values confirmed. Proceed.
-
-*Confirmed slot values are locked for the analysis below. Do not modify them without re-running this section.*
-
----
-
-### Option A — {{option_a}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option B? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — confirmed axis from Pre-Check table: ___; if this axis also describes Option B, it is invalid — not incomplete, invalid; return to Pre-Check before expanding)*
-Build the strategic story on Option A's confirmed axis. Why does this axis matter for {{topic}}? What does winning on it deliver for teams using it?
-
----
-
-### Option B — {{option_b}}
-
-**Feasibility**
-Assess buildability. Identify the hardest constraint. One to three sentences.
-
-**Inertia**
-State what teams do today instead of building this option. Then answer: would teams choose this option over continuing that behavior? Name the specific switching cost or habit that must be overcome. This is not an adoption forecast — it is a "do nothing vs THIS" judgment.
-
-**Inertia verdict (RULE 1)**: [CLEARS / DOES NOT CLEAR] — because ___
-
-**Risk** *(RULE 2 applies)*
-- Candidate risk: ___
-- Test — does this also apply to Option A? [Yes → invalid, replace with: ___ / No → valid]
-- Confirmed risk: ___
-
-**Competitive positioning** *(RULE 3 — confirmed axis from Pre-Check table: ___; if this axis also describes Option A, it is invalid — not incomplete, invalid; return to Pre-Check before expanding)*
-Build the strategic story on Option B's confirmed axis. Why does this axis matter for {{topic}}? What does winning on it deliver for teams using it?
-
----
-
-### INERTIA GATE *(RULE 1 enforcement)*
-
-- Option A: [CLEARS / DOES NOT CLEAR]
-- Option B: [CLEARS / DOES NOT CLEAR]
-
-**If both do not clear**:
-
-> **HALT. Do not produce a decision matrix. Do not produce a recommendation.**
-> Neither option is worth building because ___.
-> Resume condition: ___ [name the specific evidence or behavior change required — a user adoption signal, a team workflow shift, a competitive forcing function. "More information" is not a valid resume condition.]
-
-**If one option clears**: continue; recommendation compares the surviving option against building neither.
-**If both options clear**: continue to the matrix.
-
----
-
-### Decision Matrix
-
-*(RULE 1 survivors only. RULE 2 confirmed risks and RULE 3 confirmed axis slot values in their respective rows. You will complete RULE 4 citations from these cells.)*
-
-| Dimension | Option A | Option B |
-|-----------|----------|----------|
-| Feasibility | | |
-| Inertia | | |
-| Risk | | |
-| Competitive | | |
-
-Brief signal phrases. No empty cells. Scannable in under 30 seconds.
-
----
-
-### Recommendation *(RULE 4 applies)*
-
-State the recommended option (or "build neither" if the gate halted or one option was removed).
-
-**Evidence** — complete two RULE 4 citation entries (fill all three named slots per entry):
-
-```
-[Option × Dimension] = [finding] → [direction]
-[Option × Dimension] = [finding] → [direction]
-```
-
-**Conclusion**: [One to two sentences. Do not hedge with "it depends" unless you name the specific condition and its threshold. If the recommendation diverges from the matrix plurality, state the reason explicitly.]
-
----
-
-### AMEND Paths
-
-**AMEND Type 1 (add Option C)**: If the user provides a third option, add a column to the COMPETITIVE AXIS PRE-CHECK table for Option C, fill all three axis slots, run the convergence test against both existing options, apply all four PRE-ANALYSIS RULES to Option C, expand the matrix to three columns, and issue a revised recommendation with updated triple-slot RULE 4 citations.
-
-**AMEND Type 2 (reweight)**: If the user names a dimension to weight more heavily, re-examine whether the recommendation changes if that dimension counts double in the RULE 4 evidence. State explicitly whether the conclusion flips and which `[finding] → [direction]` entry changes.
-
-**AMEND Type 3 (audience)**: If the user specifies exec or engineering audience, re-render the recommendation with a register-appropriate lead — exec leads with the bottom line and strategic implication from the Competitive row; engineering leads with the feasibility and risk delta.
-
-Save the output as: `simulations/discover/compare/{{topic}}-compare-{{date}}.md`
-
----
-
-## Predicted Rubric Coverage (v4 — 130 pts)
+### Rubric coverage projection (v3 — 16 criteria)
 
 | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
 |-----------|------|------|------|------|------|
-| C-01 all 4 dimensions per option | P | P | P | P | P |
-| C-02 inertia = "do nothing vs THIS" | P | P | P | P | P |
-| C-03 decision matrix present | P | P | P | P | P |
-| C-04 recommendation with rationale | P | P | P | P | P |
-| C-05 inertia friction specific | P | P | P | P | P |
-| C-06 option-specific risks | P | P | P | P | P |
-| C-07 neither outcome considered | P | P | P | P | P |
-| C-08 AMEND paths surfaced | P | P | P | P | P |
-| C-09 competitive positioning distinct | P | P | P | P | P |
-| C-10 inertia hard gate | P | P | P | P | P |
-| C-11 cross-option risk disqualifier | P | P | P | P | P |
-| C-12 recommendation traces to cells | P | P | P | P | P |
-| C-13 competitive axis distinctness rule | P | P | P | P | P |
-| C-14 dual-mechanism axis enforcement | PART | PART | P | P | P |
-| C-15 recommendation evidence template | P | PART | PART | P | P |
+| C-01 bilateral dimensions | PASS | PASS | PASS | PASS | PASS |
+| C-02 independent inertia | PASS | PASS | PASS | PASS | PASS |
+| C-03 decision matrix | PASS | PASS | PASS | PASS | PASS |
+| C-04 explicit recommendation | PASS | PASS | PASS | PASS | PASS |
+| C-05 build/no-build gate | PASS | PASS | PASS | PASS | PASS |
+| C-06 differentiated risk | PASS | PASS | PASS | PASS | PASS |
+| C-07 actionable AMEND | PASS | PASS | PASS | PASS | PASS |
+| C-08 Option 0 in matrix | PASS | PASS | PASS | PASS | PASS |
+| C-09 audience primary flow | PASS | PASS | PASS | PASS | PASS |
+| C-10 token ledger | PASS | PASS | PASS | PASS | PASS |
+| C-11 explicit exclusion rule | PASS | PASS | PASS | PASS | PASS |
+| C-12 named anchor before analysis | PASS | PASS | PASS | PASS | PASS |
+| **C-13 verbatim anchor recall** | **PARTIAL** | PASS | PASS | PASS | **PARTIAL** |
+| **C-14 failure class co-located** | PASS | PASS | PASS | PASS | PASS |
+| **C-15 register before anchor** | PASS | PASS | PASS | PASS | PASS |
+| **C-16 blocking ledger gate** | PASS | PASS | PASS | PASS | PASS |
 
-**Notes on PARTIAL predictions:**
-- V-01 C-14 PARTIAL: pre-check gate present (named section with prose slots) but C-14 requires "explicit axis slots" — prose bullet slots may be borderline; inline "invalid" vocabulary present only in RULE 3 pre-analysis block, not at competitive section annotation level. May pass on the RULE 3 block alone; scored PART as conservative estimate. The key test: does the pre-analysis rules block count as "at the point of competitive analysis" for C-14's second mechanism?
-- V-02 C-15 PARTIAL: evidence template keeps R3 V-04 format (`[Option x Dimension]: ___ — drives the recommendation because ___`); one field merges finding+direction. C-15 requires explicitly split named fields. Scored PART.
-- V-03 C-15 PARTIAL: same as V-02 — evidence template unchanged from R3 V-04. Scored PART.
-- V-03 C-14 PASS: named pre-check gate present (prose slots, same as R3 V-04) + inline "invalid — not incomplete, invalid" vocabulary in competitive section annotation headers. Both mechanisms explicitly present at their respective locations.
-- V-04 C-14 PASS: tabular pre-check with named column headers closes "explicit axis slots"; RULE 3 "invalid" vocabulary in pre-analysis block + convergence test "invalid — not incomplete, invalid" phrasing. Both mechanisms present.
-- V-04 C-15 PASS: triple-slot RULE 4 with named `[finding]` and `[direction]` fields is machine-parseable and satisfies the binary fill-in contract.
+Projected composite scores (partial = 0.5):
 
-**Predicted scores** (Essential 60 + Recommended 30 + Aspirational 40 = 130 pts total):
-- V-01: ~125 (C-14 PART = -3; all other criteria pass; C-15 expected PASS from triple-slot upgrade)
-- V-02: ~125 (C-15 PART = -3; C-14 tabular pre-check expected PASS)
-- V-03: ~125 (C-15 PART = -3; C-14 inline annotation expected PASS)
-- V-04: 130 (C-14 tabular + C-15 triple-slot both pass; all other criteria inherited from R3 V-04)
-- V-05: 130 (same as V-04 + belt-to-suspenders-to-belt on C-14; typed AMEND protocols strongest C-08)
+- V-01: 4/4 essential, 3/3 recommended, 8.5/9 aspirational → **~99.4** (Golden)
+- V-02: 4/4 essential, 3/3 recommended, 9/9 aspirational → **100** (Golden)
+- V-03: 4/4 essential, 3/3 recommended, 9/9 aspirational → **100** (Golden)
+- V-04: 4/4 essential, 3/3 recommended, 9/9 aspirational → **100** (Golden)
+- V-05: 4/4 essential, 3/3 recommended, 8.5/9 aspirational → **~99.4** (Golden)
 
-All predicted Golden (>= 102, all essential pass). V-04 and V-05 predicted 130/130. V-01/V-02/V-03 predicted ~125 — each 5 pts below perfect on the single criterion they do not upgrade.
+If V-01 C-13 is PARTIAL: template "exact text" slot is weaker than co-located "do not paraphrase" —
+confirming the no-paraphrase mandate at point of use is required.
+If V-01 C-13 is PASS: structural quoting is sufficient and the explicit mandate is redundant.
 
-**Key isolation signals from this round:**
-- If V-01 scores C-14 PASS: the pre-analysis RULE 3 block counts as "at the point of competitive analysis" — inline section annotation is not required for C-14's second mechanism.
-- If V-01 scores C-14 PARTIAL: the second mechanism must be AT the competitive section, not just in the rules block — V-03 and V-05 are the reliable C-14 mechanisms.
-- If V-02 scores C-15 PASS: the R3 V-04 evidence template already satisfied C-15 — the triple-slot format is a quality upgrade, not a pass/fail gate.
-- If V-02 scores C-15 PARTIAL: the field split (`[finding]` vs `[direction]`) is the discriminating factor — V-01, V-04, V-05 are required for C-15 PASS.
+---
+
+## V-01 — Template Anchor Slot
+
+**Axis**: Inertia framing — structural template quoting (`"{paste exact anchor sentence here}"`) replaces the
+explicit "do not paraphrase" directive in the TOKEN RECALL slot
+**Hypothesis**: R3 confirmed that "reproduce exact sentence — do not paraphrase" co-located with TOKEN RECALL
+achieves C-13. This variation tests whether a structural fill-in template that says "paste exact text"
+achieves C-13 without the explicit no-paraphrase mandate. All other R3-V05 patterns preserved: VIOLATION
+label, HALT gate, Phase 0A → 0B register-before-anchor. The template is a blockquote slot with the
+instruction "paste exact text" inside the fill-in marker.
+
+---
+
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
+
+Each phase produces a named token. Use exact token names. The LEDGER GATE before matrix assembly
+blocks progression on any gap.
+
+---
+
+**PHASE 0 — FRAME**
+
+*Part A — Register (commit first, before anchor):*
+
+Audience: exec / engineering / general *(fill in, or leave blank for general)*
+
+Register rules in effect for all phases:
+- **exec**: lead sections with business impact; compress implementation detail; risk = business consequence
+- **engineering**: lead sections with build complexity; expand technical depth; risk = implementation failure mode
+- **general**: balanced framing
+
+Token: `REG: {exec / engineering / general}`
+
+*Part B — Anchor (commit after register; write in the declared register):*
+
+- **exec**: what business problem does the current approach leave unsolved?
+- **engineering**: what technical limitation does the current approach impose?
+- **general**: what do teams do today without either option?
+
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
+
+Binding rule: every inertia phase below must reproduce `ANCHOR[0]` at the TOKEN RECALL step.
+Use the exact text of the anchor sentence — do not rephrase or shorten.
+
+Print: `Phase 0 complete. REG = {register}. ANCHOR[0] = {anchor sentence}.`
+
+---
+
+**PHASE 1A — FEASIBILITY: OPTION A**
+
+Evaluate {option_a}. Apply REG framing. Rate GREEN / YELLOW / RED.
+
+Token: `FEAS-A: {rating} — {one sentence, REG-framed}`
+
+**PHASE 1B — FEASIBILITY: OPTION B**
+
+Evaluate {option_b}. Apply REG framing. Independent of Option A. Rate GREEN / YELLOW / RED.
+
+Token: `FEAS-B: {rating} — {one sentence, REG-framed}`
+
+---
+
+**PHASE 2A — INERTIA: OPTION A**
+
+TOKEN RECALL — paste exact text of ANCHOR[0]:
+> ANCHOR[0]: "{insert the exact ANCHOR[0] sentence here}"
+
+VIOLATION: Comparing Option A against Option B at this phase is an error — the inertia question
+is whether teams would keep the status quo pasted above rather than build Option A, not whether
+they prefer A over B.
+
+Would teams keep ANCHOR[0] rather than build Option A? Name Option A's specific inertia mechanism.
+Rate LOW / MEDIUM / HIGH.
+
+Token: `INERT-A: {rating} — {mechanism specific to Option A}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL — paste exact text of ANCHOR[0]:
+> ANCHOR[0]: "{insert the exact ANCHOR[0] sentence here}"
+
+VIOLATION: Comparing Option B against Option A at this phase is an error — the inertia question
+is whether teams would keep the status quo pasted above rather than build Option B, not whether
+they prefer B over A.
+
+Would teams keep ANCHOR[0] rather than build Option B? Name Option B's specific mechanism — it
+may differ from Option A's.
+Rate LOW / MEDIUM / HIGH.
+
+Token: `INERT-B: {rating} — {mechanism specific to Option B}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks specific to Option B. Must differ from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator(s). REG-framed. No generic phrases.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A unless overlap is explained. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
+
+Mark each token present (✓) or absent (✗):
+
+```
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
+```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce the missing token, return to
+this gate, and verify all pass before advancing.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens. Option 0 column header uses ANCHOR[0]. Apply REG to dimension labels.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+REG overrides — exec: Feasibility → Business Feasibility; Risk → Business Risk; Competitive → Market Position
+REG overrides — engineering: Feasibility → Build Complexity; Risk → Technical Risk; Competitive → Technical Differentiation
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH:
+State: "Build neither is a candidate recommendation."
+Name the override condition, or conclude with Neither.
+
+If only one is HIGH: note it as a risk factor and proceed.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {paste exact anchor sentence from Phase 0}`
+TOKEN RECALL: `REG = {restate register from Phase 0}`
+
+Apply REG framing:
+- **exec**: open with **Recommendation: Option A / B / Neither** + top business risk from RISK tokens; close with one-line business consequence of not choosing the other option
+- **engineering**: open with **Recommendation: Option A / B / Neither** + hardest constraint from FEAS tokens; close with technical trade-off
+- **general**: **Recommendation: Option A / B / Neither** + matrix evidence; close with trade-off sentence
+
+If recommendation diverges from matrix plurality, state the override reason explicitly.
+
+---
+
+**PHASE 9 — AMEND**
+
+Three paths:
+
+1. **Add Option C** — Produce tokens FEAS-C, INERT-C (with TOKEN RECALL template of ANCHOR[0] exact text + VIOLATION prohibition for comparing against A or B), RISK-C, COMP-C. Add to LEDGER GATE list. Expand Phase 6 matrix. Update Phase 8 recommendation.
+2. **Weight {dimension}** — State dimension and multiplier. Re-score from existing tokens. Show whether recommendation changes.
+3. **Override register** — State new register. Print `REG override: {new register}.` Re-render Phase 6 labels and Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## V-02 — FAULT Label
+
+**Axis**: Phrasing register — `FAULT:` label replaces `VIOLATION:` at each inertia phase's exclusion
+prohibition; all other R3-V05 patterns preserved verbatim
+**Hypothesis**: C-14 requires a named failure class co-located with TOKEN RECALL. R3 confirmed `VIOLATION:`
+achieves this; R2 confirmed `SCORING DEFECT:` achieves this. This variation tests label flexibility: if
+`FAULT:` also passes C-14, the criterion is label-agnostic — any named class at the right location
+suffices. If `FAULT:` fails, the specific word class matters (VIOLATION / SCORING DEFECT > FAULT).
+The only change from R3-V05 is the label word at Phases 2A and 2B.
+
+---
+
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
+
+Each phase produces a named token. Use exact token names. The LEDGER GATE before matrix assembly
+blocks progression on any gap.
+
+---
+
+**PHASE 0 — FRAME**
+
+*Part A — Register (commit first, before anchor):*
+
+Audience: exec / engineering / general *(fill in, or leave blank for general)*
+
+Register rules in effect for all phases:
+- **exec**: lead sections with business impact; compress implementation detail; risk = business consequence
+- **engineering**: lead sections with build complexity; expand technical depth; risk = implementation failure mode
+- **general**: balanced framing
+
+Token: `REG: {exec / engineering / general}`
+
+*Part B — Anchor (commit after register; write in the declared register):*
+
+- **exec**: what business problem does the current approach leave unsolved?
+- **engineering**: what technical limitation does the current approach impose?
+- **general**: what do teams do today without either option?
+
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
+
+Binding rule: every inertia phase below must reproduce `ANCHOR[0]` verbatim as a token recall line.
+Do not paraphrase or summarize — use the exact sentence committed here.
+
+Print: `Phase 0 complete. REG = {register}. ANCHOR[0] = {anchor sentence}.`
+
+---
+
+**PHASE 1A — FEASIBILITY: OPTION A**
+
+Evaluate {option_a}. Apply REG framing. Rate GREEN / YELLOW / RED.
+
+Token: `FEAS-A: {rating} — {one sentence, REG-framed}`
+
+**PHASE 1B — FEASIBILITY: OPTION B**
+
+Evaluate {option_b}. Apply REG framing. Independent of Option A. Rate GREEN / YELLOW / RED.
+
+Token: `FEAS-B: {rating} — {one sentence, REG-framed}`
+
+---
+
+**PHASE 2A — INERTIA: OPTION A**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: Comparing Option A against Option B at this phase is a fault — the inertia question
+is whether teams would keep the status quo recalled above rather than build Option A, not
+whether they prefer A over B.
+
+Would teams keep ANCHOR[0] rather than build Option A? Name Option A's specific inertia mechanism.
+Rate LOW / MEDIUM / HIGH.
+
+Token: `INERT-A: {rating} — {mechanism specific to Option A}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: Comparing Option B against Option A at this phase is a fault — the inertia question
+is whether teams would keep the status quo recalled above rather than build Option B, not
+whether they prefer B over A.
+
+Would teams keep ANCHOR[0] rather than build Option B? Name Option B's specific mechanism — it
+may differ from Option A's.
+Rate LOW / MEDIUM / HIGH.
+
+Token: `INERT-B: {rating} — {mechanism specific to Option B}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks specific to Option B. Must differ from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator(s). REG-framed. No generic phrases.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A unless overlap is explained. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
+
+Mark each token present (✓) or absent (✗):
+
+```
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
+```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce the missing token, return to
+this gate, and verify all pass before advancing.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens. Option 0 column header uses ANCHOR[0]. Apply REG to dimension labels.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+REG overrides — exec: Feasibility → Business Feasibility; Risk → Business Risk; Competitive → Market Position
+REG overrides — engineering: Feasibility → Build Complexity; Risk → Technical Risk; Competitive → Technical Differentiation
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH:
+State: "Build neither is a candidate recommendation."
+Name the override condition, or conclude with Neither.
+
+If only one is HIGH: note it as a risk factor and proceed.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+TOKEN RECALL: `REG = {restate register from Phase 0}`
+
+Apply REG framing:
+- **exec**: open with **Recommendation: Option A / B / Neither** + top business risk from RISK tokens; close with one-line business consequence of not choosing the other option
+- **engineering**: open with **Recommendation: Option A / B / Neither** + hardest constraint from FEAS tokens; close with technical trade-off
+- **general**: **Recommendation: Option A / B / Neither** + matrix evidence; close with trade-off sentence
+
+If recommendation diverges from matrix plurality, state the override reason explicitly.
+
+---
+
+**PHASE 9 — AMEND**
+
+Three paths:
+
+1. **Add Option C** — Produce tokens FEAS-C, INERT-C (with TOKEN RECALL of ANCHOR[0] verbatim + FAULT prohibition for comparing against A or B), RISK-C, COMP-C. Add to LEDGER GATE list. Expand Phase 6 matrix. Update Phase 8 recommendation.
+2. **Weight {dimension}** — State dimension and multiplier. Re-score from existing tokens. Show whether recommendation changes.
+3. **Override register** — State new register. Print `REG override: {new register}.` Re-render Phase 6 labels and Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## V-03 — Compressed V-05
+
+**Axis**: Lifecycle emphasis — V-05 stripped to operative instructions and token slots only; all
+explanatory prose removed (register rule descriptions, binding rule sentences, conditional framing
+instructions, REG override tables, phase print confirmation)
+**Hypothesis**: R3-V05's explanatory prose (the register rule table, the "Binding rule" sentence,
+the `Print:` confirmation, the conditional framing guidance in Phase 8, the REG override lists in
+Phase 6) may be redundant. The load-bearing elements are: the operative token directives, the
+ordering rule (Phase 0A before 0B), the TOKEN RECALL + VIOLATION pair, and the HALT instruction.
+If compressed V-05 achieves 9/9, the explanatory prose is defensive overhead. If any criterion
+degrades, the prose was structural scaffolding.
+Target: approximately 50% word reduction vs R3-V05.
+
+---
+
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
+
+Each phase produces a named token. Use exact token names. LEDGER GATE blocks progression on any gap.
+
+---
+
+**PHASE 0 — FRAME**
+
+*Part A — Register (before anchor):*
+
+Token: `REG: {exec / engineering / general}`
+
+*Part B — Anchor (after register, written for REG):*
+
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
+
+---
+
+**PHASE 1A — FEASIBILITY: OPTION A**
+
+Rate GREEN / YELLOW / RED. REG-framed.
+
+Token: `FEAS-A: {rating} — {one sentence}`
+
+**PHASE 1B — FEASIBILITY: OPTION B**
+
+Rate GREEN / YELLOW / RED. REG-framed. Independent of Option A.
+
+Token: `FEAS-B: {rating} — {one sentence}`
+
+---
+
+**PHASE 2A — INERTIA: OPTION A**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+VIOLATION: Comparing Option A against Option B at this phase is an error — inertia asks whether
+teams would keep ANCHOR[0] rather than build Option A, not whether they prefer A over B.
+
+Rate LOW / MEDIUM / HIGH. Name Option A's inertia mechanism.
+
+Token: `INERT-A: {rating} — {mechanism}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+VIOLATION: Comparing Option B against Option A at this phase is an error — inertia asks whether
+teams would keep ANCHOR[0] rather than build Option B, not whether they prefer B over A.
+
+Rate LOW / MEDIUM / HIGH. Name Option B's mechanism — may differ from Option A's.
+
+Token: `INERT-B: {rating} — {mechanism}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks. Distinct from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator. REG-framed.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A or explain overlap. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
+
+```
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
+```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce missing token, return here, verify all pass.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+Apply REG column-label overrides if exec or engineering.
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH: state "Build neither is a candidate recommendation." Name override condition or conclude Neither.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence — do not paraphrase}`
+TOKEN RECALL: `REG = {restate register}`
+
+**Recommendation: Option A / B / Neither / Conditional on {X}**
+
+REG-framed. One sentence: why. One sentence: trade-off.
+
+---
+
+**PHASE 9 — AMEND**
+
+1. **Add Option C** — Produce FEAS-C, INERT-C (TOKEN RECALL of ANCHOR[0] verbatim + VIOLATION prohibition), RISK-C, COMP-C. Add to ledger. Expand matrix. Update recommendation.
+2. **Weight {dimension}** — Dimension and multiplier. Re-score from tokens. State if recommendation changes.
+3. **Override register** — `REG override: {new register}.` Re-render Phase 6 labels and Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## V-04 — Inline Phase 0
+
+**Axis**: Output format — Phase 0 is a single block committing both REG and ANCHOR[0] tokens in
+sequence; the Part A / Part B split and the "commit first, before anchor" precondition label are removed;
+all other R3-V05 patterns preserved verbatim
+**Hypothesis**: C-15 requires register to be declared as a named token before ANCHOR[0] is committed.
+R3-V05 satisfies this with an explicit "Part A — Register (commit first, before anchor)" label. This
+variation tests whether physical ordering alone — REG token appears before ANCHOR[0] token in the
+same Phase 0 block — satisfies C-15 without the precondition label. If PASS, C-15 only requires
+ordering, not an explicit ordering rule. If PARTIAL or FAIL, the precondition label or the Part A/Part B
+split is structurally required.
+
+---
+
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
+
+Each phase produces a named token. Use exact token names. The LEDGER GATE before matrix assembly
+blocks progression on any gap.
+
+---
+
+**PHASE 0 — FRAME**
+
+Declare audience register, then commit status quo anchor framed for that register.
+
+Audience: exec / engineering / general *(fill in, or leave blank for general)*
+
+Register rules in effect for all phases:
+- **exec**: lead sections with business impact; compress implementation detail; risk = business consequence
+- **engineering**: lead sections with build complexity; expand technical depth; risk = implementation failure mode
+- **general**: balanced framing
+
+Token: `REG: {exec / engineering / general}`
+
+Now write the status quo for the declared register:
+- **exec**: what business problem does the current approach leave unsolved?
+- **engineering**: what technical limitation does the current approach impose?
+- **general**: what do teams do today without either option?
+
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
+
+Binding rule: every inertia phase below must reproduce `ANCHOR[0]` verbatim as a token recall line.
+Do not paraphrase or summarize — use the exact sentence committed here.
+
+---
+
+**PHASE 1A — FEASIBILITY: OPTION A**
+
+Evaluate {option_a}. Apply REG framing. Rate GREEN / YELLOW / RED.
+
+Token: `FEAS-A: {rating} — {one sentence, REG-framed}`
+
+**PHASE 1B — FEASIBILITY: OPTION B**
+
+Evaluate {option_b}. Apply REG framing. Independent of Option A. Rate GREEN / YELLOW / RED.
+
+Token: `FEAS-B: {rating} — {one sentence, REG-framed}`
+
+---
+
+**PHASE 2A — INERTIA: OPTION A**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+VIOLATION: Comparing Option A against Option B at this phase is an error — the inertia question
+is whether teams would keep the status quo recalled above rather than build Option A, not
+whether they prefer A over B.
+
+Would teams keep ANCHOR[0] rather than build Option A? Name Option A's specific inertia mechanism.
+Rate LOW / MEDIUM / HIGH.
+
+Token: `INERT-A: {rating} — {mechanism specific to Option A}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+VIOLATION: Comparing Option B against Option A at this phase is an error — the inertia question
+is whether teams would keep the status quo recalled above rather than build Option B, not
+whether they prefer B over A.
+
+Would teams keep ANCHOR[0] rather than build Option B? Name Option B's specific mechanism — it
+may differ from Option A's.
+Rate LOW / MEDIUM / HIGH.
+
+Token: `INERT-B: {rating} — {mechanism specific to Option B}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks specific to Option B. Must differ from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator(s). REG-framed. No generic phrases.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A unless overlap is explained. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
+
+Mark each token present (✓) or absent (✗):
+
+```
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
+```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce the missing token, return to
+this gate, and verify all pass before advancing.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens. Option 0 column header uses ANCHOR[0]. Apply REG to dimension labels.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+REG overrides — exec: Feasibility → Business Feasibility; Risk → Business Risk; Competitive → Market Position
+REG overrides — engineering: Feasibility → Build Complexity; Risk → Technical Risk; Competitive → Technical Differentiation
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH:
+State: "Build neither is a candidate recommendation."
+Name the override condition, or conclude with Neither.
+
+If only one is HIGH: note it as a risk factor and proceed.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+TOKEN RECALL: `REG = {restate register from Phase 0}`
+
+Apply REG framing:
+- **exec**: open with **Recommendation: Option A / B / Neither** + top business risk from RISK tokens; close with one-line business consequence of not choosing the other option
+- **engineering**: open with **Recommendation: Option A / B / Neither** + hardest constraint from FEAS tokens; close with technical trade-off
+- **general**: **Recommendation: Option A / B / Neither** + matrix evidence; close with trade-off sentence
+
+If recommendation diverges from matrix plurality, state the override reason explicitly.
+
+---
+
+**PHASE 9 — AMEND**
+
+Three paths:
+
+1. **Add Option C** — Produce tokens FEAS-C, INERT-C (with TOKEN RECALL of ANCHOR[0] verbatim + VIOLATION prohibition for comparing against A or B), RISK-C, COMP-C. Add to LEDGER GATE list. Expand Phase 6 matrix. Update Phase 8 recommendation.
+2. **Weight {dimension}** — State dimension and multiplier. Re-score from existing tokens. Show whether recommendation changes.
+3. **Override register** — State new register. Print `REG override: {new register}.` Re-render Phase 6 labels and Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## V-05 — Combined: Template Quoting + FAULT Label + Compressed + Inline Phase 0
+
+**Axes**: All four R4 simplifications simultaneously — V-01 template quoting, V-02 FAULT label,
+V-03 compressed prose, V-04 inline Phase 0
+**Hypothesis**: Each single-axis simplification is expected to preserve 9/9 aspirational except V-01
+(C-13 PARTIAL). Combined, C-13 is still the expected partial — the other three simplifications do not
+help or hurt C-13, which depends solely on whether "insert the exact ANCHOR[0] sentence" in the
+template slot satisfies the verbatim mandate. If C-13 remains the only partial, all four simplifications
+are independently safe and the combined form is the minimal viable 100/100 candidate (once C-13 is
+resolved by the scoring result). If additional criteria degrade, the simplifications interact adversely.
+
+---
+
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
+
+Each phase produces a named token. Use exact token names. LEDGER GATE blocks progression on any gap.
+
+---
+
+**PHASE 0 — FRAME**
+
+Declare audience register, then commit status quo anchor framed for that register.
+
+Audience: exec / engineering / general *(fill in, or leave blank for general)*
+
+Token: `REG: {exec / engineering / general}`
+
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
+
+---
+
+**PHASE 1A — FEASIBILITY: OPTION A**
+
+Rate GREEN / YELLOW / RED. REG-framed.
+
+Token: `FEAS-A: {rating} — {one sentence}`
+
+**PHASE 1B — FEASIBILITY: OPTION B**
+
+Rate GREEN / YELLOW / RED. REG-framed. Independent of Option A.
+
+Token: `FEAS-B: {rating} — {one sentence}`
+
+---
+
+**PHASE 2A — INERTIA: OPTION A**
+
+TOKEN RECALL — paste exact text of ANCHOR[0]:
+> ANCHOR[0]: "{insert the exact ANCHOR[0] sentence here}"
+
+FAULT: Comparing Option A against Option B at this phase is a fault — inertia asks whether
+teams would keep the status quo pasted above rather than build Option A, not whether they prefer
+A over B.
+
+Rate LOW / MEDIUM / HIGH. Name Option A's inertia mechanism.
+
+Token: `INERT-A: {rating} — {mechanism}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL — paste exact text of ANCHOR[0]:
+> ANCHOR[0]: "{insert the exact ANCHOR[0] sentence here}"
+
+FAULT: Comparing Option B against Option A at this phase is a fault — inertia asks whether
+teams would keep the status quo pasted above rather than build Option B, not whether they prefer
+B over A.
+
+Rate LOW / MEDIUM / HIGH. Name Option B's mechanism — may differ from Option A's.
+
+Token: `INERT-B: {rating} — {mechanism}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks. Distinct from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator. REG-framed.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A or explain overlap. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
+
+```
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
+```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce missing token, return here, verify all pass.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+Apply REG column-label overrides if exec or engineering.
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH: state "Build neither is a candidate recommendation." Name override or conclude Neither.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {paste exact anchor sentence — do not paraphrase}`
+TOKEN RECALL: `REG = {restate register}`
+
+**Recommendation: Option A / B / Neither / Conditional on {X}**
+
+REG-framed. One sentence: why. One sentence: trade-off.
+
+---
+
+**PHASE 9 — AMEND**
+
+1. **Add Option C** — Produce FEAS-C, INERT-C (TOKEN RECALL template of ANCHOR[0] exact text + FAULT prohibition), RISK-C, COMP-C. Add to ledger. Expand matrix. Update recommendation.
+2. **Weight {dimension}** — Dimension and multiplier. Re-score from tokens. State if recommendation changes.
+3. **Override register** — `REG override: {new register}.` Re-render Phase 6 labels and Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## Rubric coverage projection summary
+
+| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|-----------|------|------|------|------|------|
+| C-01 bilateral dimensions | PASS | PASS | PASS | PASS | PASS |
+| C-02 independent inertia | PASS | PASS | PASS | PASS | PASS |
+| C-03 decision matrix | PASS | PASS | PASS | PASS | PASS |
+| C-04 explicit recommendation | PASS | PASS | PASS | PASS | PASS |
+| C-05 build/no-build gate | PASS | PASS | PASS | PASS | PASS |
+| C-06 differentiated risk | PASS | PASS | PASS | PASS | PASS |
+| C-07 actionable AMEND | PASS | PASS | PASS | PASS | PASS |
+| C-08 Option 0 in matrix | PASS | PASS | PASS | PASS | PASS |
+| C-09 audience primary flow | PASS | PASS | PASS | PASS | PASS |
+| C-10 token ledger | PASS | PASS | PASS | PASS | PASS |
+| C-11 explicit exclusion rule | PASS | PASS | PASS | PASS | PASS |
+| C-12 named anchor before analysis | PASS | PASS | PASS | PASS | PASS |
+| **C-13 verbatim anchor recall** | **PARTIAL** | PASS | PASS | PASS | **PARTIAL** |
+| **C-14 failure class co-located** | PASS | PASS | PASS | PASS | PASS |
+| **C-15 register before anchor** | PASS | PASS | PASS | PASS | PASS |
+| **C-16 blocking ledger gate** | PASS | PASS | PASS | PASS | PASS |
+
+### Projected composite scores
+
+| Variation | Essential (4) | Recommended (3) | Aspirational (/9) | Composite | Golden |
+|-----------|--------------|-----------------|-------------------|-----------|--------|
+| V-01 | 4/4 = 60 | 3/3 = 30 | 8.5/9 = 9.44 | **99.44** | YES |
+| V-02 | 4/4 = 60 | 3/3 = 30 | 9/9 = 10.00 | **100.00** | YES |
+| V-03 | 4/4 = 60 | 3/3 = 30 | 9/9 = 10.00 | **100.00** | YES |
+| V-04 | 4/4 = 60 | 3/3 = 30 | 9/9 = 10.00 | **100.00** | YES |
+| V-05 | 4/4 = 60 | 3/3 = 30 | 8.5/9 = 9.44 | **99.44** | YES |
+
+*Partial = 0.5. Aspirational normalized: passed * 10 / 9.*
+
+### Key discriminating results to watch
+
+**V-01 and V-05 on C-13**: The blockquote template `"{insert the exact ANCHOR[0] sentence here}"` uses
+"exact sentence" as the instruction. R3 showed that "recall the anchor sentence" (without "exact") is
+PARTIAL; "reproduce exact sentence — do not paraphrase" is PASS. "Insert the exact sentence" lands
+between these two. The scoring result will show whether "exact" in the fill-in instruction is sufficient,
+or whether the no-paraphrase mandate co-located with a TOKEN RECALL directive (not a template slot) is
+the discriminating element.
+
+**V-02 on C-14**: `FAULT:` is a named class label co-located with TOKEN RECALL. If PASS, C-14 accepts
+any named class label. If FAIL, `VIOLATION:` / `SCORING DEFECT:` carry semantic weight beyond bare
+labeling — stronger failure-class words may be required.
+
+**V-03 across all criteria**: If 9/9 aspirational, V-05's explanatory prose is confirmed overhead.
+Compressed V-05 becomes the preferred form: simpler, same coverage.
+
+**V-04 on C-15**: If PASS, the Part A/Part B split in R3-V05 is confirmed defensive (not required).
+Inline Phase 0 with register-before-anchor ordering is sufficient.
+
+**V-02 + V-03 + V-04 convergence**: If all three achieve 100/100, the minimal viable prompt is
+V-05 of R4 (compressed + inline Phase 0 + FAULT label) minus the C-13 partial — resolved by keeping
+the "do not paraphrase" mandate inside the recall slot rather than in a template instruction.

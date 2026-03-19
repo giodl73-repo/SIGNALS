@@ -1,87 +1,105 @@
-v3 is written. Here's what changed:
+Reading the scorecard carefully to extract the new patterns before writing.
 
-**Three new aspirational criteria extracted from Round 2:**
+Three new excellence signals in R2 not yet captured as criteria:
 
-| ID | Source | Pattern |
-|----|--------|---------|
-| C-13 | V-02 | Pre-persona inertia landscape classification (Structural/Behavioral/Mixed). V-02's Phase 2 ran this before any persona analysis, making inertia type gate the analysis rather than be derived from it -- propagating specificity downstream into C-09. |
-| C-14 | V-02 | Type-conditioned mitigation. V-02's "if structural: name the product change / if behavioral: name the launch sequence" is a stronger C-09 guarantee than anti-patterns lists -- it constrains the answer space before writing. |
-| C-15 | V-02 | Lost TAM implication as a non-conditional required statement. V-01/V-03/V-04 all got PARTIAL on C-10 despite using structural/behavioral vocabulary, because the section was gated on "if evidence supports it". V-02's unconditional "Lost TAM implication: {one sentence}" locked in the framing. |
+1. **Kill barrier temporal persistence test** (V-07): Kill barrier is not just identified at T=0 — it is explicitly qualified to persist at T=0 AND remain unresolved at T=18mo. Integrates C-04 with C-10 into a new test.
 
-**Point redistribution:** C-09=2, C-10=2, C-11=1, C-12=1, C-13=2, C-14=1, C-15=1 = 10 pts total unchanged.
+2. **Labeled causal chain sub-parts** (V-10): Four labeled parts (what the barrier is / why it persists / what the intervention targets / why that lever works) that structurally prevent "what" vs "why" conflation — the gap that left V-09 at PARTIAL on C-13.
 
-**Added reviewer note** on C-13/C-14 complementarity: you can pass C-13 without C-14 (classifies early but collapses to unconditional mitigation), but C-14 without C-13 is structurally unusual.
-rrier", "adoption stopper", "the one thing that would prevent adoption"). Must be specific to this feature, not a generic observation. |
-| C-04 | **Workaround satisfaction assessed** | correctness | essential | Output evaluates how well the current workaround already solves the problem for at least one persona -- including what the workaround is and why it feels "good enough" to that persona. |
-| C-05 | **Per-persona inertia score present** | format | essential | Each analyzed persona receives a discrete inertia score on a consistent scale (e.g., 1-5, Low/Medium/High/Critical, or 0-10). All scores must use the same scale and appear in the output. |
+3. **Mitigation confirmation signal** (V-07's C-13 evidence): Beyond explaining *why* the mitigation works (C-13), the output specifies a future-dated observable condition that would confirm the intervention is working. No existing criterion captures this forward anchor.
 
 ---
 
-## Recommended Criteria (30 pts total)
+```markdown
+# Rubric -- validate-inertia v3
 
-*Each recommended criterion is worth 10 pts.*
-
-| ID | Criterion | Category | Weight | Pass Condition |
-|----|-----------|----------|--------|----------------|
-| C-06 | **Habit lock-in addressed** | depth | recommended | Output goes beyond cost analysis to identify a behavioral or habitual pattern (muscle memory, workflow ritual, team convention) that would cause the persona to revert even after initial adoption. Must be persona-specific, not generic. |
-| C-07 | **Social proof requirement mapped** | depth | recommended | Output identifies what social proof threshold a skeptical persona would need before adopting -- e.g., "needs to see 3 teammates use it first", "requires a public case study from a similar team", "won't move until their tech lead endorses it". |
-| C-08 | **Learning curve quantified** | depth | recommended | At least one persona's learning curve is expressed in concrete terms: ramp time estimate, number of new concepts to internalize, or comparison to something the persona already knows ("similar to learning X, which took Y"). |
+**Version:** v3
+**Updated:** 2026-03-17
+**Change from v2:** Added three new aspirational criteria (C-14, C-15, C-16) extracted from Round 2
+excellence signals.
 
 ---
 
-## Aspirational Criteria (10 pts total)
+## Structure Summary
 
-*Aspirational criteria reward structural sophistication. Partial credit is common; full pass is rare. Point weights redistributed in v3 to accommodate C-13, C-14, and C-15.*
+- **5 essential (C-01--C-05):** per-persona mapping, quantified switching cost, per-persona inertia
+  scores, kill-barrier callout, aggregate risk verdict
+- **3 recommended (C-06--C-08):** workaround satisfaction, habit lock-in + social proof coverage,
+  mitigation path for the kill barrier
+- **8 aspirational (C-09--C-16):** scoring methodology transparency, time-dependent inertia
+  trajectory, status-quo competitor framing, named social proof threshold, mitigation tied to
+  structural root cause, kill barrier temporal persistence test, causal chain with labeled
+  structural sub-parts, mitigation confirmation signal
 
-| ID | Criterion | Category | Weight | Pass Condition |
-|----|-----------|----------|--------|----------------|
-| C-09 | **Overall risk rating with mitigation** | depth | aspirational | Output synthesizes per-persona scores into an overall adoption inertia risk level (Low/Medium/High/Critical) AND proposes at least one specific mitigation per barrier identified -- actionable enough to include in a launch plan. Mitigation must target the kill barrier named in C-03; restating the barrier as a recommendation does not pass. | 2 pts |
-| C-10 | **Inertia asymmetry identified** | correctness | aspirational | Output distinguishes between personas for whom inertia is structural (will not adopt without product changes) vs. behavioral (can be overcome with onboarding/framing), and calls out which personas represent permanent lost TAM vs. delayed adoption. | 2 pts |
-| C-11 | **Kill barrier hypothesized before persona analysis** | structure | aspirational | Kill barrier is stated as an explicit hypothesis in the first section of the output, before any per-persona analysis begins. The hypothesis must be feature-specific (not derived from persona aggregation). This structural sequencing prevents the kill barrier from being buried, genericized, or synthesized post-hoc. | 1 pt |
-| C-12 | **Status-quo treated as competitor** | depth | aspirational | Output reasons about why at least one persona *chose* or *stays with* the incumbent/workaround -- not just what it is, but why they selected it. Uses framing such as "they adopted X because...", "X won this persona because...", or "the reason they haven't switched is..." that captures an adoption decision, not merely current state. | 1 pt |
-| C-13 | **Inertia landscape classified before persona analysis** | structure | aspirational | A dedicated pre-persona phase classifies the overall inertia landscape as Structural, Behavioral, or Mixed before any individual persona is analyzed. The classification must state the type and its implication (e.g., "Structural: product changes required before any adoption is possible"). This forces inertia type to gate the analysis rather than be derived from it, and propagates specificity into C-09 mitigations. | 2 pts |
-| C-14 | **Type-conditioned mitigation** | depth | aspirational | The C-09 mitigation is explicitly conditioned on inertia type: if the kill barrier is structural, the mitigation names a specific product change required; if the kill barrier is behavioral, the mitigation names a specific launch sequence or social proof intervention. Unconditional mitigations ("improve onboarding", "create a tutorial") do not pass even if they reference the kill barrier. | 1 pt |
-| C-15 | **Lost TAM implication stated unconditionally** | correctness | aspirational | Output includes a non-conditional statement -- labeled "Lost TAM implication" or equivalent -- that explicitly names which personas (or persona type) represent permanent lost TAM until product changes, vs. which represent delayed adoption reachable with launch strategy. The statement must appear as a required synthesis line; sections gated on "if evidence supports it" or "if the analysis reveals" do not pass. | 1 pt |
-
----
-
-## Scoring Reference
-
-| Score Range | Interpretation |
-|-------------|----------------|
-| 100 | All criteria pass -- exemplary output |
-| 80-99 | Golden threshold met -- output is useful and publishable |
-| 60-79 | Essential pass but recommended gaps -- usable, needs improvement |
-| < 60 | One or more essential criteria fail -- output is not useful |
+Scoring: Essential = 10 pts each (50 total), Recommended = 10 pts each (30 total), Aspirational =
+10 pts each (80 total) = **160 pts max**.
 
 ---
 
-## Reviewer Notes
+## Essential Criteria (all must pass)
 
-- C-01 and C-03 are the two criteria most commonly failed by shallow outputs. If both fail, the output is a generic risk list, not an inertia analysis.
-- C-02 passes if at least one cost is quantified; not all costs need numbers.
-- C-05 fails if personas receive narrative assessments with no discrete score -- the score is the primary artifact.
-- C-09 mitigation must target the kill barrier named in C-03; restating the barrier as a recommendation does not pass.
-- C-10 is strictly aspirational: structural vs. behavioral inertia is a sophisticated distinction that requires domain knowledge about the persona's org context.
-- C-11 is achievable only when the output is structured as a two-phase analysis (barrier hypothesis -> persona analysis). Single-phase outputs that derive the kill barrier at the end fail this criterion even if C-03 passes.
-- C-12 is strengthened by competitor framing at the prompt level (e.g., "treat the current workaround as a competitor"). Outputs that merely describe what a persona uses without reasoning about the adoption decision do not pass.
-- C-13 is achievable only when the output has a dedicated pre-persona phase (e.g., "Inertia Landscape" or "Phase 1: Classification") that names the type and its structural implication. Outputs that classify inertia type inline with persona analysis or in a closing synthesis fail this criterion.
-- C-14 requires the mitigation to branch explicitly on inertia type. "If structural... / If behavioral..." is the target form. Anti-patterns lists and unconditional interventions do not pass.
-- C-15 fails if the Lost TAM statement is conditional. The statement must appear regardless of what the analysis found -- its content varies, but its presence must not.
-- C-13 and C-14 are complementary: C-13 places the classification before the personas; C-14 propagates that classification into the mitigation. An output can pass C-13 without passing C-14 (classifies early but collapses to unconditional mitigation), but passing C-14 without C-13 is structurally unusual.
+| ID | Text | Category | Pass Condition |
+|----|------|----------|----------------|
+| C-01 | **Per-persona inertia mapping** | correctness | Output identifies two or more named user personas and maps each to one or more inertia factors. Generic "users" without persona differentiation fails. |
+| C-02 | **Quantified switching cost** | correctness | At least one persona has a switching cost expressed as a measurable value -- time, money, effort rating (1-10), or steps. Qualitative-only ("it's hard") fails. |
+| C-03 | **Per-persona inertia score** | correctness | Each mapped persona has an explicit inertia score (numeric or Low/Medium/High/Critical). A single blanket score for all personas fails. |
+| C-04 | **Kill-barrier identification** | depth | Output identifies exactly one adoption killer -- the single factor most likely to block adoption even if all other inertia is resolved. Must be labeled distinctly. |
+| C-05 | **Overall adoption inertia risk** | correctness | Output produces an aggregate risk verdict with a sentence of rationale tying it back to the per-persona scores. |
 
 ---
 
-## Version Notes
+## Recommended Criteria
 
-**v3 changes (2026-03-17):**
-- Added C-13: Inertia landscape classified before persona analysis -- extracted from V-02 excellence signal (pre-persona Structural/Behavioral/Mixed classification phase transforms C-10 from post-hoc synthesis to deliberate analytical choice; inertia type structurally gates mitigation specificity)
-- Added C-14: Type-conditioned mitigation -- extracted from V-02 excellence signal (if-structural/if-behavioral branching is a stronger C-09 guarantee than anti-patterns lists; constrains answer space before writing rather than naming failures after)
-- Added C-15: Lost TAM implication stated unconditionally -- extracted from V-02 excellence signal (conditional asymmetry sections reliably produce PARTIAL on C-10 regardless of structural/behavioral vocabulary; non-conditional required statement locks in the framing)
-- Redistributed aspirational point weights: C-09=2, C-10=2, C-11=1, C-12=1, C-13=2, C-14=1, C-15=1 (total aspirational tier unchanged at 10 pts)
+| ID | Text | Category | Pass Condition |
+|----|------|----------|----------------|
+| C-06 | **Current workaround satisfaction assessed** | coverage | For at least one persona, output describes how satisfied they are with their current workaround and why that satisfaction creates inertia. |
+| C-07 | **Habit lock-in and social proof addressed** | coverage | Output addresses habit lock-in AND social proof for at least one persona each. Missing both fails; covering one partially passes. |
+| C-08 | **Mitigation path per critical barrier** | depth | For the kill barrier in C-04, output proposes at least one concrete mitigation that could reduce or eliminate that barrier. |
 
-**v2 changes (2026-03-17):**
-- Added C-11: Kill barrier sequenced first -- extracted from V-05 excellence signal (Phase 1 hypothesis before persona analysis produced the strongest C-03 results across all variants)
-- Added C-12: Status-quo as competitor -- extracted from V-03 excellence signal (competitor framing produced the strongest C-04 results across all variants, including "why they chose it" reasoning)
-- Redistributed aspirational point weights: C-09=3, C-10=3, C-11=2, C-12=2 (total aspirational tier unchanged at 10 pts)
-- Completed C-01 pass condition (was truncated in v1)
+---
+
+## Aspirational Criteria
+
+| ID | Text | Category | Pass Condition |
+|----|------|----------|----------------|
+| C-09 | **Inertia score methodology explained** | behavior | Output briefly explains how inertia scores were derived -- what factors were weighted and why. A single sentence per dimension suffices. |
+| C-10 | **Adoption timeline sensitivity** | depth | Output includes at least one time-dependent statement on how inertia evolves (e.g., "after 6 months of workaround use, lock-in doubles"). |
+| C-11 | **Status-quo framed as named competitor** | depth | For the kill barrier in C-04, output names the dimension on which the current solution *wins* and explains why that competitive advantage is durable -- not just "people are used to it" but what property of the current solution makes it structurally hard to displace. |
+| C-12 | **Named social proof threshold** | coverage | For at least one persona where social proof is a factor, output specifies the adoption threshold as a concrete condition or count (e.g., "needs 2+ teammates before committing," "will adopt solo if manager mandates it"). Binary Y/N without a named threshold fails. |
+| C-13 | **Mitigation tied to structural root cause** | depth | The mitigation from C-08 explicitly explains *why* the intervention neutralizes the structural reason the barrier exists -- not just what to do, but why that lever addresses the specific root cause named in C-04. Addressing a symptom rather than the stated structural cause fails. |
+| C-14 | **Kill barrier tested against temporal persistence** | depth | The kill barrier identified in C-04 is explicitly qualified against a temporal horizon -- output states that the barrier persists at T=0 AND remains unresolved at the longest time horizon considered (e.g., T=18mo). A kill barrier identified only as a current-state snapshot without temporal qualification fails. |
+| C-15 | **Causal chain with labeled structural sub-parts** | depth | For the kill barrier, output provides a causal chain with explicitly labeled, distinct sub-parts covering: (1) what the barrier is, (2) why it structurally persists, (3) what the intervention targets, and (4) why that lever resolves the structural root cause. An analysis that merges any two sub-parts into a single statement, or that provides fewer than four labeled parts, fails. |
+| C-16 | **Mitigation confirmation signal specified** | depth | The kill barrier mitigation from C-08 includes a named leading indicator or observable condition at a future time point (e.g., "at T=6mo, [X behavior] would confirm the barrier is reducing") that would confirm the intervention is working. A mitigation without a forward-looking confirmation condition fails. |
+
+---
+
+## Notes
+
+- A rubric pass requires all 5 essential criteria to pass individually.
+- Aspirational criteria may receive PARTIAL (5 pts) for genuine attempts that fall short of the
+  full pass condition.
+- C-11 is distinct from C-04: C-04 identifies the kill barrier; C-11 reframes that barrier as a
+  competitive-displacement problem with a named winning dimension.
+- C-13 sharpens C-08: C-08 requires a concrete mitigation; C-13 requires the mitigation to be
+  causally linked to the root cause stated in C-04.
+- C-14 extends C-04 and C-10: C-04 requires identification; C-10 requires time-dependent
+  statements; C-14 requires the kill barrier specifically to be validated across the full temporal
+  horizon, not just mentioned in passing.
+- C-15 sharpens C-13: C-13 requires causal linkage; C-15 requires that linkage to be expressed
+  as four explicitly labeled sub-parts so "what" and "why" cannot be conflated. C-15 is the
+  structural closure for C-13 that prevented V-09 from passing at full credit.
+- C-16 extends C-13: C-13 explains why the mitigation works; C-16 requires a forward-dated
+  observable condition that would confirm it is working. Together they form the complete
+  mitigation chain: mechanism + confirmation signal.
+
+---
+
+## v3 Change Log
+
+| Criterion | Change | Source |
+|-----------|--------|--------|
+| C-14 | New aspirational | V-07 kill barrier qualification: "must persist at T=0 AND remain unresolved at T=18mo" -- temporal persistence test not captured by C-04 (identification only) or C-10 (general time-dependency) |
+| C-15 | New aspirational | V-10 four-part causal chain: labeled sub-parts structurally prevent "what" vs. "why" conflation; root cause of V-09 C-13 PARTIAL where general mitigation field could not enforce causal separation |
+| C-16 | New aspirational | V-07 C-13 evidence: "explain why this lever addresses the structural reason the barrier persists at T=0 and what evidence at T=6mo would confirm the mitigation is working" -- confirmation signal as a distinct requirement beyond C-13's causal explanation |
+| Scoring max | 130 -> 160 | Three new aspirational criteria at 10 pts each |
+```

@@ -1,432 +1,677 @@
-# /discover-causal Variations — Round 3
+Written to `simulations/quest/variations/discover-causal-variations-R3-2026-03-17.md`.
 
 ---
 
-## V-01 — Axis: Role Sequence (Inertia-First Hard Sequencing)
+## discover-causal Variations R3
 
-**Hypothesis:** Making inertia resolution a named required output before any mechanism work makes C-10 impossible to violate through output ordering alone.
+| # | Label | Axis | Target criteria |
+|---|-------|------|-----------------|
+| **V-01** | AMEND synthesis completeness | Output format | C-15 |
+| **V-02** | Formal step labeling as prerequisite | Output format | C-16 |
+| **V-03** | Confounder/inertia hard separation | Role sequence | C-17 |
+| **V-04** | Incomplete-pathway falsification anchor | Lifecycle emphasis | C-18 |
+| **V-05** | Full v3 aspirational stack | Combination | C-15+C-16+C-17+C-18 |
+
+**Design rationale:**
+
+Each new v3 criterion maps to an identifiable gap in R2 V-05 — the R2 ceiling that scored 120/120 under the v2 rubric:
+
+- **C-15 → V-01**: R2 V-05 AMEND has 7 fields but no `Confounder finding:` field. Phase 5 output is silently dropped. V-01 adds it as a required named field with an explicit "partial synthesis does not pass" rule.
+- **C-16 → V-02**: R2 V-05 instructs the `Step N -- [Name]:` format but frames it as a presentation instruction, not a load-bearing prerequisite. V-02 makes the prerequisite nature explicit ("unlabeled steps make C-12 and C-13 unscoreable") to change compliance calculus.
+- **C-17 → V-03**: R2 V-05 Phase 5 says "not the inertia status quo" but doesn't require the model to explicitly acknowledge the exclusion by name. V-03 adds a mandatory explicit statement — "The inertia case (Phase 0 verdict: [verdict]) is NOT included here" — and names what a valid confounder looks like (simultaneously-operating, not counterfactual).
+- **C-18 → V-04**: R2 V-05 Phase 3 notes that `[UNCERTAIN]` steps can still anchor falsification, but doesn't prohibit deferral when incompleteness is declared. V-04 adds a conditional branch with named prohibited output forms and a required BEST-TRACEABLE ANCHOR format.
+
+**The scoring expectation**: V-05 should hit or approach 140/140. V-01/V-02/V-03 each target one new criterion while maintaining all R2 criteria. V-04 is the tightest two-phase dependency test (C-11 + C-18 coupling).
+ criteria as single-axis tests
+- V-04 tests whether the C-11/C-18 dependency (incompleteness gate must produce a step-anchor, not a deferral) can be enforced with a conditional branch alone
+- V-05 is the rubric ceiling reference for v3 — every new criterion has a dedicated structural slot
 
 ---
 
-You are running `/discover-causal`. Your job is to test whether the causal mechanism linking a feature to its claimed outcome is actually sound.
+## V-01: AMEND synthesis completeness (output format axis)
 
-**INPUT:** A hypothesis in the form "X causes Y" — a feature and its claimed outcome.
+**Axis:** Output format — AMEND section expanded to explicitly list all four prior analytical
+phase outputs as required named fields, with integration rules that prohibit partial synthesis
 
-Work through the following phases in strict order. Do not begin a phase until the prior phase's required output is written.
-
----
-
-**PHASE 1 — INERTIA CHECK**
-
-Ask and resolve: does doing nothing — no feature, no X — also produce Y?
-
-Answer one of:
-- NO — Y does not occur without X. The mechanism may be causally necessary.
-- PARTIAL — Y occurs at baseline, but X modifies it along at least one dimension.
-- YES — Y occurs regardless of X. The mechanism is not necessary.
-
-Write this block before proceeding:
+**Hypothesis:** C-15 fails when AMEND omits the confounder finding. R2 V-05 AMEND has
+seven fields (Original, Inertia verdict, Mechanism complete, Active pathway, Pathway,
+Falsification, Evidence gap) but no `Confounder finding:` field — so the Phase 5 output
+is silently dropped. Adding it as a required named field, alongside an explicit rule that
+partial synthesis does not pass, closes C-15 without requiring a full phase restructure.
 
 ```
-INERTIA: [NO / PARTIAL / YES]
-REASONING: [one sentence explaining why]
-```
+You are running /discover-causal for topic: {topic}.
 
-Do not begin Phase 2 until this block is written.
+Hypothesis under review: {hypothesis}
+(Claim: X causes Y. Test whether the mechanism is sound and whether the cause is the right one.)
 
----
+MECHANISM PATHWAY
 
-**PHASE 2 — MECHANISM PATHWAY**
+Trace the causal chain from X to Y as a sequence of labeled, observable steps.
 
-Trace the causal chain: how does X actually produce Y?
+Label each step with a number and short name. Format:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
 
-Requirements:
-- Name at least two intermediate variables: X → M1 → M2 → Y
-- Each arrow must name a process, not just assert a link
-- If INERTIA was PARTIAL or YES: scope the pathway to what X contributes beyond baseline — do not trace a full chain as if inertia were NO
+Minimum 3 steps. "X leads to better outcomes" is not a pathway -- name the intermediate
+states and changes. If you cannot trace 3 observable steps with current knowledge, say so
+explicitly ("mechanism not fully traceable at step N") rather than generating thin steps.
 
----
+INERTIA CHECK
 
-**PHASE 3 — FALSIFICATION CONDITIONS**
+Does the status quo also produce Y?
 
-Name at least two conditions that would prove the mechanism wrong. For each, provide three named fields:
+Assess whether doing nothing -- no feature, no intervention -- would independently trend
+toward outcome Y through existing behaviors, workarounds, or market forces.
 
-- **WHAT:** the specific observable that signals mechanism failure
-- **HOW:** how you would measure or detect it
-- **WHEN TO OBSERVE:** the point in the product lifecycle or usage cycle where this observation is possible
+INERTIA VERDICT: [Competing / Not competing / Unclear -- one sentence basis]
 
-Vague hedges ("it might not work") do not count. Each condition must have all three fields.
+ALTERNATIVE CAUSES
 
----
+Before falsification, name what else could produce Y.
 
-**PHASE 4 — EVIDENCE AND CONFOUNDERS**
+This is NOT the inertia check. The inertia check asks whether the status quo trends toward
+Y over time without any intervention. This section asks: what independently operating
+causes, present right now, could produce Y coincidentally with X being deployed?
 
-- **Evidence:** cite at least one piece of supporting evidence showing the mechanism has held in a comparable context — data, research, analogous feature, or domain pattern. If none exists, say so explicitly: "No prior evidence found — first-principles claim."
-- **Confounders:** name at least one alternative explanation that could produce Y without X, independent of the inertia check.
+Name:
+1. At least one alternative causal pathway that does not run through the mechanism above.
+2. At least one confounding variable -- something that correlates with X and could make Y
+   appear to improve without X being the actual driver.
 
----
+If neither can be identified, explain why explicitly. Silence is not acceptable.
 
-**PHASE 5 — AMEND**
+FALSIFICATION CONDITION
 
-Produce an AMEND block. The amended hypothesis must:
-- Be narrower and more falsifiable than the original
-- Include the mechanism pathway in the claim
-- Add at least one falsification condition
-- If INERTIA was PARTIAL or YES: explicitly state what X contributes beyond inertia on a named dimension (speed, reliability, cost, completeness, or equivalent)
+Given the pathway and alternatives above, name the mechanism break point.
 
-```
-ORIGINAL: [the original hypothesis]
-AMENDED:  [the narrowed hypothesis]
-MECHANISM: [X → M1 → M2 → Y in one line]
-FALSIFIES IF: [most specific falsification condition — include WHAT, HOW, WHEN TO OBSERVE]
-MARGINAL CONTRIBUTION: [what X adds over doing nothing, or "N/A — inertia check was NO"]
-```
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
 
----
+The step number and name must match a labeled row in the pathway above.
 
-## V-02 — Axis: Output Format (Named Artifact Table Structure)
+CONTEXT EVIDENCE
 
-**Hypothesis:** Requiring each phase as a named structured artifact with labeled fields forces completeness on C-14 (scope declaration), C-15 (WHEN TO OBSERVE), and C-16 (marginal dimensioning) by making omissions visually obvious.
+What team-specific evidence exists that the mechanism holds?
 
----
+Rate each piece: T1 (anecdotal), T2 (correlation), T3 (controlled).
+Name each piece, rate it, and name which pathway step it supports.
+If no evidence: "No context-specific evidence found. Tier: none."
 
-You are running `/discover-causal`. Test whether the causal mechanism is sound.
+Aggregate evidence tier: [highest available across all steps]
 
-**INPUT:** A hypothesis "X causes Y."
+AMEND
 
-Produce five named artifacts in sequence. Each artifact is a labeled block. You may not produce Artifact N+1 until Artifact N is complete.
+Narrow the original hypothesis by synthesizing all four prior analytical outputs.
 
----
+This section has four required named fields from prior phases. Including only some is not
+sufficient -- all four must appear, and the Amended claim must reflect all four.
 
-**ARTIFACT 1 — MARGINAL SCOPE DECLARATION**
+Required structure:
+  Original: {hypothesis}
+  Inertia verdict: {Competing / Not competing / Unclear -- from INERTIA CHECK}
+  Mechanism completeness: {complete / incomplete -- from MECHANISM PATHWAY}
+  Evidence tier: {T1 / T2 / T3 / none -- aggregate tier from CONTEXT EVIDENCE}
+  Confounder finding: {alternative cause identified -- from ALTERNATIVE CAUSES, or
+    "none identified -- [reason]"}
+  Falsification: {Step N -- Name -- break condition}
+  Amended: {narrower claim that incorporates all four prior findings -- mechanism
+    qualifier, scope condition, inertia condition if Competing/Unclear, and notes any
+    confounder risk that bounds where the claim holds}
 
-```
-INERTIA VERDICT:   [NO / PARTIAL / YES]
-INERTIA REASONING: [one sentence]
-AUTHORIZED SCOPE:  [If NO: "full mechanism." 
-                    If PARTIAL: "marginal contribution only — dimensions: [list axes X affects]." 
-                    If YES: "hypothesis requires revision before proceeding."]
-```
+Integration rules:
+  - A narrowed claim that ignores any of the four named fields does not pass.
+  - Partial synthesis (e.g., evidence tier present, confounder absent) does not pass.
+  - Restating or broadening the original does not pass.
 
-You may not produce Artifact 2 until Artifact 1 is written.
-
----
-
-**ARTIFACT 2 — CAUSAL CHAIN**
-
-| Step | From | To | Mechanism (named process) |
-|------|------|----|--------------------------|
-| 1 | X | M1 | |
-| 2 | M1 | M2 | |
-| 3 | M2 | Y | |
-
-The chain must trace at least two intermediate variables. If AUTHORIZED SCOPE was "marginal contribution only," trace only the marginal delta — not the full chain.
-
----
-
-**ARTIFACT 3 — FALSIFICATION CONDITIONS**
-
-| # | WHAT | HOW | WHEN TO OBSERVE |
-|---|------|-----|-----------------|
-| 1 | | | |
-| 2 | | | |
-
-Minimum two rows. Each row must be complete — a row with an empty cell does not count toward the minimum.
-
----
-
-**ARTIFACT 4 — EVIDENCE AND CONFOUNDERS**
-
-```
-SUPPORTING EVIDENCE: [one cited comparable case, or "none found — first-principles claim"]
-
-CONFOUNDERS:
-| # | Alternative Explanation | Why It Could Produce Y Without X |
-|---|------------------------|----------------------------------|
-| 1 |                        |                                  |
+Write artifact to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter: topic, date, hypothesis, inertia_verdict, mechanism_complete,
+evidence_aggregate_tier, confounders_identified (count), falsification_stated (true/false),
+context_evidence_found (true/false).
 ```
 
 ---
 
-**ARTIFACT 5 — AMENDED HYPOTHESIS**
+## V-02: Formal step labeling as prerequisite (output format axis)
+
+**Axis:** Output format — step labeling framed explicitly as a structural prerequisite that
+makes falsification and evidence mechanically gradeable, not a presentational preference
+
+**Hypothesis:** C-16 fails when steps are listed as prose bullets or numbered without names.
+The failure is not ignorance of the format but a category error: teams treat labeling as
+optional styling. Framing it as a load-bearing structural requirement -- with explicit
+language that falsification and evidence gap sections reference steps by label and cannot
+anchor to unlabeled steps -- changes the compliance calculus. The test: does framing it as
+a prerequisite (rather than a format instruction) increase structured labeling adoption?
 
 ```
-ORIGINAL:  [original hypothesis]
-AMENDED:   [narrowed, mechanism-inclusive, more falsifiable hypothesis]
-MECHANISM: [X → M1 → M2 → Y — one line]
-FALSIFIES IF: [most specific row from Artifact 3]
-MARGINAL CONTRIBUTION:
-  - [dimension 1]: [what X adds on this axis]
-  - [dimension 2]: [what X adds on this axis]
-  - [dimension 3 if applicable]
-```
+You are running /discover-causal for topic: {topic}.
 
-AMENDED must be more specific and falsifiable than ORIGINAL. If INERTIA was PARTIAL or YES, the MARGINAL CONTRIBUTION section must be filled — "N/A" only when INERTIA was NO.
+Hypothesis under review: {hypothesis}
 
----
+--- STEP LABELING REQUIREMENT ---
 
-## V-03 — Axis: Phrasing Register (Socratic Questioning)
+Before producing the mechanism pathway, read this structural rule:
 
-**Hypothesis:** Framing the analysis as a series of questions the user must answer produces better C-12 (operationalized falsification) because each question demands a concrete answer — vague responses fail by structure, not by rubric.
+Every step in the pathway must carry a persistent formal label:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
 
----
+Example: "Step 2 -- User encounters prompt: The system surfaces an inline suggestion.
+Agent: platform. Observable: prompt impression logged in telemetry."
 
-You are running `/discover-causal`. Answer the following questions about your hypothesis in order. Each question specifies what a valid answer looks like.
+This is not a formatting preference -- it is a structural prerequisite. The falsification
+condition and evidence gap sections in this output reference steps by their formal label.
+A step labeled only by position ("the second step"), or listed as a prose bullet without a
+persistent name, does not give downstream sections a stable referent. Unlabeled steps
+cause falsification anchoring and evidence gap enumeration to fail mechanically, because
+there is no name to anchor to.
 
-**The hypothesis:** "X causes Y"
+Use the "Step N -- [Name]:" format throughout. Keep labels short and stable -- the same
+name must appear in the pathway, in falsification, and in evidence gap sections.
 
----
+--- INERTIA CHECK ---
 
-**Q1. Before you examine the mechanism: does Y happen anyway?**
+Before mechanism work: does the status quo produce Y without any new feature?
 
-Think through the status quo. If the team ships nothing — no X, no feature — does Y still occur through existing user behavior, natural trends, competing forces, or market dynamics?
+INERTIA VERDICT: [Competing / Not competing / Unclear -- one sentence basis]
 
-Your answer must take one of these forms:
-- "No — Y requires X to occur, because [reason]."
-- "Partially — Y occurs at [level/rate] today, and X would [accelerate / improve / complete] it by [named dimension]."
-- "Yes — Y would occur regardless, because [reason]."
+--- MECHANISM PATHWAY ---
 
-Record this answer. Everything that follows depends on it.
+Trace the causal chain from X to Y using the labeling rule above.
 
----
+Minimum 3 labeled steps. If fewer than 3 can be traced with confidence, say so explicitly
+("mechanism not fully traceable") rather than generating thin steps.
 
-**Q2. What is the actual mechanism?**
+--- FALSIFICATION CONDITION ---
 
-Do not say "X causes Y." Show the propagation: what does X do first, what does that trigger, how does that chain reach Y?
+Name the mechanism break point. Reference the step by its formal label from the pathway above.
 
-Trace at least: X → M1 → M2 → Y. Name the process at each arrow — not just the nodes.
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
 
-If your Q1 answer was "Partially" or "Yes": what is the marginal mechanism — how does X produce what baseline does not already produce? Trace that specific chain, not the full unscoped pathway.
+The label must match the step label in the pathway exactly. "Step 2 fails" without the
+step name does not pass -- there is no stable referent. "If usage declines" does not pass
+-- that is an outcome check, not a mechanism break.
 
----
+--- CONTEXT EVIDENCE ---
 
-**Q3. What would prove the mechanism wrong?**
+For each labeled step in the pathway above, assess evidence.
 
-Name at least two falsification conditions. For each, answer three sub-questions:
-1. What would you observe if the mechanism is broken?
-2. How would you measure or detect that observation?
-3. When in the product lifecycle or usage cycle is that observation possible?
+Use this format (matching the pathway labels exactly):
+  Step N -- [Name]: [evidence name or "no evidence"] -- [T1 / T2 / T3 / none]
+    T1 = anecdotal / observational / team intuition
+    T2 = correlation / A-B / usage analytics / survey
+    T3 = controlled / causal-inference-grade experiment
 
-A condition that answers fewer than all three is a worry, not a falsification condition.
+Required outputs:
+  Evidence gap steps: [list the Step N -- [Name] labels that have no supporting evidence]
+  Aggregate tier: [highest tier across all steps -- T1/T2/T3/none]
 
----
+List gap steps by their full label from the pathway (Step N -- Name), not by position.
 
-**Q4. Is there evidence this mechanism holds?**
+--- CONFOUNDER CHECK ---
 
-Has this mechanism worked in a comparable context — another feature, a domain analog, published research? If yes, cite it. If no, say explicitly: "No prior evidence found — first-principles claim."
+Name at least one alternative explanation for Y that does not require X and is not the
+inertia/status-quo case already addressed in INERTIA CHECK.
 
-Name at least one confounder: another force that could produce Y without X.
+What independently operates right now and could produce Y coincidentally with X?
 
----
+--- AMEND ---
 
-**Q5. What is the narrowed claim?**
+Original: {hypothesis}
+Inertia verdict: {from INERTIA CHECK}
+Pathway: {1-sentence mechanism summary using step labels where relevant}
+Falsification: {Step N -- Name -- break condition}
+Evidence gap: {step labels lacking support, from CONTEXT EVIDENCE}
+Confounder finding: {alternative cause identified, or "none identified -- [reason]"}
+Amended: {narrower claim -- bounded by mechanism qualifier, scope condition, and
+  evidence tier; reference labeled steps where relevant}
 
-Write an amended hypothesis that:
-- Names the mechanism (not just the outcome)
-- Is more falsifiable than the original
-- Accounts for what X contributes beyond doing nothing (if Q1 was "Partially" or "Yes")
-- Includes at least one falsification condition
-
-The amended claim should be a sentence a skeptic can engage with — not a marketing statement.
-
-```
-ORIGINAL:  [original hypothesis]
-AMENDED:   [narrowed hypothesis]
-MECHANISM: [pathway in one line]
-MARGINAL CONTRIBUTION: [named dimensions X adds over baseline, or "full effect — Q1 was NO"]
-FALSIFIES IF: [most operationalized falsification condition, with WHAT + HOW + WHEN TO OBSERVE]
-```
-
----
-
-## V-04 — Axes: Inertia Framing + Lifecycle Emphasis (Scope Gate Architecture)
-
-**Hypothesis:** Combining an explicit SCOPE DECLARATION gate with a hard structural stop — and requiring a verbatim authorized scope block before mechanism tracing — produces simultaneous passes on C-10 (ordering) and C-14 (scope artifact), because the gate cannot be skipped without the output being structurally incomplete.
-
----
-
-You are running `/discover-causal`. This skill has two hard gates. You must complete each gate before the next section begins.
-
----
-
-**GATE 1 — SCOPE DECLARATION**
-*Complete this block before writing anything about the mechanism.*
-
-Ask: does Y occur without X?
-
-Grade your own answer:
-- **NO** — Y is causally dependent on X. Full mechanism analysis is authorized.
-- **PARTIAL** — Y occurs at baseline; X modifies it. Marginal mechanism analysis only — you may not claim full causal ownership.
-- **YES** — Y does not depend on X. The hypothesis is broken. Revise the hypothesis before proceeding past Gate 1.
-
-Produce this block verbatim:
-
-```
-SCOPE DECLARATION
-──────────────────────────────────────────
-Inertia Verdict:   [NO / PARTIAL / YES]
-Reasoning:         [one sentence]
-Authorized Scope:  [If NO: "Full mechanism."
-                   If PARTIAL: "Marginal contribution only — dimensions: [list axes X affects]."
-                   If YES: "Hypothesis requires revision — do not proceed."]
-──────────────────────────────────────────
-```
-
-You may not begin Gate 2 until this block is written.
-
----
-
-**GATE 2 — MECHANISM TRACE**
-*Authorized by Scope Declaration. Do not exceed the authorized scope.*
-
-Trace the causal pathway as authorized:
-- At least two intermediate steps: X → M1 → M2 → Y
-- Name the process at each arrow
-- Respect the Authorized Scope — do not trace a broader chain than authorized
-
-If Inertia Verdict was **PARTIAL**, produce two labeled chains:
-
-```
-BASELINE CHAIN:  [the mechanism that produces Y without X]
-MARGINAL CHAIN:  [the mechanism for what X adds beyond baseline]
-```
-
-The AMEND section will use the MARGINAL CHAIN. The BASELINE CHAIN is context only.
-
----
-
-**FALSIFICATION CONDITIONS**
-
-Name at least two conditions that would falsify the mechanism. Required fields per condition:
-- **WHAT:** observable outcome that signals mechanism failure
-- **HOW:** how it is measured
-- **WHEN TO OBSERVE:** lifecycle point where measurement is possible
-
-Conditions missing any field are incomplete and do not count.
-
----
-
-**EVIDENCE AND CONFOUNDERS**
-
-- **Evidence:** one comparable case where this mechanism held, or "none found."
-- **Confounders:** at least one alternative cause of Y independent of X.
-
----
-
-**AMEND BLOCK**
-
-```
-ORIGINAL:  [original hypothesis]
-AMENDED:   [more specific, more falsifiable]
-MECHANISM: [authorized causal chain — one line]
-FALSIFIES IF: [most operationalized condition — WHAT + HOW + WHEN TO OBSERVE]
-MARGINAL CONTRIBUTION:
-  - Dimension 1: [what X adds, direction or magnitude]
-  - Dimension 2: [second axis, or "only one dimension identified"]
-```
-
-The AMENDED hypothesis must reference the Authorized Scope. An AMEND that does not address a PARTIAL inertia finding has not resolved the hypothesis.
-
----
-
-## V-05 — Axes: Role Sequence + Output Format (Multi-Role Structured Deliverables)
-
-**Hypothesis:** Assigning distinct analyst roles — each producing a named deliverable with enforced sequencing — produces fuller coverage across C-08 (multi-step chain), C-12 (operationalized falsification), and C-16 (marginal dimensioning) because each role has a narrow, unambiguous job that cannot be satisfied by vague prose.
-
----
-
-You are running `/discover-causal`. Three analysts work this hypothesis in sequence. Each produces a named deliverable. Later analysts may not begin until prior deliverables are complete.
-
-**INPUT:** hypothesis "X causes Y"
-
----
-
-**ANALYST 1 — THE SKEPTIC**
-
-Job: challenge whether X is causally necessary at all.
-
-**Deliverable: INERTIA REPORT**
-
-```
-1. Does Y occur without X? [NO / PARTIAL / YES] — and why in one sentence.
-
-2. If PARTIAL or YES: on which dimensions does X modify Y?
-   List the axes: [speed / reliability / cost / completeness / reach / accuracy / other — name it]
-
-3. Authorized scope for the mechanism trace:
-   [If NO: "Full mechanism authorized."
-    If PARTIAL: "Marginal contribution on dimensions: [list]."
-    If YES: "Hypothesis does not hold — requires revision."]
-```
-
-The Skeptic's INERTIA REPORT must be complete before the Architect begins.
-
----
-
-**ANALYST 2 — THE ARCHITECT**
-
-Job: build the causal pathway authorized by the Skeptic's scope.
-
-**Deliverable: CAUSAL CHAIN REPORT**
-
-Rules:
-- Respect the Inertia Report's Authorized Scope — do not exceed it
-- Trace at least two intermediate steps: X → M1 → M2 → Y
-- Name the mechanism at each arrow — "causes" does not count
-
-If Skeptic's verdict was **PARTIAL**, produce both:
-
-```
-BASELINE CHAIN:  [mechanism that produces Y at baseline, without X]
-MARGINAL CHAIN:  [mechanism for what X adds — this is the authorized scope]
-```
-
-Also produce:
-
-```
-CONFOUNDER LIST:
-  1. [alternative explanation that could produce Y without X]
+Write artifact to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter: topic, date, hypothesis, mechanism_complete (true/false),
+pathway_steps (count), break_point_step (step label), evidence_gap_steps (list of labels),
+evidence_aggregate_tier (T1/T2/T3/none), inertia_verdict,
+confounders_identified (count), falsification_stated (true/false).
 ```
 
 ---
 
-**ANALYST 3 — THE OBSERVER**
+## V-03: Confounder/inertia hard separation (role sequence axis)
 
-Job: make the mechanism falsifiable and locate evidence.
+**Axis:** Role sequence — inertia check runs before the confounder section with an explicit
+boundary: the confounder section excludes the inertia case by name and requires a
+simultaneously-operating cause, not a "without the feature" counterfactual
 
-**Deliverable: FALSIFICATION AND EVIDENCE REPORT**
+**Hypothesis:** C-17 fails when confounder analysis reuses the inertia finding as its answer.
+The root cause is not that teams skip confounders -- it is that the section boundary between
+"does nothing also cause Y?" and "what else causes Y right now?" is unclear, so models
+satisfy both with the same answer. Making the exclusion explicit ("the inertia case is NOT
+included here") and naming what a valid confounder looks like (simultaneously-operating,
+present during deployment) closes the conflation structurally.
 
-**Section A — Falsification Conditions** (minimum two):
-
-| # | WHAT | HOW | WHEN TO OBSERVE |
-|---|------|-----|-----------------|
-| 1 | | | |
-| 2 | | | |
-
-**Section B — Evidence:**
 ```
-[One cited comparable case, or "none found — first-principles claim."]
+You are running /discover-causal for topic: {topic}.
+
+Hypothesis under review: {hypothesis}
+
+MECHANISM PATHWAY
+
+Trace the causal chain from X to Y. Label each step:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
+
+Minimum 3 steps. If fewer can be traced with confidence, say so explicitly rather than
+generating thin steps to fill the count.
+
+FALSIFICATION CONDITION
+
+Name the step in the pathway above where mechanism failure would be observable.
+
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
+
+The step must match a labeled row in the pathway above.
+
+INERTIA CHECK
+
+Does doing nothing also produce Y?
+
+This section asks only about the status quo -- existing behaviors, trends, and workarounds
+that produce Y without any new feature or intervention. It does not ask about competitors,
+other teams, or simultaneously-running programs.
+
+INERTIA VERDICT: [Competing / Not competing / Unclear -- one sentence basis]
+
+CONFOUNDER CHECK
+
+This section asks a DIFFERENT question from the inertia check above.
+
+The inertia check asked: does the status quo trend toward Y over time, without any action?
+
+This section asks: what else, operating RIGHT NOW alongside X, could independently
+produce Y at the same time X is deployed?
+
+The inertia case is EXCLUDED from this analysis.
+
+"The status quo already does this" is the inertia verdict -- it does not count as a
+confounder here. If the only alternative you can name is a restatement of the inertia
+finding, you have not named a confounder.
+
+What you are looking for -- causes that operate simultaneously, not counterfactually:
+  - Competing initiatives: another feature, program, or team effort active at the same time
+  - Confounding variables: factors that correlate with X adoption and independently predict
+    Y (e.g., teams that adopt X early are already more motivated, so Y improves regardless)
+  - Selection effects: the population that uses X differs systematically from those who do not
+  - Seasonal or environmental effects: events, market trends, or external factors active
+    during the same period as X's deployment
+
+Name at least one. If none can be identified, explain why the mechanism is insulated from
+simultaneously-operating confounders for this outcome type.
+
+Explicitly state: "The inertia case (INERTIA VERDICT: [verdict]) is NOT included here as
+a confounder -- it was addressed in the Inertia Check section."
+
+CONTEXT EVIDENCE
+
+What team-specific evidence exists that the mechanism holds and that the named confounders
+are not the actual driver?
+
+Name each piece specifically. Do not count general research as team-specific evidence.
+Rate each: T1 (anecdotal), T2 (correlation), T3 (controlled).
+Note which pathway step each piece supports.
+
+If none: "No context-specific evidence found."
+
+AMEND
+
+Narrow the original hypothesis to reflect the mechanism, the inertia verdict, and the
+confounder findings.
+
+Original: {hypothesis}
+Inertia verdict: {Competing / Not competing / Unclear}
+Confounder finding: {most plausible simultaneously-operating cause, or "none identified --
+  [reason why mechanism is insulated]"}
+Pathway: {1-sentence mechanism summary}
+Falsification: {Step N -- Name -- break condition}
+Amended: {narrower claim -- bounded by mechanism qualifier and scope condition that
+  distinguishes X's effect from the named confounder; incorporates inertia condition if
+  status is Competing or Unclear}
+
+Write artifact to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter: topic, date, hypothesis, inertia_verdict, mechanism_complete (true/false),
+pathway_steps (count), break_point_step (step label), confounders_identified (count),
+confounder_inertia_excluded (true/false), falsification_stated (true/false),
+context_evidence_found (true/false).
 ```
-
-**Section C — Marginal Contribution Table** (required if Skeptic verdict was PARTIAL or YES):
-
-| Dimension | Baseline (without X) | With X | Delta |
-|-----------|---------------------|--------|-------|
-| [axis 1] | | | |
-| [axis 2] | | | |
 
 ---
 
-**SYNTHESIS — AMEND BLOCK**
+## V-04: Incomplete-pathway falsification anchor (lifecycle emphasis axis)
 
-After all three deliverables are complete:
+**Axis:** Lifecycle emphasis — a conditional BEST-TRACEABLE ANCHOR branch in the
+falsification phase explicitly prohibits deferral when incompleteness was declared, requiring
+a step-level anchor even for partial pathways
+
+**Hypothesis:** C-18 fails when models declare incompleteness in Phase 1 and then use that
+incompleteness as a reason to defer or omit falsification. The declaration that "the pathway
+cannot be fully traced" is being treated as a license to skip step-level anchoring. An
+explicit conditional branch in the falsification section -- with named prohibited output
+forms and a required BEST-TRACEABLE ANCHOR format -- closes this by making incompleteness
+change only the confidence annotation, not the structural requirement to anchor to a step.
 
 ```
-ORIGINAL:  [original hypothesis]
-AMENDED:   [narrower, mechanism-inclusive, falsifiable version]
-MECHANISM: [Architect's authorized causal chain — one line]
-FALSIFIES IF: [Observer's most specific condition — WHAT + HOW + WHEN TO OBSERVE]
-MARGINAL CONTRIBUTION: [from Observer's table, or "full effect — inertia NO"]
+You are running /discover-causal for topic: {topic}.
+
+Hypothesis under review: {hypothesis}
+
+=== READINESS GATE ===
+
+Before tracing the mechanism: can you name 3 or more observable intermediate steps between
+X and Y, each with a named agent and observable indicator?
+
+If yes: proceed to MECHANISM PATHWAY.
+If no: declare incompleteness now.
+  Write: "PATHWAY INCOMPLETE: mechanism cannot be traced past [step description].
+  Missing knowledge: [what evidence or domain knowledge is needed to complete the chain]."
+  Then continue tracing what can be traced, marking unsubstantiated steps [UNCERTAIN].
+
+Producing thin or vague steps to clear this gate -- instead of declaring incompleteness --
+fails this section. Accurate self-report is the required output.
+
+=== MECHANISM PATHWAY ===
+
+Trace the causal chain from X to Y. Label each step:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
+
+Mark any step you cannot substantiate with [UNCERTAIN].
+
+=== FALSIFICATION CONDITION ===
+
+Name the mechanism break point. Reference a labeled step from the pathway above.
+
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
+
+The step number and name must match a labeled row in the pathway above.
+
+-- CONDITIONAL BRANCH: incomplete pathway --
+
+If PATHWAY INCOMPLETE was declared in READINESS GATE, this branch applies.
+
+You must still produce a step-anchored falsification. Do NOT write any of the following:
+  - "Cannot falsify until the mechanism is better understood."
+  - "Falsification is deferred pending mechanism completion."
+  - "If outcome Y does not improve..." (a metric threshold, not a mechanism break)
+
+Instead: identify the highest-confidence step that was traced -- even if only one step was
+traced -- and anchor falsification there.
+
+Required format for incomplete pathways:
+"BEST-TRACEABLE ANCHOR: The mechanism fails if Step [N] -- [Name] -- does not occur,
+observable as [indicator]. Note: pathway incompleteness means the chain cannot be verified
+beyond step [N]. Falsification of later steps requires establishing [missing knowledge
+from READINESS GATE]."
+
+This is still a mechanism break statement -- not a deferral. Declaring incompleteness
+changes the confidence annotation and adds a note, but does not exempt this section from
+producing a step-level anchor. A pathway with one traceable step still produces one
+falsifiable break point.
+
+-- END CONDITIONAL BRANCH --
+
+=== INERTIA CHECK ===
+
+INERTIA VERDICT: [Competing / Not competing / Unclear -- one sentence basis]
+
+=== CONFOUNDER CHECK ===
+
+Name at least one cause of Y that does not involve X and is not the inertia case.
+
+The inertia case was addressed above. This section names something else that could
+independently produce Y right now -- a simultaneously-operating cause, not a counterfactual.
+
+If none can be identified, explain why.
+
+=== CONTEXT EVIDENCE ===
+
+What team-specific evidence exists that the mechanism holds?
+
+Name it specifically. Identify which labeled steps in the pathway have no supporting
+evidence -- list them by step number and name (Step N -- Name).
+
+Evidence gap steps: [{step labels with no supporting evidence}]
+Aggregate evidence tier: T1 / T2 / T3 / none
+
+=== AMEND ===
+
+Original: {hypothesis}
+Mechanism complete: {yes / no / partial -- and what is incomplete}
+Inertia status: {from INERTIA CHECK}
+Pathway: {1-sentence mechanism summary}
+Falsification: {Step N -- Name -- break condition; or BEST-TRACEABLE ANCHOR if incomplete}
+Evidence gap: {step labels lacking support}
+Confounder finding: {alternative cause or "none identified -- [reason]"}
+Amended: {narrower claim -- must include mechanism qualifier; scope condition; inertia
+  condition if Competing or Unclear; note if pathway incompleteness limits the claim's
+  certainty scope}
+
+Write artifact to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter:
+  topic: {topic}
+  date: {date}
+  hypothesis: {original hypothesis}
+  mechanism_complete: true | false | partial
+  incomplete_pathway_declared: true | false
+  pathway_steps: {count}
+  break_point_step: {step label, or "best-traceable: Step N -- Name"}
+  inertia_status: competing | not-competing | unclear
+  evidence_gap_steps: [{step labels}]
+  evidence_aggregate_tier: T1 | T2 | T3 | none
+  confounders_identified: {count}
+  falsification_stated: true | false
+  context_evidence_found: true | false
 ```
 
-AMENDED must be visibly more falsifiable than ORIGINAL. A reviewer reading both should agree the amended version is easier to prove wrong.
+---
+
+## V-05: Full v3 aspirational stack (combination)
+
+**Axes:** All four v3 axes combined: AMEND synthesis completeness (C-15) + formal step
+labeling as prerequisite (C-16) + confounder/inertia hard separation (C-17) +
+incomplete-pathway falsification anchor (C-18), integrated into the R2 V-05 phase structure
+
+**Hypothesis:** All four v3 criteria can be produced in a single output by: (a) adding
+`Confounder finding:` as a required AMEND field and making partial synthesis explicitly
+fail, (b) framing step labeling as a load-bearing structural prerequisite rather than a
+format instruction, (c) strengthening Phase 5's inertia exclusion with explicit acknowledgment
+language, and (d) adding a BEST-TRACEABLE ANCHOR branch to Phase 3 that prohibits deferral
+when incompleteness was declared. The expected cost is increased prompt length; the expected
+gain is a 140-point output that closes all four v3 gaps simultaneously.
+
+```
+You are running /discover-causal for topic: {topic}.
+
+Hypothesis under review: {hypothesis}
+
+=== PHASE 0: INERTIA GATE ===
+
+Answer this before any mechanism work: does the status quo already produce Y?
+
+Assess whether existing behaviors, market forces, platform trends, or workarounds
+independently trend toward outcome Y -- without any new feature.
+
+INERTIA VERDICT: [Competing / Not competing / Unclear]
+Basis: [one sentence -- specific observation about the current state of the domain, not
+assertion]
+
+If Competing: the mechanism analysis in Phase 2 must explain what X produces that the
+status quo does not. A mechanism that merely also produces Y alongside the status quo is
+not a causal claim for X.
+
+=== PHASE 1: MECHANISM READINESS ===
+
+Before tracing, assess: can you name 3 or more observable intermediate steps between X
+and Y, each with a named agent and observable indicator?
+
+If yes: proceed.
+If no: declare incompleteness now.
+  Write: "PATHWAY INCOMPLETE: mechanism cannot be traced past [step]. Missing knowledge:
+  [what evidence or domain knowledge is needed]."
+  Then continue with what can be traced, marking unsubstantiated steps [UNCERTAIN].
+
+Producing three thin or vague steps to clear this gate -- instead of declaring
+incompleteness -- fails this phase. Accurate self-report is the required output.
+
+=== PHASE 2: MECHANISM PATHWAY ===
+
+Trace the causal pathway from X to Y.
+
+STEP LABELING REQUIREMENT: Each step must carry a persistent formal label:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
+
+This is not a presentational preference -- it is a structural prerequisite. Phase 3
+(falsification) and Phase 4 (evidence) reference steps by their formal label. A step listed
+as a prose bullet or numbered without a persistent name has no stable referent for later
+phases. Unlabeled steps make C-12 and C-13 unscoreable -- there is no name to anchor to.
+Use this format throughout. The same label must appear identically in the pathway, in
+falsification, and in evidence gap sections.
+
+If inertia status from Phase 0 is Competing: at least one step must describe what X
+produces that the status quo does not.
+
+Also: is there more than one plausible causal pathway from X to Y?
+  - If yes: trace the primary pathway above and name the secondary pathway in one sentence.
+    Note whether the two pathways are complementary, competing, or nested.
+  - If no: note that the mechanism is singular.
+
+=== PHASE 3: FALSIFICATION ===
+
+Name the most likely mechanism break point. Reference the step by its Phase 2 label.
+
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
+
+Step number and name must match a labeled row in Phase 2 exactly. If a step is marked
+[UNCERTAIN], it may still serve as a falsification anchor -- note the uncertainty in the
+indicator description.
+
+-- CONDITIONAL BRANCH: incomplete pathway --
+
+If PATHWAY INCOMPLETE was declared in Phase 1, this branch applies.
+
+Do NOT defer falsification. Do NOT write:
+  - "Cannot falsify until the mechanism is better understood."
+  - "Falsification depends on completing the pathway."
+  - A metric threshold ("if Y does not improve").
+
+Instead: identify the highest-confidence labeled step traced and anchor falsification there.
+
+Required format:
+"BEST-TRACEABLE ANCHOR: The mechanism fails if Step [N] -- [Name] -- does not occur,
+observable as [indicator]. Note: pathway incompleteness means the chain cannot be verified
+beyond step [N]. Further falsification requires establishing [missing knowledge from
+Phase 1]."
+
+Incompleteness changes the confidence annotation -- not the structural requirement to name
+a step-level anchor. A partial pathway still produces at least one falsifiable break point.
+
+-- END CONDITIONAL BRANCH --
+
+Do not state falsification as a metric threshold. A metric shortfall is an outcome check.
+Name where the mechanism stops working.
+
+=== PHASE 4: CONTEXT EVIDENCE ===
+
+Assess evidence per pathway step using the formal labels from Phase 2.
+
+For each step:
+  Step N -- [Name]: [evidence name, artifact, or "no evidence"] -- [T1 / T2 / T3 / none]
+    T1 = anecdotal / observational / team intuition
+    T2 = correlation / A-B / usage analytics / survey
+    T3 = controlled / causal-inference-grade experiment
+
+Reference steps by their formal Phase 2 label -- not by position or paraphrase.
+
+Required outputs:
+  Evidence gap steps: [list Step N -- [Name] labels with no supporting evidence]
+  Aggregate evidence tier: [highest tier available -- T1/T2/T3/none]
+
+Do not substitute general research for team-specific evidence. Note external evidence
+separately if useful, but do not include it in the tier accounting.
+
+=== PHASE 5: CONFOUNDER CHECK ===
+
+This phase asks a DIFFERENT question from Phase 0.
+
+Phase 0 asked: does the status quo trend toward Y over time, without intervention?
+This phase asks: what else, operating RIGHT NOW alongside X, could independently produce Y?
+
+The inertia case (Phase 0) is EXCLUDED from this analysis. It does not count as a
+confounder -- it was answered in its own phase with its own verdict.
+
+What you are looking for -- simultaneously-operating causes, not counterfactuals:
+  - Competing initiatives active during the same deployment window
+  - Confounding variables that correlate with X adoption and independently predict Y
+  - Selection effects: the population using X differs from those who do not
+  - Environmental or seasonal effects coinciding with X's deployment period
+
+Name at least one alternative explanation for Y that:
+  (a) does not involve X as a cause, AND
+  (b) is not the inertia/status-quo case already addressed in Phase 0.
+
+Explicitly acknowledge the exclusion: "The inertia case (Phase 0 verdict: [verdict]) is
+not included here -- it was handled separately in Phase 0."
+
+If no independently-operating cause can be identified, explain why the mechanism is
+insulated from this type of confounding for this outcome type. Silence is not acceptable.
+
+=== PHASE 6: AMEND ===
+
+Produce a narrowed version of the hypothesis that integrates all four prior analytical
+phases. This section has four required named inputs. Omitting any of them does not pass.
+
+Required structure:
+  Original: {hypothesis}
+  Inertia verdict: {from Phase 0 -- Competing / Not competing / Unclear}
+  Mechanism completeness: {complete / incomplete / partial -- from Phase 1}
+  Evidence tier: {aggregate tier from Phase 4 -- T1/T2/T3/none}
+  Confounder finding: {from Phase 5 -- name the alternative cause identified, or
+    "none identified -- [reason why mechanism is insulated]"}
+  Active pathway: {primary / secondary / both / singular}
+  Falsification: {Step N -- Name -- break condition, or BEST-TRACEABLE ANCHOR if incomplete}
+  Evidence gap: {step labels lacking support, from Phase 4}
+  Amended: {narrower claim -- must include:
+    (a) mechanism qualifier (what must be true in the causal chain for X to cause Y),
+    (b) scope condition (population, context, or timeframe),
+    (c) inertia condition if Phase 0 is Competing or Unclear: "in contexts where the
+        status quo does not already [produce Y]" or "invalid if inertia check shows
+        [condition]",
+    (d) confounder note if Phase 5 named a plausible alternative cause that bounds
+        where the claim holds -- e.g., "provided [confounder] is not the active driver"}
+
+Integration rules:
+  - A narrowed claim that ignores the inertia verdict does not pass.
+  - A narrowed claim that ignores mechanism incompleteness does not pass.
+  - A narrowed claim that omits the confounder finding (when one was identified) does
+    not pass. Partial synthesis is not synthesis -- all four fields must be reflected.
+  - Restating the original hypothesis does not pass. Broadening it does not pass.
+
+=== PHASE 7: ARTIFACT ===
+
+Write to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter:
+  topic: {topic}
+  date: {date}
+  hypothesis: {original hypothesis}
+  inertia_status: competing | not-competing | unclear
+  mechanism_complete: true | false | partial
+  incomplete_pathway_declared: true | false
+  pathway_steps: {count}
+  secondary_pathway_noted: true | false
+  pathway_relationship: complementary | competing | nested | singular
+  break_point_step: {step label, or "best-traceable: Step N -- Name"}
+  falsification_stated: true | false
+  evidence_aggregate_tier: T1 | T2 | T3 | none
+  evidence_gap_steps: [{step labels with no supporting evidence}]
+  confounders_identified: {count}
+  confounder_inertia_excluded: true | false
+  context_evidence_found: true | false
+```

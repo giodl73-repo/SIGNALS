@@ -2,321 +2,643 @@ Written to `simulations/quest/variations/validate-inertia-variations-R1-2026-03-
 
 ---
 
-## Summary
+## validate-inertia Variations R1
 
-5 variations across 4 axes:
+| # | Label | Axis | Primary target |
+|---|-------|------|----------------|
+| V-01 | Per-persona scoring table | Output format | C-02, C-03 |
+| V-02 | Hard phase gating | Lifecycle emphasis | C-01, C-04, C-05 |
+| V-03 | Status-quo as named competitor | Inertia framing | C-02, C-06 |
+| V-04 | Conversational walkthrough | Phrasing register | C-04, C-07 |
+| V-05 | Full rubric stack | Combination | C-01–C-05 + C-06–C-08 |
 
-| # | Label | Axis | Hypothesis |
-|---|-------|------|------------|
-| V-01 | Baseline | Role sequence (persona-first) | Front-loading persona enumeration forces C-01 groundedness, prevents generic risk lists |
-| V-02 | Scorecard table | Output format | Table columns make C-02/C-05/C-07 structurally impossible to omit |
-| V-03 | Status-quo competitor | Inertia framing | Framing incumbent as competitor forces C-04 specificity -- Claude must explain why the persona "bought" the workaround |
-| V-04 | Imperative register | Phrasing register | Short imperative steps with explicit output specs eliminate narrative-only outputs that fail C-05 |
-| V-05 | Kill-barrier-first + phases | Combined | Kill barrier stated in Phase 1 before persona analysis -- C-03 can never be buried, and must justify the table that follows |
+**Axis choices and rationale:**
 
-**Design tensions being tested:**
-- **V-02 vs V-01**: Does the table over-constrain persona nuance, or does it cut omission errors on C-02/C-05?
-- **V-03 vs V-01**: Does competitor framing deepen C-04, or does it crowd out habit/social proof depth?
-- **V-04 vs V-01**: Does imperative register eliminate narrative-only outputs, or does it produce mechanical lists that miss C-01 groundedness?
-- **V-05**: Does kill-barrier-first eliminate the most common failure mode (C-03 generic or buried), and does the 3-phase gate pay for its verbosity?
+Three single-axis variations — output format, lifecycle emphasis, and inertia framing — then a conversational register variation as the fourth single-axis, then a combination.
 
-**Structural choices driving the key rubric risks:**
-- C-03 (hardest to pass): V-04 enforces the label format literally; V-05 forces the hypothesis before any analysis can distract from it
-- C-05 (score as artifact): V-02 and V-05 make the score a table column -- omitting it breaks the table
-- C-10 (aspirational, structural vs. behavioral asymmetry): V-05 surfaces it explicitly in Phase 3 as an optional but prompted output
-on forces groundedness (C-01) and prevents
-generic risk lists by anchoring every claim to a named individual.
+**Single-axis failure modes targeted:**
 
-```
-You are running /validate-inertia for topic: {topic}.
+- **V-01 (table format)** closes C-02/C-03 together. Prose allows qualitative hedging ("moderate resistance") that passes a surface reading. A table column labeled "Switching cost (quantified)" makes a vague fill visually incomplete; a per-row score table makes a shared blanket score structurally inapplicable.
 
-PURPOSE: Stress-test the adoption case. Even if this feature works perfectly, why would
-users NOT adopt it? This is not a risk list -- it is an inertia analysis per persona.
+- **V-02 (phase gating)** closes C-04 deferral. The kill barrier most often fails not because it's omitted but because it's buried in a list and the model fills it with the most available answer. Placing it as a mandatory phase that must commit before the aggregate verdict forces explicit argument.
 
-STEP 1 -- PERSONA INVENTORY
-Read the topic context: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
-Identify 3-5 distinct user personas from the signals. List each by name and role
-(e.g., "Maya -- senior backend engineer who owns the deployment pipeline").
-If no signals exist, construct personas from first principles for this topic.
+- **V-03 (status-quo competitor)** closes C-06 by framing the workaround as a named product competing for the same adoption slot — which naturally prompts product-comparison thinking, grounded switching cost numbers, and specific satisfaction assessment. "The current solution does X well" produces more useful C-06 content than "assess workaround satisfaction."
 
-STEP 2 -- WORKAROUND AUDIT
-For each persona: what does this person do TODAY to solve the problem this feature addresses?
-Name the specific workaround (a script, a convention, a tool, a manual step).
-Assess how well it solves the problem on a 1-5 satisfaction scale with a one-line rationale.
-A score of 4+ means the workaround is "good enough" -- flag these personas.
+- **V-04 (conversational)** closes C-07 by making habit lock-in and social proof emerge as part of a user story rather than as abstract dimensions to rate. The tradeoff is reduced structural rigidity; the gain is more candid behavioral characterization.
 
-STEP 3 -- PERSONA INERTIA ANALYSIS
-For each persona, analyze adoption resistance across four dimensions:
-  - Switching cost: what would this persona have to change, abandon, or re-learn?
-    Express at least one cost in concrete units (hours, steps, files, dollars, risk level).
-  - Habit lock-in: what behavioral pattern or workflow ritual makes this persona
-    likely to revert even after initial adoption?
-  - Social proof: what does this persona need to see before they trust the feature enough
-    to adopt? Be specific (e.g., "3 teammates using it daily", "a public case study").
-  - Learning curve: how long does ramp-up take? Compare to something the persona already
-    knows if possible (e.g., "similar to learning X, which took 2 days").
+- **V-05** integrates all three without conflict: the competitor framing populates the table (V-03 + V-01), the phase gates enforce kill-barrier commitment (V-02), and C-08 mitigation is added as a required AMEND field.
+tput format — inertia factor mapping and per-persona scoring are expressed as
+structured tables, making quantification gaps and missing per-persona scores visually
+incomplete rather than hidden in prose
 
-STEP 4 -- INERTIA SCORE
-Assign each persona an inertia score: Low / Medium / High / Critical.
-Use this scale consistently:
-  Low = will likely adopt with no intervention
-  Medium = needs onboarding support or social proof
-  High = will resist without product changes or strong peer pressure
-  Critical = will not adopt under current conditions
-
-STEP 5 -- KILL BARRIER
-Identify the single barrier most likely to block adoption entirely across all personas.
-Label it explicitly as "Kill Barrier:" followed by one sentence naming the specific
-mechanism (not a generic risk). This must be feature-specific.
-
-STEP 6 -- SYNTHESIS
-Write 2-3 sentences summarizing overall adoption inertia risk level (Low/Medium/High/Critical)
-and the single most actionable mitigation for the kill barrier.
-
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
-```
-
----
-
-## V-02: Scorecard table (output format axis)
-
-Axis: Output format -- replace per-persona prose sections with a structured scorecard
-table; synthesis and kill barrier remain as prose below the table
-
-Hypothesis: A table with one column per inertia dimension makes it structurally impossible
-to omit switching cost (C-02) or inertia score (C-05), and makes social proof (C-07)
-visible at a glance across all personas simultaneously.
+**Hypothesis:** C-02 and C-03 fail most often because prose descriptions allow qualitative
+hedging ("moderate switching cost", "various resistance levels") that satisfies a surface
+reading without providing measurable values or distinct per-persona scores. A table column
+labeled "Switching cost (quantified)" makes a qualitative fill like "it's inconvenient"
+visually incomplete — the same way an empty cell does — and a per-row score table makes a
+single blanket score structurally inapplicable.
 
 ```
-You are running /validate-inertia for topic: {topic}.
+You are running /validate:inertia for topic: {topic}.
 
-PURPOSE: Produce an adoption inertia scorecard. Even if this feature works perfectly,
-why would users NOT adopt it? The scorecard maps each persona's resistance across four
-dimensions and assigns a score.
+Feature under adoption stress-test: {feature}
 
-SETUP
-Read topic signals: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
-Identify 3-5 personas from the signals. If signals are absent, construct personas
-from first principles. List personas before the table.
+This skill stress-tests the adoption case. The goal is not to evaluate the feature's quality
+-- assume it works perfectly. The question is: why would the right users still not switch?
 
-WORKAROUND BASELINE
-Before the scorecard, write one line per persona:
-  Persona | Current workaround | Satisfaction (1-5) | Why it's "good enough"
+PERSONA IDENTIFICATION
 
-INERTIA SCORECARD
-Build this table (one row per persona):
+Name 2-4 user personas most likely to evaluate this feature for adoption. For each persona:
+  - Name and brief role description (one sentence)
+  - What outcome they currently achieve using their existing workflow
+  - What workaround or tool they already use to get that outcome today
 
-| Persona | Switching Cost (concrete) | Habit / Ritual at Risk | Social Proof Needed | Learning Curve | Inertia Score |
-|---------|--------------------------|------------------------|---------------------|----------------|---------------|
+These must be named, specific personas -- not "users" or "developers". A persona without a
+named current workaround does not qualify.
 
-Column rules:
-- Switching Cost: must include at least one concrete unit -- time (hours/days), effort
-  (steps/files), money (dollars), or risk (rollback complexity). "High" alone fails.
-- Habit / Ritual at Risk: name the specific behavioral pattern or workflow ritual,
-  not a category. "Uses Makefile daily" not "relies on existing tooling".
-- Social Proof Needed: specific threshold -- "needs 3 teammates to adopt first" or
-  "requires a public case study from a similar-sized team". "Peer validation" alone fails.
-- Learning Curve: ramp estimate in time or concept count, or comparison anchor
-  ("similar to learning X, which took Y days").
-- Inertia Score: exactly one of -- Low / Medium / High / Critical. All rows must use
-  the same scale.
+INERTIA FACTOR TABLE
 
-KILL BARRIER
-After the table, write:
-  Kill Barrier: {one sentence -- the single mechanism most likely to block adoption
-  entirely. Must be specific to this feature, not a generic observation.}
+Map each persona to the five inertia dimensions in the table below. Fill every cell. If a
+dimension genuinely does not apply to a persona, write "N/A -- [one-word reason]".
 
-OVERALL RISK
-Synthesize the scorecard into one overall risk rating (Low/Medium/High/Critical)
-with a one-sentence rationale. Propose one specific mitigation that directly addresses
-the kill barrier -- actionable enough to include in a launch plan.
+| Persona | Workaround satisfaction | Switching cost (quantified) | Habit lock-in | Social proof req. | Learning curve |
+|---------|------------------------|----------------------------|---------------|-------------------|----------------|
 
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
-```
+Column definitions:
 
----
+Workaround satisfaction: How well does their current approach meet the need?
+  H = fully or near-fully meets it / M = partially meets it / L = unreliable or painful
 
-## V-03: Status-quo competitor (inertia framing axis)
+Switching cost (quantified): The cost to move from current workaround to the new feature.
+  Must be expressed as a measurable value: time (e.g., "~3 hours migration"), money,
+  steps required (e.g., "4-step reconfiguration"), or a relative ratio (e.g., "3x more
+  setup than current"). Qualitative-only entries ("high effort", "it's annoying") do not
+  pass this column.
 
-Axis: Inertia framing -- the current workaround is treated as a named competitor;
-the entire analysis is framed as a competitive displacement problem
+Habit lock-in: The behavioral pattern that resists change -- muscle memory, workflow
+  integration, or mental model. One phrase. Example: "daily keyboard shortcut habit".
 
-Hypothesis: Framing the status quo as a product the feature must displace forces
-C-04 (workaround satisfaction) to be specific and grounded, and makes C-01 persona
-reasons more concrete because Claude must explain why this persona "bought" the
-incumbent solution.
+Social proof req.: Does adoption require seeing peers adopt first?
+  Y = requires peer proof before committing / N = solo adopter viable / ? = unclear
 
-```
-You are running /validate-inertia for topic: {topic}.
+Learning curve: Low / Medium / High, plus one qualifying detail.
+  Example: "High -- requires learning new query syntax after years of GUI workflow"
 
-FRAME: The status quo is a competitor. Before users can adopt this feature, it must
-displace something they already use and trust. Your job is to model that displacement
-problem persona by persona.
+INERTIA SCORES
 
-STEP 1 -- IDENTIFY THE INCUMBENT
-Read topic signals: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
-Name the primary incumbent solution -- the thing users do today to solve this problem.
-This could be a tool, a script, a convention, a manual process, or "nothing formal".
-In one paragraph, describe why users chose the incumbent: what job does it do well,
-and what does "good enough" look like from their perspective?
+Assign each persona an overall inertia score and name its primary driver.
 
-STEP 2 -- PERSONA PROFILES
-Identify 3-5 personas from the signals (or construct from first principles).
-For each persona, answer: why does this person use the incumbent? What made them
-"buy" it -- even if it was just habit or default behavior? Name the specific reason
-grounded in their role (not generic).
+| Persona | Inertia score | Primary driver |
+|---------|---------------|----------------|
 
-STEP 3 -- DISPLACEMENT COST PER PERSONA
-For each persona, map the cost of switching away from the incumbent:
-  - What must they give up? (features, familiarity, integrations, control)
-  - What must they invest? Express in concrete units: hours to migrate, number of
-    steps to change, files to update, risk of rollback.
-  - What behavioral pattern would need to break? (the habit or ritual that is
-    so automatic they would revert without noticing)
+Score scale:
+  Low = minimal resistance; switching cost and lock-in are low; workaround is poor
+  Medium = meaningful resistance; at least one high-friction dimension present
+  High = significant resistance; multiple high-friction dimensions OR high workaround satisfaction
+  Critical = adoption-blocking; persona is unlikely to switch regardless of quality
 
-STEP 4 -- ADOPTION THRESHOLD
-For each persona: what would it take to get them to switch?
-  - Social proof: what specific evidence or peer behavior must they observe first?
-  - Learning investment: how long does ramp-up take? Use a comparison if possible.
-  - Minimum product bar: is there anything the feature must do differently for this
-    persona to even consider switching? (structural vs. behavioral inertia)
+Primary driver: the single dimension from the inertia factor table that dominates for this
+persona. One of: workaround satisfaction / switching cost / habit lock-in / social proof /
+learning curve.
 
-STEP 5 -- INERTIA SCORE
-Assign each persona an inertia score: Low / Medium / High / Critical.
-All scores must use the same scale.
+KILL-BARRIER IDENTIFICATION
 
-STEP 6 -- DISPLACEMENT VERDICT
-Name the kill barrier: the single reason the feature will fail to displace the
-incumbent for the largest or most critical segment.
-Label it explicitly: "Kill Barrier:"
-Then: overall adoption inertia risk (Low/Medium/High/Critical) and one mitigation.
+Review the inertia factor table and scores. Identify the single barrier most likely to block
+adoption across all personas, even after all other friction is resolved.
 
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
+ADOPTION KILLER: [barrier name -- one of the five inertia dimensions, or a named compound]
+Persona most affected: [name]
+Why it survives: [why this barrier persists even when switching cost, learning curve, and
+  other dimensions are reduced -- what structural property makes it last]
+
+Only one adoption killer. If two seem equivalent, argue for the one that is harder to
+address through a product or onboarding change.
+
+OVERALL ADOPTION INERTIA RISK
+
+OVERALL RISK: [Low / Medium / High / Critical]
+Rationale: [1-2 sentences -- ties the verdict to the per-persona score distribution and the
+  adoption killer; does not re-list every score]
+
+AMEND
+
+Narrow the analysis to the highest-inertia persona.
+
+Persona: [name -- the one with the highest inertia score from the table]
+Switching cost (quantified): [the specific measurable cost for this persona, from the table
+  -- must be a concrete value, not a re-statement of the dimension name]
+Kill barrier: [from KILL-BARRIER IDENTIFICATION -- the one adoption-blocking factor]
+Scenario: [one sentence -- the specific moment where this persona encounters the kill barrier
+  and decides not to adopt, even though the feature works correctly]
+Adoption condition: [what single change -- to the feature, onboarding, migration tooling,
+  pricing, or social proof mechanism -- would most reduce the kill barrier for this persona]
+
+Write artifact to simulations/validate/inertia/{topic}-inertia-{date}.md.
+Frontmatter: topic, date, feature, personas (list), persona_count, kill_barrier,
+overall_risk, inertia_scores (map of persona name to Low/Medium/High/Critical).
 ```
 
 ---
 
-## V-04: Imperative register (phrasing register axis)
+## V-02: Hard phase gating (lifecycle emphasis axis)
 
-Axis: Phrasing register -- short imperative commands replace descriptive prose
-instructions; no explanation of why steps exist, just what to produce
+**Axis:** Lifecycle emphasis — each phase has an explicit prerequisite check and a named
+output that must be committed before proceeding; the kill-barrier phase sits between per-
+persona scoring and the aggregate verdict, making it structurally impossible to produce an
+overall risk without first nominating a single killer
 
-Hypothesis: Direct imperative commands with explicit output format specs reduce
-the chance Claude produces a narrative-only output that fails C-05 (no discrete score),
-and make the C-03 kill barrier label requirement impossible to misread.
+**Hypothesis:** C-04 fails most often not because the prompt omits the kill-barrier
+requirement but because it is embedded inside a list of outputs that can be produced in
+any order or omitted when time pressure is felt. Placing kill-barrier identification as a
+mandatory phase output — with an explicit "do not produce the aggregate verdict until this
+is named" instruction — forces the model to commit to a single adoption killer before
+synthesizing. The same gating logic applied to persona identification (C-01) prevents
+generic persona lists that pass surface inspection.
 
 ```
-You are running /validate-inertia for topic: {topic}.
+You are running /validate:inertia for topic: {topic}.
 
-Read: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
+Feature under adoption stress-test: {feature}
 
-1. LIST PERSONAS
-   Name 3-5 personas from the signals. Each entry: "Name -- role -- one sentence on
-   their relationship to this problem." Construct from first principles if no signals.
+=== PHASE 1: PERSONA ROSTER ===
 
-2. WORKAROUND CHECK
-   For each persona: name their current workaround and rate satisfaction 1-5.
-   One line each. Flag any score of 4 or 5.
+Before any inertia analysis: name the user personas.
 
-3. SWITCHING COST
-   For each persona: state what they must change to adopt this feature.
-   Include at least one concrete unit: hours, steps, files, dollars, or rollback risk.
-   Do not use vague language ("significant effort", "some rework").
+List 2-4 personas who are plausible adopters of this feature. Each persona must have:
+  (a) a name and brief role description
+  (b) the specific outcome they currently achieve without this feature
+  (c) the named workaround they use today to achieve that outcome
 
-4. HABIT LOCK-IN
-   For each persona: name the specific behavioral pattern that would cause them to
-   revert after initial adoption. Must be persona-specific (not "existing tooling").
+Prerequisite check: does every persona have a named current workaround?
 
-5. SOCIAL PROOF THRESHOLD
-   For each persona: state the specific evidence they need before adopting.
-   Example: "needs to see 2 teammates use it without issues for 2 sprints."
+If yes: proceed to Phase 2.
+If no: complete the workaround field for every persona before proceeding. A persona entry
+  without a current workaround is incomplete -- "they don't have one" is valid only if
+  explained (e.g., "outcome is not achievable today").
 
-6. LEARNING CURVE
-   For at least one persona: estimate ramp time or concept count.
-   Use a comparison anchor if possible: "similar to learning X, which took Y."
+=== PHASE 2: INERTIA FACTOR MAPPING ===
 
-7. INERTIA SCORE
-   Assign each persona: Low / Medium / High / Critical.
-   Same scale for all. No narrative substitutes -- score required.
+For each persona in Phase 1, assess the five inertia factors.
 
-8. KILL BARRIER
-   Write exactly:
-   "Kill Barrier: {one sentence naming the specific mechanism that would prevent
-   adoption entirely for the most critical segment -- feature-specific, not generic.}"
+For each persona, address each dimension:
+  1. Workaround satisfaction: How well does the current workaround meet the need? Rate:
+     High (fully satisfies), Medium (partial), or Low (poor/unreliable). One sentence basis.
+  2. Switching cost: The cost to migrate from the current workaround to this feature.
+     Express as a concrete measurable value: time estimate, step count, effort rating (1-10),
+     or relative cost ("3x the setup of current workflow"). Qualitative descriptions alone
+     ("it's hard") do not qualify -- attach a number or relative measure.
+  3. Habit lock-in: The behavioral pattern that creates resistance. Name the specific habit
+     or integrated workflow behavior (e.g., "relies on existing file naming convention
+     that 40+ scripts depend on").
+  4. Social proof requirement: Does this persona need to see peer adoption before committing?
+     Characterize as: needs peer proof / solo adopter / unclear. One sentence basis.
+  5. Learning curve: Low / Medium / High. Name the specific knowledge delta required.
 
-9. OVERALL RISK
-   One line: overall risk level (Low/Medium/High/Critical).
-   One line: mitigation for the kill barrier named in step 8.
+=== PHASE 3: PER-PERSONA INERTIA SCORES ===
 
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
+For each persona, assign an inertia score and identify the primary driver.
+
+Scale:
+  Low: minimal resistance across dimensions; workaround is poor or low-satisfaction
+  Medium: meaningful resistance; at least one high-friction dimension
+  High: significant resistance; multiple high-friction dimensions or high workaround satisfaction
+  Critical: adoption-blocking; this persona will not switch absent a structural change
+
+Primary driver: the single factor from Phase 2 that most explains this persona's score.
+
+List format:
+  [Persona name]: [Score] -- primary driver: [dimension]
+
+Every Phase 1 persona must have a score. A single shared score for all personas does not pass.
+
+=== PHASE 4: KILL-BARRIER IDENTIFICATION ===
+
+Do not produce the aggregate verdict until this phase is complete.
+
+Review the Phase 2 mappings and Phase 3 scores. Identify exactly one adoption killer:
+the single barrier that would block adoption even if all other inertia factors were reduced
+to zero through product improvements or onboarding changes.
+
+ADOPTION KILLER: [barrier name]
+Affected persona(s): [name(s) from Phase 1]
+Why it survives: [the structural property that makes this barrier persist after other
+  friction is removed -- not "it's the highest-rated" but why specifically it cannot be
+  addressed by the same moves that address other barriers]
+Confidence: [High / Medium / Low -- how confident are you this is the single worst barrier
+  vs. a candidate among equals]
+
+If two barriers seem tied, argue for the one that is less addressable through a product
+change and label it the killer. Do not name two.
+
+=== PHASE 5: AGGREGATE VERDICT ===
+
+Using the Phase 3 scores and Phase 4 kill barrier, produce the overall adoption inertia risk.
+
+OVERALL RISK: [Low / Medium / High / Critical]
+Score distribution: [brief characterization of how Phase 3 scores are distributed, e.g.,
+  "2 High, 1 Medium, 1 Low"]
+Rationale: [1 sentence -- explain why the overall risk is at the level you named, grounded
+  in the score distribution and the kill barrier; do not re-list all scores]
+
+=== PHASE 6: AMEND ===
+
+Narrow the analysis to the persona with the highest Phase 3 inertia score.
+
+Required fields:
+  Persona: [name]
+  Switching cost (quantified): [the measurable cost from Phase 2 for this persona -- must
+    include a concrete unit; "high" alone does not pass]
+  Kill barrier: [from Phase 4 -- must match the named adoption killer]
+  Worst-case scenario: [one sentence -- the specific adoption decision moment where the kill
+    barrier causes this persona to stay with their current workaround]
+  Mitigation: [the one structural change -- feature, migration tool, pricing lever, or
+    onboarding modification -- most likely to neutralize the kill barrier for this persona]
+
+Write artifact to simulations/validate/inertia/{topic}-inertia-{date}.md.
+Frontmatter: topic, date, feature, personas (list), persona_count, kill_barrier,
+kill_barrier_confidence, overall_risk, inertia_scores (map of persona to score),
+mitigation_proposed (true/false).
 ```
 
 ---
 
-## V-05: Kill-barrier-first + lifecycle phases + table (combined axis)
+## V-03: Status-quo as named competitor (inertia framing axis)
 
-Axes combined: Kill barrier identification as Phase 1 (role sequence) + scorecard table
-(output format) + explicit phase gates (lifecycle emphasis)
+**Axis:** Inertia framing — the existing workaround is introduced at the start as the
+"current solution" competing for the same adoption slot; switching cost is framed as the
+gap the user must cross to move away from a product they already use, not an abstract
+friction metric
 
-Hypothesis: Forcing kill barrier identification as the first output -- before any per-persona
-analysis -- ensures C-03 is never buried in a summary and cannot be generic because
-the analysis that follows must justify it. The phase gate structure prevents omissions
-by making each output a prerequisite for the next.
+**Hypothesis:** C-02 (quantified switching cost) and C-06 (workaround satisfaction) fail
+together when the prompt treats inertia as a diffuse psychological resistance rather than
+as a specific competitive threat from a named tool or workflow. When the prompt names the
+workaround as "the current solution that this feature must displace," it naturally prompts
+product-comparison thinking: what would the user give up, what would they gain, and what
+is the migration cost measured in concrete terms. This framing produces more specific
+workaround satisfaction assessments (the current solution's strengths are the inertia) and
+more grounded switching cost numbers (the gap between the two solutions, not abstract effort).
 
 ```
-You are running /validate-inertia for topic: {topic}.
+You are running /validate:inertia for topic: {topic}.
 
-PURPOSE: Map adoption inertia -- why users will NOT adopt this feature even if it works.
-Three phases. Each phase produces a required output before the next begins.
+Feature under adoption stress-test: {feature}
 
---- PHASE 1: KILL BARRIER HYPOTHESIS ---
+Before this feature, users had a solution. That solution is the competition.
 
-Read: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
-Based on what you know about this feature and its likely users, state your kill
-barrier hypothesis NOW -- before persona analysis:
+This skill treats inertia not as a psychological bias but as a concrete competitive threat:
+the existing workaround that already solves the problem, has loyal users, and costs nothing
+to keep using. Your job is to characterize that competition by persona and identify the one
+reason users would choose to stay with it even if this feature works perfectly.
 
-  Kill Barrier Hypothesis: {one sentence -- the single mechanism most likely to
-  prevent adoption entirely. Must name a specific behavior, role, or structural
-  constraint. Not a generic risk.}
+CURRENT SOLUTIONS INVENTORY
 
-You will validate or revise this hypothesis in Phase 2.
+Name the workarounds or existing tools that each target persona already uses to achieve the
+same outcome this feature addresses.
 
---- PHASE 2: PERSONA INERTIA SCORECARD ---
+For each persona:
+  Persona: [name and role]
+  Current solution: [the specific tool, workflow, or workaround they use today]
+  What the current solution does well: [1-2 sentences -- why users are satisfied with it,
+    or if they aren't, what keeps them using it anyway]
+  What it fails at: [the specific gap that this feature claims to close]
 
-Identify 3-5 personas (from signals or first principles). Build this table:
+These must be concrete. "They use ad hoc methods" is not a current solution -- name what
+they actually do.
 
-| Persona | Workaround (satisfaction 1-5) | Switching Cost (concrete) | Habit at Risk | Social Proof Needed | Learning Curve | Inertia Score |
-|---------|-------------------------------|--------------------------|---------------|---------------------|----------------|---------------|
+SWITCHING COST ANALYSIS
 
-Column rules:
-- Workaround: name it + satisfaction rating. "None" is valid but must be justified.
-- Switching Cost: at least one concrete unit (hours, steps, files, dollars, rollback risk).
-  Vague language fails this column.
-- Habit at Risk: specific behavioral pattern, not a category.
-- Social Proof Needed: specific threshold -- names, numbers, or evidence type.
-- Learning Curve: time estimate or concept count; comparison anchor if possible.
-- Inertia Score: Low / Medium / High / Critical. Same scale for all rows.
+For each persona, calculate the cost to cross from the current solution to this feature.
 
-After the table, answer: does the scorecard support or revise your Phase 1 hypothesis?
-  "Kill Barrier (confirmed):" or "Kill Barrier (revised):" -- one sentence.
+The switching cost is not effort in the abstract -- it is the sum of:
+  (a) Migration cost: what they must do to move their existing work, data, or habits
+  (b) Relearning cost: what they must unlearn and learn to use the new approach
+  (c) Risk cost: what they risk losing if the transition fails or is incomplete
 
---- PHASE 3: SYNTHESIS ---
+Express the switching cost for each persona as a quantified estimate:
+  - Time: hours or days required to migrate + ramp
+  - Steps: number of discrete actions needed to switch
+  - Effort rating: 1-10 relative to other workflow changes this persona makes
+  - Relative cost: "X times more setup than simply continuing to use [current solution]"
 
-Overall adoption inertia risk: Low / Medium / High / Critical
-Rationale: one sentence linking the kill barrier to the persona scores.
+Qualitative descriptions alone do not count. Each persona needs at least one number,
+range, or relative measure.
 
-Mitigation: one specific action that directly addresses the kill barrier -- actionable
-enough to include in a launch plan. Do not restate the barrier as a recommendation.
+CURRENT SOLUTION STRENGTH SCORES
 
-Inertia asymmetry (optional, include if the evidence supports it):
-  Structural inertia personas (will not adopt without product changes): {list}
-  Behavioral inertia personas (can be overcome with onboarding/framing): {list}
-  This distinction identifies permanent lost TAM vs. delayed adoption.
+Rate how well each persona's current solution serves them today.
 
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
+| Persona | Current solution | Satisfaction (H/M/L) | Reason satisfaction persists |
+|---------|-----------------|---------------------|------------------------------|
+
+Satisfaction scale:
+  H = the current solution fully or near-fully meets the need; user has little motivation to switch
+  M = partially meets the need; user is aware of gaps but has adapted to them
+  L = the current solution is unreliable or painful; user actively wants an alternative
+
+"Reason satisfaction persists": even for L-rated solutions, name why the user has not
+already switched to something else (e.g., "switching requires re-training the team",
+"no better alternative exists", "the pain is tolerable compared to migration risk").
+
+HABIT AND SOCIAL DYNAMICS
+
+For each persona, assess:
+  Habit lock-in: What behavioral pattern or integrated workflow makes the current solution
+    "sticky" beyond rational preference? Name the specific habit (e.g., "uses the tool's
+    keyboard shortcuts 50+ times per day", "all team documentation references the current
+    tool's output format").
+  Social proof requirement: Is this persona's adoption decision individual or social?
+    Does adoption require seeing peers or senior colleagues switch first? Name the social
+    proof threshold if known (e.g., "needs 2+ teammates to adopt before committing",
+    "will wait for team lead endorsement").
+
+PER-PERSONA INERTIA SCORES
+
+For each persona, assign an inertia score that reflects how competitive their current
+solution is, given switching cost, satisfaction, habit, and social dynamics.
+
+  Low = the current solution is weak; this persona would consider switching with minimal push
+  Medium = the current solution has real strengths; switching requires meaningful incentive
+  High = the current solution is strong; switching requires both incentive and reduced switching cost
+  Critical = the current solution is entrenched; this persona will not switch absent a
+    structural change (migration tool, mandated switch, pricing disruption)
+
+For each: [Persona]: [Score] -- [one-sentence reason, referencing the current solution's
+  specific strength]
+
+KILL-BARRIER IDENTIFICATION
+
+Across all personas and all inertia dimensions: what is the single reason users would
+choose to keep their current solution even after this feature is polished and proven?
+
+ADOPTION KILLER: [barrier name]
+Which personas: [names]
+Why the current solution wins on this dimension: [specific statement about what the current
+  solution offers on this dimension that this feature cannot easily match or require users
+  to give up]
+
+OVERALL ADOPTION INERTIA RISK
+
+OVERALL RISK: [Low / Medium / High / Critical]
+Rationale: [1-2 sentences -- connects the competitive strength of current solutions, the
+  per-persona score distribution, and the adoption killer]
+
+AMEND
+
+Focus on the persona most likely to keep their current solution.
+
+Persona: [name -- highest inertia score]
+Current solution: [the specific workaround this persona uses today]
+Switching cost (quantified): [the measurable cost from SWITCHING COST ANALYSIS]
+Kill barrier: [from KILL-BARRIER IDENTIFICATION]
+Competitive framing: [one sentence -- the specific advantage the current solution holds
+  over this feature that explains why the kill barrier survives product improvements]
+Adoption unlock: [what would have to change -- in the feature, in pricing, in migration
+  support, or in the current solution's viability -- for this persona to switch]
+
+Write artifact to simulations/validate/inertia/{topic}-inertia-{date}.md.
+Frontmatter: topic, date, feature, personas (list), persona_count,
+workaround_satisfaction_assessed (true/false), kill_barrier, overall_risk,
+inertia_scores (map of persona to score).
+```
+
+---
+
+## V-04: Conversational walkthrough (phrasing register axis)
+
+**Axis:** Phrasing register — descriptive and conversational; the prompt walks through each
+persona as a narrative scenario ("walk through what this user's day looks like") rather than
+issuing structured commands; the kill-barrier identification is framed as an argument the
+model must make, not a field to fill
+
+**Hypothesis:** C-04 (kill-barrier identification) and C-07 (habit lock-in + social proof)
+fail structurally when prompts treat them as checklist items. The model fills the field with
+the most salient answer rather than reasoning to the correct one. A conversational register
+-- asking "what would this user's internal monologue be when they decide not to switch?" --
+surfaces behavioral patterns (habit lock-in) and peer-adoption dynamics (social proof) as
+part of the user story rather than as abstract dimensions to rate. The cost is reduced
+structural rigidity; the gain is more candid, specific kill-barrier reasoning.
+
+```
+You are running /validate:inertia for topic: {topic}.
+
+Feature under adoption stress-test: {feature}
+
+Let's assume this feature ships in perfect working order. It does exactly what it claims.
+Every bug is fixed. The UX is polished. Now walk through why the right users would still
+not adopt it.
+
+Start by deciding who you're thinking about. Name 2-4 users who would plausibly look at
+this feature and consider adopting it. Don't use categories like "power users" or
+"developers" -- give each one a name and a job, and tell me what they do today to accomplish
+the same thing this feature would do for them.
+
+For each persona, walk through their relationship with their current approach:
+
+How happy are they with what they're already doing? Think about this concretely -- do they
+complain about it? Is it good enough that switching would feel like unnecessary effort, or
+is it painful enough that they'd welcome any improvement? Tell me what their current
+solution does well from their perspective, even if it's objectively limited.
+
+Now think through what it would actually take for them to switch. Not "effort" in the
+abstract -- what would they literally have to do? Reconfigure something? Re-train their
+hands to use different shortcuts? Convince their teammates to change their shared process?
+Put a number on it where you can: how many hours, how many steps, how much risk of
+disrupting their existing work. The goal is to make the switching cost feel real and
+specific, not just "moderate" or "high."
+
+For each persona, think about whether adoption is a solo decision or a social one. Some
+people will try new tools independently the moment they seem good enough. Others will wait
+until they see their colleagues using something before they'll risk the disruption. Which
+is true here, and why? Does this persona need external validation or a team mandate before
+committing? What would tip them over?
+
+Think about what they'd lose if they switched -- not just switching cost, but habit. What
+have they built up over time around their current approach that switching would require them
+to abandon? Keyboard patterns, naming conventions, mental models, integrations with other
+tools they rely on. The more specific you can be, the better.
+
+After walking through each persona, step back and answer this: if you had to name the one
+reason users would choose not to switch -- the factor that would survive even after the
+switching cost is reduced, the learning curve is flattened, and early adopters demonstrate
+it works -- what would it be?
+
+Make this argument explicitly. Don't just list it; tell me why this factor is the one that
+survives when everything else is addressed. Label it:
+
+ADOPTION KILLER: [name the barrier]
+
+Then give each persona an inertia score: Low, Medium, High, or Critical. Low means they'd
+switch with minimal push. Critical means they're not switching absent a structural change
+to their situation (migration tooling, pricing, team mandate, or the current solution
+becoming unavailable). Tell me the score and the sentence that justifies it.
+
+Finally, pull it together into an overall verdict for adoption risk:
+
+OVERALL RISK: [Low / Medium / High / Critical]
+Rationale: [one or two sentences -- what the per-persona picture adds up to, anchored in
+  the adoption killer you named]
+
+AMEND
+
+Pick the one persona you're most worried about. The one who is most likely to look at this
+feature, see that it works, and still stay with their current approach.
+
+Tell me:
+  - Who they are (persona name)
+  - What switching to this feature would concretely cost them (a number or relative measure,
+    not just "high effort")
+  - What the single adoption killer is for them
+  - The specific moment in their workday where they'd encounter that killer and decide not
+    to switch
+  - What one change -- to the feature, to the onboarding, to the migration path, or to
+    the social or organizational context -- would most reduce that barrier
+
+Write artifact to simulations/validate/inertia/{topic}-inertia-{date}.md.
+Frontmatter: topic, date, feature, personas (list), persona_count, kill_barrier,
+overall_risk, inertia_scores (map of persona to score), habit_lockup_assessed (true/false),
+social_proof_assessed (true/false).
+```
+
+---
+
+## V-05: Full rubric stack (combination)
+
+**Axes:** Per-persona scoring table (V-01) + status-quo framing (V-03) + hard phase gating
+(V-02) + mitigation path for the kill barrier (C-08)
+
+**Hypothesis:** Each single-axis variation closes one failure mode: V-01 closes the
+quantification gap (C-02, C-03), V-03 closes the workaround satisfaction gap (C-06),
+V-02 closes the kill-barrier deferral gap (C-04, C-05), and adding C-08 explicitly makes
+the mitigation a named output. The combination integrates all three axes without conflicts:
+the status-quo competitor framing populates the table, the phase gates enforce commitment
+to the kill barrier, and the mitigation appears in the AMEND section as a required field.
+Expected output: all 5 essential criteria + all 3 recommended criteria.
+
+```
+You are running /validate:inertia for topic: {topic}.
+
+Feature under adoption stress-test: {feature}
+
+This feature has a competitor: whatever users do today. This skill maps that competition
+by persona, scores each persona's resistance to switching, and identifies the single barrier
+that would block adoption even after all other friction is reduced.
+
+=== PHASE 1: CURRENT SOLUTIONS INVENTORY ===
+
+Name 2-4 personas who are plausible adopters of this feature.
+
+For each persona, answer the prerequisite before proceeding to analysis:
+  (a) Persona name and brief role
+  (b) The specific outcome they need (one sentence)
+  (c) The named current solution they use to achieve that outcome -- the tool, workflow,
+      script, or manual process that exists right now
+  (d) What the current solution does well for this persona -- the genuine strengths that
+      create satisfaction and resistance to change
+
+Prerequisite gate: every persona must have a named current solution before proceeding. If
+you cannot name one ("they have no workaround"), explain why the outcome is currently
+unachievable and what that means for the inertia analysis.
+
+=== PHASE 2: INERTIA FACTOR TABLE ===
+
+Map every persona to the five inertia dimensions. Fill all cells. If a dimension does not
+apply to a specific persona, write "N/A -- [reason]".
+
+| Persona | Workaround satisfaction (H/M/L + basis) | Switching cost (quantified) | Habit lock-in | Social proof req. | Learning curve |
+|---------|-----------------------------------------|----------------------------|---------------|-------------------|----------------|
+
+Column definitions:
+
+Workaround satisfaction: How well does the current solution serve this persona?
+  H = fully or near-fully meets the need / M = partial / L = unreliable or painful
+  Append a one-phrase basis: e.g., "H -- team's entire delivery pipeline depends on it"
+
+Switching cost (quantified): Concrete migration cost to move from current solution to
+  this feature. Required formats:
+  - Time: "~4 hours to migrate existing configs + 1 day ramp"
+  - Steps: "6-step reconfiguration process, 3 of which require manual verification"
+  - Relative: "2x the setup time vs. renewing current tool license"
+  - Effort rating: "8/10 -- comparable to last major toolchain migration"
+  Qualitative descriptions alone ("significant effort") do not satisfy this column.
+
+Habit lock-in: The specific behavioral pattern that makes the current solution sticky.
+  Name the concrete habit, not the category. Example: "runs the same 3-command sequence
+  from terminal memory 20+ times per day" rather than "uses keyboard shortcuts".
+
+Social proof req.: Is adoption individual or social for this persona?
+  Name the specific threshold: "needs 2+ teammates on the tool before committing",
+  "will adopt solo if it reduces her reporting time by >30%", or "requires team lead
+  mandate". Not just "Y" or "N".
+
+Learning curve: Low / Medium / High + the specific knowledge gap.
+  Example: "High -- must replace 5 years of familiarity with current query syntax".
+
+=== PHASE 3: PER-PERSONA INERTIA SCORES ===
+
+For each persona, assign an inertia score based on the Phase 2 table. All personas from
+Phase 1 must be scored. A single shared score for multiple personas does not pass.
+
+Score scale:
+  Low: minimal resistance; current solution is weak; switching cost is low; workaround
+    satisfaction is L
+  Medium: meaningful resistance; at least one high-friction dimension from Phase 2
+  High: significant resistance; multiple high-friction dimensions OR workaround satisfaction
+    is H
+  Critical: adoption-blocking; structural change required (migration tool, pricing, mandate,
+    or current solution becoming unavailable)
+
+For each persona:
+  [Persona name]: [Score]
+  Primary driver: [the single Phase 2 dimension most responsible for this score]
+  Score rationale: [one sentence -- why this dimension dominates over the others]
+
+=== PHASE 4: KILL-BARRIER IDENTIFICATION ===
+
+Do not proceed to Phase 5 until this phase produces a single named adoption killer.
+
+Review Phase 2 mappings and Phase 3 scores. Identify the one barrier that would survive
+even if: switching cost were reduced by a migration tool, the learning curve were flattened
+by better onboarding, and early adopters demonstrated success.
+
+ADOPTION KILLER: [barrier name]
+Affected persona(s): [names]
+Why it survives: [the structural reason this barrier persists after the other friction is
+  addressed -- what property makes it irreducible through typical product or onboarding
+  improvements]
+Severity: High / Critical [based on Phase 3 scores of affected personas]
+
+Only one adoption killer. If two are plausible, argue for the one that is harder to
+address without changing the feature's fundamental design.
+
+=== PHASE 5: AGGREGATE VERDICT ===
+
+OVERALL RISK: [Low / Medium / High / Critical]
+Score distribution: [count of personas at each level, e.g., "1 Critical, 2 High, 1 Medium"]
+Rationale: [1-2 sentences -- why the overall risk level is what it is, anchored in the
+  Phase 3 distribution and the Phase 4 kill barrier; does not re-list every score]
+
+=== PHASE 6: AMEND ===
+
+Narrow the analysis to the highest-inertia persona and produce a focused adoption
+challenge statement with a mitigation path.
+
+Required fields:
+
+  Persona: [name -- the one with the highest Phase 3 score]
+  Current solution: [the specific tool or workflow this persona uses today]
+  Switching cost (quantified): [the concrete value from Phase 2 for this persona -- must
+    include a unit; "high" alone does not pass]
+  Kill barrier: [must match the Phase 4 adoption killer exactly]
+  Scenario: [one sentence -- the specific moment where this persona encounters the kill
+    barrier and decides to stay with their current solution, even though the feature works]
+  Mitigation: [one concrete intervention -- feature change, migration tool, pricing lever,
+    onboarding redesign, or social proof mechanism -- that would most reduce the kill barrier
+    for this persona; explain why this specific intervention addresses the structural reason
+    named in Phase 4]
+
+Write artifact to simulations/validate/inertia/{topic}-inertia-{date}.md.
+Frontmatter: topic, date, feature, personas (list), persona_count,
+workaround_satisfaction_assessed (true/false), habit_lockup_assessed (true/false),
+social_proof_assessed (true/false), kill_barrier, kill_barrier_severity,
+overall_risk, inertia_scores (map of persona to score), mitigation_proposed (true/false).
 ```

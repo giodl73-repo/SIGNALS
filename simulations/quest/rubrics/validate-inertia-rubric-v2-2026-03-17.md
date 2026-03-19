@@ -1,77 +1,97 @@
-Done. Here's a summary of what changed in v2:
-
-**Two new aspirational criteria extracted from Round 1:**
-
-| ID | Source | Pattern |
-|----|--------|---------|
-| C-11 | V-05 | Kill barrier stated as hypothesis *before* persona analysis. V-05 was the only variant to score full aspirational on C-03 — because Phase 1 makes it structurally impossible to bury or derive the barrier post-hoc from persona aggregation. |
-| C-12 | V-03 | Status-quo framed as a competitor, forcing "why they chose it" reasoning. V-03 scored "PASS — strongest of all variants" on C-04 specifically because it asked *why the persona adopted the incumbent*, not just what they currently use. |
-
-**Point redistribution:** Aspirational tier stays at 10 pts. C-09 and C-10 drop from 5 to 3 pts each; C-11 and C-12 get 2 pts each.
-
-**Also fixed:** C-01's pass condition was truncated in v1 (the file started mid-paragraph). v2 includes the full rubric from header to footer.
-sonas, each with a role and a role-grounded reason why they would resist adoption (e.g., "Maya -- senior backend engineer who owns the deployment pipeline, won't cede build control"). Generic statements not tied to a specific persona fail. |
-| C-02 | **Switching cost quantified** | correctness | essential | At least one switching cost is expressed in concrete units: time (hours/days to migrate), money (license delta, tooling cost), effort (number of steps, files to touch), or risk (rollback complexity). Vague language ("high cost", "some effort") does not pass. |
-| C-03 | **Kill barrier named** | correctness | essential | Output explicitly names the single barrier most likely to block adoption entirely -- labeled as such (e.g., "kill barrier", "adoption stopper", "the one thing that would prevent adoption"). Must be specific to this feature, not a generic observation. |
-| C-04 | **Workaround satisfaction assessed** | correctness | essential | Output evaluates how well the current workaround already solves the problem for at least one persona -- including what the workaround is and why it feels "good enough" to that persona. |
-| C-05 | **Per-persona inertia score present** | format | essential | Each analyzed persona receives a discrete inertia score on a consistent scale (e.g., 1-5, Low/Medium/High/Critical, or 0-10). All scores must use the same scale and appear in the output. |
-
-*Each essential criterion is worth 12 pts. Failure of any essential criterion renders the output not useful regardless of other scores.*
+Here is the complete updated rubric:
 
 ---
 
-## Recommended Criteria (30 pts total)
+# Rubric -- validate-inertia v2
 
-| ID | Criterion | Category | Weight | Pass Condition |
-|----|-----------|----------|--------|----------------|
-| C-06 | **Habit lock-in addressed** | depth | recommended | Output goes beyond cost analysis to identify a behavioral or habitual pattern (muscle memory, workflow ritual, team convention) that would cause the persona to revert even after initial adoption. Must be persona-specific, not generic. |
-| C-07 | **Social proof requirement mapped** | depth | recommended | Output identifies what social proof threshold a skeptical persona would need before adopting -- e.g., "needs to see 3 teammates use it first", "requires a public case study from a similar team", "won't move until their tech lead endorses it". |
-| C-08 | **Learning curve quantified** | depth | recommended | At least one persona's learning curve is expressed in concrete terms: ramp time estimate, number of new concepts to internalize, or comparison to something the persona already knows ("similar to learning X, which took Y"). |
-
-*Each recommended criterion is worth 10 pts.*
+**Version:** v2
+**Updated:** 2026-03-17
+**Change from v1:** Added three new aspirational criteria (C-11, C-12, C-13) extracted from Round 1 excellence signals.
 
 ---
 
-## Aspirational Criteria (10 pts total)
+## Structure Summary
 
-*Aspirational criteria reward structural sophistication. Partial credit is common; full pass is rare. Point weights redistributed in v2 to accommodate C-11 and C-12.*
+- **5 essential (C-01--C-05):** per-persona mapping, quantified switching cost, per-persona inertia scores, kill-barrier callout, aggregate risk verdict
+- **3 recommended (C-06--C-08):** workaround satisfaction, habit lock-in + social proof coverage, mitigation path for the kill barrier
+- **5 aspirational (C-09--C-13):** scoring methodology transparency, time-dependent inertia trajectory, status-quo competitor framing, named social proof threshold, mitigation tied to structural root cause
 
-| ID | Criterion | Category | Weight | Pass Condition |
-|----|-----------|----------|--------|----------------|
-| C-09 | **Overall risk rating with mitigation** | depth | aspirational | Output synthesizes per-persona scores into an overall adoption inertia risk level (Low/Medium/High/Critical) AND proposes at least one specific mitigation per barrier identified -- actionable enough to include in a launch plan. Mitigation must target the kill barrier named in C-03; restating the barrier as a recommendation does not pass. | 3 pts |
-| C-10 | **Inertia asymmetry identified** | correctness | aspirational | Output distinguishes between personas for whom inertia is structural (will not adopt without product changes) vs. behavioral (can be overcome with onboarding/framing), and calls out which personas represent permanent lost TAM vs. delayed adoption. | 3 pts |
-| C-11 | **Kill barrier hypothesized before persona analysis** | structure | aspirational | Kill barrier is stated as an explicit hypothesis in the first section of the output, before any per-persona analysis begins. The hypothesis must be feature-specific (not derived from persona aggregation). This structural sequencing prevents the kill barrier from being buried, genericized, or synthesized post-hoc. | 2 pts |
-| C-12 | **Status-quo treated as competitor** | depth | aspirational | Output reasons about why at least one persona *chose* or *stays with* the incumbent/workaround -- not just what it is, but why they selected it. Uses framing such as "they adopted X because...", "X won this persona because...", or "the reason they haven't switched is..." that captures an adoption decision, not merely current state. | 2 pts |
+Scoring: Essential = 10 pts each (50 total), Recommended = 10 pts each (30 total), Aspirational = 10 pts each (50 total) = **130 pts max**.
 
 ---
 
-## Scoring Reference
+## Essential Criteria (all must pass)
 
-| Score Range | Interpretation |
-|-------------|----------------|
-| 100 | All criteria pass -- exemplary output |
-| 80-99 | Golden threshold met -- output is useful and publishable |
-| 60-79 | Essential pass but recommended gaps -- usable, needs improvement |
-| < 60 | One or more essential criteria fail -- output is not useful |
-
----
-
-## Reviewer Notes
-
-- C-01 and C-03 are the two criteria most commonly failed by shallow outputs. If both fail, the output is a generic risk list, not an inertia analysis.
-- C-02 passes if at least one cost is quantified; not all costs need numbers.
-- C-05 fails if personas receive narrative assessments with no discrete score -- the score is the primary artifact.
-- C-09 mitigation must target the kill barrier named in C-03; restating the barrier as a recommendation does not pass.
-- C-10 is strictly aspirational: structural vs. behavioral inertia is a sophisticated distinction that requires domain knowledge about the persona's org context.
-- C-11 is achievable only when the output is structured as a two-phase analysis (barrier hypothesis → persona analysis). Single-phase outputs that derive the kill barrier at the end fail this criterion even if C-03 passes.
-- C-12 is strengthened by competitor framing at the prompt level (e.g., "treat the current workaround as a competitor"). Outputs that merely describe what a persona uses without reasoning about the adoption decision do not pass.
+| ID | Text | Category | Pass Condition |
+|----|------|----------|----------------|
+| C-01 | **Per-persona inertia mapping** | correctness | Output identifies two or more named user personas and maps each to one or more inertia factors. Generic "users" without persona differentiation fails. |
+| C-02 | **Quantified switching cost** | correctness | At least one persona has a switching cost expressed as a measurable value -- time, money, effort rating (1-10), or steps. Qualitative-only ("it's hard") fails. |
+| C-03 | **Per-persona inertia score** | correctness | Each mapped persona has an explicit inertia score (numeric or Low/Medium/High/Critical). A single blanket score for all personas fails. |
+| C-04 | **Kill-barrier identification** | depth | Output identifies exactly one adoption killer -- the single factor most likely to block adoption even if all other inertia is resolved. Must be labeled distinctly. |
+| C-05 | **Overall adoption inertia risk** | correctness | Output produces an aggregate risk verdict with a sentence of rationale tying it back to the per-persona scores. |
 
 ---
 
-## Version Notes
+## Recommended Criteria
 
-**v2 changes (2026-03-17):**
-- Added C-11: Kill barrier sequenced first -- extracted from V-05 excellence signal (Phase 1 hypothesis before persona analysis produced the strongest C-03 results across all variants)
-- Added C-12: Status-quo as competitor -- extracted from V-03 excellence signal (competitor framing produced the strongest C-04 results across all variants, including "why they chose it" reasoning)
-- Redistributed aspirational point weights: C-09=3, C-10=3, C-11=2, C-12=2 (total aspirational tier unchanged at 10 pts)
-- Completed C-01 pass condition (was truncated in v1)
+| ID | Text | Category | Pass Condition |
+|----|------|----------|----------------|
+| C-06 | **Current workaround satisfaction assessed** | coverage | For at least one persona, output describes how satisfied they are with their current workaround and why that satisfaction creates inertia. |
+| C-07 | **Habit lock-in and social proof addressed** | coverage | Output addresses habit lock-in AND social proof for at least one persona each. Missing both fails; covering one partially passes. |
+| C-08 | **Mitigation path per critical barrier** | depth | For the kill barrier in C-04, output proposes at least one concrete mitigation that could reduce or eliminate that barrier. |
+
+---
+
+## Aspirational Criteria
+
+| ID | Text | Category | Pass Condition |
+|----|------|----------|----------------|
+| C-09 | **Inertia score methodology explained** | behavior | Output briefly explains how inertia scores were derived -- what factors were weighted and why. A single sentence per dimension suffices. |
+| C-10 | **Adoption timeline sensitivity** | depth | Output includes at least one time-dependent statement on how inertia evolves (e.g., "after 6 months of workaround use, lock-in doubles"). |
+| C-11 | **Status-quo framed as named competitor** | depth | For the kill barrier in C-04, output names the dimension on which the current solution *wins* and explains why that competitive advantage is durable -- not just "people are used to it" but what property of the current solution makes it structurally hard to displace. |
+| C-12 | **Named social proof threshold** | coverage | For at least one persona where social proof is a factor, output specifies the adoption threshold as a concrete condition or count (e.g., "needs 2+ teammates before committing," "will adopt solo if manager mandates it"). Binary Y/N without a named threshold fails. |
+| C-13 | **Mitigation tied to structural root cause** | depth | The mitigation from C-08 explicitly explains *why* the intervention neutralizes the structural reason the barrier exists -- not just what to do, but why that lever addresses the specific root cause named in C-04. Addressing a symptom rather than the stated structural cause fails. |
+
+---
+
+## Notes
+
+- A rubric pass requires all 5 essential criteria to pass individually.
+- Aspirational criteria may receive PARTIAL (5 pts) for genuine attempts that fall short of the full pass condition.
+- C-11 is distinct from C-04: C-04 identifies the kill barrier; C-11 reframes that barrier as a competitive-displacement problem with a named winning dimension.
+- C-13 sharpens C-08: C-08 requires a concrete mitigation; C-13 requires the mitigation to be causally linked to the root cause stated in C-04.
+
+---
+
+## v2 Change Log
+
+| Criterion | Change | Source |
+|-----------|--------|--------|
+| C-11 | New aspirational | V-03 "Why the current solution wins on this dimension"; V-05 Phase 4 structural reasoning |
+| C-12 | New aspirational | V-05 named threshold ("needs 2+ teammates") vs. V-01--V-04 binary social proof |
+| C-13 | New aspirational | V-05 C-08 formulation: "explain why this specific intervention addresses the structural reason named in Phase 4" |
+| Scoring max | 100 -> 130 | Five aspirational criteria at 10 pts each |
+ntervention neutralizes the structural reason the barrier exists -- not just what to do, but why that specific lever addresses the specific root cause named in C-04. A mitigation that addresses a symptom rather than the stated structural cause fails. |
+
+---
+
+## Notes
+
+- A rubric pass requires **all 5 essential criteria** to pass individually.
+- Partial credit within a criterion is not applied -- each criterion is binary (pass/fail).
+- Aspirational criteria may receive PARTIAL (5 pts) when the output makes a genuine attempt that falls short of the full pass condition.
+- If the skill output focuses on a single persona (AMEND mode), C-01 and C-03 pass with one persona provided it is named and specific.
+- Quantification in C-02 may use relative scales (e.g., "3x more steps than current workflow") when absolute values are not estimable.
+- C-11 is distinct from C-04: C-04 requires identifying the kill barrier; C-11 requires framing that barrier as a competitive-displacement problem with a named winning dimension.
+- C-13 sharpens C-08: C-08 requires a concrete mitigation; C-13 requires the mitigation to be causally linked to the root cause stated in C-04.
+
+---
+
+## v2 Change Log
+
+| Criterion | Change | Source |
+|-----------|--------|--------|
+| C-11 | New aspirational | V-03 "Why the current solution wins on this dimension" framing; V-05 Phase 4 structural reasoning |
+| C-12 | New aspirational | V-05 named social proof threshold ("needs 2+ teammates," "will adopt solo if...") vs. V-01--V-04 binary presence |
+| C-13 | New aspirational | V-05 C-08 formulation: "explain why this specific intervention addresses the structural reason named in Phase 4" |
+| Scoring max | 100 -> 130 | Five aspirational criteria at 10 pts each |

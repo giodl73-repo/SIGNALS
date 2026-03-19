@@ -1,813 +1,761 @@
-Five complete variations written to `simulations/quest/variations/discover-competitors-alt-variations-R5-2026-03-17.md`.
-
-**Target criteria:** C-18, C-19, C-20 (new in v5 rubric)
-
-**Setup:** R4 established the three patterns; retroactive v5 scoring showed V-05 = 145 (C-18+C-20), V-01/V-03/V-04 = 140 (one new criterion each). R5 asks: which two-criterion combinations reach 145, and does the full stack hit 150?
-
-| # | Axis | Target | Expected |
-|---|------|--------|----------|
-| V-01 | Symmetric 3-sub-question loop (lifecycle) | C-20 isolation | 145 |
-| V-02 | All-table conversion of R4 V-05 (format) | C-19 + carry test | 147.5–150 |
-| V-03 | All-table + phase FAILS/PASS (format + phrasing) | C-18 + C-19 | 145 |
-| V-04 | All-table + symmetric loop (format + lifecycle) | C-19 + C-20 | 145 |
-| V-05 | Full R5 stack (format + phrasing + lifecycle) | C-18 + C-19 + C-20 | **150** |
-
-**The key open question is V-02:** SR-block FAILS/PASS pairs reference table rows rather than labeled slots — does that satisfy C-18, or does C-18 require FAILS/PASS at the actual phase instruction level for C-12 and C-13? If SR-block is sufficient, V-02 = 150. If phase-instruction is required, V-02 = 147.5. V-03 and V-04 isolate the two sides of that question.
-led slots to
-  3-row mechanism table; Phase 4 dual-line template to 2-row whitespace table. Risk: converting
-  slots to tables removes per-slot FAILS/PASS pairs from Phase 2 phase instructions -- C-18 may
-  partially fail. SR block FAILS/PASS for SR2 and SR4 updated to reference table rows.
-  Key question: does SR-block FAILS/PASS for table rows satisfy C-18, or does C-18 require
-  phase-instruction-level FAILS/PASS pairs specifically?
-
-- V-03 base: R4 V-03 (all-table, C-19 PASS = 140). Change: add FAILS/PASS pairs to each table
-  phase instruction. Tests C-18 + C-19 path without verification loop.
-
-- V-04 base: R4 V-03 (all-table, C-19 PASS = 140). Change: add symmetric verification loop
-  without adding FAILS/PASS to phase instructions. Tests C-19 + C-20 path independently.
-
-- V-05: Combines V-03 (all-table + FAILS/PASS per table) + V-01 (symmetric loop). Ceiling.
+5 complete variations written to `simulations/quest/variations/discover-competitors-alt-variations-R5-2026-03-17.md`.
 
 ---
 
-## V-01 -- Symmetric Verification Loop (C-20)
+## discover-competitors-alt — Variations R5
 
-**Axis:** Lifecycle emphasis -- pre-submission verification loop mirrors opening SR block
-**Hypothesis:** R4 V-05's verification loop satisfied C-20 as a side effect, but its sub-questions
-are asymmetric: SR2 asks "portability test applied?" while SR1 and SR4 ask "format-failure
-declared?" C-20 requires identical sub-questions per constraint. V-01 makes the loop truly
-symmetric: the same three sub-questions (format artifact present? format-failure declared?
-FAILS/PASS pair present?) are asked for each of SR1, SR2, and SR4. Base: R4 V-04 (C-18 PASS,
-C-19 FAIL, C-20 FAIL = 140). The only change is the pre-submission verification block.
-Expected: C-18 PASS, C-19 FAIL, C-20 PASS = 145.
+**Baseline:** R4 (140/140). New rubric v4 adds C-19–C-22. Every variation incorporates all four new structural patterns.
+
+| Variation | Axis | Projected | Key test |
+|-----------|------|----------:|----------|
+| **V-01** | Role sequence — INERTIA-REF in Phase 0, before context is read | ~160 | Does establishing INERTIA-REF as the first act satisfy C-22 more naturally without a bolted-on per-finding rule? |
+| **V-02** | Output format — tabular findings with structural coercion on both Anchor and INERTIA-REF-DELTA columns | ~157.5 | Does C-20 applied twice (competitor table + findings table) satisfy C-22 via form rather than instruction? |
+| **V-03** | Lifecycle emphasis — all four gate sections (CITATION, ANCHOR, PROOF, INERTIA-REF) declared in PREFLIGHT before Phase 1 | ~160 | Can four PASS/FAIL tables coexist cleanly with a separate OUTPUT CONTRACTS block? |
+| **V-04** | Combined: OUTPUT CONTRACT table + INERTIA-REF definition both before Phase 1 | ~160 | Does front-loading both the output shape and the reference frame produce a coherent preamble or a cluttered header? |
+| **V-05** | Combined: C-20 in both tables + three named gate sections (CITATION, ANCHOR-COMPETITORS, ANCHOR-FINDINGS + PROOF) | ~160 | Can maximum structural density remain readable? |
+
+**Key structural differences:**
+
+- **C-19** (synthesis-first output contracts): V-01/V-03/V-04 use a dedicated OUTPUT CONTRACTS block; V-02/V-05 embed the contract as a note at the top of the collection phase. All name at least one output slot by label before collection ends.
+- **C-20** (structural column coercion): V-01/V-03/V-04 apply format template to competitor table Anchor column only; V-02/V-05 apply it to both the competitor table Anchor column and the findings table Anchor column.
+- **C-21** (gate-as-section with PASS/FAIL table): V-01/V-04 have one named gate section (CITATION GATE); V-02 has one (CITATION GATE); V-03 has four (PREFLIGHT block); V-05 has three (CITATION GATE, ANCHOR GATE — COMPETITOR TABLE, PROOF GATE + ANCHOR GATE — FINDINGS TABLE).
+- **C-22** (INERTIA-REF per-finding citation): V-01/V-03/V-04/V-05 use instructional per-finding citation requirement; V-02 coerces via INERTIA-REF-DELTA column shape.
+
+**V-02 uncertainty:** C-22 requires the token be "defined once" with "per-finding citation required by name." The column format constraint in V-02 structurally enforces the requirement — the token name appears in the column header template. PASS expected but indirect.
+F-DELTA is a structural column in the findings table — the token is required by column shape, not by a standalone instruction. Rubric requires the token to be "defined once" with "per-finding citation required by name." Column-shape coercion satisfies the per-finding requirement; the definition still appears in Phase 2. PASS expected, but the indirect mechanism is the only uncertainty.
+
+**Key structural decisions by variation:**
+
+- **V-01:** INERTIA-REF defined in PHASE 0 before context is read. OUTPUT CONTRACTS block between Phase 0 and Phase 1. Focus dimension measured against INERTIA-REF from the moment it is introduced. Per-finding citation instructional.
+- **V-02:** Findings are a structured table with two coerced columns — Anchor (`Row C{N}, {attribute}: "{value}"`) and INERTIA-REF-DELTA (`vs. INERTIA-REF — {verdict}: {phrase}`). Both columns are syntactically malformed without attribute-level values. CITATION GATE is the named section. OUTPUT CONTRACT note embedded in Phase 3 collection instruction.
+- **V-03:** Four named gate sections (CITATION GATE, ANCHOR GATE, PROOF GATE, INERTIA-REF GATE) with PASS/FAIL tables in a PREFLIGHT block before Phase 1. Phases are concise execution instructions that reference gates by name. OUTPUT CONTRACTS before Phase 2.
+- **V-04:** OUTPUT CONTRACT table appears before Phase 1; INERTIA-REF definition immediately after. Both preamble elements visible before any collection begins. Phases execute against the pre-declared contracts. CITATION GATE is the named section.
+- **V-05:** C-20 applied to both competitor table Anchor column and findings table Anchor column. C-21 via three named gate sections — CITATION GATE, ANCHOR GATE (competitor table), PROOF GATE (findings). INERTIA-REF-DELTA also coerced via findings table column shape (C-22 via C-20). Most structurally dense variation.
+
+---
+
+## V-01 — Role sequence (inertia-first anchor)
+
+**Axis:** Role sequence — INERTIA-REF established in Phase 0 before any context is read, before any external competitor is assessed, before the focus dimension is introduced.
+
+**Hypothesis:** Establishing INERTIA-REF as the opening act makes every downstream instruction naturally reference it, satisfying C-22 without needing a separate per-finding citation rule bolted onto Phase 5. The gravitational center is declared before the universe is populated.
+
+---
+
+You are running **discover-competitors-alt**.
+
+**FOCUS CHECK:** If `focus:` is set (e.g., `focus: market-sizing`, `focus: positioning-framework`), the focus dimension is active. If not supplied, no focus column is added and focus-related outputs pass by vacuous satisfaction.
+
+---
+
+### PHASE 0: ESTABLISH INERTIA-REF
+
+Before reading any repository context, before assessing any external competitor, define the reference frame.
+
+Identify the status quo — the behavior, tool, or approach the target user relies on today without the feature under analysis. This is **C0**: the inertia competitor.
+
+Define the token:
 
 ```
-SETUP: Auto-detect product domain from README, CLAUDE.md, package.json, Glob. Do not prompt.
+INERTIA-REF = [C0 name]: [specific mechanism — name the switching cost, habit lock-in, or
+workaround satisfaction that makes C0 sticky; the mechanism must be specific to C0's behavior
+or product feature, not a category label applied generically]
+```
 
-STRUCTURAL REQUIREMENTS -- hard format constraints. All constraints enforce via the same
-apparatus: named format artifact + format-failure declaration + FAILS/PASS rejection example
-pair. Any one absent or failing is an observable format failure. Confirm all five before
-submitting output:
+**Inertia naming failure:** INERTIA-REF sentence uses a category label ("inertia is high," "users are accustomed to it," "strong lock-in") rather than a specific mechanism. Rewrite before continuing.
 
-  [ ] 1. PHASE 1 pre-map table present and fully populated before any competitor entry.
-         Required when focus is provided.
-         FAILS: Prose paragraph listing segments; absent table; table with empty cells.
-         PASS: Markdown table with named schema, all cells populated, present before Phase 2.
+Every finding in Phase 5 must cite **INERTIA-REF** by token name and declare whether the finding reinforces, challenges, or contextualizes the mechanism named in this token.
 
-  [ ] 2. PHASE 2 inertia: all three slots (WORKAROUND SATISFACTION, SWITCHING COST, HABIT
-         LOCK-IN) populated with domain-exclusive content.
-         FAILS: Content that reads correctly for payroll software, a photo editor, or a
-           scheduling tool -- regardless of whether mechanism names are present.
-         PASS: Every slot names a specific tool, step, artifact, or ritual recognizably wrong
-           for any other product category.
+---
 
-  [ ] 3. PHASE 3 competitor table: Map Position column populated for every row including
-         inertia. Verbatim Phase 1 row labels only.
-         FAILS: Empty Map Position cell; paraphrased or generalized Phase 1 row label.
-         PASS: Exact Phase 1 row label in every cell; no paraphrasing.
+### OUTPUT CONTRACTS
 
-  [ ] 4. PHASE 4 whitespace: both Competitive gap line and Focus gap line present in one
-         paragraph. Required when focus is provided.
-         FAILS: Single-axis whitespace; two separate paragraphs; missing either label;
-           combined statement not grounded in Phase 1 row labels.
-         PASS: One paragraph with "Competitive gap:" and "Focus gap:" both labeled, both
-           grounded in Phase 1 data and Map Position column values.
+Before collecting any external competitor data, note what Phases 4 and 5 require from Phases 2–3. Collect data that fills each of these slots by name:
 
-  [ ] 5. ENFORCEMENT SYMMETRY: SR1 (C-11), SR2 (C-13), and SR4 (C-12) each carry the same
-         three-component enforcement fingerprint -- named format artifact + format-failure
-         declaration + FAILS/PASS rejection example pair. No constraint enforces via prose
-         instruction alone.
-         FAILS: Any of the three lacks a named format artifact, a format-failure declaration,
-           or a FAILS/PASS rejection example pair.
-         PASS: All three constraints carry all three components in identical structure.
+- **WHITESPACE absence evidence**: `Row C{N} — {attribute}: {absent / "None" / "N/A" / uncontested value}` per row per candidate whitespace attribute. Absence must be observed per row during Phase 2 — you cannot backfill this at synthesis time.
+- **ANCHOR cell value**: `Row C{N}, {attribute}: "{value}"` per finding. Collect mechanism phrases, threat scores, and focus-column values per competitor row during Phase 2.
+- **INERTIA-REF-DELTA phrase**: For each finding, identify the specific C0 mechanism phrase from INERTIA-REF that the finding contrasts with. Identify this during Phase 2 by noting where each external competitor's mechanism departs from or resembles the C0 mechanism.
 
-Structural Requirements 1, 3, 4, and 5 apply only when focus is provided.
+---
 
-PORTABILITY TEST (apply to every PHASE 2 slot before accepting it):
-"If I copied this slot content unchanged into a competitor analysis for a clearly different
-product -- payroll software, a photo editor, a scheduling tool -- would it still make sense?"
-If yes, rewrite until recognizably wrong for any other product category.
+### PHASE 1: CONTEXT
 
-PHASE 1 -- FOCUS LENS PRE-MAP (Structural Requirement 1):
+Read repo context (README, CLAUDE.md, package.json, or equivalent). Infer:
 
-If focus = market:
-| Segment | Size Estimate | Growth Stage | Current Leader |
-|---------|--------------|--------------|----------------|
-3-5 rows. Fill all columns. Growth stage: emerging / growth / mature.
-Current leader: named competitor or default behavior most dominant in this segment.
-This is the competitive frame. Every competitor including inertia maps to exactly one row.
-
-If focus = positioning:
-| Positioning Category | Current Owner(s) | Vacancy Status |
-|---------------------|-----------------|----------------|
-3-5 rows. Fill all columns. Vacancy: open / contested / owned.
-This is the competitive frame. Every competitor including inertia maps to exactly one row.
-
-If no focus: skip Phase 1. SR1, SR3, SR4, and SR5 are not applicable.
-
-PHASE 2 -- INERTIA FIRST (Structural Requirement 2; all three slots mandatory):
-
-Competitor 0: "None / status quo." Threat level: HIGH. State explicitly.
-If Phase 1 was completed: record Phase 1 row in the Phase 3 table below.
-
-WORKAROUND SATISFACTION:
-Name the exact substitution -- the specific tool, template, script, or duct-taped combination
-of tools -- that teams use instead of adopting a dedicated solution in this domain. Explain
-why it satisfies enough need that teams feel no pain and do not seek alternatives.
-FAILS: "Teams use workarounds" / naming a generic category without the specific tool, template
-  name, or combination unique to this product domain.
-PASS: Names the exact template, combination, or step recognizably specific to this product's
-  competitive context. Fails portability for any other product category.
-
-SWITCHING COST:
-Name the concrete thing a team must lose or redo when they adopt something new in this
-product context. Name the specific format, role, process, or contract at stake. Quantify if
-possible (hours, days, FTE cycles, budget range).
-FAILS: "Switching has a cost" / "migration effort required" without specifying what migrates
-  from what to what in this domain.
-PASS: Names the domain-specific format or workflow at stake -- detail inapplicable in any
-  other product category.
-
-HABIT LOCK-IN:
-Name the specific repeated behavior -- the artifact, ritual, sprint cadence, or shared
-convention -- that makes the workaround feel normal in this product context.
-FAILS: "Teams develop habits around their tools" without naming the specific behavior as it
-  exists in this product's workflow.
-PASS: Names the habit -- artifact, ritual, or routine -- recognizably wrong for any other
-  domain.
-
-Portability test applied to each slot. Use WebSearch if needed. Cite inline.
-
-PHASE 3 -- COMPETITOR TABLE (Structural Requirement 3; Map Position column required):
-
-| # | Competitor | Threat | Overlap | Map Position |
-|---|------------|--------|---------|--------------|
-| 0 | None / status quo | HIGH | -- | [exact Phase 1 row label] |
-| 1 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-| 2 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-...
-
-Map Position: exact Phase 1 row label this competitor primarily occupies or contests.
-Use Phase 1 row labels verbatim -- do not paraphrase or generalize. An empty cell or
-paraphrased label is a format failure. When no focus is provided, omit Map Position column.
-Add one sentence per competitor on threat relative to inertia and Map Position context.
-Verify at least one major competitor claim via WebSearch. Cite inline.
-
-PHASE 4 -- FINDINGS (Structural Requirement 4; dual-line template required when focus provided):
-
-1. DUAL-AXIS WHITESPACE (both lines required; both labels mandatory):
-   Competitive gap: No named competitor owns [X] because [reason]. Name which competitors
-     come closest and which Map Position cells they occupy.
-   Focus gap: Phase 1 row [Y -- use exact Phase 1 row label] is unaddressed / unoccupied
-     because [reason]. Reference Phase 1 table data.
-   Combined: [the position simultaneously [X] and [Y] -- where a new entrant faces neither
-     a dominant named competitor nor inertia's strongest foothold. Ground in Map Position
-     column values].
-   FAILS: Single-axis finding; two paragraphs; missing "Competitive gap:" or "Focus gap:"
-     label; combined not grounded in Phase 1 row labels or Map Position values.
-   PASS: One paragraph with both labels present, both grounded, combined statement explicit.
-
-2. TABLE STAKES -- minimum requirements to be taken seriously over the WORKAROUND SATISFACTION
-   substitute named in Phase 2. Reference at least one Phase 1 data point per item.
-
-3. COMPETITIVE MATRIX -- top 3 by threat level, one recommendation sentence each, sorted
-   high to low.
-
-PRE-SUBMISSION VERIFICATION -- symmetric enforcement check, same three sub-questions per
-constraint. Answer each before submitting. Any NO requires revision.
-
-  SR1 (C-11): format artifact present (pre-map table)?
-              format-failure declared ("absent table / empty cells fail")?
-              FAILS/PASS pair present?
-
-  SR2 (C-13): format artifact present (three labeled slots)?
-              format-failure declared ("generic restatements fail")?
-              FAILS/PASS pair present (per slot)?
-
-  SR4 (C-12): format artifact present (dual-line template)?
-              format-failure declared ("single-axis / missing label fails")?
-              FAILS/PASS pair present?
-
-Also confirm SR3: Map Position column has no empty or paraphrased cells.
-
-AMEND: Exactly 3 items. Input change + output change. Specific.
-
-Write artifact: simulations/discover/competitors/{topic}-competitors-alt-{date}.md
-Frontmatter: skill, topic, date, skill_version, input, focus.
+```
+Token: TOPIC: {inferred topic}
+Token: FOCUS: {market-sizing | positioning-framework | none}
 ```
 
 ---
 
-## V-02 -- All-Table Apparatus (C-19)
+### PHASE 2: COMPETITOR TABLE
 
-**Axis:** Output format -- apparatus type uniformity via all-table schema
-**Hypothesis:** R4 V-05 scores 145/150 (C-18 PASS + C-20 PASS, C-19 FAIL). The sole gap is
-C-19: Phase 2 uses labeled text slots and Phase 4 uses a dual-line template -- mixed apparatus.
-V-02 converts both to table schema: Phase 2 becomes a 3-row mechanism table; Phase 4 becomes a
-2-row whitespace table. The SR block FAILS/PASS for SR2 and SR4 are updated to reference table
-rows. The verification loop sub-questions are adapted for table apparatus but remain symmetric.
-Central question: does the all-table conversion preserve C-18 (via SR-block FAILS/PASS for table
-rows) and C-20 (via adapted symmetric loop), pushing from 145 to 150? If SR-block FAILS/PASS
-pairs for table rows satisfy C-18 equivalently to phase-instruction pairs for labeled slots, this
-is a clean 150 path. If C-18 requires phase-instruction-level FAILS/PASS specifically, V-02
-scores 147.5 (C-18 PARTIAL from SR-block-only coverage).
+Run WebSearch for each external competitor before adding its row. C0 (INERTIA-REF) enters as Row C0 with all columns populated.
+
+| Row | Competitor | Threat | Mechanism | Focus: {focus_dimension} | Anchor | Citation |
+|-----|-----------|--------|-----------|--------------------------|--------|----------|
+
+**Anchor column format:** `Row C{N}, {attribute}: "{value}"` — a cell containing only a competitor name is syntactically malformed and must be rewritten before the row is output.
+
+ACCEPTABLE: `Row C2, mechanism: "requires browser tab open for all review sessions"`
+NOT ACCEPTABLE: `Competitor 2 — mechanism is high` — no quoted value, no `Row C{N}` prefix
+
+**CITATION GATE**
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| Citation cell populated | URL from WebSearch appears in the Citation column of this row | **Citation gate failure** — suppress the row; run WebSearch and fill before outputting |
+| Citation location | Citation is within the table row, not in a trailing footnote or reference block | **Citation gate failure** — relocate the citation into the row or remove the footnote |
+
+---
+
+### PHASE 3: WHITESPACE (fills WHITESPACE absence evidence slot — see OUTPUT CONTRACTS)
+
+For each candidate whitespace attribute, record across all rows:
 
 ```
-SETUP: Auto-detect product domain from README, CLAUDE.md, package.json, Glob. Do not prompt.
+Row C{N} — {attribute}: {absent / "None" / "N/A" / uncontested value}
+```
 
-STRUCTURAL REQUIREMENTS -- hard format constraints. All three primary structural requirements
-(SR1, SR2, SR4) enforce via table schema. An absent table or empty table row/cell is an
-observable format failure. Confirm all four before submitting output:
+Then confirm the gap:
 
-  [ ] 1. PHASE 1 pre-map table present and fully populated before any competitor entry.
-         Required when focus is provided.
-         FAILS: Prose paragraph; absent table; table with empty cells.
-         PASS: Markdown table with named schema, all cells populated, present before Phase 2.
+```
+Gap confirmed: No row provides a non-absent value for [{attribute column(s)}] —
+attribute-level uncontested.
+vs. INERTIA-REF: {how the vacant attribute relates to the C0 mechanism from Phase 0}
+```
 
-  [ ] 2. PHASE 2 inertia mechanism table: all three rows (WORKAROUND SATISFACTION, SWITCHING
-         COST, HABIT LOCK-IN) populated with domain-exclusive content.
-         FAILS: Absent table; empty table row; row content that passes the portability test
-           (reads correctly for payroll software, a photo editor, or a scheduling tool).
-         PASS: All three rows present, each populated with content that fails portability --
-           specific tool names, workflow steps, artifact names wrong for any other domain.
+NOT ACCEPTABLE: "No competitor covers this space." — bare assertion, no attribute-level evidence — **whitespace gate failure**
+NOT ACCEPTABLE: "Competitor 2 reveals a gap in..." — name-only — **anchor gate failure**
 
-  [ ] 3. PHASE 3 competitor table: Map Position column populated for every row including
-         inertia. Verbatim Phase 1 row labels only.
-         FAILS: Empty Map Position cell; paraphrased or generalized Phase 1 row label.
-         PASS: Exact Phase 1 row label in every cell; no paraphrasing.
+---
 
-  [ ] 4. PHASE 4 whitespace table: both rows (Competitive gap, Focus gap) populated and
-         grounded. Required when focus is provided.
-         FAILS: Absent table; single-row table; row not grounded in Phase 1 data or Map
-           Position column values; combined paragraph absent.
-         PASS: Both rows present and grounded; combined paragraph names the dual-axis position
-           with explicit reference to Phase 1 data and Map Position values from Phase 3.
+### PHASE 4: CROSS-DIMENSIONAL FINDING
 
-Structural Requirements 1, 3, and 4 apply only when focus is provided.
+```
+SOURCE: {name the specific cell value — row label, attribute name, and quoted value —
+do not proceed to REDUCTION-1 until this slot is filled}
 
-PORTABILITY TEST (apply to every PHASE 2 mechanism row before accepting it):
-"If I copied this row content unchanged into a competitor analysis for a clearly different
-product -- payroll software, a photo editor, a scheduling tool -- would it still make sense?"
-If yes, rewrite until recognizably wrong for any other product category.
+REDUCTION-1: Competitive map alone — does the gap appear without the focus dimension?
+[YES/NO + one sentence showing what is lost when focus is dropped]
 
-PHASE 1 -- FOCUS LENS PRE-MAP (Structural Requirement 1):
+REDUCTION-2: Focus dimension alone — does the gap appear without the competitive map?
+[YES/NO + one sentence showing what is lost when the map is dropped]
 
-If focus = market:
-| Segment | Size Estimate | Growth Stage | Current Leader |
-|---------|--------------|--------------|----------------|
-3-5 rows. Fill all columns. Growth stage: emerging / growth / mature.
-Current leader: named competitor or default behavior most dominant in this segment.
-This is the competitive frame. Every competitor including inertia maps to exactly one row.
+If either reduction cannot honestly answer NO, find a different gap. A gap that does not
+fail both single-dimension reductions is not cross-dimensional — proceeding is a
+**proof structure failure**.
 
-If focus = positioning:
-| Positioning Category | Current Owner(s) | Vacancy Status |
-|---------------------|-----------------|----------------|
-3-5 rows. Fill all columns. Vacancy: open / contested / owned.
-This is the competitive frame. Every competitor including inertia maps to exactly one row.
-
-If no focus: skip Phase 1.
-
-PHASE 2 -- INERTIA FIRST (Structural Requirement 2; mechanism table required):
-
-Competitor 0: "None / status quo." Threat level: HIGH. State explicitly.
-If Phase 1 was completed: record Phase 1 row in the Phase 3 table below.
-
-| Mechanism | Domain-Exclusive Content |
-|-----------|--------------------------|
-| WORKAROUND SATISFACTION | [the specific tool, template, script, or duct-taped combination teams use instead of a dedicated solution; why it satisfies enough need that teams feel no pain and do not seek alternatives] |
-| SWITCHING COST | [the concrete cost: specific format, role, process, or contract a team must lose or redo when adopting something new; quantify if possible -- hours, days, FTE cycles, budget range] |
-| HABIT LOCK-IN | [the specific repeated behavior -- artifact, ritual, sprint cadence, or shared convention -- that makes the workaround feel normal in this product context] |
-
-An empty row fails. Content that passes the portability test fails. Apply portability test to
-each row. Use WebSearch if needed. Cite inline.
-
-PHASE 3 -- COMPETITOR TABLE (Structural Requirement 3; Map Position column required):
-
-| # | Competitor | Threat | Overlap | Map Position |
-|---|------------|--------|---------|--------------|
-| 0 | None / status quo | HIGH | -- | [exact Phase 1 row label] |
-| 1 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-| 2 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-...
-
-Map Position: exact Phase 1 row label. Verbatim -- do not paraphrase. Empty cell or paraphrased
-label is a format failure. When no focus is provided, omit Map Position column entirely.
-Add one sentence per competitor on threat relative to inertia and Map Position context.
-Verify at least one major competitor claim via WebSearch. Cite inline.
-
-PHASE 4 -- FINDINGS (Structural Requirement 4; whitespace table required when focus provided):
-
-1. DUAL-AXIS WHITESPACE TABLE:
-
-| Axis | Finding |
-|------|---------|
-| Competitive gap | No named competitor owns [X] because [reason]. Name which competitors come closest and which Map Position cells they occupy. |
-| Focus gap | Phase 1 row [Y -- use exact row label from Phase 1 table] is unaddressed / unoccupied because [reason]. Reference Phase 1 table data (size, growth stage, or vacancy status). |
-
-Combined (one paragraph below the table): the position simultaneously [X] (competitive gap)
-and [Y] (focus gap) -- where a new entrant faces neither a dominant named competitor nor
-inertia's strongest foothold from Phase 2. Ground in named Map Position values from Phase 3.
-
-2. TABLE STAKES -- minimum requirements to be taken seriously over the WORKAROUND SATISFACTION
-   row in the Phase 2 mechanism table. Reference at least one Phase 1 data point per item.
-
-3. COMPETITIVE MATRIX -- top 3 by threat level, one recommendation sentence each, sorted
-   high to low.
-
-PRE-SUBMISSION VERIFICATION -- symmetric enforcement check, same three sub-questions per
-constraint. Answer each before submitting. Any NO requires revision.
-
-  SR1 (C-11): format artifact present (pre-map table)?
-              format-failure declared ("absent table / empty cells fail")?
-              enforcement apparatus present (FAILS/PASS pair)?
-
-  SR2 (C-13): format artifact present (mechanism table, 3 rows)?
-              format-failure declared ("empty row / generic row content fails")?
-              enforcement apparatus present (FAILS/PASS pair)?
-
-  SR4 (C-12): format artifact present (whitespace table, 2 rows)?
-              format-failure declared ("absent table / single-row table fails")?
-              enforcement apparatus present (FAILS/PASS pair)?
-
-Also confirm SR3: Map Position column has no empty or paraphrased cells. Portability test
-applied to each Phase 2 mechanism row.
-
-AMEND: Exactly 3 items. Input change + output change. Specific.
-
-Write artifact: simulations/discover/competitors/{topic}-competitors-alt-{date}.md
-Frontmatter: skill, topic, date, skill_version, input, focus.
+THEREFORE: {one sentence — the gap that requires both dimensions simultaneously}
 ```
 
 ---
 
-## V-03 -- All-Table + Phase-Level FAILS/PASS Pairs (C-18 + C-19)
+### PHASE 5: FINDINGS
 
-**Axis:** Output format + phrasing register -- apparatus uniformity with explicit FAILS/PASS per
-table phase instruction
-**Hypothesis:** R4 V-03 (all-table, C-19 PASS = 140) missed C-18 because table phase instructions
-used declarative failure language ("empty row fails") rather than labeled FAILS/PASS pairs. V-03
-adds explicit FAILS/PASS pairs to each table's phase instruction: the mechanism table in Phase 2
-gets its own pair; the whitespace table in Phase 4 gets its own pair. The Phase 1 table FAILS/PASS
-pair was already present in the SR block. This tests whether phase-instruction-level FAILS/PASS
-pairs on table apparatus satisfy C-18 in the same way that per-slot FAILS/PASS pairs did for
-labeled-slot apparatus in R4. Expected: C-18 PASS, C-19 PASS, C-20 FAIL = 145.
+Write 2–5 findings. Each finding must satisfy all three requirements:
+
+1. **ANCHOR**: Cite a specific cell value from the competitor table: `Row C{N}, {attribute}: "{value}"`
+   - NOT ACCEPTABLE: "Competitor 2 reveals that..." — name-only anchoring — **anchor gate failure**
+   - NOT ACCEPTABLE: "As Competitor 1 demonstrates..." — name-only anchoring — **anchor gate failure**
+
+2. **INERTIA-REF-DELTA**: Cite INERTIA-REF by token name:
+   `vs. INERTIA-REF — [reinforces / challenges / contextualizes]: {specific C0 mechanism phrase from Phase 0}`
+   A finding that does not cite INERTIA-REF by name is an **inertia citation failure** — add the comparison clause before outputting.
+
+3. **Cross-dimensional finding**: Must include SOURCE, REDUCTION-1, REDUCTION-2, THEREFORE as structured in Phase 4.
+
+---
+
+### AMEND
+
+Exactly 3 adjustments:
+
+1. **Shift focus dimension**: Replace `{focus_dimension}`. Then: replace the SOURCE slot with the new evidentiary anchor, rewrite REDUCTION-1 and REDUCTION-2 from scratch against the updated focus dimension, reconstruct the THEREFORE clause. Writing only a new conclusion without rerunning both reductions is a **proof rerun failure** — the reconstruction of both single-dimension reduction arguments is what makes the proof valid, not the conclusion.
+
+2. **Add a competitor**: Insert a new row into the competitor table after running WebSearch. Check the CITATION GATE. Recheck WHITESPACE absence evidence for all candidate attribute columns — a new row may change the vacancy status.
+
+3. **Deepen INERTIA-REF mechanism**: Replace the INERTIA-REF mechanism sentence with a more specific phrasing — name a particular product feature, workflow step, or workaround behavior rather than a category. Update all INERTIA-REF-DELTA comparison clauses in Phase 5 findings that referenced the old mechanism phrase.
+
+---
+
+## V-02 — Output format (tabular findings with structural column coercion)
+
+**Axis:** Output format — findings are produced as structured table rows, not prose paragraphs. Both the Anchor column and the INERTIA-REF-DELTA column use format templates that make name-only or empty entries syntactically non-conforming without requiring rule evaluation.
+
+**Hypothesis:** Applying structural column coercion (C-20) to both the Anchor and the INERTIA-REF-DELTA column in the findings table satisfies C-13 and C-22 through form rather than instruction — the most adversarially robust mechanism for both criteria simultaneously.
+
+---
+
+You are running **discover-competitors-alt**.
+
+**FOCUS CHECK:** If `focus:` is set, the focus dimension is active. If not supplied, no focus column is added.
+
+---
+
+### PHASE 1: CONTEXT
+
+Read repo context. Infer:
 
 ```
-SETUP: Auto-detect product domain from README, CLAUDE.md, package.json, Glob. Do not prompt.
-
-STRUCTURAL REQUIREMENTS -- hard format constraints. All three primary structural requirements
-(SR1, SR2, SR4) enforce via table schema. An absent table or empty table row/cell is an
-observable format failure. Confirm all four before submitting output:
-
-  [ ] 1. PHASE 1 pre-map table present and fully populated before any competitor entry.
-         Required when focus is provided.
-  [ ] 2. PHASE 2 inertia mechanism table: all three rows populated with domain-exclusive
-         content. Empty row or generic row content fails.
-  [ ] 3. PHASE 3 competitor table: Map Position column populated for every row including
-         inertia. Empty cells and paraphrased Phase 1 row labels fail.
-  [ ] 4. PHASE 4 whitespace table: both rows present and populated. Required when focus
-         is provided. Missing row or single-row table fails.
-
-Structural Requirements 1, 3, and 4 apply only when focus is provided.
-
-PORTABILITY TEST (apply to every PHASE 2 mechanism row before accepting it):
-"If I copied this row content unchanged into a competitor analysis for a clearly different
-product -- payroll software, a photo editor, a scheduling tool -- would it still make sense?"
-If yes, rewrite until recognizably wrong for any other product category.
-
-PHASE 1 -- FOCUS LENS PRE-MAP (Structural Requirement 1; table schema required):
-
-If focus = market:
-| Segment | Size Estimate | Growth Stage | Current Leader |
-|---------|--------------|--------------|----------------|
-3-5 rows. Fill all columns. Growth stage: emerging / growth / mature.
-Current leader: named competitor or default behavior most dominant in this segment.
-This is the competitive frame. Every competitor including inertia maps to exactly one row.
-FAILS: Prose paragraph listing segments; absent table; table with empty cells.
-PASS: Markdown table with named schema, all cells populated, placed before Phase 2.
-
-If focus = positioning:
-| Positioning Category | Current Owner(s) | Vacancy Status |
-|---------------------|-----------------|----------------|
-3-5 rows. Fill all columns. Vacancy: open / contested / owned.
-FAILS: Prose paragraph listing categories; absent table; table with empty cells.
-PASS: Markdown table with named schema, all cells populated, placed before Phase 2.
-
-If no focus: skip Phase 1.
-
-PHASE 2 -- INERTIA FIRST (Structural Requirement 2; mechanism table required):
-
-Competitor 0: "None / status quo." Threat level: HIGH. State explicitly.
-If Phase 1 was completed: record Phase 1 row in the Phase 3 table below.
-
-| Mechanism | Domain-Exclusive Content |
-|-----------|--------------------------|
-| WORKAROUND SATISFACTION | [the specific tool, template, script, or duct-taped combination teams use instead of a dedicated solution; why it satisfies enough need that teams feel no pain and do not seek alternatives] |
-| SWITCHING COST | [the concrete cost: specific format, role, process, or contract a team must lose or redo when adopting something new; quantify if possible -- hours, days, FTE cycles, budget range] |
-| HABIT LOCK-IN | [the specific repeated behavior -- artifact, ritual, sprint cadence, or shared convention -- that makes the workaround feel normal in this product context] |
-
-FAILS: Mechanism table absent; any row empty; any row content that reads correctly for a
-  clearly different product -- payroll software, a photo editor, or a scheduling tool.
-PASS: All three rows present, each populated with content recognizably wrong in any other
-  product category -- specific tool, process, artifact, or ritual named.
-
-Apply portability test to each row. Use WebSearch if needed. Cite inline.
-
-PHASE 3 -- COMPETITOR TABLE (Structural Requirement 3; Map Position column required):
-
-| # | Competitor | Threat | Overlap | Map Position |
-|---|------------|--------|---------|--------------|
-| 0 | None / status quo | HIGH | -- | [exact Phase 1 row label] |
-| 1 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-| 2 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-...
-
-Map Position: exact Phase 1 row label. Verbatim -- do not paraphrase. Empty or paraphrased
-cell is a format failure. When no focus is provided, omit Map Position column entirely.
-Add one sentence per competitor on threat relative to inertia and Map Position context.
-Verify at least one major competitor claim via WebSearch. Cite inline.
-
-PHASE 4 -- FINDINGS (Structural Requirement 4; whitespace table required when focus provided):
-
-1. DUAL-AXIS WHITESPACE TABLE:
-
-| Axis | Finding |
-|------|---------|
-| Competitive gap | No named competitor owns [X] because [reason]. Name which competitors come closest and which Map Position cells they occupy. |
-| Focus gap | Phase 1 row [Y -- use exact row label from Phase 1 table] is unaddressed / unoccupied because [reason]. Reference Phase 1 table data (size, growth stage, or vacancy status). |
-
-FAILS: Whitespace table absent; single-row table; either row not grounded in Phase 1 data
-  or Map Position column values; combined paragraph absent.
-PASS: Both rows present and grounded; combined paragraph below table names the dual-axis
-  position explicitly, referencing Phase 1 data and Map Position values from Phase 3.
-
-Combined (one paragraph below the table): the position simultaneously [X] (competitive gap)
-and [Y] (focus gap) -- where a new entrant faces neither a dominant named competitor nor
-inertia's strongest foothold from Phase 2. Ground in named Map Position values from Phase 3.
-
-2. TABLE STAKES -- minimum requirements to be taken seriously over the WORKAROUND SATISFACTION
-   row in the Phase 2 mechanism table. Reference at least one Phase 1 data point per item.
-
-3. COMPETITIVE MATRIX -- top 3 by threat level, one recommendation sentence each, sorted
-   high to low.
-
-Before submitting: verify all four Structural Requirements are met. Each of SR1, SR2, and SR4
-must be a populated table -- not a prose block. SR1 table must precede Phase 2. SR2 mechanism
-table must have all three rows filled with domain-exclusive content. SR4 whitespace table must
-have both rows filled and grounded. Confirm SR3 Map Position column has no empty or paraphrased
-cells. Check every Phase 2 mechanism row against the portability test.
-
-AMEND: Exactly 3 items. Input change + output change. Specific.
-
-Write artifact: simulations/discover/competitors/{topic}-competitors-alt-{date}.md
-Frontmatter: skill, topic, date, skill_version, input, focus.
+Token: TOPIC: {inferred topic}
+Token: FOCUS: {market-sizing | positioning-framework | none}
 ```
 
 ---
 
-## V-04 -- All-Table + Symmetric Verification Loop (C-19 + C-20)
+### PHASE 2: INERTIA ASSESSMENT
 
-**Axis:** Output format + lifecycle emphasis -- apparatus uniformity with symmetric verification
-**Hypothesis:** V-03 tests C-18 + C-19 (FAILS/PASS per table + all-table = 145). V-04 tests the
-alternative two-criterion path: C-19 + C-20 (all-table + symmetric verification) without
-phase-instruction FAILS/PASS pairs. The SR block carries failure language ("empty row fails") but
-no labeled FAILS/PASS examples at the Phase 2 or Phase 4 instruction level -- those appear only in
-the SR checklist items as declarative failure statements. The verification loop asks the same three
-sub-questions per constraint (format artifact present? format-failure declared? enforcement apparatus
-present?) for SR1, SR2, and SR4 in their table forms. This isolates whether C-18 truly requires
-phase-instruction-level FAILS/PASS pairs, or whether "empty row fails" declarative language in the
-SR block satisfies C-18 when the verification loop confirms it per constraint. If C-18 passes here,
-C-18 does not require the labeled pair format specifically. Expected: C-18 FAIL, C-19 PASS, C-20
-PASS = 145. If C-18 passes here, V-04 scores 150 and the labeled pair format is not load-bearing.
+Identify C0 — the status quo behavior, tool, or approach the target user relies on today. Define:
 
 ```
-SETUP: Auto-detect product domain from README, CLAUDE.md, package.json, Glob. Do not prompt.
+INERTIA-REF = [C0 name]: [specific mechanism — switching cost, habit lock-in, or workaround
+satisfaction; specific to C0's product behavior or feature, not a generic category label]
+```
 
-STRUCTURAL REQUIREMENTS -- hard format constraints. All three primary structural requirements
-(SR1, SR2, SR4) enforce via table schema. An absent table or empty table row/cell is an
-observable format failure. Confirm all four before submitting output:
+**Inertia naming failure:** Mechanism sentence uses a category label. Rewrite before continuing.
 
-  [ ] 1. PHASE 1 pre-map table present and fully populated before any competitor entry.
-         Required when focus is provided. Absent table or empty cells fail.
+C0 enters the competitor table as Row C0 with all columns populated, including Citation (URL or primary source).
 
-  [ ] 2. PHASE 2 inertia mechanism table: all three rows (WORKAROUND SATISFACTION, SWITCHING
-         COST, HABIT LOCK-IN) populated with domain-exclusive content. Empty row or content
-         that passes the portability test fails.
+---
 
-  [ ] 3. PHASE 3 competitor table: Map Position column populated for every row including
-         inertia. Empty cells and paraphrased Phase 1 row labels fail.
+### PHASE 3: COMPETITOR TABLE
 
-  [ ] 4. PHASE 4 whitespace table: both rows (Competitive gap, Focus gap) present and
-         populated. Required when focus is provided. Absent table or single-row table fails.
+**OUTPUT CONTRACT — collect during this phase:** The Phase 6 findings table requires (a) an Anchor cell value in `Row C{N}, {attribute}: "{value}"` format per finding, (b) an INERTIA-REF-DELTA cell value in `vs. INERTIA-REF — {verdict}: {phrase}` format per finding, and (c) a URL citation per external row. Collect mechanism phrases, focus-column values, and citation URLs now — they cannot be synthesized at Phase 6 time.
 
-Structural Requirements 1, 3, and 4 apply only when focus is provided.
+Run WebSearch per external competitor.
 
-PORTABILITY TEST (apply to every PHASE 2 mechanism row before accepting it):
-"If I copied this row content unchanged into a competitor analysis for a clearly different
-product -- payroll software, a photo editor, a scheduling tool -- would it still make sense?"
-If yes, rewrite until recognizably wrong for any other product category.
+| Row | Competitor | Threat | Mechanism | Focus: {focus_dimension} | Anchor | Citation |
+|-----|-----------|--------|-----------|--------------------------|--------|----------|
 
-PHASE 1 -- FOCUS LENS PRE-MAP (Structural Requirement 1; table schema required):
+**Anchor column format:** `Row C{N}, {attribute}: "{value}"` — a cell containing only a competitor name is syntactically malformed and must be rewritten before the row is output.
 
-If focus = market:
-| Segment | Size Estimate | Growth Stage | Current Leader |
-|---------|--------------|--------------|----------------|
-3-5 rows. Fill all columns. Growth stage: emerging / growth / mature.
-Current leader: named competitor or default behavior most dominant in this segment.
-This is the competitive frame. Every competitor including inertia maps to exactly one row.
+**CITATION GATE — NAMED SECTION**
 
-If focus = positioning:
-| Positioning Category | Current Owner(s) | Vacancy Status |
-|---------------------|-----------------|----------------|
-3-5 rows. Fill all columns. Vacancy: open / contested / owned.
-This is the competitive frame. Every competitor including inertia maps to exactly one row.
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| Citation cell populated | URL from WebSearch in Citation column of this row | **Citation gate failure** — suppress row; run WebSearch first |
+| Citation in row, not footnote | Citation within the table row, not a trailing reference block | **Citation gate failure** — relocate into the row |
 
-If no focus: skip Phase 1.
+---
 
-PHASE 2 -- INERTIA FIRST (Structural Requirement 2; mechanism table required):
+### PHASE 4: WHITESPACE
 
-Competitor 0: "None / status quo." Threat level: HIGH. State explicitly.
-If Phase 1 was completed: record Phase 1 row in the Phase 3 table below.
+For each candidate whitespace attribute, record per row:
 
-| Mechanism | Domain-Exclusive Content |
-|-----------|--------------------------|
-| WORKAROUND SATISFACTION | [the specific tool, template, script, or duct-taped combination teams use instead of a dedicated solution; why it satisfies enough need that teams feel no pain and do not seek alternatives] |
-| SWITCHING COST | [the concrete cost: specific format, role, process, or contract a team must lose or redo when adopting something new; quantify if possible -- hours, days, FTE cycles, budget range] |
-| HABIT LOCK-IN | [the specific repeated behavior -- artifact, ritual, sprint cadence, or shared convention -- that makes the workaround feel normal in this product context] |
+```
+Row C{N} — {attribute}: {absent / "None" / "N/A" / uncontested value}
+```
 
-An empty row fails. Content that passes the portability test fails. Apply portability test to
-each row. Use WebSearch if needed. Cite inline.
+Then confirm:
 
-PHASE 3 -- COMPETITOR TABLE (Structural Requirement 3; Map Position column required):
+```
+Absence evidence: Row C{N} — {attribute}: {absent value}  (one line per row)
+Gap confirmed: No row provides a non-absent value for [{attribute(s)}] — attribute-level uncontested.
+vs. INERTIA-REF: {how the vacant attribute relates to the C0 mechanism}
+```
 
-| # | Competitor | Threat | Overlap | Map Position |
-|---|------------|--------|---------|--------------|
-| 0 | None / status quo | HIGH | -- | [exact Phase 1 row label] |
-| 1 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-| 2 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-...
+NOT ACCEPTABLE: "No competitor covers this space." — bare assertion — **whitespace gate failure**
+NOT ACCEPTABLE: "Competitor 2 reveals a gap in..." — name-only — **anchor gate failure**
 
-Map Position: exact Phase 1 row label. Verbatim -- do not paraphrase. Empty or paraphrased
-cell is a format failure. When no focus is provided, omit Map Position column entirely.
-Add one sentence per competitor on threat relative to inertia and Map Position context.
-Verify at least one major competitor claim via WebSearch. Cite inline.
+---
 
-PHASE 4 -- FINDINGS (Structural Requirement 4; whitespace table required when focus provided):
+### PHASE 5: CROSS-DIMENSIONAL FINDING
 
-1. DUAL-AXIS WHITESPACE TABLE:
+```
+SOURCE: {named cell — row label, attribute name, quoted value — declare before any reduction
+argument; do not proceed to REDUCTION-1 until this slot is filled}
 
-| Axis | Finding |
-|------|---------|
-| Competitive gap | No named competitor owns [X] because [reason]. Name which competitors come closest and which Map Position cells they occupy. |
-| Focus gap | Phase 1 row [Y -- use exact row label from Phase 1 table] is unaddressed / unoccupied because [reason]. Reference Phase 1 table data (size, growth stage, or vacancy status). |
+REDUCTION-1: Competitive map alone — does the gap appear without the focus dimension?
+[YES/NO + one sentence showing what is lost]
 
-Combined (one paragraph below the table): the position simultaneously [X] (competitive gap)
-and [Y] (focus gap) -- where a new entrant faces neither a dominant named competitor nor
-inertia's strongest foothold from Phase 2. Ground in named Map Position values from Phase 3.
+REDUCTION-2: Focus dimension alone — does the gap appear without the competitive map?
+[YES/NO + one sentence showing what is lost]
 
-2. TABLE STAKES -- minimum requirements to be taken seriously over the WORKAROUND SATISFACTION
-   row in the Phase 2 mechanism table. Reference at least one Phase 1 data point per item.
+If either answers YES, find a different gap. Proceeding is a **proof structure failure**.
 
-3. COMPETITIVE MATRIX -- top 3 by threat level, one recommendation sentence each, sorted
-   high to low.
-
-PRE-SUBMISSION VERIFICATION -- symmetric enforcement check, same three sub-questions per
-constraint. Answer each before submitting. Any NO requires revision.
-
-  SR1 (C-11): format artifact present (pre-map table)?
-              format-failure declared ("absent table / empty cells fail")?
-              enforcement apparatus present (table schema with named columns)?
-
-  SR2 (C-13): format artifact present (mechanism table, 3 rows)?
-              format-failure declared ("empty row / generic content fails")?
-              enforcement apparatus present (table schema with named row labels)?
-
-  SR4 (C-12): format artifact present (whitespace table, 2 rows)?
-              format-failure declared ("absent table / single-row fails")?
-              enforcement apparatus present (table schema with Competitive gap / Focus gap rows)?
-
-Also confirm SR3: Map Position column has no empty or paraphrased cells. Portability test
-applied to each Phase 2 mechanism row.
-
-AMEND: Exactly 3 items. Input change + output change. Specific.
-
-Write artifact: simulations/discover/competitors/{topic}-competitors-alt-{date}.md
-Frontmatter: skill, topic, date, skill_version, input, focus.
+THEREFORE: {one sentence requiring both dimensions simultaneously}
 ```
 
 ---
 
-## V-05 -- Full R5 Stack (C-18 + C-19 + C-20)
+### PHASE 6: FINDINGS TABLE
 
-**Axes:** Output format + phrasing register + lifecycle emphasis
-**Hypothesis:** The three R5 mechanisms are independent and additive. All-table apparatus (C-19)
-achieves enforcement surface uniformity -- empty-cell failures are structurally identical across
-all three constraints. Phase-level FAILS/PASS pairs per table instruction (C-18) add explicit
-labeled rejection pairs at each constraint's phase instruction -- the named format artifact +
-format-failure declaration + FAILS/PASS pair fingerprint is present at the table level, not just
-the SR block. Symmetric verification loop (C-20) closes the bracket -- the same three sub-questions
-are asked per constraint before submission, mirroring the opening SR block. None of the three
-mechanisms interferes with the others: C-19 and C-18 combine at the phase instruction level; C-20
-operates at pre-submission. V-05 is the R5 ceiling attempt. If 150/150 is not achieved, the gap
-identifies which mechanism combination creates interference or which criterion requires something
-not yet present in this stack.
+All findings are rows in the following table:
+
+| # | Claim | Anchor | INERTIA-REF-DELTA | Cross-dim? |
+|---|-------|--------|-------------------|------------|
+
+**Column format constraints (structural — entries not matching these shapes are syntactically malformed and must be rewritten before outputting the row):**
+
+- **Anchor**: `Row C{N}, {attribute}: "{value}"` — a cell containing only a competitor name is malformed
+  - NOT ACCEPTABLE: "Competitor 2 reveals that..." — name-only — **anchor gate failure**
+  - NOT ACCEPTABLE: "As Competitor 1 demonstrates..." — name-only — **anchor gate failure**
+  - ACCEPTABLE: `Row C3, focus-column: "no enterprise tier pricing visible on public page"`
+
+- **INERTIA-REF-DELTA**: `vs. INERTIA-REF — {reinforces / challenges / contextualizes}: {specific C0 mechanism phrase}` — a cell with only "N/A" or a competitor name is malformed; every finding row must carry a comparison against INERTIA-REF
+
+For the cross-dimensional finding row, the Claim cell contains the THEREFORE sentence. An adjacent indented block contains SOURCE, REDUCTION-1, REDUCTION-2.
+
+---
+
+### AMEND
+
+Exactly 3 adjustments:
+
+1. **Shift focus dimension**: Replace `{focus_dimension}`. Replace the SOURCE slot with new evidence; rewrite REDUCTION-1 and REDUCTION-2 from scratch against the updated focus; reconstruct THEREFORE. Writing only a new THEREFORE clause without rerunning both reductions is a **proof rerun failure**.
+
+2. **Add competitor**: Insert a new row after WebSearch. Apply CITATION GATE. Verify the new row's Anchor cell conforms to column format. Update WHITESPACE absence evidence for all candidate attributes.
+
+3. **Refine INERTIA-REF mechanism**: Replace the INERTIA-REF mechanism sentence with more specific phrasing. Rewrite all INERTIA-REF-DELTA cells in the findings table whose mechanism phrase references the old wording — the column format constraint applies to updated cells.
+
+---
+
+## V-03 — Lifecycle emphasis (preflight gate architecture)
+
+**Axis:** Lifecycle emphasis — all gates are declared upfront as named sections with PASS/FAIL tables in a PREFLIGHT block before Phase 1 begins. Phases are concise execution instructions that reference gates by name.
+
+**Hypothesis:** Declaring all four gates at the top of the skill before any collection begins produces the clearest separation between rules (PREFLIGHT) and execution (Phases). C-21 is maximally expressed (four named gate sections). C-19 is satisfied by an OUTPUT CONTRACTS block between PREFLIGHT and Phase 1.
+
+---
+
+You are running **discover-competitors-alt**.
+
+**FOCUS CHECK:** If `focus:` is set, the focus dimension is active. If not, no focus column is added.
+
+---
+
+## PREFLIGHT: GATE DEFINITIONS
+
+The following gates apply throughout execution. Each is a named checkpoint. Phase instructions reference gates by name — apply the gate when directed.
+
+---
+
+### GATE 1: CITATION GATE
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| Citation cell populated | URL from WebSearch present in the Citation column of this row | **Citation gate failure** — suppress row; run WebSearch before outputting |
+| Citation in row, not footnote | URL is inline in the table row, not in trailing reference block | **Citation gate failure** — move citation into the row |
+
+---
+
+### GATE 2: ANCHOR GATE
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| Anchor cell format | `Row C{N}, {attribute}: "{value}"` — row reference, attribute name, and quoted value all present | **Anchor gate failure** — name-only entries do not conform; rewrite the cell before outputting |
+| Whitespace absence anchor | Row-by-row absence evidence present: `Row C{N} — {attribute}: {absent}` per row | **Whitespace gate failure** — do not output WHITESPACE finding without attribute-level evidence |
+
+NOT ACCEPTABLE: "Competitor 2 reveals that..." — name-only — **anchor gate failure**
+NOT ACCEPTABLE: "As Competitor 1 demonstrates..." — name-only — **anchor gate failure**
+ACCEPTABLE: `Row C2, mechanism: "embeds review comments into PR threads, locking workflow to GitHub UI"`
+
+---
+
+### GATE 3: PROOF GATE
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| SOURCE declared first | Named cell value (row, attribute, quoted value) appears before REDUCTION-1 and REDUCTION-2 | **Proof structure failure** — SOURCE must be declared before any reduction argument is written |
+| Both reductions present | REDUCTION-1 and REDUCTION-2 each answer YES/NO with one sentence | **Proof structure failure** — both reductions required; one reduction does not establish cross-dimensionality |
+| Both reductions answer NO | Neither single-dimension reduction alone produces the gap | **Proof structure failure** — if either answers YES, find a different gap before outputting THEREFORE |
+
+---
+
+### GATE 4: INERTIA-REF GATE
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| INERTIA-REF mechanism specific | Token names a switching cost, habit lock-in, or workaround satisfaction specific to C0's behavior or product feature | **Inertia naming failure** — category label is not a mechanism; rewrite INERTIA-REF before continuing |
+| Per-finding citation | Each finding cites INERTIA-REF by token name with reinforces/challenges/contextualizes verdict and specific C0 mechanism phrase | **Inertia citation failure** — add the `vs. INERTIA-REF — {verdict}: {phrase}` clause before outputting the finding |
+
+---
+
+## OUTPUT CONTRACTS
+
+Before collecting external competitor data, note what synthesis phases require. Phases 2–3 must gather data that fills these slots by name:
+
+- **WHITESPACE absence evidence** (required by Phase 4): `Row C{N} — {attribute}: {absent}` per row per candidate attribute. Apply GATE 2 (whitespace absence anchor) at Phase 4.
+- **ANCHOR cell value** (required by Phase 5): `Row C{N}, {attribute}: "{value}"` per finding. Collect mechanism phrases, threat scores, and focus-column values during Phase 2.
+- **INERTIA-REF-DELTA phrase** (required by Phase 5 per GATE 4): Specific C0 mechanism phrase that each finding compares against. Identify contrasts during Phase 2.
+
+---
+
+### PHASE 1: CONTEXT
+
+Read repo context. Infer:
 
 ```
-SETUP: Auto-detect product domain from README, CLAUDE.md, package.json, Glob. Do not prompt.
-
-STRUCTURAL REQUIREMENTS -- hard format constraints. All three primary structural requirements
-(SR1, SR2, SR4) enforce via table schema. An absent table or empty table row/cell is an
-observable format failure. Confirm all four before submitting output:
-
-  [ ] 1. PHASE 1 pre-map table present and fully populated before any competitor entry.
-         Required when focus is provided.
-         FAILS: Prose paragraph; absent table; table with empty cells.
-         PASS: Markdown table with named schema, all cells populated, placed before Phase 2.
-
-  [ ] 2. PHASE 2 inertia mechanism table: all three rows (WORKAROUND SATISFACTION, SWITCHING
-         COST, HABIT LOCK-IN) populated with domain-exclusive content.
-         FAILS: Mechanism table absent; any row empty; any row content that reads correctly
-           for payroll software, a photo editor, or a scheduling tool.
-         PASS: All three rows present, each populated with content recognizably wrong in any
-           other product category -- specific tool, process, artifact, or ritual named.
-
-  [ ] 3. PHASE 3 competitor table: Map Position column populated for every row including
-         inertia. Verbatim Phase 1 row labels only.
-         FAILS: Empty Map Position cell; paraphrased or generalized Phase 1 row label.
-         PASS: Exact Phase 1 row label in every cell; no paraphrasing.
-
-  [ ] 4. PHASE 4 whitespace table: both rows (Competitive gap, Focus gap) present, populated,
-         and grounded. Required when focus is provided.
-         FAILS: Whitespace table absent; single-row table; row not grounded in Phase 1 data
-           or Map Position values; combined paragraph absent.
-         PASS: Both rows present and grounded; combined paragraph names the dual-axis position
-           explicitly, referencing Phase 1 data and Map Position values from Phase 3.
-
-Structural Requirements 1, 3, and 4 apply only when focus is provided.
-
-PORTABILITY TEST (apply to every PHASE 2 mechanism row before accepting it):
-"If I copied this row content unchanged into a competitor analysis for a clearly different
-product -- payroll software, a photo editor, a scheduling tool -- would it still make sense?"
-If yes, rewrite until recognizably wrong for any other product category.
-
-PHASE 1 -- FOCUS LENS PRE-MAP (Structural Requirement 1):
-
-If focus = market:
-| Segment | Size Estimate | Growth Stage | Current Leader |
-|---------|--------------|--------------|----------------|
-3-5 rows. Fill all columns. Growth stage: emerging / growth / mature.
-Current leader: named competitor or default behavior most dominant in this segment.
-This is the competitive frame. Every competitor including inertia maps to exactly one row.
-FAILS: Prose paragraph or absent table.
-PASS: Markdown table, named schema, all cells populated, placed before Phase 2.
-
-If focus = positioning:
-| Positioning Category | Current Owner(s) | Vacancy Status |
-|---------------------|-----------------|----------------|
-3-5 rows. Fill all columns. Vacancy: open / contested / owned.
-FAILS: Prose paragraph or absent table.
-PASS: Markdown table, named schema, all cells populated, placed before Phase 2.
-
-If no focus: skip Phase 1.
-
-PHASE 2 -- INERTIA FIRST (Structural Requirement 2; mechanism table required):
-
-Competitor 0: "None / status quo." Threat level: HIGH. State explicitly.
-If Phase 1 was completed: record Phase 1 row in the Phase 3 table below.
-
-| Mechanism | Domain-Exclusive Content |
-|-----------|--------------------------|
-| WORKAROUND SATISFACTION | [the specific tool, template, script, or duct-taped combination teams use instead of a dedicated solution; why it satisfies enough need that teams feel no pain and do not seek alternatives] |
-| SWITCHING COST | [the concrete cost: specific format, role, process, or contract a team must lose or redo when adopting something new; quantify if possible -- hours, days, FTE cycles, budget range] |
-| HABIT LOCK-IN | [the specific repeated behavior -- artifact, ritual, sprint cadence, or shared convention -- that makes the workaround feel normal in this product context] |
-
-FAILS: Mechanism table absent; any row empty; any row content passing the portability test.
-PASS: All three rows present with domain-exclusive content failing portability -- specific
-  tool, workflow step, artifact name, or ritual recognizably wrong for any other domain.
-
-Apply portability test to each row. Use WebSearch if needed. Cite inline.
-
-PHASE 3 -- COMPETITOR TABLE (Structural Requirement 3; Map Position column required):
-
-| # | Competitor | Threat | Overlap | Map Position |
-|---|------------|--------|---------|--------------|
-| 0 | None / status quo | HIGH | -- | [exact Phase 1 row label] |
-| 1 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-| 2 | [name] | H/M/L | H/M/L | [exact Phase 1 row label] |
-...
-
-Map Position: exact Phase 1 row label this competitor primarily occupies or contests.
-Use Phase 1 row labels verbatim -- do not paraphrase or generalize. An empty cell or
-paraphrased label is a format failure. When no focus is provided, omit Map Position column.
-Add one sentence per competitor on threat relative to inertia and Map Position context.
-Verify at least one major competitor claim via WebSearch. Cite inline.
-
-PHASE 4 -- FINDINGS (Structural Requirement 4; whitespace table required when focus provided):
-
-1. DUAL-AXIS WHITESPACE TABLE:
-
-| Axis | Finding |
-|------|---------|
-| Competitive gap | No named competitor owns [X] because [reason]. Name which competitors come closest and which Map Position cells they occupy. |
-| Focus gap | Phase 1 row [Y -- use exact row label from Phase 1 table] is unaddressed / unoccupied because [reason]. Reference Phase 1 table data (size, growth stage, or vacancy status). |
-
-FAILS: Whitespace table absent; single-row table; either row not grounded in Phase 1 data or
-  Map Position values; combined paragraph absent.
-PASS: Both rows present and grounded; combined paragraph below table names the dual-axis
-  position explicitly, grounded in Phase 1 data and Map Position column values from Phase 3.
-
-Combined (one paragraph below the table): the position simultaneously [X] (competitive gap)
-and [Y] (focus gap) -- where a new entrant faces neither a dominant named competitor nor
-inertia's strongest foothold from Phase 2. Ground in named Map Position values from Phase 3.
-
-2. TABLE STAKES -- minimum requirements to be taken seriously over the WORKAROUND SATISFACTION
-   row in the Phase 2 mechanism table. Reference at least one Phase 1 data point per item.
-
-3. COMPETITIVE MATRIX -- top 3 by threat level, one recommendation sentence each, sorted
-   high to low.
-
-PRE-SUBMISSION VERIFICATION -- symmetric enforcement check, same three sub-questions per
-constraint. Answer each before submitting. Any NO requires revision.
-
-  SR1 (C-11): format artifact present (pre-map table)?
-              format-failure declared ("absent table / empty cells fail")?
-              FAILS/PASS pair present?
-
-  SR2 (C-13): format artifact present (mechanism table, 3 rows)?
-              format-failure declared ("absent table / empty row / generic content fails")?
-              FAILS/PASS pair present?
-
-  SR4 (C-12): format artifact present (whitespace table, 2 rows)?
-              format-failure declared ("absent table / single-row / ungrounded row fails")?
-              FAILS/PASS pair present?
-
-Also confirm SR3: Map Position column has no empty or paraphrased cells. Portability test
-applied to each Phase 2 mechanism row. Combined paragraph present below Phase 4 table.
-
-AMEND: Exactly 3 items. Input change + output change. Specific.
-
-Write artifact: simulations/discover/competitors/{topic}-competitors-alt-{date}.md
-Frontmatter: skill, topic, date, skill_version, input, focus.
+Token: TOPIC: {inferred topic}
+Token: FOCUS: {market-sizing | positioning-framework | none}
 ```
 
 ---
 
-## Rubric Criterion Coverage by Variation (R5)
+### PHASE 2: INERTIA ASSESSMENT
 
-| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
-|-----------|------|------|------|------|------|
-| C-01 inertia-first | explicit | explicit | explicit | explicit | explicit |
-| C-02 focus woven | pre-map + sequence | pre-map + sequence | pre-map + sequence | pre-map + sequence | pre-map + sequence |
-| C-03 threat levels | explicit | explicit | explicit | explicit | explicit |
-| C-04 whitespace | dual-line FAILS/PASS | 2-row table SR-FAILS/PASS | 2-row table + phase FAILS/PASS | 2-row table (no pairs) | 2-row table + phase FAILS/PASS |
-| C-05 auto-detect | SETUP | SETUP | SETUP | SETUP | SETUP |
-| C-06 inertia stickiness | labeled slots + FAILS/PASS | mechanism table SR-FAILS/PASS | mechanism table + phase FAILS/PASS | mechanism table (no pairs) | mechanism table + phase FAILS/PASS |
-| C-07 web-verified | WebSearch + cite | WebSearch + cite | WebSearch + cite | WebSearch + cite | WebSearch + cite |
-| C-08 AMEND | explicit | explicit | explicit | explicit | explicit |
-| C-09 cross-dimensional | strong | strong | strong | strong | strong |
-| C-10 table stakes | Phase 1 data per item | Phase 1 data per item | Phase 1 data per item | Phase 1 data per item | Phase 1 data per item |
-| C-11 pre-map | table + FAILS/PASS (SR) | table + FAILS/PASS (SR) | table + FAILS/PASS (phase) | table (SR only) | table + FAILS/PASS (phase) |
-| C-12 whitespace | dual-line + FAILS/PASS | 2-row table + SR-FAILS/PASS | 2-row table + phase FAILS/PASS | 2-row table (no pairs) | 2-row table + phase FAILS/PASS |
-| C-13 inertia | labeled slots + FAILS/PASS | mechanism table + SR-FAILS/PASS | mechanism table + phase FAILS/PASS | mechanism table (no pairs) | mechanism table + phase FAILS/PASS |
-| C-14 hard-stacked | meta-declaration + FAILS/PASS | meta-declaration + apparatus | all-table apparatus | all-table apparatus | all-table apparatus + FAILS/PASS |
-| C-15 map position | Map Position column | Map Position column | Map Position column | Map Position column | Map Position column |
-| C-16 domain-exclusive | portability test | portability test per row | portability test per row | portability test per row | portability test per row |
-| C-17 symmetric enforcement | FAILS/PASS pairs (strong) | all-table apparatus | all-table apparatus | all-table apparatus | all-table + FAILS/PASS |
-| **C-18 phase-level fingerprint** | **PASS** | **? (SR-block FAILS/PASS)** | **PASS** | **FAIL** | **PASS** |
-| **C-19 apparatus uniformity** | **FAIL (mixed)** | **PASS (all tables)** | **PASS (all tables)** | **PASS (all tables)** | **PASS (all tables)** |
-| **C-20 symmetric loop** | **PASS (symmetric 3-Q)** | **PASS (symmetric 3-Q adapted)** | **FAIL (no loop)** | **PASS (symmetric 3-Q adapted)** | **PASS (symmetric 3-Q adapted)** |
+Identify C0. Define INERTIA-REF. Apply GATE 4 (mechanism check) before continuing.
+
+```
+INERTIA-REF = [C0 name]: [specific mechanism]
+```
+
+C0 enters the competitor table as Row C0.
 
 ---
 
-## Predicted Scores Under v5 Rubric
+### PHASE 3: COMPETITOR TABLE
 
-| Variation | Essential (/60) | Recommended (/30) | C-09-C-17 (/45) | C-18 (/5) | C-19 (/5) | C-20 (/5) | Composite (/150) |
-|-----------|-----------------|-------------------|--------------------|-----------|-----------|-----------|------------------|
-| V-01 | 60 | 30 | 45 | 5 | 0 | 5 | **145** |
-| V-02 | 60 | 30 | 45 | 2.5-5 | 5 | 5 | **147.5-150** |
-| V-03 | 60 | 30 | 45 | 5 | 5 | 0 | **145** |
-| V-04 | 60 | 30 | 45 | 0 | 5 | 5 | **145** |
-| V-05 | 60 | 30 | 45 | 5 | 5 | 5 | **150** |
+Run WebSearch per external competitor. Apply GATE 1 (CITATION GATE) per row before outputting. Apply GATE 2 (Anchor cell format) per row.
 
-**The key uncertainty is V-02:** Does SR-block FAILS/PASS (for table rows, not labeled slots)
-satisfy C-18? C-18 requires "phase-level three-component fingerprint." The SR block precedes all
-phases -- does it count as "phase-level" for C-11, C-12, C-13? In R4, the SR-block FAILS/PASS for
-C-11 was accepted as C-18-satisfying. But C-12 and C-13 in R4's passing variations had FAILS/PASS
-at the actual phase instruction level. V-02 puts FAILS/PASS for C-12 and C-13 only in the SR block.
-If SR-block FAILS/PASS satisfies C-18 for all three constraints (as it did for C-11 in R4), V-02
-scores 150. If C-18 requires phase-instruction-level pairs specifically for C-12 and C-13, V-02
-scores 147.5 (C-18 PARTIAL).
+| Row | Competitor | Threat | Mechanism | Focus: {focus_dimension} | Anchor | Citation |
+|-----|-----------|--------|-----------|--------------------------|--------|----------|
+
+Anchor column format: `Row C{N}, {attribute}: "{value}"` — syntactically malformed cells trigger GATE 2 before rule evaluation.
 
 ---
 
-## Recommended Test Order
+### PHASE 4: WHITESPACE
 
-1. **V-05** first -- ceiling attempt; if 150/150 confirmed, the full R5 stack is validated
-2. **V-01** second -- C-20 isolation; confirms whether symmetric sub-question loop satisfies C-20
-   independently on a C-18-passing base (145 expected)
-3. **V-03** third -- C-18 + C-19 without loop; confirms whether phase-level FAILS/PASS on table
-   apparatus achieves C-18 as well as labeled-slot FAILS/PASS did in R4 (145 expected)
-4. **V-04** fourth -- C-19 + C-20 without pairs; tests C-18 exclusion cost and whether
-   SR-block failure declarations satisfy C-18 when confirmed by symmetric loop (145 or 150)
-5. **V-02** last -- all-table conversion of R4 V-05; resolves SR-block vs. phase-instruction
-   FAILS/PASS equivalence question for C-18 (147.5 or 150)
+Apply GATE 2 (whitespace absence anchor — see OUTPUT CONTRACTS).
+
+```
+Absence evidence: Row C{N} — {attribute}: {absent value}  (one line per row per attribute)
+Gap confirmed: No row provides a non-absent value for [{attribute(s)}] — attribute-level uncontested.
+vs. INERTIA-REF: {how the vacant attribute relates to the C0 mechanism}
+```
+
+---
+
+### PHASE 5: CROSS-DIMENSIONAL FINDING
+
+Apply GATE 3 (PROOF GATE).
+
+```
+SOURCE: {named cell — row, attribute, quoted value — fill before any reduction argument}
+
+REDUCTION-1: Map alone — gap absent without focus? [YES/NO + one sentence showing what is lost]
+REDUCTION-2: Focus alone — gap absent without map? [YES/NO + one sentence showing what is lost]
+
+THEREFORE: {one sentence requiring both dimensions simultaneously}
+```
+
+---
+
+### PHASE 6: FINDINGS
+
+Write 2–5 findings. Apply GATE 2 (Anchor cell format) and GATE 4 (per-finding INERTIA-REF citation) to each finding before outputting.
+
+Each finding:
+1. **ANCHOR**: `Row C{N}, {attribute}: "{value}"` — apply GATE 2
+2. **INERTIA-REF-DELTA**: `vs. INERTIA-REF — [reinforces / challenges / contextualizes]: {specific C0 mechanism phrase}` — apply GATE 4
+
+Cross-dimensional finding also requires SOURCE / REDUCTION-1 / REDUCTION-2 / THEREFORE — apply GATE 3.
+
+---
+
+### AMEND
+
+Exactly 3 adjustments:
+
+1. **Shift focus dimension**: Replace `{focus_dimension}`. Replace SOURCE slot with new evidence. Rewrite REDUCTION-1 and REDUCTION-2 from scratch. Reconstruct THEREFORE. Apply GATE 3. "Update the finding" without rerunning both reductions is a **proof rerun failure**.
+
+2. **Add competitor**: Add row after WebSearch. Apply GATE 1. Update WHITESPACE absence evidence — apply GATE 2 (whitespace absence anchor) for all candidate attributes.
+
+3. **Refine INERTIA-REF mechanism**: Replace the mechanism sentence with more specific phrasing. Apply GATE 4 to all findings — update INERTIA-REF-DELTA comparisons referencing the old mechanism phrase.
+
+---
+
+## V-04 — Combined: synthesis-first output contracts + inertia-gravity center
+
+**Axes combined:** Role sequence (OUTPUT CONTRACT before Phase 1) + inertia framing (INERTIA-REF defined immediately after OUTPUT CONTRACT, before context is read).
+
+**Hypothesis:** Placing both the OUTPUT CONTRACT table and the INERTIA-REF definition before Phase 1 creates the strongest synthesis-first preamble: the full output shape (C-19) and the gravitational reference frame (C-22) are both visible before any collection begins. Phases execute against pre-declared contracts rather than re-specifying them.
+
+---
+
+You are running **discover-competitors-alt**.
+
+**FOCUS CHECK:** If `focus:` is set, the focus dimension is active. If not, no focus column is added.
+
+---
+
+## OUTPUT CONTRACT
+
+Before any data collection, this skill commits to the following output slots. Every collection phase fills named slots declared here.
+
+| Slot | Label | Required format |
+|------|-------|-----------------|
+| Inertia anchor | INERTIA-REF | `[C0 name]: [specific mechanism]` |
+| Competitor row anchor | Anchor column (per external row) | `Row C{N}, {attribute}: "{value}"` |
+| Whitespace absence evidence | Absence evidence block (Phase 3) | `Row C{N} — {attribute}: {absent}` per row |
+| Cross-dimensional source | SOURCE slot (Phase 4) | Named cell: row, attribute, quoted value |
+| Per-finding inertia comparison | INERTIA-REF-DELTA (Phase 5, per finding) | `vs. INERTIA-REF — {verdict}: {mechanism phrase}` |
+
+Arriving at synthesis without the required slot data for any row or finding constitutes a **collection gate failure** — return to the relevant phase and fill the slot before continuing.
+
+---
+
+## INERTIA-REF DEFINITION
+
+Before reading any repo context, identify the status quo competitor (C0) and define the reference frame:
+
+```
+INERTIA-REF = [C0 name]: [specific mechanism — switching cost, habit lock-in, or workaround
+satisfaction that is specific to C0's behavior or product feature; not a category label]
+```
+
+**Inertia naming failure:** Mechanism sentence applies a category label ("high inertia," "strong familiarity"). Rewrite before continuing.
+
+Every finding in Phase 5 must cite INERTIA-REF by token name and state whether the finding reinforces, challenges, or contextualizes the mechanism in this token.
+
+---
+
+### PHASE 1: CONTEXT
+
+Read repo context. Infer:
+
+```
+Token: TOPIC: {inferred topic}
+Token: FOCUS: {market-sizing | positioning-framework | none}
+```
+
+---
+
+### PHASE 2: COMPETITOR TABLE
+
+Run WebSearch per external competitor. C0 is Row C0 (INERTIA-REF defined above).
+
+| Row | Competitor | Threat | Mechanism | Focus: {focus_dimension} | Anchor | Citation |
+|-----|-----------|--------|-----------|--------------------------|--------|----------|
+
+**Anchor column format (OUTPUT CONTRACT — Anchor slot):** `Row C{N}, {attribute}: "{value}"` — cells containing only a competitor name are syntactically malformed; rewrite before outputting.
+
+**CITATION GATE**
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| Citation present | URL from WebSearch in Citation column of this row | **Citation gate failure** — suppress row; run WebSearch first |
+| Citation in row, not footnote | URL is within the table row | **Citation gate failure** — relocate into row |
+
+---
+
+### PHASE 3: WHITESPACE (fills Absence evidence slot — OUTPUT CONTRACT)
+
+For each candidate whitespace attribute, record across all rows:
+
+```
+Row C{N} — {attribute}: {absent / "None" / "N/A" / uncontested value}
+```
+
+Then confirm:
+
+```
+Gap confirmed: No row provides a non-absent value for [{attribute(s)}] — attribute-level uncontested.
+vs. INERTIA-REF: {how the vacant attribute relates to the C0 mechanism}
+```
+
+NOT ACCEPTABLE: "No competitor covers this space." — bare assertion — **whitespace gate failure**
+NOT ACCEPTABLE: "Competitor 2 reveals a gap in..." — name-only — **anchor gate failure**
+
+---
+
+### PHASE 4: CROSS-DIMENSIONAL FINDING (fills SOURCE slot — OUTPUT CONTRACT)
+
+```
+SOURCE: {named cell — row label, attribute name, quoted value — declared first, before any
+reduction argument; do not proceed to REDUCTION-1 until this slot is filled}
+
+REDUCTION-1: Map alone — gap absent without focus? [YES/NO + one sentence showing what is lost]
+
+REDUCTION-2: Focus alone — gap absent without map? [YES/NO + one sentence showing what is lost]
+
+If either answers YES, find a different gap. A gap that does not fail both single-dimension
+reductions is not cross-dimensional — proceeding is a **proof structure failure**.
+
+THEREFORE: {one sentence requiring both dimensions simultaneously}
+```
+
+---
+
+### PHASE 5: FINDINGS (fills Anchor and INERTIA-REF-DELTA slots — OUTPUT CONTRACT)
+
+Write 2–5 findings. Each must fill both named slots from the OUTPUT CONTRACT:
+
+1. **ANCHOR** (`Row C{N}, {attribute}: "{value}"`)
+   - NOT ACCEPTABLE: "Competitor 2 reveals that..." — name-only — **anchor gate failure**
+   - NOT ACCEPTABLE: "As Competitor 1 demonstrates..." — name-only — **anchor gate failure**
+
+2. **INERTIA-REF-DELTA** (`vs. INERTIA-REF — [reinforces / challenges / contextualizes]: {specific C0 mechanism phrase}`)
+   — A finding missing this clause is an **inertia citation failure** — add the comparison before outputting.
+
+3. Cross-dimensional finding: SOURCE / REDUCTION-1 / REDUCTION-2 / THEREFORE as structured in Phase 4.
+
+---
+
+### AMEND
+
+Exactly 3 adjustments:
+
+1. **Shift focus dimension**: Replace `{focus_dimension}`. Replace the SOURCE slot (OUTPUT CONTRACT — SOURCE slot) with the new evidentiary anchor. Rewrite REDUCTION-1 and REDUCTION-2 from scratch against the updated focus. Reconstruct THEREFORE. Writing only a new conclusion without rerunning both reductions is a **proof rerun failure** — the OUTPUT CONTRACT SOURCE slot must be refilled with updated evidence before either reduction is reconstructed.
+
+2. **Add competitor**: Insert a new row after WebSearch. Check CITATION GATE. Fill the Anchor slot for the new row per OUTPUT CONTRACT format. Update Phase 3 WHITESPACE absence evidence — recheck all candidate attribute columns.
+
+3. **Narrow INERTIA-REF mechanism**: Replace the INERTIA-REF mechanism sentence (OUTPUT CONTRACT — INERTIA-REF slot) with more specific phrasing. Update all INERTIA-REF-DELTA clauses in Phase 5 that reference the old mechanism phrase — each clause must reflect the current INERTIA-REF definition.
+
+---
+
+## V-05 — Combined: structural coercion maximized + gate architecture maximized
+
+**Axes combined:** Output format (C-20 applied to competitor table Anchor AND findings table Anchor columns) + lifecycle emphasis (C-21 via three named gate sections — CITATION GATE, ANCHOR GATE, PROOF GATE).
+
+**Hypothesis:** Applying structural column coercion to both tables and declaring three separate PASS/FAIL gate sections produces the most adversarially robust skill structure in R5 — form coerces compliance in two independent locations while gates make every failure state a checkable item. The test is whether this density remains readable.
+
+---
+
+You are running **discover-competitors-alt**.
+
+**FOCUS CHECK:** If `focus:` is set, the focus dimension is active. If not, no focus column is added.
+
+---
+
+### PHASE 1: CONTEXT
+
+Read repo context. Infer:
+
+```
+Token: TOPIC: {inferred topic}
+Token: FOCUS: {market-sizing | positioning-framework | none}
+```
+
+---
+
+### PHASE 2: INERTIA ASSESSMENT
+
+Identify C0. Define:
+
+```
+INERTIA-REF = [C0 name]: [specific mechanism — switching cost, habit lock-in, or workaround
+satisfaction; name the C0 product feature or behavior specifically, not a category label]
+```
+
+**Inertia naming failure:** Mechanism is a category label. Rewrite before continuing.
+
+INERTIA-REF is a required citation in every finding in Phase 6. C0 enters the competitor table as Row C0.
+
+---
+
+### PHASE 3: COMPETITOR TABLE
+
+**OUTPUT CONTRACT — collect during this phase:** Phase 6 requires (a) Anchor cell values in `Row C{N}, {attribute}: "{value}"` format, (b) INERTIA-REF-DELTA phrases contrasting each competitor against the C0 mechanism, and (c) URL citations per external row. Collect mechanism phrases, focus-column values, and citation URLs now — they cannot be synthesized at Phase 6 time.
+
+Run WebSearch per external competitor.
+
+| Row | Competitor | Threat | Mechanism | Focus: {focus_dimension} | Anchor | Citation |
+|-----|-----------|--------|-----------|--------------------------|--------|----------|
+
+**Anchor column format (structural):** `Row C{N}, {attribute}: "{value}"` — a cell containing only a competitor name is syntactically malformed and must be rewritten before the row is output.
+
+**CITATION GATE**
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| Citation cell populated | URL from WebSearch present in Citation column of this row | **Citation gate failure** — suppress row; run WebSearch first |
+| Citation in row | URL is inline in the table row, not trailing footnote | **Citation gate failure** — relocate into row |
+| URL not prose reference | Cell contains a URL, not "official site" or bare domain name | **Citation gate failure** — replace with direct URL from WebSearch |
+
+**ANCHOR GATE — COMPETITOR TABLE**
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| Anchor cell format conforms | `Row C{N}, {attribute}: "{value}"` — row reference, attribute name, quoted value all present | **Anchor gate failure** — name-only entries do not conform; rewrite before outputting |
+| Attribute explicitly named | Anchor cell names the attribute type (threat, mechanism, focus column, etc.) | **Anchor gate failure** — attribute type must be present |
+
+NOT ACCEPTABLE: `Competitor 2 — mechanism present` — no quoted value, no `Row C{N}` — **anchor gate failure**
+NOT ACCEPTABLE: `Competitor 3` — name-only — **anchor gate failure**
+ACCEPTABLE: `Row C2, mechanism: "enforces daily standup via calendar lock, not async option"`
+
+---
+
+### PHASE 4: WHITESPACE
+
+For each candidate whitespace attribute, record per row:
+
+```
+Row C{N} — {attribute}: {absent / "None" / "N/A" / uncontested value}
+```
+
+Then confirm:
+
+```
+Absence evidence: Row C{N} — {attribute}: {absent value}  (one line per row)
+Gap confirmed: No row provides a non-absent value for [{attribute(s)}] — attribute-level uncontested.
+vs. INERTIA-REF: {how the vacant attribute relates to the C0 mechanism}
+```
+
+NOT ACCEPTABLE: "No competitor covers this space." — bare assertion — **whitespace gate failure**
+NOT ACCEPTABLE: "Competitor 2 reveals a gap in..." — name-only — **anchor gate failure**
+
+---
+
+### PHASE 5: CROSS-DIMENSIONAL FINDING
+
+**PROOF GATE**
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| SOURCE declared first | Named cell value appears before REDUCTION-1 and REDUCTION-2 | **Proof structure failure** — SOURCE must precede all reduction arguments |
+| Both reductions present | REDUCTION-1 and REDUCTION-2 each answer YES/NO with one sentence showing what is lost | **Proof structure failure** — both reductions required; one reduction does not establish cross-dimensionality |
+| Both reductions answer NO | Neither single-dimension reduction alone produces the gap | **Proof structure failure** — if either answers YES, find a different gap |
+
+```
+SOURCE: {named cell — row label, attribute name, quoted value — declare before any reduction}
+
+REDUCTION-1: Map alone — gap absent without focus? [YES/NO + one sentence showing what is lost]
+REDUCTION-2: Focus alone — gap absent without map? [YES/NO + one sentence showing what is lost]
+
+THEREFORE: {one sentence requiring both dimensions simultaneously}
+```
+
+---
+
+### PHASE 6: FINDINGS TABLE
+
+All findings are rows in the following table:
+
+| # | Claim | Anchor | INERTIA-REF-DELTA | Cross-dim? |
+|---|-------|--------|-------------------|------------|
+
+**Column format constraints (structural — entries not matching these shapes are syntactically malformed and must be rewritten before outputting the row):**
+
+- **Anchor**: `Row C{N}, {attribute}: "{value}"` — a cell containing only a competitor name is malformed
+- **INERTIA-REF-DELTA**: `vs. INERTIA-REF — {reinforces / challenges / contextualizes}: {specific C0 mechanism phrase}` — "N/A" or empty is malformed; every finding must compare against INERTIA-REF by token name
+
+**ANCHOR GATE — FINDINGS TABLE**
+
+| Check | Pass condition | Failure state |
+|-------|---------------|---------------|
+| Anchor cell format conforms | `Row C{N}, {attribute}: "{value}"` — row reference, attribute name, quoted value all present | **Anchor gate failure** — rewrite before outputting the row |
+| INERTIA-REF-DELTA format conforms | `vs. INERTIA-REF — {verdict}: {phrase}` — verdict word and C0 mechanism phrase both present | **Inertia citation failure** — add the clause before outputting the row |
+
+NOT ACCEPTABLE (Anchor): "Competitor 2 reveals that..." — name-only — **anchor gate failure**
+NOT ACCEPTABLE (Anchor): "As Competitor 1 demonstrates..." — name-only — **anchor gate failure**
+NOT ACCEPTABLE (INERTIA-REF-DELTA): "N/A" or empty — **inertia citation failure**
+ACCEPTABLE (Anchor): `Row C3, focus-column: "no SMB pricing tier — enterprise-only positioning"`
+ACCEPTABLE (INERTIA-REF-DELTA): `vs. INERTIA-REF — challenges: C0 uses spreadsheet lock-in; C3 uses enterprise contract lock-in instead`
+
+For the cross-dimensional finding row, the Claim cell contains the THEREFORE sentence. An adjacent indented block contains SOURCE, REDUCTION-1, REDUCTION-2 — apply PROOF GATE.
+
+---
+
+### AMEND
+
+Exactly 3 adjustments:
+
+1. **Shift focus dimension**: Replace `{focus_dimension}`. Replace the SOURCE slot with new evidence; rewrite REDUCTION-1 and REDUCTION-2 from scratch against the updated focus; reconstruct THEREFORE. Apply PROOF GATE to the rebuilt block. Writing only a new THEREFORE clause without rerunning both reductions is a **proof rerun failure** — the reconstruction of both single-dimension reduction arguments is what makes the proof valid, not the conclusion.
+
+2. **Add competitor**: Insert a new row after WebSearch. Apply CITATION GATE and ANCHOR GATE — COMPETITOR TABLE to the new row. Update WHITESPACE absence evidence for all candidate attributes.
+
+3. **Refine INERTIA-REF mechanism**: Replace the INERTIA-REF mechanism sentence with more specific phrasing — name a product feature or workaround behavior rather than a category. Rewrite all INERTIA-REF-DELTA cells in the findings table whose mechanism phrase references the old wording. Apply ANCHOR GATE — FINDINGS TABLE to the updated cells.

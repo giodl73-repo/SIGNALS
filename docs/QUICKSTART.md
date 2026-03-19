@@ -309,16 +309,19 @@ You do not always start with `/topic-new`. Start where the pain is.
 
 ## What's next
 
-- **[Namespace guides](namespaces/)** — deep coverage of each namespace, all skills, parameter options, and artifact examples
-  - [scout](namespaces/scout.md) — competition, feasibility, market, requirements, compliance, naming, positioning, stakeholders
-  - [draft](namespaces/draft.md) — spec, brainstorm, pitch, proposal
-  - [review](namespaces/review.md) — design, code, users, customers
-  - [flow](namespaces/flow.md) — lifecycle, trigger, throttle, resilience, conversation, dataflow, integration
-  - [trace](namespaces/trace.md) — contract, state, permissions, request, component, deployment, migration
-  - [prove](namespaces/prove.md) — hypothesis, websearch, interview, analysis, synthesize, program, prototype, publish, intelligence
-  - [listen](namespaces/listen.md) — adoption, feedback, support
-  - [program](namespaces/program.md) — plan, orchestration, the echo stage
-  - [topic](namespaces/topic.md) — status, report, story, plan, new, echo
-- **[Philosophy](../ai-first-development-philosophy.md)** — why Signal exists, the evidence behind the techniques, the scale table
+- **[Namespace guides](guides/)** — deep coverage of each namespace, all skills, parameter options, and artifact examples
+  - [scout](guides/scout.md) — competition, feasibility, market, requirements, compliance, naming, positioning, stakeholders
+  - [draft](guides/draft.md) — spec, brainstorm, pitch, proposal
+  - [review](guides/review.md) — design, code, users, customers
+  - [flow](guides/flow.md) — lifecycle, trigger, throttle, resilience, conversation, dataflow, integration
+  - [trace](guides/trace.md) — contract, state, permissions, request, component, deployment, migration
+  - [prove](guides/prove.md) — hypothesis, websearch, interview, analysis, synthesize, program, prototype, publish, intelligence
+  - [listen](guides/listen.md) — adoption, feedback, support
+  - [program](guides/program.md) — plan, orchestration, the echo stage
+  - [topic](guides/topic.md) — status, report, story, plan, new, echo
+- **[Philosophy](philosophy.md)** — why Signal exists, the evidence behind the techniques, the scale table
 - **[Principles](../PRINCIPLES.md)** — design decisions: naming contract, append-only artifacts, concurrent by default
-- **[Corp and Crew guide](corp-crew.md)** — org chart, role compilation, ROB cadence, PR review automation
+- **[Corp and Crew guide](guides/corps.md)** — org chart, role compilation, ROB cadence, PR review automation
+- **[Install guide](../install/README.md)** — which binding to choose, install scripts, prerequisites
+- **[Golden prompts](../signals/README.md)** — the 75 convergent skill prompt bodies
+- **[Role registry](.craft/README.md)** — 206 expert roles, domain subsets, role creation

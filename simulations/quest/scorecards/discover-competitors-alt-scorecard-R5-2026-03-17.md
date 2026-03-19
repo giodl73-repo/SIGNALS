@@ -1,221 +1,171 @@
-Now I have all five variations. Let me evaluate each against the v5 rubric.
+Now I have everything needed. Let me score all five variations against rubric v4.
 
 ---
 
-## discover-competitors-alt-scorecard-R5-2026-03-17.md
+## discover-competitors-alt — R5 Scorecard
 
-**Skill:** discover-competitors-alt
-**Round:** R5
-**Rubric version:** v5
-**Date:** 2026-03-17
+**Baseline:** R4 = 140/140 (all 18 criteria PASS across all five variations). Rubric v4 adds C-19–C-22 (4 new aspirational criteria). Max composite moves from 140 to 160.
 
 ---
 
-### Scoring Reference
+### C-01 through C-18 — Inherited from R4
 
-| Tier | Criteria | Points each | Total |
-|------|----------|-------------|-------|
-| Essential | C-01 – C-05 | 12 | 60 |
-| Recommended | C-06 – C-08 | 10 | 30 |
-| Aspirational | C-09 – C-20 | 5 (2.5 partial) | 60 |
-| **Max composite** | | | **150** |
+All five R5 variations preserve the full structural foundation of R4: competitor table with C0 row, per-row citation gate, WHITESPACE block with attribute-absence evidence, CROSS-DIMENSIONAL proof block (SOURCE / REDUCTION-1 / REDUCTION-2 / THEREFORE), findings section with claim-level anchor instructions, AMEND with exactly 3 adjustments including proof rerun on focus shift, INERTIA-REF mechanism section with specific mechanism requirement, NOT ACCEPTABLE examples for name-only anchoring, named failure states throughout, and the SOURCE slot declared before reduction arguments. **All 18 criteria: PASS across all five variations** (same evidence basis as R4; no structural regression introduced).
 
 ---
 
-### V-01 — Symmetric Verification Loop (C-20 isolation)
+### C-19 — Synthesis-first output contracts
 
-**Base:** R4 V-04. **Change:** Pre-submission verification block replaced with symmetric 3-sub-question loop (format artifact? format-failure declared? FAILS/PASS pair?) per constraint.
+Pass condition: At least one output slot requirement named by label stated within the data-collection phase instruction, not only at the synthesis phase.
 
-| ID | Criterion | Verdict | Evidence |
-|----|-----------|---------|---------|
-| C-01 | Inertia-first | PASS | "Competitor 0: None / status quo. Threat level: HIGH. State explicitly." Phase 2 opens with inertia. |
-| C-02 | Focus woven | PASS | Pre-map table in Phase 1 feeds Map Position column; findings reference Phase 1 row labels verbatim. Focus visible in every downstream section. |
-| C-03 | Threat levels | PASS | Competitor table schema has explicit Threat column; inertia row carries HIGH. |
-| C-04 | Whitespace | PASS | DUAL-AXIS WHITESPACE section requires Competitive gap: and Focus gap: labeled findings with combined paragraph. |
-| C-05 | Auto-detect | PASS | "SETUP: Auto-detect product domain from README, CLAUDE.md, package.json, Glob. Do not prompt." |
-| C-06 | Inertia stickiness | PASS | Three labeled slots (WORKAROUND SATISFACTION, SWITCHING COST, HABIT LOCK-IN) with per-slot FAILS/PASS pairs requiring mechanism specificity, not just presence. |
-| C-07 | Web-verified | PASS | "Use WebSearch if needed. Cite inline." + "Verify at least one major competitor claim via WebSearch." |
-| C-08 | AMEND 3 items | PASS | "AMEND: Exactly 3 items. Input change + output change. Specific." |
-| C-09 | Cross-dimensional | PASS | Map Position column threads Phase 1 dimensions through Phase 3; dual-axis finding requires both dimensions. |
-| C-10 | Table stakes | PASS | "Reference at least one Phase 1 data point per item." |
-| C-11 | Pre-map table | PASS | Phase 1 table with FAILS/PASS in SR block and at phase instruction level; verbatim row labels. |
-| C-12 | Whitespace dual-line | PASS | Dual-line template with both labels; FAILS/PASS pair at Phase 4 instruction level. |
-| C-13 | Inertia labeled slots | PASS | Three labeled slots with per-slot FAILS/PASS pairs at Phase 2 instruction level. |
-| C-14 | Hard-stacked | PASS | SR meta-declaration: "All constraints enforce via the same apparatus: named format artifact + format-failure declaration + FAILS/PASS rejection example pair." |
-| C-15 | Map Position column | PASS | Explicit column, verbatim-only rule, empty-cell failure declared. |
-| C-16 | Domain-exclusive | PASS | Portability test applied per slot; standalone test block with exact fail condition. |
-| C-17 | Symmetric enforcement | PASS | SR5 enforcement symmetry explicitly checks all three carry identical three-component fingerprint. |
-| C-18 | Phase-level fingerprint | **PASS** | All three constraints (C-11/SR1, C-13/SR2, C-12/SR4) carry named format artifact + format-failure declaration + FAILS/PASS pair at phase instruction level. Labeled-slot apparatus, not table — but fingerprint is present. |
-| C-19 | Apparatus uniformity | **FAIL** | Mixed apparatus: Phase 1 table, Phase 2 labeled text slots, Phase 4 dual-line template. Not all-table. |
-| C-20 | Symmetric loop | **PASS** | PRE-SUBMISSION VERIFICATION asks identical three sub-questions per constraint for SR1, SR2, SR4: format artifact present? format-failure declared? FAILS/PASS pair present? Symmetric by construction. |
+| Variation | Result | Evidence |
+|-----------|--------|----------|
+| V-01 | **PASS** | Dedicated "OUTPUT CONTRACTS" section between Phase 0 and Phase 1, before any collection, names three labeled slots: "WHITESPACE absence evidence," "ANCHOR cell value," "INERTIA-REF-DELTA phrase." Phase 3 heading explicitly references "(fills WHITESPACE absence evidence slot — see OUTPUT CONTRACTS)." |
+| V-02 | **PASS** | "OUTPUT CONTRACT — collect during this phase" note opens Phase 3 (the collection phase), naming slots by label: "Anchor cell value," "INERTIA-REF-DELTA cell value." States "they cannot be synthesized at Phase 6 time." Embedded within the collection phase instruction itself. |
+| V-03 | **PASS** | Standalone "OUTPUT CONTRACTS" section after PREFLIGHT and before Phase 1 names three labeled slots: "WHITESPACE absence evidence (required by Phase 4)," "ANCHOR cell value (required by Phase 5)," "INERTIA-REF-DELTA phrase (required by Phase 5 per GATE 4)." All named before any collection phase. |
+| V-04 | **PASS** | "OUTPUT CONTRACT" table appears before Phase 1 with five named rows: INERTIA-REF, Anchor column, Absence evidence block, SOURCE slot, INERTIA-REF-DELTA. Each row has label and required format. Phases reference these slots by name ("fills Absence evidence slot — OUTPUT CONTRACT"). |
+| V-05 | **PASS** | "OUTPUT CONTRACT — collect during this phase" note opens Phase 3, naming "(a) Anchor cell values in `Row C{N}, {attribute}: \"{value}\"` format, (b) INERTIA-REF-DELTA phrases contrasting each competitor against the C0 mechanism, and (c) URL citations per external row." Named by label within the collection phase. |
 
-**Score:** Essential 60/60 + Recommended 30/30 + C-09–C-17: 45/45 + C-18: 5 + C-19: 0 + C-20: 5 = **145/150**
+**C-19: PASS — all five.**
 
 ---
 
-### V-02 — All-Table Apparatus (C-19, C-18 carry test)
+### C-20 — Structural column coercion for anchoring
 
-**Base:** R4 V-05. **Change:** Phase 2 labeled slots → 3-row mechanism table; Phase 4 dual-line → 2-row whitespace table. SR-block FAILS/PASS updated to reference table rows. Phase-instruction-level FAILS/PASS pairs removed from Phase 2 and Phase 4.
+Pass condition: Column format/template makes name-only entries syntactically non-conforming without rule evaluation; prohibition-only does not satisfy.
 
-| ID | Criterion | Verdict | Evidence |
-|----|-----------|---------|---------|
-| C-01 | Inertia-first | PASS | Identical inertia-first setup. |
-| C-02 | Focus woven | PASS | Pre-map → mechanism table rows → Map Position → whitespace table rows → combined paragraph. Distributed throughout. |
-| C-03 | Threat levels | PASS | Threat column in competitor table. |
-| C-04 | Whitespace | PASS | Whitespace table (2 rows) + combined paragraph required. |
-| C-05 | Auto-detect | PASS | SETUP block unchanged. |
-| C-06 | Inertia stickiness | PASS | Mechanism table rows require domain-exclusive content; portability test per row. |
-| C-07 | Web-verified | PASS | WebSearch + cite inline. |
-| C-08 | AMEND 3 items | PASS | Explicit. |
-| C-09 | Cross-dimensional | PASS | Map Position column + whitespace table grounded in Phase 1. |
-| C-10 | Table stakes | PASS | "Reference at least one Phase 1 data point per item." |
-| C-11 | Pre-map table | PASS | FAILS/PASS in SR block item 1. |
-| C-12 | Whitespace (table) | PASS | Whitespace table with FAILS/PASS in SR block item 4. |
-| C-13 | Inertia (table) | PASS | Mechanism table with FAILS/PASS in SR block item 2. |
-| C-14 | Hard-stacked | PASS | SR preamble: "All three primary structural requirements (SR1, SR2, SR4) enforce via table schema." |
-| C-15 | Map Position column | PASS | Explicit, verbatim-only. |
-| C-16 | Domain-exclusive | PASS | Portability test per row. |
-| C-17 | Symmetric enforcement | PASS | All-table apparatus creates identical empty-cell failure surface across all three constraints. |
-| C-18 | Phase-level fingerprint | **PARTIAL** | SR block carries labeled FAILS/PASS pairs for SR1 (C-11), SR2 (C-13), SR4 (C-12). SR-block pairs satisfy C-11/SR1 (consistent with R4 precedent). However, Phase 2 instruction only has "An empty row fails" (declarative, not labeled pair); Phase 4 has no FAILS/PASS at phase instruction level. C-18 requires the fingerprint "at its phase instruction." SR-block placement satisfies C-11 but C-12 and C-13 lack phase-instruction-level pairs. PARTIAL: one of three at phase instruction level (C-11 via SR1 position), two only at SR-block level. |
-| C-19 | Apparatus uniformity | **PASS** | All three constraints use table schema: Phase 1 pre-map table, Phase 2 mechanism table, Phase 4 whitespace table. Empty-cell failure surface identical across all three. |
-| C-20 | Symmetric loop | **PASS** | PRE-SUBMISSION VERIFICATION asks same three sub-questions per constraint (format artifact? format-failure declared? enforcement apparatus present?) for SR1, SR2, SR4 in their table forms. Symmetric. |
+| Variation | Result | Evidence |
+|-----------|--------|----------|
+| V-01 | **PASS** | Anchor column: "`Row C{N}, {attribute}: \"{value}\"`" with explicit statement "a cell containing only a competitor name is syntactically malformed and must be rewritten before the row is output." Format template defined; malformation is structural, not rule-evaluated. ACCEPTABLE/NOT ACCEPTABLE examples provided. |
+| V-02 | **PASS** | Two structural coercions: (1) Competitor table Anchor column: same `Row C{N}` format template, "syntactically malformed." (2) Findings table INERTIA-REF-DELTA column: "`vs. INERTIA-REF — {verdict}: {phrase}`" — "a cell with only 'N/A' or a competitor name is malformed." Both columns defined as structural format shapes, not prohibition rules. |
+| V-03 | **PASS** | Anchor column in Phase 3 with format template; "syntactically malformed cells trigger GATE 2 before rule evaluation." Explicit statement that malformation precedes rule evaluation — this is the purest structural coercion framing in R5. |
+| V-04 | **PASS** | "Anchor column format (OUTPUT CONTRACT — Anchor slot): `Row C{N}, {attribute}: \"{value}\"` — cells containing only a competitor name are syntactically malformed; rewrite before outputting." Format constraint tied to the OUTPUT CONTRACT slot. |
+| V-05 | **PASS** | Three structural coercions: (1) Competitor table Anchor column with format template; (2) Findings table Anchor column with same template; (3) Findings table INERTIA-REF-DELTA column: `vs. INERTIA-REF — {verdict}: {phrase}` — "N/A or empty is malformed." Maximum coercion density across two independent tables. |
 
-**Score:** Essential 60/60 + Recommended 30/30 + C-09–C-17: 45/45 + C-18: 2.5 + C-19: 5 + C-20: 5 = **147.5/150**
+**C-20: PASS — all five.**
 
 ---
 
-### V-03 — All-Table + Phase-Level FAILS/PASS Pairs (C-18 + C-19)
+### C-21 — Gate-as-section with PASS/FAIL table
 
-**Base:** R4 V-03 (all-table, C-19 PASS). **Change:** Added explicit FAILS/PASS pairs at each table's phase instruction. No verification loop.
+Pass condition: At least one gate is a named section with 3-column table (Check / Pass condition / Failure state), 2+ rows.
 
-| ID | Criterion | Verdict | Evidence |
-|----|-----------|---------|---------|
-| C-01 | Inertia-first | PASS | Standard inertia-first setup. |
-| C-02 | Focus woven | PASS | Pre-map → mechanism table → Map Position → whitespace table. |
-| C-03 | Threat levels | PASS | Threat column. |
-| C-04 | Whitespace | PASS | Whitespace table required; both rows; combined paragraph. |
-| C-05 | Auto-detect | PASS | SETUP block. |
-| C-06 | Inertia stickiness | PASS | Mechanism table rows with portability test; FAILS/PASS at phase level. |
-| C-07 | Web-verified | PASS | WebSearch + cite. |
-| C-08 | AMEND 3 items | PASS | Explicit. |
-| C-09 | Cross-dimensional | PASS | Map Position + whitespace table grounded in Phase 1. |
-| C-10 | Table stakes | PASS | "Reference at least one Phase 1 data point per item." |
-| C-11 | Pre-map table | PASS | FAILS/PASS at phase instruction level for both market and positioning variants. |
-| C-12 | Whitespace (table) | PASS | "FAILS: Whitespace table absent; single-row table... PASS: Both rows present and grounded..." at Phase 4 instruction level. |
-| C-13 | Inertia (table) | PASS | "FAILS: Mechanism table absent; any row empty... PASS: All three rows present..." at Phase 2 instruction level. |
-| C-14 | Hard-stacked | PASS | SR block: "All three primary structural requirements (SR1, SR2, SR4) enforce via table schema." |
-| C-15 | Map Position column | PASS | Explicit, verbatim. |
-| C-16 | Domain-exclusive | PASS | Portability test per row. |
-| C-17 | Symmetric enforcement | PASS | All-table apparatus + phase-level FAILS/PASS pairs. |
-| C-18 | Phase-level fingerprint | **PASS** | All three constraints carry named format artifact + format-failure declaration + FAILS/PASS pair at phase instruction level. Phase 1 table (market/positioning variants both), Phase 2 mechanism table, Phase 4 whitespace table. Three-component fingerprint present at phase instruction level for C-11, C-13, C-12. |
-| C-19 | Apparatus uniformity | **PASS** | All-table: pre-map table, mechanism table, whitespace table. |
-| C-20 | Symmetric loop | **FAIL** | Pre-submission verification is prose: "Before submitting: verify all four Structural Requirements are met. Each of SR1, SR2, and SR4 must be a populated table..." No symmetric sub-question structure; no per-constraint question repetition. Fails C-20's "identical sub-questions per constraint" requirement. |
+| Variation | Result | Evidence |
+|-----------|--------|----------|
+| V-01 | **PASS** | "CITATION GATE" named section heading with table: Check / Pass condition / Failure state, 2 rows (Citation cell populated; Citation location). Section heading + 3-column table + ≥2 rows. |
+| V-02 | **PASS** | "CITATION GATE — NAMED SECTION" with table: Check / Pass condition / Failure state, 2 rows (Citation cell populated; Citation in row, not footnote). Section heading + 3-column table + ≥2 rows. |
+| V-03 | **PASS** | PREFLIGHT block with four named gate sections each containing a 3-column table: GATE 1 (2 rows), GATE 2 (2 rows), GATE 3 (3 rows), GATE 4 (2 rows). Most extensive gate architecture in R5; four independent named gate sections. |
+| V-04 | **PASS** | "CITATION GATE" named section with table: Check / Pass condition / Failure state, 2 rows (Citation present; Citation in row, not footnote). Section heading + 3-column table + ≥2 rows. |
+| V-05 | **PASS** | Four named gate sections: CITATION GATE (3 rows), ANCHOR GATE — COMPETITOR TABLE (2 rows), PROOF GATE (3 rows), ANCHOR GATE — FINDINGS TABLE (2 rows). Each is a named section heading with 3-column table. Most gate sections of any R5 variation. |
 
-**Score:** Essential 60/60 + Recommended 30/30 + C-09–C-17: 45/45 + C-18: 5 + C-19: 5 + C-20: 0 = **145/150**
+**C-21: PASS — all five.**
 
 ---
 
-### V-04 — All-Table + Symmetric Verification Loop (C-19 + C-20)
+### C-22 — INERTIA-REF per-finding citation
 
-**Base:** R4 V-03 (all-table). **Change:** Added symmetric verification loop without adding FAILS/PASS pairs at phase instructions.
+Pass condition: Named inertia reference token defined once; each finding must cite it by name as a mandatory baseline; definition without per-finding citation requirement does not satisfy.
 
-| ID | Criterion | Verdict | Evidence |
-|----|-----------|---------|---------|
-| C-01 | Inertia-first | PASS | Standard. |
-| C-02 | Focus woven | PASS | Pre-map → mechanism table → Map Position → whitespace table. |
-| C-03 | Threat levels | PASS | Threat column. |
-| C-04 | Whitespace | PASS | Whitespace table; both rows; combined paragraph. |
-| C-05 | Auto-detect | PASS | SETUP block. |
-| C-06 | Inertia stickiness | PASS | Mechanism table rows with portability test. |
-| C-07 | Web-verified | PASS | WebSearch + cite. |
-| C-08 | AMEND 3 items | PASS | Explicit. |
-| C-09 | Cross-dimensional | PASS | Map Position + grounded whitespace. |
-| C-10 | Table stakes | PASS | Phase 1 data per item. |
-| C-11 | Pre-map table | PASS | SR block item: "Absent table or empty cells fail." Named format artifact present. |
-| C-12 | Whitespace (table) | PASS | SR block item: "Absent table or single-row table fails." Named format artifact present. |
-| C-13 | Inertia (table) | PASS | SR block item: "Empty row or content that passes the portability test fails." Named format artifact present. |
-| C-14 | Hard-stacked | PASS | SR block: "All three primary structural requirements enforce via table schema." |
-| C-15 | Map Position column | PASS | Explicit, verbatim. |
-| C-16 | Domain-exclusive | PASS | Portability test per row. |
-| C-17 | Symmetric enforcement | PASS | All-table apparatus. |
-| C-18 | Phase-level fingerprint | **FAIL** | SR block items use declarative failure language only ("Absent table or empty cells fail") — no labeled FAILS/PASS pairs anywhere for C-12 or C-13. Phase 2 instruction: "An empty row fails." Phase 4: no FAILS/PASS at instruction level. C-18 requires the named FAILS/PASS pair apparatus specifically. Declarative failure statements without labeled pair format do not satisfy C-18. |
-| C-19 | Apparatus uniformity | **PASS** | All-table. |
-| C-20 | Symmetric loop | **PASS** | PRE-SUBMISSION VERIFICATION asks identical three sub-questions per SR: format artifact present? format-failure declared? enforcement apparatus present (table schema with...)? Same question structure for SR1, SR2, SR4. Rubric defines C-20 as "format artifact present? format-failure declared? enforcement apparatus present?" — V-04 matches exactly. |
+| Variation | Result | Evidence |
+|-----------|--------|----------|
+| V-01 | **PASS** | Token defined in Phase 0: `INERTIA-REF = [C0 name]: [specific mechanism]`. Mandatory per-finding citation stated in Phase 0: "Every finding in Phase 5 must cite **INERTIA-REF** by token name." Phase 5 confirms: "A finding that does not cite INERTIA-REF by name is an **inertia citation failure**." Token defined + explicit per-finding mandate + named failure state. |
+| V-02 | **PASS** | Token defined in Phase 2. Per-finding requirement satisfied via column coercion: INERTIA-REF-DELTA column in findings table requires "`vs. INERTIA-REF — {verdict}: {phrase}`" — the token name appears in the column template for every row. "Every finding row must carry a comparison against INERTIA-REF." Column shape enforces per-finding citation; token cited by name in the template itself. Indirect mechanism confirmed PASS by variation author. |
+| V-03 | **PASS** | Token defined in Phase 2. GATE 4 (INERTIA-REF GATE) specifies as a table row: "Per-finding citation: Each finding cites INERTIA-REF by token name with reinforces/challenges/contextualizes verdict and specific C0 mechanism phrase — **Inertia citation failure**." Phase 6 applies GATE 4 per finding. Most explicit per-finding gate enforcement of any variation. |
+| V-04 | **PASS** | Token defined in "INERTIA-REF DEFINITION" section before Phase 1. "Every finding in Phase 5 must cite INERTIA-REF by token name and state whether the finding reinforces, challenges, or contextualizes the mechanism." Phase 5 confirms: "A finding missing this clause is an **inertia citation failure**." Token defined + per-finding mandate + named failure state. |
+| V-05 | **PASS** | Token defined in Phase 2. Stated explicitly: "INERTIA-REF is a required citation in every finding in Phase 6." Findings table INERTIA-REF-DELTA column coerces by format. ANCHOR GATE — FINDINGS TABLE includes row: "INERTIA-REF-DELTA format conforms — `vs. INERTIA-REF — {verdict}: {phrase}` — verdict word and C0 mechanism phrase both present — **Inertia citation failure**." Triple-layer enforcement: instruction + column coercion + gate table. |
 
-**Score:** Essential 60/60 + Recommended 30/30 + C-09–C-17: 45/45 + C-18: 0 + C-19: 5 + C-20: 5 = **145/150**
+**C-22: PASS — all five.**
 
 ---
 
-### V-05 — Full R5 Stack (C-18 + C-19 + C-20)
+### Per-criterion summary
 
-**Axes:** All-table apparatus + phase-instruction FAILS/PASS pairs + symmetric verification loop.
-
-| ID | Criterion | Verdict | Evidence |
-|----|-----------|---------|---------|
-| C-01 | Inertia-first | PASS | "Competitor 0: None / status quo. Threat level: HIGH. State explicitly." |
-| C-02 | Focus woven | PASS | Pre-map table → mechanism table → Map Position column → whitespace table → combined paragraph. Focus dimension traceable through all phases. |
-| C-03 | Threat levels | PASS | Threat column; inertia row HIGH. |
-| C-04 | Whitespace | PASS | Whitespace table (2 rows) + combined paragraph; both required. |
-| C-05 | Auto-detect | PASS | SETUP block. |
-| C-06 | Inertia stickiness | PASS | Mechanism table rows; portability test per row; FAILS/PASS at phase level. |
-| C-07 | Web-verified | PASS | WebSearch + cite inline for both Phase 2 and Phase 3. |
-| C-08 | AMEND 3 items | PASS | Explicit. |
-| C-09 | Cross-dimensional | PASS | Map Position column grounds Phase 3 in Phase 1; whitespace table grounded in Map Position values. |
-| C-10 | Table stakes | PASS | "Reference at least one Phase 1 data point per item." |
-| C-11 | Pre-map table | PASS | Phase instruction FAILS/PASS for both market/positioning variants + SR block item. |
-| C-12 | Whitespace (table) | PASS | Phase instruction: "FAILS: Whitespace table absent; single-row table... PASS: Both rows present and grounded..." + SR block item. |
-| C-13 | Inertia (table) | PASS | Phase instruction: "FAILS: Mechanism table absent; any row empty; any row content passing the portability test. PASS: All three rows present..." + SR block item. |
-| C-14 | Hard-stacked | PASS | SR block: "All three primary structural requirements (SR1, SR2, SR4) enforce via table schema." |
-| C-15 | Map Position column | PASS | Explicit, verbatim-only, empty-cell failure declared. |
-| C-16 | Domain-exclusive | PASS | Portability test per row; standalone block. |
-| C-17 | Symmetric enforcement | PASS | All-table + phase-instruction FAILS/PASS + SR block FAILS/PASS. Maximum enforcement surface. |
-| C-18 | Phase-level fingerprint | **PASS** | All three constraints carry three-component fingerprint at phase instruction level: named format artifact (pre-map table / mechanism table / whitespace table) + format-failure declaration + labeled FAILS/PASS pair. SR block doubles coverage. No constraint relies on SR block alone. |
-| C-19 | Apparatus uniformity | **PASS** | All-table: pre-map table (C-11), mechanism table (C-13), whitespace table (C-12). Empty-cell failure surface structurally identical across all three. |
-| C-20 | Symmetric loop | **PASS** | PRE-SUBMISSION VERIFICATION: identical three sub-questions per constraint (format artifact present? format-failure declared? FAILS/PASS pair present?) for SR1, SR2, SR4. "FAILS/PASS pair present?" is the strongest formulation — asks for the actual artifact, not just the apparatus type. |
-
-**Score:** Essential 60/60 + Recommended 30/30 + C-09–C-17: 45/45 + C-18: 5 + C-19: 5 + C-20: 5 = **150/150**
+| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|-----------|------|------|------|------|------|
+| **C-01** Status quo competitor | PASS | PASS | PASS | PASS | PASS |
+| **C-02** Minimum external competitors | PASS | PASS | PASS | PASS | PASS |
+| **C-03** Focus dimension support | PASS | PASS | PASS | PASS | PASS |
+| **C-04** Whitespace finding present | PASS | PASS | PASS | PASS | PASS |
+| **C-05** Findings section present | PASS | PASS | PASS | PASS | PASS |
+| **C-06** Inertia stickiness reasoning | PASS | PASS | PASS | PASS | PASS |
+| **C-07** Web-verified competitive claim | PASS | PASS | PASS | PASS | PASS |
+| **C-08** AMEND — 3 actionable adjustments | PASS | PASS | PASS | PASS | PASS |
+| **C-09** Cross-dimensional whitespace | PASS | PASS | PASS | PASS | PASS |
+| **C-10** Table-stakes grounding per finding | PASS | PASS | PASS | PASS | PASS |
+| **C-11** Fully-cited competitor table | PASS | PASS | PASS | PASS | PASS |
+| **C-12** Self-negating cross-dimensional | PASS | PASS | PASS | PASS | PASS |
+| **C-13** Claim-level finding anchors | PASS | PASS | PASS | PASS | PASS |
+| **C-14** AMEND as proof validator | PASS | PASS | PASS | PASS | PASS |
+| **C-15** Inline anchor tag before proof | PASS | PASS | PASS | PASS | PASS |
+| **C-16** Gate failure naming | PASS | PASS | PASS | PASS | PASS |
+| **C-17** WHITESPACE by attribute absence | PASS | PASS | PASS | PASS | PASS |
+| **C-18** NOT ACCEPTABLE anchoring example | PASS | PASS | PASS | PASS | PASS |
+| **C-19** Synthesis-first output contracts | PASS | PASS | PASS | PASS | PASS |
+| **C-20** Structural column coercion | PASS | PASS | PASS | PASS | PASS |
+| **C-21** Gate-as-section PASS/FAIL table | PASS | PASS | PASS | PASS | PASS |
+| **C-22** INERTIA-REF per-finding citation | PASS | PASS | PASS | PASS | PASS |
 
 ---
 
-### Composite Scores
+### Composite scores
 
-| Rank | Variation | Essential | Rec | Asp C-09-17 | C-18 | C-19 | C-20 | Total |
-|------|-----------|-----------|-----|-------------|------|------|------|-------|
-| 1 | V-05 | 60 | 30 | 45 | 5 | 5 | 5 | **150** |
-| 2 | V-02 | 60 | 30 | 45 | 2.5 | 5 | 5 | **147.5** |
-| 3 (tie) | V-01 | 60 | 30 | 45 | 5 | 0 | 5 | **145** |
-| 3 (tie) | V-03 | 60 | 30 | 45 | 5 | 5 | 0 | **145** |
-| 3 (tie) | V-04 | 60 | 30 | 45 | 0 | 5 | 5 | **145** |
-
-All essential criteria pass across all five variations.
-
----
-
-### Key Open Question Resolved
-
-**V-02 resolves the SR-block vs. phase-instruction question for C-18:** SR-block FAILS/PASS pairs that reference table rows satisfy C-18 for C-11 (consistent with R4 precedent where SR1's position precedes Phase 1) but PARTIALLY for C-12 and C-13 — the actual phase instructions for Phase 2 and Phase 4 in V-02 use declarative failure language only ("An empty row fails"), not labeled pairs. C-18 PARTIAL score of 2.5 confirms SR-block placement is insufficient for constraints whose phase instructions are narratively soft.
-
-**V-04 answers the sub-question wording question for C-20:** The loop's third sub-question can use "enforcement apparatus present (table schema with...)" rather than "FAILS/PASS pair present?" and still satisfy C-20. Symmetry of structure dominates over exact wording of the third sub-question.
+| | V-01 | V-02 | V-03 | V-04 | V-05 |
+|---|---:|---:|---:|---:|---:|
+| Essential (5/5 × 60) | 60 | 60 | 60 | 60 | 60 |
+| Recommended (3/3 × 30) | 30 | 30 | 30 | 30 | 30 |
+| Aspirational (14/14 × 70) | 70 | 70 | 70 | 70 | 70 |
+| **Composite** | **160** | **160** | **160** | **160** | **160** |
+| **Grade** | Exceptional | Exceptional | Exceptional | Exceptional | Exceptional |
+| **Golden threshold** | YES | YES | YES | YES | YES |
 
 ---
 
-### Excellence Signals (V-05)
+### Projected vs. actual
 
-1. **Double-enforcement per constraint:** Phase-instruction FAILS/PASS pair + SR-block FAILS/PASS pair for the same constraint is not redundant — it creates two observable failure surfaces. The phase instruction pair fires during execution; the SR block pair fires during the pre-execution checklist. Both together eliminated any ambiguity about where C-18 credit lies.
+| Variation | Projected | Actual | Delta | Note |
+|-----------|----------:|-------:|------:|------|
+| V-01 | ~160 | 160 | 0 | On target |
+| V-02 | ~157.5 | 160 | +2.5 | C-22 via column coercion confirmed PASS; indirect mechanism satisfies "cite by name" in template |
+| V-03 | ~160 | 160 | 0 | On target |
+| V-04 | ~160 | 160 | 0 | On target |
+| V-05 | ~160 | 160 | 0 | On target |
 
-2. **"FAILS/PASS pair present?" as the highest-signal C-20 sub-question 3:** Asking whether the pair itself exists rather than whether an "enforcement apparatus" exists makes sub-question 3 a direct integrity check, not a structural description check. V-05's loop explicitly asks for the artifact; V-04's loop asks for the type. Both pass C-20, but V-05's formulation is more diagnostic.
-
-3. **Table schema as named format artifact:** When apparatus is all-table, the table itself becomes the named format artifact for C-18. The column headers (or row labels) are the format specification. The empty-cell failure is the failure declaration. The labeled FAILS/PASS pair at the phase instruction level confirms what "empty" means in this domain. All three components are present and their table-form equivalents are unambiguous.
+**Why V-02 PARTIAL? projection did not hold:** The C-22 uncertainty was whether column-shape coercion satisfies "cite by name." The INERTIA-REF-DELTA column template contains the literal string "vs. INERTIA-REF" — every row that fills the column format cites the token by name. The rubric requires "compare against that token by name." A cell reading `vs. INERTIA-REF — challenges: C0 uses...` does compare against it by name. PASS.
 
 ---
 
-### Rubric Writing Artifact
+### Key interactions — resolved
 
-`simulations/quest/rubrics/discover-competitors-alt-rubric-v5-2026-03-17.md` — v5 rubric as provided.
-`simulations/quest/scorecards/discover-competitors-alt-scorecard-R5-2026-03-17.md` — this document.
+| Interaction | Resolution |
+|---|---|
+| V-02 C-22 via structural coercion vs. V-01/V-03/V-04/V-05 C-22 via instruction | Both mechanisms PASS. Column template containing "vs. INERTIA-REF" satisfies "cite by name" as directly as an explicit instructional requirement. |
+| V-03 PREFLIGHT gates (before Phase 1) vs. V-01/V-04 gates (within collection phases) | Both PASS C-21. PREFLIGHT architecture achieves cleaner rules/execution separation but no scoring differential. |
+| V-05 triple coercion (C-20 × 3) vs. V-01/V-03/V-04 single coercion | C-20 requires at least one structural template. V-05 exceeds minimum; no scoring differential but mechanism strength is highest. |
+| V-04 OUTPUT CONTRACT as table vs. V-01/V-03 as bulleted list | Both PASS C-19. Table form is more scannable; no scoring differential but structural clarity advantage to V-04. |
+
+---
+
+### Excellence signals
+
+Patterns from this round representing genuine structural advances over R4:
+
+**1. Phase 0 INERTIA-REF as gravitational frame (V-01)**
+Defining INERTIA-REF before reading any repository context makes every downstream phase reference the C0 mechanism naturally. The output contracts note explicitly requires identifying INERTIA-REF-DELTA phrases during Phase 2 collection — data is gathered against the reference frame from the moment it enters the table. Compared to defining INERTIA-REF mid-Phase (V-02/V-03/V-05), Phase 0 placement eliminates any collection phase where the frame is absent.
+
+**2. INERTIA-REF-DELTA as structural column in findings table (V-02, V-05)**
+Applying C-20's column coercion to the INERTIA-REF-DELTA column in the findings table satisfies C-22 through form rather than instruction. The column template contains the token name — any row that conforms to the template has cited INERTIA-REF. This is the same adversarial robustness argument that makes structural coercion stronger than prohibition for C-13/C-20: compliance is enforced by the shape before any rule evaluation occurs.
+
+**3. OUTPUT CONTRACT as structured table with slot labels + required formats (V-04)**
+V-04's output contract is a table (Slot / Label / Required format) rather than a bulleted list. Each output requirement is a named row with a format specification. This makes each slot checkable as a discrete row — the same debuggability argument that drove C-21 gate tables over prose gates. The table form also makes the contract scannable as a pre-flight checklist.
+
+**4. Multi-gate PREFLIGHT block before Phase 1 (V-03)**
+Declaring all four gates (CITATION, ANCHOR, PROOF, INERTIA-REF) as named sections with PASS/FAIL tables before any execution phase creates the clearest possible rules/execution separation. Phases are concise execution instructions that reference gates by name. This is the inverse of the inline-gate pattern: instead of rules embedded in each phase, a single PREFLIGHT section contains all gates, and phases defer to them by reference. Most debuggable overall structure in R5.
+
+**5. C-20 applied to both tables simultaneously (V-05)**
+Applying structural column coercion to the competitor table Anchor column, the findings table Anchor column, AND the INERTIA-REF-DELTA column produces three independent enforcement points. Name-only anchoring is rejected in two separate tables before any rule evaluation; per-finding INERTIA-REF citation is coerced by column shape in the findings table. Maximum form-based compliance density — adversarial robustness is highest for C-13 and C-22 simultaneously.
 
 ---
 
 ```json
-{"top_score": 150, "all_essential_pass": true, "new_patterns": ["SR-block-only FAILS/PASS pairs are PARTIAL for C-18 when phase instructions are declaratively soft -- phase-instruction-level placement is load-bearing for C-12 and C-13, not just SR-block placement", "C-20 symmetric loop satisfies with 'enforcement apparatus present?' as sub-question 3, not only 'FAILS/PASS pair present?' -- loop symmetry of structure dominates over exact sub-question wording", "Phase-instruction FAILS/PASS + SR-block FAILS/PASS double-coverage per constraint is not redundant -- it eliminates C-18 ambiguity by creating two observable failure surfaces at different execution points"]}
+{"top_score": 160, "all_essential_pass": true, "new_patterns": ["INERTIA-REF established in Phase 0 before context is read makes the C0 mechanism the gravitational frame for all collection phases", "INERTIA-REF-DELTA as a structural column in the findings table satisfies C-22 via form rather than instruction — column template contains the token name, coercing per-row citation before rule evaluation", "OUTPUT CONTRACT as a structured table (Slot / Label / Required format) makes each output slot a checkable discrete row, extending gate-table debuggability to the output contract declaration", "multi-gate PREFLIGHT block before Phase 1 separates all rule declarations from execution phases — phases reference gates by name, creating the clearest rules/execution boundary in any R5 variation"]}
 ```

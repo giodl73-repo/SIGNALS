@@ -1,55 +1,42 @@
 Rubric written to `simulations/quest/rubrics/validate-inertia-rubric-2026-03-17.md`.
 
-**Structure:**
+**Structure summary:**
 
-- **5 essential** (60 pts): per-persona inertia analysis, quantified switching cost, kill barrier named, workaround satisfaction assessed, per-persona inertia score present
-- **3 recommended** (30 pts): habit lock-in, social proof requirement, learning curve quantified
-- **2 aspirational** (10 pts): overall risk rating with mitigation, inertia asymmetry (structural vs. behavioral)
+- **5 essential (C-01–C-05):** per-persona mapping, quantified switching cost, per-persona inertia scores, kill-barrier callout, aggregate risk verdict — the four hard deliverables the skill description promises
+- **3 recommended (C-06–C-08):** workaround satisfaction, habit lock-in + social proof coverage, mitigation path for the kill barrier
+- **2 aspirational (C-09–C-10):** scoring methodology transparency, time-dependent inertia trajectory
 
-**Key design decisions:**
-- C-03 (kill barrier) is the hardest to pass — requires explicit labeling and feature-specificity, not generic risk language
-- C-05 enforces the score artifact as a discrete value on a consistent scale — narrative-only outputs fail
-- C-10 (aspirational) distinguishes permanent lost TAM from delayed adoption, which is the sophisticated insight this skill should eventually produce
-grounded ("a senior dev who owns the current Makefile won't give up control of the build step"). |
-| C-02 | **Switching cost quantified** | correctness | essential | At least one switching cost is expressed in concrete units: time (hours/days to migrate), money (license delta, tooling cost), effort (number of steps, files to touch), or risk (rollback complexity). Vague language ("high cost", "some effort") does not pass. |
-| C-03 | **Kill barrier named** | correctness | essential | Output explicitly names the single barrier most likely to block adoption entirely -- labeled as such (e.g., "kill barrier", "adoption stopper", "the one thing that would prevent adoption"). Must be specific to this feature, not a generic observation. |
-| C-04 | **Workaround satisfaction assessed** | correctness | essential | Output evaluates how well the current workaround already solves the problem for at least one persona -- including what the workaround is and why it feels "good enough" to that persona. |
-| C-05 | **Per-persona inertia score present** | format | essential | Each analyzed persona receives a discrete inertia score on a consistent scale (e.g., 1-5, Low/Medium/High/Critical, or 0-10). All scores must use the same scale and appear in the output. |
+The kill-barrier criterion (C-04) is essential because the AMEND clause treats it as the primary sharpening move — a rubric that let it slide optional would miss the point of the skill.
+user personas and maps each to one or more inertia factors (workaround satisfaction, switching cost, habit lock-in, social proof, learning curve). Generic "users" without persona differentiation fails. |
+| C-02 | **Quantified switching cost** | correctness | At least one persona has a switching cost expressed as a measurable value — time (hours/days), money, effort rating (e.g., 1-10), or steps required. Qualitative-only descriptions ("it's hard") fail. |
+| C-03 | **Per-persona inertia score** | correctness | Each mapped persona has an explicit inertia score or risk level (numeric or Low/Medium/High/Critical). Score must be distinct per persona — a single blanket score for all personas fails. |
+| C-04 | **Kill-barrier identification** | depth | Output identifies exactly one barrier called out as the adoption killer — the single factor most likely to block adoption even if all other inertia is resolved. Must be labeled or emphasized distinctly (e.g., "critical barrier", "adoption killer"). |
+| C-05 | **Overall adoption inertia risk** | correctness | Output produces an aggregate inertia risk verdict (Low/Medium/High/Critical or equivalent scale) with a sentence of rationale tying it back to the per-persona scores. |
 
 ---
 
-## Recommended Criteria (30 pts total)
+## Recommended Criteria (output is better with these)
 
-| ID | Criterion | Category | Weight | Pass Condition |
-|----|-----------|----------|--------|----------------|
-| C-06 | **Habit lock-in addressed** | depth | recommended | Output goes beyond cost analysis to identify a behavioral or habitual pattern (muscle memory, workflow ritual, team convention) that would cause the persona to revert even after initial adoption. Must be persona-specific, not generic. |
-| C-07 | **Social proof requirement mapped** | depth | recommended | Output identifies what social proof threshold a skeptical persona would need before adopting -- e.g., "needs to see 3 teammates use it first", "requires a public case study from a similar team", "won't move until their tech lead endorses it". |
-| C-08 | **Learning curve quantified** | depth | recommended | At least one persona's learning curve is expressed in concrete terms: ramp time estimate, number of new concepts to internalize, or comparison to something the persona already knows ("similar to learning X, which took Y"). |
-
----
-
-## Aspirational Criteria (10 pts total)
-
-| ID | Criterion | Category | Weight | Pass Condition |
-|----|-----------|----------|--------|----------------|
-| C-09 | **Overall risk rating with mitigation** | depth | aspirational | Output synthesizes per-persona scores into an overall adoption inertia risk level (Low/Medium/High/Critical) AND proposes at least one specific mitigation per barrier identified -- actionable enough to include in a launch plan. |
-| C-10 | **Inertia asymmetry identified** | correctness | aspirational | Output distinguishes between personas for whom inertia is structural (will not adopt without product changes) vs. behavioral (can be overcome with onboarding/framing), and calls out which personas represent permanent lost TAM vs. delayed adoption. |
+| ID | Text | Category | Pass Condition |
+|----|------|----------|----------------|
+| C-06 | **Current workaround satisfaction assessed** | coverage | For at least one persona, output explicitly describes how satisfied they are with their current workaround and why that satisfaction creates inertia. "They have no workaround" is valid if explained. |
+| C-07 | **Habit lock-in and social proof addressed** | coverage | Output addresses habit lock-in (behavioral/muscle memory resistance) AND social proof requirements (whether adoption depends on seeing peers adopt first) for at least one persona each. Missing both fails; covering one partially passes. |
+| C-08 | **Mitigation path per critical barrier** | depth | For the kill barrier identified in C-04, output proposes at least one concrete mitigation (feature change, onboarding tweak, migration tool, pricing lever, etc.) that could reduce or eliminate that barrier. |
 
 ---
 
-## Scoring Reference
+## Aspirational Criteria (raise the bar)
 
-| Score Range | Interpretation |
-|-------------|----------------|
-| 100 | All criteria pass -- exemplary output |
-| 80-99 | Golden threshold met -- output is useful and publishable |
-| 60-79 | Essential pass but recommended gaps -- usable, needs improvement |
-| < 60 | One or more essential criteria fail -- output is not useful |
+| ID | Text | Category | Pass Condition |
+|----|------|----------|----------------|
+| C-09 | **Inertia score methodology explained** | behavior | Output briefly explains how inertia scores were derived -- what factors were weighted and why -- so a reviewer can sanity-check or recalibrate the scoring. A single sentence per dimension suffices; absent any explanation fails. |
+| C-10 | **Adoption timeline sensitivity** | depth | Output estimates how inertia evolves over time: does switching cost decrease as the ecosystem matures, or does habit lock-in compound? Must include at least one time-dependent statement (e.g., "after 6 months of workaround use, lock-in doubles"). |
 
-## Reviewer Notes
+---
 
-- C-01 and C-03 are the two criteria most commonly failed by shallow outputs. If both fail, the output is a generic risk list, not an inertia analysis.
-- C-02 passes if at least one cost is quantified; not all costs need numbers.
-- C-05 fails if personas receive narrative assessments with no discrete score -- the score is the primary artifact.
-- C-09 mitigation must target the kill barrier named in C-03; restating the barrier as a recommendation does not pass.
-- C-10 is strictly aspirational: structural vs. behavioral inertia is a sophisticated distinction that requires domain knowledge about the persona's org context.
+## Notes
+
+- A rubric pass requires **all 5 essential criteria** to pass individually.
+- Partial credit within a criterion is not applied -- each criterion is binary (pass/fail).
+- If the skill output focuses on a single persona (AMEND mode), C-01 and C-03 pass with one persona provided it is named and specific.
+- Quantification in C-02 may use relative scales (e.g., "3x more steps than current workflow") when absolute values are not estimable.

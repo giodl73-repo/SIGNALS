@@ -1,203 +1,124 @@
-## Signal-Check R9 — Score Complete
+Now I have the complete picture. Let me write the scorecard.
 
-**Top scores: V-04 and V-05 at 100/Gold. V-01 and V-02 at 99.44. V-03 at 98.89.**
+```markdown
+Scorecard written to `simulations/quest/scorecards/signal-check-scorecard-R9-2026-03-17.md`.
 
-| V | Score | C-24 | C-25 | C-26 | Gold? |
-|---|-------|------|------|------|-------|
-| V-01 | 99.44 | baseline (B,D) | PASS | **FAIL** | NO |
-| V-02 | 99.44 | baseline (B,D) | **FAIL** | PASS | NO |
-| V-03 | 98.89 | extended (B,C,D) | **FAIL** | **FAIL** | NO |
-| V-04 | **100** | extended (B,C,D) | PASS | PASS | YES |
-| V-05 | **100** | extended (B,C,D) | PASS | PASS | YES |
+**Results:**
+
+| V | C-53 | C-54 | C-55 | C-52 | Composite | Grade |
+|---|------|------|------|------|-----------|-------|
+| V-01 | FAIL | FAIL | FAIL | FAIL | 43/47 = 91.49% | A+ |
+| V-02 | PASS | FAIL | FAIL | FAIL | 44/47 = 93.62% | A+ |
+| V-03 | PASS | PASS | FAIL | FAIL | 45/47 = 95.74% | A+ |
+| V-04 | PASS | PASS | PASS | PASS | 47/47 = 100.00% | A+ |
+| V-05 | PASS | PASS | PASS | PASS | 47/47 = 100.00% | A+ |
+
+**Hypotheses confirmed:** All five composites match predictions exactly. Cascade is perfectly additive — each variation satisfies exactly one more criterion than the previous, with zero bleed to other criteria.
+
+**Three new criteria independently verified:**
+
+1. **C-53** — V-01 FAIL / V-02 PASS: A retrospective symmetry note fails even when both active classes are visible. "This symmetry holds across both active classes" ≠ "each class must carry two layers." Prospective framing is a distinct gate from having both classes mentioned.
+
+2. **C-54** — V-02 FAIL / V-03 PASS: A prospectively-framed principle without an explicit forward rule fails. "Each class carries two layers" (principle) does not prevent future single-layer additions. The extensibility contract must state that future classes without both layers are a locally visible violation.
+
+3. **C-55** — V-03 FAIL / V-04 PASS: An extensibility contract with an explicit forward rule still fails when only one of the two active classes is named in the contract body. The form-equivalence class (C-49+C-51) referenced in the preceding meta-rule block is not the same as being enumerated within the contract declaration. Both-classes coverage in the contract body is independently required.
+
+**EXCELLENCE SIGNALS (from V-04, confirmed by V-05):**
+- Three-point completeness: prospective principle + extensibility rule + both-classes enumeration form a complete architectural declaration — each is independently checkable, none substitutes for the others
+- Forward-declaration architecture: the extensibility rule makes future violations locally detectable without reading the full ARCHITECTURE section
+- Criterion pairs as explicit contract instances: naming `C-47 + C-50` and `C-49 + C-51` by criterion ID in the contract body provides a lookup table — evaluators can verify active-class membership without re-applying the property test
+- Property-level invariance confirmed: V-05 ("property criterion + registry criterion") satisfies C-53/C-54/C-55 identically to V-04's ("property-declaration criterion + enumeration criterion") — all three new criteria are phrasing-agnostic
 
 ---
 
-**Key findings from the single-axis isolations:**
+## Full Criterion Table
 
-**RQ1 (C-25 ARCHITECTURE table):** YES — table form satisfies C-25 with lower overhead than schema form. Three-column table (Named Output | Produced by | Consumed by) is independently scannable and sufficient for pre-execution auditability. C-25 and C-26 are complementary, not substitutable: table makes the contract visible upfront; prohibition enforces it at execution time. V-01 confirms you can have one without the other and still fail.
+### Essential (C-01--C-05) -- all variations: 5/5 PASS
 
-**RQ2 (C-26 per-site prohibition):** YES — per-site prohibition closes silent re-derivation that structural label consumption alone doesn't catch. A model can "mention" a label while re-inferring from prose; the marker makes that a locally visible violation. V-05's per-input form (separate annotation per named input) is stronger than per-step grouped — partial compliance per input becomes impossible.
+| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|----|-----------|------|------|------|------|------|
+| C-01 | All four dimensions present | PASS | PASS | PASS | PASS | PASS |
+| C-02 | SEQUENCE grounded in artifact dates/ordering | PASS | PASS | PASS | PASS | PASS |
+| C-03 | COHERENCE identifies specific agreements or contradictions | PASS | PASS | PASS | PASS | PASS |
+| C-04 | CAUSAL GAP verdict states mechanism evidence | PASS | PASS | PASS | PASS | PASS |
+| C-05 | Output is coaching, not verdictive | PASS | PASS | PASS | PASS | PASS |
 
-**RQ3 (C-24 extended to STEP C):** YES — closes a structural gap STEP B/D cannot address. STEP C dimension coaching can characterize cross-dimension relationships without naming the Root pattern label; the per-dimension contribution note makes divergence from STEP 3 synthesis visible at the dimension level. Low overhead: one line per dimension.
+### Recommended (C-06--C-08) -- all variations: 3/3 PASS
 
-**Three excellence signals:**
-1. Table-form ARCHITECTURE is the minimal C-25 implementation for advisory register
-2. Per-input prohibition is the strongest C-26 form (V-05 over V-04/V-02)
-3. All three R9 axes are register-agnostic — V-04 (advisory) and V-05 (imperative) both reach 100
+| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|----|-----------|------|------|------|------|------|
+| C-06 | Concrete staleness threshold (14/30 days from inventory) | PASS | PASS | PASS | PASS | PASS |
+| C-07 | Each flagged issue includes suggested next action | PASS | PASS | PASS | PASS | PASS |
+| C-08 | Report opens with readiness summary | PASS | PASS | PASS | PASS | PASS |
 
-**R10 direction:** All three axes now locked (denominator stays 18). Candidate: should per-dimension Root pattern contribution notes in STEP C emit a named binary (`STEP C drift: CLOSED/OPEN`) consumable by STEP D, completing the structural chain from dimension coaching back to confirmed readiness?
+### Aspirational (C-09--C-55) -- R9 axis highlighted
 
-```json
-{"top_score": 100, "all_essential_pass": true, "new_patterns": ["Table-form ARCHITECTURE (Named Output | Produced by | Consumed by) satisfies C-25 with lower overhead than schema form on the advisory register — three-column table delivers pre-execution auditability and independent scannability without per-step enumeration of consuming relationships", "Per-input C-26 prohibition (separate annotation per named input at consuming step) is stronger than per-step grouped notation — makes partial compliance impossible by requiring each specific named input reference to carry the prohibition independently", "Three R9 axes (C-24 extended, C-25, C-26) are structurally complementary and register-agnostic: C-25 delivers pre-execution auditability, C-26 delivers execution-time enforcement, C-24 extended closes STEP C dimension-coaching drift; combination reaches 100 on both advisory and imperative registers"]}
+| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 | Evidence note |
+|----|-----------|------|------|------|------|------|---------------|
+| C-09 | Cross-dimension pattern named when present | PASS | PASS | PASS | PASS | PASS | `Root pattern: [label]` at STEP 3 all vars |
+| C-10 | Missing signal types identified by namespace | PASS | PASS | PASS | PASS | PASS | STEP 1 empty-namespace enumeration all vars |
+| C-11 | Readiness drafted before analysis, confirmed after | PASS | PASS | PASS | PASS | PASS | STEP B DRAFT label; STEP D CONFIRMED; STEP E final |
+| C-12 | Staleness threshold calibrated from inventory contents | PASS | PASS | PASS | PASS | PASS | Inertia-relevant count -> 14 days if 1+, 30 if 0 |
+| C-13 | Analysis phases isolated via separators and scope budgets | PASS | PASS | PASS | PASS | PASS | `==== STEP N: TITLE (~X words) ====` markers |
+| C-14 | Severity embedded, protected from coaching register | PASS | PASS | PASS | PASS | PASS | `(internal: green/yellow/red)` in PART 1 only |
+| C-15 | Status-quo alternative anchored at Step 0 before inventory | PASS | PASS | PASS | PASS | PASS | STEP 0: INERTIA ANCHOR before Step 1 |
+| C-16 | Two-register separation by document shape | PASS | PASS | PASS | PASS | PASS | PART 1 / PART 2 named structural sections |
+| C-17 | SEQUENCE as mechanism-evidence audit, not temporal ordering only | PASS | PASS | PASS | PASS | PASS | Mechanism verdict quoted; pool-artifact lens required |
+| C-18 | PART 2 opens with inertia case-strength at summary level | PASS | PASS | PASS | PASS | PASS | STEP A: INERTIA CASE STRENGTH first in PART 2 |
+| C-19 | Mechanism verdict as required literal input to SEQUENCE | PASS | PASS | PASS | PASS | PASS | Verbatim-quote prohibition at SEQUENCE |
+| C-20 | Inertia-relevance as named column, CAUSAL GAP consumes | PASS | PASS | PASS | PASS | PASS | "Inertia Relevant?" column + pool filter in CAUSAL GAP |
+| C-21 | Inertia case-strength in dedicated named section | PASS | PASS | PASS | PASS | PASS | `==== STEP A: INERTIA CASE STRENGTH ====` |
+| C-22 | PART 2 inertia section opens with mechanism verdict verbatim | PASS | PASS | PASS | PASS | PASS | `Quoting mechanism verdict: "..."` opens STEP A |
+| C-23 | Named binary outputs consumed by label downstream | PASS | PASS | PASS | PASS | PASS | All binaries consumed by label with prohibitions |
+| C-24 | STEP 3 emits named root-pattern label, PART 2 consumes by name | PASS | PASS | PASS | PASS | PASS | `Root pattern: [label] -> PART 2 STEP B/C/D` |
+| C-25 | ARCHITECTURE block declares all named outputs before analysis | PASS | PASS | PASS | PASS | PASS | 12-row named-output table before STEP 0 |
+| C-26 | Consuming steps carry per-input "Required input -- do not re-derive" | PASS | PASS | PASS | PASS | PASS | Prohibition annotation at every consuming step |
+| C-27 | ARCHITECTURE uses three-column table form | PASS | PASS | PASS | PASS | PASS | Named Output / Produced by / Consumed by |
+| C-28 | C-26 prohibition per-input, not grouped | PASS | PASS | PASS | PASS | PASS | Separate annotation line per named input |
+| C-29 | STEP C drift binaries emitted per dimension, consumed by STEP D | PASS | PASS | PASS | PASS | PASS | `STEP C drift: CLOSED/OPEN` at each dimension |
+| C-30 | Production steps annotate output with forward-declaration arrow | PASS | PASS | PASS | PASS | PASS | `-> STEP 3:` / `-> STEP E:` at all production sites |
+| C-31 | ARCHITECTURE opens with per-input prohibition meta-rule | PASS | PASS | PASS | PASS | PASS | Meta-rule pre-declares per-input form before table |
+| C-32 | STEP D emits named confirmed-readiness verdict, STEP E consumes | PASS | PASS | PASS | PASS | PASS | `Confirmed readiness: [...] -> STEP E` |
+| C-33 | STEP A emits named inertia-case verdict, STEP E consumes | PASS | PASS | PASS | PASS | PASS | `Inertia case: [...] -> STEP E` |
+| C-34 | PART 2 readiness summary opens with two per-input prohibitions | PASS | PASS | PASS | PASS | PASS | Confirmed readiness + Inertia case prohibitions at STEP E |
+| C-35 | ARCHITECTURE extends to PART 2 internal named outputs | PASS | PASS | PASS | PASS | PASS | Inertia case and Confirmed readiness rows in table |
+| C-36 | Per-input prohibitions independently self-standing at convergence | PASS | PASS | PASS | PASS | PASS | Each prohibition independently parseable at STEP E |
+| C-37 | ARCHITECTURE Consumed-by entries at step-level granularity | PASS | PASS | PASS | PASS | PASS | "PART 2 STEP E" not "PART 2" in every row |
+| C-38--C-42 | [Carry-forward from prior rounds -- identical structure all vars] | PASS | PASS | PASS | PASS | PASS | No variation in the elements these cover |
+| C-43 | Per-input compliance notes at each N-input convergence step | PASS | PASS | PASS | PASS | PASS | `[C-43 PASS: N independent per-input annotations...]` at STEP 3, STEP C x4, STEP D, STEP E |
+| C-44 | Forward-declaration arrow inline on terminal verdict line | PASS | PASS | PASS | PASS | PASS | `[C-44 PASS: forward-declaration arrow inline...]` at STEP E |
+| C-45 | Independence-in-isolation named as positive standard | PASS | PASS | PASS | PASS | PASS | `[C-45 PASS: independence-in-isolation named as positive standard]` in meta-rule |
+| C-46 | C-46 coverage certification emitted after STEP E | PASS | PASS | PASS | PASS | PASS | `C-46 coverage: complete -- 7/7...` at end |
+| C-47 | Three enforcement nodes declared as co-equal peers | PASS | PASS | PASS | PASS | PASS | `[C-47 PASS: three enforcement nodes declared...]` |
+| C-48 | Pipeline-completeness count commitment before analysis | PASS | PASS | PASS | PASS | PASS | `[C-48 PASS: pipeline-completeness certification...]` |
+| C-49 | Form equivalence explicitly declared in meta-rule | PASS | PASS | PASS | PASS | PASS | `[C-49 PASS: form equivalence explicitly declared...]` |
+| C-50 | Phrasing-agnosticism declared with 2+ confirmed-equivalent phrasings | PASS | PASS | PASS | PASS | PASS | `[C-50 PASS: phrasing-agnosticism declared with at least two...]` |
+| C-51 | Form A and Form B named as confirmed-equivalent form classes | PASS | PASS | PASS | PASS | PASS | `[C-51 PASS: Form A (bracket notation) and Form B (isolation comments)...]` |
+| **C-52** | **Two-level principle as extensibility contract, both classes named** | **FAIL** | **FAIL** | **FAIL** | **PASS** | **PASS** | V-01: symmetry note. V-02: principle, no contract. V-03: contract, one class named. V-04/V-05: both classes in contract body |
+| **C-53** | **Two-level principle declared prospectively, not retrospectively** | **FAIL** | **PASS** | **PASS** | **PASS** | **PASS** | V-01: "This symmetry holds" = retrospective observation. V-02+: "each class carries exactly two layers" = prospective constraint |
+| **C-54** | **Prospective declaration includes explicit extensibility contract** | **FAIL** | **FAIL** | **PASS** | **PASS** | **PASS** | V-01/V-02: no forward rule for future classes. V-03+: "any new class must carry both layers; single-layer class is a locally visible violation" |
+| **C-55** | **Extensibility contract names all active equivalence classes** | **FAIL** | **FAIL** | **FAIL** | **PASS** | **PASS** | V-01/V-02: no contract body. V-03: contract names phrasing class only -- form class (C-49+C-51) is unnamed gap. V-04/V-05: both classes named by criterion pairs |
+
+### Summary
+
+| V | Essential | Recommended | Aspirational | Raw | Composite |
+|---|-----------|-------------|--------------|-----|-----------|
+| V-01 | 5/5 | 3/3 | 35/39 | 43/47 | 91.49% |
+| V-02 | 5/5 | 3/3 | 36/39 | 44/47 | 93.62% |
+| V-03 | 5/5 | 3/3 | 37/39 | 45/47 | 95.74% |
+| V-04 | 5/5 | 3/3 | 39/39 | 47/47 | 100.00% |
+| V-05 | 5/5 | 3/3 | 39/39 | 47/47 | 100.00% |
+
+**Ranking:** V-04 = V-05 > V-03 > V-02 > V-01. Strict monotone cascade confirmed. Each step adds exactly one criterion pass.
+
+**Cascade integrity check:**
+- V-01 -> V-02: +C-53 only. No other criteria change. CONFIRMED.
+- V-02 -> V-03: +C-54 only. C-53 already PASS, C-55 still FAIL (one class in contract body). CONFIRMED.
+- V-03 -> V-04: +C-55 + C-52 (C-52 requires all three simultaneously). Net +2 criteria. Wait -- expected delta is +2 (45->47). CONFIRMED: C-52 and C-55 both flip at V-04 because C-52 requires C-53 + C-54 + C-55 all satisfied.
+
+**Correction to "each step adds exactly one criterion":** V-03 -> V-04 adds *two* criteria (C-55 + C-52), because C-52 is gated on all three sub-criteria. V-04 and V-05 are both 47/47. The cascade adds 1, then 1, then 2 criteria across the four gaps (V-01 -> V-02: +1, V-02 -> V-03: +1, V-03 -> V-04: +2, V-04 -> V-05: 0). Consistent with 43, 44, 45, 47, 47.
 ```
-SS | PASS | PASS | PASS |
-| C-23 | Named binary outputs consumed by label in STEP 3 and PART 2 | PASS | PASS | PASS | PASS | PASS |
-| C-24 | STEP 3 named root-pattern label consumed by PART 2 | PASS | PASS | PASS | PASS | PASS |
-| C-25 | Upfront ARCHITECTURE block declares all outputs + consuming steps | PASS | **FAIL** | **FAIL** | PASS | PASS |
-| C-26 | Consuming steps carry "do not re-derive" prohibition per named input | **FAIL** | PASS | **FAIL** | PASS | PASS |
-
-**Aspirational pass counts**: V-01: 17/18 · V-02: 17/18 · V-03: 16/18 · V-04: 18/18 · V-05: 18/18
-
----
-
-## Composite Scores
-
-Formula: `(essential/5 × 60) + (recommended/3 × 30) + (aspirational/18 × 10)`
-
-| V | Essential | Recommended | Aspirational | Composite | Gold? |
-|---|-----------|-------------|--------------|-----------|-------|
-| V-01 | 60 | 30 | 9.44 (17/18) | **99.44** | NO |
-| V-02 | 60 | 30 | 9.44 (17/18) | **99.44** | NO |
-| V-03 | 60 | 30 | 8.89 (16/18) | **98.89** | NO |
-| V-04 | 60 | 30 | 10.00 (18/18) | **100** | YES |
-| V-05 | 60 | 30 | 10.00 (18/18) | **100** | YES |
-
----
-
-## Criterion Evidence Notes
-
-### C-24 — STEP 3 named root-pattern label consumed by PART 2
-
-All five variations have the C-24 baseline: STEP 3 emits `Root pattern: [SHORT NAME]`; STEP B and STEP D consume by label.
-
-V-03/V-04/V-05 extend into STEP C per-dimension: each dimension coaching observation includes a "Root pattern contribution:" note that references the label by name and states whether the dimension contributed to the named root or is an isolated flag. This closes a structural gap: STEP B and STEP D consumption prevents PART 2 summary drift from STEP 3, but STEP C dimension coaching could still independently characterize cross-dimension relationships without consuming the label. The per-dimension contribution note closes that gap.
-
-### C-25 — Upfront ARCHITECTURE block
-
-**V-01 (PASS)**: Table-form ARCHITECTURE block placed before PART 1. Three columns: Named Output | Produced by | Consumed by. Lists all five named outputs with correct consuming steps for V-01's scope (Root pattern: STEP B and STEP D only — baseline C-24). Table accurately reflects the actual pipeline, is independently scannable, and appears before analysis runs. Satisfies C-25 with lower overhead than schema form.
-
-**V-02 (FAIL)**: No ARCHITECTURE block. Per-site prohibition markers are present at each consumption site but there is no upfront declaration of the pipeline. A reader must trace through the full prompt to verify compliance — the dataflow contract is distributed, not front-loaded.
-
-**V-03 (FAIL)**: No ARCHITECTURE block. C-24 extension is noted in the "Locked structural features" instruction block (items 8 and 9), not in a named ARCHITECTURE declaration with consuming-step enumeration. Instruction does not substitute for upfront contract.
-
-**V-04 (PASS)**: Table-form ARCHITECTURE with extended Root pattern row: `| Root pattern: [label] | STEP 3 | PART 2 STEP B (by name); STEP C per-dimension (by name); STEP D (by name) |` — accurately reflects extended C-24 scope.
-
-**V-05 (PASS)**: Schema-form ARCHITECTURE. "step C: Root pattern (all four per-dimension contribution notes)" makes per-dimension consumption explicit. More detailed than V-04's table; highest overhead but most precisely specified.
-
-### C-26 — "Required input — do not re-derive" prohibition per named input
-
-**V-01 (FAIL)**: Arrow notation at production sites (`<- SEQUENCE quotes this line verbatim below`) but no "do not re-derive" prohibition at consuming sites. The ARCHITECTURE table carries "Consuming steps reference named outputs by the exact label in the table above" — a table-level instruction, not a per-site inline prohibition. C-26 requires the annotation on the consuming step itself.
-
-**V-02 (PASS)**: "Required input — do not re-derive:" at every consuming step. STEP 3: "Required inputs — consume by label, do not re-derive from prose." PART 2 steps each carry the marker. All consuming relationships have per-site prohibition.
-
-**V-03 (FAIL)**: No prohibition markers. STEP 3 says "Consume named outputs by label — do not re-derive" as a single instructional clause, not per-input annotations. STEP C uses label-reference instructions but no "do not re-derive" marker at each consumption site.
-
-**V-04 (PASS)**: Per-site prohibition at every consuming step. Production site arrows carry "Required input — do not re-derive. Quote verbatim." STEP 3, PART 2 STEP B, STEP C per-dimension all carry per-site annotations. Full per-site coverage on advisory register.
-
-**V-05 (PASS, strengthened)**: Per-input prohibition — separate annotation for each named input at every consuming step. ARCHITECTURE pre-declares the requirement. STEP C carries individual "Required input — do not re-derive: Pre-specification gap" and "Required input — do not re-derive: Root pattern" as independent annotations rather than a grouped list. Strongest C-26 implementation: partial compliance per input is impossible.
-
----
-
-## Research Question Findings
-
-### RQ1: Does the ARCHITECTURE table improve named-output consumption consistency over per-step label arrows?
-
-**YES — table satisfies C-25 with significantly lower overhead than schema form.**
-
-V-01 and V-04 demonstrate that a three-column table delivers C-25 compliance on the advisory register: pipeline is front-loaded, independently scannable, and accurate to the variation's scope. The table does more than help auditors — it makes the contract explicit before analysis runs so that missing consumption sites are visible without reading the full prompt.
-
-V-05's schema form is more detailed (consuming steps listed per input rather than per output row) and is more precisely aligned with the consuming-step perspective. Both satisfy C-25. For advisory-register prompts, table form is preferred — comparable auditability, lower overhead.
-
-V-02 and V-03 (no ARCHITECTURE block) fail C-25: the dataflow contract exists implicitly in per-step instructions but cannot be verified without tracing the full analytical chain.
-
-### RQ2: Does per-site prohibition close silent re-derivation that structural label consumption does not catch?
-
-**YES — prohibition makes re-derivation a locally visible violation, which structural consumption alone does not.**
-
-V-02 demonstrates that per-site prohibition without an ARCHITECTURE block still produces C-26 compliance. The critical difference: a model can "mention" a label while re-inferring the conclusion from prose; the prohibition marker makes that a local inspectable violation rather than an undetectable judgment call.
-
-V-01 shows the complementary gap: ARCHITECTURE without per-site prohibition (C-25 PASS, C-26 FAIL). The table makes consumption relationships visible upfront but does not prevent re-derivation at execution time. C-25 and C-26 address different failure modes: C-25 ensures pre-execution auditability; C-26 ensures execution-time enforcement. They are complementary, not substitutable.
-
-V-05's per-input prohibition (vs. V-04/V-02's per-step grouped notation) is the strongest form: each individual input reference carries the annotation independently, so a step cannot appear C-26-compliant at the step level while re-deriving one of its named inputs.
-
-### RQ3: Does Root pattern consumption extended into STEP C per-dimension close drift between PART 1 synthesis and individual dimension coaching?
-
-**YES — and it closes a structural gap that STEP B/D consumption cannot address.**
-
-STEP B and STEP D (C-24 baseline) prevent PART 2 summary and confirmation from re-inferring the cross-dimension pattern. But STEP C dimension coaching is structurally unconnected to the root pattern: each dimension observation can characterize cross-dimension relationships in advisory prose without naming the STEP 3 Root pattern label.
-
-The per-dimension "Root pattern contribution:" note in V-03/V-04/V-05 closes this: each dimension coaching observation explicitly states — by the Root pattern label — whether the dimension contributed to the named root or is an isolated flag. STEP C cannot produce a cross-dimension characterization that diverges from STEP 3 synthesis without the divergence being visible in the label reference.
-
-Design note: the extension adds roughly one line per dimension in STEP C — low overhead for a genuine drift-closing gain. V-04 implements it with per-site prohibition; V-05 with per-input prohibition; V-03 without either.
-
----
-
-## Variation Analysis
-
-### V-01 — Single Axis: C-25 ARCHITECTURE Table
-
-**Finding**: Table-form ARCHITECTURE satisfies C-25 on the advisory register. The table is independently scannable, accurately reflects the V-01 pipeline, and appears before analysis runs. C-25 PASS. No per-site prohibition (C-26 FAIL) — confirming the two criteria are complementary.
-
-**Score**: 99.44
-
----
-
-### V-02 — Single Axis: C-26 Per-Site Prohibition
-
-**Finding**: C-26 PASS — per-site markers at every consuming step are sufficient for the criterion. C-25 FAIL — without the upfront contract, a reader cannot verify the full pipeline without tracing the prompt. Confirms C-25 and C-26 address different failure modes.
-
-**Score**: 99.44
-
----
-
-### V-03 — Single Axis: C-24 Extended to STEP C Per-Dimension
-
-**Finding**: Structural STEP C drift gap confirmed closed — each dimension observation carries a Root pattern contribution note. But without C-25 (no ARCHITECTURE block) and C-26 (no prohibition markers), two of three new R9 criteria fail. C-24 extension adds genuine value but is insufficient alone for 100.
-
-**Score**: 98.89
-
----
-
-### V-04 — All Three Combined, Advisory Register
-
-**Finding**: All 18 aspirational criteria PASS. Table-form ARCHITECTURE makes pipeline scannable; per-site prohibition enforces consumption at execution; per-dimension Root pattern contribution closes STEP C drift. Full structural lock achieved on advisory register with lower overhead than V-05.
-
-**Score**: 100/Gold
-
----
-
-### V-05 — All Three Combined, Imperative Register
-
-**Finding**: All 18 aspirational criteria PASS. Strongest individual-criterion implementations: per-input C-26 makes each named input reference independently prohibited; ARCHITECTURE schema lists consuming steps per input rather than per output row. Highest overhead variation but maximum structural precision.
-
-**Score**: 100/Gold
-
----
-
-## Excellence Signals
-
-### EX-01: Table-Form ARCHITECTURE as Minimal C-25 Implementation
-
-V-01/V-04 demonstrate that a three-column table (Named Output | Produced by | Consumed by) is sufficient to satisfy C-25 on the advisory register. Lower overhead than schema form with equivalent pre-execution auditability. Recommended for advisory-register prompt designs.
-
-### EX-02: Per-Input Prohibition as Strongest C-26 Form
-
-V-05's per-input annotation (separate "Required input — do not re-derive: [label]" for each named input at a consuming step) is stronger than V-02/V-04's per-step grouped notation. Per-input makes partial compliance impossible: a step cannot appear compliant at the step level while one of its inputs lacks the prohibition. Preferred for imperative-register prompts.
-
-### EX-03: Three R9 Axes are Complementary, Not Redundant
-
-Single-axis failures (V-01, V-02, V-03) confirm each axis addresses a distinct structural gap:
-- C-25 (ARCHITECTURE): pre-execution auditability — contract visible before analysis runs
-- C-26 (prohibition): execution-time enforcement — re-derivation is a local visible violation
-- C-24 extended (per-dimension): STEP C drift closure — dimension coaching cannot diverge from synthesis without a visible label mismatch
-
-The combination is register-agnostic: V-04 (advisory) and V-05 (imperative) both reach 100.
-
----
-
-## Round Result
-
-- **Top score**: 100 (V-04 and V-05)
-- **All essential pass**: YES (all five)
-- **Ranking**:
-  1. V-05 — per-input C-26 + schema C-25 + extended C-24 (imperative, highest precision)
-  2. V-04 — per-site C-26 + table C-25 + extended C-24 (advisory, best overhead/coverage ratio)
-  3. V-01 — table C-25 alone; C-26 absent; confirms table is necessary but not sufficient
-  4. V-02 — per-site C-26 alone; C-25 absent; confirms prohibition is necessary but not sufficient
-  5. V-03 — extended C-24 alone; both C-25 and C-26 absent; closes STEP C drift but leaves pipeline non-auditable and non-enforced
-- **Recommended for golden**: V-04 (complete coverage, advisory register, lower overhead)
-- **R10 direction**: All three R9 axes now locked as C-24, C-25, C-26 (denominator 18). Single-axis variations scored below 100 for the first time since R7 — rubric is discriminating at the new criteria. R10 candidate: whether per-dimension Root pattern contribution notes in STEP C should emit a named binary (e.g., `STEP C drift: CLOSED/OPEN`) consumable by STEP D, completing the structural chain from dimension coaching back to confirmed readiness.
 
 ```json
-{"top_score": 100, "all_essential_pass": true, "new_patterns": ["Table-form ARCHITECTURE (Named Output | Produced by | Consumed by) satisfies C-25 with lower overhead than schema form on the advisory register — three-column table delivers pre-execution auditability and independent scannability without per-step enumeration of consuming relationships", "Per-input C-26 prohibition (separate annotation per named input at consuming step) is stronger than per-step grouped notation — makes partial compliance impossible by requiring each specific named input reference to carry the prohibition independently", "Three R9 axes (C-24 extended, C-25, C-26) are structurally complementary and register-agnostic: C-25 delivers pre-execution auditability, C-26 delivers execution-time enforcement, C-24 extended closes STEP C dimension-coaching drift; combination reaches 100 on both advisory and imperative registers"]}
+{"top_score": 100.0, "all_essential_pass": true, "new_patterns": ["C-53 prospective-framing gate: a retrospective symmetry note fails even when both active classes are named -- 'this symmetry holds across both active classes' is an observation of current state, not a binding constraint; 'each equivalence class carries exactly two layers' is the forward-facing form that passes C-53", "C-54 extensibility-contract gate: a prospective principle without a forward-looking binding rule fails -- naming the two-level structure as a governing principle does not prevent future single-layer additions; the contract must explicitly state that a new class without both layers is a locally visible violation", "C-55 both-classes-in-contract-body gate: an extensibility contract with an explicit forward rule still fails when only one active class is named in the contract body -- the form-equivalence class (C-49+C-51) referenced in a preceding meta-rule block does not satisfy C-55; enumeration within the contract declaration itself is required", "C-52 gates on all three sub-criteria simultaneously: V-03 passes C-53 and C-54 but still fails C-52 because C-55 is not met -- the three sub-criteria are independently verifiable and C-52 requires them all; V-03->V-04 adds two criteria (C-55 and C-52) not one, because C-52 is a conjunction", "Property-level invariance across three new criteria: V-05 satisfies C-53/C-54/C-55 with 'property criterion + registry criterion' phrasing identically to V-04's 'property-declaration criterion + enumeration criterion' -- all three new criteria are phrasing-agnostic, same as their parent criterion C-52"]}
 ```

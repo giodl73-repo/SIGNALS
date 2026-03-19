@@ -136,9 +136,29 @@ Every `/scout-competitors` run assesses "none / status quo" first, always. Inert
 ## Docs
 
 - **[QUICKSTART.md](docs/QUICKSTART.md)** — First run walkthrough. The minimal workflow. What a signal looks like.
-- **[Namespace guides](docs/guides/)** — Deep coverage of each namespace, all skills, parameters, artifact examples. 11 guides: scout, draft, review, flow, trace, prove, listen, program, topic, corps, crew.
+- **[Namespace guides](docs/guides/)** — Deep coverage of each namespace, all skills, parameters, artifact examples. 19 guides: 9 namespaces, 2 org namespaces, 4 campaigns, 4 concepts.
 - **[ACHIEVEMENTS.md](docs/ACHIEVEMENTS.md)** — 31 achievements across 7 categories. The most important one is Falsified.
 - **[PRINCIPLES.md](PRINCIPLES.md)** — 10 design principles: concurrent by default, append-only artifacts, self-contained skills, namespace = audience, zero barrier to first run.
+- **[COMMANDS.md](docs/COMMANDS.md)** — Complete skill reference: all 75 skills across 9 namespaces with invocation examples.
+
+## Directory guide
+
+| Directory | What's in it |
+|-----------|-------------|
+| [docs/](docs/QUICKSTART.md) | Guides, QUICKSTART, COMMANDS, ACHIEVEMENTS, philosophy |
+| [install/](install/README.md) | 12 install scripts for 6 bindings x 2 platforms |
+| [signals/](signals/README.md) | 75 golden prompt bodies, one per Signal skill |
+| [simulations/](simulations/README.md) | Quest loop artifacts, skill outputs, topic registry |
+| [bindings/](bindings/README.md) | 6 program.yaml binding variants |
+| [tools/](tools/README.md) | Quest loop scripts and generator utilities |
+| [.craft/](.craft/README.md) | 206 expert role files organized by domain |
+| [experiments/](experiments/README.md) | Parameter study data (S2-04, S2-06) |
+| [study/](study/README.md) | A/B/C/D/E navigation test |
+| [output/](output/README.md) | Generated forge output — run forge generate to update |
+
+## Research
+
+27+ papers documenting Signal's methodology are in `C:\src\craftworks-research\signals\`. See the [research module README](../../craftworks-research/signals/MODULE.md) for the full index.
 
 ## Feedback & Issues
 

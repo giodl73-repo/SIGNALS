@@ -1,129 +1,267 @@
-Now I have the complete rubric (A-01 through A-17 fully defined) and all five variations. Scoring below.
+---
+
+## R8 Scorecard: discover-causal
+
+**Rubric:** v8 (29 criteria, 195 pts max)
+**Base:** R7 V-05 (195/195 -- ceiling)
+
+### Results
+
+| Variation | C-27 | C-28 | C-29 | Score | Tier |
+|-----------|------|------|------|-------|------|
+| V-01 (inline prohibition) | PASS | PASS | PASS | **195** | Golden (ceiling) |
+| V-02 (back-reference stripped) | PASS | **FAIL** | PASS | **190** | Golden |
+| V-03 (field-level C-29 stripped) | PASS | PASS | PASS | **195** | Golden (ceiling) |
+| V-04 (V-01 + V-02 combined) | PASS | **FAIL** | PASS | **190** | Golden |
+| V-05 (ceiling + anchor-update) | PASS | PASS | PASS | **195** | Golden (ceiling) |
+
+All 4 hypotheses confirmed. C-28 is the sole differentiating criterion in R8.
+
+### Hypothesis Outcomes
+
+**V-01 confirmed (195):** The `PROHIBITED FORM:` block label is NOT required for C-27. Inline "does not pass" in the sub-step header is the load-bearing element -- the phrase closes the escape hatch regardless of whether it appears in a labeled block or inline parenthetical.
+
+**V-02 confirmed (190):** The "already on record from Phase 1 SUB-STEP 2" phrase IS required for C-28. "Confirm and extend the preliminary anchor from Phase 1" references Phase 1 but does not acknowledge the anchor as prior record -- it reads as instruction to produce rather than instruction to confirm. The back-reference is load-bearing.
+
+**V-03 confirmed (195):** Any Phase 6 position satisfies C-29. The integration rules list bullet alone suffices; the Falsification field description annotation is a second site, not a required site.
+
+**V-04 confirmed (190):** V-01 and V-02 effects are independent -- C-27 PASS carries through and C-28 FAIL carries through with no interaction.
+
+### V9 Candidate Signal (from V-05)
+
+**C-30 (proposed): Phase 6 Falsification tracks Phase 3 anchor update.** When Phase 3 updates the preliminary anchor to a higher-confidence step, Phase 6 must carry the updated step -- not the Phase 1 anchor verbatim. V-05 closes this stale-anchor propagation gap with an integration rule and adds `anchor_updated_from_phase1: true | false | n/a` to the ARTIFACT frontmatter. V-01 through V-04 do not have this rule and would fail C-30 if it were added.
+
+```json
+{"top_score": 195, "all_essential_pass": true, "new_patterns": ["C-27 phrase is load-bearing not the block label: inline 'does not pass' in the sub-step header satisfies C-27", "C-28 back-reference 'already on record from Phase 1 SUB-STEP 2' is load-bearing: 'confirm and extend from Phase 1' without explicit prior-record acknowledgment does not pass", "C-29 is satisfied by any Phase 6 position: integration rules list bullet alone satisfies the synthesis-phase integrity requirement", "V9 candidate C-30: Phase 6 Falsification must track Phase 3 anchor update -- stale-anchor propagation failure detectable via ARTIFACT field anchor_updated_from_phase1"]}
+```
+used only for C-26
+through C-29.
+
+| ID | Criterion | All Variations | Evidence Note |
+|----|-----------|---------------|---------------|
+| C-09 | Evidence quality rated | **PASS** | Phase 4 defines T1/T2/T3/none tiers; Aggregate evidence tier is a required output |
+| C-10 | Multiple pathways considered | **PASS** | Phase 2 explicitly asks for secondary pathway; complementary/competing/nested/singular required |
+| C-11 | Incompleteness acknowledged | **PASS** | Phase 1 readiness gate requires self-assessment; fabricating thin steps explicitly named as failure |
+| C-12 | Break anchored to named step | **PASS** | Phase 3 requires "Step [N] -- [Name]" format; UNCERTAIN step still anchors |
+| C-13 | Evidence gap localized | **PASS** | Phase 4 requires per-step evidence accounting; gap field required even when value is "none" |
+| C-14 | AMEND conditioned on inertia | **PASS** | Phase 6 AMEND requires inertia incorporation; all three verdict values covered with required forms |
+| C-15 | AMEND synthesizes all phases | **PASS** | Phase 6 requires named fields from every prior phase; omitting any does not pass |
+| C-16 | Pathway steps formally labeled | **PASS** | Phase 2 STEP LABELING REQUIREMENT is structural prerequisite; positional references do not pass |
+| C-17 | Confounder distinguished from inertia | **PASS** | Phase 5 explicitly excludes inertia case; required to acknowledge the exclusion explicitly |
+| C-18 | Incomplete pathway still anchors | **PASS** | Phase 3 CONDITIONAL BRANCH requires BEST-TRACEABLE ANCHOR; metric deferral named as failure |
+| C-19 | Evidence gap and tier are separate fields | **PASS** | Phase 4 FIELD INDEPENDENCE NOTE; two named entries explicitly required; merging named as failure |
+| C-20 | AMEND inertia is unconditional | **PASS** | Phase 6 names all three verdict forms; no verdict makes incorporation optional |
+| C-21 | Null-gap counterexample proven | **PASS** | Phase 4 NULL-GAP COUNTEREXAMPLE explicitly instantiates "gap: none, tier: T1" state |
+| C-22 | Inertia conditional form excluded | **PASS** | Phase 0 PROHIBITED FORM names "conditioning on Competing or Unclear does not pass" |
+| C-23 | Mechanism completeness is named AMEND field | **PASS** | Phase 6 Mechanism completeness is a standalone named field; embedding in clause text does not pass |
+| C-24 | Falsification deferral form excluded | **PASS** | Phase 3 PROHIBITED FORM (C-24) names "deferring or omitting step-level falsification does not pass" |
+| C-25 | Evidence gap is standalone AMEND field | **PASS** | Phase 6 Evidence gap is a distinct named field; PROPAGATION REQUIREMENT names this explicitly |
+| C-26 | Anchor co-located with declaration | **PASS** | Phase 1 SUB-STEP 2 requires preliminary anchor before Phase 2 in all five variations; Phase 3 confirms/extends |
+
+**C-26 is PASS in all five variations.** C-27/C-28/C-29 are gradeable for all five.
 
 ---
 
-## Discover-Causal R8 — Scorecard (Rubric v8)
-
-**Skill**: `/discover:causal` | **Round**: 8 | **Rubric**: v8 | **Date**: 2026-03-17
-**Variations**: V-01 (RESOLVER/hop-gap), V-02 (5-col evidence table), V-03 (H0 null framing), V-04 (CHALLENGER-primed), V-05 (scope-inversion + triple-gap)
-
----
-
-### Essential Criteria (60 pts, 12 pts each)
+### C-27, C-28, C-29 -- Per-Variation
 
 | ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
 |----|-----------|------|------|------|------|------|
-| C-01 | Mechanism pathway named | **PASS** — ANALYST constructs named hop chain from X to Y | **PASS** — Section 4 ANALYST hop chain | **PASS** — ANALYST hop chain with H1 label | **PASS** — ANALYST hop chain | **PASS** — Section C hop chain |
-| C-02 | Falsification condition present | **PASS** — F-NN pool Step 2, ≥2 conditions required | **PASS** — Section 1.3 F-NN pool | **PASS** — FRAMER-H1 Section H1.2 F-NN pool | **PASS** — FRAMER F-NN pool table | **PASS** — Section A F-NN pool |
-| C-03 | Inertia check performed | **PASS** — Step 3 requires status-quo, baseline rate, I-NN pool | **PASS** — Section 2 inertia analysis + I-NN pool | **PASS** — FRAMER-H0 establishes H0 and I-NN before H1 | **PASS** — FRAMER inertia block + I-NN pool | **PASS** — Section D inertia baseline |
-| C-04 | Causal claim scoped/testable | **PASS** — FRAMER(closing) scoped claim: "X causes Y when [condition], for [population]" | **PASS** — Section 6 scoped claim | **PASS** — FRAMER(closing) H0 rejection status + scoped claim | **PASS** — FRAMER(closing) scoped claim | **PASS** — Section F scoped claim with validity-scope conditions |
-| C-05 | AMEND directive produced | **PASS** — Narrow + Mechanism always required; conditional slots from RESOLVER table | **PASS** — Narrow + Mechanism + conditional slots from AUDITOR table | **PASS** — Narrow + Mechanism + Distinguishability/Inertia conditional | **PASS** — Narrow + Mechanism + conditional slots from EXAMINER | **PASS** — Narrow + Mechanism + up to 5 conditional slots including Triple-gap |
+| **C-27** | C-26 prohibition co-located at Phase 1 | **PASS** | **PASS** | **PASS** | **PASS** | **PASS** |
+| **C-28** | Phase 3 frames anchor as confirmation | **PASS** | **FAIL** | **PASS** | **FAIL** | **PASS** |
+| **C-29** | C-26 integrity rule named at synthesis | **PASS** | **PASS** | **PASS** | **PASS** | **PASS** |
 
-**Essential score — all five: 60/60**
+**C-27 evidence per variation:**
+
+- **V-01 PASS**: Phase 1 SUB-STEP 2 header reads "(required here before Phase 2; proceeding to
+  Phase 2 without producing this anchor does not pass):" -- "does not pass" language is present
+  at Phase 1. Body adds: "Deferring this anchor to Phase 3 does not pass." No PROHIBITED FORM
+  block label, but the phrase is present at the declaration point. C-27 requires the "does not
+  pass" language at Phase 1 -- satisfied. The block label is not required; the phrase is
+  load-bearing.
+
+- **V-02 PASS**: Phase 1 has separate PROHIBITED FORM block: "Declaring incompleteness and
+  proceeding to Phase 2 without producing this preliminary anchor in SUB-STEP 2 does not pass."
+  Named at Phase 1. Full C-27 pass.
+
+- **V-03 PASS**: Phase 1 PROHIBITED FORM block preserved identically from R7 V-05. Full C-27 pass.
+
+- **V-04 PASS**: Same inline mechanism as V-01 -- "(required here before Phase 2; proceeding to
+  Phase 2 without producing this anchor does not pass):" plus body "Deferring this anchor to
+  Phase 3 does not pass." Language present at Phase 1. PASS.
+
+- **V-05 PASS**: Phase 1 PROHIBITED FORM block preserved identically from R7 V-05. Full C-27 pass.
+
+**C-28 evidence per variation:**
+
+- **V-01 PASS**: Phase 3 CONDITIONAL BRANCH preserved from R7 V-05: "If PATHWAY INCOMPLETE was
+  declared in Phase 1, a PRELIMINARY ANCHOR is already on record from Phase 1 SUB-STEP 2. This
+  branch confirms and extends it." Both explicit prior-record acknowledgment ("already on record")
+  and confirmation framing ("This branch confirms and extends it.") are present.
+
+- **V-02 FAIL**: Phase 3 CONDITIONAL BRANCH reads: "If PATHWAY INCOMPLETE was declared in Phase 1,
+  confirm and extend the preliminary anchor from Phase 1." The "already on record from Phase 1
+  SUB-STEP 2" phrase is removed. The standalone sentence "This branch confirms and extends it."
+  is removed. "Confirm and extend from Phase 1" references Phase 1 but does not acknowledge the
+  Phase 1 anchor as prior record -- it reads as instruction rather than acknowledgment. C-28
+  requires Phase 3 to "explicitly reference the Phase 1 anchor as prior record" -- the stripped
+  form omits that explicit acknowledgment. FAIL.
+
+- **V-03 PASS**: Phase 3 CONDITIONAL BRANCH preserved from R7 V-05. "Already on record from
+  Phase 1 SUB-STEP 2. This branch confirms and extends it." present. PASS.
+
+- **V-04 FAIL**: Same stripped Phase 3 as V-02 -- "confirm and extend the preliminary anchor from
+  Phase 1" without "already on record" acknowledgment. FAIL for the same reason as V-02.
+
+- **V-05 PASS**: Phase 3 CONDITIONAL BRANCH preserved from R7 V-05. Full C-28 pass.
+
+**C-29 evidence per variation:**
+
+- **V-01 PASS**: Phase 6 Falsification field description includes "a Falsification field that
+  first names the anchor here without a corresponding Phase 1 PRELIMINARY ANCHOR does not pass
+  C-26." Integration rules also include the same detection. Both sites present.
+
+- **V-02 PASS**: Phase 6 Falsification field description preserved with C-29 rule. Integration
+  rules preserved. Both sites present.
+
+- **V-03 PASS**: Phase 6 Falsification field description C-29 sentence removed. Integration rules
+  C-29 bullet preserved: "For incomplete pathways, the Falsification field must carry an anchor
+  that was first produced in Phase 1 -- not first introduced here. A response where Phase 1
+  contains no PRELIMINARY ANCHOR and Phase 6 Falsification carries the first anchor does not
+  pass C-26." C-29 criterion requires "the synthesis/AMEND phase includes an integration rule
+  that explicitly detects the C-26 cross-phase violation" -- integration rules bullet satisfies
+  this. Any Phase 6 position passes. PASS.
+
+- **V-04 PASS**: Phase 6 Falsification field description C-29 rule preserved. Integration rules
+  C-29 bullet preserved. Both sites present.
+
+- **V-05 PASS**: Phase 6 preserved from R7 V-05 at both C-29 sites. Anchor-update propagation
+  rule also present. Full C-29 pass.
 
 ---
 
-### Recommended Criteria (30 pts, 10 pts each)
+## Score Summary
 
-| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
-|----|-----------|------|------|------|------|------|
-| R-01 | Context-specific mechanism evidence | **PASS** — Step 4 requires ≥1 entry or "None found" before mechanism | **PASS** — Section 1.2 evidence table before mechanism | **PASS** — FRAMER-H1 H1.3 evidence before ANALYST | **PASS** — EVIDENCE section before CHALLENGER and ANALYST | **PASS** — Section B evidence before Section C mechanism |
-| R-02 | Alternative causes / confounders | **PASS** — SKEPTIC requires "Confounder 1" + inertia challenge with I-NN ID | **PASS** — Section 5 confounders + inertia challenge | **PASS** — SKEPTIC confounders + H0 challenge | **PASS** — SKEPTIC confounders + I-NN threat update | **PASS** — Section E confounders + inertia challenge |
-| R-03 | Mechanism chain ≥2 hops | **PASS** — "Two hops minimum" explicit gate | **PASS** — "Two hops minimum" in Section 4 | **PASS** — "Two hops minimum" | **PASS** — "Two hops minimum" | **PASS** — "Two hops minimum" |
+### Per-Criterion Points (aspirational tier -- 5 pts each)
 
-**Recommended score — all five: 30/30**
-
----
-
-### Aspirational Criteria (10 pts, pass/17 × 10)
-
-| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
-|----|-----------|------|------|------|------|------|
-| A-01 | Mechanism strength qualified | PASS — ANALYST preliminary + SKEPTIC final both Strong/Moderate/Weak with rationale | PASS | PASS | PASS | PASS |
-| A-02 | Inertia baseline quantified or bounded | PASS — Step 3 "Baseline rate: Estimate or bound, or Unknown + reasoning" | PASS — Section 2 baseline rate | PASS — FRAMER-H0 "Baseline rate R0" | PASS — FRAMER "Baseline rate" | PASS — Section D "Baseline rate" |
-| A-03 | Adversarial section structurally separated | PASS — SKEPTIC is a named role, spatially separate from ANALYST, with its own gate | PASS — Section 5 SKEPTIC | PASS — SKEPTIC role | PASS — SKEPTIC role | PASS — Section E adversarial challenge |
-| A-04 | All classification outputs use discrete labels | PASS — Opening instruction mandates it universally | PASS | PASS | PASS | PASS |
-| A-05 | Evidence precedes mechanism mapping | PASS — Step 4 in FRAMER(opening); gate blocks ANALYST until complete | PASS — Section 1 (evidence) before Section 4 (mechanism); gate enforced | PASS — FRAMER-H1 H1.3 evidence; gate blocks ANALYST | PASS — EVIDENCE section; gate blocks CHALLENGER blocks ANALYST | PASS — Section B gate before Section C mechanism |
-| A-06 | Dual mechanism strength rating | PASS — ANALYST preliminary before SKEPTIC; SKEPTIC final after adversarial; "note if changed" | PASS | PASS | PASS | PASS |
-| A-07 | Falsification confidence per row | PASS — SKEPTIC final falsification table: per-row High/Med/Low with rationale for all F-NN + I-NN | PASS — Section 5 final falsification table | PASS — SKEPTIC falsification table | PASS — SKEPTIC confidence assignments table | PASS — Section E final falsification table |
-| A-08 | Hops cross-reference falsification conditions | PASS — Every hop: "Falsification connection: [F-NN or I-NN ID]. One sentence." | PASS — Every hop: "Falsification connection: [F-NN or I-NN ID]" | PASS — Every hop carries falsification connection | PASS — Every hop: "Falsification connection: [F-NN or I-NN ID]" | PASS — Every hop: "Falsification connection: [F-NN ID]" |
-| A-09 | Structural gate checklists | PASS — 5 named binary checklists (FRAMER opening, ANALYST, SKEPTIC, RESOLVER, FRAMER closing) | PASS — 6 section gates | PASS — FRAMER-H0, FRAMER-H1, ANALYST, SKEPTIC, ARBITER gates | PASS — FRAMER, EVIDENCE, ANALYST, SKEPTIC gates | PASS — Section A–E gates + AUDITOR gate |
-| A-10 | Hop observability labeled | PASS — Every hop: "Observability: Observable/Partial/Opaque + rationale" | PASS | PASS — Plus H1/H0 distinguishability label per hop | PASS | PASS |
-| A-11 | Falsification testability per condition | PASS — Testability refinement table per condition: Easy/Hard/Unknown | PASS | PASS | PASS | PASS |
-| A-12 | Aggregate observability + conditional routing | PASS — RESOLVER Diagnostic 1: chain pattern (AllObservable/Mixed/PredominantlyOpaque) → AMEND trigger | PASS — AUDITOR Diagnostic 1 | PASS — ARBITER Diagnostic 1 | PASS — EXAMINER "chain pattern" field | PASS — AUDITOR Diagnostic 1 |
-| A-13 | Testability refinement yield tracked | PASS — "testability_refined_count" and "testability_residual_unknown_count" with pool breakdown; RESOLVER reads residuals | PASS — Combined yield in Section 2 | PASS — Yield in FRAMER-H1 | PASS — EVIDENCE yield counts | PASS — Section D combined yield |
-| A-14 | I-NN structured sub-pool | PASS — I-NN pool Step 3 with table rows mirroring F-NN structure; testability + confidence | PASS — Section 2 I-NN pool, same 5-col format as F-NN | PASS — FRAMER-H0 H0.3 I-NN pool | PASS — FRAMER I-NN pool table | PASS — Section C I-NN consolidated table (one per hop) + Section E confidence |
-| A-15 | Inertia pathway observability labeled | PASS — Step 3: "Inertia pathway observability: Observable/Partial/Opaque + rationale" | PASS — Section 2 header block | PASS — FRAMER-H0 H0.2: dedicated observability field | PASS — FRAMER: "Can we directly observe whether Y occurs without X?" with label | PASS — Section D aggregate of per-I-NN scope-edge observability |
-| A-16 | Post-processing role with consolidated routing table | PASS — RESOLVER produces 5-row AMEND routing table with Traceable-source column | PASS — AUDITOR produces 5-row routing table with evidence-coverage row | PASS — ARBITER produces 5-row routing table with H0-distinguishability row | PASS — EXAMINER produces 4-row routing table with CHALLENGER-survival row | PASS — AUDITOR produces 5-row routing table with triple-gap row |
-| **A-17** | **Triple-gap joint diagnostic row** | **FAIL** — RESOLVER routing table has 5 single-dimension rows; no triple-gap co-occurrence row | **FAIL** — AUDITOR row 3 is evidence-coverage (single-dimension); no triple-gap row | **FAIL** — ARBITER row 3 is H0-distinguishability (single-dimension); no triple-gap row | **FAIL** — EXAMINER row 4 is CHALLENGER-survival (single-dimension); no triple-gap row | **PASS** — AUDITOR row 5 is explicitly the triple-gap diagnostic with per-F-NN evaluation table; scope-inversion guarantees I-NN pairing is structural |
-
-**Aspirational pass counts:**
-
-| Variation | Pass count | Formula | Aspirational pts |
-|-----------|-----------|---------|-----------------|
-| V-01 | 16/17 | 16/17 × 10 | **9.41** |
-| V-02 | 16/17 | 16/17 × 10 | **9.41** |
-| V-03 | 16/17 | 16/17 × 10 | **9.41** |
-| V-04 | 16/17 | 16/17 × 10 | **9.41** |
-| V-05 | 17/17 | 17/17 × 10 | **10.00** |
-
----
+| ID | V-01 | V-02 | V-03 | V-04 | V-05 |
+|----|------|------|------|------|------|
+| C-09 | 5 | 5 | 5 | 5 | 5 |
+| C-10 | 5 | 5 | 5 | 5 | 5 |
+| C-11 | 5 | 5 | 5 | 5 | 5 |
+| C-12 | 5 | 5 | 5 | 5 | 5 |
+| C-13 | 5 | 5 | 5 | 5 | 5 |
+| C-14 | 5 | 5 | 5 | 5 | 5 |
+| C-15 | 5 | 5 | 5 | 5 | 5 |
+| C-16 | 5 | 5 | 5 | 5 | 5 |
+| C-17 | 5 | 5 | 5 | 5 | 5 |
+| C-18 | 5 | 5 | 5 | 5 | 5 |
+| C-19 | 5 | 5 | 5 | 5 | 5 |
+| C-20 | 5 | 5 | 5 | 5 | 5 |
+| C-21 | 5 | 5 | 5 | 5 | 5 |
+| C-22 | 5 | 5 | 5 | 5 | 5 |
+| C-23 | 5 | 5 | 5 | 5 | 5 |
+| C-24 | 5 | 5 | 5 | 5 | 5 |
+| C-25 | 5 | 5 | 5 | 5 | 5 |
+| C-26 | 5 | 5 | 5 | 5 | 5 |
+| C-27 | 5 | 5 | 5 | 5 | 5 |
+| C-28 | 5 | **0** | 5 | **0** | 5 |
+| C-29 | 5 | 5 | 5 | 5 | 5 |
 
 ### Composite Scores
 
-| Variation | Essential | Recommended | Aspirational | **Composite** | All Essential? | Golden? |
-|-----------|-----------|-------------|-------------|--------------|----------------|---------|
-| V-01 | 60 | 30 | 9.41 | **99.41** | Yes | **Yes** |
-| V-02 | 60 | 30 | 9.41 | **99.41** | Yes | **Yes** |
-| V-03 | 60 | 30 | 9.41 | **99.41** | Yes | **Yes** |
-| V-04 | 60 | 30 | 9.41 | **99.41** | Yes | **Yes** |
-| V-05 | 60 | 30 | 10.00 | **100.00** | Yes | **Yes** |
+| Section | V-01 | V-02 | V-03 | V-04 | V-05 |
+|---------|------|------|------|------|------|
+| Essential (60 pts) | 60 | 60 | 60 | 60 | 60 |
+| Recommended (30 pts) | 30 | 30 | 30 | 30 | 30 |
+| Aspirational (105 pts) | 105 | 100 | 105 | 100 | 105 |
+| **Total (195 pts)** | **195** | **190** | **195** | **190** | **195** |
+| Tier | Golden (ceiling) | Golden | Golden (ceiling) | Golden | Golden (ceiling) |
+
+All essential criteria pass in all five variations.
 
 ---
 
-### Ranking
+## Ranking
 
-| Rank | Variation | Score | A-17 |
-|------|-----------|-------|------|
-| 1 | **V-05** (scope-inversion + triple-gap) | **100.00** | PASS |
-| 2 | V-01 (RESOLVER / hop-gap) | 99.41 | — |
-| 2 | V-02 (5-col evidence table) | 99.41 | — |
-| 2 | V-03 (H0 null framing) | 99.41 | — |
-| 2 | V-04 (CHALLENGER-primed) | 99.41 | — |
-
-V-01 through V-04 are tied; the only score-discriminating criterion in v8 is A-17.
+1. **V-01, V-03, V-05** -- 195/195 (tied at ceiling)
+2. **V-02, V-04** -- 190/195 (C-28 FAIL)
 
 ---
 
-### Excellence Signals — V-05
+## Hypothesis Outcomes
 
-**What made V-05 the sole A-17 passer:**
+| Variation | Hypothesis | Result | Confirmed? |
+|-----------|-----------|--------|-----------|
+| V-01 | Inline "does not pass" in sub-step header satisfies C-27 (block label not required) | 195 -- C-27 PASS | YES |
+| V-02 | "confirm and extend from Phase 1" alone is NOT sufficient for C-28 (back-reference required) | 190 -- C-28 FAIL | YES |
+| V-03 | Integration rules list position alone satisfies C-29 (field-level annotation not required) | 195 -- C-29 PASS | YES |
+| V-04 | V-01 + V-02 effects are independent: C-27 PASS + C-28 FAIL = 190 | 190 -- C-28 FAIL | YES |
+| V-05 | R7 V-05 ceiling preserved; anchor-update propagation is a v9 signal | 195 -- all pass | YES |
 
-1. **Scope-inversion I-NN derivation** — I-NN conditions are not independently generated from inertia brainstorming; they are derived by inverting each hop's validity-scope condition. This makes I-NN–F-NN overlap structurally exact (no inference required), reducing triple-gap detection from "infer whether conditions overlap" to "check whether testability = Unknown and hop = Opaque."
-
-2. **Per-I-NN scope-edge observability table (Section D2)** — Rather than declaring a single top-down inertia observability label, Section D assigns a discrete Observable/Partial/Opaque to each I-NN condition's scope edge, then aggregates bottom-up. This is a qualitatively different structure than V-01/V-02/V-03/V-04's single inertia observability field — it surfaces which specific inertia pathway is unobservable rather than masking heterogeneity in an aggregate.
-
-3. **Triple-gap evaluation sub-table inside AUDITOR (Diagnostic 5)** — Not a count embedded in prose, but a per-F-NN row table with columns for connected hop, hop observability, F-NN testability, scope-paired I-NN, and a binary Yes/No triple-gap marker. Each row is independently auditable.
-
-4. **Paired-hop column in Section E final falsification table** — The final falsification table adds a "Paired hop" column for every I-NN condition, creating bidirectional I-NN↔hop traceability that parallels the F-NN↔hop link from A-08.
-
-5. **Section F scoped claim cites validity-scope conditions** — The closing claim explicitly incorporates the scope boundaries that generated the I-NN pool, making the AMEND narrow slot directly traceable to the hop validity-scopes rather than a free-form narrowing.
+All four hypotheses confirmed. No unexpected interaction effects.
 
 ---
 
-### New Patterns for R9 Consideration
+## Excellence Signals
 
-Three structural patterns visible in the R8 field that are not yet captured as rubric criteria:
+**From V-01 (195 -- C-27 inline mechanism):**
+The labeled "PROHIBITED FORM:" block is not required for C-27. The phrase "does not pass" at
+the Phase 1 declaration point is the load-bearing element. An inline parenthetical in the
+sub-step header satisfies C-27 as effectively as a standalone block. C-27 can be satisfied by
+a lighter syntactic form; the block structure is one path, not the only path.
 
-**Pattern 1 — Per-condition inertia-pathway observability (V-05 D2)**
-Inertia pathway observability assigned per I-NN condition at its scope edge, aggregated bottom-up. Existing A-15 requires only a single aggregate label; it cannot distinguish a pool where one I-NN is Observable and one is Opaque from a pool where both are Partial. A per-condition table surfaces this heterogeneity. Candidate A-18.
+**From V-02 (190 -- C-28 FAIL establishes back-reference as load-bearing):**
+"Confirm and extend the preliminary anchor from Phase 1" is NOT sufficient for C-28. The explicit
+acknowledgment "a PRELIMINARY ANCHOR is already on record from Phase 1 SUB-STEP 2" is the
+mechanism by which Phase 3 frames its work as confirmation rather than origination. Without the
+prior-record acknowledgment, Phase 3 reads as instruction to produce an anchor (which could be
+first origination) rather than instruction to confirm one that already exists. The "already on
+record" phrase is the C-28 load-bearing element.
 
-**Pattern 2 — Paired-hop column in final falsification table (V-05 Section E)**
-Both F-NN and I-NN conditions carry a "Paired hop" field in the confidence table, creating symmetric bidirectional traceability in both directions. Existing A-08 requires only hop→F-NN cross-reference; it does not require the reverse (I-NN→hop) to be declared in the confidence table. Candidate A-19.
+**From V-03 (195 -- C-29 any Phase 6 site):**
+C-29 is satisfied by any Phase 6 enforcement site. The integration rules list bullet alone
+satisfies the synthesis-phase integrity requirement. The Falsification field description
+annotation is a second site, not a required site. Either a Falsification field note or an
+integration rules bullet is sufficient for C-29.
 
-**Pattern 3 — Traceable-source column in routing table (V-01 RESOLVER)**
-Every routing table row cites the specific hops or condition IDs that produced the diagnostic finding. Existing A-16 requires a consolidated routing table but not per-row source traceability. This column makes each Required AMEND trigger auditable to the data that triggered it. Candidate A-18 alternative (different focus than V-05 pattern 1).
+**From V-05 (195 -- anchor-update propagation as v9 signal):**
+V-05 closes a gap not yet captured by any criterion: stale-anchor propagation. A model can pass
+C-26/C-27/C-28/C-29 while still carrying the Phase 1 preliminary anchor verbatim in Phase 6
+when Phase 3 updated to a higher-confidence step. V-05 adds an explicit integration rule and
+the ARTIFACT field `anchor_updated_from_phase1` to make this observable. This is the v9
+candidate criterion.
+
+---
+
+## V9 Candidate Criterion
+
+**C-30 (proposed): Phase 6 Falsification tracks Phase 3 anchor update**
+
+When Phase 3 updates the preliminary anchor to a higher-confidence step, Phase 6 Falsification
+must carry the updated step -- not the Phase 1 preliminary anchor verbatim. Carrying the Phase 1
+anchor unchanged when Phase 3 identified a better step is a stale-anchor propagation failure.
+If Phase 3 confirmed without updating, Phase 6 carrying the Phase 1 anchor verbatim is correct.
+
+Gradeability: requires C-26 PASS and C-28 PASS. Scored only when PATHWAY INCOMPLETE triggers.
+Observable via ARTIFACT field `anchor_updated_from_phase1: true | false | n/a`.
+
+V-01 through V-04 do not have this rule. V-05 has it. V-05 is the baseline for C-30.
+
+---
+
+## Criteria Summary (v8)
+
+| Tier | IDs | Max pts | All-variation result |
+|------|-----|---------|---------------------|
+| Essential | C-01 through C-05 | 60 | All PASS (60/60) |
+| Recommended | C-06 through C-08 | 30 | All PASS (30/30) |
+| Aspirational | C-09 through C-29 | 105 | C-28 varies (V-02, V-04 FAIL) |
+
+**C-28 is the sole differentiating criterion in R8.** V-02 and V-04 fail it (-5 pts each).
+All other criteria pass in all five variations.
+
+---
 
 ```json
-{"top_score": 100.0, "all_essential_pass": true, "new_patterns": ["per-I-NN scope-edge observability table with bottom-up aggregate — surfaces inertia pathway observability heterogeneity not visible in a single aggregate label", "paired-hop column in final falsification table for I-NN conditions — symmetric bidirectional traceability matching A-08 F-NN cross-reference", "traceable-source column in AMEND routing table — each routing row cites specific hop or condition IDs that triggered the Required verdict"]}
+{"top_score": 195, "all_essential_pass": true, "new_patterns": ["C-27 phrase is load-bearing not the block label: inline 'does not pass' in the sub-step header satisfies C-27", "C-28 back-reference 'already on record from Phase 1 SUB-STEP 2' is load-bearing: 'confirm and extend from Phase 1' without explicit prior-record acknowledgment does not pass", "C-29 is satisfied by any Phase 6 position: integration rules list bullet alone satisfies the synthesis-phase integrity requirement", "V9 candidate C-30: Phase 6 Falsification must track Phase 3 anchor update -- stale-anchor propagation failure detectable via ARTIFACT field anchor_updated_from_phase1"]}
 ```

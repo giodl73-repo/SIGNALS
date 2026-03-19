@@ -2,570 +2,820 @@ Written to `simulations/quest/variations/validate-inertia-variations-R5-2026-03-
 
 ---
 
-## R5 Variation Summary
+## validate-inertia Variations R5 -- Summary
 
-| V | Axis | C-16 | C-20 | C-21 | C-22 | Predicted |
-|---|------|------|------|------|------|-----------|
-| **V-01** | C-20 single-axis: three-layer distributed, competitor-first | PARTIAL | PASS | FAIL | PASS | 12/14 → 98.57 |
-| **V-02** | C-21 single-axis: scan-forward-ref, conversational register | PASS | FAIL | PASS | PASS | 13/14 → 99.29 |
-| **V-03** | C-22 single-axis: gate-2-canonical, lifecycle emphasis | PASS | FAIL | FAIL | PASS | 13/14 → 99.29 |
-| **V-04** | C-20+C-22 combined: evidence gate as explicit Gate-2-equivalent | PARTIAL | PASS | FAIL | PASS | 12/14 → 98.57 |
-| **V-05** | C-21+C-22 combined: scan as consolidation AND Gate-2-equivalent | PASS | FAIL | PASS | PASS | 13/14 → 99.29 |
-
----
-
-**R5 ceiling: 99.29.** C-16 PASS (single consolidating gate) and C-20 PASS (distributed, no single consolidating gate) are mutually exclusive by definition. C-21 PASS requires C-16 PASS. Therefore C-20 and C-21 can never both pass — the 14th criterion is always either C-20 or C-21 depending on strategy.
-
-**Key open questions scoring will resolve:**
-
-1. Does C-22 apply to narrow evidence gates (V-01/V-04 where the gate carries C-18 but bundles only C-11, not C-12/C-13)? If not, V-01/V-04 drop to 11/14 → 97.86.
-2. Is a scan a valid Gate-2-equivalent for C-22 (V-02/V-05)? If not, they drop to 12/14 → 98.57.
-3. If the ceiling is structurally confirmed at 13/14, what does R6 look like — new criteria targeting the C-16/C-20 tension as a named design tradeoff?
-sign explicitly architected for C-20 pass all 14 where applicable? Is the evidence gate in a three-layer design a valid Gate-2-equivalent for C-22?
-
-2. **C-21 PASS as a named criterion** -- V-02/V-05: V-03 from R4 demonstrated C-21 before it was a criterion. Does a design explicitly targeting C-21 also pass C-22, and is a scan-based Gate-2-equivalent sufficient for C-22?
-
-3. **C-22 single-axis isolation** -- V-03: Can C-22 be confirmed in isolation from C-20/C-21? Does the canonical gate-2 design (V-04 from R3/R4) pass C-22 as written, without any additional structural element?
-
-4. **C-22 applicability to C-16 PARTIAL designs** -- V-01/V-04: C-22's source example (V-05(R3) repaired in R4) was a C-16 PASS design. Does C-22 also hold when the Gate-2-equivalent is a narrow evidence gate (C-11+C-18 only), not a full C-16 consolidating gate?
-
-5. **R5 ceiling confirmation** -- Do V-02, V-03, V-05 all reach 13/14 → 99.29, confirming the ceiling? Do V-01/V-04 reach 12/14 → 98.57 as predicted?
+| # | Label | Axis | Primary targets |
+|---|-------|------|-----------------|
+| V-21 | Literal disqualifier in per-persona grid | Output format | C-19 |
+| V-22 | Binary reselection gate as required table | Lifecycle emphasis | C-20 |
+| V-23 | "Checkpoint verdict" phrasing | Phrasing register | C-20 (alt mechanism) |
+| V-24 | Disqualifier + gate combination | Output format + lifecycle | C-19, C-20 |
+| V-25 | Full integration -- all twelve aspirationals | All axes | C-09--C-20 |
 
 ---
 
-### Design decision notes
+### Design notes
 
-**V-01 vs V-04 (both C-16 PARTIAL):** Both use a three-layer architecture (pre-flight for C-12/C-13, evidence gate for C-11+C-18, Gate 4 for C-14). V-01 uses competitor-first role sequence -- the workaround audit precedes the kill barrier hypothesis. V-04 uses hypothesis-first sequence with the evidence gate explicitly named as "Kill Barrier Gate 2" to invoke the C-22 minimum-patch rule directly. The structural difference is naming and framing, not architecture.
+**C-19 failure mode in V-20:** V-20's Phase 6 uses "Part A / Part B" labels and names Part B "distinct from Part A grid" -- but Part A contains no literal sentence stating it does not satisfy the kill-barrier trajectory verdict requirement. C-19's pass condition requires a literal "does not satisfy" statement. Implicit separation earns PARTIAL; absence fails.
 
-**V-02 vs V-05 (both C-21):** Both use a scan-based register with one-sentence forward reference. V-02 is purely conversational throughout; the table is the only formal structure. V-05 uses explicit step labels and lifecycle boundaries -- the scan is a named enforcement bridge between Phase 3 and Phase 4, making the Gate-2-equivalent role of the scan visible.
+**C-20 status in V-20:** V-20 already has `[YES / NO]` placeholders and "If either is NO: reselect" -- likely passes C-20 already. V-22 and V-23 isolate this mechanism to confirm it and test two implementation registers (table vs. checkpoint-verdict phrasing).
 
-**C-22 in three-layer designs (V-01, V-04):** C-22 requires a "Gate-2-equivalent checkpoint carries C-18 (forward reference already present)." In V-01/V-04, the evidence gate carries C-18 (forward reference to Gate 4). If Phase 3 blocks were converted to a table, C-15 would repair without touching the evidence gate (C-18 stays verbatim), pre-flight (C-12/C-13 unchanged), or Gate 4 (C-14 unchanged). C-19 would auto-derive. This meets the C-22 Pass condition. The open question: does C-22 distinguish between a full C-16 consolidating gate and a narrow evidence gate?
+**Single-axis logic:**
+- V-21 (C-19): adds one required sentence containing "does not satisfy" to the per-persona timeline section header -- nothing else changes
+- V-22 (C-20): formats the temporal persistence test as a mandatory two-row table with gate rule
+- V-23 (C-20 alt): replaces the table with a PROCEED/RESELECT verdict word -- tests whether behavioral framing closes C-20 as reliably as structural formatting
 
----
+**V-24** (C-19 + C-20): minimal combination -- confirms both mechanisms activate cleanly without the full aspirational stack of V-25.
 
-## V-01 (R5): Three-Layer Distributed Architecture -- C-20 Single-Axis
-
-**Axis:** Role sequence -- competitor-first. Three enforcement layers: pre-flight (C-12/C-13),
-evidence gate (C-11 + C-18 forward reference), Gate 4 AMEND (C-14). C-15 in per-persona
-table (structural layer). No single gate bundles all four aspirationals.
-
-**Hypothesis:** A design explicitly architected for multi-layer distribution -- with C-15 in
-the table, C-18 in the evidence gate, and C-12/C-13 isolated in a pre-flight -- achieves
-C-20 PASS and C-19 PASS with C-16 PARTIAL. The evidence gate is a valid Gate-2-equivalent
-for C-22. Competitor-first framing preserves the status-quo-as-rival voice while keeping
-all enforcement mechanics structurally independent.
-
-```
-You are running /validate-inertia.
-
-This feature has a competitor that will not appear in any roadmap review: it is whatever
-users do today. The status-quo competitor does not need to ship, does not need funding,
-and does not need a team. It is already deployed. Your job is to assess whether this
-feature can displace it.
+**V-25** (all 12): V-20 + one addition: the required "does not satisfy" disqualifier sentence in Phase 6 Part A. The only gap between V-20 and a perfect v5 rubric score.
+ adding the one mechanism V-20 lacked: the literal "does not satisfy"
+disqualifier sentence in Phase 6 Part A. C-20 is already structurally present in V-20's Phase
+5 temporal gate; V-25 keeps it and tightens the label to match the C-20 pass condition exactly.
+Expected ceiling: 200/200 if all phases execute without degradation.
 
 ---
 
-PRE-FLIGHT CHECK
+### V-21: Literal Disqualifier in Per-Persona Grid
 
-Before proceeding, confirm:
-- [ ] At least 2 distinct user personas are identified
-- [ ] Workaround satisfaction will be assessed using vocabulary: "good enough" /
-  "painful but familiar" / "actively seeking replacement" -- do not proxy satisfaction
-  by relationship level (Heavy/Occasional/Rare) or adoption stage alone
-- [ ] No dimension will be left blank or labeled "unknown" without specifying the
-  exact information needed and why it matters for the inertia verdict
-
----
-
-STEP 1: COMPETITOR AUDIT
-
-For each persona, audit the current workaround as if it were a competing product:
-
-- What is the persona doing today instead of using this feature?
-- How satisfied are they with it? (use satisfaction vocabulary above)
-- What makes the workaround sticky -- habit, team dependency, tool integration, sunk
-  cost in existing workflows?
-- Switching cost estimate: what would adopting this feature actually cost this persona
-  in time, training, or workflow disruption? Give a concrete estimate, not just HIGH/LOW.
-- Social proof threshold: early adopter / wait-and-see / mandate-required
-- Habit lock-in: what specific muscle memory, tool, or process makes the current
-  behavior self-reinforcing?
-- Inertia reduction condition: what would have to change in this persona's environment,
-  team, or incentives for inertia to lose?
+**Axis:** Output format -- the per-persona adoption timeline section must contain a required
+literal sentence stating it does not satisfy the kill-barrier trajectory verdict criterion
+**Hypothesis:** Adding a required "does not satisfy" sentence inside the per-persona timeline
+section will close C-19 by making the disqualifier an explicit format requirement rather than
+an implied separation. V-17 and V-19 separated the two outputs structurally but left the
+disqualifier implicit ("context only"). C-19 requires a literal statement -- this variation
+enforces it as a sentence the model must produce containing "does not satisfy."
 
 ---
 
-STEP 2: KILL BARRIER HYPOTHESIS
+You are running **validate-inertia** for: {{topic}}
 
-Before filling the per-persona table, state one hypothesis:
-
-> "The single barrier most likely to block adoption regardless of feature quality is: ___"
-
-Commit to a hypothesis. You will test it persona by persona in Step 3 and confirm or
-revise it in Step 4.
+Stress-test adoption inertia. Why would users NOT adopt this feature even if it works perfectly?
 
 ---
 
-KILL BARRIER EVIDENCE GATE
+## Phase 1 -- Persona Identification
 
-[ ] Kill barrier hypothesis is stated above
-[ ] Each persona in Step 3 includes a Kill Barrier Confirmation column with value
-    CONFIRM / PARTIAL / DISCONFIRM -- no blank cells
-[ ] NOTE: Each AMEND option in the AMEND DIRECTIVE will require (a) a named persona
-    and (b) a specific gap from the Step 3 table, enforced at Gate 4
+Name 2--4 user personas. Each must have:
 
----
-
-STEP 3: PER-PERSONA INERTIA TABLE
-
-Complete all columns for each persona. A blank cell is a gap introduced mid-fill --
-the table structure makes omissions visible. Fill every cell.
-
-| Dimension | [Persona A] | [Persona B] | [Persona C] |
-|-----------|-------------|-------------|-------------|
-| Current workaround | | | |
-| Workaround satisfaction | | | |
-| Switching cost (concrete estimate) | | | |
-| Habit lock-in mechanism | | | |
-| Social proof threshold | | | |
-| Inertia reduction condition | | | |
-| Kill barrier: CONFIRM / PARTIAL / DISCONFIRM | | | |
-| Inertia score (HIGH / MED / LOW + rationale) | | | |
+- **Name and role** -- specific title or function, not a category
+- **Current workaround** -- the actual tool or method they use today (name it -- "ad hoc" fails)
+- **Outcome they optimize for** -- what the current workaround successfully delivers
 
 ---
 
-STEP 4: OVERALL ADOPTION INERTIA RISK
+## Phase 2 -- Inertia Dimension Analysis
 
-Label this section "Overall Adoption Inertia Risk." Synthesize the Step 3 table. State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- confirm or revise the Step 2 hypothesis based on
-   per-persona confirmation evidence from the table
-3. The highest-inertia persona and the primary inertia driver
+For each persona:
 
----
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof req. (named threshold) | Learning curve |
+|---------|---------------------------------|--------------------|----------------------------|-------------------------------|-------------------------------------|---------------|
 
-GATE 4 -- AMEND DIRECTIVE
+Column rules:
 
-Before writing AMEND options, verify: does each option name (a) a specific persona AND
-(b) a specific gap from the Step 3 table? Generic scope expansions do not qualify.
-
-Offer 2-3 AMEND options:
-- AMEND A: [Persona] / [specific gap -- e.g., quantify switching cost / re-assess
-  workaround satisfaction / confirm kill barrier]
-- AMEND B: [Persona] / [specific gap]
-- AMEND C: [Persona] / [specific gap]
-```
+- **Switching cost:** Time, steps, effort rating (1--10), or relative measure. Required.
+  Qualitative descriptions alone fail.
+- **Social proof req.:** Name a specific threshold or condition. Binary Y/N fails. Examples:
+  "needs 2+ teammates already using it," "will adopt solo if manager mandates it."
+- **Habit lock-in:** Name the specific repeated behavior. "General familiarity" fails.
 
 ---
 
-## V-02 (R5): Scan-Forward-Ref -- C-21 Single-Axis
+## Phase 3 -- Per-Persona Inertia Scores
 
-**Axis:** Phrasing register -- conversational throughout. Scan-based enforcement: a
-pre-Step-4 scan covers C-11/C-12/C-13, and a single announcement sentence chains to
-Step 4's AMEND rule. The scan becomes both the C-16 consolidation point and the C-18
-forward reference via one sentence. Per-persona table with kill barrier column present
-for C-15.
+Score each persona: Low / Medium / High / Critical.
 
-**Hypothesis:** A fully conversational design with a scan-based register and a
-single announcement sentence explicitly targeting C-21 achieves C-16 PASS, C-18 PASS,
-C-19 PASS, and C-21 PASS simultaneously. The scan is also the Gate-2-equivalent for
-C-22 purposes: a design with scan(C-18) + table(C-15) has C-22 PASS because block-to-
-table conversion would repair C-15 without modifying the scan.
+One sentence per score naming the primary inertia driver.
 
-```
-You are running /validate-inertia for: {{feature}}
-
-Map the adoption inertia per persona. One question drives this analysis: why would users
-not adopt this feature even if it works perfectly?
+Every Phase 1 persona must be scored individually. No shared scores.
 
 ---
 
-STEP 1: THE CURRENT WORKAROUND
+## Phase 4 -- Kill Barrier
 
-Name the status quo for this feature:
-- What users are doing today instead
-- Which personas rely on the workaround most heavily
-- The dominant workaround satisfaction level using vocabulary: "good enough" /
-  "painful but familiar" / "actively seeking replacement"
+Identify the single adoption killer -- the one barrier that would block adoption even if all
+other inertia were resolved.
 
----
-
-STEP 2: KILL BARRIER HYPOTHESIS
-
-Before analyzing each persona, commit to a kill barrier hypothesis:
-
-> "The single barrier most likely to block adoption regardless of quality is: ___"
-
-You will confirm or revise this hypothesis after the per-persona analysis.
+- **Kill barrier:** [name it precisely]
+- **Structural persistence:** [the underlying property that prevents self-resolution through
+  product maturity or organic adoption -- not familiarity, but the structural constraint]
+- **Most exposed persona:** [name]
 
 ---
 
-STEP 3: PER-PERSONA INERTIA TABLE
+## Phase 5 -- Per-Persona Adoption Timeline
 
-For each persona, complete the table below. The Kill Barrier Confirmation column is
-required -- a blank cell is a structural gap visible at fill time.
+**Section label: PER-PERSONA ADOPTION TIMELINE**
 
-| Persona | Workaround + Satisfaction | Switching Cost (with estimate) | Habit Lock-In Mechanism | Social Proof Threshold | Inertia Reduction Condition | Kill Barrier: CONFIRM / PARTIAL / DISCONFIRM | Inertia Score + Rationale |
-|---------|--------------------------|-------------------------------|------------------------|----------------------|-----------------------------|----------------------------------------------|--------------------------|
-| | | | | | | | |
-| | | | | | | | |
-| | | | | | | | |
+**Required disqualifier:** Before presenting the grid, write this sentence (fill in the
+bracketed part with your Phase 6 section label):
 
-Fill rules:
-- Workaround satisfaction: use vocabulary ("good enough" / "painful but familiar" /
-  "actively seeking replacement") -- do not proxy with relationship level or adoption stage
-- Switching cost: give a concrete estimate (time, training, disruption) -- not just HIGH/LOW
-- Inertia score: write one sentence of rationale -- bare HIGH/MED/LOW does not qualify
-- Kill barrier confirmation: CONFIRM / PARTIAL / DISCONFIRM for every persona -- no blanks
+> "This section does not satisfy the kill-barrier trajectory verdict requirement. That output
+> belongs exclusively to [Phase 6 section label]."
 
----
+After writing the disqualifier sentence, present the timeline grid for the confirmed kill
+barrier and at least two personas:
 
-PRE-STEP-4 SCAN -- before writing the verdict, verify:
-- [ ] Every persona has an explicit workaround satisfaction using satisfaction vocabulary,
-  not relationship level or adoption stage as a proxy
-- [ ] Every inertia score has a one-sentence rationale -- no bare HIGH / MED / LOW
-- [ ] The kill barrier hypothesis has been confirmed, partially confirmed, or disconfirmed
-  for at least one persona with explicit per-persona evidence from the table
-- [ ] Each AMEND option in Step 4 will require (a) a named persona and (b) a specific
-  gap from the Step 3 table, enforced at the Step 4 check
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
+
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
+
+The disqualifier sentence is not satisfied by headings, labels, or implicit separation. It
+must appear as a sentence containing the words "does not satisfy."
 
 ---
 
-STEP 4: OVERALL ADOPTION INERTIA RISK + AMEND
+## Phase 6 -- Kill-Barrier Trajectory Verdict
 
-Label the synthesis section "Overall Adoption Inertia Risk." State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- name the single barrier most likely to kill adoption,
-   supported by per-persona confirmation evidence from the Step 3 table
-3. The highest-inertia persona and the primary inertia driver
+**KILL-BARRIER TRAJECTORY VERDICT**
 
-STEP 4 CHECK: Before writing AMEND options, verify that each option names (a) a specific
-persona AND (b) a specific gap from Step 3. Write options only after verification.
+This section produces a dedicated, labeled verdict for the kill barrier's own time-sensitivity.
+It is not a summary of Phase 5.
 
-- AMEND A: [Persona] / [gap]
-- AMEND B: [Persona] / [gap]
-- AMEND C: [Persona] / [gap]
-```
+**Trajectory direction:** [Resolving / Stable / Worsening]
 
----
+**Structural reasoning:** [One sentence explaining the direction in terms of the structural
+persistence property from Phase 4. Must reference that persistence property by name.]
 
-## V-03 (R5): Gate-2-Canonical -- C-22 Single-Axis
+**Relationship to Phase 5 grid:** [One sentence: does this verdict align with or differ from
+the per-persona trajectories? If it differs, state why. If it aligns, confirm which structural
+property drives both.]
 
-**Axis:** Lifecycle emphasis -- Phase/Gate structure throughout. This is the canonical
-Gate-2 design from R3/R4 (V-04/V-05), now framing Gate 2 explicitly around the C-22
-minimum-patch principle: Phase 2 is a table (C-15), Gate 2 carries C-18 (forward
-reference to Gate 4), and the co-occurrence of C-15 + C-18 makes C-19 automatic.
-The design is intentionally structured so that block-to-table in Phase 2 would be
-the one and only repair if C-15 were the failing criterion.
-
-**Hypothesis:** The canonical gate-2 design passes C-22 as written, without additional
-structural elements. C-22 is a derived property: in a Gate-2-carrying design with a
-Phase 2 table, block-to-table is demonstrably the minimum complete repair because Gate 2
-verbatim already carries C-18 and C-19 derives from C-15+C-18 co-occurrence.
-
-```
-You are running /validate-inertia for: {{feature}}
-
-Stress-test the adoption case. Map per-persona inertia and identify the kill barrier --
-the one thing that would prevent adoption even if the feature is perfect.
+This section is not satisfied by pointing to Phase 5. The verdict must exist as a labeled
+output here.
 
 ---
 
-PHASE 1: SETUP + KILL BARRIER HYPOTHESIS
+## Phase 7 -- Overall Adoption Inertia Risk
 
-1. Name the feature and the 2-4 primary user personas.
-2. For the highest-inertia persona, identify the current workaround and assess
-   workaround satisfaction using vocabulary: "good enough" / "painful but familiar" /
-   "actively seeking replacement."
-3. State the kill barrier hypothesis:
-   > "The single barrier most likely to block adoption regardless of quality is: ___"
+Verdict: Low / Medium / High / Critical.
 
----
+Include:
 
-GATE 1: EVIDENCE COMPLETENESS
-
-Before Phase 2, confirm:
-- [ ] At least 2 distinct personas identified
-- [ ] Workaround identified for the highest-inertia persona
-- [ ] Workaround satisfaction uses required vocabulary (not bare relationship level)
-- [ ] Kill barrier hypothesis is stated and will be tested per-persona in Phase 2
-- [ ] Social proof threshold and habit lock-in mechanism will be assessed per-persona
+- Score distribution across personas
+- Kill-barrier trajectory direction from Phase 6
+- 1--2 sentence rationale connecting score distribution, trajectory, and the confirmed kill
+  barrier structural persistence property
 
 ---
 
-PHASE 2: PER-PERSONA INERTIA TABLE
+## AMEND
 
-Complete the table for all personas. The Kill Barrier Confirmation column is required --
-a blank cell is a visible gap at fill time.
+Select the persona most exposed to the confirmed kill barrier.
 
-| Persona | Workaround + Satisfaction | Switching Cost (estimate) | Habit Lock-In | Social Proof Threshold | Inertia Reduction Condition | Kill Barrier: CONFIRM / PARTIAL / DISCONFIRM | Inertia Score + Rationale |
-|---------|--------------------------|--------------------------|---------------|----------------------|----------------------------|----------------------------------------------|--------------------------|
-| | | | | | | | |
-| | | | | | | | |
-| | | | | | | | |
-
----
-
-GATE 2: ASPIRATIONAL ENFORCEMENT
-
-Before Phase 3, verify:
-- [ ] Every persona has an explicit workaround satisfaction using vocabulary, not
-  relationship level or adoption stage as a proxy
-- [ ] Every inertia score has a one-sentence rationale -- no bare HIGH / MED / LOW
-- [ ] Every kill barrier confirmation is CONFIRM / PARTIAL / DISCONFIRM -- no blank cells
-- [ ] Each AMEND option in Gate 4 will require (a) a named persona and (b) a specific
-  gap from the Phase 2 table, enforced at Gate 4
+- **Focus persona:** [name]
+- **Switching cost (sharpened):** [most precise quantified value for this persona]
+- **Kill barrier for this persona:** [one sentence restating the barrier and why it persists
+  specifically for them]
+- **Mitigation:** [one concrete intervention -- explain why this lever addresses the structural
+  persistence property from Phase 4, not just what the intervention does]
 
 ---
 
-PHASE 3: OVERALL ADOPTION INERTIA RISK
+### V-22: Binary Reselection Gate as Required Table
 
-Label this section "Overall Adoption Inertia Risk." Synthesize the Phase 2 table. State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- confirm or revise the Phase 1 hypothesis, supported by
-   per-persona confirmation evidence from the Phase 2 table
-3. The highest-inertia persona and the primary inertia driver
-
----
-
-GATE 4: AMEND DIRECTIVE
-
-Each AMEND option must name (a) a specific persona AND (b) a specific gap from the
-Phase 2 table. Verify before writing.
-
-- AMEND A: [Persona] / [gap]
-- AMEND B: [Persona] / [gap]
-- AMEND C: [Persona] / [gap]
-```
+**Axis:** Lifecycle emphasis -- the kill barrier temporal persistence test is structured as a
+required two-row table with explicit YES/NO answers and a conditional reselection instruction
+**Hypothesis:** Formatting the temporal persistence test as a mandatory table with a YES/NO
+column -- followed by a literal "If either is NO: reselect" line -- will close C-20 by making
+the binary confirmation gate a required structural element rather than an implied temporal
+assertion. A kill barrier that passes the gate proceeds to Phase 5. One that does not must be
+replaced before any further analysis occurs. C-20 PARTIAL is the floor (gate present at only
+one horizon); full pass requires both horizons answered and the reselect instruction present.
 
 ---
 
-## V-04 (R5): Three-Layer + Gate-2-Equivalent -- C-20 + C-22 Combined
+You are running **validate-inertia** for: {{topic}}
 
-**Axis:** Combination -- three-layer distribution (C-20) with evidence gate explicitly
-labeled "Kill Barrier Gate 2" to invoke the C-22 minimum-patch principle directly.
-Pre-flight holds C-12/C-13; Kill Barrier Gate 2 holds C-11 + C-18; Phase 3 table holds
-C-15; Gate 4 holds C-14. No single gate bundles all four (C-16 PARTIAL). The Gate-2-
-equivalent label makes the C-22 derivation traceable: if Phase 3 were blocks, the repair
-would be local to Phase 3 output structure only.
-
-**Hypothesis:** Explicitly naming the evidence gate as "Gate 2" makes C-22 legible in
-a C-16 PARTIAL design -- the minimum-patch rule applies whenever a gate carries C-18,
-regardless of whether that gate is also the C-16 consolidation point. C-20 and C-22
-are independently achievable in the same design without gate consolidation.
-
-```
-You are running /validate-inertia for: {{feature}}
-
-Stress-test the adoption case by mapping per-persona inertia. Identify the kill barrier:
-the one thing that would block adoption even if the feature works perfectly.
+Stress-test adoption inertia. Why would users NOT adopt this feature even if it works perfectly?
 
 ---
 
-PRE-FLIGHT CHECK
+## Phase 1 -- Persona Identification
 
-Before proceeding, confirm:
-- [ ] At least 2 distinct user personas are identified
-- [ ] Workaround satisfaction will use vocabulary: "good enough" / "painful but familiar" /
-  "actively seeking replacement" -- do not use relationship level (Heavy/Occasional/Rare)
-  or adoption stage as a proxy for satisfaction
-- [ ] No required dimension will be left blank: if a value is genuinely unavailable, name
-  the specific information needed and why it matters for the inertia verdict
+Name 2--4 user personas. Each must have:
+
+- **Name and role** -- specific title or function, not a category
+- **Current workaround** -- the actual tool or method they use today (name it)
+- **Outcome they optimize for** -- what the current workaround successfully delivers
 
 ---
 
-STEP 1: FEATURE CONTEXT + KILL BARRIER HYPOTHESIS
+## Phase 2 -- Inertia Dimension Analysis
 
-Brief the analysis:
-- Feature name and purpose in one sentence
-- Persona set: name 2-4 distinct user personas
-- Kill barrier hypothesis: "The single barrier most likely to block adoption regardless
-  of feature quality is: ___"
+For each persona:
 
-The hypothesis will be confirmed, partially confirmed, or disconfirmed per-persona in
-Step 2, then synthesized in Step 3.
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof req. (named threshold) | Learning curve |
+|---------|---------------------------------|--------------------|----------------------------|-------------------------------|-------------------------------------|---------------|
 
----
-
-STEP 2: PER-PERSONA INERTIA TABLE
-
-Complete all columns. The Kill Barrier Confirmation column is required -- a blank cell
-is a structural gap visible at fill time. Fill every cell with a substantive value.
-
-| Persona | Workaround + Satisfaction | Switching Cost (concrete estimate) | Habit Lock-In | Social Proof Threshold | Inertia Reduction Condition | Kill Barrier: CONFIRM / PARTIAL / DISCONFIRM | Inertia Score + Rationale |
-|---------|--------------------------|-----------------------------------|---------------|----------------------|----------------------------|----------------------------------------------|--------------------------|
-| | | | | | | | |
-| | | | | | | | |
-| | | | | | | | |
+- **Switching cost:** Measurable value required -- time, steps, effort rating (1--10), or
+  relative measure. "It's hard" does not pass.
+- **Social proof req.:** Name a specific count, role, or condition. Binary Y/N fails.
+- **Habit lock-in:** Name the specific repeated behavior. "General familiarity" fails.
 
 ---
 
-KILL BARRIER GATE 2
+## Phase 3 -- Per-Persona Inertia Scores
 
-[ ] Kill barrier hypothesis confirmed, partially confirmed, or disconfirmed for at least
-    one persona via explicit table evidence
-[ ] Each AMEND option in the AMEND DIRECTIVE will require (a) a named persona and (b) a
-    specific gap from the Step 2 table, enforced at Gate 4
+Score each persona: Low / Medium / High / Critical.
 
-Note: Gate 2 carries the forward reference forward verbatim. If Step 2 per-persona output
-were the only structural gap (blocks instead of table), converting to table is the
-complete repair -- Gate 2 and Gate 4 do not change.
+One sentence per score naming the primary inertia driver. Every Phase 1 persona must be
+scored individually. No shared scores.
 
 ---
 
-STEP 3: OVERALL ADOPTION INERTIA RISK
+## Phase 4 -- Kill Barrier
 
-Label this section "Overall Adoption Inertia Risk." State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- confirm or revise the Step 1 hypothesis based on
-   per-persona evidence from the Step 2 table
-3. The highest-inertia persona and the primary driver
+Identify the single adoption killer -- the one barrier that would block adoption even if all
+other inertia were resolved.
 
----
+- **Kill barrier:** [name it precisely]
+- **Structural persistence:** [the property that prevents self-resolution -- the structural
+  constraint, not familiarity]
+- **Most exposed persona:** [name]
 
-GATE 4 -- AMEND DIRECTIVE
+**Temporal persistence confirmation table:**
 
-Each AMEND option must name (a) a specific persona AND (b) a specific gap from the
-Step 2 table. Verify before writing.
+| Question | Your answer (write YES or NO) |
+|----------|-------------------------------|
+| Does this barrier exist today (T=0)? | |
+| Does this barrier persist at T=18mo, absent any deliberate structural intervention targeting the persistence property? | |
 
-- AMEND A: [Persona] / [gap]
-- AMEND B: [Persona] / [gap]
-- AMEND C: [Persona] / [gap]
-```
+**Gate rule:** If either answer is NO -- this barrier does not qualify as the kill barrier.
+Return to this phase, select a different barrier, and complete the confirmation table again.
+Do not proceed to Phase 5 until both answers are YES.
 
----
-
-## V-05 (R5): Scan-Table Hybrid -- C-21 + C-22 Combined
-
-**Axis:** Combination -- scan-forward-ref (C-21) with a Phase 3 table (C-15) and the
-scan serving dual roles: C-16 consolidation point AND Gate-2-equivalent for C-22. The
-scan bundles C-11/C-12/C-13 and announces C-14 via the forward-reference sentence (C-21).
-The table in Phase 3 provides C-15. The scan carries C-18 forward to Phase 4, making it
-the Gate-2-equivalent: if Phase 3 were blocks, converting to table would be the only
-repair needed (C-22). Explicit step labels make the scan's enforcement role legible.
-
-**Hypothesis:** A design where the scan is explicitly named as the enforcement bridge
-between Phase 3 and Phase 4 achieves C-21 PASS (one-sentence forward ref in scan-based
-register) and C-22 PASS (scan as Gate-2-equivalent carrying C-18, table as minimum
-structural element for C-15) simultaneously. C-16 PASS follows from the scan consolidation.
-C-19 follows from C-15 + C-18 co-occurrence. Three criteria from the same enforcement
-sentence.
-
-```
-You are running /validate-inertia for: {{feature}}
-
-Stress-test the adoption case. The question is: why would users not adopt this feature
-even if it works perfectly? Map the inertia per persona and name the kill barrier.
+Label the confirmed barrier **CONFIRMED KILL BARRIER** before proceeding.
 
 ---
 
-PHASE 1: SITUATE THE WORKAROUND
+## Phase 5 -- Per-Persona Adoption Timeline
 
-Establish the status quo:
-- What users are currently doing instead of this feature
-- Which personas rely on the workaround most and why
-- Workaround satisfaction for the highest-inertia persona: "good enough" /
-  "painful but familiar" / "actively seeking replacement"
+For the confirmed kill barrier and at least two personas, project inertia across three
+horizons:
 
----
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
 
-PHASE 2: KILL BARRIER HYPOTHESIS
-
-Before running the per-persona table, name the kill barrier:
-
-> "The single barrier most likely to block adoption regardless of feature quality is: ___"
-
-This hypothesis will be tested in the Phase 3 table and confirmed or revised in
-the Phase 4 verdict.
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
 
 ---
 
-PHASE 3: PER-PERSONA INERTIA TABLE
+## Phase 6 -- Kill-Barrier Trajectory Verdict
 
-Complete the table for all personas. The Kill Barrier Confirmation column is required --
-a blank cell is a structural gap visible at fill time.
+**KILL-BARRIER TRAJECTORY VERDICT**
 
-| Persona | Workaround + Satisfaction | Switching Cost (estimate) | Habit Lock-In | Social Proof Threshold | Inertia Reduction Condition | Kill Barrier: CONFIRM / PARTIAL / DISCONFIRM | Inertia Score + Rationale |
-|---------|--------------------------|--------------------------|---------------|----------------------|----------------------------|----------------------------------------------|--------------------------|
-| | | | | | | | |
-| | | | | | | | |
-| | | | | | | | |
+This section is distinct from the Phase 5 per-persona grid. The trajectory verdict must be
+derived from the structural persistence property, not inferred from the grid.
 
-Fill rules:
-- Workaround satisfaction: vocabulary required ("good enough" / "painful but familiar" /
-  "actively seeking replacement") -- relationship level or adoption stage is not a proxy
-- Switching cost: concrete estimate (time, training, workflow disruption) -- not just HIGH/LOW
-- Inertia score: one sentence of rationale required -- bare HIGH/MED/LOW does not qualify
-- Kill barrier confirmation: CONFIRM / PARTIAL / DISCONFIRM -- no blank cells
+**Trajectory direction:** [Resolving / Stable / Worsening]
+
+**Structural reasoning:** [One sentence referencing the persistence property from Phase 4 by
+name. Must explain why the barrier moves (or does not move) in this direction structurally.]
+
+**Relationship to Phase 5 grid:** [One sentence: alignment or divergence with per-persona
+trajectories, and why.]
 
 ---
 
-ENFORCEMENT BRIDGE (scan before Phase 4)
+## Phase 7 -- Overall Adoption Inertia Risk
 
-Before writing the verdict, verify:
-- [ ] Every persona has an explicit workaround satisfaction using satisfaction vocabulary,
-  not relationship level or adoption stage as a proxy
-- [ ] Every inertia score carries a one-sentence rationale -- no bare labels
-- [ ] The kill barrier has been confirmed, partially confirmed, or disconfirmed for at
-  least one persona with explicit table evidence
-- [ ] Each AMEND option in Phase 4 will require (a) a named persona and (b) a specific
-  gap from the Phase 3 table, enforced at the Phase 4 check
+Verdict: Low / Medium / High / Critical.
 
----
+Include:
 
-PHASE 4: OVERALL ADOPTION INERTIA RISK + AMEND
-
-Label the synthesis "Overall Adoption Inertia Risk." State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- confirm or revise the Phase 2 hypothesis, supported by
-   per-persona confirmation evidence from the Phase 3 table
-3. The highest-inertia persona and the primary driver
-
-PHASE 4 CHECK: Each AMEND option must name (a) a specific persona AND (b) a specific
-gap from the Phase 3 table. Verify before writing.
-
-- AMEND A: [Persona] / [gap]
-- AMEND B: [Persona] / [gap]
-- AMEND C: [Persona] / [gap]
-```
+- Score distribution across personas
+- Kill-barrier trajectory direction from Phase 6
+- 1--2 sentence rationale connecting distribution, trajectory, and confirmed kill barrier
 
 ---
 
-### Aspirational coverage by variation
+## AMEND
 
-| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
-|-----------|------|------|------|------|------|
-| C-09 Inertia reduction conditions | PASS | PASS | PASS | PASS | PASS |
-| C-10 AMEND persona-specific + actionable | PASS | PASS | PASS | PASS | PASS |
-| C-11 Kill barrier grounded in per-persona evidence | PASS | PASS | PASS | PASS | PASS |
-| C-12 Workaround satisfaction per-persona (vocab) | PASS | PASS | PASS | PASS | PASS |
-| C-13 No required field blank or bare label | PASS | PASS | PASS | PASS | PASS |
-| C-14 Each AMEND names persona AND gap | PASS | PASS | PASS | PASS | PASS |
-| C-15 Kill barrier as table column | PASS | PASS | PASS | PASS | PASS |
-| C-16 Single gate bundles C-11..C-14 | PARTIAL | PASS | PASS | PARTIAL | PASS |
-| C-17 Enforcement through mechanism not labels | PASS | PASS | PASS | PASS | PASS |
-| C-18 Gate includes forward reference | PASS | PASS | PASS | PASS | PASS |
-| C-19 Structural + procedural co-occur | PASS | PASS | PASS | PASS | PASS |
-| C-20 Distributed achieves C-19 without C-16 | PASS | FAIL | FAIL | PASS | FAIL |
-| C-21 One-sentence scan closes C-16+C-18 | FAIL | PASS | FAIL | FAIL | PASS |
-| C-22 Block-to-table minimum sufficient repair | PASS | PASS | PASS | PASS | PASS |
-| **Pass count** | **12/14** | **13/14** | **13/14** | **12/14** | **13/14** |
+Select the persona most exposed to the confirmed kill barrier.
 
-### Predicted composite scores (v5 rubric)
+- **Focus persona:** [name]
+- **Switching cost (sharpened):** [most precise quantified value for this persona]
+- **Kill barrier for this persona:** [one sentence naming the barrier and why it is most acute
+  for them]
+- **Mitigation:** [one concrete intervention -- explain why this lever addresses the structural
+  persistence property from Phase 4, not just what the intervention does]
 
-| Variation | Essential | Recommended | Aspirational | Composite |
-|-----------|-----------|-------------|--------------|-----------|
-| V-02 Scan-forward-ref (C-21) | 60 | 30 | 9.29 | **99.29** |
-| V-03 Gate-2-canonical (C-22) | 60 | 30 | 9.29 | **99.29** |
-| V-05 Scan-table hybrid (C-21+C-22) | 60 | 30 | 9.29 | **99.29** |
-| V-01 Three-layer distributed (C-20) | 60 | 30 | 8.57 | **98.57** |
-| V-04 Gate-2-equivalent + distributed (C-20+C-22) | 60 | 30 | 8.57 | **98.57** |
+---
 
-**R5 ceiling: 99.29.** C-16 PASS and C-20 PASS are mutually exclusive; C-21 PASS requires
-C-16 PASS; therefore no single variation can pass all 14 aspirationals.
+### V-23: "Checkpoint Verdict" Phrasing
 
-Open questions that scoring will resolve:
-- Does C-22 apply to narrow evidence gates (V-01, V-04) or only full C-16 consolidating gates?
-- Is the scan in V-02/V-05 a valid Gate-2-equivalent for C-22, or does C-22 require a gate-format checkpoint?
-- If C-22 FAIL in V-01/V-04, they drop to 11/14 → 97.86.
-- If C-22 FAIL in V-02/V-05, they drop to 12/14 → 98.57.
+**Axis:** Phrasing register -- the kill barrier temporal persistence test is framed as a
+pass/fail checkpoint the model must resolve with a verdict word (PROCEED or RESELECT)
+**Hypothesis:** Framing the binary gate as a named checkpoint with an explicit verdict word
+(PROCEED / RESELECT) rather than a YES/NO table will close C-20 through a different register.
+The checkpoint framing makes the binary gate a model behavior requirement rather than a
+formatting requirement -- the model must choose PROCEED or RESELECT before any subsequent
+phase appears. Expected: same ceiling as V-22 for C-20; the register difference may affect
+how models handle ambiguous barriers that partially satisfy either horizon.
+
+---
+
+You are running **validate-inertia** for: {{topic}}
+
+Stress-test adoption inertia. Why would users NOT adopt this feature even if it works perfectly?
+
+---
+
+## Phase 1 -- Persona Identification
+
+Name 2--4 user personas. Each must have:
+
+- **Name and role** -- specific title or function, not a category
+- **Current workaround** -- the actual tool or method they use today (name it)
+- **Outcome they optimize for** -- what the current workaround delivers
+
+---
+
+## Phase 2 -- Inertia Dimension Analysis
+
+For each persona:
+
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof req. (named threshold) | Learning curve |
+|---------|---------------------------------|--------------------|----------------------------|-------------------------------|-------------------------------------|---------------|
+
+- **Switching cost:** Measurable value required. Qualitative descriptions alone fail.
+- **Social proof req.:** Name a specific threshold or condition. Binary Y/N fails.
+- **Habit lock-in:** Name the specific repeated behavior.
+
+---
+
+## Phase 3 -- Per-Persona Inertia Scores
+
+Score each persona: Low / Medium / High / Critical.
+
+One sentence per score naming the primary inertia driver. Every Phase 1 persona scored
+individually. No shared scores.
+
+---
+
+## Phase 4 -- Kill Barrier
+
+Name exactly one adoption killer -- the barrier that would block adoption even if all other
+inertia were resolved.
+
+- **Kill barrier:** [name it]
+- **Structural persistence:** [the structural property that prevents self-resolution -- not
+  familiarity]
+- **Most exposed persona:** [name]
+
+**Kill-barrier qualification checkpoint:**
+
+Before proceeding, answer these two questions:
+
+1. Does this barrier exist today (T=0)? ___
+2. Does this barrier persist at T=18mo without deliberate structural intervention? ___
+
+**Checkpoint verdict:** Write one of the following words on its own line:
+
+- **PROCEED** -- if and only if both answers are YES
+- **RESELECT** -- if either answer is NO
+
+If your verdict is **RESELECT**: name a replacement barrier and re-run this phase from the
+barrier identification step. Do not write Phase 5 until your checkpoint verdict is PROCEED.
+
+---
+
+## Phase 5 -- Per-Persona Adoption Timeline
+
+For the confirmed kill barrier and at least two personas, project inertia across three
+horizons:
+
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
+
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
+
+---
+
+## Phase 6 -- Kill-Barrier Trajectory Verdict
+
+**KILL-BARRIER TRAJECTORY VERDICT**
+
+This section is distinct from the Phase 5 grid. The verdict is about the kill barrier itself,
+not a summary of the per-persona trajectories.
+
+**Trajectory direction:** [Resolving / Stable / Worsening]
+
+**Structural reasoning:** [One sentence referencing the persistence property from Phase 4 by
+name and explaining why the barrier moves (or does not) in this direction over the time
+horizon.]
+
+**Relationship to Phase 5:** [One sentence confirming alignment or stating divergence.]
+
+---
+
+## Phase 7 -- Overall Adoption Inertia Risk
+
+Verdict: Low / Medium / High / Critical.
+
+Include:
+
+- Score distribution across personas
+- Kill-barrier trajectory direction from Phase 6
+- 1--2 sentence rationale connecting score distribution, trajectory, and the confirmed kill
+  barrier
+
+---
+
+## AMEND
+
+Select the persona most exposed to the confirmed kill barrier.
+
+- **Focus persona:** [name]
+- **Switching cost (sharpened):** [most precise quantified value for this persona]
+- **Kill barrier for this persona:** [one sentence naming the barrier and why it persists for
+  them specifically]
+- **Mitigation:** [one concrete intervention -- explain why this lever addresses the structural
+  persistence property from Phase 4, not just what the intervention does]
+
+---
+
+### V-24: Disqualifier + Gate Combination
+
+**Axis:** Combination -- output format (C-19 literal disqualifier) + lifecycle emphasis
+(C-20 binary reselection gate)
+**Hypothesis:** Combining V-21's literal "does not satisfy" sentence requirement (Phase 5)
+with V-22's binary YES/NO confirmation table and reselect gate (Phase 4) closes both C-19 and
+C-20 in one variation while keeping other aspirationals at incidental coverage levels. The two
+mechanisms occupy different phases and do not compete. Expected: C-19 and C-20 both reach full
+pass; C-18 receives incidental coverage through the kill-barrier trajectory verdict section;
+other aspirationals depend on whether standard phase structure happens to satisfy them.
+
+---
+
+You are running **validate-inertia** for: {{topic}}
+
+Stress-test adoption inertia. Why would users NOT adopt this feature even if it works perfectly?
+
+---
+
+## Phase 1 -- Persona Identification
+
+Name 2--4 user personas. Each must have:
+
+- **Name and role** -- specific title or function, not a category
+- **Current workaround** -- the actual tool or method they use today (name it)
+- **Outcome they optimize for** -- what the current workaround successfully delivers
+
+---
+
+## Phase 2 -- Inertia Dimension Analysis
+
+For each persona:
+
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof req. (named threshold) | Learning curve |
+|---------|---------------------------------|--------------------|----------------------------|-------------------------------|-------------------------------------|---------------|
+
+- **Switching cost:** Measurable value required -- time, steps, effort rating (1--10), or
+  relative measure. Qualitative descriptions alone fail.
+- **Social proof req.:** Name a specific threshold or condition. Binary Y/N fails.
+- **Habit lock-in:** Name the specific repeated behavior. "General familiarity" fails.
+
+---
+
+## Phase 3 -- Per-Persona Inertia Scores
+
+Score each persona: Low / Medium / High / Critical.
+
+One sentence per score naming the primary inertia driver. Every Phase 1 persona scored
+individually. No shared scores.
+
+---
+
+## Phase 4 -- Kill Barrier with Binary Confirmation Gate
+
+Identify the single adoption killer.
+
+- **Kill barrier:** [name it precisely]
+- **Structural persistence:** [the structural property that prevents self-resolution -- not
+  familiarity, but the structural constraint that keeps this barrier alive as the product
+  matures]
+- **Most exposed persona:** [name]
+
+**Temporal persistence confirmation table:**
+
+| Question | Your answer (write YES or NO) |
+|----------|-------------------------------|
+| Does this barrier exist today (T=0)? | |
+| Does this barrier persist at T=18mo, absent deliberate structural intervention targeting the persistence property above? | |
+
+**Gate rule:** If either answer is NO -- this barrier does not qualify as the kill barrier.
+Return to the top of this phase, select a different barrier, and complete the confirmation
+table again. Do not proceed to Phase 5 until both answers are YES.
+
+Label the confirmed barrier **CONFIRMED KILL BARRIER** before proceeding.
+
+---
+
+## Phase 5 -- Per-Persona Adoption Timeline
+
+**Section header: PER-PERSONA ADOPTION TIMELINE**
+
+Required disqualifier -- write this sentence before presenting the grid:
+
+> "This section does not satisfy the kill-barrier trajectory verdict requirement. That output
+> belongs exclusively to Phase 6."
+
+Then present the timeline grid for the confirmed kill barrier and at least two personas:
+
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
+
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
+
+---
+
+## Phase 6 -- Kill-Barrier Trajectory Verdict
+
+**KILL-BARRIER TRAJECTORY VERDICT**
+
+This section produces the dedicated verdict for the kill barrier's own time-sensitivity. It
+is not a summary of Phase 5 and is not satisfied by pointing to Phase 5.
+
+**Trajectory direction:** [Resolving / Stable / Worsening]
+
+**Structural reasoning:** [One sentence referencing the persistence property from Phase 4 by
+name. Must explain the trajectory direction in terms of the structural mechanism, not from
+the per-persona grid.]
+
+**Relationship to Phase 5 grid:** [One sentence confirming alignment or stating divergence
+with per-persona trajectories, and why.]
+
+---
+
+## Phase 7 -- Overall Adoption Inertia Risk
+
+Verdict: Low / Medium / High / Critical.
+
+Include:
+
+- Score distribution across personas
+- Kill-barrier trajectory direction from Phase 6
+- 1--2 sentence rationale connecting distribution, trajectory, and confirmed kill barrier
+
+---
+
+## AMEND
+
+Select the persona most exposed to the confirmed kill barrier.
+
+- **Focus persona:** [name]
+- **Switching cost (sharpened):** [most precise quantified value for this persona]
+- **Kill barrier for this persona:** [one sentence restating the barrier and why it persists
+  specifically for them]
+- **Mitigation:** [one concrete intervention -- explain why this lever addresses the structural
+  persistence property from Phase 4, not just what the intervention does]
+
+---
+
+### V-25: Full Integration -- All Twelve Aspirationals
+
+**Axis:** Combination -- all twelve aspirational axes (C-09 through C-20)
+**Hypothesis:** Extending V-20 (which covered C-09 through C-18 with structural enforcement
+across seven phases) with one addition -- the literal "does not satisfy" disqualifier sentence
+in Phase 6 Part A (C-19) -- produces maximum structural coverage for the v5 rubric. C-20 is
+already present in V-20's Phase 5 temporal persistence gate; V-25 keeps it and tightens the
+gate label to match the C-20 pass condition exactly (explicit binary table, explicit gate rule).
+Expected ceiling: 200/200 if all phases execute cleanly without degradation.
+
+---
+
+You are running **validate-inertia** for: {{topic}}
+
+Map adoption inertia. Why would users not adopt this feature even if it works perfectly? Complete
+each phase in sequence. Each phase gates the next.
+
+---
+
+## Phase 1 -- Scoring Methodology Declaration
+
+Before analyzing any persona, declare the inertia scoring framework that will govern per-persona
+scores in Phase 4.
+
+**Dimension weights:**
+
+| Dimension | Weight (High / Medium / Low) | Why this weight (one sentence -- reference a property of this feature or user population) |
+|-----------|------------------------------|------------------------------------------------------------------------------------------|
+
+Dimensions: Workaround satisfaction / Switching cost / Habit lock-in / Social proof requirement
+/ Learning curve.
+
+**Score thresholds** -- define the dimension-combination rules that produce each tier:
+
+- **Critical:** [state which dimension combinations produce this tier]
+- **High:** [state which combinations produce this tier]
+- **Medium:** [state which combinations]
+- **Low:** [state what condition all dimensions must satisfy]
+
+Phase 2 cannot begin until methodology is declared. Per-persona traces in Phase 4 must
+reference these thresholds and dimension weights.
+
+---
+
+## Phase 2 -- Persona and Competitive Inventory
+
+Identify 2--4 named personas. For each, treat the current solution as a named competitor.
+
+**Persona entry:**
+
+- Name and role (specific, not categorical)
+- Current solution (named tool or method -- "ad hoc" is not a solution; name what they do)
+- Outcome the current solution delivers
+
+**Competitive strength inventory** -- for each strength the current solution has:
+
+| Dimension | Advantage | Durability |
+|-----------|-----------|------------|
+
+- **Dimension:** The specific axis on which the current solution wins (zero-setup cost, output
+  format compatibility, existing keyboard shortcuts, audit trail depth, etc.)
+- **Advantage:** What the current solution does better on that dimension for this persona
+- **Durability:** Why this advantage is structurally hard to replicate or displace. Must
+  reference a structural constraint -- technical, organizational, integration-based, or
+  switching-cost-based. **Familiarity is not durability.** "People are used to it" does not
+  qualify. Name the structural constraint that makes the advantage persist after the feature
+  ships and is known.
+
+A competitive strength without a named structural durability basis must be removed or replaced.
+
+---
+
+## Phase 3 -- Inertia Dimension Analysis
+
+For each persona:
+
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis (ref. Phase 2 competitive strength) | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof threshold (named condition) | Learning curve |
+|---------|---------------------------------|-------------------------------------------------------|----------------------------|-------------------------------|------------------------------------------|---------------|
+
+- **Switching cost:** Time, steps, effort rating (1--10), or relative measure. Required.
+  Qualitative descriptions do not pass.
+- **Satisfaction basis:** Reference a named competitive strength from Phase 2 -- not a vague
+  sentiment.
+- **Social proof threshold:** Name a specific count, role, or condition -- not binary Y/N.
+  Examples: "needs 2 colleagues using it for more than one sprint," "will adopt solo if manager
+  endorses at team standup." Binary answers fail.
+
+---
+
+## Phase 4 -- Per-Persona Inertia Scores
+
+Score each persona: Low / Medium / High / Critical.
+
+The score table **requires a Methodology trace column**:
+
+| Persona | Score | Methodology trace |
+|---------|-------|-------------------|
+
+**Methodology trace** -- required: one sentence that (a) names the specific dimension values
+from Phase 3 for this persona, and (b) states the Phase 1 threshold those values satisfy,
+showing how those inputs produce the assigned score.
+
+Failing trace: "Jordan has high switching costs and depends on the current tool, yielding
+High." -- Values not named precisely; Phase 1 threshold not cited.
+
+Passing trace: "Jordan's switching cost of 7/10 (High, Phase 1 weight: High) and Critical
+workaround satisfaction satisfy the Phase 1 rule that two High-weighted dimensions at H produce
+a High score." -- Dimension values named and Phase 1 threshold explicitly cited.
+
+Every Phase 2 persona must be scored individually. A shared blanket score does not pass.
+
+---
+
+## Phase 5 -- Kill Barrier: Four-Part Causal Analysis with Reselection Gate
+
+Identify the single adoption killer -- expressed as the competitive dimension on which the
+current solution wins. Use exactly **four labeled sub-parts**. Each must be distinct. Do not
+merge any two into a single statement.
+
+**KILL BARRIER**
+
+**(1) Barrier definition**
+[What the barrier is -- the observable adoption friction as the most exposed persona experiences
+it. State the competitive dimension. Describe the phenomenon; do not include its cause here.]
+
+**(2) Structural persistence**
+[Why this barrier structurally persists -- the underlying property from the Phase 2 competitive
+inventory that prevents it from self-resolving through product maturity or organic adoption.
+Do not repeat (1). Name the structural mechanism and reference the relevant Phase 2 durability
+property by name.]
+
+**(3) Intervention target**
+[What a mitigation must target -- the specific lever point that, if addressed, would disrupt
+the structural persistence mechanism in (2). Name the target, not the intervention. "Better
+onboarding" is an intervention; "the information gap that makes migration feel irreversible"
+is a target.]
+
+**(4) Lever efficacy**
+[Why addressing (3) resolves the structural root cause in (2). Explain the causal connection.
+Reference (2) by name. "It reduces friction" states a result; explain why this lever reaches
+the structural condition named in (2).]
+
+**Temporal persistence confirmation table:**
+
+| Question | Your answer (write YES or NO) |
+|----------|-------------------------------|
+| Does this barrier exist today (T=0)? | |
+| Does this barrier persist at T=18mo, absent deliberate structural intervention targeting the persistence property in (2)? | |
+
+**Gate rule:** If either answer is NO -- this barrier does not qualify as the kill barrier.
+Return to the top of this phase, select a different barrier, and complete all four sub-parts
+and the confirmation table again. Do not proceed to Phase 6 until both answers are YES.
+
+Label the confirmed result **CONFIRMED KILL BARRIER**. Name the most exposed persona.
+
+---
+
+## Phase 6 -- Adoption Timeline and Kill-Barrier Trajectory Verdict
+
+**Part A: Per-Persona Adoption Timeline**
+
+**Required disqualifier -- write this sentence before presenting the grid:**
+
+> "This Part A grid captures per-persona trajectory only. It does not satisfy the
+> kill-barrier trajectory verdict requirement. That output belongs exclusively to Part B."
+
+Then present the timeline grid for the confirmed kill barrier and at least two personas:
+
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
+
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
+
+**Part B: Kill-Barrier Trajectory Verdict (distinct from Part A grid)**
+
+**KILL-BARRIER TRAJECTORY VERDICT**
+
+**Trajectory direction:** [Resolving / Stable / Worsening]
+
+**Structural reasoning:** [One sentence explaining the direction in terms of the structural
+persistence property from Phase 5(2). Must reference that property by name. The direction must
+be argued from the structural mechanism, not inferred from the per-persona grid.]
+
+**Relationship to Part A grid:** [One sentence: does this verdict align with or differ from
+the per-persona trajectories? If it differs, state why. If it aligns, confirm which structural
+property drives both.]
+
+This verdict must exist as a labeled output in Part B. A trajectory direction present only in
+the Part A grid without a dedicated labeled verdict here fails C-18.
+
+---
+
+## Phase 7 -- Overall Adoption Inertia Risk
+
+Verdict: Low / Medium / High / Critical.
+
+Include:
+
+- Score distribution across personas (e.g., "2 High, 1 Critical, 1 Medium")
+- Kill-barrier trajectory direction from Phase 6 Part B
+- Competitive summary: kill barrier dimension and its Phase 2 structural durability basis
+- 1--2 sentence rationale connecting score distribution, trajectory, and confirmed kill barrier
+
+---
+
+## AMEND -- Focus, Quantify, Confirm
+
+Select the persona most exposed to the confirmed kill barrier.
+
+**Focus persona:** [name]
+
+**Switching cost (sharpened):** [most precise quantified value -- time, steps, effort rating, or
+relative measure]
+
+**Kill barrier for this persona:** [one sentence restating the barrier in terms of this
+persona's specific situation -- name the competitive dimension and why it is most acute for them]
+
+**Mitigation with full causal chain:**
+
+> **(a) Intervention:** [one concrete, specific action]
+>
+> **(b) Root cause addressed:** [which structural condition from Phase 5(2) this targets --
+> quote or directly reference the persistence property by name]
+>
+> **(c) Causal mechanism:** [why this lever resolves the structural root cause -- the causal
+> connection. Reference the intervention target from Phase 5(3). Do not describe what happens;
+> explain why this lever reaches the structural condition.]
+>
+> **(d) Confirmation signal at T=6mo:** [A specific leading indicator or observable condition
+> that would confirm the intervention is working at six months. Name what you would measure or
+> observe. Vague forward hopes ("users will feel more comfortable") do not qualify. The signal
+> must be falsifiable -- it must be possible to observe it as absent.]
+
+The confirmation signal must be an observable, not a hope. The AMEND section is not complete
+without it.

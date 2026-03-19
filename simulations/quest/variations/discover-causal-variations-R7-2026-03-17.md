@@ -1,1825 +1,1516 @@
-Done. Here's the R7 design summary:
+Written to `simulations/quest/variations/discover-causal-variations-R7-2026-03-17.md`.
 
 ---
 
-## Round 7 — 5 Variations
+## R7 Variations Summary
 
-**Target:** 16/16 aspirational (100.0) under v7. Three new criteria implemented in every variation.
+**New criterion targeted:** C-26 -- falsification anchor co-located with incompleteness declaration (Phase 1, not Phase 3)
 
-| V | Axis | A-14 (I-NN pool) | A-15 (inertia observability) | A-16 (routing table role) |
-|---|------|------------------|------------------------------|---------------------------|
-| **V-01** | Role sequence | FRAMER Step 3: 2+ I-NN rows, same columns as F-NN | Dedicated `Inertia pathway observability` field in FRAMER | SYNTHESIZER role, 5-row routing table |
-| **V-02** | Output format | Parallel dual-pool tables (F-NN / I-NN identical columns throughout) | Pool-level header block: first field before I-NN rows | AUDITOR role, 4-row routing table |
-| **V-03** | Lifecycle emphasis | I-NN pool generated in Step 2 — before claim extraction exists | Step 1: inertia observability label before any F-NN work | EVALUATOR role, 5-row routing table (adds inertia-observability as 5th row) |
-| **V-04** | Phrasing register | Q3.5 interrogative ("What pathways could produce Y without X?") elicits pool | Q3.3 direct question ("Can we detect whether Y occurs without X?") | EXAMINER role, 4-row routing table |
-| **V-05** | Combination | I-NN derived from counter-hypothesis chain hop challenges | Aggregate of counter-hypothesis hop labels (emergent) | AUDITOR role, 5-row routing table + triple-gap diagnostic |
+**Base:** R6 V-05 (175/175 v6, 175/180 v7 -- fails only C-26)
 
-**Key new structural innovations in R7:**
+| # | Label | Axis | C-26 mechanism | Expected |
+|---|-------|------|----------------|----------|
+| V-01 | Phase 1 structural anchor | Role sequence | SUB-STEP format at Phase 1, no "does not pass" language | ~175/180 |
+| V-02 | Phase 3 downstream prohibition | Phrasing register | C-26 PROHIBITED FORM in Phase 3 only, Phase 1 unchanged | ~175/180 |
+| V-03 | Phase 1 co-located prohibition | Phrasing register | "does not pass" in Phase 1 inline, no sub-step format | ~180/180 |
+| V-04 | Phase 1 structural + prohibition | Role seq + phrasing | Sub-step AND "does not pass" both at Phase 1 | ~180/180 |
+| V-05 | Full R7 stack | Combination | V-04 + Phase 3 confirmation + Phase 6 integration rule | 180/180 |
 
-- **V-01 SYNTHESIZER vs R6-V-02 AUDITOR:** SYNTHESIZER adds a 5th routing row (I-NN pool coverage → Mechanism slot) and explicitly owns all four new criteria simultaneously, not just A-12/A-13.
+**Three key isolation tests:**
 
-- **V-03 inertia-first lifecycle:** The first variation where I-NN conditions are generated without knowledge of the F-NN pool. Tests whether independence from the claim produces more mechanistically diverse inertia conditions.
+1. **V-01 vs V-03** -- does structural sequencing (SUB-STEP format) or prohibition naming ("does not pass") produce Phase 1 anchors in responses? If both pass, co-location alone is the mechanism. If only V-03 passes, the prohibition language is load-bearing.
 
-- **V-05 counter-hypothesis chain:** I-NN conditions derive from CH-Hop challenges rather than table seeding. Each I-NN condition is structurally anchored to a specific inertia mechanism hop. Inertia pathway observability emerges as an aggregate (same computation as chain observability pattern, applied to the counter-hypothesis chain).
+2. **V-02 control** -- Phase 3 names the C-26 prohibition but Phase 1 has no anchor requirement. Expected FAIL C-26 -- establishes that downstream naming cannot substitute for co-location at the production point.
 
-- **V-05 triple-gap diagnostic:** New joint finding beyond R6-V-05's double-blind gap. A triple gap is a condition where mechanism hop is Opaque AND testability is Unknown AND an I-NN condition with overlapping scope exists — all three simultaneously. Neither A-12, A-13, nor A-14 surfaces this co-occurrence alone.
+3. **V-04 vs V-05** -- Phase-1-only dual enforcement vs. adding Phase 3 confirmation and Phase 6 integration rule. If V-04 already achieves 180/180, the downstream sites add no pass probability.
 
-**R8 question seeded:** Does chain-seeded I-NN derivation (V-05) produce more mechanistically specific conditions than table-seeded derivation (V-01–V-04)? Test by running same hypothesis through both and comparing I-NN condition quality.
- inertia, I-NN pool)
-- V-02: AUDITOR role, 4-row routing table (chain-obs, testability, evidence, inertia)
-- V-03: EVALUATOR role, 5-row routing table (adds inertia-observability as 5th row)
-- V-04: EXAMINER role, 4-row routing table — same rows as V-02 AUDITOR
-- V-05: AUDITOR role, 5-row routing table including triple-gap diagnostic
+**C-26 structural note:** Unlike C-24 (which requires the deferral prohibition to be *named*), C-26's pass condition is structural proximity -- the anchor must *appear* in Phase 1. C-26 is more like C-18 (structural result required) than C-24 (prohibited form must be named). V-02's expected failure would confirm this distinction.
+s the mechanism.
 
-**R7 questions seeded from R6 excellence signals:**
-- Does SYNTHESIZER (V-01) produce more coherent routing decisions than AUDITOR (V-02) because it
-  explicitly owns all four diagnostics simultaneously vs. two?
-- Does the parallel dual-pool table architecture (V-02) help analysts generate richer I-NN pools
-  by making the structural parallelism with F-NN visually explicit?
-- Does inertia-first ordering (V-03) change the mechanism pathway analysis — does seeing the
-  counter-hypothesis first cause analysts to weight inertia evidence more heavily?
-- Does interrogative phrasing (V-04) surface I-NN conditions that imperative prompts suppress?
-  Specifically, does "What else might cause Y without X?" generate different conditions than
-  a table template starting from "I-01: Y occurs at [baseline] without X via..."?
-- Does the counter-hypothesis mini-chain (V-05) produce more mechanistically specific I-NN
-  conditions (tied to identifiable causal steps) than a table-seeded approach (V-01–V-04)?
+**V-02 isolation test:** Phase 3 names the C-26 prohibition but Phase 1 still has no anchor requirement. Expected FAIL C-26 -- a model declaring PATHWAY INCOMPLETE in Phase 1 has no anchor cue at that point; the Phase 3 prohibition arrives too late. This would establish that the prohibition must be co-located with the production point, not placed downstream.
+
+**Single-axis:** V-01, V-02, V-03 each vary one mechanism. V-04 combines V-01 + V-03 (both Phase 1). V-05 adds Phase 3 confirmation and Phase 6 integration rule.
 
 ---
 
-## V-01: SYNTHESIZER Role (Unified Diagnostic Aggregator)
+## V-01: Phase 1 structural anchor requirement (role sequence axis)
 
-**Axis:** Role sequence — a named SYNTHESIZER role runs between SKEPTIC and FRAMER (closing).
-SYNTHESIZER owns all four diagnostic computations simultaneously: chain observability aggregate
-(A-12), testability refinement yield (A-13), I-NN pool synthesis (A-14), and inertia pathway
-observability confirmation (A-15). SYNTHESIZER produces a single consolidated 5-row AMEND
-routing table (A-16). No other role computes aggregates or routes AMEND slots. FRAMER (closing)
-constructs the AMEND block mechanically from SYNTHESIZER's routing table.
+**Axis:** Role sequence -- Phase 1 MECHANISM READINESS gains a mandatory PRELIMINARY ANCHOR sub-step that must be produced immediately after the PATHWAY INCOMPLETE declaration, before Phase 2 tracing continues. Phase 3 CONDITIONAL BRANCH is updated to confirm and extend the Phase 1 anchor rather than introducing a fresh one. No explicit "does not pass" language for C-26 at Phase 1 -- the requirement is structural, not prohibition-named.
 
-**Hypothesis:** Distributing diagnostic aggregation across sections (V-01–V-05 in R6) produces
-correct outputs but requires the analyst to track diagnostic signals in separate locations.
-Consolidating all four diagnostics into a single named role — one that runs with simultaneous
-visibility into FRAMER's falsification pools and ANALYST's hop labels — produces a diagnostic
-layer with less tracking overhead and stronger routing coherence. The cost is a longer role
-sequence (five roles vs. four in R6-V-02); the benefit is that A-14/A-15/A-16 are co-located
-in a single role output rather than scattered across sections and role outputs.
+**Hypothesis:** R6 V-05 places the anchor requirement in Phase 3, meaning a model declaring PATHWAY INCOMPLETE in Phase 1 has no anchor obligation until Phase 3. A structural sub-step at Phase 1 ("produce this before continuing") co-locates the anchor production with the declaration -- closing the deferral window by sequencing, not by prohibition. The hypothesis: a required format at Phase 1 (sub-step structure) is sufficient to produce Phase 1 anchors in responses, satisfying C-26. The PROHIBITED FORM absence tests whether structural enforcement alone passes C-26 or whether the escape-hatch naming is also required. C-24 and C-25 preserved from R6 V-05 baseline.
 
 ```
-You are running /discover-causal.
-Your input is a feature hypothesis of the form "X causes Y."
-Five roles in sequence. Complete each role fully before advancing.
-Every classification judgment uses a discrete label from a fixed set with a rationale line.
-
-Roles:
-  FRAMER (opening): claim, F-NN pool, I-NN pool, inertia observability, evidence,
-    testability refinement, baseline estimate.
-  ANALYST: mechanism chain with hop observability. Does not compute aggregates.
-  SKEPTIC: adversarial challenge, confidence labels, final mechanism strength.
-  SYNTHESIZER: all four diagnostic aggregations plus consolidated AMEND routing table.
-    Runs after SKEPTIC, before FRAMER (closing). Does not challenge mechanism.
-  FRAMER (closing): scoped claim, AMEND from SYNTHESIZER routing table.
-
-Two-pool falsification design:
-  F-NN pool: claim-derived conditions. Generated in FRAMER Step 2. Testability = Unknown.
-  I-NN pool: inertia-derived conditions. Generated in FRAMER Step 3. Testability = Unknown.
-Both pools undergo testability refinement in FRAMER Step 4 (evidence).
-Both pools receive confidence labels from SKEPTIC.
-SYNTHESIZER synthesizes both pools into diagnostic outputs.
-
----
-
-## FRAMER (OPENING)
-
-[Establish the claim, generate both falsification pools, label inertia pathway observability,
-gather evidence, and run testability refinement. All conditions start testability = Unknown.
-FRAMER does not assign confidence (SKEPTIC's job) or compute aggregates (SYNTHESIZER's job).]
-
-### Step 1: Claim
-
-X (the cause): [Extract from input]
-Y (the claimed outcome): [Extract from input]
-Full claim: ["X causes Y" -- one sentence, no mechanism embedded]
-
-### Step 2: F-NN Pool (claim-derived falsification conditions)
-
-[From the claim alone. At least two conditions. Testability = Unknown at generation.
-No confidence column -- SKEPTIC fills that in Step 5.]
-
-| ID   | Falsification condition (claim false if observed)     | Testability          | Rationale |
-|------|-------------------------------------------------------|----------------------|-----------|
-| F-01 | [What observable state would show X does not cause Y?] | Unknown (see Step 4) | [1 sentence: what mechanism failure does this expose?] |
-| F-02 | [A second distinct condition. Add F-NN as needed.]     | Unknown (see Step 4) | [1 sentence] |
-
-### Step 3: I-NN Pool and Inertia Analysis
-
-[Establish the baseline. Generate at least two I-NN conditions naming distinct pathways by
-which Y could occur without X. Each I-NN condition identifies a specific inertia mechanism.
-Then label the inertia pathway observability: can we detect whether status quo produces Y?]
-
-Status-quo description: [One sentence: what happens today without X?]
-Baseline rate: [Estimate or bound: "Y occurs in approximately __% of cases without X."
-  Or: "Unknown -- no measurement available."]
-
-I-NN Pool (inertia falsification conditions):
-[At least two I-NN conditions. Each names a specific pathway by which Y occurs without X.
-Same structure as F-NN: testability = Unknown at genesis, no confidence yet.]
-
-| ID   | Inertia falsification condition                          | Testability          | Rationale |
-|------|----------------------------------------------------------|----------------------|-----------|
-| I-01 | Y occurs at [baseline rate] without X via [mechanism 1]  | Unknown (see Step 4) | [1 sentence: what makes this pathway plausible?] |
-| I-02 | [Distinct inertia pathway: Y via [mechanism 2] without X] | Unknown (see Step 4) | [1 sentence] |
-[Add I-NN as the inertia analysis generates more pathways. Each condition should name a distinct mechanism.]
-
-Inertia severity: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-  (SAFE = status quo does not produce Y;
-   ADVISORY = partially produces Y for some users or conditions;
-   STOP = status quo plausibly already produces Y at a meaningful rate)
-Inertia severity rationale: [1 sentence]
-
-Inertia pathway observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  (Observable = direct measurement of Y rate without X is available;
-   Partial = proxy data available, no direct measurement;
-   Opaque = no path to observe whether status quo produces Y without X)
-Inertia observability rationale: [1 sentence: what instrumentation or data would close this gap?]
-Inertia observability note: [This label is independent of mechanism hop observability.
-  A mechanism chain may be fully Observable while the inertia path is Opaque -- they answer
-  different questions: "how does X cause Y?" vs. "can we see whether Y already occurs?"]
-
-[I-NN conditions added here; return to Step 4 to fill their testability.]
-
-### Step 4: Evidence and Testability Refinement
-
-[At least one context-specific observation, OR explicit "None found" -- no skipping.]
-
-Evidence entry 1:
-  Source type: [ ] Prior result  [ ] Analogous case  [ ] Domain observation  [ ] Counter-evidence
-  Observation: [What was seen, where, when?]
-  Bearing on X->Y: [1 sentence: supports, complicates, or challenges the claim?]
-
-[Add entries as needed.]
-
-Evidence quality: [ ] Strong  [ ] Moderate  [ ] Weak  [ ] None
-Evidence quality rationale: [1 sentence]
-
-Testability refinement pass -- all F-NN and I-NN conditions:
-[For each condition, record testability determination after evidence.]
-
-| ID   | Testability after evidence       | Refinement rationale |
-|------|----------------------------------|---------------------|
-| F-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence: what enabled or blocked the determination?] |
-| F-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-[Mirror all F-NN and I-NN conditions.]
-
-Testability refinement yield:
-  testability_refined_count: [Count of conditions moved from Unknown to Easy or Hard]
-  testability_residual_unknown_count: [Count still Unknown after evidence]
-  Residual Unknown IDs: [List by ID, or "None"]
-  F-NN residual count: [Count]
-  I-NN residual count: [Count]
-  [SYNTHESIZER will aggregate these pool-level breakdowns.]
-
-Confidence revisions: [Any F-NN/I-NN confidence label updates from evidence. Or: "None."]
-
-FRAMER (OPENING) GATE:
-[ ] X and Y extracted separately
-[ ] At least two F-NN conditions (testability Unknown, no confidence column)
-[ ] At least two I-NN conditions with IDs, testability Unknown, and rationale
-[ ] Baseline rate declared (estimate, bound, or explicit "Unknown")
-[ ] Inertia severity label assigned with rationale
-[ ] Inertia pathway observability label assigned with rationale (Observable/Partial/Opaque)
-[ ] Evidence populated (or explicit "None found" -- not skipped)
-[ ] Evidence quality label assigned with rationale
-[ ] Testability refinement completed for all F-NN and I-NN conditions
-[ ] testability_refined_count and testability_residual_unknown_count declared with pool breakdown
-
---- Do not advance to ANALYST until all gate items are checked. ---
---- IF inertia severity is STOP: skip ANALYST; advance to SKEPTIC. ---
-
----
-
-## ANALYST
-
-[Map the causal chain from X to Y. Two hops minimum. Every hop carries: observability label,
-observability rationale, evidence coherence, falsification connection to an F-NN or I-NN.
-ANALYST does NOT assign confidence (SKEPTIC), testability (FRAMER), or aggregates (SYNTHESIZER).
-ANALYST does NOT compute the chain observability aggregate -- SYNTHESIZER does that.]
-
-Mechanism chain: [Two hops minimum. State mechanism only -- no adversarial content here.]
-
-  Hop 1: X [name] -> [intermediate A]: [How does X produce A?]
-    Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-    Observability rationale: [1 sentence: how directly can this intermediate be detected?]
-    Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions -- describe
-    Falsification connection: [F-NN or I-NN ID. One sentence: if this hop fails, this condition holds.]
-
-  Hop 2: [intermediate A] -> Y: [How does A produce Y?]
-    Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-    Observability rationale: [1 sentence]
-    Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions -- describe
-    Falsification connection: [F-NN or I-NN ID. One sentence.]
-
-  [Add Hop 3+ as needed. Every hop: observability label + rationale, evidence coherence,
-  falsification connection to a pre-existing F-NN or I-NN from FRAMER.]
-
-Mechanism strength (preliminary): [ ] Strong  [ ] Moderate  [ ] Weak
-Preliminary rationale: [1 sentence: ANALYST's pre-challenge assessment.]
-
-ANALYST GATE:
-[ ] At least two hops filled
-[ ] Every hop: observability label + rationale, evidence coherence, falsification connection
-[ ] Mechanism strength (preliminary) assigned with rationale
-[ ] No confidence labels assigned (SKEPTIC's job)
-[ ] No chain observability aggregate computed (SYNTHESIZER's job)
-[ ] No adversarial content in this section
-
---- Do not advance to SKEPTIC until all gate items are checked. ---
-
----
-
-## SKEPTIC
-
-[Challenge every hop. Assign confidence labels to all F-NN and I-NN conditions. Deliver final
-mechanism strength. SKEPTIC does not compute aggregates (SYNTHESIZER) or reassign testability
-(FRAMER). SKEPTIC sees FRAMER's testability labels and carries them forward unchanged.]
-
-Hop-by-hop challenge:
-
-  Hop 1 challenge:
-    What breaks X -> [intermediate A]? [Observable condition that disproves this hop]
-    Observable test: [What to measure or detect]
-    Alternative at this hop: [What else produces [intermediate A] without X?]
-    Confidence: [ ] High  [ ] Medium  [ ] Low
-    Confidence rationale: [1 sentence]
-
-  Hop 2 challenge:
-    What breaks [intermediate A] -> Y? [Observable condition]
-    Observable test: [What to measure or detect]
-    Alternative at this hop: [What else produces Y without [intermediate A]?]
-    Confidence: [ ] High  [ ] Medium  [ ] Low
-    Confidence rationale: [1 sentence]
-
-  [Mirror all ANALYST hops.]
-
-Confounders:
-  Confounder 1: [Variable correlating with both X and Y. Name and describe.]
-
-Inertia challenge:
-  Adversarial view: [Could baseline effects or I-NN pathways explain observed Y?]
-  Reference I-NN: [Which I-NN condition, if true, is most dangerous to the claim?]
-  Revised inertia severity: [ ] Confirms FRAMER  [ ] Upgrades to ADVISORY  [ ] Upgrades to STOP
-
-Final falsification table (FRAMER testability + SKEPTIC confidence):
-
-| ID   | Condition text      | Testability (FRAMER)   | Confidence (SKEPTIC)        | Rationale |
-|------|---------------------|------------------------|-----------------------------|-----------|
-| F-01 | [text]              | [FRAMER Step 4 label]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| F-02 | [text]              | [FRAMER Step 4 label]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-01 | [text]              | [FRAMER Step 4 label]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-02 | [text]              | [FRAMER Step 4 label]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-[Mirror all conditions. Testability column carries FRAMER labels unchanged.]
-
-Mechanism strength (final): [ ] Strong  [ ] Moderate  [ ] Weak  [ ] NA (STOP)
-Final rationale: [1 sentence. State whether changed from ANALYST preliminary and why.]
-
-SKEPTIC GATE:
-[ ] Every hop challenged with observable test and alternative
-[ ] Confidence assigned to all F-NN and I-NN conditions
-[ ] Final falsification table complete with FRAMER testability carried unchanged
-[ ] Inertia challenge references at least one I-NN condition by ID
-[ ] Final mechanism strength declared with rationale
-[ ] At least one confounder named
-
---- Do not advance to SYNTHESIZER until all gate items are checked. ---
-
----
-
-## SYNTHESIZER
-
-[SYNTHESIZER is a diagnostic role, not an analysis role. It reads ANALYST's hop observability
-labels, FRAMER's testability yield data, FRAMER's I-NN pool, and FRAMER's inertia observability
-label. SYNTHESIZER computes four diagnostics and produces a single consolidated AMEND routing
-table. SYNTHESIZER does not challenge mechanism, assign confidence, or propose scope.]
-
-### Diagnostic 1: Chain Observability Aggregate
-
-[Tally hop observability labels from ANALYST. Derive chain-level pattern.]
-
-| Hop   | Mechanism step              | Observability (from ANALYST)    |
-|-------|-----------------------------|---------------------------------|
-| Hop 1 | X -> [intermediate A]       | [Observable / Partial / Opaque] |
-| Hop 2 | [intermediate A] -> Y       | [Observable / Partial / Opaque] |
-[Mirror all ANALYST hops.]
-
-Observable hops: [Count]
-Partial hops:    [Count]
-Opaque hops:     [Count]
-Total hops:      [Count]
-
-Chain observability pattern: [ ] AllObservable  [ ] Mixed  [ ] PredominantlyOpaque
-Pattern rationale: [1 sentence: what does this distribution mean for mechanism testability?]
-
-### Diagnostic 2: Testability Refinement Yield
-
-testability_refined_count (from FRAMER):  [Value]
-testability_residual_unknown_count (from FRAMER): [Value]
-Residual Unknown IDs: [From FRAMER, or "None"]
-F-NN residual: [Count]  |  I-NN residual: [Count]
-Pool asymmetry note: [One sentence: are I-NN conditions disproportionately Unknown-testability?
-  Or: "No asymmetry detected."]
-Yield quality: [ ] AllResolved  [ ] PartiallyResolved  [ ] Unresolved
-Yield quality rationale: [1 sentence]
-
-### Diagnostic 3: I-NN Pool Synthesis
-
-I-NN condition count: [Total I-NN conditions from FRAMER]
-I-NN conditions with Unknown testability after refinement: [List IDs, or "None"]
-I-NN conditions with Low confidence from SKEPTIC: [List IDs, or "None"]
-Pool coverage assessment: [ ] Comprehensive  [ ] Adequate  [ ] Minimal
-  (Comprehensive = multiple distinct inertia pathways named with different mechanisms;
-   Adequate = at least two conditions, plausibly covering main pathways;
-   Minimal = conditions are restatements or cover only one pathway)
-Pool coverage rationale: [1 sentence]
-Most dangerous I-NN condition: [ID and one-sentence rationale: which, if true, most threatens claim?]
-
-### Diagnostic 4: Inertia Pathway Observability
-
-Inertia pathway observability (from FRAMER): [Observable / Partial / Opaque]
-Inertia observability rationale: [Restate or elaborate FRAMER's rationale in 1 sentence]
-Comparison to chain pattern: [One sentence: does inertia observability diverge from chain
-  observability pattern? E.g., "Chain is AllObservable but inertia path is Opaque -- the
-  mechanism is visible but the counterfactual is not."]
-
-### Consolidated AMEND Routing Table
-
-[All conditional AMEND decisions in one table. FRAMER (closing) includes only Required slots.]
-
-| # | Diagnostic                   | Result                               | AMEND slot      | Routing               |
-|---|------------------------------|--------------------------------------|-----------------|-----------------------|
-| 1 | Chain observability pattern  | [AllObservable / Mixed / PredominantlyOpaque] | Observability | [Required if Mixed or PredominantlyOpaque / Not required] |
-| 2 | Testability residual count   | [residual_unknown_count]             | Testability     | [Required if count > 0 / Not required] |
-| 3 | Evidence quality             | [Strong / Moderate / Weak / None]    | Evidence        | [Required if None / Not required] |
-| 4 | Inertia severity             | [SAFE / ADVISORY / STOP]             | Inertia         | [Required if ADVISORY or STOP / Not required] |
-| 5 | I-NN pool coverage           | [Comprehensive / Adequate / Minimal] | Mechanism       | [Required if Minimal / Not required] |
-
-SYNTHESIZER diagnostic note: [One sentence: what is the most critical gap across all four
-  diagnostics? Which single finding, if unaddressed, most endangers the causal claim?]
-
-SYNTHESIZER GATE:
-[ ] Four diagnostics complete (chain aggregate, testability yield, I-NN pool, inertia observability)
-[ ] AMEND routing table: all 5 rows filled with result and routing decision
-[ ] Pool asymmetry note present (I-NN vs F-NN residual breakdown)
-[ ] Inertia vs. chain observability comparison sentence present
-[ ] At least one row marked Required (if none, flag as anomaly for FRAMER)
-
---- Do not advance to FRAMER (CLOSING) until all gate items are checked. ---
-
----
-
-## FRAMER (CLOSING)
-
-[Construct the scoped claim and AMEND block from SYNTHESIZER's routing table.
-AMEND slots are generated mechanically from SYNTHESIZER rows marked Required.
-Always include Narrow and Mechanism. Include all Required conditional slots.]
-
-Scoped claim: ["X causes Y when [condition], for [population], assuming [precondition]."]
-Scope condition: [Reference ANALYST mechanism and SKEPTIC adversarial findings.]
-Out-of-scope: [At least one context where mechanism fails, from SKEPTIC challenge.]
-
-Final inertia severity: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-Final inertia rationale: [1 sentence. Use SKEPTIC's revised verdict if upgraded.]
-
-AMEND DIRECTIVE:
-[Slots from SYNTHESIZER routing table rows marked Required. Always include Narrow + Mechanism.]
-
-AMEND: discover-causal
-  Narrow: [Scope tightening -- match scoped claim condition]
-  Mechanism: [Hop notation: X -> [A] -> [B] -> Y. Use actual intermediate names.]
-  Falsification: [Name the highest-confidence condition from SKEPTIC's final table. ID + testability + confidence.]
-  [Evidence: Required if SYNTHESIZER row 3 = Required]
-    "Mechanism is theoretical. Cite one context-specific observation before next decision gate."
-  [Inertia: Required if SYNTHESIZER row 4 = Required]
-    "Y occurs at [baseline rate] without X via [most dangerous I-NN pathway from SYNTHESIZER].
-     Demonstrate incremental Y above this baseline."
-  [Observability: Required if SYNTHESIZER row 1 = Required]
-    "Chain observability: [pattern]. Hops [list Opaque/Partial hops by name] require proxy
-     measurements or claim narrowing to the observable portion."
-  [Testability: Required if SYNTHESIZER row 2 = Required]
-    "Conditions [list IDs with pool label] have Unknown testability after evidence. Determine
-     available instrumentation before treating these as actionable falsification targets."
-
----
-
-Write artifact: simulations/discover/causal/{topic}-causal-{date}.md
-Frontmatter: skill, topic, date, cause (X), outcome (Y),
-             role_sequence (FRAMER-ANALYST-SKEPTIC-SYNTHESIZER-FRAMER), role_count (5),
-             gate_checklists (5),
-             inertia_verdict (SAFE/ADVISORY/STOP), baseline_rate,
-             inertia_observability (Observable/Partial/Opaque),
-             evidence_count, evidence_quality (Strong/Moderate/Weak/None),
-             f_nn_count, i_nn_count, i_nn_pool_coverage (Comprehensive/Adequate/Minimal),
-             hop_count,
-             mechanism_strength_preliminary (Strong/Moderate/Weak),
-             mechanism_strength_final (Strong/Moderate/Weak/NA), strength_changed (true/false),
-             chain_observability_pattern (AllObservable/Mixed/PredominantlyOpaque),
-             observability_amend_triggered (true/false),
-             testability_refined_count, testability_residual_unknown_count,
-             f_nn_residual_count, i_nn_residual_count, pool_asymmetry_detected (true/false),
-             testability_amend_triggered (true/false),
-             amend_routing_rows_required (count),
-             confounder_named (true/false).
+You are running /discover-causal for topic: {topic}.
+
+Hypothesis under review: {hypothesis}
+(Claim: X causes Y. Test whether the mechanism is sound and whether the cause is the right one.)
+
+=== PHASE 0: INERTIA GATE ===
+
+Answer this before any mechanism work: does the status quo already produce Y?
+
+Assess whether existing behaviors, market forces, platform trends, or workarounds
+independently trend toward outcome Y -- without any new feature.
+
+INERTIA VERDICT: [Competing / Not competing / Unclear]
+Basis: [one sentence -- specific observation about the current state of the domain, not
+assertion]
+
+If Competing: the mechanism analysis in Phase 2 must explain what X produces that the
+status quo does not. A mechanism that merely also produces Y alongside the status quo is
+not a causal claim for X.
+
+PROHIBITED FORM: Conditioning inertia incorporation on the verdict being Competing or
+Unclear does not pass. All three verdict values -- Competing, Not competing, and Unclear --
+must explicitly shape the amended claim in Phase 6. The Not competing verdict is a positive
+bounding condition, not a neutral finding. A response that incorporates the inertia verdict
+only when it is Competing or Unclear, and drops it when Not competing, has failed the
+unconditional requirement regardless of how correctly the Competing and Unclear cases are
+handled. "Not competing -- no adjustment needed" is the conditional form that fails.
+
+=== PHASE 1: MECHANISM READINESS + PRELIMINARY ANCHOR ===
+
+Before tracing, assess: can you name 3 or more observable intermediate steps between X
+and Y, each with a named agent and observable indicator?
+
+If yes: proceed to Phase 2.
+
+If no: complete both sub-steps below before proceeding to Phase 2.
+
+  SUB-STEP 1 -- Incompleteness declaration:
+  Write: "PATHWAY INCOMPLETE: mechanism cannot be traced past [step]. Missing knowledge:
+  [what evidence or domain knowledge is needed]."
+  Then continue tracing in Phase 2 what can be traced, marking unsubstantiated steps
+  [UNCERTAIN].
+
+  SUB-STEP 2 -- Preliminary falsification anchor (required immediately after SUB-STEP 1):
+  Name the highest-confidence step you can trace as a preliminary falsification anchor.
+  Produce it here, before Phase 2 tracing begins.
+
+  Required format:
+  "PRELIMINARY ANCHOR: The mechanism most likely fails if Step [N] -- [Name] -- does not
+  occur, observable as [indicator]. Chain traceability ends here. Further falsification
+  requires establishing [missing knowledge from SUB-STEP 1]."
+
+  Even one traceable step produces one falsifiable break point. An incomplete pathway
+  still requires an anchor. Incompleteness changes the confidence annotation; it does not
+  remove the requirement to name a step-level anchor here before Phase 2.
+
+Producing three thin or vague steps to clear the readiness gate -- instead of declaring
+incompleteness -- fails this phase. Accurate self-report is the required output.
+
+=== PHASE 2: MECHANISM PATHWAY ===
+
+Trace the causal pathway from X to Y.
+
+STEP LABELING REQUIREMENT: Each step must carry a persistent formal label:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
+
+This is not a presentational preference -- it is a structural prerequisite. Phase 3
+(falsification) and Phase 4 (evidence) reference steps by their formal label. A step listed
+as a prose bullet or numbered without a persistent name has no stable referent for later
+phases. Unlabeled steps make falsification anchoring and evidence gap enumeration fail
+mechanically -- there is no name to anchor to. Use this format throughout. The same label
+must appear identically in the pathway, in falsification, and in evidence gap sections.
+
+If inertia status from Phase 0 is Competing: at least one step must describe what X
+produces that the status quo does not.
+
+Also: is there more than one plausible causal pathway from X to Y?
+  - If yes: trace the primary pathway above and name the secondary pathway in one sentence.
+    Note whether the two pathways are complementary, competing, or nested.
+  - If no: note that the mechanism is singular.
+
+=== PHASE 3: FALSIFICATION ===
+
+Name the most likely mechanism break point. Reference the step by its Phase 2 label.
+
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
+
+Step number and name must match a labeled row in Phase 2 exactly. If a step is marked
+[UNCERTAIN], it may still serve as a falsification anchor -- note the uncertainty in the
+indicator description.
+
+-- CONDITIONAL BRANCH: incomplete pathway --
+
+If PATHWAY INCOMPLETE was declared in Phase 1, a PRELIMINARY ANCHOR is already on record
+from Phase 1 SUB-STEP 2. This branch confirms and extends it.
+
+Confirm the Phase 1 anchor. If Phase 2 tracing revealed additional labeled steps with
+higher confidence than the Phase 1 preliminary anchor, update to the highest-confidence
+step now on record.
+
+Required format:
+"BEST-TRACEABLE ANCHOR: The mechanism fails if Step [N] -- [Name] -- does not occur,
+observable as [indicator]. Note: pathway incompleteness means the chain cannot be verified
+beyond step [N]. Further falsification requires establishing [missing knowledge from
+Phase 1]."
+
+PROHIBITED FORM: Declaring incompleteness and deferring or omitting step-level
+falsification does not pass. A response that declares PATHWAY INCOMPLETE in Phase 1 and
+then produces no step-level anchor -- writing deferral language or a metric threshold in
+its place -- has not satisfied this section regardless of how accurately incompleteness was
+declared. The incompleteness declaration removes the completeness requirement from the
+anchor format; it does not remove the requirement to name an anchor. A pathway with one
+traceable step produces one falsifiable break point. Incompleteness changes the confidence
+annotation -- not the structural requirement to name a step-level anchor.
+
+This branch confirms the Phase 1 anchor. It does not introduce fresh deferral.
+
+-- END CONDITIONAL BRANCH --
+
+Do not state falsification as a metric threshold. A metric shortfall is an outcome check.
+Name where the mechanism stops working.
+
+=== PHASE 4: CONTEXT EVIDENCE ===
+
+Assess evidence per pathway step using the formal labels from Phase 2.
+
+For each step:
+  Step N -- [Name]: [evidence name, artifact, or "no evidence"] -- [T1 / T2 / T3 / none]
+    T1 = anecdotal / observational / team intuition
+    T2 = correlation / A-B / usage analytics / survey
+    T3 = controlled / causal-inference-grade experiment
+
+Reference steps by their formal Phase 2 label -- not by position or paraphrase.
+
+FIELD INDEPENDENCE NOTE: The following two outputs measure different things. Produce them
+as two separate named entries. Do not merge them into a single entry. Do not omit either.
+
+  Evidence gap steps: [list Step N -- [Name] labels with no supporting evidence; write
+    "none" if every step has evidence -- the absence of a gap does not eliminate this
+    field; this output answers: which steps lack supporting evidence?]
+
+  Aggregate evidence tier: [highest tier available -- T1/T2/T3/none; this output answers:
+    what is the quality of the evidence that exists? -- independent of which steps are
+    missing; produce both fields in every output]
+
+These fields are orthogonal: gap steps names which steps lack evidence; aggregate tier
+rates the quality of the evidence that is present. One does not substitute for the other.
+
+NULL-GAP COUNTEREXAMPLE: The following is a valid, required output state:
+  Evidence gap steps: none
+  Aggregate evidence tier: T1
+This state means every step in the pathway has supporting evidence, and that evidence is
+anecdotal-grade. The Evidence gap steps field still appears; it carries the value "none."
+The Aggregate evidence tier field still appears; it carries the value T1. A response that
+omits Aggregate evidence tier because all steps are covered is making the category error
+that these fields guard against -- it is conflating "no missing steps" with "no tier to
+report." The null-gap state proves the fields are independent: gap answers which steps are
+missing (here: none); tier answers what quality the present evidence has (here: T1). Both
+are always required. Both always carry a value, even when gap is none.
+
+PROPAGATION REQUIREMENT: The Evidence gap steps field does not stay in Phase 4. It must
+also appear as a standalone named entry in Phase 6 AMEND, separately from the Aggregate
+evidence tier field. Having evidence gap output here in Phase 4 does not substitute for
+having it in Phase 6 AMEND -- the gap must propagate from the source section to the
+synthesis point. A response where Evidence gap steps appears in Phase 4 but is absent from
+Phase 6 AMEND as a named standalone entry does not pass.
+
+Do not substitute general research for team-specific evidence. Note external evidence
+separately if useful, but do not include it in the tier accounting.
+
+=== PHASE 5: CONFOUNDER CHECK ===
+
+This phase asks a DIFFERENT question from Phase 0.
+
+Phase 0 asked: does the status quo trend toward Y over time, without intervention?
+This phase asks: what else, operating RIGHT NOW alongside X, could independently produce Y?
+
+The inertia case (Phase 0) is EXCLUDED from this analysis. It does not count as a
+confounder -- it was answered in its own phase with its own verdict.
+
+What you are looking for -- simultaneously-operating causes, not counterfactuals:
+  - Competing initiatives active during the same deployment window
+  - Confounding variables that correlate with X adoption and independently predict Y
+  - Selection effects: the population using X differs from those who do not
+  - Environmental or seasonal effects coinciding with X's deployment period
+
+Name at least one alternative explanation for Y that:
+  (a) does not involve X as a cause, AND
+  (b) is not the inertia/status-quo case already addressed in Phase 0.
+
+Explicitly acknowledge the exclusion: "The inertia case (Phase 0 verdict: [verdict]) is
+not included here -- it was handled separately in Phase 0."
+
+If no independently-operating cause can be identified, explain why the mechanism is
+insulated from this type of confounding for this outcome type. Silence is not acceptable.
+
+=== PHASE 6: AMEND ===
+
+Produce a narrowed version of the hypothesis that integrates all prior analytical phases.
+This section has required named inputs from each phase. Omitting any of them does not pass.
+
+Required structure:
+  Original: {hypothesis}
+  Inertia verdict: {from Phase 0 -- Competing / Not competing / Unclear}
+  Mechanism completeness: {complete / incomplete at Step N / partial -- from Phase 1;
+    this is a standalone named field; a mechanism qualifier embedded within the Amended
+    clause text ("X causes Y when the mechanism is fully traceable") does not satisfy this
+    field; the completeness status must appear here as a named entry separate from the
+    amended clause; write "complete" if Phase 1 found no gaps; write "incomplete at Step N"
+    if PATHWAY INCOMPLETE was declared; write "partial" if some steps are [UNCERTAIN]}
+  Evidence tier: {aggregate tier from Phase 4 -- T1/T2/T3/none}
+  Evidence gap: {step labels lacking support from Phase 4 -- or "none"; this is a separate
+    field from Evidence tier -- having one does not satisfy the other; a pathway with no
+    gap steps still requires this field, carrying the value "none"}
+  Confounder finding: {from Phase 5 -- name the alternative cause identified, or
+    "none identified -- [reason why mechanism is insulated]"}
+  Active pathway: {primary / secondary / both / singular}
+  Falsification: {Step N -- Name -- break condition, or BEST-TRACEABLE ANCHOR if incomplete;
+    for incomplete pathways, confirm the Phase 1 PRELIMINARY ANCHOR here, updated for any
+    additional steps traced in Phase 2}
+  Amended: {narrower claim -- must include:
+    (a) mechanism qualifier (what must be true in the causal chain for X to cause Y),
+    (b) scope condition (population, context, or timeframe),
+    (c) inertia incorporation -- required regardless of verdict value; no verdict makes
+        inertia incorporation optional; use the form appropriate to the verdict:
+          Competing: scope to contexts where the status quo does not already produce Y via
+            [the competing mechanism]; or declare the feature causally redundant where the
+            status quo already delivers Y
+          Not competing: confirm explicitly that X is the causal driver and that the status
+            quo does not independently produce Y -- this is a positive bounding condition
+            that must appear in the amended claim, not be silently assumed
+          Unclear: qualify the causal scope with the condition that status-quo independence
+            has not been established -- the claim holds only if inertia can be ruled out for
+            this context and population
+    (d) confounder note if Phase 5 named a plausible alternative cause that bounds where
+        the claim holds -- e.g., "provided [confounder] is not the active driver"}
+
+Integration rules:
+  - Evidence tier and Evidence gap are separate AMEND fields -- merging them or omitting
+    either does not pass.
+  - Mechanism completeness is a standalone named AMEND field -- embedding it within the
+    amended clause text does not satisfy this field requirement.
+  - A narrowed claim that ignores the inertia verdict does not pass -- no verdict value
+    makes inertia incorporation optional.
+  - Conditioning inertia incorporation on the verdict being Competing or Unclear does not
+    pass -- all three verdict values require explicit reference in the amended claim. The
+    Not competing case must shape the amended claim text; acknowledging it and then treating
+    it as carrying no bounding force is the conditional form that fails.
+  - Declaring incompleteness and deferring or omitting step-level falsification does not
+    pass -- incompleteness changes the confidence annotation, not the structural requirement
+    to name a step-level anchor; a PATHWAY INCOMPLETE response still carries a Falsification:
+    field with a BEST-TRACEABLE ANCHOR value, not a deferral statement.
+  - Evidence gap appearing only in Phase 4 (CONTEXT EVIDENCE) does not satisfy the Evidence
+    gap AMEND field -- the gap must propagate from Phase 4 to Phase 6 as a standalone named
+    entry; leaving it in Phase 4 does not pass. Just as Mechanism completeness must appear
+    as a named AMEND field and not only in Phase 1, Evidence gap must appear as a named
+    AMEND field and not only in Phase 4.
+  - A narrowed claim that ignores mechanism incompleteness does not pass.
+  - A narrowed claim that omits the confounder finding (when one was identified) does not
+    pass. Partial synthesis is not synthesis -- all fields must be reflected.
+  - Restating the original hypothesis does not pass. Broadening it does not pass.
+
+=== PHASE 7: ARTIFACT ===
+
+Write to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter:
+  topic: {topic}
+  date: {date}
+  hypothesis: {original hypothesis}
+  inertia_status: competing | not-competing | unclear
+  mechanism_complete: true | false | partial
+  incomplete_pathway_declared: true | false
+  preliminary_anchor_declared: true | false
+  pathway_steps: {count}
+  secondary_pathway_noted: true | false
+  pathway_relationship: complementary | competing | nested | singular
+  break_point_step: {step label, or "best-traceable: Step N -- Name"}
+  falsification_stated: true | false
+  evidence_aggregate_tier: T1 | T2 | T3 | none
+  evidence_gap_steps: [{step labels with no supporting evidence; or "none"}]
+  confounders_identified: {count}
+  confounder_inertia_excluded: true | false
+  context_evidence_found: true | false
 ```
 
 ---
 
-## V-02: Parallel Dual-Pool Table Architecture with AUDITOR
+## V-02: Phase 3 C-26 PROHIBITED FORM -- downstream naming (phrasing register axis)
 
-**Axis:** Output format — F-NN and I-NN pools are formatted as structurally identical tables
-throughout the entire output. Both tables carry the same five columns: ID | Condition |
-Testability | Confidence | Rationale. The inertia section uses a pool-level header block that
-declares inertia severity, baseline rate, and inertia pathway observability before the I-NN
-table rows appear. This makes A-14 visually unambiguous (any I-NN table with fewer than two
-rows fails on inspection) and places A-15 as a labeled header field with immediate visibility.
-The AUDITOR role closes with a routing table that references both pools by column.
+**Axis:** Phrasing register -- Phase 3 CONDITIONAL BRANCH gains a new PROHIBITED FORM block that explicitly names C-26 as a failure mode: "A response that declares PATHWAY INCOMPLETE in Phase 1 and produces no Phase 1 anchor does not pass -- the preliminary anchor must appear at the Phase 1 declaration point, not first appear here." Phase 1 is unchanged from R6 V-05 (no sub-step structure, no Phase 1 anchor requirement). C-24 and C-25 preserved from R6 V-05.
 
-**Hypothesis:** Prompts that mix table and prose formats for the two pools (as in R6 V-01–V-05,
-where I-01 appeared in a different table structure than F-NN conditions) create asymmetric
-treatment that may reduce I-NN pool quality. When I-NN and F-NN tables are formatted
-identically, analysts recognize that inertia conditions are full peers of claim conditions --
-same analytical investment, same label requirements. The inertia pool header block forces
-A-15 (inertia observability) before I-NN rows are written, establishing the counterfactual
-observability question as structurally prior to enumerating pathways.
+**Hypothesis:** C-26 names the prohibited form (absent Phase 1 anchor) downstream -- in Phase 3, where Phase 3 is already the anchor production point for R6 V-05. The hypothesis is that naming the prohibition in Phase 3 without restructuring Phase 1 fails C-26 -- a model declaring PATHWAY INCOMPLETE in Phase 1 has no anchor cue at that point; the Phase 3 prohibition arrives too late to change Phase 1 behavior. Comparison to V-01: V-01 adds structural requirement at Phase 1; V-02 adds prohibition naming at Phase 3. If V-01 passes C-26 and V-02 fails, the load-bearing element is co-location (structural proximity), not prohibition naming alone.
 
 ```
-You are running /discover-causal.
-Your input is a feature hypothesis of the form "X causes Y."
-Seven sections. Complete each fully before advancing.
-Every classification judgment uses a discrete label from a fixed set with a rationale line.
+You are running /discover-causal for topic: {topic}.
 
-Dual-pool architecture: all falsification conditions live in two structurally identical tables.
-  F-NN pool (Section 1): claim-derived conditions.
-  I-NN pool (Section 2): inertia-derived conditions.
-Both tables carry columns: ID | Condition | Testability | Confidence | Rationale.
-Testability = Unknown at genesis for all conditions. Confidence = Pending until Section 5.
-Section 3 refines testability. Section 5 assigns confidence. No exceptions.
-
-AUDITOR role: runs after Section 5 (adversarial). Produces AMEND routing table.
-
----
-
-## SECTION 1: CLAIM AND F-NN POOL
-
-Claim extraction:
-  X (the cause): [Extract from input]
-  Y (the claimed outcome): [Extract from input]
-  Full claim: ["X causes Y" -- one sentence]
-
-F-NN Pool:
-[Claim-derived falsification conditions. At least two rows. Confidence column is Pending --
-Section 5 (SKEPTIC) fills it. Testability = Unknown -- Section 3 (evidence) refines it.]
-
-| ID   | Condition (claim false if observed)                     | Testability          | Confidence | Rationale |
-|------|---------------------------------------------------------|----------------------|------------|-----------|
-| F-01 | [What would show X does not cause Y?]                   | Unknown (see Sec 3)  | Pending    | [1 sentence: what failure mode does this expose?] |
-| F-02 | [Second distinct condition.]                             | Unknown (see Sec 3)  | Pending    | [1 sentence] |
-[Add F-NN as claim analysis generates more conditions.]
-
-SECTION 1 GATE:
-[ ] X and Y extracted separately
-[ ] At least two F-NN rows with Unknown testability and Pending confidence
-[ ] No mechanism or evidence content in this section
-
---- Do not advance to Section 2 until all items are checked. ---
-
----
-
-## SECTION 2: I-NN POOL AND INERTIA HEADER
-
-Inertia pool header:
-[Establish baseline and inertia observability BEFORE writing I-NN rows. These fields are
-prerequisites to I-NN pool generation: you cannot enumerate inertia pathways without first
-asking whether you can observe them.]
-
-Status-quo description: [One sentence: what happens today without X?]
-Baseline rate: [Estimate or bound. Or: "Unknown."]
-Inertia severity: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-Inertia severity rationale: [1 sentence]
-
-Inertia pathway observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  (Observable = direct measurement of Y rate without X is available or achievable;
-   Partial = proxy indicators exist but no direct measurement path;
-   Opaque = no available path to observe whether status quo produces Y)
-Inertia observability rationale: [1 sentence: what would enable direct measurement?]
-
-[Inertia pathway observability answers a different question than mechanism hop observability.
-Hop observability (Section 4) labels how detectable each forward causal step is.
-Inertia pathway observability labels how detectable the status-quo-Y pathway is -- the
-counterfactual. A mechanism chain may be AllObservable while the inertia path is Opaque.]
-
-I-NN Pool:
-[Inertia-derived falsification conditions. At least two rows. Same structure as F-NN table:
-Confidence = Pending until Section 5. Testability = Unknown until Section 3.
-Each I-NN condition names a specific mechanism by which Y occurs without X.]
-
-| ID   | Condition (Y occurs without X via...)                   | Testability          | Confidence | Rationale |
-|------|---------------------------------------------------------|----------------------|------------|-----------|
-| I-01 | Y occurs at [baseline rate] without X via [mechanism 1] | Unknown (see Sec 3)  | Pending    | [1 sentence: what makes this pathway plausible?] |
-| I-02 | Y occurs via [mechanism 2] without X                    | Unknown (see Sec 3)  | Pending    | [1 sentence] |
-[Add I-NN as inertia analysis generates more pathways. Each must name a distinct mechanism.]
+Hypothesis under review: {hypothesis}
+(Claim: X causes Y. Test whether the mechanism is sound and whether the cause is the right one.)
 
-SECTION 2 GATE:
-[ ] Inertia pool header complete: baseline rate, severity label with rationale
-[ ] Inertia pathway observability label assigned with rationale (Observable/Partial/Opaque)
-[ ] At least two I-NN rows with Unknown testability and Pending confidence
-[ ] Each I-NN condition names a distinct inertia mechanism (not just restatements)
-
---- Do not advance to Section 3 until all items are checked. ---
+=== PHASE 0: INERTIA GATE ===
 
----
+Answer this before any mechanism work: does the status quo already produce Y?
 
-## SECTION 3: EVIDENCE AND TESTABILITY REFINEMENT
+Assess whether existing behaviors, market forces, platform trends, or workarounds
+independently trend toward outcome Y -- without any new feature.
 
-[At least one context-specific observation, OR explicit "None found" with mandatory AMEND
-evidence slot. After gathering evidence, run testability refinement across ALL F-NN and I-NN
-conditions. Update testability column from Unknown to Easy/Hard/Unknown-confirmed.]
+INERTIA VERDICT: [Competing / Not competing / Unclear]
+Basis: [one sentence -- specific observation about the current state of the domain, not
+assertion]
 
-Evidence entry 1:
-  Source type: [ ] Prior result  [ ] Analogous case  [ ] Domain observation  [ ] Counter-evidence
-  Observation: [What was seen, where, when?]
-  Bearing on X->Y: [1 sentence]
+If Competing: the mechanism analysis in Phase 2 must explain what X produces that the
+status quo does not. A mechanism that merely also produces Y alongside the status quo is
+not a causal claim for X.
 
-[Add entries as needed.]
+PROHIBITED FORM: Conditioning inertia incorporation on the verdict being Competing or
+Unclear does not pass. All three verdict values -- Competing, Not competing, and Unclear --
+must explicitly shape the amended claim in Phase 6. The Not competing verdict is a positive
+bounding condition, not a neutral finding. A response that incorporates the inertia verdict
+only when it is Competing or Unclear, and drops it when Not competing, has failed the
+unconditional requirement regardless of how correctly the Competing and Unclear cases are
+handled. "Not competing -- no adjustment needed" is the conditional form that fails.
 
-Evidence quality: [ ] Strong  [ ] Moderate  [ ] Weak  [ ] None
-Evidence quality rationale: [1 sentence]
-
-Testability refinement pass:
-[Update the testability column for every F-NN and I-NN condition. Write a refinement row
-for each condition. Conditions that remain Unknown must be explicitly confirmed, not just left.]
-
-| ID   | Testability after evidence       | Refinement rationale |
-|------|----------------------------------|---------------------|
-| F-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| F-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-[Mirror all F-NN and I-NN conditions.]
+=== PHASE 1: MECHANISM READINESS ===
 
-Testability refinement yield:
-  testability_refined_count: [Count moved from Unknown to Easy or Hard]
-  testability_residual_unknown_count: [Count confirmed Unknown after evidence]
-  Residual Unknown IDs: [List by ID, or "None"]
-  F-NN residual count: [Count of F-NN conditions remaining Unknown]
-  I-NN residual count: [Count of I-NN conditions remaining Unknown]
+Before tracing, assess: can you name 3 or more observable intermediate steps between X
+and Y, each with a named agent and observable indicator?
 
-SECTION 3 GATE:
-[ ] Evidence populated (or explicit "None found")
-[ ] Evidence quality label with rationale
-[ ] Testability refinement row for every F-NN and I-NN condition
-[ ] testability_refined_count and testability_residual_unknown_count declared
-[ ] F-NN and I-NN residual counts declared separately
+If yes: proceed.
+If no: declare incompleteness now.
+  Write: "PATHWAY INCOMPLETE: mechanism cannot be traced past [step]. Missing knowledge:
+  [what evidence or domain knowledge is needed]."
+  Then continue with what can be traced, marking unsubstantiated steps [UNCERTAIN].
 
---- Do not advance to Section 4 until all items are checked. ---
+Producing three thin or vague steps to clear this gate -- instead of declaring
+incompleteness -- fails this phase. Accurate self-report is the required output.
 
----
+=== PHASE 2: MECHANISM PATHWAY ===
 
-## SECTION 4: MECHANISM CHAIN
+Trace the causal pathway from X to Y.
 
-[Map the causal pathway from X to Y. Two hops minimum. Every hop carries observability label,
-rationale, evidence coherence, and falsification connection to an F-NN or I-NN from Sections 1-2.
-State mechanism only -- adversarial content belongs in Section 5.]
+STEP LABELING REQUIREMENT: Each step must carry a persistent formal label:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
 
-Hop 1: X [name] -> [intermediate A]: [How does X produce A?]
-  Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  Observability rationale: [1 sentence]
-  Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions -- describe
-  Falsification connection: [F-NN or I-NN ID. One sentence: if this hop fails, this condition holds.]
+This is not a presentational preference -- it is a structural prerequisite. Phase 3
+(falsification) and Phase 4 (evidence) reference steps by their formal label. A step listed
+as a prose bullet or numbered without a persistent name has no stable referent for later
+phases. Unlabeled steps make falsification anchoring and evidence gap enumeration fail
+mechanically -- there is no name to anchor to. Use this format throughout. The same label
+must appear identically in the pathway, in falsification, and in evidence gap sections.
 
-Hop 2: [intermediate A] -> Y: [How does A produce Y?]
-  Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  Observability rationale: [1 sentence]
-  Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions -- describe
-  Falsification connection: [F-NN or I-NN ID. One sentence.]
+If inertia status from Phase 0 is Competing: at least one step must describe what X
+produces that the status quo does not.
 
-[Add Hop 3+ as needed. Every hop: observability + rationale, coherence, falsification connection.]
+Also: is there more than one plausible causal pathway from X to Y?
+  - If yes: trace the primary pathway above and name the secondary pathway in one sentence.
+    Note whether the two pathways are complementary, competing, or nested.
+  - If no: note that the mechanism is singular.
 
-Mechanism strength (preliminary): [ ] Strong  [ ] Moderate  [ ] Weak
-Preliminary rationale: [1 sentence: pre-challenge assessment based on hop labels and evidence.]
+=== PHASE 3: FALSIFICATION ===
 
-SECTION 4 GATE:
-[ ] At least two hops filled
-[ ] Every hop: observability label + rationale, evidence coherence, falsification connection
-[ ] Mechanism strength (preliminary) with rationale
-[ ] No confidence labels in this section (Section 5)
-[ ] No chain observability aggregate (AUDITOR's job)
+Name the most likely mechanism break point. Reference the step by its Phase 2 label.
 
---- Do not advance to Section 5 until all items are checked. ---
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
 
----
+Step number and name must match a labeled row in Phase 2 exactly. If a step is marked
+[UNCERTAIN], it may still serve as a falsification anchor -- note the uncertainty in the
+indicator description.
 
-## SECTION 5: ADVERSARIAL CHALLENGE
+-- CONDITIONAL BRANCH: incomplete pathway --
 
-[Structurally separate from Section 4. Challenge every hop. Assign confidence labels to all
-F-NN and I-NN conditions. Produce final mechanism strength. SKEPTIC mode.]
+If PATHWAY INCOMPLETE was declared in Phase 1, this branch applies.
 
-Hop-by-hop challenge:
+Do NOT defer falsification. Do NOT write:
+  - "Cannot falsify until the mechanism is better understood."
+  - "Falsification depends on completing the pathway."
+  - A metric threshold ("if Y does not improve").
 
-  Hop 1 challenge:
-    What breaks X -> [intermediate A]? [Observable condition]
-    Observable test: [What to measure or detect]
-    Alternative at this hop: [What else produces [intermediate A] without X?]
+PROHIBITED FORM (C-24): Declaring incompleteness and deferring or omitting step-level
+falsification does not pass. A response that declares PATHWAY INCOMPLETE in Phase 1 and
+then produces no step-level anchor -- writing deferral language or a metric threshold in
+its place -- has not satisfied this section regardless of how accurately incompleteness was
+declared. The incompleteness declaration removes the completeness requirement from the
+anchor format; it does not remove the requirement to name an anchor. A pathway with one
+traceable step produces one falsifiable break point. Incompleteness changes the confidence
+annotation -- not the structural requirement to name a step-level anchor.
 
-  Hop 2 challenge:
-    What breaks [intermediate A] -> Y? [Observable condition]
-    Observable test: [What to measure or detect]
-    Alternative at this hop: [What else produces Y without [intermediate A]?]
+PROHIBITED FORM (C-26): A response that declares PATHWAY INCOMPLETE in Phase 1 and
+produces no preliminary anchor at the Phase 1 declaration point does not pass. The
+falsification anchor must appear at the moment of the incompleteness declaration -- in
+Phase 1, not first here in Phase 3. A response where Phase 1 has no anchor and Phase 3
+introduces the anchor for the first time has deferred the anchor to Phase 3, not co-located
+it with the declaration. The requirement is structural proximity: the anchor must be
+produced at the declaration point.
 
-  [Mirror all Section 4 hops.]
+Instead: identify the highest-confidence labeled step traced and anchor falsification there.
 
-Confounders:
-  Confounder 1: [Variable correlating with both X and Y. Name and describe.]
-
-Inertia challenge:
-  Adversarial view: [Which I-NN pathway is most plausible? Does analysis revise inertia verdict?]
-  Most dangerous I-NN: [ID -- which condition, if true, most threatens the causal claim?]
-  Revised inertia severity: [ ] Confirms  [ ] Upgrades to ADVISORY  [ ] Upgrades to STOP
-
-Final combined table (testability from Section 3 + confidence from Section 5):
-
-| ID   | Condition text      | Testability (Sec 3)  | Confidence (Sec 5)          | Rationale |
-|------|---------------------|----------------------|-----------------------------|-----------|
-| F-01 | [text]              | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| F-02 | [text]              | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-01 | [text]              | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-02 | [text]              | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-[Mirror all conditions. Testability carries Section 3 values unchanged.]
-
-Mechanism strength (final): [ ] Strong  [ ] Moderate  [ ] Weak  [ ] NA (STOP)
-Final rationale: [1 sentence. Changed from preliminary or not -- state which and why.]
-
----
-
-## AUDITOR
-
-[Post-processing role. Runs after Section 5. Reads Section 3 yield data, Section 4 hop
-observability labels, Section 2 I-NN pool and inertia observability, and Section 5 final table.
-Produces consolidated AMEND routing table. Does not challenge mechanism or propose scope.]
-
-### Diagnostic 1: Chain Observability Aggregate
-
-| Hop   | Step                    | Observability (from Sec 4)      |
-|-------|-------------------------|---------------------------------|
-| Hop 1 | X -> [intermediate A]   | [Observable / Partial / Opaque] |
-| Hop 2 | [intermediate A] -> Y   | [Observable / Partial / Opaque] |
-
-Observable: [Count]  |  Partial: [Count]  |  Opaque: [Count]  |  Total: [Count]
-Chain observability pattern: [ ] AllObservable  [ ] Mixed  [ ] PredominantlyOpaque
-Pattern rationale: [1 sentence]
-
-### Diagnostic 2: Testability Yield (from Section 3)
-
-Refined count: [Value]  |  Residual Unknown count: [Value]
-Residual Unknown IDs: [From Section 3, or "None"]
-F-NN residual: [Count]  |  I-NN residual: [Count]
-Pool asymmetry: [One sentence: are I-NN conditions disproportionately Unknown?]
-Yield quality: [ ] AllResolved  [ ] PartiallyResolved  [ ] Unresolved
-
-### Diagnostic 3: I-NN Pool Review (from Section 2)
-
-I-NN condition count: [Total]
-I-NN conditions with Unknown testability: [List IDs or "None"]
-I-NN conditions with Low confidence: [List IDs or "None"]
-Pool coverage: [ ] Comprehensive  [ ] Adequate  [ ] Minimal
-Coverage rationale: [1 sentence]
-
-### Diagnostic 4: Inertia Observability Review (from Section 2)
-
-Inertia pathway observability: [Observable / Partial / Opaque -- from Section 2 header]
-Divergence from chain pattern: [Does inertia observability differ from chain pattern? One sentence.]
-
-### AMEND Routing Table
-
-| # | Diagnostic                  | Result                               | AMEND slot    | Routing |
-|---|-----------------------------|--------------------------------------|---------------|---------|
-| 1 | Chain observability pattern | [AllObservable/Mixed/PredominantlyOpaque] | Observability | [Required if Mixed or PredominantlyOpaque / Not required] |
-| 2 | Testability residual count  | [Count]                              | Testability   | [Required if > 0 / Not required] |
-| 3 | Evidence quality            | [Strong/Moderate/Weak/None]          | Evidence      | [Required if None / Not required] |
-| 4 | Inertia severity (final)    | [SAFE/ADVISORY/STOP]                 | Inertia       | [Required if ADVISORY or STOP / Not required] |
-
-AUDITOR note: [One sentence: most critical gap.]
-
----
-
-## SECTION 6: SCOPE AND AMEND
-
-Scoped claim: ["X causes Y when [condition], for [population], assuming [precondition]."]
-Out-of-scope: [At least one context where mechanism fails, from Section 5.]
-
-Final inertia severity: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-[Use Section 5 revised verdict if different from Section 2.]
-
-AMEND DIRECTIVE:
-[All slots marked Required in AUDITOR's routing table. Always include Narrow + Mechanism.]
-
-AMEND: discover-causal
-  Narrow: [Scope tightening]
-  Mechanism: [Hop notation: X -> [A] -> [B] -> Y]
-  Falsification: [Highest-confidence condition from Section 5 table. ID + testability + confidence.]
-  [Evidence: if AUDITOR row 3 = Required]
-  [Inertia: if AUDITOR row 4 = Required -- reference most dangerous I-NN by ID]
-  [Observability: if AUDITOR row 1 = Required]
-  [Testability: if AUDITOR row 2 = Required -- list residual IDs with pool label]
-
----
-
-Write artifact: simulations/discover/causal/{topic}-causal-{date}.md
-Frontmatter: skill, topic, date, cause (X), outcome (Y),
-             dual_pool_architecture (true), auditor_role (true), gate_checklists (4),
-             inertia_verdict (SAFE/ADVISORY/STOP), baseline_rate,
-             inertia_observability (Observable/Partial/Opaque),
-             evidence_count, evidence_quality (Strong/Moderate/Weak/None),
-             f_nn_count, i_nn_count, i_nn_pool_coverage (Comprehensive/Adequate/Minimal),
-             hop_count,
-             mechanism_strength_preliminary (Strong/Moderate/Weak),
-             mechanism_strength_final (Strong/Moderate/Weak/NA), strength_changed (true/false),
-             chain_observability_pattern (AllObservable/Mixed/PredominantlyOpaque),
-             observability_amend_triggered (true/false),
-             testability_refined_count, testability_residual_unknown_count,
-             f_nn_residual_count, i_nn_residual_count, pool_asymmetry_detected (true/false),
-             testability_amend_triggered (true/false),
-             confounder_named (true/false),
-             amend_routing_rows_required (count).
+Required format:
+"BEST-TRACEABLE ANCHOR: The mechanism fails if Step [N] -- [Name] -- does not occur,
+observable as [indicator]. Note: pathway incompleteness means the chain cannot be verified
+beyond step [N]. Further falsification requires establishing [missing knowledge from
+Phase 1]."
+
+-- END CONDITIONAL BRANCH --
+
+Do not state falsification as a metric threshold. A metric shortfall is an outcome check.
+Name where the mechanism stops working.
+
+=== PHASE 4: CONTEXT EVIDENCE ===
+
+Assess evidence per pathway step using the formal labels from Phase 2.
+
+For each step:
+  Step N -- [Name]: [evidence name, artifact, or "no evidence"] -- [T1 / T2 / T3 / none]
+    T1 = anecdotal / observational / team intuition
+    T2 = correlation / A-B / usage analytics / survey
+    T3 = controlled / causal-inference-grade experiment
+
+Reference steps by their formal Phase 2 label -- not by position or paraphrase.
+
+FIELD INDEPENDENCE NOTE: The following two outputs measure different things. Produce them
+as two separate named entries. Do not merge them into a single entry. Do not omit either.
+
+  Evidence gap steps: [list Step N -- [Name] labels with no supporting evidence; write
+    "none" if every step has evidence -- the absence of a gap does not eliminate this
+    field; this output answers: which steps lack supporting evidence?]
+
+  Aggregate evidence tier: [highest tier available -- T1/T2/T3/none; this output answers:
+    what is the quality of the evidence that exists? -- independent of which steps are
+    missing; produce both fields in every output]
+
+These fields are orthogonal: gap steps names which steps lack evidence; aggregate tier
+rates the quality of the evidence that is present. One does not substitute for the other.
+
+NULL-GAP COUNTEREXAMPLE: The following is a valid, required output state:
+  Evidence gap steps: none
+  Aggregate evidence tier: T1
+This state means every step in the pathway has supporting evidence, and that evidence is
+anecdotal-grade. The Evidence gap steps field still appears; it carries the value "none."
+The Aggregate evidence tier field still appears; it carries the value T1. A response that
+omits Aggregate evidence tier because all steps are covered is making the category error
+that these fields guard against -- it is conflating "no missing steps" with "no tier to
+report." The null-gap state proves the fields are independent: gap answers which steps are
+missing (here: none); tier answers what quality the present evidence has (here: T1). Both
+are always required. Both always carry a value, even when gap is none.
+
+PROPAGATION REQUIREMENT: The Evidence gap steps field does not stay in Phase 4. It must
+also appear as a standalone named entry in Phase 6 AMEND, separately from the Aggregate
+evidence tier field. Having evidence gap output here in Phase 4 does not substitute for
+having it in Phase 6 AMEND -- the gap must propagate from the source section to the
+synthesis point. A response where Evidence gap steps appears in Phase 4 but is absent from
+Phase 6 AMEND as a named standalone entry does not pass.
+
+Do not substitute general research for team-specific evidence. Note external evidence
+separately if useful, but do not include it in the tier accounting.
+
+=== PHASE 5: CONFOUNDER CHECK ===
+
+This phase asks a DIFFERENT question from Phase 0.
+
+Phase 0 asked: does the status quo trend toward Y over time, without intervention?
+This phase asks: what else, operating RIGHT NOW alongside X, could independently produce Y?
+
+The inertia case (Phase 0) is EXCLUDED from this analysis. It does not count as a
+confounder -- it was answered in its own phase with its own verdict.
+
+What you are looking for -- simultaneously-operating causes, not counterfactuals:
+  - Competing initiatives active during the same deployment window
+  - Confounding variables that correlate with X adoption and independently predict Y
+  - Selection effects: the population using X differs from those who do not
+  - Environmental or seasonal effects coinciding with X's deployment period
+
+Name at least one alternative explanation for Y that:
+  (a) does not involve X as a cause, AND
+  (b) is not the inertia/status-quo case already addressed in Phase 0.
+
+Explicitly acknowledge the exclusion: "The inertia case (Phase 0 verdict: [verdict]) is
+not included here -- it was handled separately in Phase 0."
+
+If no independently-operating cause can be identified, explain why the mechanism is
+insulated from this type of confounding for this outcome type. Silence is not acceptable.
+
+=== PHASE 6: AMEND ===
+
+Produce a narrowed version of the hypothesis that integrates all prior analytical phases.
+This section has required named inputs from each phase. Omitting any of them does not pass.
+
+Required structure:
+  Original: {hypothesis}
+  Inertia verdict: {from Phase 0 -- Competing / Not competing / Unclear}
+  Mechanism completeness: {complete / incomplete at Step N / partial -- from Phase 1;
+    this is a standalone named field; a mechanism qualifier embedded within the Amended
+    clause text ("X causes Y when the mechanism is fully traceable") does not satisfy this
+    field; the completeness status must appear here as a named entry separate from the
+    amended clause; write "complete" if Phase 1 found no gaps; write "incomplete at Step N"
+    if PATHWAY INCOMPLETE was declared; write "partial" if some steps are [UNCERTAIN]}
+  Evidence tier: {aggregate tier from Phase 4 -- T1/T2/T3/none}
+  Evidence gap: {step labels lacking support from Phase 4 -- or "none"; this is a separate
+    field from Evidence tier -- having one does not satisfy the other; a pathway with no
+    gap steps still requires this field, carrying the value "none"}
+  Confounder finding: {from Phase 5 -- name the alternative cause identified, or
+    "none identified -- [reason why mechanism is insulated]"}
+  Active pathway: {primary / secondary / both / singular}
+  Falsification: {Step N -- Name -- break condition, or BEST-TRACEABLE ANCHOR if incomplete}
+  Amended: {narrower claim -- must include:
+    (a) mechanism qualifier (what must be true in the causal chain for X to cause Y),
+    (b) scope condition (population, context, or timeframe),
+    (c) inertia incorporation -- required regardless of verdict value; no verdict makes
+        inertia incorporation optional; use the form appropriate to the verdict:
+          Competing: scope to contexts where the status quo does not already produce Y via
+            [the competing mechanism]; or declare the feature causally redundant where the
+            status quo already delivers Y
+          Not competing: confirm explicitly that X is the causal driver and that the status
+            quo does not independently produce Y -- this is a positive bounding condition
+            that must appear in the amended claim, not be silently assumed
+          Unclear: qualify the causal scope with the condition that status-quo independence
+            has not been established -- the claim holds only if inertia can be ruled out for
+            this context and population
+    (d) confounder note if Phase 5 named a plausible alternative cause that bounds where
+        the claim holds -- e.g., "provided [confounder] is not the active driver"}
+
+Integration rules:
+  - Evidence tier and Evidence gap are separate AMEND fields -- merging them or omitting
+    either does not pass.
+  - Mechanism completeness is a standalone named AMEND field -- embedding it within the
+    amended clause text does not satisfy this field requirement.
+  - A narrowed claim that ignores the inertia verdict does not pass -- no verdict value
+    makes inertia incorporation optional.
+  - Conditioning inertia incorporation on the verdict being Competing or Unclear does not
+    pass -- all three verdict values require explicit reference in the amended claim. The
+    Not competing case must shape the amended claim text; acknowledging it and then treating
+    it as carrying no bounding force is the conditional form that fails.
+  - Declaring incompleteness and deferring or omitting step-level falsification does not
+    pass -- incompleteness changes the confidence annotation, not the structural requirement
+    to name a step-level anchor; a PATHWAY INCOMPLETE response still carries a Falsification:
+    field with a BEST-TRACEABLE ANCHOR value, not a deferral statement.
+  - Evidence gap appearing only in Phase 4 (CONTEXT EVIDENCE) does not satisfy the Evidence
+    gap AMEND field -- the gap must propagate from Phase 4 to Phase 6 as a standalone named
+    entry; leaving it in Phase 4 does not pass. Just as Mechanism completeness must appear
+    as a named AMEND field and not only in Phase 1, Evidence gap must appear as a named
+    AMEND field and not only in Phase 4.
+  - A narrowed claim that ignores mechanism incompleteness does not pass.
+  - A narrowed claim that omits the confounder finding (when one was identified) does not
+    pass. Partial synthesis is not synthesis -- all fields must be reflected.
+  - Restating the original hypothesis does not pass. Broadening it does not pass.
+
+=== PHASE 7: ARTIFACT ===
+
+Write to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter:
+  topic: {topic}
+  date: {date}
+  hypothesis: {original hypothesis}
+  inertia_status: competing | not-competing | unclear
+  mechanism_complete: true | false | partial
+  incomplete_pathway_declared: true | false
+  pathway_steps: {count}
+  secondary_pathway_noted: true | false
+  pathway_relationship: complementary | competing | nested | singular
+  break_point_step: {step label, or "best-traceable: Step N -- Name"}
+  falsification_stated: true | false
+  evidence_aggregate_tier: T1 | T2 | T3 | none
+  evidence_gap_steps: [{step labels with no supporting evidence; or "none"}]
+  confounders_identified: {count}
+  confounder_inertia_excluded: true | false
+  context_evidence_found: true | false
 ```
 
 ---
 
-## V-03: Inertia-First Lifecycle with EVALUATOR
+## V-03: Phase 1 C-26 PROHIBITED FORM -- co-located naming (phrasing register axis)
 
-**Axis:** Lifecycle emphasis — inertia analysis runs FIRST, before claim extraction and before
-the F-NN pool is generated. The inertia section produces the I-NN pool and inertia observability
-label as foundational inputs that constrain how the causal claim is subsequently framed. The F-NN
-pool is generated second, with I-NN conditions already in scope. Evidence and testability
-refinement integrate both pools. An EVALUATOR role closes the analysis with a routing table.
+**Axis:** Phrasing register -- Phase 1 declaration section gains an explicit PROHIBITED FORM statement naming the absent-anchor case as a failure mode: "Declaring incompleteness and proceeding to Phase 2 without immediately producing a step-anchored preliminary anchor here does not pass." The required format for the preliminary anchor is specified in Phase 1. Phase 1 does NOT use sub-step labeling (contrast with V-01). Phase 3 CONDITIONAL BRANCH is updated to confirm and extend. C-24 and C-25 preserved from R6 V-05.
 
-**Hypothesis:** In all prior R6 variations, inertia was checked AFTER the mechanism was
-established -- a late-stage sanity check. This ordering may bias the check: analysts who have
-already constructed and defended a mechanism chain are less likely to conclude that inertia
-produces Y at a meaningful rate. Inverting the lifecycle -- establish the counter-hypothesis
-first, generate the I-NN pool before the F-NN pool exists -- removes this anchoring effect.
-Analysts who see inertia conditions before drafting the mechanism may write more mechanistically
-specific F-NN conditions that explicitly differentiate X-caused Y from inertia-produced Y.
-The test: does inertia-first ordering change the character of F-NN conditions generated?
+**Hypothesis:** V-01 uses structural sub-steps to require the anchor at Phase 1; V-03 uses prohibition naming without sub-step restructuring. The hypothesis: naming the absence as a failure mode at Phase 1 (co-located with the production point) is the minimal change sufficient to produce C-26-passing responses. If V-03 passes C-26 while V-01 fails, the load-bearing mechanism is the "does not pass" language. If both pass, co-location (at any level of explicitness) is sufficient. If neither passes without the sub-step format, then structural sequencing is required, not just prohibition naming.
 
 ```
-You are running /discover-causal.
-Your input is a feature hypothesis of the form "X causes Y."
-Seven steps plus EVALUATOR role. Complete each step fully before advancing.
-Every classification judgment uses a discrete label from a fixed set with a rationale line.
+You are running /discover-causal for topic: {topic}.
 
-Lifecycle order: inertia analysis first (Steps 1-2), then claim extraction and F-NN pool
-(Steps 3-4), then evidence and refinement (Step 5), then mechanism (Step 6), then
-adversarial (Step 7), then EVALUATOR (routing table), then scope and AMEND.
+Hypothesis under review: {hypothesis}
+(Claim: X causes Y. Test whether the mechanism is sound and whether the cause is the right one.)
 
-This ordering is intentional: establish the status-quo competitor before stating the
-causal claim. I-NN conditions generated without knowledge of the claim mechanism may
-be more diverse and mechanistically independent than conditions generated after.
+=== PHASE 0: INERTIA GATE ===
 
----
+Answer this before any mechanism work: does the status quo already produce Y?
 
-## STEP 1: INERTIA BASELINE AND PATHWAY OBSERVABILITY
+Assess whether existing behaviors, market forces, platform trends, or workarounds
+independently trend toward outcome Y -- without any new feature.
 
-[Before stating the causal claim: assess the status quo. What does Y look like today?
-How visible is the baseline? Label inertia pathway observability before any claim work.]
+INERTIA VERDICT: [Competing / Not competing / Unclear]
+Basis: [one sentence -- specific observation about the current state of the domain, not
+assertion]
 
-Status-quo description: [One sentence: what happens today without X?]
-Baseline rate: [Estimate or bound: "Y occurs in approximately __% of cases without X."
-  Or: "Unknown -- no measurement available."]
+If Competing: the mechanism analysis in Phase 2 must explain what X produces that the
+status quo does not. A mechanism that merely also produces Y alongside the status quo is
+not a causal claim for X.
 
-Inertia pathway observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  (Observable = direct measurement of Y-without-X rate is available or straightforward;
-   Partial = proxy data accessible, no direct measurement path;
-   Opaque = no data path exists to observe whether status quo produces Y independently)
-Inertia observability rationale: [1 sentence: what data source or experiment would enable direct observation?]
+PROHIBITED FORM: Conditioning inertia incorporation on the verdict being Competing or
+Unclear does not pass. All three verdict values -- Competing, Not competing, and Unclear --
+must explicitly shape the amended claim in Phase 6. The Not competing verdict is a positive
+bounding condition, not a neutral finding. A response that incorporates the inertia verdict
+only when it is Competing or Unclear, and drops it when Not competing, has failed the
+unconditional requirement regardless of how correctly the Competing and Unclear cases are
+handled. "Not competing -- no adjustment needed" is the conditional form that fails.
 
-Inertia severity: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-Inertia severity rationale: [1 sentence: does the baseline create a meaningful
-  competing explanation for Y?]
+=== PHASE 1: MECHANISM READINESS ===
 
-STEP 1 GATE:
-[ ] Baseline rate declared (estimate, bound, or explicit "Unknown")
-[ ] Inertia pathway observability label assigned with rationale
-[ ] Inertia severity label assigned with rationale
-[ ] No claim extraction or F-NN content in this step
+Before tracing, assess: can you name 3 or more observable intermediate steps between X
+and Y, each with a named agent and observable indicator?
 
---- Do not advance to Step 2 until all items are checked. ---
+If yes: proceed.
 
----
+If no: declare incompleteness now.
+  Write: "PATHWAY INCOMPLETE: mechanism cannot be traced past [step]. Missing knowledge:
+  [what evidence or domain knowledge is needed]."
 
-## STEP 2: I-NN POOL (INERTIA FALSIFICATION CONDITIONS)
+  Immediately after this declaration -- before Phase 2 -- name the highest-confidence step
+  you can trace as a preliminary falsification anchor.
 
-[Generate inertia falsification conditions BEFORE the claim is stated. Each I-NN condition
-names a specific pathway by which Y could occur without X. At least two conditions.
-Testability = Unknown at genesis. No confidence yet -- Step 7 (adversarial) assigns it.]
+  Required format:
+  "PRELIMINARY ANCHOR: The mechanism most likely fails if Step [N] -- [Name] -- does not
+  occur, observable as [indicator]. Chain traceability ends here. Further falsification
+  requires establishing [missing knowledge above]."
 
-| ID   | Inertia falsification condition                          | Testability          | Rationale |
-|------|----------------------------------------------------------|----------------------|-----------|
-| I-01 | Y occurs without X via [specific mechanism 1]            | Unknown (see Step 5) | [1 sentence: what makes this pathway plausible from what we know today?] |
-| I-02 | Y occurs without X via [specific mechanism 2]            | Unknown (see Step 5) | [1 sentence] |
-[Add I-NN as the baseline analysis generates more inertia pathways. Aim for distinct mechanisms.]
+  PROHIBITED FORM: Declaring incompleteness and proceeding to Phase 2 without producing
+  this preliminary anchor here does not pass. The anchor must appear at this declaration
+  point -- not deferred to Phase 3. Phase 3 will confirm and extend it, but Phase 1 must
+  produce it first. Incompleteness changes the confidence annotation; it does not remove
+  the requirement to name a step-level anchor here. A pathway with one traceable step
+  produces one falsifiable break point.
 
-I-NN pool summary:
-  Condition count: [Total I-NN conditions]
-  Dominant inertia pathway: [Which I-NN, if true, would most challenge a causal claim for X->Y?
-    ID and one-sentence rationale.]
+  Then continue tracing in Phase 2 what can be traced, marking unsubstantiated steps
+  [UNCERTAIN].
 
-STEP 2 GATE:
-[ ] At least two I-NN conditions with distinct mechanisms
-[ ] All I-NN testability = Unknown
-[ ] No F-NN or claim content in this step
-[ ] Dominant inertia pathway identified by ID
+Producing three thin or vague steps to clear this gate -- instead of declaring
+incompleteness -- fails this phase. Accurate self-report is the required output.
 
---- Do not advance to Step 3 until all items are checked. ---
+=== PHASE 2: MECHANISM PATHWAY ===
 
----
+Trace the causal pathway from X to Y.
 
-## STEP 3: CLAIM EXTRACTION
+STEP LABELING REQUIREMENT: Each step must carry a persistent formal label:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
 
-[Now state the causal claim. The I-NN pool (Steps 1-2) should inform how you frame X and Y.
-Do not restate I-NN conditions as F-NN conditions -- they are already catalogued.]
+This is not a presentational preference -- it is a structural prerequisite. Phase 3
+(falsification) and Phase 4 (evidence) reference steps by their formal label. A step listed
+as a prose bullet or numbered without a persistent name has no stable referent for later
+phases. Unlabeled steps make falsification anchoring and evidence gap enumeration fail
+mechanically -- there is no name to anchor to. Use this format throughout. The same label
+must appear identically in the pathway, in falsification, and in evidence gap sections.
 
-X (the cause): [Extract from input]
-Y (the claimed outcome): [Extract from input]
-Full claim: ["X causes Y" -- one sentence]
+If inertia status from Phase 0 is Competing: at least one step must describe what X
+produces that the status quo does not.
 
-Inertia-claim interface: [One sentence: does the dominant I-NN pathway (Step 2) directly
-  compete with this claim, or does it produce a related but distinct version of Y?
-  This distinction constrains how F-NN conditions will be written in Step 4.]
+Also: is there more than one plausible causal pathway from X to Y?
+  - If yes: trace the primary pathway above and name the secondary pathway in one sentence.
+    Note whether the two pathways are complementary, competing, or nested.
+  - If no: note that the mechanism is singular.
 
----
+=== PHASE 3: FALSIFICATION ===
 
-## STEP 4: F-NN POOL (CLAIM FALSIFICATION CONDITIONS)
+Name the most likely mechanism break point. Reference the step by its Phase 2 label.
 
-[Claim-derived conditions. At least two. Testability = Unknown. No confidence yet.
-F-NN conditions should be distinct from I-NN conditions -- they address mechanism failure,
-not inertia. If a condition overlaps with an I-NN condition, note the overlap.]
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
 
-| ID   | Falsification condition (claim false if observed)       | Testability          | Rationale |
-|------|---------------------------------------------------------|----------------------|-----------|
-| F-01 | [What would show X does not cause Y?]                   | Unknown (see Step 5) | [1 sentence: mechanism failure this exposes] |
-| F-02 | [Second distinct condition.]                             | Unknown (see Step 5) | [1 sentence] |
-[Add F-NN as claim analysis generates more conditions. Note any I-NN overlaps.]
+Step number and name must match a labeled row in Phase 2 exactly. If a step is marked
+[UNCERTAIN], it may still serve as a falsification anchor -- note the uncertainty in the
+indicator description.
 
-F-NN/I-NN overlap note: [Are any F-NN conditions restatements of I-NN conditions? If so,
-  which pairs overlap and how do they differ in framing? Or: "No overlaps detected."]
+-- CONDITIONAL BRANCH: incomplete pathway --
 
----
+If PATHWAY INCOMPLETE was declared in Phase 1, a PRELIMINARY ANCHOR is on record from
+Phase 1. Confirm and extend it here.
 
-## STEP 5: EVIDENCE AND TESTABILITY REFINEMENT
+Confirm the Phase 1 anchor. If Phase 2 tracing revealed additional labeled steps with
+higher confidence than the Phase 1 preliminary anchor, update to the highest-confidence
+step now on record.
 
-[At least one context-specific observation, OR explicit "None found" with mandatory AMEND
-evidence slot. Refine testability across both F-NN (Step 4) and I-NN (Step 2) conditions.]
+Required format:
+"BEST-TRACEABLE ANCHOR: The mechanism fails if Step [N] -- [Name] -- does not occur,
+observable as [indicator]. Note: pathway incompleteness means the chain cannot be verified
+beyond step [N]. Further falsification requires establishing [missing knowledge from
+Phase 1]."
 
-Evidence entry 1:
-  Source type: [ ] Prior result  [ ] Analogous case  [ ] Domain observation  [ ] Counter-evidence
-  Observation: [What was seen, where, when?]
-  Bearing on X->Y: [1 sentence]
-
-[Add entries as needed.]
-
-Evidence quality: [ ] Strong  [ ] Moderate  [ ] Weak  [ ] None
-Evidence quality rationale: [1 sentence]
-
-Testability refinement pass:
-[Update testability for ALL F-NN and I-NN conditions. I-NN conditions were generated before
-the claim -- does evidence gathered for the claim also refine inertia conditions?]
-
-| ID   | Testability after evidence       | Refinement rationale |
-|------|----------------------------------|---------------------|
-| F-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| F-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-[Mirror all conditions.]
-
-Testability refinement yield:
-  testability_refined_count: [Count moved from Unknown to Easy or Hard]
-  testability_residual_unknown_count: [Count remaining Unknown]
-  Residual Unknown IDs: [List by ID, or "None"]
-  F-NN residual count: [Count]  |  I-NN residual count: [Count]
-  Cross-pool note: [Did claim evidence refine any I-NN conditions? Or: "No cross-pool refinement."]
-
-STEP 5 GATE:
-[ ] Evidence populated (or explicit "None found")
-[ ] Evidence quality label and rationale
-[ ] Testability refinement row for every F-NN and I-NN condition
-[ ] yield counts declared with pool breakdown
-[ ] Cross-pool note present
-
---- Do not advance to Step 6 until all items are checked. ---
-
----
-
-## STEP 6: MECHANISM CHAIN
-
-[Map the causal pathway from X to Y. Two hops minimum. Every hop carries observability label,
-rationale, evidence coherence, and falsification connection to an F-NN or I-NN.
-State mechanism only. I-NN conditions established in Step 2 are available for cross-reference.]
-
-Hop 1: X [name] -> [intermediate A]: [How does X produce A?]
-  Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  Observability rationale: [1 sentence]
-  Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions -- describe
-  Falsification connection: [F-NN or I-NN ID. One sentence.]
-
-Hop 2: [intermediate A] -> Y: [How does A produce Y?]
-  Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  Observability rationale: [1 sentence]
-  Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions -- describe
-  Falsification connection: [F-NN or I-NN ID. One sentence.]
-
-[Add Hop 3+ as needed.]
-
-Mechanism strength (preliminary): [ ] Strong  [ ] Moderate  [ ] Weak
-Preliminary rationale: [1 sentence]
-
-STEP 6 GATE:
-[ ] At least two hops with observability label + rationale, coherence, falsification connection
-[ ] Mechanism strength (preliminary) with rationale
-[ ] No adversarial content (Step 7)
-
---- Do not advance to Step 7 until all items are checked. ---
-
----
-
-## STEP 7: ADVERSARIAL CHALLENGE
-
-[Challenge every hop. Assign confidence to all F-NN and I-NN conditions. Final mechanism
-strength. Structurally separate from Step 6. I-NN conditions are primary adversarial inputs.]
-
-Hop-by-hop challenge:
-
-  Hop 1 challenge:
-    What breaks X -> [intermediate A]? [Observable condition]
-    Observable test: [What to measure]
-    Alternative at this hop: [What else produces [intermediate A] without X?]
-    Confidence: [ ] High  [ ] Medium  [ ] Low
-    Confidence rationale: [1 sentence]
-
-  Hop 2 challenge:
-    What breaks [intermediate A] -> Y? [Observable condition]
-    Observable test: [What to measure]
-    Alternative at this hop: [What else produces Y without [intermediate A]?]
-    Confidence: [ ] High  [ ] Medium  [ ] Low
-    Confidence rationale: [1 sentence]
-
-  [Mirror all Step 6 hops.]
-
-Confounders:
-  Confounder 1: [Variable correlating with both X and Y. Name and describe.]
-
-Inertia challenge:
-  [Which I-NN condition is most threatening given the mechanism analysis?
-   Has the mechanism work revealed new inertia pathways not in Step 2?]
-  Dominant I-NN reference: [ID -- which I-NN, post-mechanism analysis, is most dangerous?]
-  Revised inertia severity: [ ] Confirms Step 1  [ ] Upgrades to ADVISORY  [ ] Upgrades to STOP
-
-Final falsification table:
-
-| ID   | Condition                      | Testability (Step 5) | Confidence (Step 7)         | Rationale |
-|------|--------------------------------|----------------------|-----------------------------|-----------|
-| F-01 | [text]                         | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| F-02 | [text]                         | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-01 | [text]                         | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-02 | [text]                         | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-
-Mechanism strength (final): [ ] Strong  [ ] Moderate  [ ] Weak  [ ] NA (STOP)
-Final rationale: [1 sentence. Changed from preliminary? State which and why.]
-
----
-
-## EVALUATOR
-
-[Post-processing role. Runs after Step 7. Reads all prior outputs. Produces consolidated
-AMEND routing table. Does not reopen analytical questions or propose scope.]
-
-### Diagnostic 1: Chain Observability Aggregate
-
-| Hop   | Step                      | Observability (from Step 6)     |
-|-------|---------------------------|---------------------------------|
-| Hop 1 | X -> [intermediate A]     | [Observable / Partial / Opaque] |
-| Hop 2 | [intermediate A] -> Y     | [Observable / Partial / Opaque] |
-
-Observable: [Count]  |  Partial: [Count]  |  Opaque: [Count]  |  Total: [Count]
-Chain observability pattern: [ ] AllObservable  [ ] Mixed  [ ] PredominantlyOpaque
-Pattern rationale: [1 sentence]
-
-### Diagnostic 2: Testability Yield (from Step 5)
-
-Refined: [Count]  |  Residual Unknown: [Count]  |  Residual IDs: [List or "None"]
-F-NN residual: [Count]  |  I-NN residual: [Count]
-Pool asymmetry: [1 sentence: are I-NN conditions disproportionately residual Unknown?]
-Yield quality: [ ] AllResolved  [ ] PartiallyResolved  [ ] Unresolved
-
-### Diagnostic 3: I-NN Pool (from Steps 1-2)
-
-I-NN count: [Total]  |  Pool coverage: [ ] Comprehensive  [ ] Adequate  [ ] Minimal
-Coverage rationale: [1 sentence]
-Inertia-first dividend: [Did the inertia-first ordering produce I-NN conditions that are
-  mechanistically distinct from the F-NN conditions? Or: "No clear dividend -- conditions overlap."]
-
-### Diagnostic 4: Inertia Observability (from Step 1)
-
-Inertia pathway observability: [Observable / Partial / Opaque -- from Step 1]
-Divergence from chain: [How does inertia observability compare to chain pattern? 1 sentence.]
-
-### AMEND Routing Table
-
-| # | Diagnostic                    | Result                               | AMEND slot         | Routing |
-|---|-------------------------------|--------------------------------------|--------------------|---------|
-| 1 | Chain observability pattern   | [AllObservable/Mixed/PredominantlyOpaque] | Observability  | [Required if Mixed or PredominantlyOpaque / Not required] |
-| 2 | Testability residual count    | [Count]                              | Testability        | [Required if > 0 / Not required] |
-| 3 | Evidence quality              | [Strong/Moderate/Weak/None]          | Evidence           | [Required if None / Not required] |
-| 4 | Inertia severity (final)      | [SAFE/ADVISORY/STOP]                 | Inertia            | [Required if ADVISORY or STOP / Not required] |
-| 5 | Inertia pathway observability | [Observable/Partial/Opaque]          | Inertia-visibility | [Required if Opaque / Not required -- add to Inertia slot: "Inertia pathway is Opaque. Instrument baseline measurement before relying on inertia verdict."] |
-
-EVALUATOR note: [Most critical gap in 1 sentence.]
-
----
-
-## SCOPE AND AMEND
-
-Scoped claim: ["X causes Y when [condition], for [population], assuming [precondition]."]
-Out-of-scope: [At least one context where mechanism fails.]
-
-Final inertia severity: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-
-AMEND DIRECTIVE:
-[All Required slots from EVALUATOR routing table. Always include Narrow + Mechanism.]
-
-AMEND: discover-causal
-  Narrow: [Scope tightening]
-  Mechanism: [Hop notation: X -> [A] -> [B] -> Y]
-  Falsification: [Highest-confidence condition from Step 7 table. ID + testability + confidence.]
-  [Evidence: if EVALUATOR row 3 = Required]
-  [Inertia: if EVALUATOR row 4 = Required -- reference dominant I-NN by ID]
-  [Observability: if EVALUATOR row 1 = Required]
-  [Testability: if EVALUATOR row 2 = Required -- list residual IDs with pool label]
-  [Inertia-visibility: if EVALUATOR row 5 = Required]
-
----
-
-Write artifact: simulations/discover/causal/{topic}-causal-{date}.md
-Frontmatter: skill, topic, date, cause (X), outcome (Y),
-             lifecycle_order (inertia-first), evaluator_role (true), gate_checklists (4),
-             inertia_verdict (SAFE/ADVISORY/STOP), baseline_rate,
-             inertia_observability (Observable/Partial/Opaque),
-             evidence_count, evidence_quality (Strong/Moderate/Weak/None),
-             f_nn_count, i_nn_count, i_nn_pool_coverage (Comprehensive/Adequate/Minimal),
-             hop_count,
-             mechanism_strength_preliminary, mechanism_strength_final, strength_changed (true/false),
-             chain_observability_pattern (AllObservable/Mixed/PredominantlyOpaque),
-             observability_amend_triggered (true/false),
-             testability_refined_count, testability_residual_unknown_count,
-             f_nn_residual_count, i_nn_residual_count, pool_asymmetry_detected (true/false),
-             cross_pool_refinement_detected (true/false),
-             inertia_first_dividend (true/false),
-             testability_amend_triggered (true/false),
-             amend_routing_rows_required (count), confounder_named (true/false).
+PROHIBITED FORM: Declaring incompleteness and deferring or omitting step-level
+falsification does not pass. A response that declares PATHWAY INCOMPLETE in Phase 1 and
+then produces no step-level anchor -- writing deferral language or a metric threshold in
+its place -- has not satisfied this section regardless of how accurately incompleteness was
+declared. The incompleteness declaration removes the completeness requirement from the
+anchor format; it does not remove the requirement to name an anchor. A pathway with one
+traceable step produces one falsifiable break point.
+
+This branch confirms the Phase 1 anchor. It does not introduce fresh deferral.
+
+-- END CONDITIONAL BRANCH --
+
+Do not state falsification as a metric threshold. A metric shortfall is an outcome check.
+Name where the mechanism stops working.
+
+=== PHASE 4: CONTEXT EVIDENCE ===
+
+Assess evidence per pathway step using the formal labels from Phase 2.
+
+For each step:
+  Step N -- [Name]: [evidence name, artifact, or "no evidence"] -- [T1 / T2 / T3 / none]
+    T1 = anecdotal / observational / team intuition
+    T2 = correlation / A-B / usage analytics / survey
+    T3 = controlled / causal-inference-grade experiment
+
+Reference steps by their formal Phase 2 label -- not by position or paraphrase.
+
+FIELD INDEPENDENCE NOTE: The following two outputs measure different things. Produce them
+as two separate named entries. Do not merge them into a single entry. Do not omit either.
+
+  Evidence gap steps: [list Step N -- [Name] labels with no supporting evidence; write
+    "none" if every step has evidence -- the absence of a gap does not eliminate this
+    field; this output answers: which steps lack supporting evidence?]
+
+  Aggregate evidence tier: [highest tier available -- T1/T2/T3/none; this output answers:
+    what is the quality of the evidence that exists? -- independent of which steps are
+    missing; produce both fields in every output]
+
+These fields are orthogonal: gap steps names which steps lack evidence; aggregate tier
+rates the quality of the evidence that is present. One does not substitute for the other.
+
+NULL-GAP COUNTEREXAMPLE: The following is a valid, required output state:
+  Evidence gap steps: none
+  Aggregate evidence tier: T1
+This state means every step in the pathway has supporting evidence, and that evidence is
+anecdotal-grade. The Evidence gap steps field still appears; it carries the value "none."
+The Aggregate evidence tier field still appears; it carries the value T1. A response that
+omits Aggregate evidence tier because all steps are covered is making the category error
+that these fields guard against -- it is conflating "no missing steps" with "no tier to
+report." The null-gap state proves the fields are independent: gap answers which steps are
+missing (here: none); tier answers what quality the present evidence has (here: T1). Both
+are always required. Both always carry a value, even when gap is none.
+
+PROPAGATION REQUIREMENT: The Evidence gap steps field does not stay in Phase 4. It must
+also appear as a standalone named entry in Phase 6 AMEND, separately from the Aggregate
+evidence tier field. Having evidence gap output here in Phase 4 does not substitute for
+having it in Phase 6 AMEND -- the gap must propagate from the source section to the
+synthesis point. A response where Evidence gap steps appears in Phase 4 but is absent from
+Phase 6 AMEND as a named standalone entry does not pass.
+
+Do not substitute general research for team-specific evidence. Note external evidence
+separately if useful, but do not include it in the tier accounting.
+
+=== PHASE 5: CONFOUNDER CHECK ===
+
+This phase asks a DIFFERENT question from Phase 0.
+
+Phase 0 asked: does the status quo trend toward Y over time, without intervention?
+This phase asks: what else, operating RIGHT NOW alongside X, could independently produce Y?
+
+The inertia case (Phase 0) is EXCLUDED from this analysis. It does not count as a
+confounder -- it was answered in its own phase with its own verdict.
+
+What you are looking for -- simultaneously-operating causes, not counterfactuals:
+  - Competing initiatives active during the same deployment window
+  - Confounding variables that correlate with X adoption and independently predict Y
+  - Selection effects: the population using X differs from those who do not
+  - Environmental or seasonal effects coinciding with X's deployment period
+
+Name at least one alternative explanation for Y that:
+  (a) does not involve X as a cause, AND
+  (b) is not the inertia/status-quo case already addressed in Phase 0.
+
+Explicitly acknowledge the exclusion: "The inertia case (Phase 0 verdict: [verdict]) is
+not included here -- it was handled separately in Phase 0."
+
+If no independently-operating cause can be identified, explain why the mechanism is
+insulated from this type of confounding for this outcome type. Silence is not acceptable.
+
+=== PHASE 6: AMEND ===
+
+Produce a narrowed version of the hypothesis that integrates all prior analytical phases.
+This section has required named inputs from each phase. Omitting any of them does not pass.
+
+Required structure:
+  Original: {hypothesis}
+  Inertia verdict: {from Phase 0 -- Competing / Not competing / Unclear}
+  Mechanism completeness: {complete / incomplete at Step N / partial -- from Phase 1;
+    this is a standalone named field; a mechanism qualifier embedded within the Amended
+    clause text ("X causes Y when the mechanism is fully traceable") does not satisfy this
+    field; the completeness status must appear here as a named entry separate from the
+    amended clause; write "complete" if Phase 1 found no gaps; write "incomplete at Step N"
+    if PATHWAY INCOMPLETE was declared; write "partial" if some steps are [UNCERTAIN]}
+  Evidence tier: {aggregate tier from Phase 4 -- T1/T2/T3/none}
+  Evidence gap: {step labels lacking support from Phase 4 -- or "none"; this is a separate
+    field from Evidence tier -- having one does not satisfy the other; a pathway with no
+    gap steps still requires this field, carrying the value "none"}
+  Confounder finding: {from Phase 5 -- name the alternative cause identified, or
+    "none identified -- [reason why mechanism is insulated]"}
+  Active pathway: {primary / secondary / both / singular}
+  Falsification: {Step N -- Name -- break condition, or BEST-TRACEABLE ANCHOR if incomplete;
+    for incomplete pathways, carry the Phase 1 PRELIMINARY ANCHOR here, updated for any
+    additional steps traced in Phase 2}
+  Amended: {narrower claim -- must include:
+    (a) mechanism qualifier (what must be true in the causal chain for X to cause Y),
+    (b) scope condition (population, context, or timeframe),
+    (c) inertia incorporation -- required regardless of verdict value; no verdict makes
+        inertia incorporation optional; use the form appropriate to the verdict:
+          Competing: scope to contexts where the status quo does not already produce Y via
+            [the competing mechanism]; or declare the feature causally redundant where the
+            status quo already delivers Y
+          Not competing: confirm explicitly that X is the causal driver and that the status
+            quo does not independently produce Y -- this is a positive bounding condition
+            that must appear in the amended claim, not be silently assumed
+          Unclear: qualify the causal scope with the condition that status-quo independence
+            has not been established -- the claim holds only if inertia can be ruled out for
+            this context and population
+    (d) confounder note if Phase 5 named a plausible alternative cause that bounds where
+        the claim holds -- e.g., "provided [confounder] is not the active driver"}
+
+Integration rules:
+  - Evidence tier and Evidence gap are separate AMEND fields -- merging them or omitting
+    either does not pass.
+  - Mechanism completeness is a standalone named AMEND field -- embedding it within the
+    amended clause text does not satisfy this field requirement.
+  - A narrowed claim that ignores the inertia verdict does not pass -- no verdict value
+    makes inertia incorporation optional.
+  - Conditioning inertia incorporation on the verdict being Competing or Unclear does not
+    pass -- all three verdict values require explicit reference in the amended claim. The
+    Not competing case must shape the amended claim text; acknowledging it and then treating
+    it as carrying no bounding force is the conditional form that fails.
+  - Declaring incompleteness and deferring or omitting step-level falsification does not
+    pass -- incompleteness changes the confidence annotation, not the structural requirement
+    to name a step-level anchor; a PATHWAY INCOMPLETE response still carries a Falsification:
+    field with a BEST-TRACEABLE ANCHOR value, not a deferral statement.
+  - Evidence gap appearing only in Phase 4 (CONTEXT EVIDENCE) does not satisfy the Evidence
+    gap AMEND field -- the gap must propagate from Phase 4 to Phase 6 as a standalone named
+    entry; leaving it in Phase 4 does not pass. Just as Mechanism completeness must appear
+    as a named AMEND field and not only in Phase 1, Evidence gap must appear as a named
+    AMEND field and not only in Phase 4.
+  - A narrowed claim that ignores mechanism incompleteness does not pass.
+  - A narrowed claim that omits the confounder finding (when one was identified) does not
+    pass. Partial synthesis is not synthesis -- all fields must be reflected.
+  - Restating the original hypothesis does not pass. Broadening it does not pass.
+
+=== PHASE 7: ARTIFACT ===
+
+Write to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter:
+  topic: {topic}
+  date: {date}
+  hypothesis: {original hypothesis}
+  inertia_status: competing | not-competing | unclear
+  mechanism_complete: true | false | partial
+  incomplete_pathway_declared: true | false
+  preliminary_anchor_declared: true | false
+  pathway_steps: {count}
+  secondary_pathway_noted: true | false
+  pathway_relationship: complementary | competing | nested | singular
+  break_point_step: {step label, or "best-traceable: Step N -- Name"}
+  falsification_stated: true | false
+  evidence_aggregate_tier: T1 | T2 | T3 | none
+  evidence_gap_steps: [{step labels with no supporting evidence; or "none"}]
+  confounders_identified: {count}
+  confounder_inertia_excluded: true | false
+  context_evidence_found: true | false
 ```
 
 ---
 
-## V-04: Interrogative Phrasing Register with EXAMINER
+## V-04: Phase 1 structural + Phase 1 PROHIBITED FORM (role sequence + phrasing register combination)
 
-**Axis:** Phrasing register — every section prompt is framed as a sequence of questions rather
-than directives. The imperative voice ("Map the causal pathway") becomes interrogative ("What
-is the causal pathway from X to Y?"). I-NN pool generation is driven by questions that force
-explicit consideration of distinct inertia pathways. Inertia observability is elicited through
-a direct question ("Can we detect whether Y occurs without X?") before a template appears.
-An EXAMINER role closes the analysis with a routing table. Structure and criteria are identical
-to V-01; phrasing is the single varying axis.
+**Axes:** Role sequence (V-01 Phase 1 sub-step structure) + phrasing register (V-03 Phase 1 PROHIBITED FORM). Both C-26 enforcement mechanisms applied at Phase 1: structural sequencing (SUB-STEP 1 + SUB-STEP 2) AND naming the absent-anchor case as a failure mode at the same Phase 1 point. Phase 3 updated to confirmation-and-extension language. C-24 PROHIBITED FORM in Phase 3 retained. C-25 PROPAGATION REQUIREMENT in Phase 4 and Phase 6 retained from R6 V-05.
 
-**Hypothesis:** Imperative prompts ("Generate at least two I-NN conditions") may produce
-template-filling behavior: analysts write the minimum required rows without exploring the
-inertia space. Interrogative prompts ("What pathways could produce Y without X -- and which
-is most plausible from what you know today?") may produce more exploratory enumeration, because
-questions invite open-ended reasoning before the constraint (minimum two) is imposed. The test:
-does interrogative phrasing produce richer or more mechanistically specific I-NN pools than
-V-01's imperative framing?
+**Hypothesis:** V-01 tests structural sequencing alone; V-03 tests Phase 1 prohibition naming alone. V-04 combines both at Phase 1 without adding Phase 3 or Phase 6 C-26 language. The dual-site pattern within a single phase (structural requirement + prohibition naming) parallels how C-22 closes C-20 (positive rule + named prohibited form together, both at the same location). The question is whether Phase-1-only dual enforcement is sufficient for C-26, or whether Phase 3 confirmation language and Phase 6 integration rule (V-05) add incremental pass probability.
 
 ```
-You are running /discover-causal.
-Your input is a feature hypothesis of the form "X causes Y."
-Seven phases. Answer each question set fully before advancing.
-Every classification judgment uses a discrete label from a fixed set with a rationale line.
+You are running /discover-causal for topic: {topic}.
 
-Two-pool design: F-NN conditions (claim-derived) and I-NN conditions (inertia-derived).
-Both pools start testability = Unknown. Phase 4 refines both. Phase 6 assigns confidence.
-EXAMINER role closes with AMEND routing table.
+Hypothesis under review: {hypothesis}
+(Claim: X causes Y. Test whether the mechanism is sound and whether the cause is the right one.)
 
----
+=== PHASE 0: INERTIA GATE ===
 
-## PHASE 1: WHAT ARE WE CLAIMING?
+Answer this before any mechanism work: does the status quo already produce Y?
 
-  Q1.1: What is the proposed cause? (X): [One phrase extracted from input]
-  Q1.2: What is the claimed outcome? (Y): [One phrase extracted from input]
-  Q1.3: What is the full causal claim in one sentence? ["X causes Y."]
+Assess whether existing behaviors, market forces, platform trends, or workarounds
+independently trend toward outcome Y -- without any new feature.
 
----
+INERTIA VERDICT: [Competing / Not competing / Unclear]
+Basis: [one sentence -- specific observation about the current state of the domain, not
+assertion]
 
-## PHASE 2: WHAT WOULD FALSIFY THE CLAIM?
+If Competing: the mechanism analysis in Phase 2 must explain what X produces that the
+status quo does not. A mechanism that merely also produces Y alongside the status quo is
+not a causal claim for X.
 
-[Enumerate conditions that, if observed, would show the claim is wrong.
-  Q2.1: What would you expect to observe if X does NOT cause Y?
-  Q2.2: What would show the mechanism is breaking down even when X is present?
-  Q2.3: Are there additional conditions that would disprove X->Y in specific contexts?
-Generate at least two conditions. Testability starts Unknown -- Phase 4 refines it.
-Confidence is Pending until Phase 6. No confidence column yet.]
-
-| ID   | Falsification condition (claim false if observed) | Testability          | Rationale |
-|------|---------------------------------------------------|----------------------|-----------|
-| F-01 | [Answer to Q2.1 or Q2.2]                          | Unknown (see Ph 4)   | [1 sentence: what failure mode does this expose?] |
-| F-02 | [Answer to Q2.2 or Q2.3]                          | Unknown (see Ph 4)   | [1 sentence] |
-[Continue until the claim's main failure modes are catalogued.]
+PROHIBITED FORM: Conditioning inertia incorporation on the verdict being Competing or
+Unclear does not pass. All three verdict values -- Competing, Not competing, and Unclear --
+must explicitly shape the amended claim in Phase 6. The Not competing verdict is a positive
+bounding condition, not a neutral finding. A response that incorporates the inertia verdict
+only when it is Competing or Unclear, and drops it when Not competing, has failed the
+unconditional requirement regardless of how correctly the Competing and Unclear cases are
+handled. "Not competing -- no adjustment needed" is the conditional form that fails.
 
----
+=== PHASE 1: MECHANISM READINESS + PRELIMINARY ANCHOR ===
 
-## PHASE 3: DOES DOING NOTHING ALREADY PRODUCE Y?
+Before tracing, assess: can you name 3 or more observable intermediate steps between X
+and Y, each with a named agent and observable indicator?
 
-[The most commonly skipped question in feature decisions.]
+If yes: proceed to Phase 2.
 
-  Q3.1: What happens today without X? (Describe the status quo in one sentence.)
-  Q3.2: At what rate does Y already occur without X?
-    Answer: [Estimate, bound, or "Unknown."]
-  Q3.3: Can we detect whether Y occurs without X?
-    (Is the baseline observable? What data or instrumentation would reveal it?)
-    Answer: [Observable / Partial / Opaque]
-    Rationale: [1 sentence: what measurement path exists or is missing?]
-  Q3.4: How severe is the inertia risk?
-    Answer: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-    Rationale: [1 sentence]
-
-Inertia pathway observability: [Observable / Partial / Opaque -- from Q3.3]
-  [This label answers Q3.3 in structured form. It is independent of mechanism hop observability,
-  which is computed in Phase 5. Inertia observability: can we see the counter-hypothesis?
-  Hop observability: can we see the forward mechanism?]
+If no: complete both sub-steps below before proceeding to Phase 2.
 
-  Q3.5: What specific pathways could produce Y without X?
-    (Name at least two distinct mechanisms. Probe: are these independent pathways or variants
-    of the same mechanism? Independent pathways strengthen the inertia case.)
+  SUB-STEP 1 -- Incompleteness declaration:
+  Write: "PATHWAY INCOMPLETE: mechanism cannot be traced past [step]. Missing knowledge:
+  [what evidence or domain knowledge is needed]."
+  Then continue tracing in Phase 2 what can be traced, marking unsubstantiated steps
+  [UNCERTAIN].
 
-I-NN Pool -- answers to Q3.5:
-[At least two I-NN conditions. Testability = Unknown. No confidence yet.]
-
-| ID   | How Y occurs without X (specific pathway)               | Testability          | Rationale |
-|------|---------------------------------------------------------|----------------------|-----------|
-| I-01 | [Answer to Q3.5 -- pathway 1. Name the mechanism.]      | Unknown (see Ph 4)   | [1 sentence: why is this pathway plausible?] |
-| I-02 | [Answer to Q3.5 -- pathway 2. Different mechanism.]     | Unknown (see Ph 4)   | [1 sentence] |
-[Continue for additional pathways from Q3.5.]
+  SUB-STEP 2 -- Preliminary falsification anchor (required immediately after SUB-STEP 1):
+  Name the highest-confidence step you can trace as a preliminary falsification anchor.
+  Produce it here, before Phase 2 tracing begins.
 
-  Q3.6: Which I-NN condition, if true, would most threaten the claim?
-    Answer: [ID and one-sentence rationale.]
+  Required format:
+  "PRELIMINARY ANCHOR: The mechanism most likely fails if Step [N] -- [Name] -- does not
+  occur, observable as [indicator]. Chain traceability ends here. Further falsification
+  requires establishing [missing knowledge from SUB-STEP 1]."
 
-PHASE 3 GATE:
-[ ] Q3.1-Q3.4 answered with labeled responses (observability + severity)
-[ ] Inertia pathway observability label declared (Observable/Partial/Opaque)
-[ ] At least two I-NN conditions in table with testability Unknown
-[ ] Q3.6 answered with dominant I-NN ID
+  PROHIBITED FORM: Declaring incompleteness and proceeding to Phase 2 without producing
+  this preliminary anchor in SUB-STEP 2 does not pass. The anchor must appear here, at the
+  declaration point, before Phase 2. Phase 3 will confirm and extend the anchor, but Phase 1
+  must produce it first. Deferring the anchor to Phase 3 -- or to any downstream phase --
+  does not satisfy this sub-step regardless of how accurately incompleteness was declared.
+  Incompleteness changes the confidence annotation; it does not remove the requirement to
+  name a step-level anchor here. A pathway with one traceable step produces one falsifiable
+  break point.
 
---- Do not advance to Phase 4 until all items are checked. ---
+Producing three thin or vague steps to clear the readiness gate -- instead of declaring
+incompleteness -- fails this phase. Accurate self-report is the required output.
 
----
+=== PHASE 2: MECHANISM PATHWAY ===
 
-## PHASE 4: WHAT DOES CONTEXT TELL US?
+Trace the causal pathway from X to Y.
 
-  Q4.1: What prior results, analogous cases, or domain knowledge bear on X->Y?
-    (At least one observation required. If genuinely none exists, state "None found."
-    Do not skip -- absence of evidence is itself a finding.)
+STEP LABELING REQUIREMENT: Each step must carry a persistent formal label:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
 
-Evidence entry 1:
-  Source type: [ ] Prior result  [ ] Analogous case  [ ] Domain observation  [ ] Counter-evidence
-  Observation: [Q4.1 answer]
-  Bearing on X->Y: [1 sentence: supports, complicates, or challenges?]
+This is not a presentational preference -- it is a structural prerequisite. Phase 3
+(falsification) and Phase 4 (evidence) reference steps by their formal label. A step listed
+as a prose bullet or numbered without a persistent name has no stable referent for later
+phases. Unlabeled steps make falsification anchoring and evidence gap enumeration fail
+mechanically -- there is no name to anchor to. Use this format throughout. The same label
+must appear identically in the pathway, in falsification, and in evidence gap sections.
 
-[Add entries as needed.]
+If inertia status from Phase 0 is Competing: at least one step must describe what X
+produces that the status quo does not.
 
-Evidence quality: [ ] Strong  [ ] Moderate  [ ] Weak  [ ] None
-Evidence quality rationale: [1 sentence]
+Also: is there more than one plausible causal pathway from X to Y?
+  - If yes: trace the primary pathway above and name the secondary pathway in one sentence.
+    Note whether the two pathways are complementary, competing, or nested.
+  - If no: note that the mechanism is singular.
 
-  Q4.2: For each falsification condition, can we now determine whether it is testable?
-    (Conditions that remain Unknown after evidence are a finding, not a gap to paper over.)
+=== PHASE 3: FALSIFICATION ===
 
-Testability refinement pass:
+Name the most likely mechanism break point. Reference the step by its Phase 2 label.
 
-| ID   | Testability after evidence       | Refinement rationale |
-|------|----------------------------------|---------------------|
-| F-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| F-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-[Mirror all conditions.]
-
-Testability refinement yield:
-  testability_refined_count: [Count]
-  testability_residual_unknown_count: [Count]
-  Residual Unknown IDs: [List or "None"]
-  F-NN residual: [Count]  |  I-NN residual: [Count]
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
 
-  Q4.3: Are I-NN conditions disproportionately harder to test than F-NN conditions?
-    (Pool asymmetry: is the inertia evidence harder to gather than mechanism evidence?)
-    Answer: [Yes / No / Unclear -- 1 sentence rationale]
+Step number and name must match a labeled row in Phase 2 exactly. If a step is marked
+[UNCERTAIN], it may still serve as a falsification anchor -- note the uncertainty in the
+indicator description.
 
-PHASE 4 GATE:
-[ ] Evidence populated (or explicit "None found")
-[ ] Evidence quality label and rationale
-[ ] Testability refinement row for every F-NN and I-NN condition
-[ ] yield counts declared with pool breakdown
-[ ] Q4.3 answered
+-- CONDITIONAL BRANCH: incomplete pathway --
 
---- Do not advance to Phase 5 until all items are checked. ---
+If PATHWAY INCOMPLETE was declared in Phase 1, a PRELIMINARY ANCHOR is already on record
+from Phase 1 SUB-STEP 2. This branch confirms and extends it.
+
+Confirm the Phase 1 anchor. If Phase 2 tracing revealed additional labeled steps with
+higher confidence than the Phase 1 preliminary anchor, update to the highest-confidence
+step now on record.
 
----
+Required format:
+"BEST-TRACEABLE ANCHOR: The mechanism fails if Step [N] -- [Name] -- does not occur,
+observable as [indicator]. Note: pathway incompleteness means the chain cannot be verified
+beyond step [N]. Further falsification requires establishing [missing knowledge from
+Phase 1]."
 
-## PHASE 5: WHAT IS THE CAUSAL MECHANISM?
-
-  Q5.1: What is the step-by-step causal pathway from X to Y?
-    (Decompose into at least two hops. State only the mechanism -- challenge comes in Phase 6.)
-  Q5.2: For each hop, can we directly observe the intermediate state?
-  Q5.3: Is there evidence that supports, conflicts with, or is neutral to each hop?
-  Q5.4: Which F-NN or I-NN condition would be confirmed if this hop fails?
-
-Hop 1: X [name] -> [intermediate A]: [Q5.1 answer for hop 1]
-  Observability: [ ] Observable  [ ] Partial  [ ] Opaque  (Q5.2)
-  Observability rationale: [1 sentence]
-  Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions -- describe  (Q5.3)
-  Falsification connection: [F-NN or I-NN ID. One sentence.]  (Q5.4)
-
-Hop 2: [intermediate A] -> Y: [Q5.1 answer for hop 2]
-  Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  Observability rationale: [1 sentence]
-  Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions
-  Falsification connection: [F-NN or I-NN ID. One sentence.]
-
-[Add Hop 3+ as needed.]
-
-  Q5.5: How strong is the mechanism before challenge?
-    Answer: Mechanism strength (preliminary): [ ] Strong  [ ] Moderate  [ ] Weak
-    Rationale: [1 sentence]
-
-PHASE 5 GATE:
-[ ] At least two hops with observability + rationale, coherence, falsification connection
-[ ] Mechanism strength (preliminary) with rationale
-[ ] No adversarial content (Phase 6)
-
---- Do not advance to Phase 6 until all items are checked. ---
-
----
-
-## PHASE 6: WHAT WOULD BREAK THIS?
-
-[Structurally separate from Phase 5. Adversarial framing.]
-
-  Q6.1: For each hop, what observable condition would show the hop is wrong?
-  Q6.2: What else could produce each intermediate state without X?
-  Q6.3: What confounders correlate with both X and Y?
-  Q6.4: Has the adversarial analysis changed your view on inertia? Which I-NN is most dangerous?
-
-Hop 1 challenge:
-  What breaks X -> [intermediate A]? (Q6.1): [Observable condition]
-  Observable test: [What to measure]
-  Alternative (Q6.2): [What else produces [intermediate A] without X?]
-  Confidence: [ ] High  [ ] Medium  [ ] Low
-  Confidence rationale: [1 sentence]
-
-Hop 2 challenge:
-  What breaks [intermediate A] -> Y? (Q6.1): [Observable condition]
-  Observable test: [What to measure]
-  Alternative (Q6.2): [What else produces Y without [intermediate A]?]
-  Confidence: [ ] High  [ ] Medium  [ ] Low
-  Confidence rationale: [1 sentence]
-
-[Mirror all Phase 5 hops.]
-
-Confounders (Q6.3):
-  Confounder 1: [Variable correlating with both X and Y. Name and describe.]
-
-Inertia challenge (Q6.4):
-  Adversarial I-NN: [Which I-NN is most dangerous post-mechanism analysis? ID + rationale.]
-  Revised inertia: [ ] Confirms Phase 3  [ ] Upgrades to ADVISORY  [ ] Upgrades to STOP
-
-Final falsification table:
-
-| ID   | Condition                   | Testability (Ph 4)   | Confidence (Ph 6)           | Rationale |
-|------|-----------------------------|----------------------|-----------------------------|-----------|
-| F-01 | [text]                      | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| F-02 | [text]                      | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-01 | [text]                      | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-02 | [text]                      | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-
-Mechanism strength (final): [ ] Strong  [ ] Moderate  [ ] Weak  [ ] NA (STOP)
-Final rationale: [1 sentence. Changed from preliminary?]
-
----
-
-## EXAMINER
-
-[Post-processing role. Reads all phases. Produces AMEND routing table.
-Questions are closed -- EXAMINER does not reopen analysis. Routing table only.]
-
-  Q_E1: What is the chain observability pattern?
-
-| Hop   | Step                    | Observability (from Phase 5)    |
-|-------|-------------------------|---------------------------------|
-| Hop 1 | X -> [intermediate A]   | [Observable / Partial / Opaque] |
-| Hop 2 | [intermediate A] -> Y   | [Observable / Partial / Opaque] |
-
-Observable: [Count]  |  Partial: [Count]  |  Opaque: [Count]  |  Total: [Count]
-Chain observability pattern: [ ] AllObservable  [ ] Mixed  [ ] PredominantlyOpaque
-Pattern rationale: [1 sentence]
-
-  Q_E2: What is the testability residual status?
-
-Residual Unknown count: [From Phase 4]  |  Residual IDs: [List or "None"]
-Yield quality: [ ] AllResolved  [ ] PartiallyResolved  [ ] Unresolved
-Pool asymmetry confirmed? [Yes/No from Phase 4 Q4.3]
-
-  Q_E3: What is the I-NN pool coverage?
-
-I-NN count: [Total]  |  Pool coverage: [ ] Comprehensive  [ ] Adequate  [ ] Minimal
-Coverage rationale: [1 sentence]
-
-  Q_E4: What is the inertia pathway observability?
-
-Inertia pathway observability: [From Phase 3 Q3.3]
-Divergence from chain: [Does inertia observability differ from chain pattern? 1 sentence.]
-
-  Q_E5: Which AMEND slots are required?
-
-| # | Diagnostic                    | Result                               | AMEND slot    | Routing |
-|---|-------------------------------|--------------------------------------|---------------|---------|
-| 1 | Chain observability pattern   | [AllObservable/Mixed/PredominantlyOpaque] | Observability | [Required if Mixed or PredominantlyOpaque / Not required] |
-| 2 | Testability residual count    | [Count]                              | Testability   | [Required if > 0 / Not required] |
-| 3 | Evidence quality              | [Strong/Moderate/Weak/None]          | Evidence      | [Required if None / Not required] |
-| 4 | Inertia severity (final)      | [SAFE/ADVISORY/STOP]                 | Inertia       | [Required if ADVISORY or STOP / Not required] |
-
-EXAMINER note: [Most critical finding -- 1 sentence.]
-
----
-
-## PHASE 7: WHAT SHOULD WE AMEND?
-
-Scoped claim: ["X causes Y when [condition], for [population], assuming [precondition]."]
-Out-of-scope: [At least one context from Phase 6 where mechanism fails.]
-
-Final inertia severity: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-
-AMEND DIRECTIVE:
-[All Required slots from EXAMINER routing table. Always include Narrow + Mechanism.]
-
-AMEND: discover-causal
-  Narrow: [Scope tightening]
-  Mechanism: [Hop notation: X -> [A] -> [B] -> Y]
-  Falsification: [Highest-confidence condition from Phase 6 table. ID + testability + confidence.]
-  [Evidence: if EXAMINER row 3 = Required]
-  [Inertia: if EXAMINER row 4 = Required -- dominant I-NN from Phase 3 Q3.6 or Phase 6 Q6.4]
-  [Observability: if EXAMINER row 1 = Required]
-  [Testability: if EXAMINER row 2 = Required]
-
----
-
-Write artifact: simulations/discover/causal/{topic}-causal-{date}.md
-Frontmatter: skill, topic, date, cause (X), outcome (Y),
-             phrasing_register (interrogative), examiner_role (true), gate_checklists (3),
-             inertia_verdict (SAFE/ADVISORY/STOP), baseline_rate,
-             inertia_observability (Observable/Partial/Opaque),
-             evidence_count, evidence_quality (Strong/Moderate/Weak/None),
-             f_nn_count, i_nn_count, i_nn_pool_coverage (Comprehensive/Adequate/Minimal),
-             hop_count,
-             mechanism_strength_preliminary, mechanism_strength_final, strength_changed (true/false),
-             chain_observability_pattern (AllObservable/Mixed/PredominantlyOpaque),
-             observability_amend_triggered (true/false),
-             testability_refined_count, testability_residual_unknown_count,
-             f_nn_residual_count, i_nn_residual_count, pool_asymmetry_detected (true/false),
-             testability_amend_triggered (true/false),
-             amend_routing_rows_required (count), confounder_named (true/false).
+PROHIBITED FORM: Declaring incompleteness and deferring or omitting step-level
+falsification does not pass. A response that declares PATHWAY INCOMPLETE in Phase 1 and
+then produces no step-level anchor -- writing deferral language or a metric threshold in
+its place -- has not satisfied this section regardless of how accurately incompleteness was
+declared. The incompleteness declaration removes the completeness requirement from the
+anchor format; it does not remove the requirement to name an anchor. A pathway with one
+traceable step produces one falsifiable break point. Incompleteness changes the confidence
+annotation -- not the structural requirement to name a step-level anchor.
+
+This branch confirms the Phase 1 anchor. It does not introduce fresh deferral.
+
+-- END CONDITIONAL BRANCH --
+
+Do not state falsification as a metric threshold. A metric shortfall is an outcome check.
+Name where the mechanism stops working.
+
+=== PHASE 4: CONTEXT EVIDENCE ===
+
+Assess evidence per pathway step using the formal labels from Phase 2.
+
+For each step:
+  Step N -- [Name]: [evidence name, artifact, or "no evidence"] -- [T1 / T2 / T3 / none]
+    T1 = anecdotal / observational / team intuition
+    T2 = correlation / A-B / usage analytics / survey
+    T3 = controlled / causal-inference-grade experiment
+
+Reference steps by their formal Phase 2 label -- not by position or paraphrase.
+
+FIELD INDEPENDENCE NOTE: The following two outputs measure different things. Produce them
+as two separate named entries. Do not merge them into a single entry. Do not omit either.
+
+  Evidence gap steps: [list Step N -- [Name] labels with no supporting evidence; write
+    "none" if every step has evidence -- the absence of a gap does not eliminate this
+    field; this output answers: which steps lack supporting evidence?]
+
+  Aggregate evidence tier: [highest tier available -- T1/T2/T3/none; this output answers:
+    what is the quality of the evidence that exists? -- independent of which steps are
+    missing; produce both fields in every output]
+
+These fields are orthogonal: gap steps names which steps lack evidence; aggregate tier
+rates the quality of the evidence that is present. One does not substitute for the other.
+
+NULL-GAP COUNTEREXAMPLE: The following is a valid, required output state:
+  Evidence gap steps: none
+  Aggregate evidence tier: T1
+This state means every step in the pathway has supporting evidence, and that evidence is
+anecdotal-grade. The Evidence gap steps field still appears; it carries the value "none."
+The Aggregate evidence tier field still appears; it carries the value T1. A response that
+omits Aggregate evidence tier because all steps are covered is making the category error
+that these fields guard against -- it is conflating "no missing steps" with "no tier to
+report." The null-gap state proves the fields are independent: gap answers which steps are
+missing (here: none); tier answers what quality the present evidence has (here: T1). Both
+are always required. Both always carry a value, even when gap is none.
+
+PROPAGATION REQUIREMENT: The Evidence gap steps field does not stay in Phase 4. It must
+also appear as a standalone named entry in Phase 6 AMEND, separately from the Aggregate
+evidence tier field. Having evidence gap output here in Phase 4 does not substitute for
+having it in Phase 6 AMEND -- the gap must propagate from the source section to the
+synthesis point. A response where Evidence gap steps appears in Phase 4 but is absent from
+Phase 6 AMEND as a named standalone entry does not pass.
+
+Do not substitute general research for team-specific evidence. Note external evidence
+separately if useful, but do not include it in the tier accounting.
+
+=== PHASE 5: CONFOUNDER CHECK ===
+
+This phase asks a DIFFERENT question from Phase 0.
+
+Phase 0 asked: does the status quo trend toward Y over time, without intervention?
+This phase asks: what else, operating RIGHT NOW alongside X, could independently produce Y?
+
+The inertia case (Phase 0) is EXCLUDED from this analysis. It does not count as a
+confounder -- it was answered in its own phase with its own verdict.
+
+What you are looking for -- simultaneously-operating causes, not counterfactuals:
+  - Competing initiatives active during the same deployment window
+  - Confounding variables that correlate with X adoption and independently predict Y
+  - Selection effects: the population using X differs from those who do not
+  - Environmental or seasonal effects coinciding with X's deployment period
+
+Name at least one alternative explanation for Y that:
+  (a) does not involve X as a cause, AND
+  (b) is not the inertia/status-quo case already addressed in Phase 0.
+
+Explicitly acknowledge the exclusion: "The inertia case (Phase 0 verdict: [verdict]) is
+not included here -- it was handled separately in Phase 0."
+
+If no independently-operating cause can be identified, explain why the mechanism is
+insulated from this type of confounding for this outcome type. Silence is not acceptable.
+
+=== PHASE 6: AMEND ===
+
+Produce a narrowed version of the hypothesis that integrates all prior analytical phases.
+This section has required named inputs from each phase. Omitting any of them does not pass.
+
+Required structure:
+  Original: {hypothesis}
+  Inertia verdict: {from Phase 0 -- Competing / Not competing / Unclear}
+  Mechanism completeness: {complete / incomplete at Step N / partial -- from Phase 1;
+    this is a standalone named field; a mechanism qualifier embedded within the Amended
+    clause text ("X causes Y when the mechanism is fully traceable") does not satisfy this
+    field; the completeness status must appear here as a named entry separate from the
+    amended clause; write "complete" if Phase 1 found no gaps; write "incomplete at Step N"
+    if PATHWAY INCOMPLETE was declared; write "partial" if some steps are [UNCERTAIN]}
+  Evidence tier: {aggregate tier from Phase 4 -- T1/T2/T3/none}
+  Evidence gap: {step labels lacking support from Phase 4 -- or "none"; this is a separate
+    field from Evidence tier -- having one does not satisfy the other; a pathway with no
+    gap steps still requires this field, carrying the value "none"}
+  Confounder finding: {from Phase 5 -- name the alternative cause identified, or
+    "none identified -- [reason why mechanism is insulated]"}
+  Active pathway: {primary / secondary / both / singular}
+  Falsification: {Step N -- Name -- break condition, or BEST-TRACEABLE ANCHOR if incomplete;
+    for incomplete pathways, confirm the Phase 1 PRELIMINARY ANCHOR here, updated for any
+    additional steps traced in Phase 2}
+  Amended: {narrower claim -- must include:
+    (a) mechanism qualifier (what must be true in the causal chain for X to cause Y),
+    (b) scope condition (population, context, or timeframe),
+    (c) inertia incorporation -- required regardless of verdict value; no verdict makes
+        inertia incorporation optional; use the form appropriate to the verdict:
+          Competing: scope to contexts where the status quo does not already produce Y via
+            [the competing mechanism]; or declare the feature causally redundant where the
+            status quo already delivers Y
+          Not competing: confirm explicitly that X is the causal driver and that the status
+            quo does not independently produce Y -- this is a positive bounding condition
+            that must appear in the amended claim, not be silently assumed
+          Unclear: qualify the causal scope with the condition that status-quo independence
+            has not been established -- the claim holds only if inertia can be ruled out for
+            this context and population
+    (d) confounder note if Phase 5 named a plausible alternative cause that bounds where
+        the claim holds -- e.g., "provided [confounder] is not the active driver"}
+
+Integration rules:
+  - Evidence tier and Evidence gap are separate AMEND fields -- merging them or omitting
+    either does not pass.
+  - Mechanism completeness is a standalone named AMEND field -- embedding it within the
+    amended clause text does not satisfy this field requirement.
+  - A narrowed claim that ignores the inertia verdict does not pass -- no verdict value
+    makes inertia incorporation optional.
+  - Conditioning inertia incorporation on the verdict being Competing or Unclear does not
+    pass -- all three verdict values require explicit reference in the amended claim. The
+    Not competing case must shape the amended claim text; acknowledging it and then treating
+    it as carrying no bounding force is the conditional form that fails.
+  - Declaring incompleteness and deferring or omitting step-level falsification does not
+    pass -- incompleteness changes the confidence annotation, not the structural requirement
+    to name a step-level anchor; a PATHWAY INCOMPLETE response still carries a Falsification:
+    field with a BEST-TRACEABLE ANCHOR value, not a deferral statement.
+  - Evidence gap appearing only in Phase 4 (CONTEXT EVIDENCE) does not satisfy the Evidence
+    gap AMEND field -- the gap must propagate from Phase 4 to Phase 6 as a standalone named
+    entry; leaving it in Phase 4 does not pass. Just as Mechanism completeness must appear
+    as a named AMEND field and not only in Phase 1, Evidence gap must appear as a named
+    AMEND field and not only in Phase 4.
+  - A narrowed claim that ignores mechanism incompleteness does not pass.
+  - A narrowed claim that omits the confounder finding (when one was identified) does not
+    pass. Partial synthesis is not synthesis -- all fields must be reflected.
+  - Restating the original hypothesis does not pass. Broadening it does not pass.
+
+=== PHASE 7: ARTIFACT ===
+
+Write to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter:
+  topic: {topic}
+  date: {date}
+  hypothesis: {original hypothesis}
+  inertia_status: competing | not-competing | unclear
+  mechanism_complete: true | false | partial
+  incomplete_pathway_declared: true | false
+  preliminary_anchor_declared: true | false
+  pathway_steps: {count}
+  secondary_pathway_noted: true | false
+  pathway_relationship: complementary | competing | nested | singular
+  break_point_step: {step label, or "best-traceable: Step N -- Name"}
+  falsification_stated: true | false
+  evidence_aggregate_tier: T1 | T2 | T3 | none
+  evidence_gap_steps: [{step labels with no supporting evidence; or "none"}]
+  confounders_identified: {count}
+  confounder_inertia_excluded: true | false
+  context_evidence_found: true | false
 ```
 
 ---
 
-## V-05: Combination — Counter-Hypothesis Chain, AUDITOR, Triple-Gap Diagnostic
+## V-05: Full R7 aspirational stack (combination)
 
-**Axes:** Inertia framing (counter-hypothesis mini-chain) + Role sequence (AUDITOR) +
-Output format (section-letter structure). Combination variation.
+**Axes:** All R7 axes combined -- C-26 addressed at four sites: (a) Phase 1 SUB-STEP structure (V-01 pattern); (b) Phase 1 PROHIBITED FORM (V-03/V-04 pattern); (c) Phase 3 confirmation-and-extension with C-24 PROHIBITED FORM; (d) Phase 6 integration rule naming the Phase 1 anchor requirement for incomplete pathways. C-24 dual-site from R6 V-05 retained (Phase 3 + Phase 6). C-25 dual-site from R6 V-05 retained (Phase 4 + Phase 6). All R5 and R6 structures preserved.
 
-The inertia check is framed as a counter-hypothesis: "What if there is an X-independent causal
-chain that produces Y?" This counter-hypothesis is analyzed using the same hop-by-hop structure
-as the main mechanism. Each counter-hypothesis hop gets an observability label. The aggregate
-of counter-hypothesis hop labels IS the inertia pathway observability label (A-15). I-NN
-conditions derive from the counter-hypothesis hop challenge (A-14): each hop that could fail
-generates an I-NN condition. AUDITOR runs after SKEPTIC and produces the routing table (A-16).
-
-New joint diagnostic: the triple gap. A condition is a triple gap if:
-  - The mechanism hop that it references is Opaque (A-12)
-  - AND the condition has Unknown testability after evidence (A-13)
-  - AND the condition has an I-NN match (a parallel inertia condition with the same scope)
-A triple gap represents maximum causal uncertainty at a point: we cannot observe the forward
-mechanism, we cannot test the falsification condition, and the inertia path may produce Y
-at the same point. Neither A-12, A-13, nor A-14 surfaces this co-occurrence individually.
-
-**Hypothesis:** The counter-hypothesis mini-chain forces more mechanistically specific I-NN
-conditions because each I-NN condition is tied to a hop in the inertia chain, not generated
-abstractly from "what else might cause Y?" The structural cost is a longer prompt; the benefit
-is I-NN conditions that are structurally parallel to F-NN conditions (both derived from chain
-analysis) and that carry their own observability labels, enabling the triple-gap joint diagnostic.
+**Hypothesis:** R6 V-05 scores 175/175 under v6 and 175/180 under v7 (fails only C-26). V-05 closes C-26 with the maximum possible prompt-level enforcement: structural co-location at Phase 1 (sub-step), named prohibition at Phase 1 (does not pass), Phase 3 becomes confirmation (not origination), and Phase 6 integration rules explicitly reference the Phase 1 preliminary anchor requirement. The cross-site pattern mirrors how C-22/C-24 were closed across their respective versions: a model that skips Phase 1 sees the requirement again at Phase 3; a model that misses Phase 3 sees the integration rule at Phase 6. Expected ceiling: 180/180 Golden.
 
 ```
-You are running /discover-causal.
-Your input is a feature hypothesis of the form "X causes Y."
-Sections A through G, plus AUDITOR role. Complete each section fully before advancing.
-Every classification judgment uses a discrete label from a fixed set with a rationale line.
-
-Three-pool causal analysis:
-  F-NN pool: claim-derived falsification conditions (Section A).
-  I-NN pool: counter-hypothesis-derived falsification conditions (Section B).
-  Mechanism hops: forward causal chain from X to Y (Section D).
+You are running /discover-causal for topic: {topic}.
 
-Testability lifecycle: all conditions start Unknown in their source section.
-Section C refines testability for F-NN and I-NN. Section E assigns confidence to all.
+Hypothesis under review: {hypothesis}
+(Claim: X causes Y. Test whether the mechanism is sound and whether the cause is the right one.)
 
-Inertia framing: the inertia pathway is analyzed as a counter-hypothesis mini-chain
-in Section B. Each hop in the counter-hypothesis gets an observability label.
-Inertia pathway observability = aggregate of counter-hypothesis hop labels.
+=== PHASE 0: INERTIA GATE ===
 
-AUDITOR role: runs after Section E. Produces AMEND routing table including triple-gap diagnostic.
+Answer this before any mechanism work: does the status quo already produce Y?
 
----
+Assess whether existing behaviors, market forces, platform trends, or workarounds
+independently trend toward outcome Y -- without any new feature.
 
-## SECTION A: CLAIM AND F-NN POOL
+INERTIA VERDICT: [Competing / Not competing / Unclear]
+Basis: [one sentence -- specific observation about the current state of the domain, not
+assertion]
 
-A1. Claim:
-  X (the cause): [Extract from input]
-  Y (the claimed outcome): [Extract from input]
-  Full claim: ["X causes Y" -- one sentence]
+If Competing: the mechanism analysis in Phase 2 must explain what X produces that the
+status quo does not. A mechanism that merely also produces Y alongside the status quo is
+not a causal claim for X.
 
-A2. F-NN Pool (claim-derived falsification conditions):
-[At least two conditions. Testability = Unknown. No confidence yet.]
+PROHIBITED FORM: Conditioning inertia incorporation on the verdict being Competing or
+Unclear does not pass. All three verdict values -- Competing, Not competing, and Unclear --
+must explicitly shape the amended claim in Phase 6. The Not competing verdict is a positive
+bounding condition, not a neutral finding. A response that incorporates the inertia verdict
+only when it is Competing or Unclear, and drops it when Not competing, has failed the
+unconditional requirement regardless of how correctly the Competing and Unclear cases are
+handled. "Not competing -- no adjustment needed" is the conditional form that fails.
 
-| ID   | Falsification condition (claim false if observed) | Testability          | Rationale |
-|------|---------------------------------------------------|----------------------|-----------|
-| F-01 | [What would show X does not cause Y?]             | Unknown (see Sec C)  | [1 sentence: mechanism failure exposed] |
-| F-02 | [Second condition.]                               | Unknown (see Sec C)  | [1 sentence] |
-[Add F-NN as needed.]
+=== PHASE 1: MECHANISM READINESS + PRELIMINARY ANCHOR ===
 
-SECTION A GATE:
-[ ] X and Y extracted separately
-[ ] At least two F-NN conditions (Unknown testability, no confidence column)
+Before tracing, assess: can you name 3 or more observable intermediate steps between X
+and Y, each with a named agent and observable indicator?
 
---- Do not advance to Section B until checked. ---
-
----
+If yes: proceed to Phase 2.
 
-## SECTION B: COUNTER-HYPOTHESIS CHAIN AND I-NN POOL
+If no: complete both sub-steps below before proceeding to Phase 2.
 
-[The counter-hypothesis: "There exists an X-independent causal chain that produces Y."
-Analyze this counter-hypothesis as a mini-chain with at least two hops, each hop annotated
-with observability. The aggregate observability of the counter-hypothesis chain IS the
-inertia pathway observability label (A-15). I-NN conditions derive from hop challenges (A-14).]
+  SUB-STEP 1 -- Incompleteness declaration:
+  Write: "PATHWAY INCOMPLETE: mechanism cannot be traced past [step]. Missing knowledge:
+  [what evidence or domain knowledge is needed]."
+  Then continue tracing in Phase 2 what can be traced, marking unsubstantiated steps
+  [UNCERTAIN].
 
-B1. Counter-hypothesis framing:
-  Counter-hypothesis claim: ["Without X, Y still occurs via [mechanism]." -- one sentence]
-  Baseline rate: [Estimate or bound. Or: "Unknown."]
-  Inertia severity: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-  Inertia severity rationale: [1 sentence]
+  SUB-STEP 2 -- Preliminary falsification anchor (required immediately after SUB-STEP 1):
+  Name the highest-confidence step you can trace as a preliminary falsification anchor.
+  Produce it here, before Phase 2 tracing begins.
 
-B2. Counter-hypothesis chain:
-[At least two hops of the inertia pathway from status-quo conditions to Y.
-Every hop carries: observability label, rationale, and inertia challenge question.]
+  Required format:
+  "PRELIMINARY ANCHOR: The mechanism most likely fails if Step [N] -- [Name] -- does not
+  occur, observable as [indicator]. Chain traceability ends here. Further falsification
+  requires establishing [missing knowledge from SUB-STEP 1]."
 
-  CH-Hop 1: [Status-quo condition] -> [intermediate state Z]: [How does the status quo produce Z?]
-    Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-    Observability rationale: [1 sentence: can we directly detect this intermediate?]
-    Inertia challenge: [What would show this counter-hypothesis hop fails?]
+  PROHIBITED FORM: Declaring incompleteness and proceeding to Phase 2 without producing
+  this preliminary anchor in SUB-STEP 2 does not pass. The anchor must appear here, at the
+  declaration point, before Phase 2. Phase 3 will confirm and extend it, but Phase 1 must
+  produce it first. Deferring the anchor to Phase 3 -- writing "will determine in Phase 3"
+  or equivalent -- does not satisfy this sub-step regardless of how accurately incompleteness
+  was declared. Incompleteness changes the confidence annotation; it does not remove the
+  requirement to name a step-level anchor here. Even one traceable step produces one
+  falsifiable break point.
 
-  CH-Hop 2: [intermediate state Z] -> Y: [How does Z produce Y?]
-    Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-    Observability rationale: [1 sentence]
-    Inertia challenge: [What would show this counter-hypothesis hop fails?]
+Producing three thin or vague steps to clear the readiness gate -- instead of declaring
+incompleteness -- fails this phase. Accurate self-report is the required output.
 
-  [Add CH-Hop 3+ if the inertia pathway decomposes into more steps.]
+=== PHASE 2: MECHANISM PATHWAY ===
 
-B3. Inertia pathway observability aggregate:
-[Derived from counter-hypothesis hop labels. This is the inertia pathway observability (A-15).]
+Trace the causal pathway from X to Y.
 
-  CH-Observable hops: [Count]  |  CH-Partial hops: [Count]  |  CH-Opaque hops: [Count]
-  Inertia pathway observability: [ ] Observable  [ ] Partial  [ ] Opaque
-    (Observable = all or majority of counter-hypothesis hops are Observable;
-     Partial = mixed counter-hypothesis hop labels;
-     Opaque = majority of counter-hypothesis hops are Opaque)
-  Inertia observability rationale: [1 sentence: what does this aggregate mean for our ability
-    to detect whether Y occurs without X?]
+STEP LABELING REQUIREMENT: Each step must carry a persistent formal label:
+  Step N -- [Name]: What changes. Who acts. Observable indicator.
 
-B4. I-NN Pool (from counter-hypothesis hop challenges):
-[Each I-NN condition derives from a CH-Hop challenge. At least two I-NN conditions.
-Testability = Unknown at genesis. No confidence yet.]
+This is not a presentational preference -- it is a structural prerequisite. Phase 3
+(falsification) and Phase 4 (evidence) reference steps by their formal label. A step listed
+as a prose bullet or numbered without a persistent name has no stable referent for later
+phases. Unlabeled steps make falsification anchoring and evidence gap enumeration fail
+mechanically -- there is no name to anchor to. Use this format throughout. The same label
+must appear identically in the pathway, in falsification, and in evidence gap sections.
 
-| ID   | I-NN condition (from CH-Hop challenge)              | Source hop  | Testability          | Rationale |
-|------|-----------------------------------------------------|-------------|----------------------|-----------|
-| I-01 | [What would show CH-Hop 1 fails? Observable state.] | CH-Hop 1    | Unknown (see Sec C)  | [1 sentence] |
-| I-02 | [What would show CH-Hop 2 fails? Observable state.] | CH-Hop 2    | Unknown (see Sec C)  | [1 sentence] |
-[Add I-NN for additional CH-Hops.]
+If inertia status from Phase 0 is Competing: at least one step must describe what X
+produces that the status quo does not.
 
-SECTION B GATE:
-[ ] Counter-hypothesis claim stated
-[ ] At least two CH-Hops with observability labels and rationale
-[ ] Inertia pathway observability aggregate computed from CH-Hop labels
-[ ] Inertia pathway observability label declared (Observable/Partial/Opaque)
-[ ] At least two I-NN conditions derived from CH-Hop challenges
-[ ] Inertia severity label with rationale
+Also: is there more than one plausible causal pathway from X to Y?
+  - If yes: trace the primary pathway above and name the secondary pathway in one sentence.
+    Note whether the two pathways are complementary, competing, or nested.
+  - If no: note that the mechanism is singular.
 
---- Do not advance to Section C until checked. ---
+=== PHASE 3: FALSIFICATION ===
 
----
+Name the most likely mechanism break point. Reference the step by its Phase 2 label.
 
-## SECTION C: EVIDENCE AND TESTABILITY REFINEMENT
+Required format:
+"The mechanism fails if Step [N] -- [Name] -- does not occur, observable as [indicator]."
 
-[At least one context-specific observation, OR explicit "None found" with mandatory AMEND
-evidence slot. Refine testability for all F-NN and I-NN conditions.]
+Step number and name must match a labeled row in Phase 2 exactly. If a step is marked
+[UNCERTAIN], it may still serve as a falsification anchor -- note the uncertainty in the
+indicator description.
 
-Evidence entry 1:
-  Source type: [ ] Prior result  [ ] Analogous case  [ ] Domain observation  [ ] Counter-evidence
-  Observation: [What was seen, where, when?]
-  Bearing on X->Y: [1 sentence]
+-- CONDITIONAL BRANCH: incomplete pathway --
 
-[Add entries as needed.]
+If PATHWAY INCOMPLETE was declared in Phase 1, a PRELIMINARY ANCHOR is already on record
+from Phase 1 SUB-STEP 2. This branch confirms and extends it.
+
+Confirm the Phase 1 anchor. If Phase 2 tracing revealed additional labeled steps with
+higher confidence than the Phase 1 preliminary anchor, update to the highest-confidence
+step now on record.
 
-Evidence quality: [ ] Strong  [ ] Moderate  [ ] Weak  [ ] None
-Evidence quality rationale: [1 sentence]
+Required format:
+"BEST-TRACEABLE ANCHOR: The mechanism fails if Step [N] -- [Name] -- does not occur,
+observable as [indicator]. Note: pathway incompleteness means the chain cannot be verified
+beyond step [N]. Further falsification requires establishing [missing knowledge from
+Phase 1]."
 
-Testability refinement pass:
-
-| ID   | Testability after evidence       | Refinement rationale |
-|------|----------------------------------|---------------------|
-| F-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| F-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-01 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-| I-02 | [ ] Easy  [ ] Hard  [ ] Unknown  | [1 sentence] |
-[Mirror all F-NN and I-NN conditions.]
-
-Testability refinement yield:
-  testability_refined_count: [Count]
-  testability_residual_unknown_count: [Count]
-  Residual Unknown IDs: [List or "None"]
-  F-NN residual: [Count]  |  I-NN residual: [Count]
-
-SECTION C GATE:
-[ ] Evidence populated (or explicit "None found")
-[ ] Testability refinement row for every F-NN and I-NN condition
-[ ] Yield counts declared with pool breakdown
-
---- Do not advance to Section D until checked. ---
-
----
-
-## SECTION D: MECHANISM CHAIN
-
-[Map the causal pathway from X to Y. Two hops minimum. Every hop carries: observability,
-rationale, evidence coherence, falsification connection (F-NN or I-NN from Sections A-B).
-Distinguish these mechanism hops from the counter-hypothesis hops in Section B.
-State mechanism only -- adversarial content belongs in Section E.]
-
-Hop 1: X [name] -> [intermediate A]: [How does X produce A?]
-  Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  Observability rationale: [1 sentence]
-  Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions -- describe
-  Falsification connection: [F-NN or I-NN ID. One sentence.]
-
-Hop 2: [intermediate A] -> Y: [How does A produce Y?]
-  Observability: [ ] Observable  [ ] Partial  [ ] Opaque
-  Observability rationale: [1 sentence]
-  Evidence coherence: [ ] Supported  [ ] Neutral  [ ] Tensions
-  Falsification connection: [F-NN or I-NN ID. One sentence.]
-
-[Add Hop 3+ as needed.]
-
-Mechanism strength (preliminary): [ ] Strong  [ ] Moderate  [ ] Weak
-Preliminary rationale: [1 sentence]
-
-SECTION D GATE:
-[ ] At least two mechanism hops (distinct from Section B counter-hypothesis hops)
-[ ] Every hop: observability + rationale, coherence, falsification connection
-[ ] Mechanism strength (preliminary)
-[ ] No adversarial content (Section E)
-
---- Do not advance to Section E until checked. ---
-
----
-
-## SECTION E: ADVERSARIAL CHALLENGE
-
-[Challenge every mechanism hop (Section D). Challenge the counter-hypothesis (Section B).
-Assign confidence to all F-NN and I-NN conditions. Produce final mechanism strength.
-Structurally separate from Section D.]
-
-Mechanism hop-by-hop challenge:
-
-  Hop 1 challenge:
-    What breaks X -> [intermediate A]? [Observable condition]
-    Observable test: [What to measure]
-    Alternative: [What else produces [intermediate A] without X?]
-    Confidence: [ ] High  [ ] Medium  [ ] Low
-    Confidence rationale: [1 sentence]
-
-  Hop 2 challenge:
-    What breaks [intermediate A] -> Y? [Observable condition]
-    Observable test: [What to measure]
-    Alternative: [What else produces Y without [intermediate A]?]
-    Confidence: [ ] High  [ ] Medium  [ ] Low
-    Confidence rationale: [1 sentence]
-
-  [Mirror all Section D hops.]
-
-Confounders:
-  Confounder 1: [Variable correlating with both X and Y. Name and describe.]
-
-Counter-hypothesis challenge:
-  [Review Section B's counter-hypothesis chain. Does mechanism analysis change the
-  plausibility of the counter-hypothesis? Which I-NN condition is most dangerous?]
-  Most dangerous I-NN: [ID + 1-sentence rationale]
-  Revised inertia severity: [ ] Confirms Section B  [ ] Upgrades to ADVISORY  [ ] Upgrades to STOP
-
-Final falsification table:
-
-| ID   | Condition                      | Testability (Sec C)  | Confidence (Sec E)          | Rationale |
-|------|--------------------------------|----------------------|-----------------------------|-----------|
-| F-01 | [text]                         | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| F-02 | [text]                         | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-01 | [text]                         | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-| I-02 | [text]                         | [Easy/Hard/Unknown]  | [ ] High  [ ] Med  [ ] Low  | [1 sentence] |
-
-Mechanism strength (final): [ ] Strong  [ ] Moderate  [ ] Weak  [ ] NA (STOP)
-Final rationale: [1 sentence]
-
----
-
-## AUDITOR
-
-[Post-processing role. Runs after Section E. Reads all sections. Produces five diagnostics
-and consolidated AMEND routing table. New: triple-gap joint diagnostic (Diagnostic 5).]
-
-### Diagnostic 1: Mechanism Chain Observability Aggregate
-
-| Hop   | Step                      | Observability (from Sec D)      |
-|-------|---------------------------|---------------------------------|
-| Hop 1 | X -> [intermediate A]     | [Observable / Partial / Opaque] |
-| Hop 2 | [intermediate A] -> Y     | [Observable / Partial / Opaque] |
-
-Observable: [Count]  |  Partial: [Count]  |  Opaque: [Count]  |  Total: [Count]
-Chain observability pattern: [ ] AllObservable  [ ] Mixed  [ ] PredominantlyOpaque
-Pattern rationale: [1 sentence]
-
-### Diagnostic 2: Testability Yield (from Section C)
-
-Refined: [Count]  |  Residual Unknown: [Count]  |  Residual IDs: [List or "None"]
-F-NN residual: [Count]  |  I-NN residual: [Count]
-Pool asymmetry: [1 sentence]
-Yield quality: [ ] AllResolved  [ ] PartiallyResolved  [ ] Unresolved
-
-### Diagnostic 3: I-NN Pool (from Section B)
-
-I-NN count: [Total]  |  Pool coverage: [ ] Comprehensive  [ ] Adequate  [ ] Minimal
-Coverage rationale: [1 sentence]
-Counter-hypothesis dividend: [Did deriving I-NN from CH-Hops produce more mechanistically
-  specific conditions than a table-seeded approach? Or: "Not determinable from this run."]
-
-### Diagnostic 4: Inertia Pathway Observability (from Section B aggregate)
-
-Inertia pathway observability: [From Section B B3 aggregate -- Observable/Partial/Opaque]
-Comparison to mechanism chain: [One sentence: does inertia observability diverge from chain
-  observability pattern? What does the divergence imply for the causal analysis?]
-
-### Diagnostic 5: Triple-Gap Analysis (new joint diagnostic)
-
-[A triple gap exists when all three conditions hold for a single falsification condition:
-  1. The mechanism hop it cross-references (Section D) is Opaque
-  2. Its testability is Unknown after Section C refinement
-  3. An I-NN condition exists with the same or overlapping scope
-A triple gap means: maximum causal uncertainty at a point.
-We cannot observe the forward mechanism, cannot test the condition, and cannot rule out
-that the inertia pathway produces Y at the same step.]
-
-Triple-gap analysis:
-
-| Condition ID | Hop observability | Testability (Sec C) | I-NN match? | Triple gap? |
-|--------------|-------------------|---------------------|-------------|-------------|
-| F-01         | [Sec D hop label] | [Easy/Hard/Unknown] | [I-NN ID or None] | [ ] Yes  [ ] No |
-| F-02         | [Sec D hop label] | [Easy/Hard/Unknown] | [I-NN ID or None] | [ ] Yes  [ ] No |
-| I-01         | [CH-Hop label]    | [Easy/Hard/Unknown] | [F-NN ID or None] | [ ] Yes  [ ] No |
-| I-02         | [CH-Hop label]    | [Easy/Hard/Unknown] | [F-NN ID or None] | [ ] Yes  [ ] No |
-[Mirror all conditions. I-NN conditions cross-reference F-NN matches, and vice versa.]
-
-Triple-gap count: [How many conditions qualify?]
-Triple-gap IDs: [List, or "None detected"]
-Triple-gap severity: [ ] None  [ ] Advisory (1 gap)  [ ] Significant (2+ gaps)
-Triple-gap implication: [One sentence: what does the triple-gap count mean for the
-  reliability of this causal analysis? What is the recommended action?]
-
-### AMEND Routing Table
-
-| # | Diagnostic                    | Result                               | AMEND slot    | Routing |
-|---|-------------------------------|--------------------------------------|---------------|---------|
-| 1 | Chain observability pattern   | [AllObservable/Mixed/PredominantlyOpaque] | Observability | [Required if Mixed or PredominantlyOpaque / Not required] |
-| 2 | Testability residual count    | [Count]                              | Testability   | [Required if > 0 / Not required] |
-| 3 | Evidence quality              | [Strong/Moderate/Weak/None]          | Evidence      | [Required if None / Not required] |
-| 4 | Inertia severity (final)      | [SAFE/ADVISORY/STOP]                 | Inertia       | [Required if ADVISORY or STOP / Not required] |
-| 5 | Triple-gap count              | [Count]                              | Triple-gap    | [Required if count > 0 -- "Conditions [IDs] are triple gaps. These conditions carry maximum causal uncertainty and must be resolved before treating the causal claim as reliable."] |
-
-AUDITOR note: [Most critical finding across all five diagnostics -- 1 sentence.]
-
----
-
-## SECTION F: SCOPE AND AMEND
-
-Scoped claim: ["X causes Y when [condition], for [population], assuming [precondition]."]
-Out-of-scope: [At least one context where mechanism fails.]
-
-Final inertia severity: [ ] SAFE  [ ] ADVISORY  [ ] STOP
-
-AMEND DIRECTIVE:
-[All Required slots from AUDITOR routing table. Always include Narrow + Mechanism.]
-
-AMEND: discover-causal
-  Narrow: [Scope tightening]
-  Mechanism: [Hop notation: X -> [A] -> [B] -> Y]
-  Falsification: [Highest-confidence condition from Section E table. ID + testability + confidence.
-    If this condition is a triple gap, note it explicitly.]
-  [Evidence: if AUDITOR row 3 = Required]
-  [Inertia: if AUDITOR row 4 = Required -- reference most dangerous I-NN from Section E]
-  [Observability: if AUDITOR row 1 = Required]
-  [Testability: if AUDITOR row 2 = Required]
-  [Triple-gap: if AUDITOR row 5 = Required]
-    "Conditions [IDs] are triple gaps (Opaque hop + Unknown testability + I-NN match).
-     These represent maximum causal uncertainty. Do not treat as supporting evidence for
-     the claim until hop observability is improved, testability is determined, and the
-     I-NN pathway is ruled out or bounded."
-
----
-
-Write artifact: simulations/discover/causal/{topic}-causal-{date}.md
-Frontmatter: skill, topic, date, cause (X), outcome (Y),
-             combination_axes (counter-hypothesis-chain, auditor-role, section-letter),
-             auditor_role (true), gate_checklists (4),
-             inertia_verdict (SAFE/ADVISORY/STOP), baseline_rate,
-             inertia_observability (Observable/Partial/Opaque),
-             counter_hypothesis_hop_count,
-             evidence_count, evidence_quality (Strong/Moderate/Weak/None),
-             f_nn_count, i_nn_count, i_nn_pool_coverage (Comprehensive/Adequate/Minimal),
-             i_nn_derivation (counter-hypothesis-chain),
-             hop_count,
-             mechanism_strength_preliminary, mechanism_strength_final, strength_changed (true/false),
-             chain_observability_pattern (AllObservable/Mixed/PredominantlyOpaque),
-             observability_amend_triggered (true/false),
-             testability_refined_count, testability_residual_unknown_count,
-             f_nn_residual_count, i_nn_residual_count, pool_asymmetry_detected (true/false),
-             testability_amend_triggered (true/false),
-             triple_gap_count, triple_gap_severity (None/Advisory/Significant),
-             triple_gap_amend_triggered (true/false),
-             amend_routing_rows_required (count), confounder_named (true/false).
+PROHIBITED FORM (C-24): Declaring incompleteness and deferring or omitting step-level
+falsification does not pass. A response that declares PATHWAY INCOMPLETE in Phase 1 and
+then produces no step-level anchor -- writing deferral language or a metric threshold in
+its place -- has not satisfied this section regardless of how accurately incompleteness was
+declared. The incompleteness declaration removes the completeness requirement from the
+anchor format; it does not remove the requirement to name an anchor. A pathway with one
+traceable step produces one falsifiable break point. Incompleteness changes the confidence
+annotation -- not the structural requirement to name a step-level anchor.
+
+This branch confirms the Phase 1 anchor. It does not introduce fresh deferral.
+
+-- END CONDITIONAL BRANCH --
+
+Do not state falsification as a metric threshold. A metric shortfall is an outcome check.
+Name where the mechanism stops working.
+
+=== PHASE 4: CONTEXT EVIDENCE ===
+
+Assess evidence per pathway step using the formal labels from Phase 2.
+
+For each step:
+  Step N -- [Name]: [evidence name, artifact, or "no evidence"] -- [T1 / T2 / T3 / none]
+    T1 = anecdotal / observational / team intuition
+    T2 = correlation / A-B / usage analytics / survey
+    T3 = controlled / causal-inference-grade experiment
+
+Reference steps by their formal Phase 2 label -- not by position or paraphrase.
+
+FIELD INDEPENDENCE NOTE: The following two outputs measure different things. Produce them
+as two separate named entries. Do not merge them into a single entry. Do not omit either.
+
+  Evidence gap steps: [list Step N -- [Name] labels with no supporting evidence; write
+    "none" if every step has evidence -- the absence of a gap does not eliminate this
+    field; this output answers: which steps lack supporting evidence?]
+
+  Aggregate evidence tier: [highest tier available -- T1/T2/T3/none; this output answers:
+    what is the quality of the evidence that exists? -- independent of which steps are
+    missing; produce both fields in every output]
+
+These fields are orthogonal: gap steps names which steps lack evidence; aggregate tier
+rates the quality of the evidence that is present. One does not substitute for the other.
+
+NULL-GAP COUNTEREXAMPLE: The following is a valid, required output state:
+  Evidence gap steps: none
+  Aggregate evidence tier: T1
+This state means every step in the pathway has supporting evidence, and that evidence is
+anecdotal-grade. The Evidence gap steps field still appears; it carries the value "none."
+The Aggregate evidence tier field still appears; it carries the value T1. A response that
+omits Aggregate evidence tier because all steps are covered is making the category error
+that these fields guard against -- it is conflating "no missing steps" with "no tier to
+report." The null-gap state proves the fields are independent: gap answers which steps are
+missing (here: none); tier answers what quality the present evidence has (here: T1). Both
+are always required. Both always carry a value, even when gap is none.
+
+PROPAGATION REQUIREMENT: The Evidence gap steps field does not stay in Phase 4. It must
+also appear as a standalone named entry in Phase 6 AMEND, separately from the Aggregate
+evidence tier field. Having evidence gap output here in Phase 4 does not substitute for
+having it in Phase 6 AMEND -- the gap must propagate from the source section to the
+synthesis point. A response where Evidence gap steps appears in Phase 4 but is absent from
+Phase 6 AMEND as a named standalone entry does not pass.
+
+Do not substitute general research for team-specific evidence. Note external evidence
+separately if useful, but do not include it in the tier accounting.
+
+=== PHASE 5: CONFOUNDER CHECK ===
+
+This phase asks a DIFFERENT question from Phase 0.
+
+Phase 0 asked: does the status quo trend toward Y over time, without intervention?
+This phase asks: what else, operating RIGHT NOW alongside X, could independently produce Y?
+
+The inertia case (Phase 0) is EXCLUDED from this analysis. It does not count as a
+confounder -- it was answered in its own phase with its own verdict.
+
+What you are looking for -- simultaneously-operating causes, not counterfactuals:
+  - Competing initiatives active during the same deployment window
+  - Confounding variables that correlate with X adoption and independently predict Y
+  - Selection effects: the population using X differs from those who do not
+  - Environmental or seasonal effects coinciding with X's deployment period
+
+Name at least one alternative explanation for Y that:
+  (a) does not involve X as a cause, AND
+  (b) is not the inertia/status-quo case already addressed in Phase 0.
+
+Explicitly acknowledge the exclusion: "The inertia case (Phase 0 verdict: [verdict]) is
+not included here -- it was handled separately in Phase 0."
+
+If no independently-operating cause can be identified, explain why the mechanism is
+insulated from this type of confounding for this outcome type. Silence is not acceptable.
+
+=== PHASE 6: AMEND ===
+
+Produce a narrowed version of the hypothesis that integrates all prior analytical phases.
+This section has required named inputs from each phase. Omitting any of them does not pass.
+
+Required structure:
+  Original: {hypothesis}
+  Inertia verdict: {from Phase 0 -- Competing / Not competing / Unclear}
+  Mechanism completeness: {complete / incomplete at Step N / partial -- from Phase 1;
+    this is a standalone named field; a mechanism qualifier embedded within the Amended
+    clause text ("X causes Y when the mechanism is fully traceable") does not satisfy this
+    field; the completeness status must appear here as a named entry separate from the
+    amended clause; write "complete" if Phase 1 found no gaps; write "incomplete at Step N"
+    if PATHWAY INCOMPLETE was declared; write "partial" if some steps are [UNCERTAIN]}
+  Evidence tier: {aggregate tier from Phase 4 -- T1/T2/T3/none}
+  Evidence gap: {step labels lacking support from Phase 4 -- or "none"; this is a separate
+    field from Evidence tier -- having one does not satisfy the other; a pathway with no
+    gap steps still requires this field, carrying the value "none"}
+  Confounder finding: {from Phase 5 -- name the alternative cause identified, or
+    "none identified -- [reason why mechanism is insulated]"}
+  Active pathway: {primary / secondary / both / singular}
+  Falsification: {Step N -- Name -- break condition, or BEST-TRACEABLE ANCHOR if incomplete;
+    for incomplete pathways, this field must carry the Phase 1 PRELIMINARY ANCHOR, updated
+    for any additional steps traced in Phase 2; a Falsification field that first names the
+    anchor here without a corresponding Phase 1 PRELIMINARY ANCHOR does not pass C-26}
+  Amended: {narrower claim -- must include:
+    (a) mechanism qualifier (what must be true in the causal chain for X to cause Y),
+    (b) scope condition (population, context, or timeframe),
+    (c) inertia incorporation -- required regardless of verdict value; no verdict makes
+        inertia incorporation optional; use the form appropriate to the verdict:
+          Competing: scope to contexts where the status quo does not already produce Y via
+            [the competing mechanism]; or declare the feature causally redundant where the
+            status quo already delivers Y
+          Not competing: confirm explicitly that X is the causal driver and that the status
+            quo does not independently produce Y -- this is a positive bounding condition
+            that must appear in the amended claim, not be silently assumed
+          Unclear: qualify the causal scope with the condition that status-quo independence
+            has not been established -- the claim holds only if inertia can be ruled out for
+            this context and population
+    (d) confounder note if Phase 5 named a plausible alternative cause that bounds where
+        the claim holds -- e.g., "provided [confounder] is not the active driver"}
+
+Integration rules:
+  - Evidence tier and Evidence gap are separate AMEND fields -- merging them or omitting
+    either does not pass.
+  - Mechanism completeness is a standalone named AMEND field -- embedding it within the
+    amended clause text does not satisfy this field requirement.
+  - A narrowed claim that ignores the inertia verdict does not pass -- no verdict value
+    makes inertia incorporation optional.
+  - Conditioning inertia incorporation on the verdict being Competing or Unclear does not
+    pass -- all three verdict values require explicit reference in the amended claim. The
+    Not competing case must shape the amended claim text; acknowledging it and then treating
+    it as carrying no bounding force is the conditional form that fails.
+  - Declaring incompleteness and deferring or omitting step-level falsification does not
+    pass -- incompleteness changes the confidence annotation, not the structural requirement
+    to name a step-level anchor; a PATHWAY INCOMPLETE response still carries a Falsification:
+    field with a BEST-TRACEABLE ANCHOR value, not a deferral statement.
+  - For incomplete pathways, the Falsification field must carry an anchor that was first
+    produced in Phase 1 -- not first introduced here. A response where Phase 1 contains no
+    PRELIMINARY ANCHOR and Phase 6 Falsification carries the first anchor does not pass
+    C-26 -- the anchor appeared at the synthesis point, not at the declaration point.
+  - Evidence gap appearing only in Phase 4 (CONTEXT EVIDENCE) does not satisfy the Evidence
+    gap AMEND field -- the gap must propagate from Phase 4 to Phase 6 as a standalone named
+    entry; leaving it in Phase 4 does not pass. Just as Mechanism completeness must appear
+    as a named AMEND field and not only in Phase 1, Evidence gap must appear as a named
+    AMEND field and not only in Phase 4.
+  - A narrowed claim that ignores mechanism incompleteness does not pass.
+  - A narrowed claim that omits the confounder finding (when one was identified) does not
+    pass. Partial synthesis is not synthesis -- all fields must be reflected.
+  - Restating the original hypothesis does not pass. Broadening it does not pass.
+
+=== PHASE 7: ARTIFACT ===
+
+Write to simulations/discover/causal/{topic}-causal-{date}.md.
+Frontmatter:
+  topic: {topic}
+  date: {date}
+  hypothesis: {original hypothesis}
+  inertia_status: competing | not-competing | unclear
+  mechanism_complete: true | false | partial
+  incomplete_pathway_declared: true | false
+  preliminary_anchor_declared: true | false
+  pathway_steps: {count}
+  secondary_pathway_noted: true | false
+  pathway_relationship: complementary | competing | nested | singular
+  break_point_step: {step label, or "best-traceable: Step N -- Name"}
+  falsification_stated: true | false
+  evidence_aggregate_tier: T1 | T2 | T3 | none
+  evidence_gap_steps: [{step labels with no supporting evidence; or "none"}]
+  confounders_identified: {count}
+  confounder_inertia_excluded: true | false
+  context_evidence_found: true | false
 ```
 
 ---
 
-### Round 7 Design Notes
-
-**A-14 across five variations:**
-All five generate a structured I-NN pool with at least two rows, same labeled columns as F-NN,
-and testability starting Unknown. The derivation mechanism differs:
-- V-01/V-02/V-04: table-seeded (FRAMER or section prompt lists inertia pathways)
-- V-03: claim-context-free (generated before claim, possible independence dividend)
-- V-05: chain-seeded (each I-NN derives from a CH-Hop challenge, strongest structural link)
-
-**A-15 across five variations:**
-All five produce a discrete Observable/Partial/Opaque label for the inertia pathway. The label
-source differs:
-- V-01/V-02/V-03/V-04: explicit dedicated field in the inertia/Step 3/Phase 3 section
-- V-05: aggregate of counter-hypothesis hop labels (emergent from CH-Hop analysis)
-
-**A-16 across five variations:**
-All five have a named post-processing role with a structured routing table. Role names differ:
-- V-01: SYNTHESIZER (5-row table, owns all four diagnostics)
-- V-02: AUDITOR (4-row table, parallel-pool architecture)
-- V-03: EVALUATOR (5-row table, adds inertia-observability as 5th row)
-- V-04: EXAMINER (4-row table, interrogative framing)
-- V-05: AUDITOR (5-row table, adds triple-gap diagnostic)
-
-**V-01 vs R6-V-02 (AUDITOR) differentiation:**
-R6-V-02 AUDITOR had 4 routing rows (chain-obs, testability, evidence, inertia). V-01 SYNTHESIZER
-adds a 5th row (I-NN pool coverage -- Minimal triggers a Mechanism slot). The name change
-from AUDITOR to SYNTHESIZER reflects the expanded ownership: SYNTHESIZER owns all four new
-criteria (A-12, A-13, A-14, A-15) simultaneously, while R6-V-02 AUDITOR owned only A-12/A-13.
-
-**New structural question seeded for R8:**
-V-05 introduces I-NN derivation from counter-hypothesis hop challenges (chain-seeded). If
-chain-seeded I-NN conditions are more mechanistically specific but harder to generate (longer
-prompt, more analytical effort), the tradeoff is: do chain-seeded I-NN conditions produce
-better AMEND guidance? R8 can test this by running V-01 (table-seeded) and V-05 (chain-seeded)
-on the same hypothesis and comparing I-NN condition quality.
+```json
+{"r7_variations": 5, "new_criterion_targeted": "C-26", "base": "R6 V-05 (175/175 under v6 rubric, 175/180 under v7 rubric)", "single_axis": ["V-01: C-26 role sequence -- Phase 1 structural sub-step, no Phase 1 PROHIBITED FORM", "V-02: C-26 phrasing register -- Phase 3 PROHIBITED FORM naming C-26 absence, no Phase 1 change", "V-03: C-26 phrasing register -- Phase 1 PROHIBITED FORM at declaration point, no sub-step format"], "combined": ["V-04: Phase 1 structural sub-step + Phase 1 PROHIBITED FORM, Phase-1-only dual enforcement", "V-05: Full R7 stack -- Phase 1 sub-step + Phase 1 PROHIBITED FORM + Phase 3 confirmation + Phase 6 integration rule"], "isolation_tests": ["V-01 vs V-03: structural sub-step vs prohibition naming -- which mechanism produces Phase 1 anchor in responses?", "V-02 control: downstream prohibition (Phase 3) without Phase 1 structural change -- expected FAIL C-26", "V-04 vs V-05: Phase-1-only dual enforcement vs full cross-site enforcement -- does Phase 6 rule add incremental pass probability?"], "expected_ceiling": "180/180 (V-04, V-05)", "c26_distinction": "C-26 pass condition is structural proximity in the response (anchor appears at Phase 1), not prohibition naming -- compare to C-24 which requires prohibition naming; C-26 is more like C-18 (structural requirement) than C-24 (prohibited form naming)"}
+```

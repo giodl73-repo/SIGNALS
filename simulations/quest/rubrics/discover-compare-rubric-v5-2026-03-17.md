@@ -1,109 +1,112 @@
-Reading the scorecard carefully to identify the three new R5 excellence patterns before writing the rubric.
+Two new criteria from R5 patterns not yet captured by v4:
 
-The three new patterns confirmed in the scorecard summary:
+- **C-18** — dual-polarity FAULT (C-11 required the rule to exist; this requires it to encode both polarities in one line — the minimal form confirmed by V-02/V-03)
+- **C-19** — AMEND phase self-contained via inline TOKEN RECALL + FAULT (C-07 requires actionable AMEND; this requires the tokenized form that is executable without re-reading primary phases)
 
-1. **ANCHOR token binding with explicit binding rule** — Phase 0 prevents silent prose substitution by requiring literal token reproduction downstream
-2. **TOKEN RECALL inline headers** — point-of-use headers force literal value reproduction before each anchor-sensitive phase
-3. **Terminal structural audit (Phase 10)** — closed-loop contract (declare → use → verify) catches structural omissions above the token level
+"Bare token ordering satisfies C-15" is already a v4 clarification — not a new criterion.
 
-These become C-19, C-20, C-21. Aspirational denominator bumps from `/10` to `/13`.
-
----
+Denominator bumps from /10 to /12.
 
 ```markdown
-# discover-compare Rubric — v5
+## discover-compare-rubric-v5-2026-03-17.md
 
-## Essential Criteria
+What changed from v4:
 
-| ID | Criterion | Category | Pass Condition |
-|----|-----------|----------|----------------|
-| C-01 | All four dimensions covered for both options | completeness | Risk, competitive positioning, feasibility, and strategic fit are each addressed for Option A and Option B independently. Missing a dimension for either option is a PARTIAL. Missing a dimension entirely is a FAIL. |
-| C-02 | Inertia check is bilateral and independent | behavior | Option A is scored against the status quo independently of Option B. Option B is scored against the status quo independently of Option A. A prompt that asks only "do A or B beat inertia together" fails this criterion. The test question for each: "would teams ship nothing rather than build this option?" |
-| C-03 | Recommendation is explicit and structured | format | A discrete recommendation appears in a named section or phase. The recommendation states a clear choice from {A, B, neither, defer} and is not left implicit in the prose. The matrix leads the recommendation; the recommendation does not replace the matrix. |
-| C-04 | Recommendation is traceable to the matrix | depth | The recommendation either matches the matrix plurality or names a reason for diverging. A recommendation that merely follows structural proximity to the matrix (appearing after it) without explicit traceability scores PARTIAL. The reason for divergence must appear in the output, not be inferable from context. |
-| C-05 | Build/no-build gate is explicit | behavior | If both options fail their inertia check (teams would do nothing), the output explicitly raises the "build neither" possibility. May conclude build anyway, but must surface the question. |
+**Two new criteria:**
 
----
+- **C-18** (correctness, aspirational) — *Exclusion FAULT is encoded as a single dual-polarity directive.* Confirmed by V-02/V-03: `FAULT: compare against ANCHOR[0] only — Option A vs Option B comparison is an error.` encodes both the positive mandate (ANCHOR[0]-only basis) and the negative prohibition (inter-option comparison is an error) in one line. Single-polarity form (negative only) = partial. Two separate sentences achieving the same coverage = partial. Explanatory clause appended to explain what inertia means = overhead, not mechanism. **Denominator bumps from /10 to /11.**
 
-## Recommended Criteria
+- **C-19** (behavior, aspirational) — *AMEND phase is self-contained via inline TOKEN RECALL and FAULT prohibitions.* Confirmed by V-02/V-05: each amendment path carries its own inline TOKEN RECALL directives and FAULT prohibitions, making the path executable without re-reading primary phases. Slot declarations with inline TOKEN RECALL + FAULT at each path = pass. Prose path descriptions with no slot declarations = fail. Slot declarations without inline TOKEN RECALL or FAULT = partial. **Denominator bumps from /11 to /12.**
 
-| ID | Criterion | Category | Pass Condition |
-|----|-----------|----------|----------------|
-| C-06 | Trade-offs acknowledged in recommendation | depth | Recommendation names what is being given up by not choosing the other option. Not just "pick A" but "pick A; the cost is X." |
-| C-07 | Competitive positioning is specific, not generic | depth | Competitive analysis names real differentiation vectors (speed, cost, ecosystem lock-in, etc.) rather than generic statements like "more competitive." At least one concrete differentiator per option. |
-| C-08 | Matrix is scannable at a glance | format | The decision matrix uses a table or structured list layout. Key signals (pass/weak/fail) are visually distinct. A reader can reach the recommendation without re-reading prose. |
+**Two new failure modes added to watch list:**
+
+- **Single-polarity FAULT** — exclusion directive names only the prohibition ("no inter-option comparison") without stating the positive mandate ("compare against ANCHOR[0] only"); dual-polarity coverage is incomplete (C-18 partial)
+- **AMEND as primary-phase dependent** — amendment paths are described as prose or slot declarations but require the practitioner to recall TOKEN RECALL logic from earlier phases to execute; the AMEND phase is not self-contained (C-19 fail)
 
 ---
 
-## Aspirational Criteria
+## Essential Criteria (60%)
 
-| ID | Criterion | Category | Pass Condition |
-|----|-----------|----------|----------------|
-| C-09 | AMEND path is responsive | behavior | When the user invokes AMEND (add third option, weight a dimension, shift audience), the output re-runs the affected dimensions and updates the matrix coherently. The recommendation changes when the evidence changes. |
-| C-10 | Audience register is calibrated | depth | When audience is specified (exec vs engineering), the language, emphasis, and detail level shift appropriately. Exec output leads with recommendation and business risk; engineering output leads with feasibility and implementation risk. |
-| C-11 | Inertia is represented as Option 0 in the matrix | behavior | The "do nothing" path is a named column in the comparison matrix — not just a downstream gate. Both build options are scored against the status quo simultaneously. This makes it visible when both A and B lose to inertia, not just when they tie each other. N/A cells (inertia has no inertia score) are explicitly labeled. |
-| C-12 | Anti-pattern guard is explicit on competitive analysis | depth | The output names what generic analysis looks like and actively avoids it. A phrase like "generic phrases such as 'more competitive' are insufficient" or equivalent appears in the competitive dimension — making the failure mode visible, not just the success condition. Strongest form of C-07. |
-| C-13 | Two-table architecture resolves C-08/C-11 structural tension | format | The output uses two distinct tables: a 3-column context view (Option A / Option B / Option 0) that earns C-11, and a separate 2-column decision summary (Option A / Option B) that preserves C-08 scannability. A single 3-column matrix cannot pass both; the two-table design is required. Tables are cross-referenced so a reader knows which to use for which purpose. |
-| C-14 | AMEND expands both tables coherently | behavior | When AMEND Type 1 (add a third build option) is invoked against a two-table output, both tables expand: the 3-column context view grows to 4-column, and the 2-column decision summary grows to 3-column A/B/C. A handler that adds a column to only one table — or that treats the output as a single matrix — leaves the structure broken after amendment. Score N/A (counts as 0) if the base output does not implement the two-table architecture. |
-| C-15 | Register references are explicit at each affected phase | depth | In multi-phase prompts, "If register = X" branching appears at each phase where register changes the output — not only at the Phase 0 setting. A prompt that sets register at Phase 0 and relies on implicit memory will drift across phases. Pass condition: every phase that produces register-sensitive output names the register condition explicitly at that phase. Scale-sensitive: applies most sharply to prompts with 5+ phases. |
-| C-16 | Register declaration includes upfront phase index | depth | The Phase 0 register declaration names every phase where register governs output (e.g., "Applies at Phases 4, 5, 7, 9"). This forward index pairs with C-15 (point-of-use branching) to form a complete register contract: readers can verify coverage without walking every phase, and evaluators can check the index against point-of-use annotations. Pass condition: Phase 0 lists all register-sensitive phase numbers explicitly. A declaration that sets register but omits the phase index leaves the scope of the contract undefined. |
-| C-17 | TABLE GUIDE section with bidirectional header annotations | format | A dedicated TABLE GUIDE section appears before the first matrix, naming each table and its purpose. Each table header carries a cross-reference annotation pointing to the other table (e.g., Table 1 header: "[ -> See Table 2 (Phase 5) for A-vs-B decision summary ]"; Table 2 header: "[ <- Source: Table 1 (Phase 4) for Option 0 context ]"). This enables zero-friction navigation: a reader can determine which table to use without re-reading phase prose. Excellence form of C-13; passing C-17 implies passing C-13. A TABLE GUIDE without bidirectional header annotations, or bidirectional annotations without a TABLE GUIDE, scores PARTIAL. |
-| C-18 | Option 0 defined as dedicated phase before analysis | behavior | Option 0 (the status quo) has its own named phase that appears before any dimensional analysis begins — not merely a column added at matrix construction time. This architectural commitment prevents inertia drift: all subsequent analysis phases inherit a concrete baseline rather than reconstructing it implicitly. Pass condition: a phase explicitly named "Option 0" or "Status Quo" (or equivalent) defines the current state before Phase 1 analysis opens. Excellence form of C-11; passing C-18 implies passing C-11. |
-| C-19 | ANCHOR token binding rule is declared at Phase 0 | behavior | The Phase 0 status quo anchor includes an explicit binding rule requiring literal token reproduction in all downstream phases that reference the anchor (e.g., "ANCHOR[0A] = {value}. Binding rule: reproduce this exact token name — not a paraphrase — at every downstream phase that references Option 0 for A."). The binding rule makes silent prose substitution detectable: any phase that drifts from the committed token name is provably non-compliant. Pass condition: Phase 0 names the token AND states the reproduction requirement explicitly. A phase that defines an anchor value without a binding rule scores PARTIAL. Excellence form of C-18; passing C-19 implies passing C-18. |
-| C-20 | TOKEN RECALL inline headers at each anchor-sensitive phase | behavior | Each phase that produces anchor-sensitive output opens with a TOKEN RECALL block that forces literal reproduction of the committed anchor values before generating output (e.g., "TOKEN RECALL: ANCHOR[0A] = {reproduce from Phase 0}; ANCHOR[0B] = {reproduce from Phase 0}"). This catches point-of-use drift before it enters the artifact: the model must state the anchor value explicitly rather than relying on implicit recall. Pass condition: a TOKEN RECALL header appears at the opening of every phase scored under C-15 (all register-sensitive phases). Phases that proceed directly to output without a recall block score 0. Excellence form of C-15; passing C-20 implies passing C-15. Score N/A (counts as 0) if the base output does not implement ANCHOR token binding (C-19). |
-| C-21 | Terminal structural audit before artifact write | behavior | A dedicated audit phase (e.g., Phase 10) verifies all structural criteria against a checklist before the final artifact is returned. The audit checks, at minimum: (1) ANCHOR tokens reproduced consistently across phases; (2) register contract printed with phase index; (3) TABLE GUIDE present; (4) bidirectional headers on both tables; (5) inertia check bilateral; (6) recommendation traceable to matrix; (7) build/no-build gate fired if both options fail inertia. If any item fails, the audit phase names the defect and corrects it before output — the final artifact reflects the correction, not the raw output. Pass condition: audit checklist appears in the output and all items are resolved. An audit phase that lists items without acting on failures scores PARTIAL. Creates the closed-loop contract: declare (C-19) → use (C-20) → verify (C-21). |
+Output fails if any of these are missing.
+
+| ID | Criterion | Category | Weight | Pass Condition |
+|----|-----------|----------|--------|----------------|
+| C-01 | All four dimensions are covered for both options | coverage | essential | Output addresses feasibility, risk, competitive positioning, and inertia for Option A AND Option B. Missing any dimension for either option = fail. |
+| C-02 | Inertia check is applied independently to both options | correctness | essential | The output asks "would teams do nothing instead of THIS option?" for Option A separately and Option B separately — not as a relative A-vs-B comparison. Each option has its own inertia verdict. A single combined inertia statement = fail. |
+| C-03 | A decision matrix is present | format | essential | Output contains a structured matrix (table or equivalent scored grid) placing both options side-by-side across dimensions. Prose-only comparison without any structured layout = fail. |
+| C-04 | A concrete recommendation is made | correctness | essential | Output concludes with a stated recommendation: A, B, neither, or conditional. The recommendation must be explicit. Ending with "it depends" without resolution, or implying a preference without stating it = fail. |
 
 ---
 
-## Scoring
+## Recommended Criteria (30%)
+
+Output is better with these.
+
+| ID | Criterion | Category | Weight | Pass Condition |
+|----|-----------|----------|--------|----------------|
+| C-05 | Build/no-build gate is surfaced when both options fail inertia | behavior | recommended | If both options score weak on inertia (teams would do nothing), the output explicitly raises "build neither" as a possible recommendation. May still conclude build, but must surface the question. Outputs that treat A-vs-B as the only valid frame = fail. |
+| C-06 | Risk factors are meaningfully differentiated between options | depth | recommended | Risks listed for Option A and Option B are distinct — not symmetric or copy-pasted. At least one risk is unique to each option, or the output explains why risks are identical. |
+| C-07 | AMEND section is actionable | coverage | recommended | Output includes an AMEND section (or equivalent) that provides concrete instructions for at least one of: adding a third option, weighting a specific dimension, adjusting for exec vs engineering audience. Generic "you could amend this" without a concrete prompt or slot structure = fail. |
+
+---
+
+## Aspirational Criteria (10%)
+
+Raise the bar once essential and recommended are stable.
+
+| ID | Criterion | Category | Weight | Pass Condition |
+|----|-----------|----------|--------|----------------|
+| C-08 | "Do nothing" (Option 0) is a named column in the matrix | behavior | aspirational | The status quo is represented as Option 0 in the comparison matrix — not just mentioned in prose. Both build options are scored against the status quo simultaneously, making it visible when A and B both lose to inertia rather than only when they tie each other. |
+| C-09 | Audience register is calibrated in the primary flow | depth | aspirational | When audience is specified or can be inferred, language and emphasis shift appropriately in the main output — not deferred to AMEND. Exec output leads with recommendation and business risk; engineering output leads with feasibility and implementation complexity. Audience handling available only as an AMEND slot = partial, not pass. One-size framing with no audience signal = fail. |
+| C-10 | Labeled output tokens are cross-checked at matrix assembly | format | aspirational | Each analysis phase produces a labeled output token (e.g., FEASIBILITY-A:, VERDICT-B:) that is explicitly recalled or cross-checked when assembling the matrix. Missing scores are structurally visible rather than requiring prose review. Matrix assembled from free prose without named token references = fail. |
+| C-11 | Inertia independence is stated as an explicit exclusion rule | correctness | aspirational | Each option's inertia phase contains an explicit "compare against status quo, not against Option [X]" prohibition — not just physical separation into different sections. The exclusion is stated as a rule that prevents relative comparison, making violations detectable. Separation without the explicit prohibition = fail. |
+| C-12 | Status quo baseline is committed before analysis begins | behavior | aspirational | The status quo is defined as a named anchor (e.g., ANCHOR[0], STATUS QUO, Option 0) in a dedicated phase before any option analysis begins. Subsequent inertia phases reference this anchor by name. Baseline defined inline during inertia phases, or implied rather than declared = fail. |
+| C-13 | Anchor sentence is reproduced verbatim at each inertia phase | behavior | aspirational | Each inertia phase reproduces the exact anchor sentence — not a paraphrase, not just the anchor name. The no-paraphrase mandate must appear co-located with the TOKEN RECALL directive at point of use (e.g., `{reproduce exact sentence from Phase 0 — do not paraphrase}`), not only in a preamble or template slot instruction. Baseline drift is detectable as a token mismatch rather than requiring prose re-reading. Anchor name reference without the sentence, or "exact" instruction inside a fill-in slot without a co-located no-paraphrase mandate = fail. |
+| C-14 | Exclusion prohibition is named as a failure class at point of use | correctness | aspirational | Each inertia phase states the exclusion prohibition as a named failure class co-located with the TOKEN RECALL step — not only in a header or preamble. Any named failure class label satisfies this criterion: FAULT:, VIOLATION:, SCORING DEFECT:, or equivalent. The co-location is the requirement; the specific label is not. Prohibition stated only in framing outside the inertia phase itself = fail. |
+| C-15 | Register is declared before the status quo anchor | behavior | aspirational | Audience register is declared as a named token before ANCHOR[0] is committed. The anchor sentence is written in the declared register; the register token is recalled at the recommendation phase. Physical token ordering in a single inline phase satisfies this criterion — a Part A/Part B structural split is sufficient but not required. Register declared after the anchor, or inferred from the anchor framing = fail. |
+| C-16 | Token ledger is enforced as a blocking gate | format | aspirational | The ledger check includes an explicit blocking instruction ("do not proceed," "do not assemble," "halt") that makes a missing token a blocked path rather than a checklist item. Ledger check present as a list without a blocking instruction = fail. |
+| C-17 | Output is compressed to operative directives only | format | aspirational | All operative mechanisms are present as pure directives — token declarations, recall instructions, exclusion prohibitions, blocking gates, verdict labels. Explanatory prose is absent: no rule description tables, no binding rationale sentences, no Print: confirmations, no preamble framing. Operative directives present alongside explanatory scaffolding = partial. Explanatory prose exceeding operative content in volume = fail. |
+| C-18 | Exclusion FAULT is encoded as a single dual-polarity directive | correctness | aspirational | The inertia exclusion FAULT encodes both polarities in one line: the positive mandate (compare against ANCHOR[0] only) and the negative prohibition (inter-option comparison is an error). Single-polarity form covering only the prohibition = partial. Two separate sentences achieving the same dual coverage = partial. Explanatory clause appended to the directive = overhead, not mechanism. |
+| C-19 | AMEND phase is self-contained via inline TOKEN RECALL and FAULT prohibitions | behavior | aspirational | Each amendment path in the AMEND phase carries its own inline TOKEN RECALL directives and FAULT prohibitions, making the path executable without re-reading primary phases. Slot declarations with inline TOKEN RECALL + FAULT at each path = pass. Prose path descriptions without slot declarations = fail. Slot declarations without inline TOKEN RECALL or FAULT = partial. |
+
+---
+
+## Scoring Worksheet
 
 ```
-Composite = (essential_pass / 5 * 60)
-          + (recommended_pass / 3 * 30)
-          + (aspirational_pass / 13 * 10)
+Essential passed:    ___ / 4   =>  ___ * 60 / 4  = ___
+Recommended passed:  ___ / 3   =>  ___ * 30 / 3  = ___
+Aspirational passed: ___ / 12  =>  ___ * 10 / 12 = ___
+
+Composite score: ___
+
+Golden: all 4 essential pass AND composite >= 80
 ```
-
-PARTIAL scores count as 0.5 for the formula. PARTIAL on any essential criterion fails the Golden threshold regardless of composite score.
-
-**Golden threshold**: all 5 essential criteria pass (no PARTIALs) AND composite >= 80.
 
 | Band | Score | Meaning |
 |------|-------|---------|
-| Golden | all essential (no PARTIAL) + >= 80 | Ship-ready output |
-| Passing | all essential (PARTIAL allowed) + 60-79 | Usable, recommended gaps noted |
-| Failing | any essential fails or PARTIAL | Not useful as a comparison artifact |
+| Golden | all essential + >= 80 | Ship-ready comparison artifact |
+| Passing | all essential + 60-79 | Usable; recommended gaps noted |
+| Failing | any essential fails | Not useful as a comparison artifact |
 
 ---
 
-## Evaluation Notes
+## Failure Modes to Watch
 
-- **C-02 is the sharpest essential discriminator**: many comparison outputs apply inertia to only the "challenger" option. Both must be checked independently. The test question for each: "would teams ship nothing rather than build this option?"
-- **C-04 PARTIAL pattern**: Round 1 saw all three scored variations land PARTIAL here because structural proximity to the matrix was treated as sufficient. C-04 requires explicit traceability — if the recommendation diverges from the matrix plurality, a reason must appear. Structural proximity is not evidence.
-- **C-05 is a build/no-build gate, not just a comparison feature**: if both options have weak inertia, the output must name that explicitly, even if it then concludes to build one anyway.
-- **C-11 requires full commitment**: C-11 cannot be added lightly. It requires Option 0 named before analysis, a 3-column matrix with labeled N/A cells, and Option 0 maintained through AMEND. Partial implementation scores 0.
-- **C-12 is the excellence form of C-07**: C-07 requires one concrete differentiator; C-12 requires naming the anti-pattern. An output can pass C-07 and fail C-12. An output that passes C-12 always passes C-07.
-- **C-13 is the architecture that makes C-11 and C-08 compatible**: a two-table design earns both simultaneously. A single 3-column matrix forces a choice. Score C-08, C-11, and C-13 independently; passing C-13 implies passing both C-08 and C-11.
-- **C-14 requires C-09 and C-13 as prerequisites**: AMEND structural coherence is only testable in outputs that implement both AMEND handling and the two-table architecture. Score N/A if the base output is a single matrix; N/A counts as 0 in the aspirational formula.
-- **C-15 is scale-sensitive**: applies most sharply to prompts with 5+ phases. For a 2-phase prompt, Phase 0 register-setting may be sufficient. Evaluators should note phase count when scoring.
-- **C-15 and C-16 are complementary, not redundant**: C-15 tests point-of-use branching (does each affected phase have "If register = X"?); C-16 tests the declaration (does Phase 0 name all affected phases?). An output can pass C-15 without C-16 (all phases annotated but no upfront index) or C-16 without C-15 (index present but phases lack inline branching). Both passing together forms a complete register contract.
-- **C-19, C-20, C-21 form a three-layer drift prevention stack**: C-19 (binding rule at declaration) prevents silent substitution from the start; C-20 (TOKEN RECALL at point-of-use) catches drift before each sensitive output; C-21 (terminal audit) catches structural omissions above the token level before the artifact is written. The three mechanisms are non-overlapping: a failure that evades one layer is caught by another. An output can pass any one without the others; passing all three forms a closed-loop contract.
-- **C-20 depends on C-19**: TOKEN RECALL headers presuppose named ANCHOR tokens to reproduce. Score N/A (counts as 0) if C-19 is not implemented.
-- **C-21 PARTIAL pattern to watch**: an audit phase that lists structural items as a checklist without correcting identified failures is PARTIAL, not PASS. The correction must appear in the final artifact, not merely in the audit log.
-- **Implication chain for the new criteria**: C-19 → C-18 → C-11 (each stronger form implies the weaker). C-20 → C-15. C-21 independently verifiable but requires C-17, C-16, C-13, C-05, C-04, C-02 to be testable as audit targets.
+- **Symmetric inertia** — both options get identical inertia commentary; suggests the check was not applied independently
+- **Matrix without assessments** — decision matrix lists dimensions but provides no values or ratings, making comparison impossible
+- **Implied recommendation** — output clearly leans toward one option but never states it
+- **Missing dimension** — feasibility and risk covered but competitive positioning omitted entirely
+- **AMEND as afterthought** — AMEND section present but contains only meta-commentary without a concrete prompt or structure
+- **Audience deferred to AMEND** — audience register available only as an amendment slot; primary output is single-register (C-09 partial, not pass)
+- **Baseline drift** — inertia phases each define their own implied status quo rather than referencing a shared anchor declared before analysis (C-12 fail)
+- **Anchor name without anchor sentence** — inertia phase references ANCHOR[0] by name but does not reproduce the sentence; drift is invisible at the token level (C-13 fail)
+- **No-paraphrase in preamble only** — "do not paraphrase" or "exact" instruction appears only in Phase 0 framing or a template slot, not co-located with the TOKEN RECALL directive at point of use (C-13 fail)
+- **Invisible omission** — matrix assembled from prose with no labeled tokens; a missing score is not detectable without re-reading all analysis phases (C-10 fail)
+- **Preamble-only prohibition** — exclusion rule stated in framing but absent from the inertia phase itself; the rule is not at the point of use (C-14 fail)
+- **Register after anchor** — audience declared after status quo is committed; anchor sentence is written before register is known and cannot be reframed (C-15 fail)
+- **Ledger as checklist** — token ledger lists required tokens but includes no blocking instruction; a missing token is a suggestion to fill in, not a halt (C-16 fail)
+- **Operative mechanism with explanatory overhead** — all directive mechanisms are present but surrounded by rule descriptions, rationale sentences, or preamble framing; compression to operative-only form would reduce word count by 40%+ without losing any structural property (C-17 partial, not pass)
+- **Single-polarity FAULT** — exclusion directive names only the prohibition ("no inter-option comparison") without stating the positive mandate ("compare against ANCHOR[0] only"); dual-polarity coverage is incomplete (C-18 partial)
+- **AMEND as primary-phase dependent** — amendment paths described as prose or slot declarations without inline TOKEN RECALL or FAULT; executing an amendment path requires re-reading primary phases (C-19 fail)
 ```
-
----
-
-**What changed in v5:**
-
-Three new aspirational criteria (C-19, C-20, C-21) extracted from the R5 mechanisms:
-
-- **C-19** captures the ANCHOR token binding rule at declaration — the requirement that Phase 0 name not just the anchor value but the literal-reproduction requirement. Excellence form of C-18. A Phase 0 that defines an anchor without a binding rule scores PARTIAL.
-
-- **C-20** captures TOKEN RECALL inline headers — a reproduction block opening every anchor-sensitive phase, forcing the model to state the anchor value before generating output. Excellence form of C-15. N/A (counts as 0) if C-19 is absent.
-
-- **C-21** captures the terminal structural audit — a named pre-return audit phase with a checklist that verifies all structural criteria and corrects defects before the artifact is written. An audit that lists but does not correct scores PARTIAL.
-
-**Scoring update:** aspirational denominator `/10` → `/13`.
-
-**Canonical tier impact:** V-04 (full-integration, R5) is the only design that passes all 21 criteria — C-19 (binding rule), C-20 (TOKEN RECALL at Phases 3/6/7), and C-21 (Phase 10 terminal audit) are all present. V-01 passes C-19 only. V-02 passes C-19 and C-21 only. V-03 passes C-19 and C-20 only. V-05 passes none of the three. This creates a clean 4-tier stack within the previously-tied 100.0 cohort when evaluated under v5 scoring.

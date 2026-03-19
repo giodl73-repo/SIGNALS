@@ -2,541 +2,696 @@ Written to `simulations/quest/variations/validate-inertia-variations-R3-2026-03-
 
 ---
 
-## Round 3 Variations — validate-inertia
+## validate-inertia Variations R3
 
-5 variations across 4 axes targeting the three new R3 criteria (C-13/C-14/C-15):
-
-| # | Label | Axis | Key hypothesis |
-|---|-------|------|----------------|
-| V-01 | R3 upgraded baseline | R2 V-02 + explicit labels | Add "Lost TAM implication:" label, "Implication:" line in Phase 2, unconditional framing -- becomes the R3 floor |
-| V-02 | Type-resolution contract | C-13/C-14 integration | Phase 2 writes "Required mitigation form:"; Phase 4 fulfills it -- C-14 becomes contract fulfillment, not fresh derivation |
-| V-03 | Lost TAM standalone section | C-15 isolation | Phase 5 owns the Lost TAM line exclusively -- section heading makes it mandatory by isolation |
-| V-04 | Inertia type gate | C-13 procedural gate | "Do not proceed until..." + "Gate passed. Proceeding." -- procedural enforcement vs. phase-header framing |
-| V-05 | Compressed R3 complete | Output format | All 15 criteria as required output fields in numbered scaffold -- tests whether compressed format can carry C-13's "dedicated phase" requirement |
-
-**Design logic for R3:** R2 V-02 scored 100 and *generated* C-13/C-14/C-15. R3 takes that structure as the source model and asks: how do we make each of the three new criteria structurally reliable rather than incidental? V-02 answers this for C-14 (moves the branch contract to Phase 2). V-03 answers for C-15 (isolation into Phase 5). V-04 answers for C-13 (gate language). V-01 is the stable baseline. V-05 tests whether format can carry the full set.
-
-**The live design tension:** V-02's "Required mitigation form:" contract may be the most interesting structural innovation -- if the kill barrier is revised in Phase 3, the contract and revision must reconcile. That edge case is worth watching in scoring.
-iable, not how to replace it.
-
-**Main new axes:**
-- **V-02**: Moves C-14 contract-writing to classification phase -- tests whether deriving mitigation form early produces more specific synthesis than writing the constraint at synthesis time.
-- **V-03**: Isolates C-15 into its own required section -- tests whether label isolation prevents conditional drift vs. embedding in synthesis.
-- **V-04**: Gate language for C-13 -- tests whether "do not proceed" procedural framing outperforms phase-header framing for classification reliability.
-
-**Design tensions:**
-- V-02 vs V-01: Does "Required mitigation form:" in Phase 2 improve C-14, or does it over-constrain synthesis when the kill barrier is revised in Phase 3?
-- V-03 vs V-01: Does a standalone Phase 5 improve C-15, or does the added phase create output length pressure that degrades earlier sections?
-- V-04 vs V-01: Does "Gate passed. Proceeding." improve C-13 reliability, or is the marker skipped?
-- V-05: Can compressed format satisfy C-13's "dedicated pre-persona phase" requirement? A numbered section may read as a section, not a phase.
-
-**Structural choices driving the key rubric risks:**
-- C-13 (dedicated pre-persona classification): All 5 variants enforce a pre-persona phase. V-04 uses procedural gate language. V-05 uses numbered section ordering with parenthetical enforcement.
-- C-14 (type-conditioned mitigation): All 5 variants include explicit if-structural/if-behavioral branching. V-02 writes the branch contract in Phase 2. V-05 formats it as a conditional required field.
-- C-15 (Lost TAM unconditional): All 5 variants include "Lost TAM implication:" as a required output line. V-03 isolates it into Phase 5 with its own header.
+| # | Label | Axis | Primary targets |
+|---|-------|------|-----------------|
+| V-11 | Kill barrier temporal persistence gate | Kill barrier qualification | C-14 |
+| V-12 | Four-part labeled causal chain | Output format / structural labeling | C-15, C-13 |
+| V-13 | Mitigation confirmation signal | Lifecycle emphasis (forward anchor in AMEND) | C-16 |
+| V-14 | Competitive displacement + temporal persistence | Combination: inertia framing + temporal | C-11, C-14 |
+| V-15 | Full integration | Combination: all aspirational axes | C-09--C-16 |
 
 ---
 
-## V-01: R3 Upgraded Baseline
+### Variation design rationale
 
-Axis: R2 V-02 promoted to R3 floor -- explicit C-13/C-14/C-15 labels added while
-preserving V-02's winning four-phase structure verbatim
+**V-11** — Pure C-14 test. Adds a two-horizon gate to Phase 4 only: the kill barrier must be affirmed at T=0 AND confirmed to persist at T=18mo absent deliberate intervention. A barrier that resolves through product maturity fails the gate and must be reselected. Every other section is left unchanged so the gate's contribution to C-14 is cleanly isolated.
 
-Hypothesis: V-02 already embeds the patterns behind C-13/C-14/C-15 but without the
-explicit "Lost TAM implication:" label for C-15 and without a distinct "Implication:"
-line in Phase 2. Adding these labels while keeping V-02's type-conditioned branching
-and unconditional phase structure produces the reliable R3 floor. Every other R3
-variant should exceed this score or fail productively.
+**V-12** — Pure C-15 test. Phase 4 requires exactly four numbered, labeled sub-parts: (1) barrier definition, (2) structural persistence, (3) intervention target, (4) lever efficacy. The prompt explicitly prohibits merging any two. Sub-part (4) also drives C-13 because it must state *why* the lever reaches the structural condition — the causal connection, not the result. Expected C-11 PARTIAL: structural reasoning is required but competitive-displacement framing is not.
 
-```
-You are running /validate-inertia for topic: {topic}.
+**V-13** — Pure C-16 test. Every section is standard except AMEND gets a fourth required subfield: **Confirmation signal at T=6mo** — a named, falsifiable observable condition. The prompt specifies that vague forward hopes fail; the signal must be something that could be observed as absent. C-13 also benefits since the confirmation signal presupposes articulating the causal mechanism.
 
-PURPOSE: Map adoption inertia, classify its type, and produce a type-conditioned
-mitigation plan. Four phases -- each output gates the next.
+**V-14** — C-11 + C-14 combination. Rebuilds V-08's competitive inventory (Dimension/Advantage/Durability with the familiarity-disqualifier — the only R2 mechanism that fully closed C-11) and layers the T=0/T=18mo qualification gate on top. V-08 scored 110/130; the temporal gate adds C-14 without disturbing the competitive framing that closes C-11.
 
---- PHASE 1: KILL BARRIER HYPOTHESIS ---
+**V-15** — Maximum combination. Eight structural mechanisms stacked across seven phases: methodology declaration before personas (C-09), competitive inventory with durability (C-11), named social proof threshold in table (C-12), scores traced to Phase 1 methodology (C-09), four-part kill barrier with temporal gate (C-15 + C-14), adoption timeline grid T=0/T=6mo/T=18mo (C-10), AMEND with four-part chain and confirmation signal (C-13 + C-16). Expected ceiling: 160/160 if all phases execute cleanly.
+n top
+of that base. Expected coverage: C-11 (full pass via competitive inventory + durability
+argument), C-12 (named threshold), C-13 (structural durability reference required in mitigation),
+C-14 (temporal gate on competitive advantage). C-09 and C-15 are not targeted.
 
-Read: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
+**V-15 (full integration)** — Maximum combination targeting all eight aspirationals. Phase 1
+requires methodology declaration before personas (C-09). Phase 2 maps personas as competitive
+inventory with Dimension/Advantage/Durability (C-11). Phase 3 inertia table with named social
+proof threshold (C-12). Phase 4 per-persona scores traced to Phase 1 methodology (C-09). Phase 5
+kill barrier uses four labeled sub-parts (C-15) with temporal persistence gate (C-14). Phase 6
+adoption timeline grid T=0/T=6mo/T=18mo (C-10). AMEND has four-part mitigation chain with
+confirmation signal (C-13, C-16). If all phases are structurally enforced, maximum possible
+score is 160/160.
 
-Before any analysis, state your kill barrier hypothesis:
-  Kill Barrier Hypothesis: {specific mechanism, role, or structural constraint that would
-  prevent adoption entirely. Not generic. Not derived from personas -- this is your
-  prediction before looking at the data.}
+---
 
---- PHASE 2: INERTIA LANDSCAPE CLASSIFICATION ---
+### V-11: Kill Barrier Temporal Persistence Gate
 
-Before analyzing individual personas, classify the resistance this feature faces.
-This classification determines the type of solution required -- complete it before
-proceeding to personas.
+**Axis:** Kill barrier qualification — temporal persistence
+**Hypothesis:** A gated T=0/T=18mo qualification test on the kill barrier will close C-14
+without requiring changes to any other section. The gate is structural: a barrier that resolves
+by T=18mo through product maturity or organic adoption does not qualify and must be replaced.
 
-  Primary inertia type: Structural | Behavioral | Mixed
+---
 
-  Structural = the feature does not yet satisfy a requirement users consider
-  non-negotiable. No amount of onboarding or framing overcomes this -- the product
-  must change.
+You are running **validate-inertia** for: {{topic}}
 
-  Behavioral = the feature is capable enough, but habits, workflows, and social dynamics
-  prevent adoption. The right launch strategy can reach these users.
+Stress-test adoption inertia. Why would users NOT adopt this feature even if it works perfectly?
 
-  Classification: {Structural | Behavioral | Mixed}
-  Rationale: {one sentence explaining which type dominates and why}
-  Implication: {one sentence -- if Structural: name the product change required before
-  any adoption is possible; if Behavioral: name the launch approach that can reach users;
-  if Mixed: name the structural blocker and estimate the split (e.g., "60% behavioral,
-  40% structural")}
+---
 
-Name the incumbent -- the tool, script, convention, or process users rely on today.
-In one sentence: why did users choose it? What job does it do well for them?
+## Phase 1 — Persona Identification
 
---- PHASE 3: PERSONA DISPLACEMENT SCORECARD ---
+Name 2--4 user personas. Each must have:
 
-Identify 3-5 personas from the signals (or construct from first principles). For each
-persona, state why they chose the incumbent -- role-grounded, not generic.
+- **Name and role** — specific job title or function, not a category
+- **Current workaround** — the specific tool or method they use today (not "ad hoc" — name what
+  they actually do)
+- **Outcome they optimize for** — what job the current workaround successfully does for them
 
-Build this table:
+A persona without a named current workaround does not qualify. Do not proceed to Phase 2 until
+all personas are listed.
 
-| Persona | Why They Use the Incumbent | Workaround Satisfaction (1-5) | Switching Cost (concrete) | Habit at Risk | Social Proof Needed | Learning Curve | Inertia Score | Inertia Type |
-|---------|---------------------------|-------------------------------|--------------------------|---------------|---------------------|----------------|---------------|--------------|
+---
+
+## Phase 2 — Inertia Dimension Analysis
+
+For each persona, assess:
+
+| Persona | Workaround satisfaction (H/M/L) | Basis | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof req. (named threshold) | Learning curve |
+|---------|--------------------------------|-------|----------------------------|-------------------------------|-------------------------------------|---------------|
 
 Column rules:
-- Why They Use the Incumbent: the adoption decision -- "X won this persona because..."
-  Not "it works" but WHY it works for this specific person in this role.
-- Workaround Satisfaction: 1-5. Flag 4+ as "good enough" -- state the specific reason
-  why that score means the workaround feels sufficient for this persona.
-- Switching Cost: concrete units only (hours, steps, files, dollars, rollback risk).
-  "High" or "significant effort" fails this column.
-- Habit at Risk: specific behavioral pattern, not a category. "Runs make check before
-  every commit" not "relies on existing tooling."
-- Social Proof Needed: specific threshold -- names, numbers, evidence type.
-  "Peer validation" fails.
-- Learning Curve: time or concept count; comparison anchor if possible ("similar to
-  learning X, which took Y days").
-- Inertia Score: Low / Medium / High / Critical. Same scale. Required every row.
-- Inertia Type: Structural | Behavioral -- classify each persona individually.
 
-After the table: confirm or revise your Phase 1 hypothesis.
-  "Kill Barrier (confirmed):" or "Kill Barrier (revised):" -- one sentence.
-
---- PHASE 4: SYNTHESIS ---
-
-Overall adoption inertia risk: Low / Medium / High / Critical
-
-Inertia asymmetry:
-  Structural (will not adopt without product changes): {personas}
-  Behavioral (can be overcome with onboarding/framing): {personas}
-
-Lost TAM implication: {one sentence -- name which personas or persona type represent
-permanent lost TAM until product changes, vs. which represent delayed adoption reachable
-with launch strategy. Write this regardless of evidence confidence.}
-
-Mitigation: one specific action targeting the kill barrier.
-  If the kill barrier is structural: name the product change required.
-  If the kill barrier is behavioral: name the launch sequence or social proof intervention.
-  Do not restate the barrier. Do not propose generic onboarding.
-
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
-```
+- **Workaround satisfaction:** Rate H/M/L with one phrase saying why that level of satisfaction
+  creates inertia — even L satisfaction must explain why any satisfaction is sticky.
+- **Switching cost:** Required as a measurable value — time estimate, step count, effort rating
+  (1--10), or relative ratio. Qualitative-only ("it's hard") fails.
+- **Habit lock-in:** Name the specific behavior that has become automatic (keyboard shortcuts,
+  naming conventions, mental models). "General familiarity" is not a named behavior.
+- **Social proof req.:** Name the specific threshold or condition — not binary Y/N. Examples:
+  "needs 2+ teammates on the same tool before committing," "will adopt solo if manager mandates
+  it." Binary answers fail.
 
 ---
 
-## V-02: Type-Resolution Contract
+## Phase 3 — Per-Persona Inertia Scores
 
-Axis: C-13/C-14 integration -- Phase 2 outputs an explicit "Required mitigation form:"
-contract; C-14 in Phase 4 becomes fulfillment of that contract, not fresh derivation
+Assign each persona an inertia score: **Low / Medium / High / Critical**.
 
-Hypothesis: When Phase 2 writes a "Required mitigation form:" field that names what
-category of mitigation is valid given the classification, C-14 in synthesis is constrained
-by the model's own prior output. The model reads the contract it wrote and fills it in.
-This is structurally narrower than "if structural / if behavioral" branching at synthesis
-time because the valid answer space is defined before persona analysis begins. Risk: if
-the kill barrier is revised in Phase 3, the Phase 2 contract may be misaligned; the
-prompt must handle graceful revision.
+For each score, provide one sentence naming the primary inertia driver.
 
-```
-You are running /validate-inertia for topic: {topic}.
-
-PURPOSE: Map adoption inertia, classify its type, and produce a mitigation logically
-derived from that classification. The type determines the solution category. Four phases.
-Phase 2 writes a contract; Phase 4 fulfills it.
-
---- PHASE 1: KILL BARRIER HYPOTHESIS ---
-
-Read: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
-
-Kill Barrier Hypothesis: {specific mechanism -- not generic, not derived from personas.
-Your prediction before the analysis. You will confirm or revise it in Phase 3.}
-
---- PHASE 2: INERTIA LANDSCAPE CLASSIFICATION ---
-
-Answer this question before any persona analysis. Your answer determines what form
-your Phase 4 mitigation must take.
-
-  Primary inertia type: Structural | Behavioral | Mixed
-
-  Structural = the feature has a product gap users consider non-negotiable. No launch
-  strategy overcomes this -- the product must change first.
-
-  Behavioral = the feature is capable; habits, social dynamics, and workflow rituals
-  prevent adoption. A targeted launch strategy can reach these users.
-
-  Mixed = both types present. Name the structural blocker. Estimate the split.
-
-  Classification: {Structural | Behavioral | Mixed}
-  Rationale: {one sentence}
-  Implication: {one sentence -- what this type means for adoption before any persona
-  has been analyzed}
-
-  Required mitigation form (write this now; Phase 4 must fulfill it):
-    Structural: "Phase 4 mitigation must name a specific product change that removes
-      the non-negotiable gap. Generic onboarding, tutorials, and framing do not qualify."
-    Behavioral: "Phase 4 mitigation must name a specific launch sequence, social proof
-      seeding strategy, or framing intervention. Generic onboarding does not qualify."
-    Mixed: "Phase 4 mitigation must name a structural product change AND a behavioral
-      launch sequence. Both are required."
-
-Name the incumbent: {tool, script, convention, or process users rely on today}
-Why users chose it: {one sentence -- the adoption story, the job it does well}
-
---- PHASE 3: PERSONA DISPLACEMENT SCORECARD ---
-
-Identify 3-5 personas. For each, state why they chose the incumbent -- role-grounded.
-
-| Persona | Why They Use the Incumbent | Workaround Satisfaction (1-5) | Switching Cost (concrete) | Habit at Risk | Social Proof Needed | Learning Curve | Inertia Score | Inertia Type |
-|---------|---------------------------|-------------------------------|--------------------------|---------------|---------------------|----------------|---------------|--------------|
-
-Column rules:
-- Why They Use the Incumbent: "X won this persona because their role requires..."
-- Workaround Satisfaction: 1-5. Flag 4+ as "good enough" -- state the specific reason.
-- Switching Cost: concrete units (hours, steps, files, dollars, rollback risk). Vague fails.
-- Habit at Risk: specific behavior that fires automatically. Not a category.
-- Social Proof Needed: specific threshold -- number, name, or evidence type.
-- Learning Curve: time or concept count; comparison anchor preferred.
-- Inertia Score: Low / Medium / High / Critical. Same scale. Required every row.
-- Inertia Type: Structural | Behavioral per persona.
-
-Kill Barrier (confirmed or revised): {one sentence}
-Note: if revised, state whether the Phase 2 classification still holds or also requires
-update. If updated, revise the Required mitigation form accordingly.
-
---- PHASE 4: SYNTHESIS ---
-
-Overall adoption inertia risk: Low / Medium / High / Critical
-
-Mitigation: fulfill the contract you wrote in Phase 2. Use the "Required mitigation form"
-you specified. Name the specific product change, launch sequence, or social proof strategy
-that directly removes the kill barrier. Name the owner.
-Do not restate the barrier. Do not propose generic onboarding.
-
-Inertia asymmetry:
-  Structural personas (product must change before they can adopt): {list}
-  Behavioral personas (launch strategy can reach them): {list}
-
-Lost TAM implication: {one sentence -- name which personas represent permanent lost TAM
-until product changes, vs. which represent delayed adoption reachable with launch strategy.
-Required. Write this regardless of evidence confidence.}
-
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
-```
+Every Phase 1 persona must be scored. A single shared score for multiple personas does not pass.
 
 ---
 
-## V-03: Lost TAM Standalone Section
+## Phase 4 — Kill Barrier Identification
 
-Axis: C-15 isolation -- "Lost TAM implication" extracted into its own required Phase 5,
-physically separate from inertia asymmetry and synthesis
+Identify the single adoption killer — the one factor that would block adoption even if all other
+inertia were resolved.
 
-Hypothesis: In V-01 and most R2 variants, C-15 is embedded within the synthesis section.
-When the model writes a busy synthesis block, the Lost TAM line can collapse into
-asymmetry bullets or become conditional by proximity to surrounding "if" language. A
-standalone Phase 5 with its own header, its own required template, and explicit "Write
-this regardless of evidence confidence." instruction isolates the output slot -- the model
-cannot write the artifact line without completing Phase 5. Risk: the added phase creates
-output length pressure that degrades earlier sections.
+**Initial identification:**
 
-```
-You are running /validate-inertia for topic: {topic}.
+- **Kill barrier:** [name it precisely]
+- **Why it survives all other mitigations:** [the structural reason — not just that it exists,
+  but what property makes it persist]
+- **Persona most exposed:** [which persona faces this barrier most acutely]
 
-PURPOSE: Map why users will not adopt this feature even when it works. Produce per-persona
-inertia scores, a type-conditioned mitigation, and a Lost TAM estimate. Five phases.
+**Temporal persistence test** — the barrier must pass both horizons to qualify as the kill
+barrier:
 
---- PHASE 1: KILL BARRIER HYPOTHESIS ---
+> **T=0 qualification:** Does this barrier exist today for the most exposed persona? [YES / NO]
+>
+> If NO: this factor does not currently block adoption — reselect a barrier that exists now.
 
-Read: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
+> **T=18mo qualification:** Does this barrier remain unresolved at 18 months — assuming the
+> feature ships, matures, and accumulates organic adoption effects — absent a deliberate
+> structural intervention? [YES / NO]
+>
+> If NO: this is adoption friction that time and product maturity will erode — it is not a kill
+> barrier. Reselect a barrier that persists structurally.
 
-Kill Barrier Hypothesis: {the single mechanism most likely to block adoption entirely.
-Feature-specific. Not derived from personas -- your prediction before the evidence.}
+Both qualifications must be YES. Label the confirmed result **KILL BARRIER** before proceeding.
 
---- PHASE 2: INERTIA LANDSCAPE ---
-
-Classify the inertia this feature faces before analyzing any persona. This classification
-determines what category of mitigation is valid.
-
-  Type: Structural | Behavioral | Mixed
-
-  Structural = users will not adopt without a product change. Onboarding and framing
-  cannot close this gap.
-
-  Behavioral = the feature is capable; habits, workflow rituals, and social dynamics
-  prevent adoption. The right launch strategy can reach these users.
-
-  Mixed = both types present. Name the structural blocker. Estimate the split.
-
-  Classification: {Structural | Behavioral | Mixed}
-  Rationale: {one sentence}
-  Implication: {one sentence -- what this type means for adoption strategy; if Structural,
-  name the change that unlocks adoption; if Behavioral, name the launch approach;
-  if Mixed, name the structural blocker}
-
-Name the incumbent: {tool, script, convention, or process users rely on today}
-Adoption story: "Users adopted {incumbent} because ___." (role-grounded, at least one
-persona -- why they chose it, not just what it is)
-
---- PHASE 3: PERSONA SCORECARD ---
-
-3-5 personas. For each, analyze the displacement challenge.
-
-| Persona | Why They Chose the Incumbent | Workaround Satisfaction (1-5) | Switching Cost (concrete) | Habit at Risk | Social Proof Needed | Learning Curve | Inertia Score | Inertia Type |
-|---------|------------------------------|-------------------------------|--------------------------|---------------|---------------------|----------------|---------------|--------------|
-
-Column rules:
-- Why They Chose the Incumbent: adoption decision -- "X won this persona because..."
-- Workaround Satisfaction: 1-5. Flag 4+ as "good enough" and state the specific reason.
-- Switching Cost: concrete units (hours, steps, files, dollars, rollback risk). Vague fails.
-- Habit at Risk: specific behavior that fires before they think about it. Not a category.
-- Social Proof Needed: specific threshold -- number, name type, evidence form.
-- Learning Curve: time estimate or concept count; comparison anchor if possible.
-- Inertia Score: Low / Medium / High / Critical. Same scale. Required every row.
-- Inertia Type: Structural | Behavioral per persona.
-
-Kill Barrier (confirmed or revised): {one sentence}
-
---- PHASE 4: ADOPTION RISK + MITIGATION ---
-
-Overall adoption inertia risk: Low / Medium / High / Critical
-
-Inertia asymmetry:
-  Structural personas (will not adopt without product changes): {list or "none"}
-  Behavioral personas (can be reached with launch strategy): {list}
-
-Mitigation targeting the kill barrier:
-  If the kill barrier is structural: name the specific product change required. Not
-    "improve the feature" -- name the gap and the fix, specific enough to assign to
-    an owner.
-  If the kill barrier is behavioral: name the specific launch sequence or social proof
-    seeding strategy. Not "improve onboarding" -- name the sequence and the owner.
-
---- PHASE 5: LOST TAM IMPLICATION ---
-
-This section is required. Write it regardless of evidence confidence.
-
-Lost TAM implication: {one sentence -- name which personas (or persona type) represent
-permanent lost TAM until product changes, and which represent delayed adoption reachable
-with launch strategy. Both sides of the statement are required. Use "permanent lost TAM"
-and "delayed adoption" as anchoring terms.}
-
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
-```
+Do not proceed to Phase 5 until the kill barrier passes the temporal persistence test.
 
 ---
 
-## V-04: Inertia Type Gate
+## Phase 5 — Overall Adoption Inertia Risk
 
-Axis: C-13 procedural gate -- Phase 2 uses "do not proceed" language and a "Gate passed.
-Proceeding." marker; classification is a blocking prerequisite, not a phase header
+Produce an aggregate verdict: **Low / Medium / High / Critical**.
 
-Hypothesis: V-01 frames Phase 2 as a section header ("INERTIA LANDSCAPE CLASSIFICATION").
-V-04 frames it as a gate: "Do not proceed to persona analysis until you have answered this
-question." The gate language plus an explicit "Gate passed." self-affirmation makes the
-classification a procedural prerequisite the model tracks. This should produce the
-strongest C-13 guarantee because the constraint is procedural rather than structural.
-Risk: the "Gate passed. Proceeding." marker may be skipped or treated as prose.
+Include:
 
-```
-You are running /validate-inertia for topic: {topic}.
-
-FRAME: Before users can adopt this feature, it must displace something they already
-trust. Your job is to understand why they will not switch -- even when the feature works
-correctly. Run in four phases. Do not start a phase until the previous one is complete.
-
---- PHASE 1: KILL BARRIER HYPOTHESIS ---
-
-Read: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
-
-Before any persona analysis, state your hypothesis:
-  Kill Barrier Hypothesis: {the single mechanism most likely to prevent adoption entirely.
-  Specific to this feature. Not derived from personas -- this is your prediction.}
-
---- PHASE 2: INERTIA TYPE GATE ---
-
-Do not proceed to persona analysis until you have classified inertia type.
-
-This classification determines what category of solution can work. Structural inertia
-cannot be addressed by launch strategy alone. Behavioral inertia cannot be fixed by
-product changes alone. Getting the type wrong produces a useless mitigation.
-
-Answer this question now:
-
-  Inertia type: Structural | Behavioral | Mixed
-
-  Structural inertia: the feature has a product gap users consider non-negotiable. They
-  will not adopt until the product changes -- not because of habits or onboarding friction,
-  but because the feature does not yet do what they require.
-
-  Behavioral inertia: the feature is capable. Habits, social dynamics, and workflow
-  rituals prevent adoption. A targeted launch strategy can reach these users.
-
-  Mixed: both types present. Name the structural blocker explicitly. Estimate the split
-  (e.g., "60% behavioral, 40% structural").
-
-  Your classification: {Structural | Behavioral | Mixed}
-  Rationale: {one sentence}
-  Implication: {one sentence -- if Structural: name the product change that would unlock
-  adoption; if Behavioral: name the launch approach that can reach users; if Mixed: name
-  the structural blocker}
-
-Name the incumbent: {tool, script, convention, or process users rely on today}
-Why users chose it: {one sentence -- the adoption story, not current state}
-
-Gate passed. Proceeding to persona analysis.
-
---- PHASE 3: PERSONA DISPLACEMENT SCORECARD ---
-
-3-5 personas. For each: why did they choose the incumbent? (Role-grounded.)
-
-| Persona | Why They Use the Incumbent | Workaround Satisfaction (1-5) | Switching Cost (concrete) | Habit at Risk | Social Proof Needed | Learning Curve | Inertia Score | Inertia Type |
-|---------|---------------------------|-------------------------------|--------------------------|---------------|---------------------|----------------|---------------|--------------|
-
-Column rules:
-- Why They Use the Incumbent: the adoption decision -- "X won this persona because..."
-  Not "it works" -- why it works for this specific person in this role.
-- Workaround Satisfaction: 1-5. Flag 4+ as "good enough" -- state the specific reason.
-- Switching Cost: concrete units (hours, steps, files, dollars, rollback risk). "High" fails.
-- Habit at Risk: specific behavioral pattern. Not a category label.
-- Social Proof Needed: specific threshold -- numbers, names, evidence type.
-- Learning Curve: time or concept count; comparison anchor if possible.
-- Inertia Score: Low / Medium / High / Critical. Same scale. Required every row.
-- Inertia Type: Structural | Behavioral -- classify each persona individually.
-
-Kill Barrier (confirmed or revised): {one sentence}
-
---- PHASE 4: SYNTHESIS ---
-
-Overall adoption inertia risk: Low / Medium / High / Critical
-
-Inertia asymmetry:
-  Structural (will not adopt without product changes): {personas}
-  Behavioral (can be reached with launch strategy): {personas}
-
-Lost TAM implication: {one sentence -- which personas represent permanent lost TAM until
-product changes, vs. delayed adoption reachable with launch strategy. Required. Unconditional.}
-
-Mitigation targeting the kill barrier:
-  If the kill barrier is structural: name the specific product change required --
-    specific enough to assign to an owner and schedule.
-  If the kill barrier is behavioral: name the specific launch sequence or social proof
-    seeding intervention -- name the sequence and the owner.
-  Do not restate the barrier. Do not propose generic onboarding.
-
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
-```
+- Score distribution across personas (e.g., "2 High, 1 Medium, 1 Critical")
+- Trajectory direction (Stable / Worsening / Resolving over 18 months)
+- 1--2 sentence rationale connecting score distribution, trajectory, and confirmed kill barrier
 
 ---
 
-## V-05: Compressed R3 Complete
+## AMEND
 
-Axes: Output format (minimal numbered scaffold) + lifecycle emphasis (every line is a
-required output specification, no explanatory prose) with R3 additions as required fields
+Focus the analysis. Identify the single persona most exposed to the confirmed kill barrier.
 
-Hypothesis: C-13, C-14, and C-15 can be expressed as required output fields in the
-compressed numbered format without explanatory prose. Section 2 carries C-13 via its
-"(complete before any persona analysis)" parenthetical and structural position before
-Section 3. Section 6's explicit if-Structural/if-Behavioral fields carry C-14 by format.
-Section 5's standalone "Lost TAM implication:" required line carries C-15 by isolation.
-Risk: Section 2 as a numbered section may not satisfy the rubric's "dedicated pre-persona
-phase" requirement -- a numbered section may read as an inline classification.
-
-```
-You are running /validate-inertia for topic: {topic}.
-
-Read: simulations/scout/**/{topic}-*.md and simulations/discover/**/{topic}-*.md.
-
-Produce these sections in order. Do not reorder. Every labeled line is a required output.
+- **Focus persona:** [name]
+- **Switching cost (refined):** [sharpen the quantified value from Phase 2 — be as specific as
+  possible]
+- **Kill barrier restated:** [one crisp sentence naming the barrier and why it persists for this
+  persona specifically]
+- **Mitigation:** [one concrete intervention that could reduce or eliminate the kill barrier —
+  explain why this specific lever addresses the structural reason the barrier exists, not just
+  what the intervention does]
 
 ---
 
-1. KILL BARRIER HYPOTHESIS
+### V-12: Four-Part Labeled Causal Chain
 
-Kill Barrier Hypothesis: {specific mechanism -- feature-specific, not generic, stated
-before any persona work. Not derived from aggregating personas.}
-
----
-
-2. INERTIA LANDSCAPE (complete before any persona analysis)
-
-Inertia type: Structural | Behavioral | Mixed
-Rationale: {one sentence}
-Implication: {Structural: name the product change that unlocks adoption |
-  Behavioral: name the launch approach that reaches users |
-  Mixed: name the structural blocker and split estimate (e.g., "60% behavioral, 40% structural")}
-
-Incumbent: {tool, script, convention, or process users rely on today}
-Why users chose it: "They adopted {incumbent} because ___." (adoption decision, not
-current state -- at least one persona; role-grounded)
+**Axis:** Output format / structural labeling in kill barrier section
+**Hypothesis:** Requiring exactly four labeled sub-parts in the kill barrier analysis —
+explicitly named and ordered — will close C-15 by making the "what" vs "why" separation a
+formatting requirement. It also drives C-13: sub-part (4) must state why the lever resolves the
+structural root cause, not just what it does.
 
 ---
 
-3. PERSONA TABLE (3-5 personas)
+You are running **validate-inertia** for: {{topic}}
 
-| Persona | Why Incumbent Won | Workaround Satisfaction (1-5) | Switching Cost | Habit at Risk | Social Proof Needed | Learning Curve | Inertia Score | Inertia Type |
-|---------|-------------------|-------------------------------|----------------|---------------|---------------------|----------------|---------------|--------------|
-
-Column rules:
-- Why Incumbent Won: role-grounded. Not "it works."
-- Workaround Satisfaction: 1-5. Flag 4+ as "good enough" -- state the specific reason.
-- Switching Cost: concrete units (hours, steps, files, dollars, rollback risk). "High" fails.
-- Habit at Risk: specific behavior. Not a category.
-- Social Proof Needed: specific threshold -- number, name, or evidence type.
-- Learning Curve: time or concept count; comparison anchor preferred.
-- Inertia Score: Low / Medium / High / Critical. Same scale. Required every row.
-- Inertia Type: Structural | Behavioral per persona.
+Stress-test adoption inertia. Why would users NOT adopt this feature even if it works perfectly?
 
 ---
 
-4. KILL BARRIER (confirmed or revised)
+## Step 1 — Persona Mapping
 
-Kill Barrier (confirmed): {one sentence}  --OR--  Kill Barrier (revised): {one sentence}
+Name 2--4 user personas. Each requires:
 
----
-
-5. INERTIA ASYMMETRY
-
-Structural personas (product must change before they can adopt): {list or "none"}
-Behavioral personas (launch strategy can reach them): {list}
-Lost TAM implication: {one sentence -- required, unconditional. Name which personas or
-persona type represent permanent lost TAM until product changes vs. delayed adoption
-reachable with launch strategy.}
+- **Name and role** (specific, not categorical)
+- **Current workaround** (name the actual tool or method — "ad hoc" is not a named workaround)
+- **Primary resistance property** (one phrase capturing why this persona resists change)
 
 ---
 
-6. OVERALL RISK + MITIGATION
+## Step 2 — Switching Cost and Inertia Dimensions
 
-Overall risk: Low / Medium / High / Critical
+For each persona:
 
-Mitigation (type-conditioned -- derived from Section 2 inertia type):
-  If Structural: {name the specific product change required -- the gap and the fix,
-    assignable to an owner}
-  If Behavioral: {name the specific launch sequence or social proof intervention --
-    the sequence and the owner}
-  If Mixed: {structural change: [name it] | behavioral sequence: [name it]}
+| Persona | Workaround satisfaction (H/M/L) | Basis | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof threshold (named condition) | Learning curve |
+|---------|--------------------------------|-------|----------------------------|-------------------------------|------------------------------------------|---------------|
 
-Do not restate the barrier. Do not write "improve onboarding."
+- **Switching cost:** Quantified — time, steps, effort rating (1--10), or relative measure.
+  Required. Qualitative descriptions alone do not pass.
+- **Social proof threshold:** Name a specific count, role, or condition — not binary Y/N.
+  Examples: "needs 2 colleagues already using it," "will adopt solo if manager endorses in a
+  team meeting."
+- **Habit lock-in:** Name the specific repeated behavior, not generic familiarity.
 
 ---
 
-Write artifact to simulations/validate/inertia/{topic}-validate-inertia-{date}.md
-with frontmatter: topic, date, persona_count, kill_barrier (one line), overall_risk.
-```
+## Step 3 — Per-Persona Inertia Scores
+
+Assign Low / Medium / High / Critical to each persona.
+
+One sentence per score stating the primary driver.
+
+Every Step 1 persona must appear. A shared blanket score does not pass.
+
+---
+
+## Step 4 — Kill Barrier: Four-Part Causal Analysis
+
+Identify the single adoption killer — the one factor that would block adoption even if all other
+inertia were resolved. Analyze it using exactly **four labeled sub-parts**. Each sub-part must be
+distinct. Do not merge any two into a single statement.
+
+**KILL BARRIER**
+
+**(1) Barrier definition**
+[What the barrier is — the observable adoption friction, stated precisely. Describe the
+phenomenon as the user experiences it. Do not include its cause here.]
+
+**(2) Structural persistence**
+[Why this barrier structurally persists — the underlying property or condition that prevents it
+from self-resolving through product maturity, improved UX, or organic adoption over time. Do not
+repeat (1). Name the structural mechanism that keeps the barrier alive even as the feature
+matures.]
+
+**(3) Intervention target**
+[What a mitigation must target — the specific lever point that, if addressed, would disrupt the
+structural persistence mechanism described in (2). Name the target, not the intervention itself.
+"Improve onboarding" is an intervention; "the information asymmetry that makes setup feel
+opaque" is a target.]
+
+**(4) Lever efficacy**
+[Why addressing the target in (3) resolves the structural root cause in (2). Explain the causal
+connection. "It reduces friction" describes a result; explain why this lever reaches the
+structural condition named in (2). The explanation must reference (2) by name.]
+
+Label the most exposed persona after the four sub-parts.
+
+---
+
+## Step 5 — Overall Adoption Inertia Risk
+
+Aggregate verdict: Low / Medium / High / Critical.
+
+- Score distribution across personas
+- 1--2 sentence rationale tied to the kill barrier and per-persona distribution
+
+---
+
+## AMEND
+
+Focus on the persona most exposed to the kill barrier.
+
+- **Focus persona:** [name]
+- **Switching cost (quantified):** [sharpened measurable value]
+- **Kill barrier for this persona:** [one sentence restating the barrier in terms of this
+  persona's specific situation]
+- **Mitigation:** [intervention targeting the lever point from Step 4(3) — explain why it
+  resolves the structural root cause from Step 4(2), referencing the structural mechanism by
+  name]
+
+---
+
+### V-13: Mitigation Confirmation Signal
+
+**Axis:** Lifecycle emphasis — forward anchor in AMEND
+**Hypothesis:** A dedicated "Confirmation signal at T+6mo" subfield in the AMEND section will
+close C-16 by requiring a falsifiable leading indicator at a named future time point. The signal
+must name what you would observe, not what you hope will happen.
+
+---
+
+You are running **validate-inertia** for: {{topic}}
+
+Map adoption inertia. Why would users not adopt this feature even if it works perfectly?
+
+---
+
+## Phase 1 — Personas
+
+Identify 2--4 named personas. Each must have:
+
+- Name and role (specific, not a category)
+- Named current workaround (the actual solution they use today — "ad hoc" is not a named
+  workaround)
+- Outcome the current workaround successfully delivers for them
+
+---
+
+## Phase 2 — Inertia Dimensions per Persona
+
+| Persona | Workaround satisfaction (H/M/L) | Why that satisfaction is sticky | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof req. (name the threshold) | Learning curve |
+|---------|--------------------------------|---------------------------------|----------------------------|-------------------------------|----------------------------------------|---------------|
+
+- Switching cost must be expressed as time, steps, effort rating (1--10), or relative measure.
+  Qualitative descriptions ("it's significant") do not pass.
+- Social proof: state a named condition — "needs 2 colleagues already using it," "adopts solo
+  if manager endorses in a team meeting." Binary Y/N does not pass.
+
+---
+
+## Phase 3 — Per-Persona Inertia Scores
+
+Score each persona: Low / Medium / High / Critical.
+
+One sentence per persona stating the primary inertia driver.
+
+Every Phase 1 persona requires a score. No shared scores.
+
+---
+
+## Phase 4 — Kill Barrier
+
+Name exactly one adoption killer — the single barrier that would block adoption even if
+everything else were resolved.
+
+- **Kill barrier:** [name it]
+- **Why it survives:** [the structural reason this barrier persists even as the product matures
+  and organic adoption accumulates]
+- **Most exposed persona:** [name]
+
+---
+
+## Phase 5 — Overall Risk
+
+Verdict: Low / Medium / High / Critical.
+
+Score distribution + trajectory direction (Stable / Worsening / Resolving) + 1--2 sentence
+rationale connecting distribution, trajectory, and kill barrier.
+
+---
+
+## AMEND — Per-Persona Focus + Mitigation
+
+Select the persona most exposed to the kill barrier.
+
+**Focus persona:** [name]
+
+**Switching cost (sharpened):** [most precise quantified value you can give for this persona]
+
+**Kill barrier for this persona:** [one sentence restating what it is and why it matters
+specifically for them]
+
+**Mitigation:**
+
+> **Intervention:** [what to do — one concrete, specific action]
+>
+> **Root cause addressed:** [which structural reason from Phase 4 this intervention targets —
+> quote or directly reference the "why it survives" language]
+>
+> **Why this lever works:** [the causal mechanism — explain why this intervention addresses the
+> structural root cause, not just what it does. "It reduces friction" is a result, not a
+> mechanism. Explain the causal connection to the root cause named in Phase 4.]
+>
+> **Confirmation signal at T=6mo:** [Name a specific leading indicator or observable condition
+> that would confirm the intervention is working at six months. Example: "At T=6mo, the focus
+> persona's team shows at least 25% trial rate without a dedicated onboarding champion driving
+> adoption." Vague forward hopes ("users will feel more comfortable") do not qualify. The signal
+> must be falsifiable — it must be possible to observe it as absent.]
+
+The confirmation signal must name a concrete observable. It is not complete without one.
+
+---
+
+### V-14: Competitive Displacement + Temporal Persistence
+
+**Axis:** Combination — inertia framing (C-11) + temporal qualification (C-14)
+**Hypothesis:** Combining V-08's competitive inventory (Dimension/Advantage/Durability with the
+familiarity-disqualifier — the only mechanism that fully closed C-11 in R2) with an explicit
+T=0/T=18mo qualification gate on the kill barrier will close both C-11 and C-14 in one
+variation. V-08 scored 110/130 without C-14; this variation adds the temporal gate to its base.
+
+---
+
+You are running **validate-inertia** for: {{topic}}
+
+The current solution is a competitor. Map why the status quo would win the adoption contest even
+if this feature ships and works perfectly.
+
+---
+
+## Phase 1 — Competitive Inventory
+
+Identify 2--4 personas. For each persona, map their current solution as a competitor:
+
+| Persona | Role | Current solution (named) | Outcome it delivers |
+|---------|------|--------------------------|---------------------|
+
+For each current solution, record its competitive strengths:
+
+| Dimension | Advantage | Durability |
+|-----------|-----------|------------|
+
+- **Dimension:** The specific axis on which the current solution wins (e.g., zero-setup cost,
+  output format compatibility, existing keyboard shortcuts, audit trail depth).
+- **Advantage:** What the current solution does better on that dimension for this persona.
+- **Durability:** Why this advantage is structurally hard to replicate or displace. Must
+  reference a structural constraint — a technical property, organizational norm, integration
+  dependency, or switching-cost asymmetry. **Familiarity is not durability.** "People are used
+  to it" does not qualify. Name the structural constraint that makes the advantage persist even
+  after the new feature is available and known.
+
+---
+
+## Phase 2 — Inertia Factor Analysis
+
+For each persona:
+
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis (ref. competitive strength) | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof threshold (named condition) |
+|---------|--------------------------------|-----------------------------------------------|----------------------------|-------------------------------|------------------------------------------|
+
+- **Satisfaction basis:** Reference a named competitive strength from Phase 1 — not a vague
+  sentiment.
+- **Switching cost:** Time, steps, effort rating (1--10), or relative measure. Required.
+  Qualitative descriptions alone do not pass.
+- **Social proof threshold:** Name the specific count, role, or condition. Not binary Y/N.
+  Examples: "will adopt if 2 teammates have used it for more than one sprint without rollback,"
+  "solo adopter if switching cost drops below 4 hours."
+
+---
+
+## Phase 3 — Per-Persona Inertia Scores
+
+Score each persona: Low / Medium / High / Critical.
+
+One sentence per persona anchored in a named competitive strength from Phase 1.
+
+Every Phase 1 persona must be scored individually.
+
+---
+
+## Phase 4 — Kill Barrier (competitive framing)
+
+Identify the single adoption killer — expressed as the competitive dimension on which the current
+solution wins and that this feature cannot displace without a deliberate structural intervention.
+
+**Kill barrier:** [Name the competitive dimension. Example: "The current solution wins on
+zero-ramp time — any new tool requires setup investment the current solution never required."]
+
+**Durability argument:** [Explain why this competitive advantage is structurally durable.
+Reference the structural constraint from Phase 1. "Users are used to it" fails — name the
+property that makes the advantage persist structurally.]
+
+**Temporal persistence test:**
+
+> **T=0 qualification:** Does this competitive advantage exist today? [YES / NO]
+>
+> If NO: this factor is not a current blocker — reselect.
+
+> **T=18mo qualification:** Does this competitive advantage persist at 18 months — assuming the
+> feature ships, matures, and accumulates organic adoption — absent a deliberate structural
+> intervention targeting the durability property? [YES / NO]
+>
+> If NO: this is temporary competitive friction that maturation will erode — it is not a kill
+> barrier. Reselect a competitive dimension with structural durability through the full horizon.
+
+Both qualifications must be YES. Label this **CONFIRMED KILL BARRIER**.
+
+**Most exposed persona:** [name]
+
+---
+
+## Phase 5 — Overall Adoption Inertia Risk
+
+Verdict: Low / Medium / High / Critical.
+
+- Competitive summary: name the kill barrier dimension and its structural durability basis
+- Score distribution across personas
+- 1--2 sentence rationale anchored in kill barrier durability and per-persona score distribution
+
+---
+
+## AMEND
+
+**Focus persona:** [most exposed to the confirmed kill barrier]
+
+**Switching cost (refined):** [sharpest quantified value for this persona]
+
+**Kill barrier restated:** [one sentence: the competitive dimension + structural durability +
+why this persona specifically is most exposed]
+
+**Mitigation:** [one concrete intervention — explain why it directly addresses the structural
+durability property of the kill barrier, not just what the intervention does. A mitigation that
+only reduces familiarity friction without targeting the named structural constraint does not
+pass.]
+
+---
+
+### V-15: Full Integration — All Aspirationals
+
+**Axis:** Combination — methodology (C-09) + temporal grid (C-10) + competitive (C-11) +
+named social proof (C-12) + root cause chain (C-13) + temporal persistence gate (C-14) +
+labeled causal sub-parts (C-15) + confirmation signal (C-16)
+**Hypothesis:** Stacking all eight aspirational axes into one structurally-gated variation will
+achieve the highest possible score on the v3 rubric. Each phase targets one or more aspirationals
+structurally — not as suggestions but as format requirements the output cannot satisfy by
+omission.
+
+---
+
+You are running **validate-inertia** for: {{topic}}
+
+Map adoption inertia. Why would users not adopt this feature even if it works perfectly? Complete
+each phase in sequence. Each phase gates the next.
+
+---
+
+## Phase 1 — Scoring Methodology Declaration
+
+Before analyzing any persona, declare the inertia scoring framework that will govern per-persona
+scores in Phase 4.
+
+**Dimension weights:**
+
+| Dimension | Weight (High / Medium / Low) | Why this weight |
+|-----------|------------------------------|-----------------|
+
+Dimensions to weight: Workaround satisfaction / Switching cost / Habit lock-in / Social proof
+requirements / Learning curve.
+
+**Score thresholds:** Define the dimension-combination rules that produce each tier:
+
+- **Critical:** [state which dimension combinations produce this tier]
+- **High:** [state which combinations produce this tier]
+- **Medium:** [state which combinations]
+- **Low:** [state which combinations]
+
+Do not proceed to Phase 2 until the methodology is declared. Per-persona scores in Phase 4 must
+demonstrably follow from this framework — they cannot be assigned independently.
+
+---
+
+## Phase 2 — Persona and Competitive Inventory
+
+Identify 2--4 named personas. For each persona, treat the current solution as a named
+competitor:
+
+**Persona entry:**
+
+- Name and role (specific, not categorical)
+- Current solution (named tool or method — "ad hoc" is not a solution; name what they actually
+  do)
+- Outcome the current solution delivers
+
+**Competitive strength inventory** — for each strength the current solution has:
+
+| Dimension | Advantage | Durability |
+|-----------|-----------|------------|
+
+Durability must reference a structural constraint (technical, organizational, integration-based,
+or switching-cost-based). **Familiarity is not durability.** A strength listed without a
+structural basis does not qualify and must be removed or replaced.
+
+---
+
+## Phase 3 — Inertia Dimension Analysis
+
+For each persona:
+
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis (ref. Phase 2 competitive strength) | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof threshold | Learning curve |
+|---------|--------------------------------|-------------------------------------------------------|----------------------------|-------------------------------|------------------------|---------------|
+
+- **Switching cost:** Time, steps, effort rating (1--10), or relative measure. Required.
+  Qualitative descriptions do not pass.
+- **Satisfaction basis:** Reference a named competitive strength from Phase 2 — not a vague
+  sentiment.
+- **Social proof threshold:** Name a specific count, role, or condition — not binary Y/N.
+  Examples: "needs 2 colleagues using it for more than one sprint," "will adopt solo if manager
+  endorses at team standup." Binary answers fail.
+
+---
+
+## Phase 4 — Per-Persona Inertia Scores
+
+Score each persona: Low / Medium / High / Critical.
+
+For each persona:
+
+- **Score:** [Low / Medium / High / Critical]
+- **Methodology trace:** [one sentence connecting the Phase 3 dimension values to the Phase 1
+  threshold that produces this score — show the derivation, do not just assert the tier]
+
+Every Phase 2 persona must be scored individually. A shared blanket score does not pass.
+
+---
+
+## Phase 5 — Kill Barrier: Four-Part Causal Analysis
+
+Identify the single adoption killer — expressed as the competitive dimension on which the
+current solution wins. Use exactly **four labeled sub-parts**. Each must be distinct. Do not
+merge any two into a single statement.
+
+**KILL BARRIER**
+
+**(1) Barrier definition**
+[What the barrier is — the observable adoption friction as the most exposed persona experiences
+it. State the competitive dimension. Describe the phenomenon; do not include its cause here.]
+
+**(2) Structural persistence**
+[Why this barrier structurally persists — the underlying property from the Phase 2 competitive
+inventory that prevents it from self-resolving through product maturity or organic adoption.
+Do not repeat (1). Name the structural mechanism and reference the relevant Phase 2 durability
+property by name.]
+
+**(3) Intervention target**
+[What a mitigation must target — the specific lever point that, if addressed, would disrupt the
+structural persistence mechanism described in (2). Name the target, not the intervention.
+"Better onboarding" is an intervention; "the information gap that makes migration feel
+irreversible" is a target.]
+
+**(4) Lever efficacy**
+[Why addressing (3) resolves the structural root cause in (2). Explain the causal connection.
+Reference (2) by name. "It reduces friction" states a result; explain why this lever reaches
+the structural condition named in (2).]
+
+**Temporal persistence test:**
+
+> **T=0 qualification:** Does this barrier exist today? [YES / NO]
+>
+> **T=18mo qualification:** Does this barrier persist at 18 months — absent a deliberate
+> structural intervention targeting the durability property? [YES / NO]
+>
+> If either is NO: reselect. Only a barrier that passes both horizons qualifies as the kill
+> barrier.
+
+Label the confirmed result **CONFIRMED KILL BARRIER**. Name the most exposed persona.
+
+Do not proceed to Phase 6 until the kill barrier passes both temporal qualifications.
+
+---
+
+## Phase 6 — Adoption Timeline Sensitivity
+
+For the confirmed kill barrier and at least two personas, project inertia across three horizons:
+
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
+
+- Trajectory: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat. T=6mo and T=18mo values cannot be copied from T=0
+  without a stated reason why nothing changes.
+- **Kill barrier time-sensitivity verdict:** Resolving / Stable / Worsening — with one sentence
+  of structural reasoning tied to the persistence property in Phase 5(2).
+
+---
+
+## Phase 7 — Overall Adoption Inertia Risk
+
+Verdict: Low / Medium / High / Critical.
+
+- Score distribution across personas (e.g., "2 High, 1 Critical, 1 Medium")
+- Trajectory direction from Phase 6
+- Competitive summary: the kill barrier dimension and its Phase 2 structural durability basis
+- 1--2 sentence rationale connecting score distribution, trajectory, and confirmed kill barrier
+
+---
+
+## AMEND — Focus, Quantify, Confirm
+
+Select the persona most exposed to the confirmed kill barrier.
+
+**Focus persona:** [name]
+
+**Switching cost (sharpened):** [most precise quantified value — time, steps, effort rating, or
+relative measure]
+
+**Kill barrier for this persona:** [one sentence restating the barrier in terms of this
+persona's specific situation — name the competitive dimension and why it is most acute for them]
+
+**Mitigation with full causal chain:**
+
+> **(a) Intervention:** [one concrete, specific action]
+>
+> **(b) Root cause addressed:** [which structural condition from Phase 5(2) this targets —
+> quote or directly reference the persistence property by name]
+>
+> **(c) Causal mechanism:** [why this lever resolves the structural root cause — the causal
+> connection. Reference the intervention target from Phase 5(3). Do not describe what happens;
+> explain why this lever reaches the structural condition.]
+>
+> **(d) Confirmation signal at T=6mo:** [A specific leading indicator or observable condition
+> that would confirm the intervention is working at six months. Name what you would measure or
+> observe. Example: "At T=6mo, the focus persona's team shows at least 25% trial rate without
+> a dedicated onboarding champion, indicating the structural switching cost barrier has been
+> reduced to below the spontaneous adoption threshold." Vague forward hopes ("users will feel
+> more comfortable") do not qualify. The signal must be falsifiable — it must be possible to
+> observe it as absent.]
+
+The confirmation signal must be an observable, not a hope. The AMEND section is not complete
+without it.

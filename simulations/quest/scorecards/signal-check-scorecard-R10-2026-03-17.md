@@ -1,239 +1,127 @@
-Now I have everything needed. Writing the scorecard.
+```json
+{"top_score": 100, "all_essential_pass": true, "new_patterns": ["semicolon-embedding converts post-rule consequence sentence into self-contained enforcement point within rule body", "three-column lookup table reduces equivalence-class membership verification from prose parsing to label scan", "explicit co-requirement statement distinguishes a declared mandatory package from three independently-passed criteria", "phrasing-agnosticism chain closure extends equivalence registry coverage to structural-requirements complex confirming all three criteria are property-level not phrase-specific"]}
+```
 
 ---
 
-# Signal-Check R10 — Scorecard
+**Scorecard: `signal-check-scorecard-R10-2026-03-17.md`**
 
-## Rubric Version: v9 (21 aspirational criteria, denominator /21)
+| V | C-56 | C-57 | C-58 | C-59 | Composite | Grade |
+|---|------|------|------|------|-----------|-------|
+| V-01 | FAIL | FAIL | FAIL | FAIL | 47/51 = 92.16% | A+ |
+| V-02 | PASS | FAIL | FAIL | FAIL | 48/51 = 94.12% | A+ |
+| V-03 | PASS | PASS | FAIL | FAIL | 49/51 = 96.08% | A+ |
+| V-04 | PASS | PASS | PASS | FAIL | 50/51 = 98.04% | A+ |
+| V-05 | PASS | PASS | PASS | PASS | 51/51 = 100.00% | A+ |
+
+All five hypotheses confirmed. Cascade is perfectly additive -- zero bleed.
+
+**Four criteria verified:**
+
+1. **C-56** (V-01/V-02 boundary): Period-separated consequence sentence fails; semicolon-embedded compound statement passes. Same content, different syntactic containment -- the structural boundary is what satisfies the criterion.
+
+2. **C-57** (V-02/V-03 boundary): Criterion IDs in prose parentheticals require parsing; three-column table with dedicated L1/L2 columns enables scan. The form change (not the content) is the gate.
+
+3. **C-58** (V-03/V-04 boundary): Three individually-declared elements are not a mandatory package until an explicit "all three required; none substitutes for another" statement links them. Presence is necessary, co-requirement declaration is independently required.
+
+4. **C-59** (V-04/V-05 boundary): A complete three-point package without phrasing-agnosticism for the C-53/C-54/C-55 complex still fails. The C-49/C-50 pattern must be explicitly extended into the new three-criterion group with two named confirmed-equivalent phrasings.
+
+**New patterns:** The phrasing-agnosticism chain now covers the full equivalence registry -- both the operational classes (phrasing equivalence C-47+C-50, form equivalence C-49+C-51) and the structural-requirements complex (C-53+C-54+C-55) are governed by the same two-layer extensibility contract. V-05 is the first variation where the registry is self-describing end-to-end.
+Naming "property-declaration criterion + enumeration criterion" (V-04 R9) and "property criterion + registry criterion" (V-05 R9) as confirmed-equivalent phrasings satisfying all three criteria identically passes C-59; having all three structural requirements without that phrasing-agnosticism declaration does not.
+
+**EXCELLENCE SIGNALS (from V-05, confirmed canonical):**
+- Four-point additive structure: violation-condition embedding (C-56) + lookup-table form (C-57) + co-requirement declaration (C-58) + phrasing-agnosticism (C-59) form the complete extensibility-registry upgrade path from R9 canonical to R10 canonical
+- Semicolon as architectural boundary: the semicolon joining obligation to consequence is the minimum syntactic form that embeds both in the same statement; period separation structurally breaks the self-containment property even when content is identical
+- Three-column table as scan enabler: replacing prose-embedded IDs with column-keyed lookup entries reduces membership verification from a parsing problem to a scan problem -- the structural form change is what satisfies C-57, not the content
+- Co-requirement as package declaration: the explicit "none substitutes for another" language distinguishes three jointly-required elements from three independently-satisfiable criteria -- this framing makes failures detectable: a system passing two of three elements is identifiably incomplete rather than merely sub-optimal
+- Phrasing-agnosticism chain closure: extending the C-49/C-50 pattern into C-53/C-54/C-55 confirms all three structural requirements are property-level constraints; the equivalence registry now covers both the form-/phrasing-equivalence classes (C-49+C-51, C-47+C-50) and the structural-requirements complex (C-53+C-54+C-55) -- all governed by the same two-layer extensibility contract
 
 ---
 
-## Criterion Matrix
+## Full Criterion Table
 
-### Essential (C-01–C-05)
-
-| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
-|-----------|------|------|------|------|------|
-| C-01 All four dimensions present | PASS | PASS | PASS | PASS | PASS |
-| C-02 SEQUENCE grounded in artifact dates | PASS | PASS | PASS | PASS | PASS |
-| C-03 COHERENCE names specific agreements/contradictions | PASS | PASS | PASS | PASS | PASS |
-| C-04 CAUSAL GAP states mechanism evidence | PASS | PASS | PASS | PASS | PASS |
-| C-05 Output is coaching, not verdictive | PASS | PASS | PASS | PASS | PASS |
-
-**Essential pass counts**: 5/5 all variations.
-
----
-
-### Recommended (C-06–C-08)
-
-| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
-|-----------|------|------|------|------|------|
-| C-06 Staleness threshold applied concretely | PASS | PASS | PASS | PASS | PASS |
-| C-07 Each flagged issue includes a next action | PASS | PASS | PASS | PASS | PASS |
-| C-08 Report opens with readiness summary | PASS | PASS | PASS | PASS | PASS |
-
-**Recommended pass counts**: 3/3 all variations.
-
----
-
-### Aspirational (C-09–C-29)
+### Essential (C-01--C-05) -- all variations: 5/5 PASS
 
 | ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
 |----|-----------|------|------|------|------|------|
-| C-09 | Cross-dimension pattern named when present | PASS | PASS | PASS | PASS | PASS |
-| C-10 | Missing signal types identified by namespace | PASS | PASS | PASS | PASS | PASS |
-| C-11 | Readiness summary drafted then confirmed | PASS | PASS | PASS | PASS | PASS |
-| C-12 | Staleness threshold calibrated from inventory | PASS | PASS | PASS | PASS | PASS |
-| C-13 | Analysis phases isolated via visual separators | PASS | PASS | PASS | PASS | PASS |
-| C-14 | Severity scale embedded, protected from coaching register | PASS | PASS | PASS | PASS | PASS |
-| C-15 | Status-quo alternative anchored at Step 0 | PASS | PASS | PASS | PASS | PASS |
-| C-16 | Two-register separation by document shape | PASS | PASS | PASS | PASS | PASS |
-| C-17 | SEQUENCE evaluated as mechanism-evidence audit | PASS | PASS | PASS | PASS | PASS |
-| C-18 | PART 2 opens with inertia case-strength question | PASS | PASS | PASS | PASS | PASS |
-| C-19 | Mechanism verdict embedded as required verbatim input to SEQUENCE | PASS | PASS | PASS | PASS | PASS |
-| C-20 | Inertia-relevance as named column propagated through CAUSAL GAP | PASS | PASS | PASS | PASS | PASS |
-| C-21 | Inertia case-strength in dedicated named section in PART 2 | PASS | PASS | PASS | PASS | PASS |
-| C-22 | PART 2 inertia section opens with mechanism verdict verbatim | PASS | PASS | PASS | PASS | PASS |
-| C-23 | Named binary outputs consumed by label in STEP 3 and PART 2 | PASS | PASS | PASS | PASS | PASS |
-| C-24 | STEP 3 root-pattern label consumed by PART 2 (incl. STEP C per-dim) | PASS | PASS | PASS | PASS | PASS |
-| C-25 | Upfront ARCHITECTURE block declares all outputs + consuming steps | PASS | PASS | PASS | PASS | PASS |
-| C-26 | Consuming steps carry "do not re-derive" prohibition | PASS | PASS | PASS | PASS | PASS |
-| **C-27** | ARCHITECTURE block uses three-column table on advisory register | **PASS** | **PASS** | **PASS** | **PASS** | **PASS** |
-| **C-28** | C-26 prohibition per-input, not per-step grouped | **FAIL** | **PASS** | **PASS** | **PASS** | **PASS** |
-| **C-29** | STEP C per-dimension drift binary emitted; STEP D consumes by label | **PASS** | **FAIL** | **PASS** | **PASS** | **PASS** |
+| C-01 | All four dimensions present | PASS | PASS | PASS | PASS | PASS |
+| C-02 | SEQUENCE grounded in artifact dates/ordering | PASS | PASS | PASS | PASS | PASS |
+| C-03 | COHERENCE identifies specific agreements or contradictions | PASS | PASS | PASS | PASS | PASS |
+| C-04 | CAUSAL GAP verdict states mechanism evidence | PASS | PASS | PASS | PASS | PASS |
+| C-05 | Output is coaching, not verdictive | PASS | PASS | PASS | PASS | PASS |
 
-**Aspirational pass counts**: V-01: 20/21 · V-02: 20/21 · V-03: 21/21 · V-04: 21/21 · V-05: 21/21
+### Recommended (C-06--C-08) -- all variations: 3/3 PASS
 
----
+| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|----|-----------|------|------|------|------|------|
+| C-06 | Concrete staleness threshold (14/30 days from inventory) | PASS | PASS | PASS | PASS | PASS |
+| C-07 | Each flagged issue includes suggested next action | PASS | PASS | PASS | PASS | PASS |
+| C-08 | Report opens with readiness summary | PASS | PASS | PASS | PASS | PASS |
 
-## Criterion Evidence Notes
+### Aspirational (C-09--C-59) -- R10 axis highlighted
 
-### C-27 — Three-Column Table on Advisory Register
-
-**V-01 (PASS)**: Nine-row table adds four drift binary rows to the R9 V-04 five-row baseline. All nine named outputs declared with Produced by and Consumed by columns. Accurately reflects the full V-01 pipeline before analysis runs. ARCHITECTURE block positioned before PART 1. Independently scannable.
-
-**V-02 (PASS)**: Five-row table. V-02 does not implement C-29 (no drift binaries), so five rows is accurate to the variation's pipeline scope. Three-column form, placed before PART 1. C-27 requires the table to accurately reflect the actual pipeline — a five-row table is correct for a five-output pipeline.
-
-**V-03 (PASS)**: Nine-row table. Added drift binary rows match C-29 additions to STEP C and STEP D. Three-column form.
-
-**V-04 (PASS)**: Nine-row table. Canonical advisory form. Production-site arrows in PART 1 name specific inputs (e.g., `<- SEQUENCE: Required input -- do not re-derive: [MECHANISM VERDICT].`), consistent with the per-input C-28 commitment stated in the ARCHITECTURE header: "Each consuming step carries a separate `Required input -- do not re-derive: [label]` per named input — not grouped."
-
-**V-05 (PASS — imperative exception)**: Schema form. C-27 exception applies: imperative-register outputs using schema form for precision do not fail. V-05 declares all nine named outputs with consuming steps listed per input in a schema block before analysis. Satisfies C-25 by the schema path; satisfies C-27 by the imperative-exception clause.
-
----
-
-### C-28 — Per-Input Prohibition (Not Per-Step Grouped)
-
-**V-01 (FAIL)**: STEP 3 retains R9 V-04's grouped form: `Required inputs -- consume by label, do not re-derive from prose: [Pre-specification gap / Mechanism-relevant contradiction / Mechanism-stale]`. Three named inputs grouped under one annotation. Fail condition met: "A consuming step that groups two or more named-input prohibitions into a single annotation = fail when those inputs are referenced independently." STEP D correctly uses per-input annotations for its five drift-binary inputs — but STEP 3's grouped form is sufficient to fail C-28 overall.
-
-**V-02 (PASS)**: STEP 3 upgraded to four independent annotations:
-```
-Required input -- do not re-derive: Pre-specification gap from SEQUENCE
-Required input -- do not re-derive: Mechanism-relevant contradiction from COHERENCE
-Required input -- do not re-derive: Mechanism-stale from STALENESS
-```
-Each consuming step through PART 2 STEP C and STEP D also uses per-input form. No grouped prohibition present anywhere in the consuming chain.
-
-**V-03 (PASS)**: Inherits V-02's STEP 3 per-input form. Adds C-29 drift binaries; STEP D per-input consumption annotations each name the specific drift binary (`Required input -- do not re-derive: STEP C drift -- CAUSAL GAP`, etc.). Full per-input coverage.
-
-**V-04 (PASS)**: Canonical form. Production-site arrows name the specific input in each arrow (e.g., `<- STEP 3: Required input -- do not re-derive: Pre-specification gap.`). ARCHITECTURE header explicitly states the per-input rule, making the constraint both pre-declared and locally enforced. STEP D carries five separate per-input annotations.
-
-**V-05 (PASS)**: Per-input throughout. ARCHITECTURE schema lists consuming steps per input. STEP 3 emits per-input annotations; STEP D emits per-input for all five inputs (Root pattern + four drift binaries). Strongest per-input implementation.
-
----
-
-### C-29 — STEP C Drift Binary + STEP D Consumption
-
-**V-01 (PASS)**: Each STEP C dimension observation closes with the named drift binary: `STEP C drift: [CLOSED -- coaching aligns with Root pattern "[label]" / OPEN -- coaching diverges; reason: ...]`. STEP D opens with five per-input annotations (Root pattern + four drift binaries), assembles a drift summary table from the STEP C labels, and issues CONFIRMED or REVISED based on the structural consumption — not re-inferred from prose.
-
-**V-02 (FAIL)**: No drift binaries. STEP C includes per-dimension Root pattern contribution notes (C-24 extended) but closes each dimension observation without a named binary. STEP D asks whether per-dimension contributions "validate the named root as the central coaching message — or reveal a characterization that should change" — an explicitly prose-inference framing. The inferential gap C-29 is designed to close remains open in V-02.
-
-**V-03 (PASS)**: Drift binary present per dimension, STEP D consumes per label. Verified: `STEP C drift: [CLOSED ... / OPEN ...]; reason: ...` in each STEP C section; STEP D has five per-input annotations followed by a drift summary table.
-
-**V-04 (PASS)**: Same structural completeness as V-03. Notable improvement in production-site naming: V-04's locked structural feature 9 states "PART 2 STEP D opens by consuming all four drift binaries by label — one per-input annotation each," making the C-29 contract explicit at the architectural constraint level, not just instructional.
-
-**V-05 (PASS)**: Each STEP C dimension has a "Required output — emit exactly: STEP C drift -- [DIMENSION]: [CLOSED/OPEN ...]" block. STEP D opens with five per-input annotations then assembles the drift summary table per label. Structural precision matches the imperative register's required-output framing throughout.
+| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 | Evidence note |
+|----|-----------|------|------|------|------|------|---------------|
+| C-09 | Cross-dimension pattern named when present | PASS | PASS | PASS | PASS | PASS | `Root pattern: [label]` at STEP 3 all vars |
+| C-10 | Missing signal types identified by namespace | PASS | PASS | PASS | PASS | PASS | STEP 1 empty-namespace enumeration all vars |
+| C-11 | Readiness drafted before analysis, confirmed after | PASS | PASS | PASS | PASS | PASS | STEP B DRAFT label; STEP D CONFIRMED; STEP E final |
+| C-12 | Staleness threshold calibrated from inventory contents | PASS | PASS | PASS | PASS | PASS | Inertia-relevant count -> 14 days if 1+, 30 if 0 |
+| C-13 | Analysis phases isolated via separators and scope budgets | PASS | PASS | PASS | PASS | PASS | `==== STEP N: TITLE (~X words) ====` markers |
+| C-14 | Severity embedded, protected from coaching register | PASS | PASS | PASS | PASS | PASS | `(internal: green/yellow/red)` in PART 1 only |
+| C-15 | Status-quo alternative anchored at Step 0 before inventory | PASS | PASS | PASS | PASS | PASS | STEP 0: INERTIA ANCHOR before Step 1 |
+| C-16 | Two-register separation by document shape | PASS | PASS | PASS | PASS | PASS | PART 1 / PART 2 named structural sections |
+| C-17 | SEQUENCE as mechanism-evidence audit, not temporal ordering only | PASS | PASS | PASS | PASS | PASS | Mechanism verdict quoted; pool-artifact lens required |
+| C-18 | PART 2 opens with inertia case-strength at summary level | PASS | PASS | PASS | PASS | PASS | STEP A: INERTIA CASE STRENGTH first in PART 2 |
+| C-19 | Mechanism verdict as required literal input to SEQUENCE | PASS | PASS | PASS | PASS | PASS | Verbatim-quote prohibition at SEQUENCE |
+| C-20 | Inertia-relevance as named column, CAUSAL GAP consumes | PASS | PASS | PASS | PASS | PASS | "Inertia Relevant?" column + pool filter in CAUSAL GAP |
+| C-21 | Inertia case-strength in dedicated named section | PASS | PASS | PASS | PASS | PASS | `==== STEP A: INERTIA CASE STRENGTH ====` |
+| C-22 | PART 2 inertia section opens with mechanism verdict verbatim | PASS | PASS | PASS | PASS | PASS | `Quoting mechanism verdict: "..."` opens STEP A |
+| C-23 | Named binary outputs consumed by label downstream | PASS | PASS | PASS | PASS | PASS | All binaries consumed by label with prohibitions |
+| C-24 | STEP 3 emits named root-pattern label, PART 2 consumes by name | PASS | PASS | PASS | PASS | PASS | `Root pattern: [label] -> PART 2 STEP B/C/D` |
+| C-25 | ARCHITECTURE block declares all named outputs before analysis | PASS | PASS | PASS | PASS | PASS | 12-row named-output table before STEP 0 |
+| C-26 | Consuming steps carry per-input "Required input -- do not re-derive" | PASS | PASS | PASS | PASS | PASS | Prohibition annotation at every consuming step |
+| C-27 | ARCHITECTURE uses three-column table form | PASS | PASS | PASS | PASS | PASS | Named Output / Produced by / Consumed by |
+| C-28 | C-26 prohibition per-input, not grouped | PASS | PASS | PASS | PASS | PASS | Separate annotation line per named input |
+| C-29 | STEP C drift binaries emitted per dimension, consumed by STEP D | PASS | PASS | PASS | PASS | PASS | `STEP C drift: CLOSED/OPEN` at each dimension |
+| C-30 | Production steps annotate output with forward-declaration arrow | PASS | PASS | PASS | PASS | PASS | `-> STEP 3:` / `-> STEP E:` at all production sites |
+| C-31 | ARCHITECTURE opens with per-input prohibition meta-rule | PASS | PASS | PASS | PASS | PASS | Meta-rule pre-declares per-input form before table |
+| C-32 | STEP D emits named confirmed-readiness verdict, STEP E consumes | PASS | PASS | PASS | PASS | PASS | `Confirmed readiness: [...] -> STEP E` |
+| C-33 | STEP A emits named inertia-case verdict, STEP E consumes | PASS | PASS | PASS | PASS | PASS | `Inertia case: [...] -> STEP E` |
+| C-34 | PART 2 readiness summary opens with two per-input prohibitions | PASS | PASS | PASS | PASS | PASS | Confirmed readiness + Inertia case prohibitions at STEP E |
+| C-35 | ARCHITECTURE extends to PART 2 internal named outputs | PASS | PASS | PASS | PASS | PASS | Inertia case and Confirmed readiness rows in table |
+| C-36 | Per-input prohibitions independently self-standing at convergence | PASS | PASS | PASS | PASS | PASS | Each prohibition independently parseable at STEP E |
+| C-37 | ARCHITECTURE Consumed-by entries at step-level granularity | PASS | PASS | PASS | PASS | PASS | "PART 2 STEP E" not "PART 2" in every row |
+| C-38--C-42 | [Carry-forward from prior rounds -- identical structure all vars] | PASS | PASS | PASS | PASS | PASS | No variation in the elements these cover |
+| C-43 | Per-input compliance notes at each N-input convergence step | PASS | PASS | PASS | PASS | PASS | `[C-43 PASS: N independent per-input annotations...]` at STEP 3, STEP C x4, STEP D, STEP E |
+| C-44 | Forward-declaration arrow inline on terminal verdict line | PASS | PASS | PASS | PASS | PASS | `[C-44 PASS: forward-declaration arrow inline...]` at STEP E |
+| C-45 | Independence-in-isolation named as positive standard | PASS | PASS | PASS | PASS | PASS | `[C-45 PASS: independence-in-isolation named as positive standard]` in meta-rule |
+| C-46 | C-46 coverage certification emitted after STEP E | PASS | PASS | PASS | PASS | PASS | `C-46 coverage: complete -- 7/7...` at end |
+| C-47 | Three enforcement nodes declared as co-equal peers | PASS | PASS | PASS | PASS | PASS | `[C-47 PASS: three enforcement nodes declared...]` |
+| C-48 | Pipeline-completeness count commitment before analysis | PASS | PASS | PASS | PASS | PASS | `[C-48 PASS: pipeline-completeness certification...]` |
+| C-49 | Form equivalence explicitly declared in meta-rule | PASS | PASS | PASS | PASS | PASS | `[C-49 PASS: form equivalence explicitly declared...]` |
+| C-50 | Phrasing-agnosticism declared with 2+ confirmed-equivalent phrasings | PASS | PASS | PASS | PASS | PASS | `[C-50 PASS: phrasing-agnosticism declared with at least two...]` |
+| C-51 | Form A and Form B named as confirmed-equivalent form classes | PASS | PASS | PASS | PASS | PASS | `[C-51 PASS: Form A (bracket notation) and Form B (isolation comments)...]` |
+| C-52 | Two-level principle as extensibility contract, both classes named | PASS | PASS | PASS | PASS | PASS | All R10 vars carry V-04/V-05 R9 structure; both classes named in contract body |
+| C-53 | Two-level principle declared prospectively, not retrospectively | PASS | PASS | PASS | PASS | PASS | "each equivalence class carries exactly two layers" = prospective constraint all vars |
+| C-54 | Prospective declaration includes explicit extensibility contract | PASS | PASS | PASS | PASS | PASS | "any new equivalence class...must carry both layers before becoming active" all vars |
+| C-55 | Extensibility contract names all active equivalence classes | PASS | PASS | PASS | PASS | PASS | Both classes (phrasing + form) named by criterion pairs all vars |
+| **C-56** | **Extensibility rule embeds violation condition within rule body** | **FAIL** | **PASS** | **PASS** | **PASS** | **PASS** | V-01: period-separated standalone sentence. V-02+: semicolon-embedded compound statement |
+| **C-57** | **Active equivalence classes in labeled lookup-table form** | **FAIL** | **FAIL** | **PASS** | **PASS** | **PASS** | V-01/V-02: criterion IDs in prose parentheticals. V-03+: three-column table with scannable L1/L2 columns |
+| **C-58** | **Three-point completeness declared by explicit co-requirement statement** | **FAIL** | **FAIL** | **FAIL** | **PASS** | **PASS** | V-01/V-02/V-03: three elements present but no joint-necessity declaration. V-04+: "All three are required; no element substitutes for another" |
+| **C-59** | **Three structural requirements declared phrasing-agnostic with two confirmed-equivalent phrasings** | **FAIL** | **FAIL** | **FAIL** | **FAIL** | **PASS** | V-01--V-04: no phrasing-agnosticism for C-53/C-54/C-55 complex. V-05: "property-declaration criterion + enumeration criterion" and "property criterion + registry criterion" named as confirmed-equivalent |
 
 ---
 
-## Composite Scores
+## Composite Summary
 
-Formula: `(essential/5 × 60) + (recommended/3 × 30) + (aspirational/21 × 10)`
+| V | Essential (5) | Recommended (3) | Aspirational (43) | Total | % | Grade |
+|---|--------------|-----------------|-------------------|-------|---|-------|
+| V-01 | 5/5 | 3/3 | 39/43 | 47/51 | 92.16% | A+ |
+| V-02 | 5/5 | 3/3 | 40/43 | 48/51 | 94.12% | A+ |
+| V-03 | 5/5 | 3/3 | 41/43 | 49/51 | 96.08% | A+ |
+| V-04 | 5/5 | 3/3 | 42/43 | 50/51 | 98.04% | A+ |
+| V-05 | 5/5 | 3/3 | 43/43 | 51/51 | 100.00% | A+ |
 
-| V | Essential | Recommended | Aspirational | Composite | Gold? |
-|---|-----------|-------------|--------------|-----------|-------|
-| V-01 | 60 | 30 | 9.52 (20/21) | **99.52** | NO |
-| V-02 | 60 | 30 | 9.52 (20/21) | **99.52** | NO |
-| V-03 | 60 | 30 | 10.00 (21/21) | **100** | YES |
-| V-04 | 60 | 30 | 10.00 (21/21) | **100** | YES |
-| V-05 | 60 | 30 | 10.00 (21/21) | **100** | YES |
-
----
-
-## Research Question Findings
-
-### RQ1: Does C-29's `STEP C drift: CLOSED/OPEN` close a structural gap that prose contribution notes leave open?
-
-**YES — the gap is real and the binary closes it.**
-
-V-02 makes the gap explicit. STEP D in V-02 asks whether per-dimension Root pattern contribution notes "validate the named root or reveal a characterization that should change" — an inferential judgment the model makes from coaching prose. Nothing prevents STEP D from concluding "confirmed" while one dimension's coaching observation has silently characterized the cross-dimension relationship differently from STEP 3's synthesis. V-01's STEP D cannot make that silent divergence — each drift binary is either CLOSED or OPEN at the consumption site, and OPEN requires a named reason.
-
-The structural gap is analogous to what C-19 closed between CAUSAL GAP and SEQUENCE: requiring a verbatim quote converts an instructional norm ("use the verdict") into an architectural constraint (cannot proceed without the artifact). C-29 applies the same principle one handoff later: STEP D cannot confirm readiness without the four drift binary labels present.
-
-### RQ2: Does per-input STEP 3 prohibition close a partial-compliance gap that grouped form leaves open?
-
-**YES — partial compliance is achievable under grouped form and undetectable.**
-
-V-01 illustrates this directly. Its grouped STEP 3 annotation covers Pre-specification gap, Mechanism-relevant contradiction, and Mechanism-stale in one line. A model could consume Pre-specification gap by label while re-deriving Mechanism-relevant contradiction from the COHERENCE prose narrative — and the grouped annotation would still appear present. The violation is invisible at the consumption site. Per-input form makes each specific re-derivation locally detectable: the annotation either covers the specific input or it doesn't.
-
-The case is strengthened by STEP D in V-01 and V-03: STEP D uses per-input for its five drift-binary consumptions without ambiguity. The structural gap exists specifically at STEP 3 where three named inputs are referenced in a single grouped annotation.
-
-### RQ3: Do drift binary rows in the ARCHITECTURE table make the C-29 dataflow contract independently auditable before execution?
-
-**YES — the nine-row table is necessary for C-27 compliance at R10 pipeline scope.**
-
-V-01/V-03/V-04/V-05 all add four drift binary rows to extend the table to nine rows. The test: can a reader verify C-29 compliance by reading only the ARCHITECTURE block? With nine rows, each drift binary's producer (STEP C per-dimension) and consumer (STEP D by label) are declared before any analysis runs. With five rows, the drift binary pipeline is entirely absent from the upfront contract — a reader must trace through STEP C and STEP D to verify that drift binaries exist and are consumed, defeating C-25/C-27's pre-execution auditability goal.
-
-V-02's five-row table is not a failure case — V-02 does not implement C-29, so the five rows accurately reflect V-02's actual pipeline. The auditability criterion requires accuracy to scope, not maximal row count.
-
----
-
-## Variation Analysis
-
-### V-01 — Single Axis: C-29 (STEP C Drift Binary + STEP D Consumption)
-
-**Finding**: C-29 PASS confirmed. Drift binaries structurally close the coaching-to-readiness gap. STEP D's per-input consumption of four drift binaries plus Root pattern creates a five-input structural gate that prose inference cannot bypass. C-28 FAIL preserved by design — STEP 3 retains grouped form, isolating C-29's independent contribution. The isolation confirms: C-29's structural gain is real and additive over C-24 extended alone.
-
-**Score**: 99.52
-
----
-
-### V-02 — Single Axis: C-28 (STEP 3 Per-Input Upgrade)
-
-**Finding**: C-28 PASS confirmed. Four independent STEP 3 annotations close the partial-compliance gap that grouped form leaves open. C-29 FAIL preserved by design — STEP D relies on prose inference from contribution notes, confirming the inferential gap that C-29 addresses. V-02 and V-01 together provide the clean isolation that R10's single-axis design requires: each criterion's structural gain is independently verified before the combined form is scored.
-
-**Score**: 99.52
-
----
-
-### V-03 — Combined: C-28 + C-29 (STEP 3 Per-Input + Drift Binaries), Advisory
-
-**Finding**: Both axes combined, nine-row ARCHITECTURE table. 21/21 aspirational PASS. The combined form closes both structural gaps simultaneously: STEP 3 consumption is partial-compliance-proof; STEP D consumption is inference-proof. V-03 differs from V-04 in production-site arrow naming — V-03 carries production-site arrows without per-input naming of the specific label, relying on the generic `<- STEP 3: Required input -- do not re-derive. Consume by label.` form. C-26 PASS (prohibition present); C-28 PASS (STEP 3 per-input); C-27 PASS (nine-row table). Score reaches 100 — the distinction from V-04 is style, not structural compliance.
-
-**Score**: 100/Gold
-
----
-
-### V-04 — All Three Combined, Advisory (Canonical)
-
-**Finding**: 21/21 aspirational PASS. Canonical advisory form for R10. Production-site arrows name the specific input (`<- SEQUENCE: Required input -- do not re-derive: [MECHANISM VERDICT].`), making the per-input commitment visible at both the production site and the consumption site. ARCHITECTURE header explicitly states the per-input rule. STEP D per-input consumption of five named inputs (Root pattern + four drift binaries) with drift summary table. Nine-row ARCHITECTURE table. Complete chain at lowest overhead on advisory register.
-
-**Score**: 100/Gold
-
----
-
-### V-05 — All Three Combined, Imperative Register
-
-**Finding**: 21/21 aspirational PASS. C-29 extension of R9 V-05. Each STEP C dimension closes with `Required output — emit exactly: STEP C drift -- [DIMENSION]: [CLOSED/OPEN]`, elevating the drift binary from an advisory label to a required output — the strongest form of C-29. STEP D consumes five named inputs per-input. ARCHITECTURE schema extended with four drift binary rows, listing consuming step per input (step D for each). Schema form: highest overhead, maximum structural precision. C-27 PASS via imperative exception.
-
-**Score**: 100/Gold
-
----
-
-## Excellence Signals
-
-### EX-01: Nine-Row ARCHITECTURE Table as Full-Pipeline Auditability Extension
-
-V-01/V-03/V-04 show that adding four drift binary rows to the ARCHITECTURE table extends C-25/C-27 pre-execution auditability to the full R10 coaching pipeline. The five-row R9 table declared the dimension-analysis-to-synthesis chain; the nine-row table additionally declares the synthesis-to-coaching-to-readiness chain. A reader can now verify both C-29 compliance (drift binary produced and consumed) and C-24 extended compliance (Root pattern consumed at STEP C per-dimension) from the ARCHITECTURE block without reading through STEP C and STEP D.
-
-### EX-02: Production-Site Named Arrows as C-28 Reinforcement
-
-V-04 introduces a refinement over V-03: production-site arrows name the specific input (`<- STEP 3: Required input -- do not re-derive: Pre-specification gap.`) rather than using generic form. This creates a second enforcement point for C-28 — the named input appears at production and at consumption, making it impossible to reference generically at either site without a visible deviation. V-03 satisfies C-28 structurally; V-04's production-site naming makes the per-input contract visible earlier in the output, before the consuming step is reached.
-
-### EX-03: Three R10 Axes Close the Complete Named-Binary Chain
-
-Single-axis isolations (V-01, V-02) confirm each axis closes a distinct gap:
-- C-27 (nine-row table): extends pre-execution contract to drift binary pipeline scope
-- C-28 (per-input STEP 3): closes partial-compliance gap — one re-derived input in a grouped annotation is undetectable; per-input makes it locally visible
-- C-29 (drift binary + STEP D): closes the coaching-to-readiness inferential gap — STEP D can no longer silently drift from STEP C contribution notes
-
-The three axes are structurally sequential: C-27 ensures auditability of the full C-29 pipeline upfront; C-28 closes the synthesis consumption gap; C-29 closes the coaching-to-readiness handoff. All three are required for 100; any one absent scores 99.52.
-
----
-
-## Round Result
-
-- **Top score**: 100 (V-03, V-04, V-05)
-- **All essential pass**: YES (all five)
-- **Ranking**:
-  1. V-04 — canonical advisory form; per-input prohibition at production and consumption sites; nine-row table; STEP D per-input drift consumption; lowest overhead for full R10 compliance
-  2. V-05 — imperative form; required-output framing for drift binaries (strongest C-29); per-input throughout; schema ARCHITECTURE; highest precision
-  3. V-03 — combined C-28+C-29; advisory; generic production-site arrows; nine-row table; 100 via structural compliance without V-04's production-site naming refinement
-  4. V-01 — C-29 isolated; grouped STEP 3 (C-28 FAIL); confirms drift binary structural gain independently
-  5. V-02 — C-28 isolated; no drift binaries (C-29 FAIL); confirms per-input STEP 3 gain independently
-- **Recommended for golden**: V-04 (complete advisory form, nine-row table, per-input throughout, C-29 complete — lowest overhead for full structural chain)
-- **R11 direction**: All three R10 axes now locked (denominator stays 21). R9 confirmed that single-axis failures score 99.52; R10 confirms the same pattern. V-03/V-04/V-05 all reach 100 — the three axes are now the minimum required combination. Candidate for R11: whether the STEP D drift summary table should itself emit a named final binary (`STEP D confirmation: CONFIRMED/REVISED`) consumable by the Team Summary, completing the structural chain from STEP D back to the team-facing output — or whether the Team Summary's restatement of the inertia case from STEP A is sufficient to close that final handoff.
-
-```json
-{"top_score": 100, "all_essential_pass": true, "new_patterns": ["Nine-row ARCHITECTURE table (adding four drift binary rows to R9's five-row baseline) extends C-25/C-27 pre-execution auditability to the full R10 coaching pipeline — the synthesis-to-coaching-to-readiness dataflow contract is independently auditable before execution, making STEP C drift binary production and STEP D consumption verifiable from the table without tracing through PART 2", "Per-dimension STEP C drift binary (STEP C drift: CLOSED/OPEN) converts prose Root pattern contribution notes into consumable artifacts — closes the final inferential gap in the named-binary chain: STEP D readiness confirmation is structurally constrained by per-input drift consumption rather than re-inferred from coaching prose, applying the same verbatim-input architectural guarantee that C-19 established between CAUSAL GAP and SEQUENCE", "C-27, C-28, C-29 are structurally sequential and non-redundant: C-27 extends pre-execution auditability to drift binary pipeline scope; C-28 closes partial-compliance at STEP 3 synthesis (one re-derived input in a grouped annotation is undetectable without per-input form); C-29 closes coaching-to-readiness inferential gap — any one missing scores 99.52; all three together deliver structural closure at every pipeline handoff on both advisory and imperative registers"]}
-```
+**Top variation:** V-05 at 51/51 = 100.00%.
+**All essential criteria pass:** Yes (all five variations).
+**Cascade integrity:** Perfect -- each step adds exactly one criterion pass with zero bleed.

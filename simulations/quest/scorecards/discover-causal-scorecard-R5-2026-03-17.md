@@ -1,238 +1,222 @@
+Now I have everything needed. Let me score all five variations against the v5 rubric.
+
+---
+
+## discover-causal R5 Scorecard
+
+**v5 rubric: 165 pts max (60 essential + 30 recommended + 75 aspirational: 15 criteria × 5 pts)**
+**Golden ≥ 150 | Acceptable 135–149 | Passing 120–134**
+
+---
+
+## V-01: Null-gap counterexample as instantiated proof
+
+*Base: R4 V-01. Change: NULL-GAP COUNTEREXAMPLE block in CONTEXT EVIDENCE. C-22 gap (no prohibition) and C-23 gradeability gap (C-15 PARTIAL) intentionally preserved.*
+
+| ID | Criterion | Verdict | Pts | Evidence Note |
+|----|-----------|---------|-----|---------------|
+| C-01 | Mechanism traced as pathway | PASS | 12 | READINESS GATE + "Step N -- [Name]: What changes. Who acts. Observable indicator." throughout. |
+| C-02 | Falsification is mechanism break | PASS | 12 | Required format; CONDITIONAL BRANCH enforces BEST-TRACEABLE ANCHOR; prohibits metric threshold and deferral. |
+| C-03 | Inertia check performed | PASS | 12 | INERTIA VERDICT with three-value enumeration. |
+| C-04 | Causal claim narrowed in AMEND | PASS | 12 | AMEND section with narrowing requirement. |
+| C-05 | Context evidence assessed | PASS | 12 | Per-step T1/T2/T3 audit; FIELD SEPARATION NOTE produces both named outputs. |
+| C-06 | Mechanism pathway is testable | PASS | 10 | Named agent + observable indicator per step. |
+| C-07 | Confounder or alternative cause | PASS | 10 | CONFOUNDER CHECK: "not the inertia case" — explicit exclusion. |
+| C-08 | AMEND output is actionable | PASS | 10 | Amended requires mechanism qualifier + scope condition. |
+| C-09 | Evidence quality rated | PASS | 5 | T1/T2/T3 scale with definitions; per-step rating; Evidence tier as separate AMEND field. |
+| C-10 | Multiple causal pathways considered | FAIL | 0 | Not asked. |
+| C-11 | Mechanism incompleteness acknowledged | PASS | 5 | READINESS GATE with PATHWAY INCOMPLETE format; "Producing thin steps to clear this gate fails." |
+| C-12 | Falsification break anchored to named step | PASS | 5 | Required format; "step number and name must match a labeled row." BEST-TRACEABLE ANCHOR for incomplete pathways. |
+| C-13 | Evidence gap localized to pathway steps | PASS | 5 | FIELD SEPARATION NOTE mandates "Evidence gap steps: [list of Step N -- [Name] labels]" as named output. |
+| C-14 | AMEND conditioned on inertia finding | PARTIAL | 2.5 | Inertia status is a named AMEND field, always documented. However the Amended clause says "inertia condition if Competing or Unclear" — Not-competing cases receive no inertia incorporation in the amended text. |
+| C-15 | AMEND synthesizes all phase outputs | PARTIAL | 2.5 | AMEND has all four required named fields (Mechanism complete, Inertia status, Evidence tier, Confounder finding). However the Amended clause incorporates inertia conditionally, so not all four are unconditionally reflected in the amended claim text. |
+| C-16 | Pathway steps formally labeled | PASS | 5 | "Step N -- [Name]: What changes. Who acts. Observable indicator." format required throughout. |
+| C-17 | Confounder explicitly distinguished from inertia | PASS | 5 | CONFOUNDER CHECK: "does not involve X and is not the inertia case" — explicit exclusion language. |
+| C-18 | Incomplete pathway still anchors falsification | PASS | 5 | CONDITIONAL BRANCH: prohibits deferral and metric threshold forms; BEST-TRACEABLE ANCHOR required format; "declaring incompleteness does not exempt this section from producing a step-level anchor." |
+| C-19 | AMEND evidence gap and evidence tier are separate fields | PASS | 5 | FIELD SEPARATION NOTE: orthogonality statement + two separate named AMEND fields; "Do not merge them. Do not omit either." |
+| C-20 | AMEND inertia incorporation is unconditional | FAIL | 0 | Amended clause: "inertia condition if Competing or Unclear." Conditional form intentionally preserved for single-axis isolation. |
+| C-21 | Evidence gap orthogonality proven by null-gap counterexample | PASS | 5 | Design purpose. NULL-GAP COUNTEREXAMPLE block: explicitly shows "Evidence gap steps: none / Evidence tier: T1" as a valid required output state; names the category error ("conflating 'no missing steps' with 'no evidence quality to report'"); "Both are always required. Both always carry a value." |
+| C-22 | Inertia conditional form excluded by explicit prohibition | FAIL | 0 | No PROHIBITED FORM statement in INERTIA CHECK. No integration rule naming "conditioning on Competing or Unclear does not pass." Conditional form left in Amended clause. |
+| C-23 | Mechanism completeness is a named AMEND field | N/A | — | C-15 PARTIAL → C-23 not scored. Note: "Mechanism complete:" IS present as a standalone AMEND field, meeting the structural requirement — but C-23 is excluded from denominator because C-15 does not fully pass. |
+| **Total** | | | **140 / 160** | All essential: PASS. C-23 excluded from denominator. Acceptable (140 ≥ 135). |
+
+---
+
+## V-02: Named prohibition of conditional inertia form
+
+*Base: R4 V-03. Change: PROHIBITED FORM block in INERTIA CHECK + prohibition repeated in AMEND integration rules. C-21 gap (no null-gap block) and C-23 gradeability gap (C-15 FAIL) intentionally preserved.*
+
+| ID | Criterion | Verdict | Pts | Evidence Note |
+|----|-----------|---------|-----|---------------|
+| C-01 | Mechanism traced as pathway | PASS | 12 | "Label each step: Step N -- [Name]: What changes. Who acts. Observable indicator." Minimum 3 steps. |
+| C-02 | Falsification is mechanism break | PASS | 12 | Required format; step number and name must match labeled row. |
+| C-03 | Inertia check performed | PASS | 12 | INERTIA VERDICT + CARRY-FORWARD covering all three verdict values. |
+| C-04 | Causal claim narrowed in AMEND | PASS | 12 | AMEND with narrowing requirement; integration rules prohibit restating and broadening. |
+| C-05 | Context evidence assessed | PASS | 12 | Per-piece evidence: name, rate (T1/T2/T3), note which step it supports. Aggregate tier required output. |
+| C-06 | Mechanism pathway is testable | PASS | 10 | Observable indicator per labeled step. |
+| C-07 | Confounder or alternative cause | PASS | 10 | ALTERNATIVE CAUSES: explicitly requires (1) alternative causal pathway not through mechanism AND (2) confounding variable. |
+| C-08 | AMEND output is actionable | PASS | 10 | Amended clause specifies mechanism qualifier, scope condition, inertia incorporation for all three verdict values. |
+| C-09 | Evidence quality rated | PASS | 5 | T1/T2/T3 scale with definitions; "Aggregate evidence tier: [highest available]" required output. |
+| C-10 | Multiple causal pathways considered | FAIL | 0 | Not asked. |
+| C-11 | Mechanism incompleteness acknowledged | PASS | 5 | "If fewer than 3 can be traced with confidence, say so explicitly ('mechanism not fully traceable at step N') rather than generating thin steps." |
+| C-12 | Falsification break anchored to named step | PASS | 5 | Required format; must match labeled row throughout. |
+| C-13 | Evidence gap localized to pathway steps | PARTIAL | 2.5 | Per-piece evidence names which step it supports. No required "Evidence gap steps:" named output field — gap is inferable but not mandated as a separate output. |
+| C-14 | AMEND conditioned on inertia finding | PASS | 5 | Three-case mandatory table in Amended clause covers all three verdict values; CARRY-FORWARD + INERTIA COMMITMENT: "this verdict is not conditional"; integration rule: "Conditioning on Competing or Unclear does not pass." |
+| C-15 | AMEND synthesizes all phase outputs | FAIL | 0 | AMEND structure: Original, Inertia verdict, Confounder finding, Pathway, Falsification, Amended. Missing: Mechanism completeness and Evidence tier as named fields — two of four required C-15 fields absent. |
+| C-16 | Pathway steps formally labeled | PASS | 5 | "Label each step with a number and short name. Format: Step N -- [Name]:" instructed. Falsification references labeled row. |
+| C-17 | Confounder explicitly distinguished from inertia | PASS | 5 | ALTERNATIVE CAUSES: "This is NOT the inertia check." Explicit mechanistic separation — inertia asks about status quo trends; confounders ask about simultaneously-operating causes. Required output: "The inertia case... is NOT included here as a confounder." |
+| C-18 | Incomplete pathway still anchors falsification | PARTIAL | 2.5 | No CONDITIONAL BRANCH in FALSIFICATION CONDITION. Required format always demands a named step anchor, structurally enforcing C-18 — but no explicit deferral prohibition, no BEST-TRACEABLE ANCHOR format for the incomplete pathway case. |
+| C-19 | AMEND evidence gap and evidence tier are separate fields | FAIL | 0 | No FIELD SEPARATION NOTE. No Evidence gap named output in CONTEXT EVIDENCE. AMEND has Evidence tier but no Evidence gap field. Category error not addressed. |
+| C-20 | AMEND inertia incorporation is unconditional | PASS | 5 | Design purpose. INERTIA COMMITMENT + CARRY-FORWARD three-case table + integration rule: "Conditioning inertia incorporation on the verdict being Competing or Unclear does not pass — all three verdict values require explicit incorporation in the amended claim." |
+| C-21 | Evidence gap orthogonality proven by null-gap counterexample | FAIL | 0 | No FIELD SEPARATION NOTE; no Evidence gap output; no null-gap counterexample. Orthogonality not demonstrated because the two fields themselves are not present. |
+| C-22 | Inertia conditional form excluded by explicit prohibition | PASS | 5 | Design purpose. PROHIBITED FORM in INERTIA CHECK: "Conditioning inertia incorporation on the verdict being Competing or Unclear does not pass." Repeated in AMEND integration rules: "Conditioning... does not pass — all three verdict values require explicit reference." Named at both production point and synthesis point. |
+| C-23 | Mechanism completeness is a named AMEND field | N/A | — | C-15 FAIL → C-23 not scored. AMEND has no Mechanism completeness field. |
+| **Total** | | | **135 / 160** | All essential: PASS. C-23 excluded from denominator. Acceptable (135 = lower boundary). |
+
+---
+
+## V-03: Mechanism completeness as standalone AMEND field
+
+*Base: R4 V-04. Change: standalone "Mechanism completeness:" named AMEND field with integration rule. C-21 gap (no null-gap instantiation block) and C-22 gap (no named prohibition) intentionally preserved. Note: R5 base includes CONDITIONAL BRANCH in FALSIFICATION (upgrading C-18 vs R4 V-04 baseline).*
+
+| ID | Criterion | Verdict | Pts | Evidence Note |
+|----|-----------|---------|-----|---------------|
+| C-01 | Mechanism traced as pathway | PASS | 12 | STEP LABELING REQUIREMENT as structural prerequisite; "Step N -- [Name]: What changes. Who acts. Observable indicator." |
+| C-02 | Falsification is mechanism break | PASS | 12 | Required format; "label must match the step label in the pathway exactly." |
+| C-03 | Inertia check performed | PASS | 12 | INERTIA CHECK with INERTIA VERDICT; "This verdict must appear explicitly in the AMEND section below regardless of its value." |
+| C-04 | Causal claim narrowed in AMEND | PASS | 12 | AMEND Required structure with narrowing requirements; restating and broadening prohibited. |
+| C-05 | Context evidence assessed | PASS | 12 | Per-step T1/T2/T3 audit; REQUIRED OUTPUTS producing Evidence gap and Evidence tier as separate named entries. |
+| C-06 | Mechanism pathway is testable | PASS | 10 | Observable indicator per labeled step; STEP LABELING REQUIREMENT enforces named agents. |
+| C-07 | Confounder or alternative cause | PASS | 10 | CONFOUNDER CHECK: "not the inertia/status-quo case already addressed in INERTIA CHECK." |
+| C-08 | AMEND output is actionable | PASS | 10 | Amended requires (a) mechanism qualifier, (b) scope condition, (c) inertia incorporation for all three verdict values, (d) evidence tier note. |
+| C-09 | Evidence quality rated | PASS | 5 | T1/T2/T3 per-step rating + Evidence tier as separate AMEND field. |
+| C-10 | Multiple causal pathways considered | FAIL | 0 | Not asked. |
+| C-11 | Mechanism incompleteness acknowledged | PASS | 5 | "Producing thin or vague steps to avoid incompleteness declaration fails this section." PATHWAY INCOMPLETE format required. |
+| C-12 | Falsification break anchored to named step | PASS | 5 | Required format; "label must match the step label in the pathway exactly." |
+| C-13 | Evidence gap localized to pathway steps | PASS | 5 | REQUIRED OUTPUTS: "Evidence gap: [list Step N -- [Name] labels with no supporting evidence; write 'none -- all steps supported' if no gaps exist]." Per-step gap enumeration structurally mandated. |
+| C-14 | AMEND conditioned on inertia finding | PASS | 5 | INERTIA VERDICT with "regardless of its value; Not competing is not a neutral finding — it is a positive bounding condition." Amended (c): "required for ALL three verdict values, not only when Competing or Unclear." |
+| C-15 | AMEND synthesizes all phase outputs | PASS | 5 | Design purpose. AMEND now has all four required fields as standalone named entries: Inertia verdict, Mechanism completeness (newly extracted), Evidence gap, Evidence tier, Confounder finding. Amended clause (c) requires unconditional inertia incorporation for all three verdict values. All four C-15 fields present + unconditionally reflected in amended claim. |
+| C-16 | Pathway steps formally labeled | PASS | 5 | STEP LABELING REQUIREMENT: "This is not a formatting preference — it is a structural prerequisite. Unlabeled steps cause falsification anchoring and evidence gap enumeration to fail mechanically." |
+| C-17 | Confounder explicitly distinguished from inertia | PASS | 5 | CONFOUNDER CHECK: "does not require X and is not the inertia/status-quo case already addressed in INERTIA CHECK." Explicit exclusion language. |
+| C-18 | Incomplete pathway still anchors falsification | PASS | 5 | CONDITIONAL BRANCH present: "Do NOT defer falsification"; prohibited deferral form named ("cannot falsify until the mechanism is clearer"); mandatory BEST-TRACEABLE ANCHOR format; "Falsification of later steps requires establishing [missing knowledge]." |
+| C-19 | AMEND evidence gap and evidence tier are separate fields | PASS | 5 | REQUIRED OUTPUTS: explicit orthogonality statement + "A pathway where all steps have T1 evidence has gap: 'none' but tier: T1. One does not substitute for the other." Both as separate named AMEND entries; integration rule: "merging them does not pass; omitting either does not pass." |
+| C-20 | AMEND inertia incorporation is unconditional | PASS | 5 | INERTIA VERDICT: "must appear explicitly in the AMEND section below regardless of its value." Amended (c): "required for ALL three verdict values, not only when Competing or Unclear." |
+| C-21 | Evidence gap orthogonality proven by null-gap counterexample | FAIL | 0 | Intentionally preserved gap. REQUIRED OUTPUTS contains the sentence "A pathway where all steps have T1 evidence has gap: 'none' but tier: T1" — this describes the null-gap case in an inline sentence but does not instantiate it as a dedicated labeled block with the category-error explanation. No NULL-GAP COUNTEREXAMPLE block. |
+| C-22 | Inertia conditional form excluded by explicit prohibition | FAIL | 0 | Intentionally preserved gap. Amended (c) says "not only when Competing or Unclear" — this points toward the prohibited form without naming it explicitly as a failure mode. No PROHIBITED FORM statement in INERTIA CHECK or AMEND integration rules using the required language. |
+| C-23 | Mechanism completeness is a named AMEND field | PASS | 5 | Design purpose. C-15 now PASSES → C-23 gradeable. AMEND has "Mechanism completeness: {complete / incomplete at Step N / partial}" as standalone named field with integration rule: "Mechanism completeness is a named AMEND field — it must appear as a standalone entry labeled 'Mechanism completeness:' not as a qualifier embedded in the amended clause text. A clause that says 'X causes Y when the mechanism is fully traceable' satisfies (a) but does not satisfy the Mechanism completeness: field." |
+| **Total** | | | **155 / 165** | All essential: PASS. Golden (155 ≥ 150). |
+
+---
+
+## V-04: Null-gap proof + named prohibition
+
+*Base: R4 V-04. Changes: NULL-GAP COUNTEREXAMPLE block in CONTEXT EVIDENCE (C-21) + PROHIBITED FORM in INERTIA CHECK and AMEND integration rules (C-22). C-23 gap intentionally preserved (no standalone mechanism completeness field). CONDITIONAL BRANCH absent (same as R4 V-04).*
+
+| ID | Criterion | Verdict | Pts | Evidence Note |
+|----|-----------|---------|-----|---------------|
+| C-01 | Mechanism traced as pathway | PASS | 12 | STEP LABELING REQUIREMENT as structural prerequisite. |
+| C-02 | Falsification is mechanism break | PASS | 12 | Required format; named failure modes: "Step 2 fails without step name does not pass. A metric threshold does not pass." |
+| C-03 | Inertia check performed | PASS | 12 | INERTIA VERDICT; "must appear explicitly in the AMEND section below regardless of its value." |
+| C-04 | Causal claim narrowed in AMEND | PASS | 12 | AMEND with integration rules; restating and broadening prohibited. |
+| C-05 | Context evidence assessed | PASS | 12 | Per-step T1/T2/T3 audit; REQUIRED OUTPUTS producing Evidence gap and Evidence tier as separate named entries. |
+| C-06 | Mechanism pathway is testable | PASS | 10 | Observable indicator per labeled step. |
+| C-07 | Confounder or alternative cause | PASS | 10 | CONFOUNDER CHECK: "does not require X and is not the inertia/status-quo case already addressed in INERTIA CHECK." |
+| C-08 | AMEND output is actionable | PASS | 10 | Amended (a)–(d): mechanism qualifier, scope condition, inertia incorporation for all three verdict values, evidence tier note. |
+| C-09 | Evidence quality rated | PASS | 5 | T1/T2/T3 per-step rating + Evidence tier as required AMEND field. |
+| C-10 | Multiple causal pathways considered | FAIL | 0 | Not asked. |
+| C-11 | Mechanism incompleteness acknowledged | PASS | 5 | "If fewer than 3 can be traced with confidence, say so explicitly ('mechanism not fully traceable') rather than generating thin steps." |
+| C-12 | Falsification break anchored to named step | PASS | 5 | Required format; "The label must match the step label in the pathway exactly." Named failure modes in falsification section. |
+| C-13 | Evidence gap localized to pathway steps | PASS | 5 | REQUIRED OUTPUTS: "Evidence gap: [list Step N -- [Name] labels with no supporting evidence; write 'none -- all steps supported' if no gaps exist]." |
+| C-14 | AMEND conditioned on inertia finding | PASS | 5 | "Not competing is not a neutral finding — it is a positive bounding condition that must appear in the amended claim." Three-case mandatory Amended (c) with explicit forms. |
+| C-15 | AMEND synthesizes all phase outputs | PARTIAL | 2.5 | AMEND has: Inertia verdict, Evidence gap, Evidence tier, Confounder finding as named fields. Missing: Mechanism completeness as a standalone named AMEND entry. The Amended clause has "(a) mechanism qualifier" but completeness status is not a separate named field. Three-and-a-half of four required C-15 fields. |
+| C-16 | Pathway steps formally labeled | PASS | 5 | STEP LABELING REQUIREMENT: "This is not a formatting preference — it is a structural prerequisite. Unlabeled steps cause falsification anchoring and evidence gap enumeration to fail mechanically." |
+| C-17 | Confounder explicitly distinguished from inertia | PASS | 5 | CONFOUNDER CHECK: "does not require X and is not the inertia/status-quo case already addressed in INERTIA CHECK." |
+| C-18 | Incomplete pathway still anchors falsification | PARTIAL | 2.5 | No CONDITIONAL BRANCH in FALSIFICATION CONDITION. "Say so explicitly" instruction in MECHANISM PATHWAY but falsification section has no prohibited-deferral forms list, no BEST-TRACEABLE ANCHOR required format, no explicit prohibition on metric-threshold substitution for incomplete-pathway case. |
+| C-19 | AMEND evidence gap and evidence tier are separate fields | PASS | 5 | REQUIRED OUTPUTS: orthogonality statement + inline counterexample ("A pathway where all steps have T1 evidence has gap: 'none' but tier: T1") + "One does not substitute for the other." Both as separate named AMEND fields. |
+| C-20 | AMEND inertia incorporation is unconditional | PASS | 5 | PROHIBITED FORM in INERTIA CHECK: "Conditioning inertia incorporation on the verdict being Competing or Unclear does not pass." AMEND integration rule repeats verbatim. |
+| C-21 | Evidence gap orthogonality proven by null-gap counterexample | PASS | 5 | Design purpose. NULL-GAP COUNTEREXAMPLE block: "Evidence gap: none -- all steps supported / Evidence tier: T1" shown as a named concrete valid state; explains that omitting Evidence tier when gap is empty conflates the two fields; "Both fields are always required. Both always carry a value." |
+| C-22 | Inertia conditional form excluded by explicit prohibition | PASS | 5 | Design purpose. PROHIBITED FORM in INERTIA CHECK names the conditional form by form: "'Not competing -- no adjustment needed' is the conditional form that fails." Repeated in AMEND integration rules: "Conditioning inertia incorporation on the verdict being Competing or Unclear does not pass." Named at both production and synthesis points. |
+| C-23 | Mechanism completeness is a named AMEND field | N/A | — | C-15 PARTIAL → C-23 not scored. No "Mechanism completeness:" standalone AMEND field; intentionally preserved gap. Denominator reduced to 160. |
+| **Total** | | | **150 / 160** | All essential: PASS. C-23 excluded from denominator. Golden (150 = threshold). |
+
+---
+
+## V-05: Full v5 aspirational stack
+
+*Base: R4 V-05 (150/150). Three surgical additions: NULL-GAP COUNTEREXAMPLE in Phase 4 (C-21); PROHIBITED FORM in Phase 0 + Phase 6 (C-22); standalone "Mechanism completeness:" in Phase 6 AMEND (C-23). All R4 V-05 structures preserved.*
+
+| ID | Criterion | Verdict | Pts | Evidence Note |
+|----|-----------|---------|-----|---------------|
+| C-01 | Mechanism traced as pathway | PASS | 12 | Phase 2: STEP LABELING REQUIREMENT as structural prerequisite; "Step N -- [Name]: What changes. Who acts. Observable indicator." |
+| C-02 | Falsification is mechanism break | PASS | 12 | Phase 3: Required format; CONDITIONAL BRANCH with named prohibited forms ("Cannot falsify until the mechanism is better understood", metric threshold); BEST-TRACEABLE ANCHOR format; "Do not state falsification as a metric threshold." |
+| C-03 | Inertia check performed | PASS | 12 | Phase 0: INERTIA GATE as first phase before mechanism work; INERTIA VERDICT with one-sentence basis required. |
+| C-04 | Causal claim narrowed in AMEND | PASS | 12 | Phase 6: 9-field AMEND structure; "Restating the original hypothesis does not pass. Broadening it does not pass." |
+| C-05 | Context evidence assessed | PASS | 12 | Phase 4: per-step T1/T2/T3 audit using Phase 2 formal labels; FIELD INDEPENDENCE NOTE; "Do not substitute general research for team-specific evidence." |
+| C-06 | Mechanism pathway is testable | PASS | 10 | Observable indicator per labeled step in Phase 2. |
+| C-07 | Confounder or alternative cause | PASS | 10 | Phase 5: "(a) does not involve X as a cause, AND (b) is not the inertia/status-quo case already addressed in Phase 0." Silence not acceptable. |
+| C-08 | AMEND output is actionable | PASS | 10 | Phase 6 Amended: (a)–(d) four required constraint dimensions including unconditional inertia incorporation for all three cases. |
+| C-09 | Evidence quality rated | PASS | 5 | Phase 4: T1/T2/T3 scale with full definitions + per-step rating + Aggregate evidence tier as required named output. |
+| C-10 | Multiple causal pathways considered | PASS | 5 | Phase 2: "Also: is there more than one plausible causal pathway from X to Y?" — secondary pathway probe + relationship classification (complementary/competing/nested/singular). Both cases required outputs. |
+| C-11 | Mechanism incompleteness acknowledged | PASS | 5 | Phase 1 MECHANISM READINESS: PATHWAY INCOMPLETE declaration format; "Producing three thin or vague steps to clear this gate — instead of declaring incompleteness — fails this phase." |
+| C-12 | Falsification break anchored to named step | PASS | 5 | Phase 3: step number and name must match Phase 2 labeled rows exactly; [UNCERTAIN] steps may still serve as anchors with noted uncertainty. |
+| C-13 | Evidence gap localized to pathway steps | PASS | 5 | Phase 4 FIELD INDEPENDENCE NOTE: "Evidence gap steps: [list Step N -- [Name] labels with no supporting evidence; write 'none' if every step has evidence]." Per-step gap enumeration structurally mandated. |
+| C-14 | AMEND conditioned on inertia finding | PASS | 5 | Phase 6: "required regardless of verdict value; no verdict makes inertia incorporation optional." Three-case forms for Competing, Not competing, Unclear. |
+| C-15 | AMEND synthesizes all phase outputs | PASS | 5 | Phase 6: all four required fields present as standalone named entries — Inertia verdict, Mechanism completeness, Evidence tier, Evidence gap, Confounder finding. Integration rule: "Omitting any of them does not pass. Partial synthesis is not synthesis." |
+| C-16 | Pathway steps formally labeled | PASS | 5 | Phase 2: "This is not a presentational preference — it is a structural prerequisite. Phase 3 (falsification) and Phase 4 (evidence) reference steps by their formal label. Unlabeled steps make falsification anchoring and evidence gap enumeration fail mechanically." |
+| C-17 | Confounder explicitly distinguished from inertia | PASS | 5 | Phase 5: "The inertia case (Phase 0) is EXCLUDED from this analysis." + mandatory acknowledgment: "Explicitly acknowledge the exclusion: 'The inertia case (Phase 0 verdict: [verdict]) is not included here — it was handled separately in Phase 0.'" |
+| C-18 | Incomplete pathway still anchors falsification | PASS | 5 | Phase 3 CONDITIONAL BRANCH: named prohibited forms + mandatory BEST-TRACEABLE ANCHOR format + "Incompleteness changes the confidence annotation — not the structural requirement to name a step-level anchor." |
+| C-19 | AMEND evidence gap and evidence tier are separate fields | PASS | 5 | Phase 4 FIELD INDEPENDENCE NOTE: orthogonality + null-gap counterexample + "produce both fields in every output." Phase 6 AMEND has both as separate named fields; integration rule: "merging them or omitting either does not pass." |
+| C-20 | AMEND inertia incorporation is unconditional | PASS | 5 | Phase 0 PROHIBITED FORM + Phase 6 Amended (c): "required regardless of verdict value; no verdict makes inertia incorporation optional." Integration rule: "conditioning it on Competing or Unclear does not pass." |
+| C-21 | Evidence gap orthogonality proven by null-gap counterexample | PASS | 5 | Design purpose. Phase 4 NULL-GAP COUNTEREXAMPLE block: "Evidence gap steps: none / Aggregate evidence tier: T1" shown as a valid required output state with labeled concrete values; explains the category error being prevented ("conflating 'no missing steps' with 'no tier to report'"); "Both are always required. Both always carry a value, even when gap is none." |
+| C-22 | Inertia conditional form excluded by explicit prohibition | PASS | 5 | Design purpose. Phase 0 PROHIBITED FORM names conditional form: "'Not competing -- no adjustment needed' is the conditional form that fails." Phase 6 integration rule repeats by form: "conditioning it on Competing or Unclear does not pass — all three verdict values require explicit reference." Named at verdict production point AND synthesis point. |
+| C-23 | Mechanism completeness is a named AMEND field | PASS | 5 | Design purpose. C-15 PASSES → C-23 gradeable. Phase 6 AMEND has "Mechanism completeness: {complete / incomplete at Step N / partial -- from Phase 1; this is a standalone named field; a mechanism qualifier embedded within the Amended clause text ... does not satisfy this field}." Integration rule: "Mechanism completeness is a standalone named AMEND field — embedding it within the amended clause text does not satisfy this field requirement." |
+| **Total** | | | **165 / 165** | All essential: PASS. Golden — ceiling. |
+
+---
+
+## Rankings (v5 rubric)
+
+| Rank | Variation | Score | Denominator | All Essential | Interpretation | Notes |
+|------|-----------|-------|-------------|---------------|----------------|-------|
+| 1 | **V-05: Full v5 aspirational stack** | **165** | 165 | YES | Golden — ceiling | All 15 aspirational criteria pass. C-21+C-22+C-23 all PASS. |
+| 2 | **V-03: Mechanism completeness as standalone AMEND field** | **155** | 165 | YES | Golden | C-23 design purpose; C-15+C-18 both upgrade to PASS vs R4 baseline; C-21+C-22 intentionally absent. |
+| 3 | **V-04: Null-gap proof + named prohibition** | **150** | 160 | YES | Golden | C-21+C-22 design purpose; C-23 N/A (C-15 PARTIAL); C-18 PARTIAL (no CONDITIONAL BRANCH). |
+| 4 | **V-01: Null-gap counterexample as instantiated proof** | **140** | 160 | YES | Acceptable | C-21 design purpose; C-22 FAIL (no prohibition); C-20 FAIL (conditional form); C-14/C-15 PARTIAL. |
+| 5 | **V-02: Named prohibition of conditional inertia form** | **135** | 160 | YES | Acceptable | C-22 design purpose; C-21 FAIL (no gap field exists); C-15/C-19 FAIL (both absent); C-13/C-18 PARTIAL. |
+
+*Denominator = 160 when C-23 is N/A (C-15 not fully passing for that variation).*
+
+---
+
+## Score Deltas vs R4
+
+| Variation | R5 Score | R4 Baseline | Delta | Primary driver |
+|-----------|----------|-------------|-------|----------------|
+| V-05 | 165/165 | 150/150 | +15 | C-21 PASS (+5) + C-22 PASS (+5) + C-23 PASS (+5) — all three new criteria |
+| V-03 | 155/165 | 140/150 (R4 V-04 base) | +15 | C-23 PASS (+5) + C-15 PARTIAL→PASS (+2.5) + C-18 PARTIAL→PASS (+2.5) + C-23 gradeability unlocked |
+| V-04 | 150/160 | 140/150 | +10 | C-21 PASS (+5) + C-22 PASS (+5); C-23 N/A |
+| V-01 | 140/160 | 135/150 | +5 | C-21 PASS (+5); C-22 FAIL (0); C-23 N/A |
+| V-02 | 135/160 | 130/150 (R4 V-03 base) | +5 | C-22 PASS (+5); C-21 FAIL (0); C-23 N/A |
+
+---
+
+## Excellence Signals from V-05
+
+**What the ceiling variation has that Golden V-03 does not:**
+
+1. **C-21 (+5): NULL-GAP COUNTEREXAMPLE as labeled block, not inline sentence.** V-03's REQUIRED OUTPUTS contains the sentence "A pathway where all steps have T1 evidence has gap: 'none' but tier: T1" — the null-gap case is mentioned. V-05's NULL-GAP COUNTEREXAMPLE block is a dedicated labeled section that instantiates "Evidence gap steps: none / Aggregate evidence tier: T1" as concrete named fields, names the category error being prevented ("conflating 'no missing steps' with 'no tier to report'"), and closes with "Both are always required. Both always carry a value, even when gap is none." The label makes the block retrievable by name; the category-error explanation makes the prohibition learnable.
+
+2. **C-22 (+5): Prohibition named at both verdict production point and synthesis point.** V-03 names "not only when Competing or Unclear" in the amended clause — pointing at the prohibited form but not naming it as a failure mode. V-05 places PROHIBITED FORM in Phase 0 (where the verdict is produced) and repeats the exact language in Phase 6 integration rules (where the verdict is applied). A model that forgets the Phase 0 prohibition while writing Phase 6 will still see it at Phase 6; a model that reads only Phase 6 for guidance will see it there. Dual-site placement closes both the encoding gap and the retrieval gap.
+
+3. **C-10 (+5): Phase 2 explicit secondary pathway probe.** V-03 does not ask "is there more than one plausible causal pathway?" V-05's Phase 2 has the explicit question with both-cases-required outputs and frontmatter fields (secondary_pathway_noted, pathway_relationship). Without this explicit question, no variation produces a secondary pathway survey.
+
+**The core v5 pattern:**
+- V-04 proves C-21 and C-22 are independently addable and compatible in a non-phase structure, reaching Golden at exactly the threshold
+- V-03 proves C-23 is the highest-leverage single change in R5: mechanism completeness as a standalone field simultaneously resolves C-15 PARTIAL (worth 2.5 pts) and unlocks C-23 for scoring (worth 5 pts) — 7.5 pts from a "5-pt criterion" addition
+- The gap between V-03 (155) and V-05 (165) is not C-23 — it is C-21 and C-22, both absent from V-03
+
+---
+
 ```json
-{"top_score": 100.0, "all_essential_pass": true, "new_patterns": ["aggregate observability pattern label (AllObservable/Mixed/PredominantlyOpaque) as conditional AMEND trigger — V-04 Observability Summary Table surfaces chain-level unobservability that per-hop inline fields cannot detect in aggregate", "testability refinement yield as structured finding — V-05 tracks conditions from Unknown-at-genesis to determinate-after-evidence, producing testability_refined_count and testability_residual_unknown_count as diagnostic metadata; residual Unknowns route to mandatory AMEND Testability slot"]}
+{"top_score": 165, "all_essential_pass": true, "new_patterns": ["null-gap counterexample requires a dedicated labeled block to function as proof: an inline sentence demonstrates the null-gap case but a labeled NULL-GAP COUNTEREXAMPLE block names the category error being prevented and makes the prohibition retrievable by name -- description shows the case; instantiation prevents the error", "explicit prohibition must appear at both verdict production point and verdict synthesis point: placing PROHIBITED FORM only at AMEND leaves Phase 0 unguarded where the model builds its inertia framing; placing it only at Phase 0 leaves AMEND integration rules without the named failure mode -- dual-site placement closes both gaps"]}
 ```
-
----
-
-All 5 variations score **100.0**. R5 target achieved.
-
-**Top scorer**: all tied at 100.0. Differentiation is qualitative:
-
-- **V-02** has the strongest A-11 architecture: FRAMER Gate explicitly prohibits the confidence column, making conflation structurally impossible rather than instructionally discouraged.
-- **V-04** has the strongest A-10 architecture: Observability Summary Table promotes hop observability from inline annotation to a first-class coverage diagnostic with conditional AMEND routing.
-- **V-05** has the richest lifecycle semantics: Unknown is a first-class state, refinement is an observable event, and residual Unknowns become findings rather than gaps.
-
-**Two new patterns** seeded for v6:
-1. Aggregate diagnostic label → conditional AMEND (V-04 pattern)
-2. Testability refinement yield as structured finding with before/after metadata (V-05 pattern)
- |
-
-### Aspirational (10 pts -- 11 criteria, formula: pass/11 * 10)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| A-01 | PASS | Section 4 "Mechanism strength (preliminary): Strong/Moderate/Weak" with rationale |
-| A-02 | PASS | Section 3 "Baseline rate: estimate or bound" or explicit "Unknown" |
-| A-03 | PASS | Section 5 (ADVERSARIAL EXTENSION) is a named separate section after Section 4 gate |
-| A-04 | PASS | Intro: "Every classification judgment... expressed as a discrete label from a fixed set." Covers mechanism strength, confidence, inertia severity, observability, evidence quality |
-| A-05 | PASS | Section 2 (Evidence) precedes Section 4 (Mechanism). Section 2 Gate must complete before advancing |
-| A-06 | PASS | Preliminary in S4 before adversarial; final in S5 after adversarial. "State whether changed from preliminary" |
-| A-07 | PASS | S1 table has Confidence column per row; S3 I-01 has Confidence; final S5 table has Confidence per row. S3 Gate checks both columns |
-| A-08 | PASS | Every hop: "Falsification connection: which F-NN or I-NN from Sections 1-3 does this hop explain?" S4 Gate checks this |
-| A-09 | PASS | Four binary gate checklists: SECTION 1, 2, 3, 4 GATE -- all with "Do not advance" directives |
-| A-10 | PASS | Every hop: "Observability: Observable/Partial/Opaque" + "Observability rationale." S4 Gate checks this |
-| A-11 | PASS | Intro: "Every falsification condition carries two independent classification dimensions from the moment it is generated: Testability / Confidence." S1 Gate: "Both testability AND confidence columns filled for every row." Final S5 table carries both columns forward |
-
-Aspirational pass: 11/11 x 10 = 10.0
-
-**Composite: 100.0 -- GOLDEN**
-
----
-
-## V-02: Role-Owned Dimensions (FRAMER / ANALYST / SKEPTIC)
-
-### Essential (60 pts)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| C-01 | PASS | ANALYST maps X -> [A] -> Y with explicit hop descriptions |
-| C-02 | PASS | FRAMER generates F-NN/I-NN; SKEPTIC finalizes with confidence labels |
-| C-03 | PASS | FRAMER (OPENING) Step 4: status-quo baseline + SAFE/ADVISORY/STOP label |
-| C-04 | PASS | FRAMER (CLOSING) produces scoped claim with scope condition + out-of-scope |
-| C-05 | PASS | FRAMER (CLOSING) AMEND DIRECTIVE requires at least two slots |
-
-### Recommended (30 pts)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| R-01 | PASS | FRAMER Step 3: "at least one context-specific observation, OR 'None found'"; generic citations fail |
-| R-02 | PASS | SKEPTIC section includes mandatory Confounders field |
-| R-03 | PASS | ANALYST: "Mechanism chain: [Two hops minimum.]" |
-
-### Aspirational (10 pts -- 11 criteria, formula: pass/11 * 10)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| A-01 | PASS | ANALYST "Mechanism strength (preliminary)" with rationale; SKEPTIC "Mechanism strength (final)" with rationale |
-| A-02 | PASS | FRAMER Step 4: "Baseline Y rate: estimate, bound, or 'Unknown'" |
-| A-03 | PASS | SKEPTIC is a full named role; adversarial challenge is architecturally isolated from ANALYST |
-| A-04 | PASS | Intro: "Every classification judgment uses a discrete label from the fixed set shown, with rationale." ANALYST observability, FRAMER testability/inertia, SKEPTIC confidence all use discrete sets |
-| A-05 | PASS | FRAMER (OPENING) evidence (Step 3) completes before ANALYST (mechanism). FRAMER (OPENING) GATE must be satisfied before advancing to ANALYST |
-| A-06 | PASS | ANALYST assigns preliminary before adversarial; SKEPTIC assigns final after hop-by-hop challenge. "State whether changed from ANALYST and why" |
-| A-07 | PASS | SKEPTIC assigns confidence per row in the final table. SKEPTIC Gate: "Final falsification table populated with confidence labels for every row" |
-| A-08 | PASS | Every ANALYST hop: "Falsification connection: which F-NN or I-NN from FRAMER's table does this hop explain?" ANALYST Gate checks this |
-| A-09 | PASS | Three binary checklists: FRAMER (OPENING) GATE, ANALYST GATE, SKEPTIC GATE -- all with "Do not advance" directives |
-| A-10 | PASS | ANALYST: every hop "Observability: Observable/Partial/Opaque" + rationale. ANALYST Gate: "Every hop has observability label... and rationale" |
-| A-11 | PASS | FRAMER assigns testability only (gate checks "Confidence column NOT present in this table"). SKEPTIC assigns confidence only. Final table has "Testability (FRAMER)" and "Confidence (SKEPTIC)" as separate columns owned by separate roles. Conflation is structurally impossible, not merely discouraged |
-
-Aspirational pass: 11/11 x 10 = 10.0
-
-**Composite: 100.0 -- GOLDEN**
-
----
-
-## V-03: Two-Pool Dual-Dimension
-
-### Essential (60 pts)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| C-01 | PASS | Section 4 Mechanism Chain with hop descriptions |
-| C-02 | PASS | F-NN pool (Section 1) + I-NN pool (Section 2) both required |
-| C-03 | PASS | Section 2 dedicated inertia check with SAFE/ADVISORY/STOP + baseline rate |
-| C-04 | PASS | Section 6 scoped claim with scope condition + out-of-scope |
-| C-05 | PASS | Section 6 AMEND DIRECTIVE with at least two mandatory slots |
-
-### Recommended (30 pts)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| R-01 | PASS | Section 3: "at least one context-specific observation required"; generic fails |
-| R-02 | PASS | Section 5 Confounders field |
-| R-03 | PASS | Section 4: "Two hops minimum" |
-
-### Aspirational (10 pts -- 11 criteria, formula: pass/11 * 10)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| A-01 | PASS | Section 4 preliminary + Section 5 final, each with label and rationale |
-| A-02 | PASS | Section 2: "Baseline rate: estimate or bound" or explicit "Unknown" |
-| A-03 | PASS | Section 5 adversarial is a named section separate from Section 4 mechanism |
-| A-04 | PASS | Both F-NN (S1) and I-NN (S2) tables use discrete labels. All other classification fields likewise |
-| A-05 | PASS | Section 3 (Evidence) precedes Section 4 (Mechanism). Section 3 Gate must complete first |
-| A-06 | PASS | Section 4 preliminary before adversarial + Section 5 final after challenge |
-| A-07 | PASS | F-NN table (S1) has Confidence per row; I-NN table (S2) has Confidence per row; Section 5 challenge has confidence per hop |
-| A-08 | PASS | S4: "Falsification connection: which F-NN or I-NN from Sections 1-2 does this hop explain? Cross-referencing an I-NN condition is valid and encouraged." |
-| A-09 | PASS | Section 1 GATE, Section 2 GATE, Section 3 GATE -- three binary checklists with advance directives |
-| A-10 | PASS | S4: every hop requires "Observability: Observable/Partial/Opaque" + rationale |
-| A-11 | PASS | Both F-NN pool (S1) and I-NN pool (S2) carry Testability column. S2 Gate: "At least one I-NN condition with both testability AND confidence labels." A-11 extended to inertia pool -- widest pool coverage of any variation |
-
-Aspirational pass: 11/11 x 10 = 10.0
-
-**Composite: 100.0 -- GOLDEN**
-
----
-
-## V-04: Observability Summary Table
-
-### Essential (60 pts)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| C-01 | PASS | Section 4 mechanism chain with hop descriptions |
-| C-02 | PASS | S1 F-NN table + S3 I-NN + S5 bidirectionality table |
-| C-03 | PASS | Section 3 dedicated, with SAFE/ADVISORY/STOP label |
-| C-04 | PASS | Section 7 scoped claim referencing bidirectionality gaps AND observability weak links |
-| C-05 | PASS | Section 7 AMEND DIRECTIVE with up to 4 slots including conditional Mechanism gap + Observability slots |
-
-### Recommended (30 pts)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| R-01 | PASS | Section 2 evidence; generic citations fail |
-| R-02 | PASS | Section 6 Confounders field |
-| R-03 | PASS | Section 4 "Two hops minimum" |
-
-### Aspirational (10 pts -- 11 criteria, formula: pass/11 * 10)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| A-01 | PASS | S4 preliminary + S6 final strength with label and rationale |
-| A-02 | PASS | S3: "Baseline rate: estimate or bound. Or: 'Unknown.'" |
-| A-03 | PASS | Section 6 adversarial is spatially and logically separate from Sections 4-5 |
-| A-04 | PASS | S1 dual-column table, S3 inertia, S4 observability, S5 Observability Summary (Observable/Partial/Opaque), observability pattern (AllObservable/Mixed/PredominantlyOpaque), evidence quality -- all discrete |
-| A-05 | PASS | Section 2 (Evidence) precedes Section 4 (Mechanism) |
-| A-06 | PASS | S4 preliminary before S5 tables + S6 adversarial; S6 final after adversarial. "State whether changed from preliminary" |
-| A-07 | PASS | S1 F-NN table Confidence per row; S3 I-01 Confidence; S5 Direction A Confidence; S6 hop challenge confidence per hop |
-| A-08 | PASS | S4 preliminary falsification connection per hop + S5 Direction B finalizes and cross-checks. S5 Gate: "Every Section 4 hop has a row in Direction B" |
-| A-09 | PASS | Section 5 GATE is an explicit named binary checklist (5 items) with "Do not advance to Section 6" directive |
-| A-10 | PASS | S4 inline observability annotation per hop AND S5 Observability Summary Table (standalone sub-table with Weak link flag). S5 Gate: "Every Section 4 hop has a row in Observability Summary with label and weak-link flag." Observability promoted to first-class coverage diagnostic |
-| A-11 | PASS | S1 F-NN table has Testability column at genesis; S5 Direction A carries Testability forward per condition; S5 Gate: "Every F-NN and I-NN condition has a row in Direction A with testability and confidence" |
-
-Aspirational pass: 11/11 x 10 = 10.0
-
-**Composite: 100.0 -- GOLDEN**
-
----
-
-## V-05: Testability Refinement Lifecycle
-
-### Essential (60 pts)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| C-01 | PASS | Section B mechanism chain with hop descriptions |
-| C-02 | PASS | Section A1 F-NN conditions (at minimum two required) |
-| C-03 | PASS | Section A3 inertia check with SAFE/ADVISORY/STOP label |
-| C-04 | PASS | Section D scoped claim with scope condition + out-of-scope |
-| C-05 | PASS | Section D AMEND DIRECTIVE; includes mandatory Testability slot if residual Unknowns exist |
-
-### Recommended (30 pts)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| R-01 | PASS | Section A2 evidence; "at least one context-specific observation, OR 'None found'" |
-| R-02 | PASS | Section C Confounders field |
-| R-03 | PASS | Section B: "Two hops minimum." Section B Gate checks this |
-
-### Aspirational (10 pts -- 11 criteria, formula: pass/11 * 10)
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| A-01 | PASS | Section B preliminary with rationale; Section C final with rationale |
-| A-02 | PASS | Section A3: "Baseline rate: estimate or bound. Or: 'Unknown.'" |
-| A-03 | PASS | Section C (adversarial) is spatially and logically separated from Section B (mechanism) |
-| A-04 | PASS | All classification fields use discrete sets: Testability (Easy/Hard/Unknown), Confidence (High/Medium/Low), Observability (Observable/Partial/Opaque), Inertia severity (SAFE/ADVISORY/STOP), Evidence quality (Strong/Moderate/Weak/None) |
-| A-05 | PASS | Section A (A1+A2+A3 intake) precedes Section B (mechanism). Section A GATE must be satisfied before advancing |
-| A-06 | PASS | Section B preliminary (before Section C adversarial) + Section C final (after challenge). "State whether changed from preliminary" |
-| A-07 | PASS | Section A1 F-NN table has Confidence at generation time; Section A2 testability refinement table is per-row; Section C hop challenge has confidence per row |
-| A-08 | PASS | Every Section B hop: "Falsification connection: which F-NN or I-NN from Section A does this hop explain?" Section B Gate checks this |
-| A-09 | PASS | Section A GATE and Section B GATE -- two binary checklists with "Do not advance" directives |
-| A-10 | PASS | Every Section B hop: "Observability: Observable/Partial/Opaque" + "Observability rationale." Section B Gate checks this |
-| A-11 | PASS | A2 testability refinement pass provides the richest A-11 implementation: every F-NN and I-NN starts Unknown, evidence refines to Easy/Hard/Unknown, residual Unknowns tracked in "Residual Unknown summary." Section A Gate: "Testability refinement pass completed for every F-NN and I-NN condition." A-11 is an observable lifecycle event, not just a label presence check |
-
-Aspirational pass: 11/11 x 10 = 10.0
-
-**Composite: 100.0 -- GOLDEN**
-
----
-
-## Excellence Signals
-
-**V-02 -- Role ownership as structural impossibility**: Strongest A-11 implementation across all rounds. FRAMER Gate explicitly checks "Confidence column NOT present in this table." Conflation is not discouraged -- it is structurally prohibited. Testability rationale cites instrumentation/access; confidence rationale cites mechanism depth. These are assigned at different times by different named roles. Pattern: dimension ownership via role isolation could apply to any multi-dimension classification problem where conflation is the primary failure mode.
-
-**V-04 -- Aggregate observability pattern as conditional AMEND trigger**: The Observability Summary Table implements a diagnostic not available from inline fields: the aggregate pattern (AllObservable/Mixed/PredominantlyOpaque) triggers a conditional AMEND slot. "Predominantly Opaque -- mechanism is largely unobservable; AMEND mechanism slot mandatory." This is the same architectural move as the bidirectionality table -- extracting per-element annotations into a summary table makes the distribution visible. The distribution label then gates remediation requirements.
-
-**V-05 -- Unknown as a first-class state with observable lifecycle**: Starting testability at Unknown forces "can we run this test?" to be answered per condition, not assumed. The testability refinement pass creates a before/after signal. Residual Unknown count is a diagnostic finding, not a coverage gap. The AMEND Testability slot triggered by residual Unknowns is the first AMEND slot in any variation that fires based on a lifecycle state rather than a structural absence.
-
----
-
-## New Patterns for v6 Consideration
-
-**Pattern 1 -- Aggregate diagnostic label as conditional AMEND trigger** (V-04):
-An aggregate pattern label (observability pattern: AllObservable/Mixed/PredominantlyOpaque) connects to a mandatory AMEND slot when the pattern signals a coverage failure. This is distinct from per-element labeling (A-10): the aggregate pattern can surface chain-level problems that per-hop labels obscure. No current criterion captures whether aggregate diagnostic labels feed downstream remediation routing.
-
-**Pattern 2 -- Testability refinement yield as a structured finding** (V-05):
-Tracking conditions from Unknown-at-genesis to determinate-after-evidence creates two new metadata signals: testability_refined_count (conditions that moved) and testability_residual_unknown_count (conditions that did not). These measure the quality of available evidence relative to testability questions. No current criterion captures whether residual testability unknowns are tracked as findings and routed to AMEND rather than silently left blank.
-
----
-
-## Round History
-
-| Round | Rubric | Variations | Golden | Top Score |
-|-------|--------|------------|--------|-----------|
-| R1 | v1 | 5 | 3/5 | 96.4 |
-| R2 | v2 | 5 | 5/5 | 96.4 |
-| R3 | v3 | 5 | 5/5 | 97.3 |
-| R4 | v4 | 5 | 5/5 | 100.0 |
-| R5 | v5 | 5 | 5/5 | 100.0 |

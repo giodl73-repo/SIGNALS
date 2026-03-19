@@ -1,180 +1,177 @@
-## `discover-competitors-alt` R4 — Score Results
+## discover-competitors-alt — R4 Scorecard
 
-| Variation | Composite | C-17 | Notes |
-|-----------|-----------|------|-------|
-| V-01 Symmetric FAILS/PASS pairs | **135** | PASS | Minimal sufficient mechanism |
-| V-02 Explicit SR #5 declaration | **132.5** | PARTIAL | C-12 phase-level softer; declaration incomplete |
-| V-03 All-table apparatus | **135** | PASS | Apparatus type uniformity path |
-| V-04 SR #5 + symmetric pairs | **135** | PASS | Cleanest load-bearing isolation |
-| V-05 Full R4 stack | **135** | PASS | Declaration + pairs + self-audit loop |
-
-**Ranking:** V-01 = V-03 = V-04 = V-05 (135) > V-02 (132.5)
-
-**v4 breakthrough threshold (>120):** V-01, V-03, V-04, V-05 pass. V-02 misses by 2.5 — C-17 PARTIAL.
-
-All essential criteria pass in all five variations. C-09–C-16 all pass in all five (the full R3 V-05 stack carries forward intact). C-17 is the sole differentiator.
+**All five variations: 140/140 — Exceptional**
 
 ---
 
-**Three new patterns:**
+### Composite by variation
 
-1. **Symmetric FAILS/PASS pairs are a minimal sufficient C-17 mechanism (V-01)** — identical three-component fingerprint per constraint at the phase level produces symmetric enforcement as a structural consequence, without SR-block meta-declaration. Most portable mechanism: add FAILS/PASS pairs to existing enforcement instructions in any skill.
+| | V-01 | V-02 | V-03 | V-04 | V-05 |
+|---|---:|---:|---:|---:|---:|
+| Essential (60) | 60 | 60 | 60 | 60 | 60 |
+| Recommended (30) | 30 | 30 | 30 | 30 | 30 |
+| Aspirational (50) | 50 | 50 | 50 | 50 | 50 |
+| **Composite** | **140** | **140** | **140** | **140** | **140** |
 
-2. **Meta-declaration alone is incomplete (V-02)** — SR #5 names enforcement symmetry, but C-12's phase-level instruction lacks a FAILS/PASS pair. Key rule: the SR block declares the requirement; the execution text must operationalize it symmetrically. A named meta-property without symmetric execution apparatus fails C-17.
-
-3. **All-table apparatus is a distinct structural C-17 path (V-03)** — converting C-12 and C-13 to table schema achieves symmetry through mechanism TYPE uniformity (all tables) rather than enforcement RIGOR symmetry (all FAILS/PASS pairs). Empty-cell failures are identical across all three constraints by construction.
-
-```json
-{"top_score": 135, "all_essential_pass": true, "new_patterns": ["Symmetric FAILS/PASS pairs per constraint (V-01) are a minimal sufficient condition for C-17 -- identical three-component fingerprint at phase level produces enforcement symmetry without explicit meta-declaration", "Meta-declaration of enforcement symmetry (V-02 SR #5) is an incomplete C-17 mechanism when phase-level instructions for any one constraint remain narratively soft -- the SR block names the property but the execution text must operationalize it symmetrically", "All-table apparatus uniformity (V-03) is a distinct structural C-17 path through mechanism type consistency rather than enforcement rigor symmetry -- empty-cell failures apply identically across all three constraints by construction"]}
-```
-nds" (WORKAROUND SATISFACTION), "switching has a cost" (SWITCHING COST), "Teams develop habits around their tools" (HABIT LOCK-IN) are all named as FAILS. Domain-specific content is required.
-
-**C-07 PASS (10 pts, all):**
-"Verify at least one major competitor claim via WebSearch. Cite inline." Present in PHASE 3 in all five.
-
-**C-08 PASS (10 pts, all):**
-"AMEND: Exactly 3 items. Input change + output change. Specific." Identical in all five.
+All 18 criteria PASS across all five variations. Three projections were off: V-02 and V-03 (projected 137.5) and V-05 (projected 135) all reached 140.
 
 ---
 
-### Aspirational Band — C-09 through C-16 pass in all five; C-17 differentiates
+### Key reversals vs projections
 
-**C-09 PASS (5 pts, all):**
-Pre-map -> competitor table -> whitespace finding creates a three-stage lens: Phase 1 establishes segments/categories with size/vacancy data; Phase 3 assigns Map Position per competitor; Phase 4 finds whitespace grounded in Phase 1 row labels and Map Position column values. Cross-dimensional insight is structurally generated: the combined whitespace finding requires both lenses simultaneously and cannot be produced from either alone.
+**V-02 and V-03 PARTIAL? projections did not hold.** The projector was uncertain about one aspirational criterion for each but named no specific failure. On rubric inspection, both satisfy every criterion through their respective mechanisms.
 
-**C-10 PASS (5 pts, all):**
-"TABLE STAKES -- minimum requirements to be taken seriously over the WORKAROUND SATISFACTION substitute named in Phase 2. Reference at least one Phase 1 data point per item." Cross-referencing is a structural requirement, not a quality instruction.
+**V-05 C-15/C-16 PARTIAL? projections did not hold.** This is the sharpest finding:
+- **C-15** is structural (named slot position in template), not register-dependent. V-05's `SOURCE:` label appears before `REDUCTION-1`/`REDUCTION-2` in the template. The conversational ordering instruction embedded within the slot braces does not move the slot.
+- **C-16** requires *naming* the error condition, not *isolating* it in a gate section. V-05 boldfaces all four failure states (`citation gate failure`, `anchor gate failure`, `proof structure failure`, `proof rerun failure`) within prose. The rubric text supports PASS.
 
-**C-11 PASS (5 pts, all):**
-All five include the Phase 1 pre-map table schema (Segment / Size Estimate / Growth Stage / Current Leader OR Positioning Category / Current Owner(s) / Vacancy Status) declared as a structural requirement before Phase 2. SR1 failure language present in SR block in all five.
-
-**C-12 PASS (5 pts, all):**
-All five include the dual-line whitespace template with "Competitive gap:" and "Focus gap:" as labeled mandatory slots. Phase 4 instruction declares "both lines required" and the SR block prohibits single-axis observation.
-
-**C-13 PASS (5 pts, all):**
-All five name all three inertia mechanisms as labeled mandatory slots (WORKAROUND SATISFACTION, SWITCHING COST, HABIT LOCK-IN) with per-slot rejection criteria that prohibit generic restatements.
-
-**C-14 PASS (5 pts, all):**
-All five have a meta-constraint SR block at prompt start that declares C-11, C-12, and C-13 as observable format failures before any phase instruction. "Hard format constraints. Any one absent is an observable format failure, not a quality gap." R3 V-03 established this pattern; all five R4 variations inherit it.
-
-**C-15 PASS (5 pts, all):**
-All five include the Map Position column in the Phase 3 table schema. "Use Phase 1 row labels verbatim -- do not paraphrase or generalize. An empty cell or a paraphrased label is a format failure." Paraphrase prohibition is present in all five (directly inherited from R3 V-05).
-
-**C-16 PASS (5 pts, all):**
-All five include the PORTABILITY TEST block: "If I copied this slot content unchanged into a competitor analysis for a clearly different product -- payroll software, a photo editor, a scheduling tool -- would it still make sense?" Applied per slot (V-01, V-02, V-04, V-05) or per mechanism table row (V-03). Portability test is a self-applicable operational standard, not an abstract domain-specificity instruction.
+**R4 answer: the rubric is register-neutral.** No criterion requires gate-table isolation. Conversational bold naming achieves the same compliance as formal gate declarations.
 
 ---
 
-### C-17 -- Symmetric structural enforcement signature (differentiating criterion)
+### Key interactions — resolved
 
-**V-01: PASS (5 pts)**
-Mechanism: Symmetric FAILS/PASS rejection pairs at phase level.
-Evidence: C-11 (SR1): table schema + FAILS/PASS pair ("FAILS: Prose paragraph / PASS: Markdown table"). C-13 (PHASE 2): three labeled slots each with per-slot FAILS/PASS pairs ("FAILS: 'Teams use workarounds' / PASS: Names the exact template..."). C-12 (PHASE 4): dual-line template + FAILS/PASS pair ("FAILS: Single-axis whitespace only / PASS: One paragraph with 'Competitive gap:' and 'Focus gap:' both labeled"). All three constraints carry identical three-component fingerprint: named format artifact + format-failure declaration + FAILS/PASS rejection example pair. Symmetry emerges as structural consequence of identical prompt format, without requiring explicit meta-declaration.
-
-**V-02: PARTIAL (2.5 pts)**
-Mechanism: Explicit SR #5 declaration naming enforcement symmetry.
-Evidence: SR #5 declares "all three use the same apparatus: a named format artifact plus a format-failure declaration" and the pre-submission verification step checks SR1, SR2, SR4 for each component. Declaration is strong. However, C-12's phase-level instruction -- "Both lines in one paragraph. Do not split into separate observations." -- is narratively soft compared to V-01's explicit FAILS/PASS pair for the same constraint. SR #5 declares symmetry as a requirement but the phase-level text for C-12 does not carry the same enforcement apparatus as C-11 (table schema + FAILS/PASS) or C-13 (labeled slots + per-slot FAILS/PASS pairs). Observable risk: an output where C-12 enforcement is softer than C-11 and C-13 -- one constraint still narratively instructed while two are hard-enforced. SR #5 pre-submission verification may catch this, but phase-level asymmetry creates residual risk absent in V-01/V-03/V-04/V-05.
-
-**V-03: PASS (5 pts)**
-Mechanism: All-table apparatus uniformity.
-Evidence: C-11 (SR1): Phase 1 pre-map table schema (original). C-13 (SR2): PHASE 2 mechanism table with 3 rows (WORKAROUND SATISFACTION, SWITCHING COST, HABIT LOCK-IN) -- new in R4 V-03. C-12 (SR4): PHASE 4 whitespace table with 2 rows (Competitive gap, Focus gap) -- new in R4 V-03. All three constraints now render as tables. An empty table cell is visible in rendered markdown regardless of which table it appears in -- enforcement surface is identical across all three. The apparatus TYPE is uniform (all table schema), creating a distinct structural path to C-17 through mechanism consistency rather than enforcement rigor symmetry.
-
-**V-04: PASS (5 pts)**
-Mechanism: V-02 (SR #5 declaration) + V-01 (symmetric FAILS/PASS pairs) combined.
-Evidence: SR #5 explicitly names enforcement symmetry. All three constraints carry identical three-component fingerprint at the phase level (C-11: table schema + FAILS/PASS; C-13: labeled slots + per-slot FAILS/PASS pairs; C-12: dual-line template + FAILS/PASS). Pre-submission verification step checks SR1, SR2, SR4 for all three components. V-04 is the cleanest load-bearing isolation test: excludes V-03's apparatus-type rewrite and tests whether declaration+pairs is sufficient independently.
-
-**V-05: PASS (5 pts)**
-Mechanism: R3 V-05 base + SR #5 explicit declaration + symmetric FAILS/PASS pairs + symmetric verification step.
-Evidence: All V-04 mechanisms present plus a three-constraint named verification checklist: "SR1 (C-11): table schema present? format-failure declared? FAILS/PASS pair present? SR2 (C-13): three labeled slots present? portability test applied? FAILS/PASS pairs present? SR4 (C-12): dual-line template present? both lines declared mandatory? FAILS/PASS pair present?" The verification step creates a self-audit loop mirroring the opening SR block -- same components named, same three constraints checked, same failure language. Highest confidence for C-17 compliance.
+| Interaction | Resolution |
+|---|---|
+| V-01 vs R3 V-05 on C-10 | C-10 is invariant to synthesis-first vs synthesis-last placement |
+| V-02 vs V-03 on C-10 | Both PASS; V-02 structural coercion is more adversarially robust |
+| V-04 vs V-01 on C-16 | Both PASS; V-04 gate tables exceed minimum but don't change score |
+| V-05 C-15/C-16 | PASS; register neutrality confirmed |
 
 ---
 
-## Aspirational Band Detail
+### Excellence signals
 
-| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
-|-----------|------|------|------|------|------|
-| C-09 (5) | 5 | 5 | 5 | 5 | 5 |
-| C-10 (5) | 5 | 5 | 5 | 5 | 5 |
-| C-11 (5) | 5 | 5 | 5 | 5 | 5 |
-| C-12 (5) | 5 | 5 | 5 | 5 | 5 |
-| C-13 (5) | 5 | 5 | 5 | 5 | 5 |
-| C-14 (5) | 5 | 5 | 5 | 5 | 5 |
-| C-15 (5) | 5 | 5 | 5 | 5 | 5 |
-| C-16 (5) | 5 | 5 | 5 | 5 | 5 |
-| **C-17 (5)** | **5** | **2.5** | **5** | **5** | **5** |
-| **Total** | **45** | **42.5** | **45** | **45** | **45** |
-
----
-
-## Score Totals
-
-| Variation | Essential (/60) | Recommended (/30) | Aspirational (/45) | Composite (/135) |
-|-----------|-----------------|-------------------|--------------------|------------------|
-| V-01 | 60 | 30 | 45 | **135** |
-| V-02 | 60 | 30 | 42.5 | **132.5** |
-| V-03 | 60 | 30 | 45 | **135** |
-| V-04 | 60 | 30 | 45 | **135** |
-| V-05 | 60 | 30 | 45 | **135** |
-
-**Ranking:** V-01 = V-03 = V-04 = V-05 > V-02
-
----
-
-## Excellence Signals from Top-Scoring Variations
-
-**Signal 1 (V-01): Symmetric FAILS/PASS pairs are a minimal sufficient condition for C-17.**
-V-01 achieves 135/135 using only symmetric rejection pairs at the phase level -- no explicit SR #5 declaration, no apparatus-type rewrite. When each constraint carries an identical three-component fingerprint (named artifact + failure declaration + FAILS/PASS pair), enforcement rigor is observably symmetric without requiring the model to be told "all constraints use the same apparatus." This is the minimal C-17 mechanism and the most portable: it can be applied to any constraint in any skill by adding a FAILS/PASS pair to each enforcement instruction, without structural rewrites.
-
-**Signal 2 (V-02 vs V-01): Meta-declaration alone is insufficient when phase-level enforcement is asymmetric.**
-V-02's SR #5 explicitly names enforcement symmetry as a format requirement, but C-12's phase-level instruction ("Both lines in one paragraph. Do not split.") lacks a FAILS/PASS pair while C-11 and C-13 have them. The meta-declaration names the property but does not guarantee the enforcement apparatus is applied symmetrically at the execution level. Key pattern failure: the SR block declares the requirement; the execution text must deliver it. V-02 demonstrates the gap between naming a meta-property and operationalizing it.
-
-**Signal 3 (V-03): Apparatus-type uniformity is a structurally distinct and equally valid C-17 path.**
-V-03 converts C-12 (whitespace) and C-13 (inertia slots) to table schema, making all three structural constraints render as tables. Empty-cell failures apply identically regardless of which table they appear in -- enforcement surface is uniform by construction, not by declaration. This differs from V-01's enforcement rigor symmetry: V-03 achieves symmetry through mechanism TYPE consistency; V-01 achieves it through RIGOR LEVEL consistency. Both paths satisfy C-17.
-
-**Signal 4 (V-05): Self-audit loop mirrors opening SR block.**
-V-05 adds a three-constraint verification step that names the same components as SR #5 (table schema / labeled slots / dual-line template + failure declaration + FAILS/PASS pair) for each of SR1, SR2, and SR4. This creates a structural bracket: the SR block at prompt start declares requirements; the verification step at prompt end confirms they were applied. Pattern: whenever a meta-property is declared in the SR block, a verification step naming the same components is the output-reliability amplifier.
-
----
-
-## Key Observations
-
-**V-01 (135): Minimal mechanism confirmed.**
-Symmetric FAILS/PASS pairs alone achieve 135/135. This is the simplest C-17 path and the most portable. Adding SR #5 (V-02) or all-table apparatus (V-03) are additive but not necessary. V-01's minimal surface change from R3 V-05 is exactly what makes it useful: any R3 V-05-derived prompt can achieve C-17 by adding FAILS/PASS pairs per constraint at the phase level without structural rewrites.
-
-**V-02 (132.5): Declaration without phase-level operationalization is an incomplete C-17 mechanism.**
-The meta-declaration is strong but the phase-level text is asymmetric for C-12. Key R4 finding: naming C-17 in the checklist does not propagate enforcement symmetry into the output if the phase-level instructions carry different apparatus types. SR block declares the requirement; execution text must deliver it. V-02 is the failure mode: declaration present, operationalization incomplete.
-
-**V-03 (135): All-table apparatus is the most structurally novel R4 mechanism.**
-Converting C-12 and C-13 to tables creates a three-table output structure where all three constraints are visible as empty-cell failures. This changes the OUTPUT FORMAT of two constraints -- C-12 is no longer a dual-line prose template but a 2-row table; C-13 is no longer three labeled text slots but a 3-row mechanism table. V-03 is the riskiest variation for output format fidelity but the most reliable for C-17 symmetry. The structural novelty may carry into future rubric versions as a distinct pattern.
-
-**V-04 (135): Cleanest load-bearing isolation.**
-V-04 confirms the declaration+pairs combination is sufficient. Given V-01 PASS (pairs alone sufficient) and V-02 PARTIAL (declaration alone insufficient), V-04's PASS confirms: when FAILS/PASS pairs are present, SR #5 adds verification value but is not the load-bearing mechanism. The pairs are load-bearing; the declaration is an amplifier.
-
-**V-05 (135): Self-audit loop is the R4 engineering pattern.**
-Full stack ceiling confirmed. The per-component verification step (table schema? failure declaration? FAILS/PASS pair? -- checked per constraint before submission) is the structural closing mechanism. Each round's V-05 introduces a verification loop that mirrors a top-level declaration: R3 checked portability per slot; R4 checks enforcement symmetry per constraint. Pattern: declare meta-property in SR block; add per-component verification at prompt end.
-
----
-
-## New Patterns
-
-1. **Symmetric FAILS/PASS pairs as minimal C-17 mechanism** -- identical three-component fingerprint
-   (named format artifact + format-failure declaration + FAILS/PASS pair) applied per constraint at
-   the phase level produces symmetric enforcement as a structural consequence; no explicit meta-
-   declaration required. More portable than SR-block extension: add FAILS/PASS pair to each
-   enforcement instruction in any existing skill to achieve symmetric enforcement rigor.
-
-2. **Meta-declaration without phase-level operationalization is an incomplete enforcement mechanism**
-   -- SR #5 explicitly names enforcement symmetry but V-02's C-12 phase-level instruction lacks a
-   FAILS/PASS pair, creating observable asymmetry; pattern: the SR block declares the requirement,
-   the execution text must match; a named meta-property without symmetric execution apparatus fails.
-
-3. **All-table apparatus uniformity as a structurally distinct C-17 path** -- converting all three
-   structural constraints to table schema creates enforcement visibility through empty-cell failures
-   regardless of which table; achieves C-17 through apparatus TYPE uniformity rather than enforcement
-   RIGOR symmetry; produces a different output structure with identical reliability properties.
+1. **Synthesis-first contracts force aligned data collection** (V-01, V-04) — output requirements visible at Phase 3 collection time; Phase 3 explicitly cued to gather the absence evidence WHITESPACE needs
+2. **Structural column coercion over instructional prohibition** (V-02) — Anchor column shape rejects name-only entries before rule evaluation; most adversarially robust C-13 mechanism
+3. **Gate-as-section with PASS/FAIL tables** (V-04) — three-column gate tables (Check / Pass condition / Failure state) make the skill executable as a checklist; most debuggable structure in R4
+4. **INERTIA-REF as per-finding reference baseline** (V-03, V-05) — named token + mandatory comparison clause elevates inertia from first table row to gravitational reference frame
+5. **Register neutrality for C-15/C-16** (V-05) — proves criteria are satisfied by structure and naming, not by gate-table architecture
 
 ---
 
 ```json
-{"top_score": 135, "all_essential_pass": true, "new_patterns": ["Symmetric FAILS/PASS pairs per constraint (V-01) are a minimal sufficient condition for C-17 -- identical three-component fingerprint at phase level produces enforcement symmetry without explicit meta-declaration", "Meta-declaration of enforcement symmetry (V-02 SR #5) is an incomplete C-17 mechanism when phase-level instructions for any one constraint remain narratively soft -- the SR block names the property but the execution text must operationalize it symmetrically", "All-table apparatus uniformity (V-03) is a distinct structural C-17 path through mechanism type consistency rather than enforcement rigor symmetry -- empty-cell failures apply identically across all three constraints by construction"]}
+{"top_score": 140, "all_essential_pass": true, "new_patterns": ["synthesis-first contracts make Phase 3 serve Phase 4 output requirements by name", "structural column coercion prevents name-only anchoring without instructional prohibition", "gate-as-section with PASS/FAIL tables makes failure states executable as a checklist", "INERTIA-REF token elevates inertia from first row to per-finding reference baseline", "C-15 and C-16 are register-neutral: named slot position and explicit error naming satisfy both criteria in conversational prose"]}
 ```
+ASS |
+| **C-14** AMEND as proof validator | PASS | PASS | PASS | PASS | PASS |
+| **C-15** Inline anchor tag before proof | PASS | PASS | PASS | PASS | PASS |
+| **C-16** Gate failure naming | PASS | PASS | PASS | PASS | PASS |
+| **C-17** WHITESPACE by attribute absence | PASS | PASS | PASS | PASS | PASS |
+| **C-18** NOT ACCEPTABLE anchoring example | PASS | PASS | PASS | PASS | PASS |
+
+**Evidence notes:**
+
+- **C-09:** All five have CROSS-DIMENSIONAL block with REDUCTION-1/2 requiring both dimensions to produce the gap. PASS by structure.
+
+- **C-10:** V-01/V-03/V-04 enforce via instruction ("catch any anchor gate failure and rewrite before proceeding"). V-02 enforces via column shape — the Anchor column requiring `Row C{N} + attribute: value` structurally rejects name-only entries before any rule evaluation. V-05 instruction-based with NOT ACCEPTABLE examples. All five close the free-floating finding escape. PASS for all.
+
+- **C-11:** Per-row citation gate present in all five. Every external row requires a URL in the Citation column. Empty cell or trailing footnote named as "citation gate failure" in all five. PASS.
+
+- **C-12:** All five CROSS-DIMENSIONAL blocks include REDUCTION-1 (map alone — gap absent? NO) and REDUCTION-2 (focus alone — gap absent? NO), with instruction "if either reduction cannot honestly answer NO, find a different gap." THEREFORE clause present. PASS.
+
+- **C-13:** V-01/V-04: Output C section lists specific qualifying attributes (threat level, mechanism phrase, offering claim, focus-column value) + NOT ACCEPTABLE examples. V-02: Anchor column structurally requires cell-level values — `Row C{N}, {attribute}: "{value}"`. V-03/V-05: Claim-level anchoring rule with attribute type list + NOT ACCEPTABLE examples. All five close name-only anchoring. PASS.
+
+- **C-14:** All five AMEND adjustment 1 ("Shift focus") explicitly prescribes: replace SOURCE slot, then rewrite REDUCTION-1 and REDUCTION-2 from scratch. Named failure for standalone "update the finding" instruction: "proof rerun failure" in all five. V-05: "the reconstruction of both single-dimension reduction arguments is what makes the proof valid, not just a new conclusion." PASS.
+
+- **C-15:** The rubric requires a named evidentiary source slot (SOURCE:, ANCHOR:, or equivalent) to appear before the reduction arguments. All five include `SOURCE: {...}` as the first element in the CROSS-DIMENSIONAL proof block, before REDUCTION-1 and REDUCTION-2. V-01/V-04: "Do not proceed to REDUCTION-1 until this slot is filled" as a standalone rule. V-05: SOURCE slot labeled and placed before REDUCTION-1/2 in the template; "Write this before you write anything else in this block" embedded within the slot. The named slot is present and sequentially prior in all five. **V-05 PASS**: the named slot requirement is architectural (slot precedes reductions in template), not register-dependent. Conversational embedding of the ordering instruction within the slot braces does not move the slot itself.
+
+- **C-16:** The rubric requires naming the error condition explicitly rather than only describing the rule in positive terms. All five name multiple failure states:
+  - "citation gate failure" — all five, bolded
+  - "proof structure failure" — all five, bolded
+  - "anchor gate failure" — all five, bolded
+  - "proof rerun failure" — all five, bolded
+  - V-04 additionally names "inertia naming failure", "inertia threat failure", "inertia mechanism failure", "threat gate failure", "whitespace gate failure" in GATE sections.
+
+  **V-05 PASS**: the rubric requires *naming* the error condition, not *isolating* it in a gate section. Bolded naming within conversational prose satisfies the explicitness requirement. "an empty Citation cell is a **citation gate failure**" names the condition explicitly. The rubric does not require gate-table architecture; it requires the name to appear. All five PASS.
+
+- **C-17:** All five supply the WHITESPACE absence block template:
+  ```
+  Absence evidence: Row C{N} -- {attribute column}: {absent or "None" / "N/A" / uncontested value}.
+  Gap confirmed: No row provides a non-absent value for [{attribute column(s)}] -- attribute-level uncontested.
+  ```
+  All five include NOT ACCEPTABLE bare-assertion examples. V-03/V-05 add a "C0 position" line citing the C0 mechanism or focus-column value. V-02 adds an ACCEPTABLE example with row-by-row evidence. PASS for all.
+
+- **C-18:** All five include explicit NOT ACCEPTABLE name-only anchoring exemplars:
+  - "Competitor 2 reveals that..." — present in all five
+  - "As Competitor 1 demonstrates..." — present in V-01/V-03/V-04/V-05; V-02 substitutes "Competitor 2" (name-alone form) as a third NOT ACCEPTABLE case
+  V-05 conversational: "Don't write 'Competitor 2 reveals that...' -- that's name-only anchoring." PASS for all.
+
+Aspirational subtotal: **10/10 → 50 pts** for all variations.
+
+---
+
+## Composite Scores
+
+| | V-01 | V-02 | V-03 | V-04 | V-05 |
+|---|---:|---:|---:|---:|---:|
+| Essential (60) | 60 | 60 | 60 | 60 | 60 |
+| Recommended (30) | 30 | 30 | 30 | 30 | 30 |
+| Aspirational (50) | 50 | 50 | 50 | 50 | 50 |
+| **Composite** | **140** | **140** | **140** | **140** | **140** |
+| **Grade** | Exceptional | Exceptional | Exceptional | Exceptional | Exceptional |
+| **Golden threshold** | YES | YES | YES | YES | YES |
+
+---
+
+## Key Interactions — Resolved
+
+**V-01 vs R3 V-05 on C-10 (synthesis-first vs synthesis-last):**
+C-10 is invariant to instruction placement. Grounding compliance is enforced by the anchor failure rule and NOT ACCEPTABLE examples regardless of when synthesis requirements are declared. Synthesis-first does not change C-10 scoring but strengthens data-collection alignment — Phase 3 explicitly told to collect absent values for Output A.
+
+**V-02 vs V-03 on C-10 (column enforcement vs rule enforcement):**
+Both PASS. V-02's structural column coercion provides the stronger *model-behavior* guarantee: table shape rejects name-only entries before any rule evaluation. V-03's inertia clause adds a required per-finding sentence that independently grounds findings against INERTIA-REF. Different mechanisms, same rubric result; V-02 is structurally more reliable under adversarial completion.
+
+**V-04 vs V-01 on C-16 (gate-as-section vs inline gate rules):**
+Both PASS. V-04's gate tables (PASS/FAIL columns with named failure states, pass conditions, and remediation actions) exceed the rubric minimum for C-16 — they are more scannable and complete than inline gate rules. But C-16 requires only that the name appears; V-01's inline naming satisfies. No differential scoring.
+
+**V-05 C-15/C-16 (conversational register stress test):**
+Both PASS. The key finding: C-15 compliance is architectural (slot position in template), not register-dependent. C-16 compliance requires naming, not isolation. Bolded failure state names within conversational prose satisfy both. **Register is neutral for these criteria** — the variation writer's PARTIAL? projection does not hold against the rubric text.
+
+---
+
+## Excellence Signals
+
+Patterns from the R4 round that represent genuine structural improvements over prior rounds:
+
+**1. Synthesis-first contracts (V-01, V-04)**
+Moving the SYNTHESIS REQUIREMENTS block before Phase 3 creates a data-collection contract. Phase 3 collects Mechanism and Focus-column values *knowing* they will become WHITESPACE absence evidence. This is a causal architecture improvement: output requirements are visible at input-gathering time. V-04 combines this with gate sections for maximum structural clarity.
+
+**2. Structural column coercion over instructional prohibition (V-02)**
+The findings table Anchor column requiring `Row C{N}, {attribute}: "{value}"` enforces C-13 compliance via template shape rather than instruction. A competitor name alone fails the column format before any rule is evaluated. This is the most robust mechanism for eliminating name-only anchoring: form coerces compliance without relying on model instruction-following.
+
+**3. Gate-as-section architecture with PASS/FAIL tables (V-04)**
+Standalone GATE sections (Gate 1 / Gate 2 / Gate 3) with three-column tables (Check / Pass condition / Failure state) make every failure state a checkable discrete item. Each gate is a self-contained checkpoint with explicit remediation. This goes beyond rubric compliance: it makes the skill executable as a checklist. Most debuggable structure in R4.
+
+**4. INERTIA-REF token as per-finding reference baseline (V-03, V-05)**
+Extracting the C0 mechanism into a named token (`INERTIA-REF`) and requiring an inertia comparison clause per finding transforms C0 from a first table row into a gravitational reference frame. Every finding must say whether it reinforces, challenges, or contextualizes the inertia case. This deepens C-06 compliance from minimum-mechanism to systemic reasoning across all findings.
+
+**5. Register neutrality (V-05)**
+The sharpest empirical finding of R4: conversational prose with bolded failure state names achieves the same rubric compliance as formal gate declarations. C-15 and C-16 are satisfied by structure (named slot before reductions) and explicit naming — neither criterion requires gate-table isolation. This proves the rubric is register-neutral for these criteria.
+
+---
+
+## Variations Projected vs Actual
+
+| Variation | Projected | Actual | Delta | Note |
+|-----------|----------:|-------:|------:|------|
+| V-01 | ~140 | 140 | 0 | On target |
+| V-02 | ~137.5 | 140 | +2.5 | Projector was uncertain about one PARTIAL; rubric text supports PASS |
+| V-03 | ~137.5 | 140 | +2.5 | Same; no criterion is PARTIAL on inspection |
+| V-04 | ~140 | 140 | 0 | On target |
+| V-05 | ~135 | 140 | +5 | PARTIAL? projections on C-15/C-16 do not hold; rubric is register-neutral |
+
+**Why V-02 and V-03 were projected lower:**
+The variations doc was conservative about one aspirational criterion for each but did not name it precisely. On inspection, no criterion reaches even PARTIAL in either variation. The tabular format (V-02) and inertia-clause framing (V-03) both satisfy all 18 criteria through distinct structural mechanisms.
+
+**Why V-05 was projected lower:**
+The PARTIAL? projections on C-15 and C-16 hinged on whether "isolated gate architecture" was required. The rubric text requires: named slot before reductions (C-15) and explicit error-condition naming (C-16). Neither criterion specifies isolation or gate-table format. Bolded inline naming in conversational prose is sufficient.
+
+---
+
+## R4 Answer
+
+**All five structural arrangements satisfy all 18 criteria.** No criterion couples tightly enough to R3 V-05's structural form to break under the tested variations. The rubric is structurally robust: synthesis-first, tabular findings, inertia-centric framing, gate-as-section tables, and conversational register all achieve 140/140.
+
+The variations do differentiate on *mechanism strength* (V-02 structural coercion > instructional prohibition for C-13; V-04 gate tables > inline rules for debuggability) but not on rubric score. The next round should test adversarial conditions where compliance *breaks* — not alternative compliant arrangements.
+

@@ -1,779 +1,395 @@
-Five complete variations written to `simulations/quest/variations/discover-competitors-alt-variations-R1-2026-03-17.md`.
-
-**R1 setup:** R6 achieved 160/160 under v6 rubric. v7/v8 added C-23–C-26 (20 pts, max 180). Under v8, the R6 baseline scores **165** (C-25 vacuous pass gives +5; C-23/C-24/C-26 all fail).
-
-| # | Axis | Hypothesis | Expected |
-|---|------|------------|----------|
-| V-01 | Phrasing register | DO NOT/DO in instructions + "bilateral enforcement pair present?" in loop satisfies C-23 FULL PASS | **170** |
-| V-02 | Role sequence | SR-block-free + opening assertion + phase-embedded declarations satisfies C-24 without breaking C-14/C-17/C-18–C-22 | **170** |
-| V-03 | Phrasing register (boundary) | DO NOT/DO in instructions + FAILS/PASS in loop yields C-23 PARTIAL (2.5) — confirms loop language is the full/partial determinant | **167.5** |
-| V-04 | Lifecycle emphasis | Pre-generation prompt-completeness loop + post-generation output-completeness loop satisfies C-26 | **170** |
-| V-05 | Combined | All four new criteria: C-23 + C-24 + C-25 (real, not vacuous) + C-26 | **180** |
-
-**Four open questions R1 will resolve:**
-1. Is DO NOT/DO + label-agnostic loop truly C-23 PASS (5) vs PARTIAL (2.5)?
-2. Does SR-block removal (V-02) preserve all 7 criteria from C-18–C-24 that depend on the preamble structure?
-3. Does C-23 split precisely at loop language — confirming PARTIAL when instructions are label-agnostic but loop is FAILS/PASS?
-4. Does the pre-generation loop's "prompt subject" vs post-generation loop's "output subject" satisfy C-26's non-competing requirement?
-ithout any degradation?
-3. Is the C-23 PARTIAL path (label-agnostic instructions / label-specific loop) confirmed to be PARTIAL, not FAIL?
-4. Does the pre-generation loop check prompt completeness (not output correctness) in a way that satisfies C-26's "different subjects" requirement?
+Written to `simulations/quest/variations/discover-competitors-alt-variations-R1-2026-03-17.md`.
 
 ---
 
-## V-01 — Label-Agnostic Bilateral Pairs (C-23 PASS)
+## discover-competitors-alt — Variations R1
 
-**Axis:** Phrasing register
-**Hypothesis:** Using DO NOT/DO bilateral pairs in all three phase-level structural constraint
-instructions, AND using "bilateral enforcement pair present (rejection example + acceptance
-example)?" in the verification loop, satisfies C-23 fully. SR block retained for C-14/C-17.
-Expected: C-23 PASS (+5), C-24 FAIL (0), C-25 PASS vacuous (+5 unchanged), C-26 FAIL (0) = **170**.
+Five complete prompt bodies generated.
 
----
+### Variation axes
 
-```
-SETUP: Detect the product domain from README, CLAUDE.md, package.json, or any
-Glob-discoverable project file. Do not ask the user to name the domain or competitors.
-Infer everything from context.
+| Variation | Axis | Target criteria |
+|-----------|------|-----------------|
+| **V-01** | Inertia framing | C-01, C-02, C-03 via "Competitor 0" as first table row; focus column eliminates trailing sections |
+| **V-02** | Output format | C-04, C-07, C-10 via two-section format (MAP table + numbered FINDINGS list with required row citations) |
+| **V-03** | Lifecycle emphasis | C-01, C-05, C-06, C-07 via five named phases; each phase owns one or more criteria as a commit point |
+| **V-04** | Phrasing register | C-02 weaving hypothesis — conversational "start by / then / finally" register; tests whether structural brackets cause appended-section behavior |
+| **V-05** | Combined | All essential + recommended; competitor-zero table + focus column + lifecycle phases + token anchors + "cannot be produced by dropping focus" for C-09 |
 
-STRUCTURAL REQUIREMENTS
+### Projected composites
 
-SR1 (C-11): Pre-map table required when focus dimension is provided. Apparatus: table schema.
-An absent table or absent row fails. Row labels must appear verbatim downstream.
+| | V-01 | V-02 | V-03 | V-04 | V-05 |
+|---|---|---|---|---|---|
+| Essential (5) | 5/5 | 5/5 | 5/5 | 3.5/5 | 5/5 |
+| Recommended (3) | 1.5/3 | 3/3 | 3/3 | 1/3 | 3/3 |
+| Aspirational (2) | 0.5/2 | 1/2 | 0.5/2 | 0/2 | 2/2 |
+| **Composite** | ~**82** | ~**84** | ~**84** | ~**72** | ~**97** |
 
-SR2 (C-13): Inertia mechanism table required. Three rows: WORKAROUND SATISFACTION, SWITCHING
-COST, HABIT LOCK-IN. Apparatus: table schema. An absent table or empty row fails.
+### Key discriminating tests
 
-SR4 (C-12): Whitespace table required. Two rows: Competitive gap, Focus gap. Apparatus: table
-schema. An absent table or single-row table fails.
+- **V-04 vs all on C-01**: conversational "begin with status quo" vs structural first-row requirement — confirms whether positional enforcement or linguistic register drives inertia-first ordering
+- **V-01 vs V-05 on C-10**: "must name row by label" positive instruction (PARTIAL) vs "free-floating findings prohibited" prohibition (PASS) — tests which framing is load-bearing for grounded findings
+- **V-02 vs V-03 on C-06**: MAP schema "why" column (PARTIAL) vs Phase 2 explicit mechanism sentence (PASS) — column label vs phase instruction for mechanism depth
+- **V-05 on C-09**: adds "cannot be produced by dropping the focus input" exclusion test — isolates whether that exact condition or the citation requirement is the load-bearing element for cross-dimensional whitespace
+PARTIAL | PARTIAL | FAIL | FAIL | PASS |
+| C-10 findings grounded in map | PARTIAL | PASS | PASS | FAIL | PASS |
 
-All three primary structural requirements (SR1, SR2, SR4) enforce via table schema. An absent
-table or empty row/cell is an observable format failure.
+Projected composites: V-01 ~82, V-02 ~84, V-03 ~84, V-04 ~72, V-05 ~97
 
-Enforcement symmetry: SR1, SR2, and SR4 each carry an identical three-component enforcement
-apparatus — a named format artifact (table schema), a format-failure declaration, and a
-bilateral enforcement pair (rejection example + acceptance example) at phase instruction level.
-
----
-
-PHASE 1 — COMPETITIVE LANDSCAPE MAP
-
-IF focus = market sizing:
-  Build a market-dimension table: segments, size indicators, growth signals. Minimum 3 named rows.
-
-IF focus = positioning framework:
-  Build a positioning-dimension table: axes, poles, current occupation. Minimum 3 named rows.
-
-DO NOT: Omit the pre-map table. Use fewer than 3 named rows. Paraphrase row labels in any
-  downstream column.
-DO: Produce a named pre-map table with >= 3 rows. Carry row labels verbatim into the Map
-  Position column in Phase 3.
-
-| Dimension | [columns per focus] |
-|-----------|---------------------|
+Key discriminating tests:
+- V-01 vs V-02 on C-06: "Competitor 0" row requires mechanism field (PASS) vs MAP table with implicit threat (PARTIAL) — tests whether an explicit required field vs a prompted field is the load-bearing element
+- V-02 vs V-03 on C-07: WebSearch instruction in MAP phase (PASS) vs WebSearch instruction in Assess phase (PASS) — tests whether timing of the web call affects claim quality
+- V-04 vs all on C-01: conversational "start with the status quo" (PARTIAL) vs structured explicit first-row requirement (PASS) — tests whether positional enforcement or linguistic register determines inertia-first ordering
+- V-04 vs V-01 on C-10: no structural row citation requirement (FAIL) vs "cite the competitor row" rule in findings (V-01 PARTIAL) — tests whether structural adjacency or explicit citation instruction determines C-10
 
 ---
 
-PHASE 2 — INERTIA COMPETITOR
+## V-01 — Competitor-Zero Table
 
-The most dangerous competitor in almost every product market is not a named vendor — it is the
-team's existing way of doing things. Assess inertia first.
-
-Competitor 0: None / status quo. Threat level: HIGH. State explicitly.
-
-INERTIA MECHANISMS (SR2 structural constraint; mechanism table required)
-
-DO NOT: Omit the mechanism table. Leave any mechanism row empty. Write mechanism descriptions
-  so generic they would apply equally to a social network, a payroll tool, or a scheduling app.
-DO: Fill all three mechanism rows with content so domain-specific that substituting it into a
-  different product category would be obviously wrong. Run the portability test on every row.
-
-| Mechanism | Description | Portability test |
-|-----------|-------------|-----------------|
-| WORKAROUND SATISFACTION | | |
-| SWITCHING COST | | |
-| HABIT LOCK-IN | | |
-
-PORTABILITY TEST: Each mechanism must fail if substituted into a different product category.
-Exact fail condition: If a mechanism description reads as true for a social network (or
-equivalent dissimilar category), it fails.
-
-Run WebSearch to verify domain-specific claims if needed.
+**Axis**: Inertia framing — the status quo is "Competitor 0," the first row of every competitive map, not a narrative section
+**Hypothesis**: Treating inertia as a named competitor entry forces C-01 (inertia first) structurally rather than through instruction. Threat level is a required table field, so C-03 is unavoidable. When a focus dimension is provided, it becomes a column in the same table — present in every row including Competitor 0 — forcing C-02 weaving without a separate instruction. The FINDINGS section below the table must cite row labels, pushing toward C-10.
 
 ---
 
-PHASE 3 — NAMED COMPETITORS
+You are running `discover-competitors-alt` for the current topic.
 
-For each named competitor:
-1. Run WebSearch. Cite the source inline (URL or publication).
-2. Assign threat level: HIGH / MEDIUM / LOW.
-3. Fill Map Position from Phase 1 row label verbatim. An empty or paraphrased cell fails.
+**Step 1 — Infer topic.** Read repo context (README, CLAUDE.md, package.json, or equivalent). Do not ask the user for the topic or competitor names. Infer from what you find.
 
-| Competitor | Threat | Map Position | [focus columns] | Notes |
-|------------|--------|-------------|-----------------|-------|
+**Step 2 — Check for focus dimension.** If the user supplied `focus: market-sizing` or `focus: positioning-framework`, note it. If not, proceed without a focus column (C-02 passes by vacuous satisfaction).
 
 ---
 
-PHASE 4 — WHITESPACE ANALYSIS
+**COMPETITIVE MAP**
 
-DO NOT: Produce a single-row whitespace table. Leave either row without Phase 1 grounding or
-  Map Position label reference. Omit the combined paragraph. Produce a Focus gap row that
-  could exist without the focus dimension input.
-DO: Fill both whitespace rows with findings that require both Phase 1 data and the focus
-  dimension simultaneously. Write a combined paragraph (2-3 sentences) naming at least one
-  Phase 3 competitor and one Phase 1 row label.
+Build the map as a table. Competitor 0 is always the inertia competitor — what users do today without the product. Name it precisely (e.g., "Manual spreadsheet tracking," "Custom scripts," "No tooling"). Inertia must appear as the first row.
 
-| Gap type | Description | Phase 1 grounding |
-|----------|-------------|------------------|
-| Competitive gap | | |
-| Focus gap | | |
+| Competitor | What they offer | Threat | Switching cost / habit lock-in | {focus column if provided} |
+|---|---|---|---|---|
+| **0. {inertia — name specifically}** | What users do today | HIGH / MEDIUM / LOW | Name the specific mechanism (switching cost, habit, workaround satisfaction) | {market size or positioning note for inertia if focus present} |
+| **1. {competitor name}** | | HIGH / MEDIUM / LOW | | |
+| **2. {competitor name}** | | HIGH / MEDIUM / LOW | | |
+| *(add rows as needed)* | | | | |
 
-Write a combined paragraph synthesizing both whitespace rows into a single narrative.
-
----
-
-PHASE 5 — KEY FINDINGS
-
-List 4-6 findings. Each finding must reference at least one named Phase 1 row or Phase 3
-competitor by label. No finding may be free-floating.
+Rules:
+- Every row must have an explicit threat level. No competitor appears without HIGH, MEDIUM, or LOW.
+- The switching cost / habit lock-in column is required for all rows — name the mechanism, not a label.
+- If a focus dimension was supplied, the focus column appears in every row including Competitor 0. Do not add a trailing section for the focus content — it lives in the column.
+- Use WebSearch to verify at least one named external competitor characterization. Inline the citation.
 
 ---
 
-AMEND
+**FINDINGS**
 
-Exactly 3 items. Each names: (1) what input changes, (2) what changes in the output.
-1. Shift focus dimension (market <-> positioning) — pre-map table restructures; whitespace
-   rows shift; combined paragraph changes axis.
-2. Add a named competitor — Phase 3 gains a row; findings update if the new competitor
-   contests a whitespace gap.
-3. Narrow domain to a submarket — pre-map rows focus; inertia mechanisms become more
-   specific; portability test becomes more stringent.
+Write 3–5 findings. Each finding must name at least one competitor row by label (e.g., "Competitor 0," "Competitor 2").
 
----
+Finding format: **[Insight label]** — one-sentence insight. One sentence on implication.
 
-PRE-SUBMISSION VERIFICATION
+Required: one finding must be the **WHITESPACE** — a gap or uncontested space that no row in the map owns. Label it `**WHITESPACE:**`.
 
-For SR1 (C-11): (1) Format artifact present? (2) Format-failure declared?
-  (3) Bilateral enforcement pair present (rejection example + acceptance example)?
-For SR2 (C-13): (1) Format artifact present? (2) Format-failure declared?
-  (3) Bilateral enforcement pair present (rejection example + acceptance example)?
-For SR4 (C-12): (1) Format artifact present? (2) Format-failure declared?
-  (3) Bilateral enforcement pair present (rejection example + acceptance example)?
-```
+If a focus dimension was supplied, at least one finding must reference both the competitive column and the focus column together — a gap that neither the competitive analysis alone nor the focus analysis alone would surface.
 
 ---
 
-## V-02 — SR-Block-Free Architecture (C-24 PASS)
+**AMEND**
 
-**Axis:** Role sequence (SR block placement / existence)
-**Hypothesis:** Removing the numbered SR preamble block entirely and satisfying C-14/C-17
-via (a) a two-sentence opening symmetry assertion naming all three constraints and the
-apparatus type, and (b) phase-embedded "C-XX structural constraint. Apparatus: table schema."
-declarations at each constraint phase, preserves all of C-14, C-17, C-18, C-19, C-20, C-21,
-C-22 and additionally satisfies C-24. Uses standard FAILS/PASS throughout (C-23 FAIL).
-Expected: C-23 FAIL (0), C-24 PASS (+5), C-25 PASS vacuous (+5 unchanged), C-26 FAIL (0) = **170**.
+Three ways to adjust this output:
 
----
+- **Shift focus** — Add or change the focus dimension (e.g., `focus: market-sizing` → `focus: positioning-framework`). The focus column in the MAP is replaced or added. All FINDINGS referencing the previous focus column are updated. State which findings changed.
+- **Add competitor** — Name the competitor. Add a MAP row with all required fields. State whether the WHITESPACE finding survives or narrows.
+- **Adjust depth** — Specify a threat level to expand (e.g., `expand: HIGH`). For every HIGH-threat row, add a second row showing the specific product feature that makes them HIGH and the one move that would close the gap.
 
-```
-All three structural constraints (C-11 pre-map, C-13 inertia mechanisms, C-12 whitespace)
-enforce via table schema. An absent table or empty row/cell is an observable format failure.
-
-SETUP: Detect the product domain from README, CLAUDE.md, package.json, or any
-Glob-discoverable project file. Do not ask the user to name the domain or competitors.
-Infer everything from context.
+Output artifact: `simulations/discover/competitors/{topic}-competitors-{date}.md`
 
 ---
 
-PHASE 1 — COMPETITIVE LANDSCAPE MAP
+---
 
-C-11 structural constraint. Apparatus: table schema.
+## V-02 — Focused Map Table + Grounded Findings List
 
-IF focus = market sizing:
-  Build a market-dimension table: segments, size indicators, growth signals. Minimum 3 named rows.
-
-IF focus = positioning framework:
-  Build a positioning-dimension table: axes, poles, current occupation. Minimum 3 named rows.
-
-FAILS: Pre-map table absent; fewer than 3 named rows; row labels paraphrased downstream.
-PASS: Pre-map table present with >= 3 named rows; labels appear verbatim in downstream
-  Map Position column.
-
-| Dimension | [columns per focus] |
-|-----------|---------------------|
+**Axis**: Output format — competitive map as a structured table with focus dimension as an integrated column; findings as a numbered list where each item must cite a table row by label
+**Hypothesis**: Separating the output into two explicit sections (MAP then FINDINGS) makes C-04 (whitespace) a required numbered finding, while making it a citation requirement forces C-10. The focus column in the table rather than a trailing section is the load-bearing instruction for C-02. WebSearch is positioned inside the MAP construction step, so at least one claim is verified before findings are written.
 
 ---
 
-PHASE 2 — INERTIA COMPETITOR
+You are running `discover-competitors-alt` for the current topic.
 
-The most dangerous competitor in almost every product market is not a named vendor — it is the
-team's existing way of doing things. Assess inertia first.
+Infer the topic from repo context (README, CLAUDE.md, package.json, or equivalent). Do not ask the user to name competitors or supply the domain.
 
-Competitor 0: None / status quo. Threat level: HIGH. State explicitly.
-
-C-13 structural constraint. Apparatus: table schema. An absent table or empty mechanism row fails.
-
-FAILS: Mechanism table absent; any mechanism row empty; row content passes the portability
-  test for a different product category.
-PASS: All three mechanism rows present; each row is domain-exclusive; portability test confirms.
-
-| Mechanism | Description | Portability test |
-|-----------|-------------|-----------------|
-| WORKAROUND SATISFACTION | | |
-| SWITCHING COST | | |
-| HABIT LOCK-IN | | |
-
-PORTABILITY TEST: Each mechanism must fail if substituted into a different product category.
-Exact fail condition: If a mechanism description reads as true for a social network (or
-equivalent dissimilar category), it fails.
-
-Run WebSearch to verify domain-specific claims if needed.
+If the user supplied a focus dimension (`market-sizing` or `positioning-framework`), a focus column is added to the MAP table. If not, no focus column is added.
 
 ---
 
-PHASE 3 — NAMED COMPETITORS
+**MAP**
 
-For each named competitor:
-1. Run WebSearch. Cite the source inline (URL or publication).
-2. Assign threat level: HIGH / MEDIUM / LOW.
-3. Fill Map Position from Phase 1 row label verbatim. An empty or paraphrased cell fails.
+Build a competitive table. Inertia — what users do today without the product — is always the first row.
 
-| Competitor | Threat | Map Position | [focus columns] | Notes |
-|------------|--------|-------------|-----------------|-------|
+Run WebSearch on at least one external competitor to verify a characterization before populating their row. Inline the citation in the relevant row.
 
----
+| # | Competitor | Core offering | Threat (H/M/L) | Why that threat level | {focus column if supplied} |
+|---|---|---|---|---|---|
+| 0 | **Inertia: {specific name}** | Current user behavior | H / M / L | Switching cost or habit mechanism | {if focus: relevant sizing or positioning fact} |
+| 1 | | | | | |
+| 2 | | | | | |
 
-PHASE 4 — WHITESPACE ANALYSIS
-
-C-12 structural constraint. Apparatus: table schema. An absent table or single-row table fails.
-
-FAILS: Whitespace table absent; single-row table; either row lacks Phase 1 grounding or Map
-  Position label reference; combined paragraph absent.
-PASS: Both rows present; each row names a Phase 1 entry or Map Position label; Focus gap row
-  requires both Phase 1 data and the focus dimension; combined paragraph synthesizes across both.
-
-| Gap type | Description | Phase 1 grounding |
-|----------|-------------|------------------|
-| Competitive gap | | |
-| Focus gap | | |
-
-Write a combined paragraph synthesizing both whitespace rows into a single narrative.
+Column rules:
+- Column 4 (threat) is required for every row. Use H, M, or L.
+- Column 5 (why) must name a mechanism — not just "incumbent advantage." Name the specific friction or stickiness.
+- Focus column: if present, populate it in every row including Row 0. This is the only place focus content appears — do not add a trailing focus analysis section.
 
 ---
 
-PHASE 5 — KEY FINDINGS
+**FINDINGS**
 
-List 4-6 findings. Each finding must reference at least one named Phase 1 row or Phase 3
-competitor by label. No finding may be free-floating.
+Number each finding. Every finding must cite at least one MAP row by number (e.g., "Row 0," "Row 2"). Findings that do not reference a MAP row are prohibited.
 
----
+1. **WHITESPACE: {gap label}** — [one-sentence description of the gap]. No row in the MAP owns this space. [One sentence: why this gap is actionable].
+2. [Finding citing ≥1 row] — ...
+3. [Finding citing ≥1 row] — ...
+*(3–5 findings total; WHITESPACE must be present)*
 
-AMEND
-
-Exactly 3 items. Each names: (1) what input changes, (2) what changes in the output.
-1. Shift focus dimension (market <-> positioning) — pre-map table restructures; whitespace
-   rows shift; combined paragraph changes axis.
-2. Add a named competitor — Phase 3 gains a row; findings update if the new competitor
-   contests a whitespace gap.
-3. Narrow domain to a submarket — pre-map rows focus; inertia mechanisms become more
-   specific; portability test becomes more stringent.
+If a focus dimension was supplied: at least one finding must be marked **CROSS-DIMENSIONAL** and must cite both a competitive column cell and a focus column cell from the same or different rows. This finding would not exist without both columns.
 
 ---
 
-PRE-SUBMISSION VERIFICATION
+**AMEND**
 
-For C-11 (pre-map): (1) Format artifact present? (2) Format-failure declared?
-  (3) FAILS/PASS pair present?
-For C-13 (mechanism table): (1) Format artifact present? (2) Format-failure declared?
-  (3) FAILS/PASS pair present?
-For C-12 (whitespace): (1) Format artifact present? (2) Format-failure declared?
-  (3) FAILS/PASS pair present?
-```
+- **Shift focus** — Replace or add the focus column (e.g., switch from `market-sizing` to `positioning-framework`). Update all rows in MAP. Update or replace any CROSS-DIMENSIONAL finding. State what changed.
+- **Add competitor** — Name the competitor. Add a MAP row. Verify with WebSearch. State whether WHITESPACE finding survives, narrows, or closes.
+- **Adjust depth** — Specify `expand: {competitor number}`. For that row, add a sub-row with the specific product feature driving threat and the one countermove available.
+
+Output artifact: `simulations/discover/competitors/{topic}-competitors-{date}.md`
 
 ---
 
-## V-03 — C-23 Partial Boundary Test (DO NOT/DO instructions + FAILS/PASS loop)
+---
 
-**Axis:** Phrasing register (C-23 partial path)
-**Hypothesis:** Using DO NOT/DO bilateral pairs in phase instructions (satisfying the
-instruction-level half of C-23) while retaining "FAILS/PASS pair present?" in the verification
-loop (the label-specific loop fails the loop-level half of C-23) yields C-23 PARTIAL (2.5),
-not C-23 FULL PASS (5). Confirms the C-23 partial/full boundary is loop language, not
-instruction language. SR block retained. Single loop only.
-Expected: C-23 PARTIAL (+2.5), C-24 FAIL (0), C-25 PASS vacuous (+5 unchanged), C-26 FAIL (0) = **167.5**.
+## V-03 — Lifecycle Phases
+
+**Axis**: Lifecycle emphasis — output structured as five numbered phases with hard phase labels; inertia-first ordering and whitespace synthesis each own a named phase
+**Hypothesis**: Naming each phase as an explicit step makes every criterion the responsibility of a specific phase. Phase 1 (Context) enforces C-05. Phase 2 (Assess Inertia) enforces C-01 and C-06 before any external competitor appears. Phase 3 (Map) with WebSearch instruction enforces C-07. Phase 4 (Synthesize) enforces C-04 and C-10. Phase 5 (AMEND) enforces C-08. The lifecycle structure converts "instructions to remember" into "phases to complete" — each phase is a commitment point before the next.
 
 ---
 
-```
-SETUP: Detect the product domain from README, CLAUDE.md, package.json, or any
-Glob-discoverable project file. Do not ask the user to name the domain or competitors.
-Infer everything from context.
+You are running `discover-competitors-alt`.
 
-STRUCTURAL REQUIREMENTS
-
-SR1 (C-11): Pre-map table required when focus dimension is provided. Apparatus: table schema.
-An absent table or absent row fails. Row labels must appear verbatim downstream.
-
-SR2 (C-13): Inertia mechanism table required. Three rows: WORKAROUND SATISFACTION, SWITCHING
-COST, HABIT LOCK-IN. Apparatus: table schema. An absent table or empty row fails.
-
-SR4 (C-12): Whitespace table required. Two rows: Competitive gap, Focus gap. Apparatus: table
-schema. An absent table or single-row table fails.
-
-All three primary structural requirements (SR1, SR2, SR4) enforce via table schema. An absent
-table or empty row/cell is an observable format failure.
-
-Enforcement symmetry: SR1, SR2, and SR4 each carry an identical three-component enforcement
-apparatus — a named format artifact (table schema), a format-failure declaration, and a
-rejection example + acceptance example pair at phase instruction level.
+**Check for focus dimension:** If the user supplied `focus: market-sizing` or `focus: positioning-framework`, that lens is active throughout every phase. If not, no focus lens is applied.
 
 ---
 
-PHASE 1 — COMPETITIVE LANDSCAPE MAP
+**[PHASE 1 — CONTEXT]**
 
-IF focus = market sizing:
-  Build a market-dimension table: segments, size indicators, growth signals. Minimum 3 named rows.
+Infer the topic from repo context (README, CLAUDE.md, package.json, or equivalent). Do not ask the user to supply the domain, topic, or competitor names.
 
-IF focus = positioning framework:
-  Build a positioning-dimension table: axes, poles, current occupation. Minimum 3 named rows.
+State: `Topic: {inferred topic}`
+State: `Focus dimension: {market-sizing | positioning-framework | none}`
 
-DO NOT: Omit the pre-map table. Use fewer than 3 named rows. Paraphrase row labels in any
-  downstream column.
-DO: Produce a named pre-map table with >= 3 rows. Carry row labels verbatim into the Map
-  Position column in Phase 3.
-
-| Dimension | [columns per focus] |
-|-----------|---------------------|
+Commit Phase 1 before proceeding to Phase 2.
 
 ---
 
-PHASE 2 — INERTIA COMPETITOR
+**[PHASE 2 — ASSESS INERTIA]**
 
-The most dangerous competitor in almost every product market is not a named vendor — it is the
-team's existing way of doing things. Assess inertia first.
+Inertia is assessed first — before any external competitor.
 
-Competitor 0: None / status quo. Threat level: HIGH. State explicitly.
+What do users do today without the product? Name it specifically. This is the status quo competitor.
 
-INERTIA MECHANISMS (SR2 structural constraint; mechanism table required)
+- **Inertia competitor name:** {specific name, not "status quo"}
+- **Threat level:** HIGH / MEDIUM / LOW
+- **Mechanism:** Name the specific switching cost, habit lock-in, or workaround satisfaction that explains the rating. One sentence.
+- **Focus lens (if active):** Apply the focus dimension to inertia. If `market-sizing`: estimate the addressable population currently using this workaround and its implied value. If `positioning-framework`: place inertia on the positioning map (who it serves best, what it signals to buyers). Integrate this analysis into the inertia row — do not reserve it for a later section.
 
-DO NOT: Omit the mechanism table. Leave any mechanism row empty. Write mechanism descriptions
-  generic enough to describe a social network, a payroll tool, or a scheduling app equally.
-DO: Fill all three mechanism rows with content so domain-specific that substituting it into a
-  different product category would be obviously wrong. Run the portability test on every row.
-
-| Mechanism | Description | Portability test |
-|-----------|-------------|-----------------|
-| WORKAROUND SATISFACTION | | |
-| SWITCHING COST | | |
-| HABIT LOCK-IN | | |
-
-PORTABILITY TEST: Each mechanism must fail if substituted into a different product category.
-Exact fail condition: If a mechanism description reads as true for a social network (or
-equivalent dissimilar category), it fails.
-
-Run WebSearch to verify domain-specific claims if needed.
+Print: `Phase 2 complete. Inertia: {name}, Threat: {level}, Mechanism: {one sentence}.`
 
 ---
 
-PHASE 3 — NAMED COMPETITORS
+**[PHASE 3 — MAP EXTERNAL COMPETITORS]**
 
-For each named competitor:
-1. Run WebSearch. Cite the source inline (URL or publication).
-2. Assign threat level: HIGH / MEDIUM / LOW.
-3. Fill Map Position from Phase 1 row label verbatim. An empty or paraphrased cell fails.
+List external competitors. For each:
+- Name
+- Core offering (one sentence)
+- Threat level: HIGH / MEDIUM / LOW
+- Why that threat: one sentence naming the specific mechanism
+- Focus lens (if active): apply the same focus dimension used in Phase 2 to this competitor's row. Same format as Phase 2.
 
-| Competitor | Threat | Map Position | [focus columns] | Notes |
-|------------|--------|-------------|-----------------|-------|
+Use WebSearch to verify at least one external competitor characterization. Add inline citation to that row.
 
----
+Every competitor must have an explicit threat level. No competitor appears without HIGH, MEDIUM, or LOW.
 
-PHASE 4 — WHITESPACE ANALYSIS
-
-DO NOT: Produce a single-row whitespace table. Leave either row without Phase 1 grounding or
-  Map Position label reference. Omit the combined paragraph. Produce a Focus gap row that
-  does not require the focus dimension input to exist.
-DO: Fill both whitespace rows with findings that require both Phase 1 data and the focus
-  dimension simultaneously. Write a combined paragraph (2-3 sentences) naming at least one
-  Phase 3 competitor and one Phase 1 row label.
-
-| Gap type | Description | Phase 1 grounding |
-|----------|-------------|------------------|
-| Competitive gap | | |
-| Focus gap | | |
-
-Write a combined paragraph synthesizing both whitespace rows into a single narrative.
+Format as a table or list — your choice — as long as all fields are present for every competitor.
 
 ---
 
-PHASE 5 — KEY FINDINGS
+**[PHASE 4 — SYNTHESIZE]**
 
-List 4-6 findings. Each finding must reference at least one named Phase 1 row or Phase 3
-competitor by label. No finding may be free-floating.
+Write 3–5 findings. Each finding must name at least one entry from Phase 2 or Phase 3 (the inertia competitor or a named external competitor). No free-floating findings.
 
----
+Required finding: **WHITESPACE** — a gap or uncontested space that no competitor from Phase 2 or Phase 3 owns. Label it `WHITESPACE:`.
 
-AMEND
-
-Exactly 3 items. Each names: (1) what input changes, (2) what changes in the output.
-1. Shift focus dimension (market <-> positioning) — pre-map table restructures; whitespace
-   rows shift; combined paragraph changes axis.
-2. Add a named competitor — Phase 3 gains a row; findings update if the new competitor
-   contests a whitespace gap.
-3. Narrow domain to a submarket — pre-map rows focus; inertia mechanisms become more
-   specific; portability test becomes more stringent.
+If a focus dimension is active: at least one finding must be labeled `CROSS-DIMENSIONAL:` and must name a gap that is uncontested across both the competitive dimension and the focus dimension simultaneously. This finding cannot be produced by dropping the focus input.
 
 ---
 
-PRE-SUBMISSION VERIFICATION
+**[PHASE 5 — AMEND]**
 
-For SR1 (C-11): (1) Format artifact present? (2) Format-failure declared?
-  (3) FAILS/PASS pair present?
-For SR2 (C-13): (1) Format artifact present? (2) Format-failure declared?
-  (3) FAILS/PASS pair present?
-For SR4 (C-12): (1) Format artifact present? (2) Format-failure declared?
-  (3) FAILS/PASS pair present?
-```
+Three adjustments available:
 
----
+1. **Shift focus** — State new focus dimension (or remove it). Re-apply Phase 2 and Phase 3 focus lens to all competitors. Identify which findings in Phase 4 change or are replaced. State the delta.
+2. **Add competitor** — Name the competitor. Assess against Phase 3 rules. Verify with WebSearch. Determine whether WHITESPACE from Phase 4 survives or narrows.
+3. **Adjust depth** — Specify `expand: HIGH` or `expand: {competitor name}`. For each HIGH-threat row (or the named competitor), add a sub-analysis: the specific feature or behavior driving the threat, and the one product move that would shift the rating.
 
-## V-04 — Dual-Loop Verification Architecture (C-26 PASS)
-
-**Axis:** Lifecycle emphasis (verification loop placement and subject)
-**Hypothesis:** Adding a PRE-GENERATION INTEGRITY CHECK at the prompt opening that asks
-per-constraint prompt-completeness questions (format artifact declared in prompt?
-format-failure declared in prompt? bilateral enforcement pair present in prompt?) — covering
-all three structural constraints — while retaining the standard post-generation
-PRE-SUBMISSION VERIFICATION loop (output completeness) satisfies C-26. The two loops check
-different subjects (prompt vs. output) and are non-competing. C-20 is satisfied by the
-closing loop; C-26 is satisfied by both loops together. Uses standard FAILS/PASS throughout.
-Expected: C-23 FAIL (0), C-24 FAIL (0), C-25 PASS vacuous (+5 unchanged), C-26 PASS (+5) = **170**.
+Output artifact: `simulations/discover/competitors/{topic}-competitors-{date}.md`
 
 ---
 
-```
-PRE-GENERATION INTEGRITY CHECK
+---
 
-Before generating any phase output, verify the prompt contains the following elements:
-For C-11 (pre-map table):
-  (1) Format artifact declared in prompt? (2) Format-failure declared in prompt?
-  (3) Bilateral enforcement pair present in prompt?
-For C-13 (mechanism table):
-  (1) Format artifact declared in prompt? (2) Format-failure declared in prompt?
-  (3) Bilateral enforcement pair present in prompt?
-For C-12 (whitespace table):
-  (1) Format artifact declared in prompt? (2) Format-failure declared in prompt?
-  (3) Bilateral enforcement pair present in prompt?
-If any check fails, halt and report the missing element before proceeding.
+## V-04 — Conversational Register
+
+**Axis**: Phrasing register — second-person conversational guidance without structural brackets or explicit phase headers; imperative framing replaced with "start by / then / finally" flow
+**Hypothesis**: Removing hard structural brackets reduces the seams that produce appended focus sections. When the instruction flows as natural guidance rather than template sections, the model treats focus content as embedded context rather than a separate deliverable, producing C-02 weaving organically. Trade-off: conversational register may reduce enforcement of C-01 (inertia first) and C-10 (grounded findings) since structural position is not enforced.
 
 ---
 
-SETUP: Detect the product domain from README, CLAUDE.md, package.json, or any
-Glob-discoverable project file. Do not ask the user to name the domain or competitors.
-Infer everything from context.
+You are running `discover-competitors-alt` for the current project.
 
-STRUCTURAL REQUIREMENTS
+Start by reading the repo context — README, CLAUDE.md, package.json, or whatever's available. Figure out what the product is and who it competes with. Don't ask the user to tell you the topic or name any competitors — infer it all.
 
-SR1 (C-11): Pre-map table required when focus dimension is provided. Apparatus: table schema.
-An absent table or absent row fails. Row labels must appear verbatim downstream.
+If the user gave you a focus dimension (`market-sizing` or `positioning-framework`), keep that lens running throughout everything you produce. Don't save the focus content for a separate section at the end — weave it into each competitor as you go.
 
-SR2 (C-13): Inertia mechanism table required. Three rows: WORKAROUND SATISFACTION, SWITCHING
-COST, HABIT LOCK-IN. Apparatus: table schema. An absent table or empty row fails.
+**How to structure the output:**
 
-SR4 (C-12): Whitespace table required. Two rows: Competitive gap, Focus gap. Apparatus: table
-schema. An absent table or single-row table fails.
+Begin with the status quo. Before listing any external competitors, describe what users do today without the product. Give it a specific name — not "status quo" or "inertia," but the actual behavior or tool. Rate it HIGH, MEDIUM, or LOW threat, and say in one sentence *why* it's sticky: what switching cost, habit, or workaround satisfaction keeps users there. If the focus dimension is active, apply it here too — don't skip the status quo when distributing focus content.
 
-All three primary structural requirements (SR1, SR2, SR4) enforce via table schema. An absent
-table or empty row/cell is an observable format failure.
+Then work through the external competitors, one at a time. For each one, give a threat level and a one-sentence reason. Be specific about *what* makes them threatening, not just that they're "established" or "have market share." Use WebSearch to verify at least one claim about a named competitor before writing it. Inline the citation.
 
-Enforcement symmetry: SR1, SR2, and SR4 each carry an identical three-component enforcement
-apparatus — a named format artifact (table schema), a format-failure declaration, and a
-FAILS/PASS rejection example pair at phase instruction level.
+When you're done with the competitor map, write your findings. Findings should flow from the map — each one should reference a specific competitor by name. The most important finding is the whitespace: a gap or opening that no competitor currently owns. Name it clearly. If the focus dimension is active, try to surface a finding that only exists because both the competitive picture and the focus lens are in play at the same time.
+
+Close with an **AMEND** block. Give the user exactly three ways to adjust: shifting the focus dimension, adding a competitor, and adjusting depth on a specific threat level. Each adjustment should say both what the user changes and what changes in the output.
+
+Output artifact: `simulations/discover/competitors/{topic}-competitors-{date}.md`
 
 ---
 
-PHASE 1 — COMPETITIVE LANDSCAPE MAP
+---
 
-IF focus = market sizing:
-  Build a market-dimension table: segments, size indicators, growth signals. Minimum 3 named rows.
+## V-05 — Combined: Competitor-Zero + Focus Column + Lifecycle Phases + Token Anchors
 
-IF focus = positioning framework:
-  Build a positioning-dimension table: axes, poles, current occupation. Minimum 3 named rows.
-
-FAILS: Pre-map table absent; fewer than 3 named rows; row labels paraphrased downstream.
-PASS: Pre-map table present with >= 3 named rows; labels appear verbatim in downstream
-  Map Position column.
-
-| Dimension | [columns per focus] |
-|-----------|---------------------|
+**Axes**: Inertia-as-competitor-zero (V-01) + focus column in MAP table (V-02) + named lifecycle phases (V-03) + token anchors for commit checkpoints
+**Hypothesis**: Combining the V-01 Competitor 0 structure (which forces inertia-first and mechanism fields) with the V-02 focus-column format (which eliminates trailing focus sections) and the V-03 lifecycle phases (which assign each essential criterion to a named phase) should achieve all five essential criteria reliably. Adding lightweight token anchors at Phase 2 and Phase 4 creates commit checkpoints without full ledger machinery — sufficient to surface missing fields before synthesis. The AMEND block from V-02 with explicit "what changes" language targets C-08.
 
 ---
 
-PHASE 2 — INERTIA COMPETITOR
+You are running `discover-competitors-alt`.
 
-The most dangerous competitor in almost every product market is not a named vendor — it is the
-team's existing way of doing things. Assess inertia first.
-
-Competitor 0: None / status quo. Threat level: HIGH. State explicitly.
-
-INERTIA MECHANISMS (SR2 structural constraint; mechanism table required)
-
-FAILS: Mechanism table absent; any mechanism row empty; row content passes the portability
-  test for a different product category.
-PASS: All three mechanism rows present; each row is domain-exclusive; portability test confirms.
-
-| Mechanism | Description | Portability test |
-|-----------|-------------|-----------------|
-| WORKAROUND SATISFACTION | | |
-| SWITCHING COST | | |
-| HABIT LOCK-IN | | |
-
-PORTABILITY TEST: Each mechanism must fail if substituted into a different product category.
-Exact fail condition: If a mechanism description reads as true for a social network (or
-equivalent dissimilar category), it fails.
-
-Run WebSearch to verify domain-specific claims if needed.
+**FOCUS CHECK:** If the user supplied `focus: market-sizing` or `focus: positioning-framework`, the focus dimension is active. If not, no focus column is added and C-02 passes by vacuous satisfaction.
 
 ---
 
-PHASE 3 — NAMED COMPETITORS
+**[PHASE 1 — CONTEXT]**
 
-For each named competitor:
-1. Run WebSearch. Cite the source inline (URL or publication).
-2. Assign threat level: HIGH / MEDIUM / LOW.
-3. Fill Map Position from Phase 1 row label verbatim. An empty or paraphrased cell fails.
+Read repo context (README, CLAUDE.md, package.json, or equivalent). Infer the topic. Do not ask.
 
-| Competitor | Threat | Map Position | [focus columns] | Notes |
-|------------|--------|-------------|-----------------|-------|
+Token: `TOPIC: {inferred topic}`
+Token: `FOCUS: {market-sizing | positioning-framework | none}`
 
 ---
 
-PHASE 4 — WHITESPACE ANALYSIS
+**[PHASE 2 — INERTIA ASSESSMENT]**
 
-FAILS: Whitespace table absent; single-row table; either row lacks Phase 1 grounding or Map
-  Position label reference; combined paragraph absent.
-PASS: Both rows present; each row names a Phase 1 entry or Map Position label; Focus gap row
-  requires both Phase 1 data and the focus dimension simultaneously; combined paragraph
-  synthesizes across both rows.
+Assess the status quo competitor before any external competitor. Competitor 0 is the inertia competitor — what users do today without the product.
 
-| Gap type | Description | Phase 1 grounding |
-|----------|-------------|------------------|
-| Competitive gap | | |
-| Focus gap | | |
+Token: `C0: {specific name of the status quo behavior or tool}`
 
-Write a combined paragraph synthesizing both whitespace rows into a single narrative.
+Rate threat and name mechanism:
+- **Threat:** HIGH / MEDIUM / LOW
+- **Mechanism:** one sentence — name the specific switching cost, habit lock-in, or workaround satisfaction. Not just "inertia is high."
 
----
+If FOCUS is active: apply the focus dimension to Competitor 0 here. Integrated with the assessment above — not reserved for a later section.
 
-PHASE 5 — KEY FINDINGS
+Token: `C0-ASSESS: Threat={level}, Mechanism={sentence}, Focus={focus note or N/A}`
 
-List 4-6 findings. Each finding must reference at least one named Phase 1 row or Phase 3
-competitor by label. No finding may be free-floating.
+Print: `Phase 2 complete. C0: {name}. Threat: {level}.`
 
 ---
 
-AMEND
+**[PHASE 3 — EXTERNAL COMPETITORS]**
 
-Exactly 3 items. Each names: (1) what input changes, (2) what changes in the output.
-1. Shift focus dimension (market <-> positioning) — pre-map table restructures; whitespace
-   rows shift; combined paragraph changes axis.
-2. Add a named competitor — Phase 3 gains a row; findings update if the new competitor
-   contests a whitespace gap.
-3. Narrow domain to a submarket — pre-map rows focus; inertia mechanisms become more
-   specific; portability test becomes more stringent.
+Build the competitive map as a table. Each row is one competitor. Competitor 0 from Phase 2 is the first row.
 
----
+| Competitor | Core offering | Threat | Mechanism | {focus column if FOCUS active} |
+|---|---|---|---|---|
+| **0. {C0 name}** | {current user behavior} | {level} | {mechanism from Phase 2} | {focus note from Phase 2} |
+| **1. {name}** | | H / M / L | one sentence | {if FOCUS active} |
+| **2. {name}** | | H / M / L | one sentence | {if FOCUS active} |
+| *(add rows as needed)* | | | | |
 
-PRE-SUBMISSION VERIFICATION
+Rules:
+- Every row must have a threat level. No row appears without H, M, or L.
+- The mechanism column is required for every row.
+- If FOCUS is active, the focus column appears in every row. Do not add a trailing section for focus content.
+- Use WebSearch to verify at least one external competitor characterization. Inline the citation in the relevant row.
 
-For SR1 (C-11): (1) Format artifact present in output? (2) Format-failure declared?
-  (3) FAILS/PASS pair present?
-For SR2 (C-13): (1) Format artifact present in output? (2) Format-failure declared?
-  (3) FAILS/PASS pair present?
-For SR4 (C-12): (1) Format artifact present in output? (2) Format-failure declared?
-  (3) FAILS/PASS pair present?
-```
+Print: `Phase 3 complete. Competitors: {count}. Web-verified: {name of verified competitor}.`
 
 ---
 
-## V-05 — Full Synthesis (C-23 + C-24 + C-25 + C-26)
+**[PHASE 4 — SYNTHESIS]**
 
-**Axis:** Combined — all four new criteria simultaneously
-**Hypothesis:** Combining SR-block-free architecture (C-24), label-agnostic bilateral pairs
-in phase instructions AND in the verification loop (C-23), intentional multi-table Phase 2
-with explicit constraint designation tokens and companion non-substitutability declarations
-(C-25), and dual-loop verification with different subjects (C-26) achieves 180/180.
-Expected: C-23 PASS (+5), C-24 PASS (+5), C-25 PASS real (+5, unchanged), C-26 PASS (+5) = **180**.
+Write 3–5 findings. Every finding must name at least one competitor by number (e.g., "Competitor 0," "Competitor 2"). Free-floating findings that do not cite a table row are prohibited.
 
-Phase 2 produces two tables: (1) the mechanism table — the C-13 structural constraint —
-and (2) a portability summary table — additional framing only, not a structural constraint.
-This makes C-25 non-vacuous and tests real disambiguation.
+Required:
+
+**WHITESPACE: {gap label}** — Name the uncontested space or gap that no competitor row owns. One-sentence description. One sentence on why it is actionable.
+
+If FOCUS is active: include one finding labeled **CROSS-DIMENSIONAL:** that names a gap uncontested across both the competitive analysis and the focus dimension simultaneously. This finding must cite at least one competitor row and at least one focus column entry. It cannot be produced by dropping the focus input.
 
 ---
 
-```
-All three structural constraints (C-11 pre-map, C-13 inertia mechanisms, C-12 whitespace)
-enforce via table schema. An absent table or empty row/cell is an observable format failure.
+**[PHASE 5 — AMEND]**
 
-PRE-GENERATION INTEGRITY CHECK
+Three adjustments:
 
-Before generating any phase output, verify the prompt contains the following elements:
-For C-11 (pre-map): (1) Format artifact declared in prompt? (2) Format-failure declared?
-  (3) Bilateral enforcement pair present (rejection example + acceptance example)?
-For C-13 (mechanism table): (1) Format artifact declared in prompt? (2) Format-failure declared?
-  (3) Bilateral enforcement pair present (rejection example + acceptance example)?
-For C-12 (whitespace): (1) Format artifact declared in prompt? (2) Format-failure declared?
-  (3) Bilateral enforcement pair present (rejection example + acceptance example)?
-If any check fails, halt and report the missing element before proceeding.
+1. **Shift focus** — Change the FOCUS token (e.g., `none` → `market-sizing`, or `market-sizing` → `positioning-framework`). Add or replace the focus column in Phase 3 MAP for all rows. Update or replace the CROSS-DIMENSIONAL finding in Phase 4. State which rows and findings changed.
+2. **Add competitor** — Name the competitor. Add a Phase 3 MAP row with all required fields. Verify with WebSearch. State whether the WHITESPACE finding from Phase 4 survives, narrows, or closes.
+3. **Adjust depth** — Specify `expand: HIGH` or `expand: {competitor number}`. For the matching row(s), add a sub-row: (a) the specific product feature or behavior driving the threat rating, and (b) the one product move that would shift the rating down by one level.
+
+Output artifact: `simulations/discover/competitors/{topic}-competitors-{date}.md`
 
 ---
 
-SETUP: Detect the product domain from README, CLAUDE.md, package.json, or any
-Glob-discoverable project file. Do not ask the user to name the domain or competitors.
-Infer everything from context.
-
 ---
 
-PHASE 1 — COMPETITIVE LANDSCAPE MAP
+## Rubric coverage projection summary
 
-C-11 structural constraint. Apparatus: table schema.
+| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|-----------|------|------|------|------|------|
+| C-01 inertia assessed first | PASS | PASS | PASS | PARTIAL | PASS |
+| C-02 focus woven not appended | PASS | PASS | PASS | PASS | PASS |
+| C-03 threat level per competitor | PASS | PASS | PASS | PASS | PASS |
+| C-04 whitespace identified | PASS | PASS | PASS | PARTIAL | PASS |
+| C-05 auto-detect without prompting | PASS | PASS | PASS | PASS | PASS |
+| C-06 inertia stickiness reasoning | PASS | PARTIAL | PASS | PASS | PASS |
+| C-07 web-verified competitive claim | FAIL | PASS | PASS | FAIL | PASS |
+| C-08 AMEND 3 actionable adjustments | PASS | PASS | PASS | PASS | PASS |
+| C-09 cross-dimensional whitespace | PARTIAL | PARTIAL | FAIL | FAIL | PASS |
+| C-10 table-stakes grounding per finding | PARTIAL | PASS | PASS | FAIL | PASS |
 
-IF focus = market sizing:
-  Build a market-dimension table: segments, size indicators, growth signals. Minimum 3 named rows.
+**Notes on partials and fails:**
+- V-01 C-07: no WebSearch instruction in MAP construction step — web verification is unguided; model may or may not verify
+- V-01 C-09: FINDINGS section asks for a cross-dimensional finding "if focus is active" but does not require it use both a competitive cell and a focus cell from the map simultaneously; model may produce a single-dimensional observation
+- V-01 C-10: FINDINGS section says "must name at least one competitor row by label" but does not prohibit prose that fits the citation rule by accident — PARTIAL because the instruction exists but the prohibition is weak
+- V-02 C-06: MAP threat column has a "why" column but the inertia row follows the same schema as external competitors; no specific inertia mechanism prompt — model may produce a mechanism or may produce generic switching cost language; PARTIAL
+- V-02 C-09: CROSS-DIMENSIONAL finding requires citing both columns but does not require the finding to be unreachable without both — technically satisfies the criterion if the row cite and focus cite are present
+- V-03 C-09: Phase 4 synthesis does not require a CROSS-DIMENSIONAL finding unless focus is active and the finding must reference both — same partial concern as V-02; FAIL because the criterion requires the finding to be unreachable without both dimensions, and V-03 does not test for that property
+- V-04 C-01: conversational "begin with the status quo" is a suggestion, not a structural first-row rule; model may embed inertia anywhere in the competitive narrative — PARTIAL
+- V-04 C-04: "most important finding is the whitespace" nudge without a required label — model may produce a whitespace equivalent without labeling it; criterion requires it to be "stated in its own finding or clearly labeled" — PARTIAL
+- V-04 C-07: no explicit WebSearch instruction — likely FAIL unless model uses WebSearch by default
+- V-04 C-09: no cross-dimensional finding requirement — FAIL
+- V-04 C-10: no citation requirement for findings — FAIL
+- V-05 C-09: CROSS-DIMENSIONAL finding requirement with explicit "must cite competitive row AND focus column entry" and "cannot be produced by dropping focus input" — this is the strongest encoding of C-09 across all variations
 
-IF focus = positioning framework:
-  Build a positioning-dimension table: axes, poles, current occupation. Minimum 3 named rows.
-
-DO NOT: Omit the pre-map table. Use fewer than 3 named rows. Paraphrase row labels in any
-  downstream column.
-DO: Produce a named pre-map table with >= 3 rows. Carry row labels verbatim into the Map
-  Position column in Phase 3.
-
-| Dimension | [columns per focus] |
-|-----------|---------------------|
-
----
-
-PHASE 2 — INERTIA COMPETITOR
-
-The most dangerous competitor in almost every product market is not a named vendor — it is
-the team's existing way of doing things. Assess inertia first.
-
-Competitor 0: None / status quo. Threat level: HIGH. State explicitly.
-
-Phase 2 produces two tables. Table 1 below is the C-13 structural constraint (mechanism
-table). Table 2 below is a portability summary — additional framing only; it does not
-substitute for the mechanism table for C-13 apparatus uniformity or C-19 purposes.
-
-C-13 structural constraint. Apparatus: table schema. An absent mechanism table or empty
-mechanism row fails.
-
-DO NOT: Omit the mechanism table. Leave any mechanism row empty. Write mechanism descriptions
-  generic enough to apply to a social network, a payroll tool, or a scheduling app without
-  modification.
-DO: Fill all three mechanism rows with content so domain-specific that substituting it into a
-  different product category would be obviously wrong.
-
-| Mechanism | Description | Domain-exclusive? |
-|-----------|-------------|------------------|
-| WORKAROUND SATISFACTION | | |
-| SWITCHING COST | | |
-| HABIT LOCK-IN | | |
-
-PORTABILITY TEST: Each mechanism must fail if substituted into a different product category.
-Exact fail condition: If a mechanism description reads as true for a social network (or
-equivalent dissimilar category), it fails.
-
-Portability summary (additional framing only; does not substitute for the mechanism table
-above for C-13 or C-19 apparatus uniformity purposes):
-
-| Mechanism | Fails portability test for: | Result |
-|-----------|----------------------------|--------|
-| WORKAROUND SATISFACTION | | |
-| SWITCHING COST | | |
-| HABIT LOCK-IN | | |
-
-Run WebSearch to verify domain-specific claims if needed.
-
----
-
-PHASE 3 — NAMED COMPETITORS
-
-For each named competitor:
-1. Run WebSearch. Cite the source inline (URL or publication).
-2. Assign threat level: HIGH / MEDIUM / LOW.
-3. Fill Map Position from Phase 1 row label verbatim. An empty or paraphrased cell fails.
-
-| Competitor | Threat | Map Position | [focus columns] | Notes |
-|------------|--------|-------------|-----------------|-------|
-
----
-
-PHASE 4 — WHITESPACE ANALYSIS
-
-C-12 structural constraint. Apparatus: table schema. An absent table or single-row table fails.
-
-DO NOT: Produce a single-row whitespace table. Leave either row without Phase 1 grounding or
-  Map Position label reference. Omit the combined paragraph. Write a Focus gap that does not
-  require the focus dimension input.
-DO: Fill both whitespace rows with findings that require both Phase 1 data and the focus
-  dimension simultaneously. Write a combined paragraph (2-3 sentences) naming at least one
-  Phase 3 competitor and one Phase 1 row label.
-
-| Gap type | Description | Phase 1 grounding |
-|----------|-------------|------------------|
-| Competitive gap | | |
-| Focus gap | | |
-
-Write a combined paragraph synthesizing both whitespace rows into a single narrative.
-
----
-
-PHASE 5 — KEY FINDINGS
-
-List 4-6 findings. Each finding must reference at least one named Phase 1 row or Phase 3
-competitor by label. No finding may be free-floating.
-
----
-
-AMEND
-
-Exactly 3 items. Each names: (1) what input changes, (2) what changes in the output.
-1. Shift focus dimension (market <-> positioning) — pre-map table restructures; whitespace
-   rows shift; combined paragraph changes axis.
-2. Add a named competitor — Phase 3 gains a row; findings update if the new competitor
-   contests a whitespace gap.
-3. Narrow domain to a submarket — pre-map rows focus; inertia mechanisms become more
-   specific; portability test becomes more stringent.
-
----
-
-PRE-SUBMISSION VERIFICATION
-
-For C-11 (pre-map): (1) Format artifact present in output? (2) Format-failure declared?
-  (3) Bilateral enforcement pair present (rejection example + acceptance example)?
-For C-13 (mechanism table): (1) Format artifact present in output — mechanism table, not
-  portability summary? (2) Format-failure declared? (3) Bilateral enforcement pair present
-  (rejection example + acceptance example)?
-For C-12 (whitespace): (1) Format artifact present in output? (2) Format-failure declared?
-  (3) Bilateral enforcement pair present (rejection example + acceptance example)?
-```
-
----
-
-## Variation Summary
-
-| # | C-23 | C-24 | C-25 | C-26 | Expected |
-|---|------|------|------|------|----------|
-| V-01 | PASS (5) | FAIL (0) | PASS vacuous (5) | FAIL (0) | 170 |
-| V-02 | FAIL (0) | PASS (5) | PASS vacuous (5) | FAIL (0) | 170 |
-| V-03 | PARTIAL (2.5) | FAIL (0) | PASS vacuous (5) | FAIL (0) | 167.5 |
-| V-04 | FAIL (0) | FAIL (0) | PASS vacuous (5) | PASS (5) | 170 |
-| V-05 | PASS (5) | PASS (5) | PASS real (5) | PASS (5) | 180 |
-
-*Baseline under v8 rubric: 165 (C-01–C-22: 160, C-25 vacuous: 5, C-23/C-24/C-26: 0)*
-
-**Key discriminators:**
-- V-01 vs. V-03 isolates whether loop language is the determinant for C-23 full/partial split
-- V-02 confirms SR-block removal doesn't break any of C-14, C-17, C-18, C-19, C-20, C-21, C-22
-- V-04 confirms the pre-generation / post-generation dual-loop satisfies C-26's "different subjects" requirement
-- V-05 synthesizes all four new axes and tests the 180 ceiling
+**Key interactions to watch in scoring:**
+- V-01 vs V-05 on C-10: V-01 has "must name competitor row by label" (PARTIAL) vs V-05 has "free-floating findings prohibited" plus explicit row citation instruction (PASS) — tests whether a prohibition vs a positive instruction is the load-bearing element
+- V-02 vs V-03 on C-06: MAP schema with "why" column (PARTIAL) vs explicit Phase 2 mechanism sentence requirement (PASS) — tests whether a column label or a phase-level instruction is required for mechanism depth
+- V-04 on C-01 vs all: conversational instruction produces PARTIAL ordering; all structured variations produce reliable PASS — confirms that structural position (explicit first-row rule) not linguistic instruction is the reliable load-bearing element for inertia-first
+- V-05 C-09 vs V-02 C-09: V-05 adds "cannot be produced by dropping the focus input" as an explicit test condition; V-02 only requires citing both columns — tests whether the exclusion condition or the citation condition is the discriminating element for C-09

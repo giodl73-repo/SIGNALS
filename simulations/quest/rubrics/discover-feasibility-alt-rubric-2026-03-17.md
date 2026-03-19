@@ -1,19 +1,8 @@
-Written to `simulations/quest/rubrics/discover-feasibility-alt-rubric-v9-2026-03-17.md`.
+Generated `discover-feasibility-alt-rubric-v11-2026-03-17.md`.
 
-**v9 summary**: No new criteria from R8 (empty variations file). Clean reissue of the v8 rubric with consistent formatting throughout.
+**v11 summary**: Carry-forward of v10 -- no new criteria. 31 total criteria (C-01 through C-31), 5 essential / 3 recommended / 23 aspirational.
 
-**Current state of the rubric:**
+- C-01 through C-23: confirmed PASS at 100.0 through R7 (under v7 rubric with aspirational denominator /15)
+- C-24 through C-31: derived from R7 excellence signals (V-05 combined prompt); pending empirical validation in R8+
 
-| Tier | Count | Denominator |
-|------|-------|-------------|
-| Essential | 5 (C-01–C-05) | /5 |
-| Recommended | 3 (C-06–C-08) | /3 |
-| Aspirational | 19 (C-09–C-27) | /19 |
-
-**Scoring formula:**
-```
-Composite = (essential_pass/5 * 60) + (recommended_pass/3 * 30) + (aspirational_pass/19 * 10)
-```
-Golden threshold: all 5 essential pass (no PARTIALs) + composite >= 80.
-
-**C-05 remains the A/B test gate** — focus content woven vs. appended is the entire point of the alt version. All 27 criteria confirmed stable at 100.0 in R7.
+The rubric is structurally stable. The next productive step is an R8 scorecard run against v10/v11 to validate whether C-24 through C-31 hold at 100.0 for V-05 variations.

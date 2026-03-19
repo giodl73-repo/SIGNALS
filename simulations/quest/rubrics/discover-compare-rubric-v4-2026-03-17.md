@@ -1,91 +1,98 @@
-Reading the two patterns from the scorecard:
+Done. Here's what changed from v3:
 
-1. **Pattern 1** — Belt-and-suspenders: structural pre-check gate + inline `invalid` vocabulary independently close C-13; having both is a stronger enforcement form than either alone.
-2. **Pattern 2** — RULE 4 binary fill-in template: machine-parseable recommendation evidence format is the single gap separating V-01/V-02 from a perfect score; goes beyond C-12's "traces to cells" into a structured slot-filling contract.
+**Two calibrations (existing criteria refined):**
 
-These become C-14 and C-15. Total grows from 120 → 130 pts (8 aspirational × 5 pts = 40). Thresholds scale proportionally (~78% golden, ~66% near-golden).
+- **C-14** — pass condition now explicitly states label flexibility: FAULT:, VIOLATION:, SCORING DEFECT:, or any named class all pass. Co-location is the criterion, not the label.
+- **C-15** — pass condition now explicitly states that physical REG-before-ANCHOR[0] ordering in a single inline phase satisfies it; the Part A/Part B split is sufficient but not required.
 
----
+**One new criterion:**
 
-# discover-compare rubric — v4
+- **C-17** (format, aspirational) — *Output is compressed to operative directives only.* Confirmed by V-03 scoring 100/100 at ~50% word count. Explanatory prose (rule tables, binding rationale, Print: confirmations, preamble framing) is overhead, not mechanism. Operative directives alongside explanatory scaffolding = partial. **Denominator bumps from /9 to /10.**
 
-**4 essential / 3 recommended / 8 aspirational**
-**Total: 130 pts** (Essential 60 · Recommended 30 · Aspirational 40)
+**One new failure mode:** "Operative mechanism with explanatory overhead" — directives all present but wrapped in prose that compression would strip without losing any structural property.
+ully-compressed output (all operative criteria met, no explanatory overhead) scores 10/10 aspirational → 10 pts. An output with operative criteria met but explanatory prose present scores 9/10 → 9 pts, placing it at ~99 composite vs. 100 for a compressed equivalent.
 
----
-
-## Change Log
-
-| Version | Change |
-|---------|--------|
-| v1 | Initial rubric — 4 essential, 3 recommended, 2 aspirational |
-| v2 | Added C-10, C-11, C-12 from R1 excellence signals; aspirational grows to 5 criteria (25 pts); scoring guide thresholds updated |
-| v3 | Added C-13 from R2 excellence signals; aspirational grows to 6 criteria (30 pts); scoring guide thresholds updated |
-| v4 | Added C-14, C-15 from R3 excellence signals; aspirational grows to 8 criteria (40 pts); total grows to 130 pts; scoring guide thresholds updated |
-
-**New in v4:**
-- C-14 — Dual-mechanism axis enforcement (belt-and-suspenders: structural pre-check gate AND inline disqualification vocabulary both present, each independently sufficient)
-- C-15 — Recommendation evidence template (RULE 4 binary fill-in format: machine-parseable slot structure for matrix cell citations, goes beyond C-12's traceability requirement)
-
-**Pattern from R3:** V-04/V-05 demonstrate that structural gate (named Pre-Check section) and inline vocabulary (`invalid — not incomplete`) independently close C-13 — either mechanism alone is sufficient, but both together provide belt-and-suspenders enforcement that no axis ambiguity can survive. V-01/V-02 reach 118/120 under v3; the single remaining gap is the RULE 4 binary evidence template in the recommendation section, which makes citation machine-parseable rather than prose-traceable. C-14 captures the dual-mechanism upgrade; C-15 captures the evidence-template upgrade.
+**One new failure mode** added to the watch list for C-17.
 
 ---
 
-## Essential Criteria (60 pts total)
+## Essential Criteria (60%)
+
+Output fails if any of these are missing.
 
 | ID | Criterion | Category | Weight | Pass Condition |
 |----|-----------|----------|--------|----------------|
-| C-01 | All four dimensions evaluated per option | coverage | essential | Feasibility, inertia, risk, and competitive analysis are each present for every option being compared — not just for the preferred option |
-| C-02 | Inertia framed as "do nothing vs THIS option" *(highest-signal)* | correctness | essential | For each option, inertia is the specific resistance to adopting THAT option — not generic "teams resist change" or rollout risk |
-| C-03 | Decision matrix present and scannable | format | essential | A structured comparison (table or equivalent side-by-side summary) exists that maps options to dimensions — scannable at a glance |
-| C-04 | Recommendation given with rationale | correctness | essential | Output states which option (or neither) is recommended, and the rationale is grounded in the comparison results — not a generic "it depends" |
+| C-01 | All four dimensions are covered for both options | coverage | essential | Output addresses feasibility, risk, competitive positioning, and inertia for Option A AND Option B. Missing any dimension for either option = fail. |
+| C-02 | Inertia check is applied independently to both options | correctness | essential | The output asks "would teams do nothing instead of THIS option?" for Option A separately and Option B separately — not as a relative A-vs-B comparison. Each option has its own inertia verdict. A single combined inertia statement = fail. |
+| C-03 | A decision matrix is present | format | essential | Output contains a structured matrix (table or equivalent scored grid) placing both options side-by-side across dimensions. Prose-only comparison without any structured layout = fail. |
+| C-04 | A concrete recommendation is made | correctness | essential | Output concludes with a stated recommendation: A, B, neither, or conditional. The recommendation must be explicit. Ending with "it depends" without resolution, or implying a preference without stating it = fail. |
 
 ---
 
-## Recommended Criteria (30 pts total)
+## Recommended Criteria (30%)
+
+Output is better with these.
 
 | ID | Criterion | Category | Weight | Pass Condition |
 |----|-----------|----------|--------|----------------|
-| C-05 | Inertia analysis is substantive | depth | recommended | Inertia reasoning goes beyond "teams will adopt it" — identifies a specific friction, habit, or status quo that the option must overcome (or fails to overcome) |
-| C-06 | Risk assessment is concrete and option-specific | depth | recommended | Each option's risks are distinct and specific — not interchangeable generic risks like "complexity" or "timeline" that could apply to any feature |
-| C-07 | "Neither worth building" outcome explicitly considered | coverage | recommended | Output either surfaces "neither option clears the inertia bar" as a live finding, or explicitly rules it out with reasoning — not silently assumed away |
+| C-05 | Build/no-build gate is surfaced when both options fail inertia | behavior | recommended | If both options score weak on inertia (teams would do nothing), the output explicitly raises "build neither" as a possible recommendation. May still conclude build, but must surface the question. Outputs that treat A-vs-B as the only valid frame = fail. |
+| C-06 | Risk factors are meaningfully differentiated between options | depth | recommended | Risks listed for Option A and Option B are distinct — not symmetric or copy-pasted. At least one risk is unique to each option, or the output explains why risks are identical. |
+| C-07 | AMEND section is actionable | coverage | recommended | Output includes an AMEND section (or equivalent) that provides concrete instructions for at least one of: adding a third option, weighting a specific dimension, adjusting for exec vs engineering audience. Generic "you could amend this" without a concrete prompt or slot structure = fail. |
 
 ---
 
-## Aspirational Criteria (40 pts total)
+## Aspirational Criteria (10%)
+
+Raise the bar once essential and recommended are stable.
 
 | ID | Criterion | Category | Weight | Pass Condition |
 |----|-----------|----------|--------|----------------|
-| C-08 | AMEND paths surfaced | behavior | aspirational | Output invites or suggests at least one amendment: a third option, a dimension weight adjustment, or an audience variant (exec vs engineering) — either inline or as a closing prompt |
-| C-09 | Competitive positioning is strategically differentiated | depth | aspirational | Each option's competitive positioning tells a distinct story about differentiation or market fit — not just "Option A has feature X, Option B does not" |
-| C-10 | Inertia hard gate present | structure | aspirational | Output contains a blocking mechanism — explicit or structural — that halts matrix generation and recommendation if inertia does not clear for any option. Goes beyond C-07: not "considers neither" but "refuses to proceed past a gate." Pass condition: gate is named, triggers on a stated inertia condition, and specifies what must change before the comparison can continue |
-| C-11 | Cross-option risk disqualifier applied | depth | aspirational | Output contains an explicit rule — stated or applied — that a risk appearing identically for both options is invalid and excluded. Goes beyond C-06: not "risks are specific" but "shared risks are actively disqualified." Pass condition: at least one risk is tested against this rule, or the rule is stated as a constraint on the risk assessment |
-| C-12 | Recommendation traces to matrix cells | correctness | aspirational | Recommendation cites specific matrix cells (by option × dimension) as evidence. Goes beyond C-04: not "grounded in comparison" but traceable to named data points. Pass condition: recommendation identifies at least two specific option-dimension intersections that drove the conclusion |
-| C-13 | Competitive axis distinctness rule enforced | structure | aspirational | Output contains an explicit rule — stated or applied — that options must claim distinct competitive axes or differentiation targets. Goes beyond C-09: not "distinct story per option" but "converging on the same axis is invalid." Pass condition: the rule is stated before analysis begins, OR at least one option's positioning is tested against this rule with a find-distinct-axis requirement on convergence |
-| C-14 | Dual-mechanism axis enforcement (belt-and-suspenders) | structure | aspirational | Output contains BOTH a structural pre-check gate (a named section where axes are declared and locked before analysis begins) AND inline disqualification vocabulary (e.g., `invalid — not incomplete`) at the point of competitive analysis. Goes beyond C-13: not "either mechanism closes the rule" but "both mechanisms are independently present." Pass condition: a named pre-check section exists with explicit axis slots, AND the competitive analysis section uses disqualification language on convergence — each mechanism sufficient alone, both present for redundancy |
-| C-15 | Recommendation evidence template (machine-parseable format) | correctness | aspirational | Recommendation section contains a structured fill-in template — not prose traceability — with explicit named slots for matrix cell citations (e.g., `[Option × Dimension] = [finding] → [direction]`). Goes beyond C-12: not "traces to named data points" but "provides a binary fill-in contract that makes evidence machine-parseable." Pass condition: recommendation uses a named template (e.g., RULE 4 format) with at least two explicit option-dimension citation slots completed |
+| C-08 | "Do nothing" (Option 0) is a named column in the matrix | behavior | aspirational | The status quo is represented as Option 0 in the comparison matrix — not just mentioned in prose. Both build options are scored against the status quo simultaneously, making it visible when A and B both lose to inertia rather than only when they tie each other. |
+| C-09 | Audience register is calibrated in the primary flow | depth | aspirational | When audience is specified or can be inferred, language and emphasis shift appropriately in the main output — not deferred to AMEND. Exec output leads with recommendation and business risk; engineering output leads with feasibility and implementation complexity. Audience handling available only as an AMEND slot = partial, not pass. One-size framing with no audience signal = fail. |
+| C-10 | Labeled output tokens are cross-checked at matrix assembly | format | aspirational | Each analysis phase produces a labeled output token (e.g., FEASIBILITY-A:, VERDICT-B:) that is explicitly recalled or cross-checked when assembling the matrix. Missing scores are structurally visible rather than requiring prose review. Matrix assembled from free prose without named token references = fail. |
+| C-11 | Inertia independence is stated as an explicit exclusion rule | correctness | aspirational | Each option's inertia phase contains an explicit "compare against status quo, not against Option [X]" prohibition — not just physical separation into different sections. The exclusion is stated as a rule that prevents relative comparison, making violations detectable. Separation without the explicit prohibition = fail. |
+| C-12 | Status quo baseline is committed before analysis begins | behavior | aspirational | The status quo is defined as a named anchor (e.g., ANCHOR[0], STATUS QUO, Option 0) in a dedicated phase before any option analysis begins. Subsequent inertia phases reference this anchor by name. Baseline defined inline during inertia phases, or implied rather than declared = fail. |
+| C-13 | Anchor sentence is reproduced verbatim at each inertia phase | behavior | aspirational | Each inertia phase reproduces the exact anchor sentence — not a paraphrase, not just the anchor name. The no-paraphrase mandate must appear co-located with the TOKEN RECALL directive at point of use (e.g., `{reproduce exact sentence from Phase 0 — do not paraphrase}`), not only in a preamble or template slot instruction. Baseline drift is detectable as a token mismatch rather than requiring prose re-reading. Anchor name reference without the sentence, or "exact" instruction inside a fill-in slot without a co-located no-paraphrase mandate = fail. |
+| C-14 | Exclusion prohibition is named as a failure class at point of use | correctness | aspirational | Each inertia phase states the exclusion prohibition as a named failure class co-located with the TOKEN RECALL step — not only in a header or preamble. Any named failure class label satisfies this criterion: FAULT:, VIOLATION:, SCORING DEFECT:, or equivalent. The co-location is the requirement; the specific label is not. Prohibition stated only in framing outside the inertia phase itself = fail. |
+| C-15 | Register is declared before the status quo anchor | behavior | aspirational | Audience register is declared as a named token before ANCHOR[0] is committed. The anchor sentence is written in the declared register; the register token is recalled at the recommendation phase. Physical token ordering in a single inline phase satisfies this criterion — a Part A/Part B structural split is sufficient but not required. Register declared after the anchor, or inferred from the anchor framing = fail. |
+| C-16 | Token ledger is enforced as a blocking gate | format | aspirational | The ledger check includes an explicit blocking instruction ("do not proceed," "do not assemble," "halt") that makes a missing token a blocked path rather than a checklist item. Ledger check present as a list without a blocking instruction = fail. |
+| C-17 | Output is compressed to operative directives only | format | aspirational | All operative mechanisms are present as pure directives — token declarations, recall instructions, exclusion prohibitions, blocking gates, verdict labels. Explanatory prose is absent: no rule description tables, no binding rationale sentences, no Print: confirmations, no preamble framing. Operative directives present alongside explanatory scaffolding = partial. Explanatory prose exceeding operative content in volume = fail. |
 
 ---
 
-## Scoring Guide
+## Scoring Worksheet
 
-| Score Range | Meaning |
-|-------------|---------|
-| All essential pass + composite >= 102 | Golden — meets bar |
-| All essential pass + composite 86–101 | Near-golden — one recommended or aspirational gap |
-| 3/4 essential pass | Failing — one must-have missing |
-| < 3 essential pass | Reject — not a valid compare output |
+```
+Essential passed:    ___ / 4   =>  ___ * 60 / 4  = ___
+Recommended passed:  ___ / 3   =>  ___ * 30 / 3  = ___
+Aspirational passed: ___ / 10  =>  ___ * 10 / 10 = ___
 
-*Thresholds adjusted from v3 (94/79 of 120 pts) to maintain equivalent percentages (~78% / ~66%) at 130 pts total.*
+Composite score: ___
+
+Golden: all 4 essential pass AND composite >= 80
+```
+
+| Band | Score | Meaning |
+|------|-------|---------|
+| Golden | all essential + >= 80 | Ship-ready comparison artifact |
+| Passing | all essential + 60-79 | Usable; recommended gaps noted |
+| Failing | any essential fails | Not useful as a comparison artifact |
 
 ---
 
-## Notes
+## Failure Modes to Watch
 
-- **C-02** is the highest-signal essential.
-- **C-07 vs C-10**: gate mechanism vs. consideration.
-- **C-06 vs C-11**: active disqualification rule vs. specificity requirement.
-- **C-09 vs C-13**: C-09 requires a distinct story per option. C-13 requires an enforcement mechanism that flags axis convergence and demands resolution.
-- **C-13 vs C-14**: C-13 requires one mechanism (structural gate OR inline vocabulary). C-14 requires both — belt-and-suspenders. Either mechanism alone closes C-13; only having both closes C-14.
-- **C-04 vs C-12 vs C-15**: C-04 requires a grounded rationale. C-12 requires traceable cell citations (named intersections). C-15 requires a machine-parseable fill-in template — structured slots, not prose.
-- **Upgrade symmetry**: C-06→C-11 (risk specificity → shared-risk disqualifier), C-09→C-13 (distinct story → axis-convergence rule), C-13→C-14 (one mechanism → dual mechanism), C-12→C-15 (prose traceability → fill-in evidence template).
+- **Symmetric inertia** — both options get identical inertia commentary; suggests the check was not applied independently
+- **Matrix without assessments** — decision matrix lists dimensions but provides no values or ratings, making comparison impossible
+- **Implied recommendation** — output clearly leans toward one option but never states it
+- **Missing dimension** — feasibility and risk covered but competitive positioning omitted entirely
+- **AMEND as afterthought** — AMEND section present but contains only meta-commentary without a concrete prompt or structure
+- **Audience deferred to AMEND** — audience register available only as an amendment slot; primary output is single-register (C-09 partial, not pass)
+- **Baseline drift** — inertia phases each define their own implied status quo rather than referencing a shared anchor declared before analysis (C-12 fail)
+- **Anchor name without anchor sentence** — inertia phase references ANCHOR[0] by name but does not reproduce the sentence; drift is invisible at the token level (C-13 fail)
+- **No-paraphrase in preamble only** — "do not paraphrase" or "exact" instruction appears only in Phase 0 framing or a template slot, not co-located with the TOKEN RECALL directive at point of use (C-13 fail)
+- **Invisible omission** — matrix assembled from prose with no labeled tokens; a missing score is not detectable without re-reading all analysis phases (C-10 fail)
+- **Preamble-only prohibition** — exclusion rule stated in framing but absent from the inertia phase itself; the rule is not at the point of use (C-14 fail)
+- **Register after anchor** — audience declared after status quo is committed; anchor sentence is written before register is known and cannot be reframed (C-15 fail)
+- **Ledger as checklist** — token ledger lists required tokens but includes no blocking instruction; a missing token is a suggestion to fill in, not a halt (C-16 fail)
+- **Operative mechanism with explanatory overhead** — all directive mechanisms are present but surrounded by rule descriptions, rationale sentences, or preamble framing; compression to operative-only form would reduce word count by 40%+ without losing any structural property (C-17 partial, not pass)

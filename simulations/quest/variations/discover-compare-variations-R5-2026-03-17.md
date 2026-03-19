@@ -1,1461 +1,1006 @@
-Done. `discover-compare-variations-R5-2026-03-17.md` written.
+Written to `simulations/quest/variations/discover-compare-variations-R5-2026-03-17.md`.
 
 ---
 
-## Round 5 — 5 Variations
+## discover-compare — Variations R5 Summary
 
-| # | Label | Axis | Key change from V-04/R4 |
-|---|-------|------|------------------------|
-| V-01 | token-bind | Inertia framing | V-04/R4 + ANCHOR[0A]/ANCHOR[0B] tokens + binding rule; all downstream phases use token name, not prose |
-| V-02 | self-verify | Role sequence | V-01 + Phase 10 structural audit: 9-item self-check before returning output |
-| V-03 | inline-token-check | Phrasing register | V-01 + TOKEN RECALL header at Phases 3, 6, 7 -- model reproduces token values at point-of-use |
-| V-04 | full-integration | Combination | V-01 + V-02 + V-03: all three R5 mechanisms; predicted R5 canonical |
-| V-05 | lean-anchor | Lifecycle emphasis | V-05/R4 lean (no AMEND/register) + ANCHOR tokens throughout |
+**Context**: R4 confirmed the minimal viable 100/100 candidate under v3 rubric. C-17 is new in v4 — it requires purely operative output with no explanatory prose. R4's canonical form still has three prose elements that likely trigger C-17 PARTIAL.
 
-**Predicted scores (v4 rubric):** V-01/V-02/V-03/V-04 all 100.0; V-05 = 95.0 Golden.
+### Variation axes
 
-**What's being tested:** R4's identified gap was V-03/R4's ANCHOR token mechanism -- the only thing not carried into V-04/R4. Each single-axis variation targets a different point in the drift lifecycle: token binding prevents silent prose substitution at declaration; inline recall catches it at point-of-use; terminal audit catches structural omissions above the token level. V-04 combines all three. V-05 tests whether token grounding alone raises the lean form's real-world robustness without changing its 95.0 score.
-4/R4 uses prose "Option 0 named in Phase 0" in downstream phases -- any paraphrase is invisible. ANCHOR[0A]/ANCHOR[0B] token syntax requires literal reproduction; drift is detectable. R5 tests whether merging that token mechanism into V-04's established structure raises practical robustness without changing v4 rubric scores, and whether a self-verification audit (V-02) and inline recall (V-03) provide additional drift guards at different points in the output lifecycle.
+| Var | Axis | Change from R4 canonical | C-17 | Key test |
+|-----|------|--------------------------|------|----------|
+| V-01 | baseline | None — exact R4 minimal viable | PARTIAL | Confirms cost of residual prose |
+| V-02 | lifecycle emphasis | Strip preamble + Phase 0 framing + FAULT explanation clause | PASS | C-11 with condensed FAULT |
+| V-03 | inertia framing | Condense FAULT only; all other V-01 prose preserved | PARTIAL | C-11 in isolation |
+| V-04 | output format | Phase 9 as pure token expansion | PARTIAL | C-07 at max compression |
+| V-05 | combined | V-02 + V-03 + V-04 | PASS | Best 100/100 candidate |
 
-**V-01** tests the merger: V-04 dimension contract + question-keyed TABLE GUIDE + token binding throughout. The minimal addition that closes the V-04 gap.
+### The condensed FAULT form (V-02/V-03/V-05)
 
-**V-02** tests closed-loop audit: does a terminal self-check phase that verifies 9 structural criteria before output is returned catch remaining drift that token binding alone might miss?
+```
+FAULT: compare against ANCHOR[0] only — Option A vs Option B comparison is an error.
+```
 
-**V-03** tests inline recall: does reproducing the token value at point-of-use in each sensitive phase add guard beyond Phase 0 commitment alone?
+States both polarities in one operative directive (positive: ANCHOR[0] basis; negative: no inter-option). Key question: does this pass C-11 without the explanatory clause?
 
-**V-04** is the definitive combination: all three mechanisms simultaneously. Expected R5 canonical.
+### Projected composites
 
-**V-05** is the lean floor with tokens: V-05/R4 without AMEND/register but with ANCHOR binding. Same score (95.0), stronger real-world behavior.
+- V-01: **99.5** (C-17 PARTIAL confirmed)
+- V-02: **100** if C-11 passes; **99.5** if PARTIAL
+- V-03: **99.5** (C-17 PARTIAL + C-11 isolation test)
+- V-04: **99.5** (C-17 PARTIAL + C-07 isolation test)
+- V-05: **100** if both C-11 and C-07 pass; lower otherwise
+| PASS | PASS |
+| V-03 | inertia framing | FAULT condensed to dual-polarity one-liner; all other V-01 prose preserved | testing | PARTIAL | PASS |
+| V-04 | output format | Phase 9 AMEND as pure token expansion; all other V-01 prose preserved | PASS | PARTIAL | testing |
+| V-05 | combined | V-02 + V-03 + V-04 | testing | PASS | testing |
+
+### Key discriminating tests
+
+- **V-01 on C-17**: confirms whether R4 canonical is PARTIAL or worse. Sets the baseline delta.
+- **V-02/V-03 on C-11**: does `FAULT: compare against ANCHOR[0] only — Option A vs Option B comparison is an error.` pass C-11? C-11 requires an explicit "compare against status quo, not against Option [X]" prohibition. The dual-polarity form states both the positive (ANCHOR[0] only) and negative (not inter-option), but without the "inertia asks whether" explanatory clause. If PASS: the clause was overhead. If PARTIAL: it was load-bearing for C-11 detection.
+- **V-04 on C-07**: does Phase 9 expressed as token slot expansion pass "actionable AMEND"? Token-form expansion provides concrete slot declarations for all three paths. If PASS: AMEND prose is overhead.
+- **V-05 interactions**: if C-11 and C-07 both PASS in isolation, do they interact safely when combined?
+
+### Rubric coverage projection (v4 — 17 criteria, aspirational /10)
+
+| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|-----------|------|------|------|------|------|
+| C-01 bilateral dimensions | PASS | PASS | PASS | PASS | PASS |
+| C-02 independent inertia | PASS | PASS | PASS | PASS | PASS |
+| C-03 decision matrix | PASS | PASS | PASS | PASS | PASS |
+| C-04 explicit recommendation | PASS | PASS | PASS | PASS | PASS |
+| C-05 build/no-build gate | PASS | PASS | PASS | PASS | PASS |
+| C-06 differentiated risk | PASS | PASS | PASS | PASS | PASS |
+| C-07 actionable AMEND | PASS | PASS | PASS | **TESTING** | **TESTING** |
+| C-08 Option 0 in matrix | PASS | PASS | PASS | PASS | PASS |
+| C-09 audience primary flow | PASS | PASS | PASS | PASS | PASS |
+| C-10 token ledger | PASS | PASS | PASS | PASS | PASS |
+| C-11 explicit exclusion rule | PASS | **TESTING** | **TESTING** | PASS | **TESTING** |
+| C-12 named anchor before analysis | PASS | PASS | PASS | PASS | PASS |
+| C-13 verbatim anchor recall | PASS | PASS | PASS | PASS | PASS |
+| C-14 failure class co-located | PASS | PASS | PASS | PASS | PASS |
+| C-15 register before anchor | PASS | PASS | PASS | PASS | PASS |
+| C-16 blocking ledger gate | PASS | PASS | PASS | PASS | PASS |
+| **C-17 output compressed** | **PARTIAL** | **PASS** | **PARTIAL** | **PARTIAL** | **PASS** |
+
+### Projected composite scores
+
+| Variation | Essential (4) | Recommended (3) | Aspirational (/10) | Composite | Golden |
+|-----------|--------------|-----------------|-------------------|-----------|--------|
+| V-01 | 4/4 = 60.00 | 3/3 = 30.00 | 9.5/10 = 9.50 | **99.50** | YES |
+| V-02 | 4/4 = 60.00 | 3/3 = 30.00 | 10/10 = 10.00 | **100.00** | YES |
+| V-03 | 4/4 = 60.00 | 3/3 = 30.00 | 9.5/10 = 9.50 | **99.50** | YES |
+| V-04 | 4/4 = 60.00 | 3/3 = 30.00 | 9.5/10 = 9.50 | **99.50** | YES |
+| V-05 | 4/4 = 60.00 | 3/3 = 30.00 | 10/10 = 10.00 | **100.00** | YES |
+
+*Partial = 0.5. TESTING criteria projected PASS above. If C-11 PARTIAL in V-02/V-03/V-05:
+composite drops 0.5. If C-07 PARTIAL in V-04/V-05: composite drops 0.5.*
+
+If V-02 C-11 is PARTIAL: explanatory clause is structural for C-11 — dual-polarity alone insufficient.
+If V-02 C-11 is PASS: condensed form achieves C-11 AND C-17 simultaneously — V-05 is the 100/100 candidate.
+If V-04 C-07 is PARTIAL: prose path descriptions are load-bearing — tokenization is too aggressive.
+If V-04 C-07 is PASS: AMEND as token slots fully satisfies actionable AMEND.
 
 ---
 
-## V-01: token-bind (inertia framing axis)
+## V-01 — R4 Canonical
 
-Axis: Inertia framing -- Phase 0 commits ANCHOR[0A]/ANCHOR[0B] tokens with a binding rule.
-All downstream phases that reference Option 0 must use the token name, not prose. This
-is the direct merger of V-04/R4's full structure with V-03/R4's unique token mechanism.
-
-Hypothesis: V-04/R4 passes all 18 criteria at 100.0, but its downstream inertia, gate, and
-recommendation phases use prose ("Option 0 named in Phase 0"). If a model paraphrases the
-anchor mid-run, the drift is invisible. ANCHOR token syntax requires literal reproduction --
-any downstream phase that writes "the current approach" instead of "ANCHOR[0A]" is visibly
-wrong. The merger adds the strongest C-18 form (V-03) without changing any other criterion
-behavior. Predicted 100.0; no criteria regress.
-
-```
-You are running /discover-compare for topic: {topic}.
-Comparing: Option A -- {option_a} vs Option B -- {option_b}.
-Audience: {audience}  (exec | engineering | general -- default: general)
-
-=== PHASE 0: STATUS QUO ANCHOR (Option 0) ===
-
-Before any analysis, name the behavior teams fall back on today if neither option is built.
-
-ANCHOR[0A] := {what teams do today instead of building Option A}
-ANCHOR[0B] := {what teams do today instead of building Option B}
-
-Binding rule: all inertia analysis, competitive analysis, gate logic, and recommendation
-phases must reference ANCHOR[0A] and ANCHOR[0B] by token name -- not by prose paraphrase.
-Any reference to "the status quo," "current approach," or "doing nothing" without the
-token name violates this binding and weakens the inertia contract.
-
-Print: "ANCHOR[0A] = {value}. ANCHOR[0B] = {value}. Binding committed."
-
-=== PHASE 1: AUDIENCE REGISTER ===
-
-Read the audience parameter. This register governs the following phases and dimensions:
-
-  Phase 3 (dimension analysis):
-    - Risk sub-section: failure mode framing language
-    - Competitive sub-section: differentiation vector framing language
-  Phase 4 (three-column matrix): cell content emphasis and vocabulary
-  Phase 5 (two-column summary): cell content emphasis and vocabulary
-  Phase 7 (recommendation): lead structure and level of detail
-  Phase 9 (AMEND handler): revised recommendation framing
-
-exec: business signal leads all register-sensitive phases and dimensions;
-  implementation detail omitted; language is investment/risk/market.
-  Phase 3 risk: frame as business impact (revenue, partner dependency, market timing).
-  Phase 3 competitive: frame as market differentiation, cost-of-delay, switching cost.
-  Phase 4/5 cells: lead with business signal. Omit build-level detail.
-  Phase 7: recommendation leads; business risk of not acting second; trade-off third.
-  Phase 9: same as Phase 7 structure.
-
-engineering: implementation signal leads all register-sensitive phases and dimensions;
-  technical risk detail present; language is build/integrate/operate.
-  Phase 3 risk: frame as technical failure mode (race condition, schema drift, dependency brittleness).
-  Phase 3 competitive: frame as build cost, latency advantage, dependency graph.
-  Phase 4/5 cells: lead with technical signal. Include dependency or correctness risk.
-  Phase 7: feasibility delta and technical risk lead; recommendation second; trade-off third.
-  Phase 9: same as Phase 7 structure.
-
-general (default): neutral -- no routing applied.
-
-Print: "Register: {exec|engineering|general}. Contract: Phase 3 [risk, competitive],
-  Phase 4 [cell emphasis], Phase 5 [cell emphasis], Phase 7 [lead structure], Phase 9 [framing]."
-
-=== PHASE 2: CONTEXT ===
-
-Read existing discover artifacts for this topic:
-- Glob: simulations/discover/**/{topic}-*-*.md
-
-Print inventory: | skill | date | path | for each file found.
-If prior artifacts exist, note any signals that refine the ANCHOR[0A] or ANCHOR[0B]
-characterization committed in Phase 0. Do not change committed tokens -- note refinements only.
-If none found: "No prior discover artifacts -- proceeding from inputs."
-
-=== PHASE 3: DIMENSION ANALYSIS ===
-
-Run each dimension across both options before moving to the next.
-ANCHOR[0A] (Phase 0) is the reference for all Option A inertia and competitive analysis.
-ANCHOR[0B] (Phase 0) is the reference for all Option B inertia and competitive analysis.
-
---- Feasibility ---
-Option A: High / Medium / Low. One reason (skill, tooling, timeline).
-Option B: High / Medium / Low. One reason.
-
---- Inertia ---
-INERTIA RULE: Inertia is checked for BOTH options independently.
-The question for A: would teams keep using ANCHOR[0A] INSTEAD OF building Option A?
-  Name the specific mechanism that makes ANCHOR[0A] a viable substitute.
-  Threat rating: High / Medium / Low.
-The question for B: would teams keep using ANCHOR[0B] INSTEAD OF building Option B?
-  Name the specific mechanism that makes ANCHOR[0B] a viable substitute.
-  Threat rating: High / Medium / Low.
-
---- Risk ---
-Option A: Primary failure mode. Rating: High / Medium / Low.
-Option B: Same.
-Register: {applies from Phase 1 -- risk framing dimension}
-If register = exec: frame as business impact (revenue impact, partner dependency).
-If register = engineering: frame as technical failure mode (race condition, schema drift).
-If register = general: standard format.
-Option 0 continuation risk: What is the long-term cost of staying with ANCHOR[0A] and ANCHOR[0B]
-  rather than building either option? One sentence -- enters the 3-column matrix.
-
---- Competitive Position ---
-ANTI-PATTERN GUARD: Generic competitive analysis uses phrases such as "more competitive,"
-"better positioned," or "stronger in the market" without specifying the mechanism.
-Such phrasing is insufficient and will fail this criterion. Name the concrete vector:
-  Speed: throughput, latency, or iteration rate advantage
-  Cost: build, operating, or switching cost difference
-  Ecosystem: integration depth, lock-in reduction, or partner leverage
-  Capability: what ANCHOR[0A] / ANCHOR[0B] cannot do that this option enables
-
-Option A: At least one concrete vector vs ANCHOR[0A].
-Register: {applies from Phase 1 -- competitive framing dimension}
-If register = exec: frame in market/investment terms.
-If register = engineering: frame in build/operate/latency terms.
-Option B: Same requirement and same register instruction, vs ANCHOR[0B].
-Option 0 competitive position: What do ANCHOR[0A] and ANCHOR[0B] offer today
-  that Option A and Option B do not yet match?
-
-=== TABLE GUIDE ===
-
-Which question are you answering?
-  Does either option beat doing nothing (ANCHOR[0A] / ANCHOR[0B])? -> TABLE 1 (Phase 4)
-  Which option should we build?                                      -> TABLE 2 (Phase 5)
-
-TABLE 1 (Phase 4) -- Status-Quo Context View: A and B alongside ANCHOR[0A] / ANCHOR[0B].
-  Use to assess whether either build option beats the status quo.
-  [ -> See Table 2 (Phase 5) for the A-vs-B decision summary. ]
-
-TABLE 2 (Phase 5) -- A-vs-B Decision Summary: A vs B only, Option 0 excluded.
-  Use to reach the recommendation.
-  [ <- Source: Table 1 (Phase 4), Option 0 column excluded. ]
-
-=== PHASE 4: THREE-COLUMN MATRIX (Table 1 of 2 -- status-quo context view) ===
-[ -> See Table 2 (Phase 5) for A-vs-B decision summary ]
-
-Register: {applies from Phase 1 -- cell emphasis dimension}
-If register = exec: lead each non-N/A cell with business impact signal.
-  Format: Rating + one-phrase business signal. Omit implementation-level detail.
-If register = engineering: lead each non-N/A cell with implementation signal.
-  Format: Rating + one-phrase technical signal. Include dependency or correctness risk.
-If register = general: balanced. Format: Rating + one-phrase signal.
-
-N/A cells for Option 0 are by design and must be labeled explicitly.
-Option 0 column header must use ANCHOR[0A] and ANCHOR[0B] token names from Phase 0.
-
-| Dimension              | Option A: {option_a} | Option B: {option_b} | Option 0: ANCHOR[0A] / ANCHOR[0B] |
-|------------------------|----------------------|----------------------|-----------------------------------|
-| Feasibility            |                      |                      | N/A (no build required)           |
-| Inertia threat         | [vs ANCHOR[0A]]      | [vs ANCHOR[0B]]      | N/A (this IS the anchor)          |
-| Risk                   |                      |                      | Continuation risk: ...            |
-| Competitive position   |                      |                      | ANCHOR advantage: ...             |
-
-Fill all non-N/A cells using the register-appropriate format.
-
-=== PHASE 5: TWO-COLUMN COMPARISON SUMMARY (Table 2 of 2 -- A-vs-B decision view) ===
-[ <- Source: Table 1 (Phase 4); Option 0 column excluded. Use this table to reach the recommendation. ]
-
-Extract A-vs-B signal from Phase 4 into a scannable 2-column view.
-A reader should reach the recommendation from this table without re-reading Phase 3 or 4.
-
-Register: {applies from Phase 1 -- cell emphasis dimension}
-If register = exec: business impact signal leads each cell.
-If register = engineering: implementation signal leads each cell.
-If register = general: balanced content.
-
-| Dimension              | Option A | Option B |
-|------------------------|----------|----------|
-| Feasibility            |          |          |
-| Inertia threat         |          |          |
-| Risk                   |          |          |
-| Competitive position   |          |          |
-
-Format: Rating + one-phrase signal. No empty cells.
-
-=== PHASE 6: INERTIA GATE ===
-
-Read the Inertia threat cells from Table 2 (Phase 5).
-
-GATE A -- Both High: "INERTIA GATE: ANCHOR[0A] beats Option A and ANCHOR[0B] beats Option B.
-  Teams will not build either option without a forcing function. 'Build neither' is the
-  leading recommendation. If proceeding, name the forcing function explicitly."
-  The recommendation in Phase 7 must address this gate.
-
-GATE B -- One High: "INERTIA NOTE: ANCHOR[{0A|0B}] beats Option {A|B} but Option {A|B}
-  clears the do-nothing bar. Asymmetry may outweigh other dimension signals."
-
-GATE C -- Neither High: "Inertia check passed -- both options beat their ANCHOR baseline."
-
-=== PHASE 7: RECOMMENDATION ===
-
-State: choose Option A / choose Option B / build neither / defer.
-
-Register: {applies from Phase 1 -- lead structure dimension}
-If register = exec:
-  Lead with: recommendation and business risk of not taking it. One sentence each.
-  Then: trade-off (what is given up by not choosing the other option).
-  Omit implementation detail.
-If register = engineering:
-  Lead with: feasibility delta and primary technical risk.
-  Then: recommendation.
-  Then: trade-off (what is given up technically).
-If register = general:
-  Recommendation, primary reason, trade-off in one paragraph.
-
-All registers:
-- If GATE A fired: either "build neither" OR name the forcing function that overrides
-  the inertia evidence. Reference ANCHOR[0A] and ANCHOR[0B] in the gate language.
-- Recommendation traceable to Table 2 (Phase 5) -- do not assert a winner that
-  contradicts the matrix signals without explicit justification. If the recommendation
-  diverges from the matrix plurality, state the reason explicitly.
-
-=== PHASE 8: ARTIFACT ===
-
-Write to simulations/discover/compare/{topic}-compare-{date}.md.
-
-Frontmatter:
-  topic: {topic}
-  date: {date}
-  option_a: {option_a}
-  option_b: {option_b}
-  anchor_0a: {ANCHOR[0A] committed in Phase 0}
-  anchor_0b: {ANCHOR[0B] committed in Phase 0}
-  audience: {exec|engineering|general}
-  feasibility_a: High|Medium|Low
-  feasibility_b: High|Medium|Low
-  inertia_a: High|Medium|Low
-  inertia_b: High|Medium|Low
-  risk_a: High|Medium|Low
-  risk_b: High|Medium|Low
-  inertia_gate: passed|note|warning
-  recommendation: A|B|neither|defer
-  neither_path_surfaced: true|false
-  option_0_matrix: true
-  amended: false
-
-=== PHASE 9: AMEND HANDLER ===
-
-Activates when the user says AMEND after the base output.
-Three types -- execute the matching protocol:
-
-AMEND TYPE 1 -- Add Option C: {option_c}
-
-1. Define ANCHOR[0C] := {what teams do today instead of building C}.
-   Print: "ANCHOR[0C] = {value}. Binding extended."
-   Binding rule: all Option C dimensional analysis must reference ANCHOR[0C] by token name.
-2. Run Option C through all four dimensions vs ANCHOR[0C]:
-   - Feasibility: High / Medium / Low + one reason.
-     Register: apply Phase 1 contract [cell emphasis dimension].
-   - Inertia (INERTIA RULE): Would teams keep using ANCHOR[0C] instead of building C?
-     Name the specific mechanism. Rate: High / Medium / Low.
-   - Risk: Primary failure mode. High / Medium / Low.
-     Register: apply Phase 1 contract [risk framing dimension].
-   - Competitive position: At least one concrete vector vs ANCHOR[0C]. Anti-pattern guard applies.
-     Register: apply Phase 1 contract [competitive framing dimension].
-3. Expand Table 1 (Phase 4) to four columns: add Option C column.
-   Update header: "Table 1 of 2 -- Status-Quo Context View (A / B / C / Option 0)"
-   Update cross-reference: "[ -> See Table 2 (Phase 5) for A-vs-B-vs-C decision summary ]"
-   Option 0 column header: "Option 0: ANCHOR[0A] / ANCHOR[0B] / ANCHOR[0C]"
-   Register: apply Phase 1 contract to new Option C cells.
-4. Update Table 2 (Phase 5) to three columns A/B/C.
-   Update header: "Table 2 of 2 -- A-vs-B-vs-C Decision Summary"
-   Update cross-reference: "[ <- Source: Table 1 (Phase 4); Option 0 column excluded. ]"
-   Register: apply Phase 1 contract to new Option C cells.
-   Verify: Option C ratings in Table 1 and Table 2 match.
-5. Re-run the INERTIA GATE using ANCHOR token language across all three build options.
-6. Revise recommendation: A / B / C / build neither / defer.
-   If changed, name what changed and why. Anti-contradiction applies to updated Table 2.
-   Register: apply Phase 1 contract [lead structure dimension] to revised recommendation.
-7. Update artifact: add anchor_0c, option_c, update recommendation, amended: true.
-
-AMEND TYPE 2 -- Weight dimension: {dimension} x{weight}
-
-1. Apply weight multiplier to named dimension across Table 2 (Phase 5).
-   Valid: feasibility, inertia, risk, competitive. Weight: x2 or x0.5.
-2. Mark weighted dimension: "Feasibility [x2]".
-3. Determine aggregate winner under new weighting.
-4. Revise recommendation if weighting changes plurality.
-   Name the delta explicitly.
-   Register: apply Phase 1 contract [lead structure dimension] to revised recommendation.
-5. Update artifact: weight_{dimension}: {weight}, amended: true.
-
-AMEND TYPE 3 -- Shift audience: {exec|engineering}
-
-1. Re-render Table 1 (Phase 4), Table 2 (Phase 5), and Phase 7 (recommendation)
-   for the specified register per Phase 1 contract.
-   exec: business impact cell framing; recommendation leads; omit implementation detail.
-   engineering: implementation signal cell framing; feasibility leads; full technical framing.
-2. Underlying evidence unchanged. ANCHOR[0A] and ANCHOR[0B] token references maintained.
-   Presentation layer only.
-3. Note: "Audience amendment: {exec|engineering} -- re-rendered for register."
-4. Do not update the artifact file.
-```
+**Axis**: Baseline — exact "Minimal Viable 100/100 Candidate" from R4 scorecard; no changes
+**Hypothesis**: R4 projected this form at 100/100 under the v3 rubric (9 aspirational criteria).
+Under the v4 rubric (10 aspirational criteria, C-17 added), the three remaining prose elements
+(preamble sentence, Phase 0 framing, FAULT explanatory clause) will trigger C-17 PARTIAL →
+9.5/10 aspirational → composite 99.5. This variation establishes the baseline delta that R5
+variations attempt to close.
 
 ---
 
-## V-02: self-verify (role sequence axis)
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
 
-Axis: Role sequence -- V-01 base + Phase 10 structural audit appended after Phase 9. The
-model self-checks 9 structural criteria before returning output to the user. Any failed
-check triggers a correction before the output is returned.
-
-Hypothesis: Token binding (V-01) prevents Option 0 drift by requiring literal token names.
-A self-verification gate catches structural failures that token syntax cannot prevent:
-missing TABLE GUIDE, one-sided inertia check, recommendation not traceable to Table 2,
-or GATE A firing without "build neither" being named. The terminal audit creates a
-closed-loop contract: declare (Phase 0) → use (Phases 3-9) → verify (Phase 10). For
-models that follow the prompt structure but skip a structural requirement, the audit
-adds a correction opportunity before the artifact is written.
-
-```
-You are running /discover-compare for topic: {topic}.
-Comparing: Option A -- {option_a} vs Option B -- {option_b}.
-Audience: {audience}  (exec | engineering | general -- default: general)
-
-=== PHASE 0: STATUS QUO ANCHOR (Option 0) ===
-
-Before any analysis, name the behavior teams fall back on today if neither option is built.
-
-ANCHOR[0A] := {what teams do today instead of building Option A}
-ANCHOR[0B] := {what teams do today instead of building Option B}
-
-Binding rule: all inertia analysis, competitive analysis, gate logic, and recommendation
-phases must reference ANCHOR[0A] and ANCHOR[0B] by token name -- not by prose paraphrase.
-Any reference to "the status quo," "current approach," or "doing nothing" without the
-token name violates this binding.
-
-Print: "ANCHOR[0A] = {value}. ANCHOR[0B] = {value}. Binding committed."
-
-=== PHASE 1: AUDIENCE REGISTER ===
-
-Read the audience parameter. This register governs the following phases and dimensions:
-
-  Phase 3 (dimension analysis):
-    - Risk sub-section: failure mode framing language
-    - Competitive sub-section: differentiation vector framing language
-  Phase 4 (three-column matrix): cell content emphasis and vocabulary
-  Phase 5 (two-column summary): cell content emphasis and vocabulary
-  Phase 7 (recommendation): lead structure and level of detail
-  Phase 9 (AMEND handler): revised recommendation framing
-
-exec: business signal leads all register-sensitive phases and dimensions;
-  implementation detail omitted; language is investment/risk/market.
-  Phase 3 risk: frame as business impact (revenue, partner dependency, market timing).
-  Phase 3 competitive: frame as market differentiation, cost-of-delay, switching cost.
-  Phase 4/5 cells: lead with business signal. Omit build-level detail.
-  Phase 7: recommendation leads; business risk of not acting second; trade-off third.
-  Phase 9: same as Phase 7 structure.
-
-engineering: implementation signal leads all register-sensitive phases and dimensions;
-  technical risk detail present; language is build/integrate/operate.
-  Phase 3 risk: frame as technical failure mode (race condition, schema drift, dependency brittleness).
-  Phase 3 competitive: frame as build cost, latency advantage, dependency graph.
-  Phase 4/5 cells: lead with technical signal. Include dependency or correctness risk.
-  Phase 7: feasibility delta and technical risk lead; recommendation second; trade-off third.
-  Phase 9: same as Phase 7 structure.
-
-general (default): neutral -- no routing applied.
-
-Print: "Register: {exec|engineering|general}. Contract: Phase 3 [risk, competitive],
-  Phase 4 [cell emphasis], Phase 5 [cell emphasis], Phase 7 [lead structure], Phase 9 [framing]."
-
-=== PHASE 2: CONTEXT ===
-
-Read existing discover artifacts for this topic:
-- Glob: simulations/discover/**/{topic}-*-*.md
-
-Print inventory: | skill | date | path | for each file found.
-If prior artifacts exist, note any signals that refine the ANCHOR[0A] or ANCHOR[0B]
-characterization committed in Phase 0. Do not change committed tokens -- note refinements only.
-If none found: "No prior discover artifacts -- proceeding from inputs."
-
-=== PHASE 3: DIMENSION ANALYSIS ===
-
-Run each dimension across both options before moving to the next.
-ANCHOR[0A] (Phase 0) is the reference for all Option A inertia and competitive analysis.
-ANCHOR[0B] (Phase 0) is the reference for all Option B inertia and competitive analysis.
-
---- Feasibility ---
-Option A: High / Medium / Low. One reason (skill, tooling, timeline).
-Option B: High / Medium / Low. One reason.
-
---- Inertia ---
-INERTIA RULE: Inertia is checked for BOTH options independently.
-The question for A: would teams keep using ANCHOR[0A] INSTEAD OF building Option A?
-  Name the specific mechanism that makes ANCHOR[0A] a viable substitute.
-  Threat rating: High / Medium / Low.
-The question for B: would teams keep using ANCHOR[0B] INSTEAD OF building Option B?
-  Name the specific mechanism that makes ANCHOR[0B] a viable substitute.
-  Threat rating: High / Medium / Low.
-
---- Risk ---
-Option A: Primary failure mode. Rating: High / Medium / Low.
-Option B: Same.
-Register: {applies from Phase 1 -- risk framing dimension}
-If register = exec: frame as business impact (revenue impact, partner dependency).
-If register = engineering: frame as technical failure mode (race condition, schema drift).
-If register = general: standard format.
-Option 0 continuation risk: What is the long-term cost of staying with ANCHOR[0A] and ANCHOR[0B]
-  rather than building either option? One sentence -- enters the 3-column matrix.
-
---- Competitive Position ---
-ANTI-PATTERN GUARD: Generic competitive analysis uses phrases such as "more competitive,"
-"better positioned," or "stronger in the market" without specifying the mechanism.
-Such phrasing is insufficient and will fail this criterion. Name the concrete vector:
-  Speed: throughput, latency, or iteration rate advantage
-  Cost: build, operating, or switching cost difference
-  Ecosystem: integration depth, lock-in reduction, or partner leverage
-  Capability: what ANCHOR[0A] / ANCHOR[0B] cannot do that this option enables
-
-Option A: At least one concrete vector vs ANCHOR[0A].
-Register: {applies from Phase 1 -- competitive framing dimension}
-If register = exec: frame in market/investment terms.
-If register = engineering: frame in build/operate/latency terms.
-Option B: Same requirement and same register instruction, vs ANCHOR[0B].
-Option 0 competitive position: What do ANCHOR[0A] and ANCHOR[0B] offer today
-  that Option A and Option B do not yet match?
-
-=== TABLE GUIDE ===
-
-Which question are you answering?
-  Does either option beat doing nothing (ANCHOR[0A] / ANCHOR[0B])? -> TABLE 1 (Phase 4)
-  Which option should we build?                                      -> TABLE 2 (Phase 5)
-
-TABLE 1 (Phase 4) -- Status-Quo Context View: A and B alongside ANCHOR[0A] / ANCHOR[0B].
-  Use to assess whether either build option beats the status quo.
-  [ -> See Table 2 (Phase 5) for the A-vs-B decision summary. ]
-
-TABLE 2 (Phase 5) -- A-vs-B Decision Summary: A vs B only, Option 0 excluded.
-  Use to reach the recommendation.
-  [ <- Source: Table 1 (Phase 4), Option 0 column excluded. ]
-
-=== PHASE 4: THREE-COLUMN MATRIX (Table 1 of 2 -- status-quo context view) ===
-[ -> See Table 2 (Phase 5) for A-vs-B decision summary ]
-
-Register: {applies from Phase 1 -- cell emphasis dimension}
-If register = exec: lead each non-N/A cell with business impact signal.
-  Format: Rating + one-phrase business signal. Omit implementation-level detail.
-If register = engineering: lead each non-N/A cell with implementation signal.
-  Format: Rating + one-phrase technical signal. Include dependency or correctness risk.
-If register = general: balanced. Format: Rating + one-phrase signal.
-
-N/A cells for Option 0 are by design and must be labeled explicitly.
-Option 0 column header must use ANCHOR[0A] and ANCHOR[0B] token names from Phase 0.
-
-| Dimension              | Option A: {option_a} | Option B: {option_b} | Option 0: ANCHOR[0A] / ANCHOR[0B] |
-|------------------------|----------------------|----------------------|-----------------------------------|
-| Feasibility            |                      |                      | N/A (no build required)           |
-| Inertia threat         | [vs ANCHOR[0A]]      | [vs ANCHOR[0B]]      | N/A (this IS the anchor)          |
-| Risk                   |                      |                      | Continuation risk: ...            |
-| Competitive position   |                      |                      | ANCHOR advantage: ...             |
-
-Fill all non-N/A cells using the register-appropriate format.
-
-=== PHASE 5: TWO-COLUMN COMPARISON SUMMARY (Table 2 of 2 -- A-vs-B decision view) ===
-[ <- Source: Table 1 (Phase 4); Option 0 column excluded. Use this table to reach the recommendation. ]
-
-Extract A-vs-B signal from Phase 4 into a scannable 2-column view.
-A reader should reach the recommendation from this table without re-reading Phase 3 or 4.
-
-Register: {applies from Phase 1 -- cell emphasis dimension}
-If register = exec: business impact signal leads each cell.
-If register = engineering: implementation signal leads each cell.
-If register = general: balanced content.
-
-| Dimension              | Option A | Option B |
-|------------------------|----------|----------|
-| Feasibility            |          |          |
-| Inertia threat         |          |          |
-| Risk                   |          |          |
-| Competitive position   |          |          |
-
-Format: Rating + one-phrase signal. No empty cells.
-
-=== PHASE 6: INERTIA GATE ===
-
-Read the Inertia threat cells from Table 2 (Phase 5).
-
-GATE A -- Both High: "INERTIA GATE: ANCHOR[0A] beats Option A and ANCHOR[0B] beats Option B.
-  Teams will not build either option without a forcing function. 'Build neither' is the
-  leading recommendation. If proceeding, name the forcing function explicitly."
-  The recommendation in Phase 7 must address this gate.
-
-GATE B -- One High: "INERTIA NOTE: ANCHOR[{0A|0B}] beats Option {A|B} but Option {A|B}
-  clears the do-nothing bar. Asymmetry may outweigh other dimension signals."
-
-GATE C -- Neither High: "Inertia check passed -- both options beat their ANCHOR baseline."
-
-=== PHASE 7: RECOMMENDATION ===
-
-State: choose Option A / choose Option B / build neither / defer.
-
-Register: {applies from Phase 1 -- lead structure dimension}
-If register = exec:
-  Lead with: recommendation and business risk of not taking it. One sentence each.
-  Then: trade-off (what is given up by not choosing the other option).
-  Omit implementation detail.
-If register = engineering:
-  Lead with: feasibility delta and primary technical risk.
-  Then: recommendation.
-  Then: trade-off (what is given up technically).
-If register = general:
-  Recommendation, primary reason, trade-off in one paragraph.
-
-All registers:
-- If GATE A fired: either "build neither" OR name the forcing function that overrides
-  the inertia evidence. Reference ANCHOR[0A] and ANCHOR[0B] in the gate language.
-- Recommendation traceable to Table 2 (Phase 5) -- do not assert a winner that
-  contradicts the matrix signals without explicit justification. If the recommendation
-  diverges from the matrix plurality, state the reason explicitly.
-
-=== PHASE 8: ARTIFACT ===
-
-Write to simulations/discover/compare/{topic}-compare-{date}.md.
-
-Frontmatter:
-  topic: {topic}
-  date: {date}
-  option_a: {option_a}
-  option_b: {option_b}
-  anchor_0a: {ANCHOR[0A] committed in Phase 0}
-  anchor_0b: {ANCHOR[0B] committed in Phase 0}
-  audience: {exec|engineering|general}
-  feasibility_a: High|Medium|Low
-  feasibility_b: High|Medium|Low
-  inertia_a: High|Medium|Low
-  inertia_b: High|Medium|Low
-  risk_a: High|Medium|Low
-  risk_b: High|Medium|Low
-  inertia_gate: passed|note|warning
-  recommendation: A|B|neither|defer
-  neither_path_surfaced: true|false
-  option_0_matrix: true
-  amended: false
-
-=== PHASE 9: AMEND HANDLER ===
-
-Activates when the user says AMEND after the base output.
-Three types -- execute the matching protocol:
-
-AMEND TYPE 1 -- Add Option C: {option_c}
-
-1. Define ANCHOR[0C] := {what teams do today instead of building C}.
-   Print: "ANCHOR[0C] = {value}. Binding extended."
-   Binding rule: all Option C dimensional analysis must reference ANCHOR[0C] by token name.
-2. Run Option C through all four dimensions vs ANCHOR[0C]:
-   - Feasibility: High / Medium / Low + one reason.
-     Register: apply Phase 1 contract [cell emphasis dimension].
-   - Inertia (INERTIA RULE): Would teams keep using ANCHOR[0C] instead of building C?
-     Name the specific mechanism. Rate: High / Medium / Low.
-   - Risk: Primary failure mode. High / Medium / Low.
-     Register: apply Phase 1 contract [risk framing dimension].
-   - Competitive position: At least one concrete vector vs ANCHOR[0C]. Anti-pattern guard applies.
-     Register: apply Phase 1 contract [competitive framing dimension].
-3. Expand Table 1 (Phase 4) to four columns: add Option C column.
-   Update header: "Table 1 of 2 -- Status-Quo Context View (A / B / C / Option 0)"
-   Update cross-reference: "[ -> See Table 2 (Phase 5) for A-vs-B-vs-C decision summary ]"
-   Option 0 column header: "Option 0: ANCHOR[0A] / ANCHOR[0B] / ANCHOR[0C]"
-   Register: apply Phase 1 contract to new Option C cells.
-4. Update Table 2 (Phase 5) to three columns A/B/C.
-   Update header: "Table 2 of 2 -- A-vs-B-vs-C Decision Summary"
-   Update cross-reference: "[ <- Source: Table 1 (Phase 4); Option 0 column excluded. ]"
-   Register: apply Phase 1 contract to new Option C cells.
-   Verify: Option C ratings in Table 1 and Table 2 match.
-5. Re-run the INERTIA GATE using ANCHOR token language across all three build options.
-6. Revise recommendation: A / B / C / build neither / defer.
-   If changed, name what changed and why. Anti-contradiction applies to updated Table 2.
-   Register: apply Phase 1 contract [lead structure dimension] to revised recommendation.
-7. Update artifact: add anchor_0c, option_c, update recommendation, amended: true.
-
-AMEND TYPE 2 -- Weight dimension: {dimension} x{weight}
-
-1. Apply weight multiplier to named dimension across Table 2 (Phase 5).
-   Valid: feasibility, inertia, risk, competitive. Weight: x2 or x0.5.
-2. Mark weighted dimension: "Feasibility [x2]".
-3. Determine aggregate winner under new weighting.
-4. Revise recommendation if weighting changes plurality.
-   Name the delta explicitly.
-   Register: apply Phase 1 contract [lead structure dimension] to revised recommendation.
-5. Update artifact: weight_{dimension}: {weight}, amended: true.
-
-AMEND TYPE 3 -- Shift audience: {exec|engineering}
-
-1. Re-render Table 1 (Phase 4), Table 2 (Phase 5), and Phase 7 (recommendation)
-   for the specified register per Phase 1 contract.
-   exec: business impact cell framing; recommendation leads; omit implementation detail.
-   engineering: implementation signal cell framing; feasibility leads; full technical framing.
-2. Underlying evidence unchanged. ANCHOR[0A] and ANCHOR[0B] token references maintained.
-   Presentation layer only.
-3. Note: "Audience amendment: {exec|engineering} -- re-rendered for register."
-4. Do not update the artifact file.
-
-=== PHASE 10: STRUCTURAL AUDIT ===
-
-Before returning the output, self-verify each item below.
-If any item fails, correct the affected section first, then return the full corrected output.
-
-AUDIT CHECKLIST:
-[ ] Phase 0: ANCHOR[0A] and ANCHOR[0B] committed before Phase 1?
-    Evidence: "Binding committed." line printed.
-[ ] Phase 1: register contract printed with dimension-level phase index?
-    Expected pattern: "Phase 3 [risk, competitive], Phase 4 [cell emphasis],
-    Phase 5 [cell emphasis], Phase 7 [lead structure], Phase 9 [framing]."
-[ ] Phase 3 inertia: both A and B independently checked vs ANCHOR[0A] and ANCHOR[0B]?
-    Failure pattern: checking which build option teams prefer instead of vs anchor.
-[ ] TABLE GUIDE present before Phase 4? Question-keyed routing to TABLE 1 and TABLE 2?
-[ ] Phase 4 header carries "[ -> See Table 2 (Phase 5)... ]"?
-[ ] Phase 5 header carries "[ <- Source: Table 1 (Phase 4)... ]"?
-[ ] Phase 6 gate: ANCHOR token names used in gate language (not prose "status quo")?
-[ ] Phase 7 recommendation: traceable to Table 2 (Phase 5)?
-    If recommendation diverges from matrix plurality: reason stated explicitly?
-[ ] If GATE A fired in Phase 6: "build neither" named OR forcing function named in Phase 7?
-
-Print: "AUDIT COMPLETE -- {N}/9 checks passed."
-If any check failed: print which item failed and the correction applied before the full output.
-```
+Each phase produces a named token. Use exact token names. LEDGER GATE blocks progression on any gap.
 
 ---
 
-## V-03: inline-token-check (phrasing register axis)
+**PHASE 0 — FRAME**
 
-Axis: Phrasing register -- V-01 base + TOKEN RECALL header in each phase that uses ANCHOR
-tokens (Phases 3, 6, 7). Before producing register-sensitive or anchor-sensitive output,
-the model reproduces the committed ANCHOR token values inline. This makes drift detectable
-at point-of-use without requiring a terminal audit.
+Declare audience register, then commit status quo anchor framed for that register.
 
-Hypothesis: Token binding (V-01) commits values in Phase 0 and requires downstream literal
-reproduction. A model that paraphrases mid-prompt loses the audit trail for that specific
-phase. Inline TOKEN RECALL forces the model to write "ANCHOR[0A] = {value}" at the top of
-each sensitive phase, which acts as a self-correction opportunity: if the value reproduced
-in Phase 3 differs from Phase 6, the drift is visible in the output itself. This is a
-different guard than V-02's terminal audit -- inline recall catches drift at the moment of
-use, not after all phases have run. For the competitive and inertia dimensions, reproducing
-the anchor values in-situ also prevents the model from substituting a generic "current
-approach" without triggering an observable token mismatch.
+Audience: exec / engineering / general *(fill in, or leave blank for general)*
 
-```
-You are running /discover-compare for topic: {topic}.
-Comparing: Option A -- {option_a} vs Option B -- {option_b}.
-Audience: {audience}  (exec | engineering | general -- default: general)
+Token: `REG: {exec / engineering / general}`
 
-=== PHASE 0: STATUS QUO ANCHOR (Option 0) ===
-
-Before any analysis, name the behavior teams fall back on today if neither option is built.
-
-ANCHOR[0A] := {what teams do today instead of building Option A}
-ANCHOR[0B] := {what teams do today instead of building Option B}
-
-Binding rule: all inertia analysis, competitive analysis, gate logic, and recommendation
-phases must reference ANCHOR[0A] and ANCHOR[0B] by token name -- not by prose paraphrase.
-
-Print: "ANCHOR[0A] = {value}. ANCHOR[0B] = {value}. Binding committed."
-
-=== PHASE 1: AUDIENCE REGISTER ===
-
-Read the audience parameter. This register governs the following phases and dimensions:
-
-  Phase 3 (dimension analysis):
-    - Risk sub-section: failure mode framing language
-    - Competitive sub-section: differentiation vector framing language
-  Phase 4 (three-column matrix): cell content emphasis and vocabulary
-  Phase 5 (two-column summary): cell content emphasis and vocabulary
-  Phase 7 (recommendation): lead structure and level of detail
-  Phase 9 (AMEND handler): revised recommendation framing
-
-exec: business signal leads all register-sensitive phases and dimensions;
-  implementation detail omitted; language is investment/risk/market.
-  Phase 3 risk: frame as business impact (revenue, partner dependency, market timing).
-  Phase 3 competitive: frame as market differentiation, cost-of-delay, switching cost.
-  Phase 4/5 cells: lead with business signal. Omit build-level detail.
-  Phase 7: recommendation leads; business risk of not acting second; trade-off third.
-  Phase 9: same as Phase 7 structure.
-
-engineering: implementation signal leads all register-sensitive phases and dimensions;
-  technical risk detail present; language is build/integrate/operate.
-  Phase 3 risk: frame as technical failure mode (race condition, schema drift, dependency brittleness).
-  Phase 3 competitive: frame as build cost, latency advantage, dependency graph.
-  Phase 4/5 cells: lead with technical signal. Include dependency or correctness risk.
-  Phase 7: feasibility delta and technical risk lead; recommendation second; trade-off third.
-  Phase 9: same as Phase 7 structure.
-
-general (default): neutral -- no routing applied.
-
-Print: "Register: {exec|engineering|general}. Contract: Phase 3 [risk, competitive],
-  Phase 4 [cell emphasis], Phase 5 [cell emphasis], Phase 7 [lead structure], Phase 9 [framing]."
-
-=== PHASE 2: CONTEXT ===
-
-Read existing discover artifacts for this topic:
-- Glob: simulations/discover/**/{topic}-*-*.md
-
-Print inventory: | skill | date | path | for each file found.
-If prior artifacts exist, note any signals that refine the ANCHOR[0A] or ANCHOR[0B]
-characterization committed in Phase 0. Do not change committed tokens -- note refinements only.
-If none found: "No prior discover artifacts -- proceeding from inputs."
-
-=== PHASE 3: DIMENSION ANALYSIS ===
-
-TOKEN RECALL: ANCHOR[0A] = {reproduce committed value from Phase 0}.
-              ANCHOR[0B] = {reproduce committed value from Phase 0}.
-
-Run each dimension across both options before moving to the next.
-ANCHOR[0A] is the reference for all Option A inertia and competitive analysis.
-ANCHOR[0B] is the reference for all Option B inertia and competitive analysis.
-
---- Feasibility ---
-Option A: High / Medium / Low. One reason (skill, tooling, timeline).
-Option B: High / Medium / Low. One reason.
-
---- Inertia ---
-INERTIA RULE: Inertia is checked for BOTH options independently.
-The question for A: would teams keep using ANCHOR[0A] INSTEAD OF building Option A?
-  Name the specific mechanism that makes ANCHOR[0A] a viable substitute.
-  Threat rating: High / Medium / Low.
-The question for B: would teams keep using ANCHOR[0B] INSTEAD OF building Option B?
-  Name the specific mechanism that makes ANCHOR[0B] a viable substitute.
-  Threat rating: High / Medium / Low.
-
---- Risk ---
-Option A: Primary failure mode. Rating: High / Medium / Low.
-Option B: Same.
-Register: {applies from Phase 1 -- risk framing dimension}
-If register = exec: frame as business impact (revenue impact, partner dependency).
-If register = engineering: frame as technical failure mode (race condition, schema drift).
-If register = general: standard format.
-Option 0 continuation risk: What is the long-term cost of staying with ANCHOR[0A] and ANCHOR[0B]
-  rather than building either option? One sentence -- enters the 3-column matrix.
-
---- Competitive Position ---
-ANTI-PATTERN GUARD: Generic competitive analysis uses phrases such as "more competitive,"
-"better positioned," or "stronger in the market" without specifying the mechanism.
-Such phrasing is insufficient and will fail this criterion. Name the concrete vector:
-  Speed: throughput, latency, or iteration rate advantage
-  Cost: build, operating, or switching cost difference
-  Ecosystem: integration depth, lock-in reduction, or partner leverage
-  Capability: what ANCHOR[0A] / ANCHOR[0B] cannot do that this option enables
-
-Option A: At least one concrete vector vs ANCHOR[0A].
-Register: {applies from Phase 1 -- competitive framing dimension}
-If register = exec: frame in market/investment terms.
-If register = engineering: frame in build/operate/latency terms.
-Option B: Same requirement and same register instruction, vs ANCHOR[0B].
-Option 0 competitive position: What do ANCHOR[0A] and ANCHOR[0B] offer today
-  that Option A and Option B do not yet match?
-
-=== TABLE GUIDE ===
-
-Which question are you answering?
-  Does either option beat doing nothing (ANCHOR[0A] / ANCHOR[0B])? -> TABLE 1 (Phase 4)
-  Which option should we build?                                      -> TABLE 2 (Phase 5)
-
-TABLE 1 (Phase 4) -- Status-Quo Context View: A and B alongside ANCHOR[0A] / ANCHOR[0B].
-  Use to assess whether either build option beats the status quo.
-  [ -> See Table 2 (Phase 5) for the A-vs-B decision summary. ]
-
-TABLE 2 (Phase 5) -- A-vs-B Decision Summary: A vs B only, Option 0 excluded.
-  Use to reach the recommendation.
-  [ <- Source: Table 1 (Phase 4), Option 0 column excluded. ]
-
-=== PHASE 4: THREE-COLUMN MATRIX (Table 1 of 2 -- status-quo context view) ===
-[ -> See Table 2 (Phase 5) for A-vs-B decision summary ]
-
-Register: {applies from Phase 1 -- cell emphasis dimension}
-If register = exec: lead each non-N/A cell with business impact signal.
-  Format: Rating + one-phrase business signal. Omit implementation-level detail.
-If register = engineering: lead each non-N/A cell with implementation signal.
-  Format: Rating + one-phrase technical signal. Include dependency or correctness risk.
-If register = general: balanced. Format: Rating + one-phrase signal.
-
-N/A cells for Option 0 are by design and must be labeled explicitly.
-Option 0 column header must use ANCHOR[0A] and ANCHOR[0B] token names from Phase 0.
-
-| Dimension              | Option A: {option_a} | Option B: {option_b} | Option 0: ANCHOR[0A] / ANCHOR[0B] |
-|------------------------|----------------------|----------------------|-----------------------------------|
-| Feasibility            |                      |                      | N/A (no build required)           |
-| Inertia threat         | [vs ANCHOR[0A]]      | [vs ANCHOR[0B]]      | N/A (this IS the anchor)          |
-| Risk                   |                      |                      | Continuation risk: ...            |
-| Competitive position   |                      |                      | ANCHOR advantage: ...             |
-
-Fill all non-N/A cells using the register-appropriate format.
-
-=== PHASE 5: TWO-COLUMN COMPARISON SUMMARY (Table 2 of 2 -- A-vs-B decision view) ===
-[ <- Source: Table 1 (Phase 4); Option 0 column excluded. Use this table to reach the recommendation. ]
-
-Extract A-vs-B signal from Phase 4 into a scannable 2-column view.
-A reader should reach the recommendation from this table without re-reading Phase 3 or 4.
-
-Register: {applies from Phase 1 -- cell emphasis dimension}
-If register = exec: business impact signal leads each cell.
-If register = engineering: implementation signal leads each cell.
-If register = general: balanced content.
-
-| Dimension              | Option A | Option B |
-|------------------------|----------|----------|
-| Feasibility            |          |          |
-| Inertia threat         |          |          |
-| Risk                   |          |          |
-| Competitive position   |          |          |
-
-Format: Rating + one-phrase signal. No empty cells.
-
-=== PHASE 6: INERTIA GATE ===
-
-TOKEN RECALL: ANCHOR[0A] = {reproduce committed value from Phase 0}.
-              ANCHOR[0B] = {reproduce committed value from Phase 0}.
-
-Read the Inertia threat cells from Table 2 (Phase 5).
-
-GATE A -- Both High: "INERTIA GATE: ANCHOR[0A] beats Option A and ANCHOR[0B] beats Option B.
-  Teams will not build either option without a forcing function. 'Build neither' is the
-  leading recommendation. If proceeding, name the forcing function explicitly."
-  The recommendation in Phase 7 must address this gate.
-
-GATE B -- One High: "INERTIA NOTE: ANCHOR[{0A|0B}] beats Option {A|B} but Option {A|B}
-  clears the do-nothing bar. Asymmetry may outweigh other dimension signals."
-
-GATE C -- Neither High: "Inertia check passed -- both options beat their ANCHOR baseline."
-
-=== PHASE 7: RECOMMENDATION ===
-
-TOKEN RECALL: ANCHOR[0A] = {reproduce committed value from Phase 0}.
-              ANCHOR[0B] = {reproduce committed value from Phase 0}.
-
-State: choose Option A / choose Option B / build neither / defer.
-
-Register: {applies from Phase 1 -- lead structure dimension}
-If register = exec:
-  Lead with: recommendation and business risk of not taking it. One sentence each.
-  Then: trade-off (what is given up by not choosing the other option).
-  Omit implementation detail.
-If register = engineering:
-  Lead with: feasibility delta and primary technical risk.
-  Then: recommendation.
-  Then: trade-off (what is given up technically).
-If register = general:
-  Recommendation, primary reason, trade-off in one paragraph.
-
-All registers:
-- If GATE A fired: either "build neither" OR name the forcing function that overrides
-  the inertia evidence. Reference ANCHOR[0A] and ANCHOR[0B] in the gate language.
-- Recommendation traceable to Table 2 (Phase 5) -- do not assert a winner that
-  contradicts the matrix signals without explicit justification. If the recommendation
-  diverges from the matrix plurality, state the reason explicitly.
-
-=== PHASE 8: ARTIFACT ===
-
-Write to simulations/discover/compare/{topic}-compare-{date}.md.
-
-Frontmatter:
-  topic: {topic}
-  date: {date}
-  option_a: {option_a}
-  option_b: {option_b}
-  anchor_0a: {ANCHOR[0A] committed in Phase 0}
-  anchor_0b: {ANCHOR[0B] committed in Phase 0}
-  audience: {exec|engineering|general}
-  feasibility_a: High|Medium|Low
-  feasibility_b: High|Medium|Low
-  inertia_a: High|Medium|Low
-  inertia_b: High|Medium|Low
-  risk_a: High|Medium|Low
-  risk_b: High|Medium|Low
-  inertia_gate: passed|note|warning
-  recommendation: A|B|neither|defer
-  neither_path_surfaced: true|false
-  option_0_matrix: true
-  amended: false
-
-=== PHASE 9: AMEND HANDLER ===
-
-Activates when the user says AMEND after the base output.
-Three types -- execute the matching protocol:
-
-AMEND TYPE 1 -- Add Option C: {option_c}
-
-1. Define ANCHOR[0C] := {what teams do today instead of building C}.
-   Print: "ANCHOR[0C] = {value}. Binding extended."
-   TOKEN RECALL at each Option C analysis sub-section:
-   "ANCHOR[0C] = {reproduce committed value}."
-2. Run Option C through all four dimensions vs ANCHOR[0C]:
-   - Feasibility: High / Medium / Low + one reason.
-     Register: apply Phase 1 contract [cell emphasis dimension].
-   - Inertia (INERTIA RULE): Would teams keep using ANCHOR[0C] instead of building C?
-     Name the specific mechanism. Rate: High / Medium / Low.
-   - Risk: Primary failure mode. High / Medium / Low.
-     Register: apply Phase 1 contract [risk framing dimension].
-   - Competitive position: At least one concrete vector vs ANCHOR[0C]. Anti-pattern guard applies.
-     Register: apply Phase 1 contract [competitive framing dimension].
-3. Expand Table 1 (Phase 4) to four columns: add Option C column.
-   Update header: "Table 1 of 2 -- Status-Quo Context View (A / B / C / Option 0)"
-   Update cross-reference: "[ -> See Table 2 (Phase 5) for A-vs-B-vs-C decision summary ]"
-   Option 0 column header: "Option 0: ANCHOR[0A] / ANCHOR[0B] / ANCHOR[0C]"
-   Register: apply Phase 1 contract to new Option C cells.
-4. Update Table 2 (Phase 5) to three columns A/B/C.
-   Update header: "Table 2 of 2 -- A-vs-B-vs-C Decision Summary"
-   Update cross-reference: "[ <- Source: Table 1 (Phase 4); Option 0 column excluded. ]"
-   Register: apply Phase 1 contract to new Option C cells.
-   Verify: Option C ratings in Table 1 and Table 2 match.
-5. Re-run the INERTIA GATE.
-   TOKEN RECALL before gate: "ANCHOR[0A] = {value}. ANCHOR[0B] = {value}. ANCHOR[0C] = {value}."
-   Use ANCHOR token language across all three build options.
-6. Revise recommendation: A / B / C / build neither / defer.
-   TOKEN RECALL: "ANCHOR[0A] = {value}. ANCHOR[0B] = {value}. ANCHOR[0C] = {value}."
-   If changed, name what changed and why. Anti-contradiction applies to updated Table 2.
-   Register: apply Phase 1 contract [lead structure dimension] to revised recommendation.
-7. Update artifact: add anchor_0c, option_c, update recommendation, amended: true.
-
-AMEND TYPE 2 -- Weight dimension: {dimension} x{weight}
-
-1. Apply weight multiplier to named dimension across Table 2 (Phase 5).
-   Valid: feasibility, inertia, risk, competitive. Weight: x2 or x0.5.
-2. Mark weighted dimension: "Feasibility [x2]".
-3. Determine aggregate winner under new weighting.
-4. Revise recommendation if weighting changes plurality.
-   Name the delta explicitly.
-   Register: apply Phase 1 contract [lead structure dimension] to revised recommendation.
-5. Update artifact: weight_{dimension}: {weight}, amended: true.
-
-AMEND TYPE 3 -- Shift audience: {exec|engineering}
-
-1. Re-render Table 1 (Phase 4), Table 2 (Phase 5), and Phase 7 (recommendation)
-   for the specified register per Phase 1 contract.
-   exec: business impact cell framing; recommendation leads; omit implementation detail.
-   engineering: implementation signal cell framing; feasibility leads; full technical framing.
-2. Underlying evidence unchanged. ANCHOR[0A] and ANCHOR[0B] token references maintained.
-   Presentation layer only.
-3. Note: "Audience amendment: {exec|engineering} -- re-rendered for register."
-4. Do not update the artifact file.
-```
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
 
 ---
 
-## V-04: full-integration (combination axis)
+**PHASE 1A — FEASIBILITY: OPTION A**
 
-Axis: Combination -- V-01 (token binding) + V-02 (terminal audit) + V-03 (inline recall).
-All three R5 mechanisms active simultaneously. Predicted definitive R5 canonical at 100.0.
+Rate GREEN / YELLOW / RED. REG-framed.
 
-The combination question: does inline TOKEN RECALL (V-03) and terminal STRUCTURAL AUDIT
-(V-02) add independent guard value on top of token binding (V-01)? Or do they produce
-redundant overhead? Under the v4 rubric all three mechanisms target drift prevention, not
-new criteria. The combination is the safest production form for the discover-compare skill.
+Token: `FEAS-A: {rating} — {one sentence}`
 
-Hypothesis: Each mechanism guards a different failure mode. Token binding prevents silent
-prose substitution. Inline recall catches drift at point-of-use and forces value
-reproduction before the output of each sensitive phase. Terminal audit catches structural
-omissions (missing TABLE GUIDE, one-sided inertia, un-named forcing function) that happen
-above the token level. Together they form three non-overlapping guards across the full
-lifecycle. 100.0 on v4 rubric; stronger real-world behavior than V-04/R4.
+**PHASE 1B — FEASIBILITY: OPTION B**
 
-```
-You are running /discover-compare for topic: {topic}.
-Comparing: Option A -- {option_a} vs Option B -- {option_b}.
-Audience: {audience}  (exec | engineering | general -- default: general)
+Rate GREEN / YELLOW / RED. REG-framed. Independent of Option A.
 
-=== PHASE 0: STATUS QUO ANCHOR (Option 0) ===
-
-Before any analysis, name the behavior teams fall back on today if neither option is built.
-
-ANCHOR[0A] := {what teams do today instead of building Option A}
-ANCHOR[0B] := {what teams do today instead of building Option B}
-
-Binding rule: all inertia analysis, competitive analysis, gate logic, and recommendation
-phases must reference ANCHOR[0A] and ANCHOR[0B] by token name -- not by prose paraphrase.
-Any reference to "the status quo," "current approach," or "doing nothing" without the
-token name violates this binding.
-
-Print: "ANCHOR[0A] = {value}. ANCHOR[0B] = {value}. Binding committed."
-
-=== PHASE 1: AUDIENCE REGISTER ===
-
-Read the audience parameter. This register governs the following phases and dimensions:
-
-  Phase 3 (dimension analysis):
-    - Risk sub-section: failure mode framing language
-    - Competitive sub-section: differentiation vector framing language
-  Phase 4 (three-column matrix): cell content emphasis and vocabulary
-  Phase 5 (two-column summary): cell content emphasis and vocabulary
-  Phase 7 (recommendation): lead structure and level of detail
-  Phase 9 (AMEND handler): revised recommendation framing
-
-exec: business signal leads all register-sensitive phases and dimensions;
-  implementation detail omitted; language is investment/risk/market.
-  Phase 3 risk: frame as business impact (revenue, partner dependency, market timing).
-  Phase 3 competitive: frame as market differentiation, cost-of-delay, switching cost.
-  Phase 4/5 cells: lead with business signal. Omit build-level detail.
-  Phase 7: recommendation leads; business risk of not acting second; trade-off third.
-  Phase 9: same as Phase 7 structure.
-
-engineering: implementation signal leads all register-sensitive phases and dimensions;
-  technical risk detail present; language is build/integrate/operate.
-  Phase 3 risk: frame as technical failure mode (race condition, schema drift, dependency brittleness).
-  Phase 3 competitive: frame as build cost, latency advantage, dependency graph.
-  Phase 4/5 cells: lead with technical signal. Include dependency or correctness risk.
-  Phase 7: feasibility delta and technical risk lead; recommendation second; trade-off third.
-  Phase 9: same as Phase 7 structure.
-
-general (default): neutral -- no routing applied.
-
-Print: "Register: {exec|engineering|general}. Contract: Phase 3 [risk, competitive],
-  Phase 4 [cell emphasis], Phase 5 [cell emphasis], Phase 7 [lead structure], Phase 9 [framing]."
-
-=== PHASE 2: CONTEXT ===
-
-Read existing discover artifacts for this topic:
-- Glob: simulations/discover/**/{topic}-*-*.md
-
-Print inventory: | skill | date | path | for each file found.
-If prior artifacts exist, note any signals that refine the ANCHOR[0A] or ANCHOR[0B]
-characterization committed in Phase 0. Do not change committed tokens -- note refinements only.
-If none found: "No prior discover artifacts -- proceeding from inputs."
-
-=== PHASE 3: DIMENSION ANALYSIS ===
-
-TOKEN RECALL: ANCHOR[0A] = {reproduce committed value from Phase 0}.
-              ANCHOR[0B] = {reproduce committed value from Phase 0}.
-
-Run each dimension across both options before moving to the next.
-ANCHOR[0A] is the reference for all Option A inertia and competitive analysis.
-ANCHOR[0B] is the reference for all Option B inertia and competitive analysis.
-
---- Feasibility ---
-Option A: High / Medium / Low. One reason (skill, tooling, timeline).
-Option B: High / Medium / Low. One reason.
-
---- Inertia ---
-INERTIA RULE: Inertia is checked for BOTH options independently.
-The question for A: would teams keep using ANCHOR[0A] INSTEAD OF building Option A?
-  Name the specific mechanism that makes ANCHOR[0A] a viable substitute.
-  Threat rating: High / Medium / Low.
-The question for B: would teams keep using ANCHOR[0B] INSTEAD OF building Option B?
-  Name the specific mechanism that makes ANCHOR[0B] a viable substitute.
-  Threat rating: High / Medium / Low.
-
---- Risk ---
-Option A: Primary failure mode. Rating: High / Medium / Low.
-Option B: Same.
-Register: {applies from Phase 1 -- risk framing dimension}
-If register = exec: frame as business impact (revenue impact, partner dependency).
-If register = engineering: frame as technical failure mode (race condition, schema drift).
-If register = general: standard format.
-Option 0 continuation risk: What is the long-term cost of staying with ANCHOR[0A] and ANCHOR[0B]
-  rather than building either option? One sentence -- enters the 3-column matrix.
-
---- Competitive Position ---
-ANTI-PATTERN GUARD: Generic competitive analysis uses phrases such as "more competitive,"
-"better positioned," or "stronger in the market" without specifying the mechanism.
-Such phrasing is insufficient and will fail this criterion. Name the concrete vector:
-  Speed: throughput, latency, or iteration rate advantage
-  Cost: build, operating, or switching cost difference
-  Ecosystem: integration depth, lock-in reduction, or partner leverage
-  Capability: what ANCHOR[0A] / ANCHOR[0B] cannot do that this option enables
-
-Option A: At least one concrete vector vs ANCHOR[0A].
-Register: {applies from Phase 1 -- competitive framing dimension}
-If register = exec: frame in market/investment terms.
-If register = engineering: frame in build/operate/latency terms.
-Option B: Same requirement and same register instruction, vs ANCHOR[0B].
-Option 0 competitive position: What do ANCHOR[0A] and ANCHOR[0B] offer today
-  that Option A and Option B do not yet match?
-
-=== TABLE GUIDE ===
-
-Which question are you answering?
-  Does either option beat doing nothing (ANCHOR[0A] / ANCHOR[0B])? -> TABLE 1 (Phase 4)
-  Which option should we build?                                      -> TABLE 2 (Phase 5)
-
-TABLE 1 (Phase 4) -- Status-Quo Context View: A and B alongside ANCHOR[0A] / ANCHOR[0B].
-  Use to assess whether either build option beats the status quo.
-  [ -> See Table 2 (Phase 5) for the A-vs-B decision summary. ]
-
-TABLE 2 (Phase 5) -- A-vs-B Decision Summary: A vs B only, Option 0 excluded.
-  Use to reach the recommendation.
-  [ <- Source: Table 1 (Phase 4), Option 0 column excluded. ]
-
-=== PHASE 4: THREE-COLUMN MATRIX (Table 1 of 2 -- status-quo context view) ===
-[ -> See Table 2 (Phase 5) for A-vs-B decision summary ]
-
-Register: {applies from Phase 1 -- cell emphasis dimension}
-If register = exec: lead each non-N/A cell with business impact signal.
-  Format: Rating + one-phrase business signal. Omit implementation-level detail.
-If register = engineering: lead each non-N/A cell with implementation signal.
-  Format: Rating + one-phrase technical signal. Include dependency or correctness risk.
-If register = general: balanced. Format: Rating + one-phrase signal.
-
-N/A cells for Option 0 are by design and must be labeled explicitly.
-Option 0 column header must use ANCHOR[0A] and ANCHOR[0B] token names from Phase 0.
-
-| Dimension              | Option A: {option_a} | Option B: {option_b} | Option 0: ANCHOR[0A] / ANCHOR[0B] |
-|------------------------|----------------------|----------------------|-----------------------------------|
-| Feasibility            |                      |                      | N/A (no build required)           |
-| Inertia threat         | [vs ANCHOR[0A]]      | [vs ANCHOR[0B]]      | N/A (this IS the anchor)          |
-| Risk                   |                      |                      | Continuation risk: ...            |
-| Competitive position   |                      |                      | ANCHOR advantage: ...             |
-
-Fill all non-N/A cells using the register-appropriate format.
-
-=== PHASE 5: TWO-COLUMN COMPARISON SUMMARY (Table 2 of 2 -- A-vs-B decision view) ===
-[ <- Source: Table 1 (Phase 4); Option 0 column excluded. Use this table to reach the recommendation. ]
-
-Extract A-vs-B signal from Phase 4 into a scannable 2-column view.
-A reader should reach the recommendation from this table without re-reading Phase 3 or 4.
-
-Register: {applies from Phase 1 -- cell emphasis dimension}
-If register = exec: business impact signal leads each cell.
-If register = engineering: implementation signal leads each cell.
-If register = general: balanced content.
-
-| Dimension              | Option A | Option B |
-|------------------------|----------|----------|
-| Feasibility            |          |          |
-| Inertia threat         |          |          |
-| Risk                   |          |          |
-| Competitive position   |          |          |
-
-Format: Rating + one-phrase signal. No empty cells.
-
-=== PHASE 6: INERTIA GATE ===
-
-TOKEN RECALL: ANCHOR[0A] = {reproduce committed value from Phase 0}.
-              ANCHOR[0B] = {reproduce committed value from Phase 0}.
-
-Read the Inertia threat cells from Table 2 (Phase 5).
-
-GATE A -- Both High: "INERTIA GATE: ANCHOR[0A] beats Option A and ANCHOR[0B] beats Option B.
-  Teams will not build either option without a forcing function. 'Build neither' is the
-  leading recommendation. If proceeding, name the forcing function explicitly."
-  The recommendation in Phase 7 must address this gate.
-
-GATE B -- One High: "INERTIA NOTE: ANCHOR[{0A|0B}] beats Option {A|B} but Option {A|B}
-  clears the do-nothing bar. Asymmetry may outweigh other dimension signals."
-
-GATE C -- Neither High: "Inertia check passed -- both options beat their ANCHOR baseline."
-
-=== PHASE 7: RECOMMENDATION ===
-
-TOKEN RECALL: ANCHOR[0A] = {reproduce committed value from Phase 0}.
-              ANCHOR[0B] = {reproduce committed value from Phase 0}.
-
-State: choose Option A / choose Option B / build neither / defer.
-
-Register: {applies from Phase 1 -- lead structure dimension}
-If register = exec:
-  Lead with: recommendation and business risk of not taking it. One sentence each.
-  Then: trade-off (what is given up by not choosing the other option).
-  Omit implementation detail.
-If register = engineering:
-  Lead with: feasibility delta and primary technical risk.
-  Then: recommendation.
-  Then: trade-off (what is given up technically).
-If register = general:
-  Recommendation, primary reason, trade-off in one paragraph.
-
-All registers:
-- If GATE A fired: either "build neither" OR name the forcing function that overrides
-  the inertia evidence. Reference ANCHOR[0A] and ANCHOR[0B] in the gate language.
-- Recommendation traceable to Table 2 (Phase 5) -- do not assert a winner that
-  contradicts the matrix signals without explicit justification. If the recommendation
-  diverges from the matrix plurality, state the reason explicitly.
-
-=== PHASE 8: ARTIFACT ===
-
-Write to simulations/discover/compare/{topic}-compare-{date}.md.
-
-Frontmatter:
-  topic: {topic}
-  date: {date}
-  option_a: {option_a}
-  option_b: {option_b}
-  anchor_0a: {ANCHOR[0A] committed in Phase 0}
-  anchor_0b: {ANCHOR[0B] committed in Phase 0}
-  audience: {exec|engineering|general}
-  feasibility_a: High|Medium|Low
-  feasibility_b: High|Medium|Low
-  inertia_a: High|Medium|Low
-  inertia_b: High|Medium|Low
-  risk_a: High|Medium|Low
-  risk_b: High|Medium|Low
-  inertia_gate: passed|note|warning
-  recommendation: A|B|neither|defer
-  neither_path_surfaced: true|false
-  option_0_matrix: true
-  amended: false
-
-=== PHASE 9: AMEND HANDLER ===
-
-Activates when the user says AMEND after the base output.
-Three types -- execute the matching protocol:
-
-AMEND TYPE 1 -- Add Option C: {option_c}
-
-1. Define ANCHOR[0C] := {what teams do today instead of building C}.
-   Print: "ANCHOR[0C] = {value}. Binding extended."
-   TOKEN RECALL at each Option C analysis sub-section:
-   "ANCHOR[0C] = {reproduce committed value}."
-2. Run Option C through all four dimensions vs ANCHOR[0C]:
-   - Feasibility: High / Medium / Low + one reason.
-     Register: apply Phase 1 contract [cell emphasis dimension].
-   - Inertia (INERTIA RULE): Would teams keep using ANCHOR[0C] instead of building C?
-     Name the specific mechanism. Rate: High / Medium / Low.
-   - Risk: Primary failure mode. High / Medium / Low.
-     Register: apply Phase 1 contract [risk framing dimension].
-   - Competitive position: At least one concrete vector vs ANCHOR[0C]. Anti-pattern guard applies.
-     Register: apply Phase 1 contract [competitive framing dimension].
-3. Expand Table 1 (Phase 4) to four columns: add Option C column.
-   Update header: "Table 1 of 2 -- Status-Quo Context View (A / B / C / Option 0)"
-   Update cross-reference: "[ -> See Table 2 (Phase 5) for A-vs-B-vs-C decision summary ]"
-   Option 0 column header: "Option 0: ANCHOR[0A] / ANCHOR[0B] / ANCHOR[0C]"
-   Register: apply Phase 1 contract to new Option C cells.
-4. Update Table 2 (Phase 5) to three columns A/B/C.
-   Update header: "Table 2 of 2 -- A-vs-B-vs-C Decision Summary"
-   Update cross-reference: "[ <- Source: Table 1 (Phase 4); Option 0 column excluded. ]"
-   Register: apply Phase 1 contract to new Option C cells.
-   Verify: Option C ratings in Table 1 and Table 2 match.
-5. Re-run the INERTIA GATE.
-   TOKEN RECALL: "ANCHOR[0A] = {value}. ANCHOR[0B] = {value}. ANCHOR[0C] = {value}."
-   Use ANCHOR token language across all three build options.
-6. Revise recommendation: A / B / C / build neither / defer.
-   TOKEN RECALL: "ANCHOR[0A] = {value}. ANCHOR[0B] = {value}. ANCHOR[0C] = {value}."
-   If changed, name what changed and why. Anti-contradiction applies to updated Table 2.
-   Register: apply Phase 1 contract [lead structure dimension] to revised recommendation.
-7. Update artifact: add anchor_0c, option_c, update recommendation, amended: true.
-
-AMEND TYPE 2 -- Weight dimension: {dimension} x{weight}
-
-1. Apply weight multiplier to named dimension across Table 2 (Phase 5).
-   Valid: feasibility, inertia, risk, competitive. Weight: x2 or x0.5.
-2. Mark weighted dimension: "Feasibility [x2]".
-3. Determine aggregate winner under new weighting.
-4. Revise recommendation if weighting changes plurality.
-   Name the delta explicitly.
-   Register: apply Phase 1 contract [lead structure dimension] to revised recommendation.
-5. Update artifact: weight_{dimension}: {weight}, amended: true.
-
-AMEND TYPE 3 -- Shift audience: {exec|engineering}
-
-1. Re-render Table 1 (Phase 4), Table 2 (Phase 5), and Phase 7 (recommendation)
-   for the specified register per Phase 1 contract.
-   exec: business impact cell framing; recommendation leads; omit implementation detail.
-   engineering: implementation signal cell framing; feasibility leads; full technical framing.
-2. Underlying evidence unchanged. ANCHOR[0A] and ANCHOR[0B] token references maintained.
-   Presentation layer only.
-3. Note: "Audience amendment: {exec|engineering} -- re-rendered for register."
-4. Do not update the artifact file.
-
-=== PHASE 10: STRUCTURAL AUDIT ===
-
-Before returning the output, self-verify each item below.
-If any item fails, correct the affected section first, then return the full corrected output.
-
-AUDIT CHECKLIST:
-[ ] Phase 0: ANCHOR[0A] and ANCHOR[0B] committed before Phase 1?
-    Evidence: "Binding committed." line printed.
-[ ] Phase 1: register contract printed with dimension-level phase index?
-    Expected pattern: "Phase 3 [risk, competitive], Phase 4 [cell emphasis],
-    Phase 5 [cell emphasis], Phase 7 [lead structure], Phase 9 [framing]."
-[ ] Phase 3 TOKEN RECALL: token values reproduced at top of Phase 3?
-[ ] Phase 3 inertia: both A and B independently checked vs ANCHOR[0A] and ANCHOR[0B]?
-    Failure pattern: checking which build option teams prefer instead of vs anchor.
-[ ] TABLE GUIDE present before Phase 4? Question-keyed routing to TABLE 1 and TABLE 2?
-[ ] Phase 4 header carries "[ -> See Table 2 (Phase 5)... ]"?
-[ ] Phase 5 header carries "[ <- Source: Table 1 (Phase 4)... ]"?
-[ ] Phase 6 TOKEN RECALL reproduced correctly? Gate language uses ANCHOR token names?
-[ ] Phase 7 TOKEN RECALL reproduced correctly? Recommendation traceable to Table 2?
-    If recommendation diverges from matrix plurality: reason stated explicitly?
-[ ] If GATE A fired in Phase 6: "build neither" named OR forcing function named in Phase 7?
-
-Print: "AUDIT COMPLETE -- {N}/10 checks passed."
-If any check failed: print which item failed and the correction applied before the full output.
-```
+Token: `FEAS-B: {rating} — {one sentence}`
 
 ---
 
-## V-05: lean-anchor (lifecycle emphasis axis)
+**PHASE 2A — INERTIA: OPTION A**
 
-Axis: Lifecycle emphasis -- V-05/R4 (6-phase lean, no AMEND/register) with ANCHOR[0A]/
-ANCHOR[0B] token binding added. Tests token grounding in the minimal form. Score stays
-at 95.0 (C-09/C-10/C-14/C-15/C-16 remain 0 by design); drift resistance is hardened.
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: Comparing Option A against Option B at this phase is a fault — inertia asks whether
+teams would keep the status quo recalled above rather than build Option A, not whether they prefer
+A over B.
 
-Hypothesis: V-05/R4 passes C-18 (dedicated Phase 0 anchor) but uses prose downstream.
-Any model run on the lean form that paraphrases "the current approach" in the inertia
-or gate phase loses the inertia contract silently. ANCHOR tokens added to the lean form
-make drift detectable without adding AMEND or audience register complexity. The lean
-floor stays at 95.0 under v4 rubric; a v6 criterion testing token presence in 3+
-downstream phases would differentiate lean-anchor from lean-prose.
+Rate LOW / MEDIUM / HIGH. Name Option A's inertia mechanism.
+
+Token: `INERT-A: {rating} — {mechanism}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: Comparing Option B against Option A at this phase is a fault — inertia asks whether
+teams would keep the status quo recalled above rather than build Option B, not whether they prefer
+B over A.
+
+Rate LOW / MEDIUM / HIGH. Name Option B's mechanism — may differ from Option A's.
+
+Token: `INERT-B: {rating} — {mechanism}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks. Distinct from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator. REG-framed.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A or explain overlap. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
 
 ```
-You are running /discover-compare for topic: {topic}.
-Comparing: Option A -- {option_a} vs Option B -- {option_b}.
-
-=== PHASE 0: STATUS QUO ANCHOR (Option 0) ===
-
-Before any analysis, name the behavior teams fall back on today if neither option is built.
-
-ANCHOR[0A] := {what teams do today instead of building Option A}
-ANCHOR[0B] := {what teams do today instead of building Option B}
-
-Binding rule: all inertia analysis, competitive analysis, gate logic, and recommendation
-must reference ANCHOR[0A] and ANCHOR[0B] by token name -- not by prose paraphrase.
-
-Print: "ANCHOR[0A] = {value}. ANCHOR[0B] = {value}. Binding committed."
-
-=== PHASE 1: CONTEXT ===
-
-Read existing discover artifacts for this topic:
-- Glob: simulations/discover/**/{topic}-*-*.md
-
-Print inventory: | skill | date | path | for each file found.
-If prior artifacts exist, note any signals that refine the ANCHOR[0A] or ANCHOR[0B]
-characterization committed in Phase 0. Do not change committed tokens.
-If none found: "No prior discover artifacts -- proceeding from inputs."
-
-=== PHASE 2: DIMENSION ANALYSIS ===
-
-Run each dimension across both options before moving to the next.
-ANCHOR[0A] is the reference for all Option A inertia and competitive analysis.
-ANCHOR[0B] is the reference for all Option B inertia and competitive analysis.
-
---- Feasibility ---
-Option A: High / Medium / Low. One reason.
-Option B: High / Medium / Low. One reason.
-
---- Inertia ---
-INERTIA RULE: Inertia is checked for BOTH options independently.
-The question for each option: would teams keep using the ANCHOR token INSTEAD OF building it?
-Option A: would teams keep using ANCHOR[0A] instead of building Option A?
-  Name the specific mechanism. Threat rating: High / Medium / Low.
-Option B: would teams keep using ANCHOR[0B] instead of building Option B?
-  Name the specific mechanism. Threat rating: High / Medium / Low.
-
---- Risk ---
-Option A: Primary failure mode. Rating: High / Medium / Low.
-Option B: Same.
-Option 0 continuation risk: What is the long-term cost of staying with ANCHOR[0A] and ANCHOR[0B]?
-  One sentence -- enters the 3-column matrix.
-
---- Competitive Position ---
-ANTI-PATTERN GUARD: Generic competitive analysis uses phrases such as "more competitive,"
-"better positioned," or "stronger in the market" without specifying the mechanism.
-Such phrasing is insufficient and will fail this criterion. Name the concrete vector:
-  Speed: throughput, latency, or iteration rate advantage
-  Cost: build, operating, or switching cost difference
-  Ecosystem: integration depth, lock-in reduction, or partner leverage
-  Capability: what ANCHOR[0A] / ANCHOR[0B] cannot do that this option enables
-
-Option A: At least one concrete vector vs ANCHOR[0A].
-Option B: Same requirement vs ANCHOR[0B].
-Option 0 competitive position: What do ANCHOR[0A] and ANCHOR[0B] offer today
-  that Option A and Option B do not yet match?
-
-=== PHASE 3: MATRICES ===
-
-Which question are you answering?
-  Does either option beat doing nothing (ANCHOR[0A] / ANCHOR[0B])? -> TABLE 1 (below)
-  Which option should we build?                                      -> TABLE 2 (below)
-
---- Table 1 of 2: Status-Quo Context View ---
-[ -> See Table 2 below for A-vs-B decision summary. ]
-
-| Dimension              | Option A: {option_a} | Option B: {option_b} | Option 0: ANCHOR[0A] / ANCHOR[0B] |
-|------------------------|----------------------|----------------------|-----------------------------------|
-| Feasibility            |                      |                      | N/A (no build required)           |
-| Inertia threat         | [vs ANCHOR[0A]]      | [vs ANCHOR[0B]]      | N/A (this IS the anchor)          |
-| Risk                   |                      |                      | Continuation risk: ...            |
-| Competitive position   |                      |                      | ANCHOR advantage: ...             |
-
---- Table 2 of 2: A-vs-B Decision Summary ---
-[ <- Source: Table 1 above; Option 0 column excluded. Use this table to reach the recommendation. ]
-
-A reader should reach the recommendation from Table 2 without re-reading Phase 2.
-
-| Dimension              | Option A | Option B |
-|------------------------|----------|----------|
-| Feasibility            |          |          |
-| Inertia threat         |          |          |
-| Risk                   |          |          |
-| Competitive position   |          |          |
-
-Format: Rating + one-phrase signal. No empty cells.
-
-=== PHASE 4: INERTIA GATE ===
-
-Read the Inertia threat cells from Table 2.
-
-GATE A -- Both High: "INERTIA GATE: ANCHOR[0A] beats Option A and ANCHOR[0B] beats Option B.
-  Teams will not build either option without a forcing function. 'Build neither' is the
-  leading recommendation. If proceeding, name the forcing function explicitly."
-
-GATE B -- One High: "INERTIA NOTE: ANCHOR[{0A|0B}] beats Option {A|B} but Option {A|B}
-  clears the do-nothing bar. Asymmetry may outweigh other dimension signals."
-
-GATE C -- Neither High: "Inertia check passed -- both options beat their ANCHOR baseline."
-
-=== PHASE 5: RECOMMENDATION ===
-
-State: choose Option A / choose Option B / build neither / defer.
-
-Recommendation, primary reason, trade-off (what is given up by not choosing the other
-option) in one paragraph.
-
-- If GATE A fired: either "build neither" OR name the forcing function that overrides
-  the inertia evidence. Reference ANCHOR[0A] and ANCHOR[0B] in the gate language.
-- Recommendation traceable to Table 2 -- do not assert a winner that contradicts the
-  matrix signals without explicit justification. If the recommendation diverges from
-  the matrix plurality, state the reason explicitly.
-
-=== PHASE 6: ARTIFACT ===
-
-Write to simulations/discover/compare/{topic}-compare-{date}.md.
-
-Frontmatter:
-  topic: {topic}
-  date: {date}
-  option_a: {option_a}
-  option_b: {option_b}
-  anchor_0a: {ANCHOR[0A] committed in Phase 0}
-  anchor_0b: {ANCHOR[0B] committed in Phase 0}
-  feasibility_a: High|Medium|Low
-  feasibility_b: High|Medium|Low
-  inertia_a: High|Medium|Low
-  inertia_b: High|Medium|Low
-  risk_a: High|Medium|Low
-  risk_b: High|Medium|Low
-  inertia_gate: passed|note|warning
-  recommendation: A|B|neither|defer
-  neither_path_surfaced: true|false
-  option_0_matrix: true
-  amended: false
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
 ```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce missing token, return here, verify all pass.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+Apply REG column-label overrides if exec or engineering.
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH: state "Build neither is a candidate recommendation."
+Name override condition or conclude Neither.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence — do not paraphrase}`
+TOKEN RECALL: `REG = {restate register}`
+
+**Recommendation: Option A / B / Neither / Conditional on {X}**
+
+REG-framed. One sentence: why. One sentence: trade-off.
+
+---
+
+**PHASE 9 — AMEND**
+
+1. **Add Option C** — Produce FEAS-C, INERT-C (TOKEN RECALL of ANCHOR[0] verbatim + FAULT
+   prohibition), RISK-C, COMP-C. Add to ledger. Expand matrix. Update recommendation.
+2. **Weight {dimension}** — Dimension and multiplier. Re-score from tokens. State if
+   recommendation changes.
+3. **Override register** — `REG override: {new register}.` Re-render Phase 6 labels and
+   Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## V-02 — C-17 Full Strip
+
+**Axis**: Lifecycle emphasis — three remaining prose elements stripped from V-01; all operative
+mechanisms preserved
+**Hypothesis**: R4 V-03 confirmed that ~50% word reduction is safe for C-01 through C-16. C-17
+adds a new pressure: can the remaining three prose elements be stripped without breaking any
+other criterion? Stripped elements: (1) `"Each phase produces a named token."` — `"Use exact
+token names."` is sufficient; (2) `"Declare audience register, then commit status quo anchor
+framed for that register."` — token ordering alone satisfies C-15 (confirmed R4-V04); (3)
+`"Audience: exec / engineering / general"` helper text; (4) FAULT explanatory clause condensed
+to: `FAULT: compare against ANCHOR[0] only — Option A vs Option B comparison is an error.`
+
+The condensed FAULT states both the positive (compare against ANCHOR[0]) and the negative (not
+inter-option) in a single operative directive. C-11 requires an explicit "compare against status
+quo, not against Option [X]" prohibition. If C-11 PASS: the explanatory clause was overhead.
+If C-11 PARTIAL: the clause was structurally required for C-11 detection.
+
+---
+
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
+
+Use exact token names. LEDGER GATE blocks progression on any gap.
+
+---
+
+**PHASE 0 — FRAME**
+
+Token: `REG: {exec / engineering / general}`
+
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
+
+---
+
+**PHASE 1A — FEASIBILITY: OPTION A**
+
+Rate GREEN / YELLOW / RED. REG-framed.
+
+Token: `FEAS-A: {rating} — {one sentence}`
+
+**PHASE 1B — FEASIBILITY: OPTION B**
+
+Rate GREEN / YELLOW / RED. REG-framed. Independent of Option A.
+
+Token: `FEAS-B: {rating} — {one sentence}`
+
+---
+
+**PHASE 2A — INERTIA: OPTION A**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: compare against ANCHOR[0] only — Option A vs Option B comparison is an error.
+
+Rate LOW / MEDIUM / HIGH. Name Option A's inertia mechanism.
+
+Token: `INERT-A: {rating} — {mechanism}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: compare against ANCHOR[0] only — Option B vs Option A comparison is an error.
+
+Rate LOW / MEDIUM / HIGH. Name Option B's mechanism — may differ from Option A's.
+
+Token: `INERT-B: {rating} — {mechanism}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks. Distinct from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator. REG-framed.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A or explain overlap. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
+
+```
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
+```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce missing token, return here,
+verify all pass.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+Apply REG column-label overrides if exec or engineering.
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH: state "Build neither is a candidate recommendation."
+Name override condition or conclude Neither.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence — do not paraphrase}`
+TOKEN RECALL: `REG = {restate register}`
+
+**Recommendation: Option A / B / Neither / Conditional on {X}**
+
+REG-framed. One sentence: why. One sentence: trade-off.
+
+---
+
+**PHASE 9 — AMEND**
+
+1. **Add Option C** — Produce FEAS-C, INERT-C (TOKEN RECALL of ANCHOR[0] verbatim + FAULT
+   prohibition), RISK-C, COMP-C. Add to ledger. Expand matrix. Update recommendation.
+2. **Weight {dimension}** — Dimension and multiplier. Re-score from tokens. State if
+   recommendation changes.
+3. **Override register** — `REG override: {new register}.` Re-render Phase 6 labels and
+   Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## V-03 — FAULT Condensed (Single-Axis Isolation)
+
+**Axis**: Inertia framing — FAULT text condensed to dual-polarity one-liner; all other V-01
+prose preserved verbatim
+**Hypothesis**: V-02 strips three prose elements simultaneously. V-03 isolates the FAULT
+condensation to test C-11 independently of the other stripping. V-01 FAULT uses the full
+explanatory clause; V-03 replaces only that clause with the condensed form:
+`FAULT: compare against ANCHOR[0] only — Option A vs Option B comparison is an error.`
+All other V-01 elements are unchanged — preamble sentence, Phase 0 framing, Phases 3-9 verbatim.
+If V-03 C-11 = PASS: condensed form is independently sufficient for C-11 — the explanatory clause
+was overhead. If V-02 C-11 = PASS but V-03 C-11 = FAIL: some other V-02 stripping inadvertently
+helped C-11. If both PARTIAL: more text is structurally required. C-17 remains PARTIAL in V-03
+because preamble and Phase 0 framing sentences are preserved.
+
+---
+
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
+
+Each phase produces a named token. Use exact token names. LEDGER GATE blocks progression on any gap.
+
+---
+
+**PHASE 0 — FRAME**
+
+Declare audience register, then commit status quo anchor framed for that register.
+
+Audience: exec / engineering / general *(fill in, or leave blank for general)*
+
+Token: `REG: {exec / engineering / general}`
+
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
+
+---
+
+**PHASE 1A — FEASIBILITY: OPTION A**
+
+Rate GREEN / YELLOW / RED. REG-framed.
+
+Token: `FEAS-A: {rating} — {one sentence}`
+
+**PHASE 1B — FEASIBILITY: OPTION B**
+
+Rate GREEN / YELLOW / RED. REG-framed. Independent of Option A.
+
+Token: `FEAS-B: {rating} — {one sentence}`
+
+---
+
+**PHASE 2A — INERTIA: OPTION A**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: compare against ANCHOR[0] only — Option A vs Option B comparison is an error.
+
+Rate LOW / MEDIUM / HIGH. Name Option A's inertia mechanism.
+
+Token: `INERT-A: {rating} — {mechanism}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: compare against ANCHOR[0] only — Option B vs Option A comparison is an error.
+
+Rate LOW / MEDIUM / HIGH. Name Option B's mechanism — may differ from Option A's.
+
+Token: `INERT-B: {rating} — {mechanism}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks specific to Option B. Must differ from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator(s). REG-framed. No generic phrases.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A unless overlap is explained. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
+
+```
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
+```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce the missing token, return to
+this gate, and verify all pass before advancing.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens. Option 0 column header uses ANCHOR[0]. Apply REG to
+dimension labels.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+REG overrides — exec: Feasibility -> Business Feasibility; Risk -> Business Risk; Competitive -> Market Position
+REG overrides — engineering: Feasibility -> Build Complexity; Risk -> Technical Risk; Competitive -> Technical Differentiation
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH:
+State: "Build neither is a candidate recommendation."
+Name the override condition, or conclude with Neither.
+
+If only one is HIGH: note it as a risk factor and proceed.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+TOKEN RECALL: `REG = {restate register from Phase 0}`
+
+Apply REG framing:
+- **exec**: open with **Recommendation: Option A / B / Neither** + top business risk from RISK tokens; close with one-line business consequence of not choosing the other option
+- **engineering**: open with **Recommendation: Option A / B / Neither** + hardest constraint from FEAS tokens; close with technical trade-off
+- **general**: **Recommendation: Option A / B / Neither** + matrix evidence; close with trade-off sentence
+
+If recommendation diverges from matrix plurality, state the override reason explicitly.
+
+---
+
+**PHASE 9 — AMEND**
+
+Three paths:
+
+1. **Add Option C** — Produce tokens FEAS-C, INERT-C (with TOKEN RECALL of ANCHOR[0] verbatim
+   + FAULT prohibition for comparing against A or B), RISK-C, COMP-C. Add to LEDGER GATE list.
+   Expand Phase 6 matrix. Update Phase 8 recommendation.
+2. **Weight {dimension}** — State dimension and multiplier. Re-score from existing tokens. Show
+   whether recommendation changes.
+3. **Override register** — State new register. Print `REG override: {new register}.`
+   Re-render Phase 6 labels and Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## V-04 — AMEND Tokenized
+
+**Axis**: Output format — Phase 9 expressed as pure token expansion syntax; all other V-01
+prose preserved verbatim
+**Hypothesis**: V-01 Phase 9 uses descriptive prose paths ("Produce FEAS-C, INERT-C (TOKEN
+RECALL of ANCHOR[0] verbatim + FAULT prohibition)..."). V-04 replaces these with explicit token
+slot declarations, TOKEN RECALL directives, FAULT prohibitions, and action directives — the same
+structural information without the path descriptions. C-07 requires "concrete instructions for
+at least one of: adding a third option, weighting a specific dimension, adjusting for exec vs
+engineering audience." Token expansion provides all three. If PASS: descriptive AMEND prose is
+overhead. If PARTIAL: C-07 requires some minimum prose framing to establish actionability. C-17
+remains PARTIAL in V-04 because preamble and Phase 0 framing prose from V-01 are preserved.
+
+---
+
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
+
+Each phase produces a named token. Use exact token names. LEDGER GATE blocks progression on any gap.
+
+---
+
+**PHASE 0 — FRAME**
+
+Declare audience register, then commit status quo anchor framed for that register.
+
+Audience: exec / engineering / general *(fill in, or leave blank for general)*
+
+Token: `REG: {exec / engineering / general}`
+
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
+
+---
+
+**PHASE 1A — FEASIBILITY: OPTION A**
+
+Rate GREEN / YELLOW / RED. REG-framed.
+
+Token: `FEAS-A: {rating} — {one sentence}`
+
+**PHASE 1B — FEASIBILITY: OPTION B**
+
+Rate GREEN / YELLOW / RED. REG-framed. Independent of Option A.
+
+Token: `FEAS-B: {rating} — {one sentence}`
+
+---
+
+**PHASE 2A — INERTIA: OPTION A**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: Comparing Option A against Option B at this phase is a fault — inertia asks whether
+teams would keep the status quo recalled above rather than build Option A, not whether they prefer
+A over B.
+
+Rate LOW / MEDIUM / HIGH. Name Option A's inertia mechanism.
+
+Token: `INERT-A: {rating} — {mechanism}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: Comparing Option B against Option A at this phase is a fault — inertia asks whether
+teams would keep the status quo recalled above rather than build Option B, not whether they prefer
+B over A.
+
+Rate LOW / MEDIUM / HIGH. Name Option B's mechanism — may differ from Option A's.
+
+Token: `INERT-B: {rating} — {mechanism}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks. Distinct from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator. REG-framed.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A or explain overlap. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
+
+```
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
+```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce missing token, return here,
+verify all pass.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+Apply REG column-label overrides if exec or engineering.
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH: state "Build neither is a candidate recommendation."
+Name override condition or conclude Neither.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence — do not paraphrase}`
+TOKEN RECALL: `REG = {restate register}`
+
+**Recommendation: Option A / B / Neither / Conditional on {X}**
+
+REG-framed. One sentence: why. One sentence: trade-off.
+
+---
+
+**PHASE 9 — AMEND**
+
+**Add Option C:**
+
+Token: `FEAS-C: {rating} — {one sentence}`
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence — do not paraphrase}`
+FAULT: compare against ANCHOR[0] only — Option C vs A or B comparison is an error.
+Token: `INERT-C: {rating} — {mechanism}`
+Token: `RISK-C: {risk1/rating}, {risk2/rating}`
+Token: `COMP-C: {positioning}`
+Add FEAS-C, INERT-C, RISK-C, COMP-C to LEDGER GATE. Add Option C column to Phase 6 matrix.
+Update Phase 8 recommendation.
+
+**Weight {dimension}:**
+
+Token: `WEIGHT: {dimension} x {multiplier}`
+Re-score from tokens. Update recommendation if it changes.
+
+**Override register:**
+
+Token: `REG override: {new register}`
+Re-render Phase 6 labels and Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## V-05 — Combined: C-17 Strip + FAULT Condensed + AMEND Tokenized
+
+**Axes**: V-02 (lifecycle emphasis) + V-03 (inertia framing) + V-04 (output format) simultaneously
+**Hypothesis**: V-02 tests C-11 with condensed FAULT and full prose strip. V-04 tests C-07 with
+tokenized AMEND. V-05 applies both simultaneously to test for adverse interactions and to identify
+the best 100/100 candidate under the v4 rubric. Expected: C-11 and C-07 behave independently; if
+both pass in isolation, they pass in combination. Combined simplifications: preamble sentence
+removed, Phase 0 framing removed, FAULT condensed to dual-polarity one-liner, AMEND as pure token
+expansion. Projected C-17 PASS — no explanatory prose remains across any phase. If V-02 C-11 = PASS
+and V-04 C-07 = PASS, V-05 is the minimal viable 100/100 prompt under the v4 rubric.
+
+---
+
+You are running `discover-compare` for: **{topic}**
+Option A: {option_a}
+Option B: {option_b}
+
+Use exact token names. LEDGER GATE blocks progression on any gap.
+
+---
+
+**PHASE 0 — FRAME**
+
+Token: `REG: {exec / engineering / general}`
+
+Token: `ANCHOR[0]: {status quo — one sentence, REG-framed}`
+
+---
+
+**PHASE 1A — FEASIBILITY: OPTION A**
+
+Rate GREEN / YELLOW / RED. REG-framed.
+
+Token: `FEAS-A: {rating} — {one sentence}`
+
+**PHASE 1B — FEASIBILITY: OPTION B**
+
+Rate GREEN / YELLOW / RED. REG-framed. Independent of Option A.
+
+Token: `FEAS-B: {rating} — {one sentence}`
+
+---
+
+**PHASE 2A — INERTIA: OPTION A**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: compare against ANCHOR[0] only — Option A vs Option B comparison is an error.
+
+Rate LOW / MEDIUM / HIGH. Name Option A's inertia mechanism.
+
+Token: `INERT-A: {rating} — {mechanism}`
+
+**PHASE 2B — INERTIA: OPTION B**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence from Phase 0 — do not paraphrase}`
+FAULT: compare against ANCHOR[0] only — Option B vs Option A comparison is an error.
+
+Rate LOW / MEDIUM / HIGH. Name Option B's mechanism — may differ from Option A's.
+
+Token: `INERT-B: {rating} — {mechanism}`
+
+---
+
+**PHASE 3A — RISK: OPTION A**
+
+Top 2 risks. REG-framed. Rate each.
+
+Token: `RISK-A: {risk1/rating}, {risk2/rating}`
+
+**PHASE 3B — RISK: OPTION B**
+
+Top 2 risks. Distinct from RISK-A or explain overlap. REG-framed.
+
+Token: `RISK-B: {risk1/rating}, {risk2/rating}`
+
+---
+
+**PHASE 4A — COMPETITIVE POSITIONING: OPTION A**
+
+Concrete differentiator. REG-framed.
+
+Token: `COMP-A: {positioning}`
+
+**PHASE 4B — COMPETITIVE POSITIONING: OPTION B**
+
+Distinct from COMP-A or explain overlap. REG-framed.
+
+Token: `COMP-B: {positioning}`
+
+---
+
+**PHASE 5 — LEDGER GATE**
+
+```
+REG:       [ ]
+ANCHOR[0]: [ ]
+FEAS-A:    [ ]
+FEAS-B:    [ ]
+INERT-A:   [ ]
+INERT-B:   [ ]
+RISK-A:    [ ]
+RISK-B:    [ ]
+COMP-A:    [ ]
+COMP-B:    [ ]
+```
+
+**HALT — do not proceed to Phase 6 if any token is absent.** Produce missing token, return here,
+verify all pass.
+
+---
+
+**PHASE 6 — DECISION MATRIX**
+
+Assemble from LEDGER GATE tokens.
+
+| Dimension | Option 0: ANCHOR[0] | Option A | Option B |
+|---|---|---|---|
+| Feasibility | N/A | FEAS-A | FEAS-B |
+| Inertia | this IS the anchor | INERT-A | INERT-B |
+| Risk | N/A | RISK-A | RISK-B |
+| Competitive | baseline | COMP-A | COMP-B |
+
+Apply REG column-label overrides if exec or engineering.
+
+---
+
+**PHASE 7 — BUILD / NO-BUILD GATE**
+
+If INERT-A = HIGH and INERT-B = HIGH: state "Build neither is a candidate recommendation."
+Name override condition or conclude Neither.
+
+---
+
+**PHASE 8 — RECOMMENDATION**
+
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence — do not paraphrase}`
+TOKEN RECALL: `REG = {restate register}`
+
+**Recommendation: Option A / B / Neither / Conditional on {X}**
+
+REG-framed. One sentence: why. One sentence: trade-off.
+
+---
+
+**PHASE 9 — AMEND**
+
+**Add Option C:**
+
+Token: `FEAS-C: {rating} — {one sentence}`
+TOKEN RECALL: `ANCHOR[0] = {reproduce exact sentence — do not paraphrase}`
+FAULT: compare against ANCHOR[0] only — Option C vs A or B comparison is an error.
+Token: `INERT-C: {rating} — {mechanism}`
+Token: `RISK-C: {risk1/rating}, {risk2/rating}`
+Token: `COMP-C: {positioning}`
+Add FEAS-C, INERT-C, RISK-C, COMP-C to LEDGER GATE. Add Option C column to Phase 6 matrix.
+Update Phase 8 recommendation.
+
+**Weight {dimension}:**
+
+Token: `WEIGHT: {dimension} x {multiplier}`
+Re-score from tokens. Update recommendation if it changes.
+
+**Override register:**
+
+Token: `REG override: {new register}`
+Re-render Phase 6 labels and Phase 8 framing.
+
+Output artifact: `simulations/discover/compare/{topic}-compare-{date}.md`
+
+---
+
+---
+
+## Rubric coverage projection summary
+
+| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|-----------|------|------|------|------|------|
+| C-01 bilateral dimensions | PASS | PASS | PASS | PASS | PASS |
+| C-02 independent inertia | PASS | PASS | PASS | PASS | PASS |
+| C-03 decision matrix | PASS | PASS | PASS | PASS | PASS |
+| C-04 explicit recommendation | PASS | PASS | PASS | PASS | PASS |
+| C-05 build/no-build gate | PASS | PASS | PASS | PASS | PASS |
+| C-06 differentiated risk | PASS | PASS | PASS | PASS | PASS |
+| C-07 actionable AMEND | PASS | PASS | PASS | **TESTING** | **TESTING** |
+| C-08 Option 0 in matrix | PASS | PASS | PASS | PASS | PASS |
+| C-09 audience primary flow | PASS | PASS | PASS | PASS | PASS |
+| C-10 token ledger | PASS | PASS | PASS | PASS | PASS |
+| C-11 explicit exclusion rule | PASS | **TESTING** | **TESTING** | PASS | **TESTING** |
+| C-12 named anchor before analysis | PASS | PASS | PASS | PASS | PASS |
+| C-13 verbatim anchor recall | PASS | PASS | PASS | PASS | PASS |
+| C-14 failure class co-located | PASS | PASS | PASS | PASS | PASS |
+| C-15 register before anchor | PASS | PASS | PASS | PASS | PASS |
+| C-16 blocking ledger gate | PASS | PASS | PASS | PASS | PASS |
+| **C-17 output compressed** | **PARTIAL** | **PASS** | **PARTIAL** | **PARTIAL** | **PASS** |
+
+### Projected composite scores
+
+| Variation | Essential (4) | Recommended (3) | Aspirational (/10) | Composite | Golden |
+|-----------|--------------|-----------------|-------------------|-----------|--------|
+| V-01 | 4/4 = 60.00 | 3/3 = 30.00 | 9.5/10 = 9.50 | **99.50** | YES |
+| V-02 | 4/4 = 60.00 | 3/3 = 30.00 | 10/10 = 10.00 | **100.00** | YES |
+| V-03 | 4/4 = 60.00 | 3/3 = 30.00 | 9.5/10 = 9.50 | **99.50** | YES |
+| V-04 | 4/4 = 60.00 | 3/3 = 30.00 | 9.5/10 = 9.50 | **99.50** | YES |
+| V-05 | 4/4 = 60.00 | 3/3 = 30.00 | 10/10 = 10.00 | **100.00** | YES |
+
+*Partial = 0.5. TESTING criteria projected PASS above. Each TESTING criterion that scores PARTIAL
+instead drops the containing variation by 0.5 composite points.*
+
+### Key results to watch
+
+**V-01 C-17**: PARTIAL is certain given residual prose. The composite 99.5 confirms the cost of
+each prose element under the new rubric and sets the ceiling for non-C-17-compliant forms.
+
+**V-02/V-03 C-11**: The condensed FAULT `"compare against ANCHOR[0] only — Option A vs Option B
+comparison is an error"` gives the positive (ANCHOR[0]) and the negative (not inter-option) in
+one operative directive. C-11 pass condition: "The exclusion is stated as a rule that prevents
+relative comparison." V-03 provides the isolation: if V-03 C-11 = PASS without any other
+stripping, the condensed form is independently sufficient. If V-03 C-11 = PARTIAL, the
+explanatory clause was structural for C-11 — R4 V-05 form must be preserved for that criterion.
+
+**V-04 C-07**: Tokenized AMEND provides slot declarations + TOKEN RECALL + FAULT prohibition
+for Option C expansion, plus token directives for weight and register override. C-07 pass
+condition: "concrete instructions for at least one of: adding a third option, weighting a
+specific dimension, adjusting for exec vs engineering audience." All three paths have concrete
+structure. If PASS: prose path descriptions are confirmed overhead.
+
+**V-02 + V-05 convergence**: If V-02 achieves 100/100 and V-05 achieves 100/100 with no
+interaction effects, V-05 is the R5 minimal viable prompt — fully stripped, fully tokenized,
+dual-polarity inertia prohibition. Approximately 40% shorter than R4 canonical with identical
+or better coverage across all 17 criteria.

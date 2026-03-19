@@ -1,684 +1,1537 @@
-Written to both files. Here's the R7 summary:
+Written to `simulations/quest/variations/validate-inertia-variations-R7-2026-03-17.md`.
 
 ---
 
-## R7 Variations — validate-inertia
+## validate-inertia Variations R7 -- Summary
 
-**Rubric v7 update:** C-25 Pass condition is now architecture-neutral (removed "C-20 candidate" restriction). No new criteria. Pool stays at 17. Ceiling unchanged: 16/17 = 99.41.
-
-**5 variations across 3 structural axes:**
-
-| V | Axis | Target | Predicted |
-|---|------|--------|-----------|
-| V-01 | Inertia framing (status-quo rival) | C-25 single-axis on C-20 path | 15/17 → 98.82 |
-| V-02 | Output format (colocated notes) | C-25 inside gate body (placement probe) | 15/17 → 98.82 |
-| V-03 | Lifecycle emphasis (phase/gate) | C-24 on full-gate — architecture probe | 14 or 15/17 |
-| V-04 | Phrasing register (conversational) | C-24+C-25 on scan path (3rd ceiling path) | 16/17 → 99.41 |
-| V-05 | Role sequence (data-before-hypothesis) | C-25 single-axis (4th ceiling path) | 16/17 → 99.41 |
-
-**Three open questions this round resolves:**
-
-1. **C-20-path ceiling**: V-01 and V-02 test whether gate-based distributed designs cap at 15/17 (forced C-21 FAIL) or can somehow reach 16/17.
-2. **C-24 form restriction**: V-03 probes whether "non-full-gate checkpoint" in C-24 Pass is a hard architectural disqualifier or just a content test — SCOPE NOTE in full GATE 2 is the stimulus.
-3. **C-25 placement**: V-01 (pre-phase DESIGN NOTE) vs. V-02 (same content inside gate body) — do scores diverge?
-
-V-04 and V-05 are ceiling consolidation: third and fourth independent paths to 99.41, confirming the ceiling is register-independent and sequence-independent.
-e for C-25. Identical to V-01 except DESIGN NOTE content merged into
-  ARCHITECTURE SCOPE inside the gate body rather than placed before PRE-FLIGHT. If V-01 and V-02
-  both score 15/17, placement is irrelevant to C-25. If they differ, gate-body placement affects
-  the criterion.
-- **V-03**: Architecture boundary for C-24. V-03 R6 uses GATE 2 (full consolidating gate). C-24
-  Pass says "non-full-gate checkpoint." Adding SCOPE NOTE to GATE 2 tests: does the declaration
-  presence override the form restriction? If C-24 is declaration-based: 15/17. If form-based:
-  14/17. Resolves whether C-24 is a content criterion or a structural criterion.
-- **V-04**: Third path to 16/17 ceiling. V-01 R6 (conversational scan, C-16/C-21 path, 14/17)
-  + SCOPE NOTE + DESIGN NOTE. Confirms ceiling is register-independent: formal gate, status-quo
-  rival framing, and conversational scan all reach 16/17.
-- **V-05**: Fourth path to 16/17 ceiling. V-04 R6 (data-before-hypothesis, 15/17) + DESIGN NOTE.
-  Single addition closes C-25. Confirms hypothesis-timing is orthogonal to enforcement architecture.
-
-### Open questions R7 scoring will resolve
-
-1. Is the C-20-path ceiling 15/17? (V-01, V-02 -- both C-16 FAIL, C-21 FAIL, C-20 PASS)
-2. Does C-24 Pass require non-full-gate form, or does declaration presence in a full gate
-   suffice? (V-03 -- SCOPE NOTE in GATE 2)
-3. Does DESIGN NOTE placement (pre-phase vs. inside gate body) affect C-25 scoring?
-   (V-01 pre-phase vs. V-02 gate-internal -- only difference between the two)
+| # | Label | Axis | Primary target |
+|---|-------|------|----------------|
+| V-31 | Named lever artifact at Phase 5(3) | Output format | C-26 link 3 |
+| V-32 | AMEND lever citation by mechanism name | Output format | C-26 link 4 |
+| V-33 | Citation chain verification step | Lifecycle emphasis | C-26 (all links) |
+| V-34 | Named lever + AMEND lever citation | Output format combination | C-26 links 3+4 |
+| V-35 | Full integration -- all nineteen aspirationals | All axes | C-09--C-27 |
 
 ---
 
-## V-01 (R7): Status-Quo Rival + C-20-Path Ceiling -- C-25 Single-Axis
+### Diagnosis entering R7
 
-**Axis:** Inertia framing (the status quo is the undeployed rival throughout). Single-axis
-target: C-25. Base: V-02 R6 -- three-layer C-20 architecture, competitor-first framing, KILL
-BARRIER EVIDENCE GATE (passes C-23, C-24 via ARCHITECTURE SCOPE). Change: add pre-phase DESIGN
-NOTE explicitly acknowledging C-16/C-20 mutual exclusion and declaring C-20-path ceiling.
+**C-24, C-25, C-27 already pass in V-30.** The only new gap is **C-26's Phase 5 → AMEND link**.
 
-**Hypothesis:** C-20 path + pre-phase DESIGN NOTE achieves C-25 PASS. C-16 FAIL and C-21 FAIL
-are definitional for a gate-based distributed architecture. The C-20-path ceiling is 15/17.
-The 16/17 overall ceiling belongs exclusively to C-16/C-21 scan designs.
-
-```
-You are running /validate-inertia.
-
-This feature has a competitor that will not appear in any roadmap review: it is whatever
-users do today. The status-quo competitor does not need to ship, does not need funding,
-and does not need a team. It is already deployed. Your job is to assess whether this
-feature can displace it.
-
-DESIGN NOTE -- STRUCTURAL CEILING: This skill uses three-layer distributed enforcement
-(C-20 path): PRE-FLIGHT CHECK enforces workaround satisfaction vocabulary and no-blank
-dimensions; KILL BARRIER EVIDENCE GATE carries the C-18 forward reference; GATE 4
-enforces AMEND persona+gap. C-15 (kill barrier as table column) provides structural
-enforcement distributed separately. C-16 PASS and C-20 PASS are mutually exclusive by
-construction: this design achieves C-20 (distributed, no single consolidation gate) and
-cannot simultaneously achieve C-16 (single consolidating gate) or C-21 (one-sentence
-scan consolidation, which requires scan-based register). The C-20-path ceiling is 15/17
-aspirational criteria; the C-16/C-21-path ceiling is 16/17. 17/17 is unreachable.
+C-26 requires a four-link citation chain with named anchors at every link:
+- Link 1: Phase 1 → Phase 4 (V-30 covers this: instruction names "SCORING INFRASTRUCTURE DECLARED")
+- Link 2: Phase 4 → Phase 5 (implicit, no gap)
+- Link 3: Phase 5(3) produces a **named lever point artifact** — V-30 produces prose, no label
+- Link 4: AMEND(d) names that lever point as its observable anchor — V-30 says "the Phase 5(3) falsifiability test" (phase reference, not named anchor)
 
 ---
 
-PRE-FLIGHT CHECK
+### Variation logic
 
-Before proceeding, confirm:
-- [ ] At least 2 distinct user personas are identified
-- [ ] Workaround satisfaction will be assessed using vocabulary: "good enough" /
-  "painful but familiar" / "actively seeking replacement" -- do not proxy satisfaction
-  by relationship level (Heavy/Occasional/Rare) or adoption stage alone
-- [ ] No dimension will be left blank or labeled "unknown" without specifying the
-  exact information needed and why it matters for the inertia verdict
+**V-31 (single-axis: link 3):** Adds `LEVER POINT: [label]` required format after Phase 5(3) prose. AMEND(d) gets a required `Lever anchor: [copy exact label]` field. Tests whether the formal artifact label is necessary on the production side.
 
----
+**V-32 (single-axis: link 4):** No Phase 5 label requirement. AMEND(d) must quote the mechanism by name ("The absence of [mechanism name, not 'Phase 5(3)']..."). Tests whether the citation requirement on the AMEND side alone closes link 4 without requiring a Phase 5 label.
 
-STEP 1: COMPETITOR AUDIT
+**V-33 (single-axis: structural verification):** Adds a post-Phase-7 "Citation Chain Verification" step with four required named fields (Phase 1 artifact, Phase 4 citation, Phase 5(3) lever, AMEND(d) anchor). A gate blocks AMEND until all four fields are completed with named text. Tests whether structural self-verification closes C-26 more reliably than per-phase inline requirements.
 
-For each persona, audit the current workaround as if it were a competing product:
+**V-34 (combination: links 3+4):** V-31's named lever label + V-31's AMEND lever anchor citation. Closes both sides of the Phase 5 → AMEND link. Excludes V-33's verification step to confirm the two production requirements alone are sufficient.
 
-- What is the persona doing today instead of using this feature?
-- How satisfied are they with it? (use satisfaction vocabulary above)
-- What makes the workaround sticky -- habit, team dependency, tool integration, sunk
-  cost in existing workflows?
-- Switching cost estimate: what would adopting this feature actually cost this persona
-  in time, training, or workflow disruption? Give a concrete estimate, not just HIGH/LOW.
-- Social proof threshold: early adopter / wait-and-see / mandate-required
-- Habit lock-in: what specific muscle memory, tool, or process makes the current
-  behavior self-reinforcing?
-- Inertia reduction condition: what would have to change in this persona's environment,
-  team, or incentives for inertia to lose?
+**V-35 (all 19):** V-30 base + V-34 (named lever + AMEND anchor) + V-33 (citation chain verification). All gaps closed. Expected ceiling: 270/270.
+the AMEND-side citation
+requirement alone closes C-26 link 4 -- whether the lever mechanism name, quoted inline,
+satisfies the "named anchor" criterion without a formal Phase 5 artifact label.
 
----
+**V-33 (C-26 structural verification):** A different architecture for closing C-26 entirely.
+Rather than embedding citation requirements in Phase 4 and AMEND individually, V-33 adds
+a post-Phase-7 "Citation Chain Verification" step that requires the model to explicitly
+confirm the chain before writing AMEND: write the Phase 1 artifact name, write how it appears
+in Phase 4, write the Phase 5(3) lever mechanism name, write how it appears in AMEND(d). A
+model that cannot complete any link must go back and correct it. This tests whether structural
+self-verification closes C-26 more reliably than per-phase inline requirements.
 
-STEP 2: KILL BARRIER HYPOTHESIS
+**V-34 (C-26 full chain -- V-31 + V-32 combined):** The minimal combination that closes both
+C-26 links 3 and 4. Phase 5(3) produces "LEVER POINT: [name]" and AMEND(d) is required to
+cite that name. The two requirements are in different phases and do not compete. The
+verification step from V-33 is excluded so that C-26 closure depends only on the two
+production requirements.
 
-Before filling the per-persona table, state one hypothesis:
-
-> "The single barrier most likely to block adoption regardless of feature quality is: ___"
-
-Commit to a hypothesis. You will test it persona by persona in Step 3 and confirm or
-revise it in Step 4.
+**V-35 (all 19):** V-30 + V-31 + V-32 + V-33. All four new criteria (C-24, C-25, C-26,
+C-27) are covered: C-24 via the Phase 1 boundary artifact from V-30; C-25 via V-30's
+prohibition gates; C-26 via V-34's named lever chain; C-27 via V-30's falsifiability test
+with rejection clause. V-33's citation chain verification adds a structural confirmation step
+that makes chain breaks detectable before AMEND is written. Expected ceiling: 270/270.
 
 ---
 
-KILL BARRIER EVIDENCE GATE
+### V-31: Named Lever Artifact at Phase 5(3)
 
-[ ] Kill barrier hypothesis is stated above
-[ ] Each persona in Step 3 includes a Kill Barrier Confirmation column with value
-    CONFIRM / PARTIAL / DISCONFIRM -- no blank cells
-[ ] NOTE: Each AMEND option in the AMEND DIRECTIVE will require (a) a named persona
-    and (b) a specific gap from the Step 3 table, enforced at Gate 4
-
-ARCHITECTURE SCOPE: This gate carries the C-18 forward reference and requires no
-modification when structural gaps elsewhere are repaired. If the per-persona section
-(Step 3) were the only gap -- blocks instead of a structured table -- converting to table
-is the complete local repair. This gate and Gate 4 are preserved verbatim. No gate
-restructuring is required.
+**Axis:** Output format -- Phase 5(3) must produce a named, citable lever artifact label
+before the falsifiability test, analogous to "SCORING INFRASTRUCTURE DECLARED" at Phase 1
+**Hypothesis:** V-30's Phase 5(3) produces prose whose lever description cannot be cited by
+name in AMEND without paraphrasing. Adding a required "LEVER POINT: [name]" label after the
+prose forces Phase 5(3) to produce a named artifact. The corresponding AMEND(d) requirement
+to write "Lever anchor: [copy LEVER POINT label]" creates the named citation link. C-26 link
+3 (Phase 5(3) produces named lever point) and link 4 (AMEND names it as observable anchor)
+both close. C-26 PASS expected; C-27 coverage preserved from V-30.
 
 ---
 
-STEP 3: PER-PERSONA INERTIA TABLE
+You are running **validate-inertia** for: {{topic}}
 
-Complete all columns for each persona. A blank cell is a gap introduced mid-fill --
-the table structure makes omissions visible. Fill every cell.
-
-| Dimension | [Persona A] | [Persona B] | [Persona C] |
-|-----------|-------------|-------------|-------------|
-| Current workaround | | | |
-| Workaround satisfaction | | | |
-| Switching cost (concrete estimate) | | | |
-| Habit lock-in mechanism | | | |
-| Social proof threshold | | | |
-| Inertia reduction condition | | | |
-| Kill barrier: CONFIRM / PARTIAL / DISCONFIRM | | | |
-| Inertia score (HIGH / MED / LOW + rationale) | | | |
+Map adoption inertia. Why would users not adopt this feature even if it works perfectly? Complete
+each phase in sequence. Each phase gates the next.
 
 ---
 
-STEP 4: OVERALL ADOPTION INERTIA RISK
+## Phase 1 -- Scoring Methodology Declaration
 
-Label this section "Overall Adoption Inertia Risk." Synthesize the Step 3 table. State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- confirm or revise the Step 2 hypothesis based on
-   per-persona confirmation evidence from the table
-3. The highest-inertia persona and the primary inertia driver
+Before analyzing any persona, declare the inertia scoring framework that will govern per-persona
+scores in Phase 4.
 
----
+**Dimension weights:**
 
-GATE 4 -- AMEND DIRECTIVE
+| Dimension | Weight (High / Medium / Low) | Why this weight (one sentence -- reference a property of this feature or user population) |
+|-----------|------------------------------|------------------------------------------------------------------------------------------|
 
-Before writing AMEND options, verify: does each option name (a) a specific persona AND
-(b) a specific gap from the Step 3 table? Generic scope expansions do not qualify.
+Dimensions: Workaround satisfaction / Switching cost / Habit lock-in / Social proof requirement
+/ Learning curve.
 
-Offer 2-3 AMEND options:
-- AMEND A: [Persona] / [specific gap]
-- AMEND B: [Persona] / [specific gap]
-- AMEND C: [Persona] / [specific gap]
-```
+**Score thresholds** -- define the dimension-combination rules that produce each tier:
 
----
+- **Critical:** [state which dimension combinations produce this tier]
+- **High:** [state which combinations produce this tier]
+- **Medium:** [state which combinations]
+- **Low:** [state what condition all dimensions must satisfy]
 
-## V-02 (R7): Status-Quo Rival + Colocated Ceiling Note -- C-25 Placement Probe
+**Required infrastructure label:** After completing the dimension weights and score thresholds
+above, write the following statement on its own line before Phase 2 begins:
 
-**Axis:** Output format (DESIGN NOTE acknowledgment merged into ARCHITECTURE SCOPE block
-inside the evidence gate body, rather than placed as a standalone pre-phase declaration).
-Target: C-25 via gate-internal placement. Base: V-02 R6 + C-25 acknowledgment, but placement
-inside gate vs. V-01's pre-phase placement is the only structural difference.
+> "SCORING INFRASTRUCTURE DECLARED. All per-persona methodology traces in Phase 4 must cite
+> this Phase 1 output by reference -- naming the specific dimension weights and tier thresholds
+> declared above to show how each persona's score was produced. Phase 4 traces that reference
+> dimension values without citing these thresholds, or that cite thresholds without naming
+> dimension values, will not satisfy the per-score trace requirement."
 
-**Hypothesis:** Gate-body placement of the mutual exclusion acknowledgment passes C-25
-equivalently to pre-phase placement. v7 C-25 Pass condition explicitly permits "inside a
-checkpoint body." V-01 and V-02 are a matched pair: same design, same score, different
-acknowledgment position. If scores diverge, placement is load-bearing for C-25.
-
-```
-You are running /validate-inertia.
-
-This feature has a competitor that will not appear in any roadmap review: it is whatever
-users do today. The status-quo competitor does not need to ship, does not need funding,
-and does not need a team. It is already deployed. Your job is to assess whether this
-feature can displace it.
+Do not proceed to Phase 2 until this statement is written. The statement is the boundary
+marker that closes Phase 1.
 
 ---
 
-PRE-FLIGHT CHECK
+## Phase 2 -- Persona and Competitive Inventory
 
-Before proceeding, confirm:
-- [ ] At least 2 distinct user personas are identified
-- [ ] Workaround satisfaction will be assessed using vocabulary: "good enough" /
-  "painful but familiar" / "actively seeking replacement" -- do not proxy satisfaction
-  by relationship level (Heavy/Occasional/Rare) or adoption stage alone
-- [ ] No dimension will be left blank or labeled "unknown" without specifying the
-  exact information needed and why it matters for the inertia verdict
+Identify 2--4 named personas. For each, treat the current solution as a named competitor.
 
----
+**Persona entry:**
 
-STEP 1: COMPETITOR AUDIT
+- Name and role (specific, not categorical)
+- Current solution (named tool or method -- "ad hoc" is not a solution; name what they do)
+- Outcome the current solution delivers
 
-For each persona, audit the current workaround as if it were a competing product:
+**Competitive strength inventory** -- for each persona, complete the following inventory before
+proceeding. This inventory must be finished here, in the persona identification phase. Kill-
+barrier analysis in Phase 5 will cite Phase 2 Durability properties by name -- if they are not
+named here, Phase 5 cannot satisfy its structural persistence requirement.
 
-- What is the persona doing today instead of using this feature?
-- How satisfied are they with it? (use satisfaction vocabulary above)
-- What makes the workaround sticky -- habit, team dependency, tool integration, sunk
-  cost in existing workflows?
-- Switching cost estimate: what would adopting this feature actually cost this persona
-  in time, training, or workflow disruption? Give a concrete estimate, not just HIGH/LOW.
-- Social proof threshold: early adopter / wait-and-see / mandate-required
-- Habit lock-in: what specific muscle memory, tool, or process makes the current
-  behavior self-reinforcing?
-- Inertia reduction condition: what would have to change in this persona's environment,
-  team, or incentives for inertia to lose?
+| Dimension | Advantage | Durability |
+|-----------|-----------|------------|
 
----
+- **Dimension:** The specific axis on which the current solution wins (zero-setup cost, output
+  format compatibility, existing keyboard shortcuts, audit trail depth, etc.)
+- **Advantage:** What the current solution does better on that dimension for this persona
+- **Durability:** Why this advantage is structurally hard to replicate or displace. Must
+  reference a structural constraint -- technical, organizational, integration-based, or
+  switching-cost-based. **Familiarity is not durability.** "People are used to it" does not
+  qualify. Name the structural constraint that makes the advantage persist after the feature
+  ships and is known.
 
-STEP 2: KILL BARRIER HYPOTHESIS
+**Completeness gate:** Before writing Phase 3, verify the following for each persona:
 
-Before filling the per-persona table, state one hypothesis:
+1. All three inventory fields (Dimension, Advantage, Durability) are present and populated.
+2. No Durability entry uses "familiarity," "habit," "people are used to it," or any equivalent.
+   If it does, replace it with a structural constraint before proceeding.
+3. Each Dimension names a specific competitive axis -- not a category like "usability."
 
-> "The single barrier most likely to block adoption regardless of feature quality is: ___"
-
-Commit to a hypothesis. You will test it persona by persona in Step 3 and confirm or
-revise it in Step 4.
+Do not proceed to Phase 3 until every persona's inventory passes all three checks. An
+inventory entry that fails any check must be corrected in this phase, not deferred to Phase 5.
 
 ---
 
-KILL BARRIER EVIDENCE GATE
+## Phase 3 -- Inertia Dimension Analysis
 
-[ ] Kill barrier hypothesis is stated above
-[ ] Each persona in Step 3 includes a Kill Barrier Confirmation column with value
-    CONFIRM / PARTIAL / DISCONFIRM -- no blank cells
-[ ] NOTE: Each AMEND option in the AMEND DIRECTIVE will require (a) a named persona
-    and (b) a specific gap from the Step 3 table, enforced at Gate 4
+For each persona:
 
-ARCHITECTURE AND CEILING SCOPE: This gate carries the C-18 forward reference and
-requires no modification when structural gaps elsewhere are repaired. If the per-persona
-section (Step 3) were the only gap -- blocks instead of a structured table -- converting
-to table is the complete local repair; this gate and Gate 4 are preserved verbatim; no
-gate restructuring is required. // Ceiling: this design uses three-layer distributed
-enforcement (C-20 path). C-16 PASS and C-20 PASS are mutually exclusive by construction:
-a design cannot simultaneously consolidate all enforcement under one gate (C-16) and
-distribute it across layers without that gate (C-20). C-21 (one-sentence scan) is
-inapplicable in a gate-based distributed architecture. The C-20-path ceiling is 15/17
-aspirational criteria; the C-16/C-21-path ceiling is 16/17. 17/17 is unreachable.
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis (ref. Phase 2 competitive strength) | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof threshold (named condition) | Learning curve |
+|---------|---------------------------------|-------------------------------------------------------|----------------------------|-------------------------------|------------------------------------------|---------------|
+
+- **Switching cost:** Time, steps, effort rating (1--10), or relative measure. Required.
+  Qualitative descriptions do not pass.
+- **Satisfaction basis:** Reference a named competitive strength from Phase 2 -- not a vague
+  sentiment.
+- **Social proof threshold:** Name a specific count, role, or condition -- not binary Y/N.
+  Examples: "needs 2 colleagues using it for more than one sprint," "will adopt solo if manager
+  endorses at team standup." Binary answers fail.
 
 ---
 
-STEP 3: PER-PERSONA INERTIA TABLE
+## Phase 4 -- Per-Persona Inertia Scores
 
-Complete all columns for each persona. A blank cell is a gap introduced mid-fill --
-the table structure makes omissions visible. Fill every cell.
+Score each persona: Low / Medium / High / Critical.
 
-| Dimension | [Persona A] | [Persona B] | [Persona C] |
-|-----------|-------------|-------------|-------------|
-| Current workaround | | | |
-| Workaround satisfaction | | | |
-| Switching cost (concrete estimate) | | | |
-| Habit lock-in mechanism | | | |
-| Social proof threshold | | | |
-| Inertia reduction condition | | | |
-| Kill barrier: CONFIRM / PARTIAL / DISCONFIRM | | | |
-| Inertia score (HIGH / MED / LOW + rationale) | | | |
+The score table **requires a Methodology trace column**:
 
----
+| Persona | Score | Methodology trace |
+|---------|-------|-------------------|
 
-STEP 4: OVERALL ADOPTION INERTIA RISK
+**Methodology trace** -- required: one sentence that (a) names the specific dimension values
+from Phase 3 for this persona, and (b) states the Phase 1 threshold those values satisfy,
+showing how those inputs produce the assigned score. Cite Phase 1 by reference -- the
+SCORING INFRASTRUCTURE DECLARED there is the named source.
 
-Label this section "Overall Adoption Inertia Risk." Synthesize the Step 3 table. State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- confirm or revise the Step 2 hypothesis based on
-   per-persona confirmation evidence from the table
-3. The highest-inertia persona and the primary inertia driver
+Failing trace: "Jordan has high switching costs and depends on the current tool, yielding
+High." -- Values not named precisely; Phase 1 threshold not cited.
+
+Passing trace: "Jordan's switching cost of 7/10 (High, Phase 1 weight: High per SCORING
+INFRASTRUCTURE DECLARED) and Critical workaround satisfaction satisfy the Phase 1 SCORING
+INFRASTRUCTURE DECLARED rule that two High-weighted dimensions at H produce a High score."
+
+Every Phase 2 persona must be scored individually. A shared blanket score does not pass.
 
 ---
 
-GATE 4 -- AMEND DIRECTIVE
+## Phase 5 -- Kill Barrier: Four-Part Causal Analysis with Reselection Gate
 
-Before writing AMEND options, verify: does each option name (a) a specific persona AND
-(b) a specific gap from the Step 3 table? Generic scope expansions do not qualify.
+Identify the single adoption killer -- expressed as the competitive dimension on which the
+current solution wins. Use exactly **four labeled sub-parts**. Each must be distinct. Do not
+merge any two into a single statement.
 
-Offer 2-3 AMEND options:
-- AMEND A: [Persona] / [specific gap]
-- AMEND B: [Persona] / [specific gap]
-- AMEND C: [Persona] / [specific gap]
-```
+**KILL BARRIER**
 
----
+**(1) Barrier definition**
+[What the barrier is -- the observable adoption friction as the most exposed persona experiences
+it. State the competitive dimension. Describe the phenomenon; do not include its cause here.]
 
-## V-03 (R7): Phase/Gate Canonical + SCOPE NOTE in Full Gate -- C-24 Architecture Probe
+**(2) Structural persistence**
+[Why this barrier structurally persists -- the underlying property from the Phase 2 competitive
+inventory that prevents it from self-resolving through product maturity or organic adoption.
+Do not repeat (1). Name the structural mechanism and reference the relevant Phase 2 durability
+property by name.]
 
-**Axis:** Lifecycle emphasis (explicit Phase/Gate structure). Single-axis target: C-24.
-Base: V-03 R6 -- C-16 path with PHASE/GATE structure, GATE 2 labeled "ASPIRATIONAL
-ENFORCEMENT" (C-23 PASS), DESIGN NOTE (C-25 PASS), 14/17. Fails C-24 (no SCOPE NOTE).
-Change: add SCOPE NOTE inside GATE 2 with architecture-agnostic min-patch language.
+**(3) Intervention target**
+[What a mitigation must target -- the specific lever point that, if addressed, would disrupt
+the structural persistence mechanism in (2). Name the target, not the intervention. "Better
+onboarding" is an intervention; "the moment a user first completes a cross-team workflow
+without reverting to their previous tool" is a lever point.]
 
-**Hypothesis:** GATE 2 is a full consolidating gate. C-24 Pass says "non-full-gate checkpoint."
-The probe: does the declaration presence override the form restriction? If C-24 is
-declaration-based (any checkpoint with the statement passes): 15/17. If C-24 is form-based
-(full-gate architectures cannot pass regardless of declaration): 14/17. Either resolves whether
-C-24's "non-full-gate" language is a content qualifier or an architectural disqualifier.
+**Required lever label:** After writing the lever point description above, write the following
+on its own line:
 
-```
-You are running /validate-inertia for: {{feature}}
+> **LEVER POINT: [exact label -- 3--7 words naming this specific mechanism]**
 
-Stress-test the adoption case. Map per-persona inertia and identify the kill barrier --
-the one thing that would prevent adoption even if the feature is perfect.
+This label is the named artifact for this lever point. It will be cited by name in AMEND(d).
+Use the same label text consistently. Do not proceed to the falsifiability test until the
+label is written.
 
-DESIGN NOTE -- STRUCTURAL CEILING: This skill uses a single consolidating gate (C-16
-path). The alternative architecture distributes enforcement across multiple layers without
-a consolidating gate (C-20 path). These two paths are mutually exclusive by construction:
-a design cannot simultaneously consolidate all aspirational enforcement under one gate
-and distribute it across layers without that gate. C-16 PASS and C-20 PASS cannot both
-contribute to the same design's score. 17/17 is unreachable.
+**Falsifiability test (required before writing Part (4)):** Write the following sentence,
+completing the bracketed portion:
 
----
+> "At T=6mo, the absence of this lever being addressed would be observable as: [specific
+> behavioral or measurable condition]."
 
-PHASE 1: SETUP + KILL BARRIER HYPOTHESIS
+If you cannot complete this sentence with a specific observable condition -- your Part (3)
+intervention target is too general. Replace Part (3) with a more specific mechanism, rewrite
+the lever label, and repeat the falsifiability test. Do not write Part (4) until the test
+produces a specific observable condition. The AMEND confirmation signal in step (d) must cite
+the LEVER POINT label directly.
 
-1. Name the feature and the 2-4 primary user personas.
-2. For the highest-inertia persona, identify the current workaround and assess
-   workaround satisfaction using vocabulary: "good enough" / "painful but familiar" /
-   "actively seeking replacement."
-3. State the kill barrier hypothesis:
-   > "The single barrier most likely to block adoption regardless of quality is: ___"
+**(4) Lever efficacy**
+[Why addressing (3) resolves the structural root cause in (2). Explain the causal connection.
+Reference (2) by name. "It reduces friction" states a result; explain why this lever reaches
+the structural condition named in (2).]
 
----
+**Temporal persistence confirmation table:**
 
-GATE 1: EVIDENCE COMPLETENESS
+| Question | Your answer (write YES or NO) |
+|----------|-------------------------------|
+| Does this barrier exist today (T=0)? | |
+| Does this barrier persist at T=18mo, absent deliberate structural intervention targeting the persistence property in (2)? | |
 
-Before Phase 2, confirm:
-- [ ] At least 2 distinct personas identified
-- [ ] Workaround identified for the highest-inertia persona
-- [ ] Workaround satisfaction uses required vocabulary (not bare relationship level)
-- [ ] Kill barrier hypothesis is stated and will be tested per-persona in Phase 2
-- [ ] Social proof threshold and habit lock-in mechanism will be assessed per-persona
+**Gate rule:** If either answer is NO -- this barrier does not qualify as the kill barrier.
+Return to the top of this phase, select a different barrier, and complete all four sub-parts
+and the confirmation table again. Do not proceed to Phase 6 until both answers are YES.
 
----
-
-PHASE 2: PER-PERSONA INERTIA TABLE
-
-Complete the table for all personas. The Kill Barrier Confirmation column is required --
-a blank cell is a visible gap at fill time.
-
-| Persona | Workaround + Satisfaction | Switching Cost (estimate) | Habit Lock-In | Social Proof Threshold | Inertia Reduction Condition | Kill Barrier: CONFIRM / PARTIAL / DISCONFIRM | Inertia Score + Rationale |
-|---------|--------------------------|--------------------------|---------------|----------------------|----------------------------|----------------------------------------------|--------------------------|
-| | | | | | | | |
-| | | | | | | | |
-| | | | | | | | |
+Label the confirmed result **CONFIRMED KILL BARRIER**. Name the most exposed persona.
 
 ---
 
-GATE 2: ASPIRATIONAL ENFORCEMENT
+## Phase 6 -- Adoption Timeline and Kill-Barrier Trajectory Verdict
 
-Before Phase 3, verify:
-- [ ] Every persona has an explicit workaround satisfaction using vocabulary, not
-  relationship level or adoption stage as a proxy
-- [ ] Every inertia score has a one-sentence rationale -- no bare HIGH / MED / LOW
-- [ ] Every kill barrier confirmation is CONFIRM / PARTIAL / DISCONFIRM -- no blank cells
-- [ ] Each AMEND option in Gate 4 will require (a) a named persona and (b) a specific
-  gap from the Phase 2 table, enforced at Gate 4
+**Part A: Per-Persona Adoption Timeline**
 
-SCOPE NOTE: This gate carries the C-18 forward reference to Gate 4's AMEND enforcement
-rule and requires no modification when structural gaps elsewhere are repaired. If Phase 2
-per-persona output were the only gap -- blocks instead of a structured table -- converting
-to table is the complete local repair. This gate is preserved verbatim. No gate
-restructuring is required. Architecture-agnostic scope: this minimum-patch rule applies
-to any C-18-carrying checkpoint, whether a full consolidating gate (as here), a narrow
-evidence gate, or a scan-based register. Block-to-table is the complete repair in all
-cases; no checkpoint restructuring is ever required when C-18 is already present.
+**Required disqualifier -- write this sentence before presenting the grid:**
 
----
+> "This Part A grid captures per-persona trajectory only. It does not satisfy the
+> kill-barrier trajectory verdict requirement. That output belongs exclusively to Part B."
 
-PHASE 3: OVERALL ADOPTION INERTIA RISK
+Then present the timeline grid for the confirmed kill barrier and at least two personas:
 
-Label this section "Overall Adoption Inertia Risk." Synthesize the Phase 2 table. State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- confirm or revise the Phase 1 hypothesis, supported by
-   per-persona confirmation evidence from the Phase 2 table
-3. The highest-inertia persona and the primary inertia driver
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
 
----
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
 
-GATE 4: AMEND DIRECTIVE
+**Part B: Kill-Barrier Trajectory Verdict (distinct from Part A grid)**
 
-Each AMEND option must name (a) a specific persona AND (b) a specific gap from the
-Phase 2 table. Verify before writing.
+**KILL-BARRIER TRAJECTORY VERDICT**
 
-- AMEND A: [Persona] / [gap]
-- AMEND B: [Persona] / [gap]
-- AMEND C: [Persona] / [gap]
-```
+**Trajectory direction:** [Resolving / Stable / Worsening]
+
+**Structural reasoning:** [One sentence explaining the direction in terms of the structural
+persistence property from Phase 5(2). Must reference that property by name. The direction must
+be argued from the structural mechanism, not inferred from the per-persona grid.]
+
+**Relationship to Part A grid:** [One sentence: does this verdict align with or differ from
+the per-persona trajectories? If it differs, state why. If it aligns, confirm which structural
+property drives both.]
+
+This verdict must exist as a labeled output in Part B. A trajectory direction present only in
+the Part A grid without a dedicated labeled verdict here fails C-18.
 
 ---
 
-## V-04 (R7): Conversational Scan -- C-24 + C-25 Combined (Third Ceiling Path)
+## Phase 7 -- Overall Adoption Inertia Risk
 
-**Axis:** Phrasing register (conversational throughout, minimal structural formalism).
-Combined target: C-24 + C-25. Base: V-01 R6 -- conversational KILL BARRIER CONSOLIDATION
-SCAN (C-16/C-21 path, passes C-23, 14/17). Fails C-24 (no SCOPE NOTE) and C-25 (no DESIGN
-NOTE). Changes: add SCOPE NOTE inside scan body (C-24) + DESIGN NOTE at opening (C-25).
+Verdict: Low / Medium / High / Critical.
 
-**Hypothesis:** KILL BARRIER CONSOLIDATION SCAN is scan-based (non-full-gate), carrying C-18.
-SCOPE NOTE inside scan body satisfies C-24. DESIGN NOTE at opening satisfies C-25. Together:
-+2 from V-01 R6's 14/17 -> 16/17 ceiling. Third independent path to ceiling (alongside V-05
-R5 and V-05 R6). Confirms ceiling is register-independent: formal gate, status-quo framing,
-and conversational scan all reach 16/17.
+Include:
 
-```
-You are running /validate-inertia for: {{feature}}
-
-Map the adoption inertia per persona. One question drives this analysis: why would users
-not adopt this feature even if it works perfectly?
-
-DESIGN NOTE -- STRUCTURAL CEILING: This skill uses a scan-based consolidation point
-(KILL BARRIER CONSOLIDATION SCAN) that simultaneously achieves C-16 gate consolidation
-and C-18 forward reference via a single announcement item in the scan checklist (C-21
-path). This architecture is incompatible with C-20 multi-layer distribution: a design
-cannot simultaneously consolidate all enforcement under one scan and distribute enforcement
-across layers without a consolidation point. C-16 PASS and C-20 PASS are mutually exclusive
-by construction. The C-16/C-21-path ceiling is 16/17; the C-20-path ceiling is 15/17.
-17/17 is unreachable.
+- Score distribution across personas (e.g., "2 High, 1 Critical, 1 Medium")
+- Kill-barrier trajectory direction from Phase 6 Part B
+- Competitive summary: kill barrier dimension and its Phase 2 structural durability basis
+- 1--2 sentence rationale connecting score distribution, trajectory, and confirmed kill barrier
 
 ---
 
-STEP 1: THE CURRENT WORKAROUND
+## AMEND -- Focus, Quantify, Confirm
 
-Name the status quo for this feature:
-- What users are doing today instead
-- Which personas rely on the workaround most heavily
-- The dominant workaround satisfaction level using vocabulary: "good enough" /
-  "painful but familiar" / "actively seeking replacement"
+Select the persona most exposed to the confirmed kill barrier.
 
----
+**Focus persona:** [name]
 
-STEP 2: KILL BARRIER HYPOTHESIS
+**Switching cost (sharpened):** [most precise quantified value -- time, steps, effort rating, or
+relative measure]
 
-Before analyzing each persona, commit to a kill barrier hypothesis:
+**Kill barrier for this persona:** [one sentence restating the barrier in terms of this
+persona's specific situation -- name the competitive dimension and why it is most acute for them]
 
-> "The single barrier most likely to block adoption regardless of quality is: ___"
+**Mitigation with full causal chain:**
 
-You will confirm or revise this hypothesis after the per-persona analysis.
+> **(a) Intervention:** [one concrete, specific action]
+>
+> **(b) Root cause addressed:** [which structural condition from Phase 5(2) this targets --
+> quote or directly reference the persistence property by name]
+>
+> **(c) Causal mechanism:** [why this lever resolves the structural root cause -- the causal
+> connection. Reference the intervention target from Phase 5(3). Do not describe what happens;
+> explain why this lever reaches the structural condition.]
+>
+> **(d) Confirmation signal at T=6mo:** Write the following before stating the observable
+> condition:
+>
+> "Lever anchor: [copy the exact LEVER POINT label from Phase 5(3)]."
+>
+> Then state: [At T=6mo, the absence of this lever would be observable as: [specific
+> condition from the Phase 5(3) falsifiability test, adapted to this persona]. Must be
+> falsifiable -- possible to observe it as absent.]
 
----
-
-STEP 3: PER-PERSONA INERTIA TABLE
-
-For each persona, complete the table below. The Kill Barrier Confirmation column is
-required -- a blank cell is a structural gap visible at fill time.
-
-| Persona | Workaround + Satisfaction | Switching Cost (with estimate) | Habit Lock-In Mechanism | Social Proof Threshold | Inertia Reduction Condition | Kill Barrier: CONFIRM / PARTIAL / DISCONFIRM | Inertia Score + Rationale |
-|---------|--------------------------|-------------------------------|------------------------|----------------------|-----------------------------|----------------------------------------------|--------------------------|
-| | | | | | | | |
-| | | | | | | | |
-| | | | | | | | |
-
-Fill rules:
-- Workaround satisfaction: use vocabulary ("good enough" / "painful but familiar" /
-  "actively seeking replacement") -- do not proxy with relationship level or adoption stage
-- Switching cost: give a concrete estimate (time, training, disruption) -- not just HIGH/LOW
-- Inertia score: write one sentence of rationale -- bare HIGH/MED/LOW does not qualify
-- Kill barrier confirmation: CONFIRM / PARTIAL / DISCONFIRM for every persona -- no blanks
-
----
-
-KILL BARRIER CONSOLIDATION SCAN -- verify all enforcement requirements before writing verdict:
-- [ ] Every persona has an explicit workaround satisfaction using satisfaction vocabulary,
-  not relationship level or adoption stage as a proxy
-- [ ] Every inertia score carries a one-sentence rationale -- no bare HIGH / MED / LOW
-- [ ] The kill barrier hypothesis has been confirmed, partially confirmed, or disconfirmed
-  for at least one persona with explicit per-persona evidence from the table
-- [ ] Each AMEND option in Step 4 will require (a) a named persona and (b) a specific
-  gap from the Step 3 table, enforced at the Step 4 check
-
-SCOPE NOTE: This scan carries the C-18 forward reference to Step 4's AMEND enforcement
-rule and requires no modification when other structural repairs are made. If Step 3
-per-persona output were the only structural gap -- blocks instead of the structured table
--- converting to table is the complete local repair. This scan is preserved verbatim. No
-structural changes beyond Step 3 output format are required. Architecture-agnostic: this
-minimum-patch rule applies equally to any C-18-carrying checkpoint regardless of form --
-full consolidating gate, narrow evidence gate, or scan-based register.
+The lever anchor must appear as written above, citing the exact LEVER POINT label text from
+Phase 5(3). A confirmation signal that restates the mechanism without citing the label earns
+PARTIAL on C-26. The AMEND section is not complete without the lever anchor and observable
+condition.
 
 ---
 
-STEP 4: OVERALL ADOPTION INERTIA RISK + AMEND
+### V-32: AMEND Lever Citation by Mechanism Name
 
-Label the synthesis section "Overall Adoption Inertia Risk." State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- name the single barrier most likely to kill adoption,
-   supported by per-persona confirmation evidence from the Step 3 table
-3. The highest-inertia persona and the primary inertia driver
-
-STEP 4 CHECK: Before writing AMEND options, verify that each option names (a) a specific
-persona AND (b) a specific gap from Step 3. Write options only after verification.
-
-- AMEND A: [Persona] / [gap]
-- AMEND B: [Persona] / [gap]
-- AMEND C: [Persona] / [gap]
-```
-
----
-
-## V-05 (R7): Data-Before-Hypothesis -- C-25 Single-Axis (Fourth Ceiling Path)
-
-**Axis:** Role sequence (competitor audit before kill barrier hypothesis; evidence-first
-commitment). Single-axis target: C-25. Base: V-04 R6 -- data-before-hypothesis KILL BARRIER
-ENFORCEMENT SCAN (C-16/C-21 path, passes C-23/C-24, 15/17). Fails C-25 (no DESIGN NOTE).
-Change: add pre-phase DESIGN NOTE.
-
-**Hypothesis:** V-04 R6 + DESIGN NOTE -> C-25 PASS -> 16/17. Fourth path to ceiling.
-Hypothesis-timing (evidence-first vs. speculative) is orthogonal to enforcement architecture;
-ceiling is sequence-independent. The only difference between V-04 R6 (15/17) and V-05 R7
-(predicted 16/17) is the DESIGN NOTE.
-
-```
-You are running /validate-inertia for: {{feature}}
-
-Map adoption inertia per persona. Sequence: audit the status-quo competitor first per
-persona, then form the kill barrier hypothesis from evidence. A hypothesis grounded in
-per-persona data is more defensible than a speculative commit made before analysis.
-
-DESIGN NOTE -- STRUCTURAL CEILING: This skill uses the C-21 path -- a single scan-based
-consolidation point (KILL BARRIER ENFORCEMENT SCAN) that simultaneously achieves C-16
-gate consolidation and C-18 forward reference via one announcement item. This path is
-architecturally incompatible with C-20 multi-layer distribution: a design cannot
-simultaneously consolidate all enforcement under one scan and distribute enforcement
-across layers without a consolidation point. C-16 PASS and C-20 PASS are mutually
-exclusive by construction. The C-16/C-21-path ceiling is 16/17; the C-20-path ceiling
-is 15/17. 17/17 is unreachable.
+**Axis:** Output format -- AMEND(d) is required to cite the Phase 5(3) lever mechanism by
+its own descriptive name, not by phase reference, creating the named anchor citation from the
+AMEND direction without requiring Phase 5(3) to produce a formal labeled artifact
+**Hypothesis:** V-30's AMEND(d) says "the observable condition named in the Phase 5(3)
+falsifiability test" -- this is a phase reference. If a model writes correct content derived
+from Phase 5(3) but without naming the specific lever mechanism, it produces a paraphrase
+chain and fails C-26 link 4. Requiring AMEND(d) to write "The absence of [lever mechanism
+name -- not 'Phase 5(3)'] at T=6mo would be observable as: [condition]" forces mechanism
+naming. This variation tests whether the AMEND-side citation requirement alone closes C-26
+link 4 without requiring a formal Phase 5 artifact label. If C-26 PASS is achievable without
+the V-31 formal label, V-31's added structure is unnecessary overhead; if PARTIAL, the label
+is needed.
 
 ---
 
-STEP 1: COMPETITOR AUDIT
+You are running **validate-inertia** for: {{topic}}
 
-For each identified persona, audit the current workaround as if it were a competing
-product:
-
-- Current workaround: what are they doing today instead of using this feature?
-- Workaround satisfaction: "good enough" / "painful but familiar" / "actively seeking
-  replacement" (required vocabulary -- do not proxy with relationship level or adoption stage)
-- Switching cost estimate: concrete value in time, training, or workflow disruption --
-  not just HIGH/LOW
-- Habit lock-in: the specific muscle memory, tool, or team dependency that makes the
-  current behavior self-reinforcing
-- Social proof threshold: early adopter / wait-and-see / mandate-required
+Map adoption inertia. Why would users not adopt this feature even if it works perfectly? Complete
+each phase in sequence. Each phase gates the next.
 
 ---
 
-STEP 2: KILL BARRIER HYPOTHESIS
+## Phase 1 -- Scoring Methodology Declaration
 
-After auditing the workarounds, commit to a kill barrier hypothesis:
+Before analyzing any persona, declare the inertia scoring framework that will govern per-persona
+scores in Phase 4.
 
-> "Based on the above audit, the single barrier most likely to block adoption regardless
-> of feature quality is: ___"
+**Dimension weights:**
 
-This hypothesis is evidence-grounded, not speculative. It will be tested per-persona in
-Step 3 and confirmed or revised in Step 4.
+| Dimension | Weight (High / Medium / Low) | Why this weight (one sentence -- reference a property of this feature or user population) |
+|-----------|------------------------------|------------------------------------------------------------------------------------------|
 
----
+Dimensions: Workaround satisfaction / Switching cost / Habit lock-in / Social proof requirement
+/ Learning curve.
 
-STEP 3: PER-PERSONA INERTIA TABLE
+**Score thresholds** -- define the dimension-combination rules that produce each tier:
 
-Complete all columns. The Kill Barrier Confirmation column is required -- a blank cell
-is a visible structural gap at fill time. Fill every cell with a substantive value.
+- **Critical:** [state which dimension combinations produce this tier]
+- **High:** [state which combinations produce this tier]
+- **Medium:** [state which combinations]
+- **Low:** [state what condition all dimensions must satisfy]
 
-| Persona | Workaround + Satisfaction | Switching Cost (estimate) | Habit Lock-In | Social Proof Threshold | Inertia Reduction Condition | Kill Barrier: CONFIRM / PARTIAL / DISCONFIRM | Inertia Score + Rationale |
-|---------|--------------------------|--------------------------|---------------|----------------------|----------------------------|----------------------------------------------|--------------------------|
-| | | | | | | | |
-| | | | | | | | |
-| | | | | | | | |
+**Required infrastructure label:** After completing the dimension weights and score thresholds
+above, write the following statement on its own line before Phase 2 begins:
 
-Fill rules:
-- Satisfaction vocabulary required: "good enough" / "painful but familiar" /
-  "actively seeking replacement" -- relationship level or adoption stage is not a proxy
-- Switching cost: concrete estimate -- bare HIGH/LOW does not qualify
-- Kill barrier confirmation: CONFIRM / PARTIAL / DISCONFIRM -- no blank cells
-- Inertia score: HIGH / MED / LOW with one sentence of rationale -- bare label insufficient
+> "SCORING INFRASTRUCTURE DECLARED. All per-persona methodology traces in Phase 4 must cite
+> this Phase 1 output by reference -- naming the specific dimension weights and tier thresholds
+> declared above to show how each persona's score was produced. Phase 4 traces that reference
+> dimension values without citing these thresholds, or that cite thresholds without naming
+> dimension values, will not satisfy the per-score trace requirement."
 
----
-
-KILL BARRIER ENFORCEMENT SCAN -- aspirational consolidation checkpoint before verdict
-
-Before writing the verdict, verify all of the following:
-- [ ] Every persona has an explicit workaround satisfaction using satisfaction vocabulary,
-  not relationship level or adoption stage as a proxy
-- [ ] Every inertia score carries a one-sentence rationale -- no bare HIGH / MED / LOW
-- [ ] The kill barrier hypothesis has been confirmed, partially confirmed, or disconfirmed
-  for at least one persona with explicit per-persona evidence from the Step 3 table
-- [ ] Each AMEND option in Step 4 will require (a) a named persona and (b) a specific
-  gap from the Step 3 table, enforced at the Step 4 check
-
-SCOPE NOTE: This scan carries the C-18 forward reference to Step 4's AMEND enforcement
-rule and requires no modification when other structural repairs are made. If Step 3
-per-persona output were the only structural gap -- blocks instead of the structured table
--- converting to table is the complete local repair. This scan is preserved verbatim.
-No structural changes beyond Step 3 output format are required.
+Do not proceed to Phase 2 until this statement is written. The statement is the boundary
+marker that closes Phase 1.
 
 ---
 
-STEP 4: OVERALL ADOPTION INERTIA RISK + AMEND
+## Phase 2 -- Persona and Competitive Inventory
 
-Label the synthesis section "Overall Adoption Inertia Risk." State:
-1. Overall inertia risk level (HIGH / MED / LOW)
-2. Kill barrier conclusion -- confirm or revise the Step 2 hypothesis, supported by
-   per-persona confirmation evidence from the Step 3 table
-3. The highest-inertia persona and the primary inertia driver
+Identify 2--4 named personas. For each, treat the current solution as a named competitor.
 
-STEP 4 CHECK: Each AMEND option must name (a) a specific persona AND (b) a specific
-gap from the Step 3 table. Verify before writing.
+**Persona entry:**
 
-- AMEND A: [Persona] / [gap]
-- AMEND B: [Persona] / [gap]
-- AMEND C: [Persona] / [gap]
-```
+- Name and role (specific, not categorical)
+- Current solution (named tool or method -- "ad hoc" is not a solution; name what they do)
+- Outcome the current solution delivers
+
+**Competitive strength inventory** -- for each persona, complete the following inventory before
+proceeding. This inventory must be finished here, in the persona identification phase. Kill-
+barrier analysis in Phase 5 will cite Phase 2 Durability properties by name -- if they are not
+named here, Phase 5 cannot satisfy its structural persistence requirement.
+
+| Dimension | Advantage | Durability |
+|-----------|-----------|------------|
+
+- **Dimension:** The specific axis on which the current solution wins (zero-setup cost, output
+  format compatibility, existing keyboard shortcuts, audit trail depth, etc.)
+- **Advantage:** What the current solution does better on that dimension for this persona
+- **Durability:** Why this advantage is structurally hard to replicate or displace. Must
+  reference a structural constraint -- technical, organizational, integration-based, or
+  switching-cost-based. **Familiarity is not durability.** "People are used to it" does not
+  qualify. Name the structural constraint that makes the advantage persist after the feature
+  ships and is known.
+
+**Completeness gate:** Before writing Phase 3, verify the following for each persona:
+
+1. All three inventory fields (Dimension, Advantage, Durability) are present and populated.
+2. No Durability entry uses "familiarity," "habit," "people are used to it," or any equivalent.
+   If it does, replace it with a structural constraint before proceeding.
+3. Each Dimension names a specific competitive axis -- not a category like "usability."
+
+Do not proceed to Phase 3 until every persona's inventory passes all three checks. An
+inventory entry that fails any check must be corrected in this phase, not deferred to Phase 5.
 
 ---
 
-### Aspirational coverage by variation (v7 rubric, 17 criteria)
+## Phase 3 -- Inertia Dimension Analysis
 
-| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
-|-----------|------|------|------|------|------|
-| C-09 Inertia reduction conditions | PASS | PASS | PASS | PASS | PASS |
-| C-10 AMEND persona-specific + actionable | PASS | PASS | PASS | PASS | PASS |
-| C-11 Kill barrier per-persona evidence | PASS | PASS | PASS | PASS | PASS |
-| C-12 Workaround satisfaction per-persona | PASS | PASS | PASS | PASS | PASS |
-| C-13 No required field blank or bare label | PASS | PASS | PASS | PASS | PASS |
-| C-14 Each AMEND names persona AND gap | PASS | PASS | PASS | PASS | PASS |
-| C-15 Kill barrier as table column | PASS | PASS | PASS | PASS | PASS |
-| C-16 Single gate bundles C-11..C-14 | FAIL | FAIL | PASS | PASS | PASS |
-| C-17 Enforcement through mechanism not labels | PASS | PASS | PASS | PASS | PASS |
-| C-18 Gate includes forward reference | PASS | PASS | PASS | PASS | PASS |
-| C-19 Structural + procedural co-occur | PASS | PASS | PASS | PASS | PASS |
-| C-20 Distributed achieves C-19 without C-16 | PASS | PASS | FAIL | FAIL | FAIL |
-| C-21 One-sentence scan closes C-16+C-18 | FAIL | FAIL | FAIL | PASS | PASS |
-| C-22 Block-to-table minimum sufficient repair | PASS | PASS | PASS | PASS | PASS |
-| C-23 Named consolidation checkpoint | PASS | PASS | PASS | PASS | PASS |
-| C-24 Architecture-agnostic min-patch declaration | PASS | PASS | FAIL or PASS | PASS | PASS |
-| C-25 Mutual exclusion acknowledged | PASS | PASS | PASS | PASS | PASS |
-| **Pass count** | **15/17** | **15/17** | **14 or 15/17** | **16/17** | **16/17** |
+For each persona:
 
-Notes:
-- V-01, V-02: C-16 FAIL (three-layer gate design, no consolidation point); C-21 FAIL
-  (gate-based, no scan-based register); C-20 PASS; these are C-20-path designs at their
-  structural ceiling of 15/17
-- V-03: C-25 PASS (DESIGN NOTE inherited from V-03 R6); C-24 open question -- SCOPE NOTE
-  present in GATE 2 (full consolidating gate); criterion specifies "non-full-gate checkpoint"
-- V-04: C-16 PASS (KILL BARRIER CONSOLIDATION SCAN bundles all four); C-21 PASS (item 4 is
-  the single forward-reference sentence); C-20 FAIL (definitional for C-16 path)
-- V-05: C-16 PASS (KILL BARRIER ENFORCEMENT SCAN bundles all four); C-21 PASS; C-20 FAIL
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis (ref. Phase 2 competitive strength) | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof threshold (named condition) | Learning curve |
+|---------|---------------------------------|-------------------------------------------------------|----------------------------|-------------------------------|------------------------------------------|---------------|
 
-### Predicted composite scores (v7 rubric)
+- **Switching cost:** Time, steps, effort rating (1--10), or relative measure. Required.
+  Qualitative descriptions do not pass.
+- **Satisfaction basis:** Reference a named competitive strength from Phase 2 -- not a vague
+  sentiment.
+- **Social proof threshold:** Name a specific count, role, or condition -- not binary Y/N.
+  Examples: "needs 2 colleagues using it for more than one sprint," "will adopt solo if manager
+  endorses at team standup." Binary answers fail.
 
-| Variation | Essential | Recommended | Aspirational | Composite |
-|-----------|-----------|-------------|--------------|-----------|
-| V-04 Conversational scan (C-24+C-25) | 60 | 30 | 9.41 | **99.41** |
-| V-05 Data-before-hypothesis (C-25) | 60 | 30 | 9.41 | **99.41** |
-| V-01 Status-quo rival C-20 path (C-25) | 60 | 30 | 8.82 | **98.82** |
-| V-02 Colocated ceiling note (C-25 placement) | 60 | 30 | 8.82 | **98.82** |
-| V-03 Phase/Gate + SCOPE NOTE in full gate | 60 | 30 | 7.65 or 8.24 | **97.65 or 98.24** |
+---
 
-**R7 structural ceiling: 99.41** (V-04, V-05 -- both C-16/C-21 path). Unchanged from R6.
+## Phase 4 -- Per-Persona Inertia Scores
 
-Open questions scoring will resolve:
-1. C-20-path ceiling: V-01 and V-02 predicted at 15/17. If correct, confirms C-20-path
-   designs cannot reach 16/17 due to mandatory C-21 FAIL (scan required, gate-based design
-   cannot achieve it).
-2. C-24 on full-gate: V-03 SCOPE NOTE in GATE 2. If PASS: C-24 is declaration-based.
-   If FAIL: C-24 is form-based ("non-full-gate" is a hard architectural requirement).
-3. C-25 placement: V-01 (pre-phase) vs. V-02 (gate-internal). Both predicted PASS. If
-   scores diverge, gate-body placement is structurally different from pre-phase for C-25.
+Score each persona: Low / Medium / High / Critical.
+
+The score table **requires a Methodology trace column**:
+
+| Persona | Score | Methodology trace |
+|---------|-------|-------------------|
+
+**Methodology trace** -- required: one sentence that (a) names the specific dimension values
+from Phase 3 for this persona, and (b) states the Phase 1 threshold those values satisfy,
+showing how those inputs produce the assigned score. Cite Phase 1 by reference -- the
+SCORING INFRASTRUCTURE DECLARED there is the named source.
+
+Failing trace: "Jordan has high switching costs and depends on the current tool, yielding
+High." -- Values not named precisely; Phase 1 threshold not cited.
+
+Passing trace: "Jordan's switching cost of 7/10 (High, Phase 1 weight: High) and Critical
+workaround satisfaction satisfy the Phase 1 rule that two High-weighted dimensions at H produce
+a High score." -- Dimension values named and Phase 1 threshold explicitly cited.
+
+Every Phase 2 persona must be scored individually. A shared blanket score does not pass.
+
+---
+
+## Phase 5 -- Kill Barrier: Four-Part Causal Analysis with Reselection Gate
+
+Identify the single adoption killer -- expressed as the competitive dimension on which the
+current solution wins. Use exactly **four labeled sub-parts**. Each must be distinct. Do not
+merge any two into a single statement.
+
+**KILL BARRIER**
+
+**(1) Barrier definition**
+[What the barrier is -- the observable adoption friction as the most exposed persona experiences
+it. State the competitive dimension. Describe the phenomenon; do not include its cause here.]
+
+**(2) Structural persistence**
+[Why this barrier structurally persists -- the underlying property from the Phase 2 competitive
+inventory that prevents it from self-resolving through product maturity or organic adoption.
+Do not repeat (1). Name the structural mechanism and reference the relevant Phase 2 durability
+property by name.]
+
+**(3) Intervention target**
+[What a mitigation must target -- the specific lever point that, if addressed, would disrupt
+the structural persistence mechanism in (2). Name the target, not the intervention. "Better
+onboarding" is an intervention; "the moment a user first completes a cross-team workflow
+without reverting to their previous tool" is a lever point. Be specific enough that the
+absence of this lever being addressed would be observable at T=6mo.]
+
+**Falsifiability test (required before writing Part (4)):** Write the following sentence,
+completing the bracketed portion:
+
+> "At T=6mo, the absence of this lever being addressed would be observable as: [specific
+> behavioral or measurable condition]."
+
+If you cannot complete this sentence with a specific observable condition -- your Part (3)
+intervention target is too general. Replace Part (3) with a more specific mechanism and repeat
+the falsifiability test. Do not write Part (4) until the test produces a specific observable
+condition. The AMEND confirmation signal in step (d) must name this specific lever mechanism
+directly -- not cite "Phase 5(3)."
+
+**(4) Lever efficacy**
+[Why addressing (3) resolves the structural root cause in (2). Explain the causal connection.
+Reference (2) by name. "It reduces friction" states a result; explain why this lever reaches
+the structural condition named in (2).]
+
+**Temporal persistence confirmation table:**
+
+| Question | Your answer (write YES or NO) |
+|----------|-------------------------------|
+| Does this barrier exist today (T=0)? | |
+| Does this barrier persist at T=18mo, absent deliberate structural intervention targeting the persistence property in (2)? | |
+
+**Gate rule:** If either answer is NO -- this barrier does not qualify as the kill barrier.
+Return to the top of this phase, select a different barrier, and complete all four sub-parts
+and the confirmation table again. Do not proceed to Phase 6 until both answers are YES.
+
+Label the confirmed result **CONFIRMED KILL BARRIER**. Name the most exposed persona.
+
+---
+
+## Phase 6 -- Adoption Timeline and Kill-Barrier Trajectory Verdict
+
+**Part A: Per-Persona Adoption Timeline**
+
+**Required disqualifier -- write this sentence before presenting the grid:**
+
+> "This Part A grid captures per-persona trajectory only. It does not satisfy the
+> kill-barrier trajectory verdict requirement. That output belongs exclusively to Part B."
+
+Then present the timeline grid for the confirmed kill barrier and at least two personas:
+
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
+
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
+
+**Part B: Kill-Barrier Trajectory Verdict (distinct from Part A grid)**
+
+**KILL-BARRIER TRAJECTORY VERDICT**
+
+**Trajectory direction:** [Resolving / Stable / Worsening]
+
+**Structural reasoning:** [One sentence explaining the direction in terms of the structural
+persistence property from Phase 5(2). Must reference that property by name. The direction must
+be argued from the structural mechanism, not inferred from the per-persona grid.]
+
+**Relationship to Part A grid:** [One sentence: does this verdict align with or differ from
+the per-persona trajectories? If it differs, state why. If it aligns, confirm which structural
+property drives both.]
+
+This verdict must exist as a labeled output in Part B. A trajectory direction present only in
+the Part A grid without a dedicated labeled verdict here fails C-18.
+
+---
+
+## Phase 7 -- Overall Adoption Inertia Risk
+
+Verdict: Low / Medium / High / Critical.
+
+Include:
+
+- Score distribution across personas (e.g., "2 High, 1 Critical, 1 Medium")
+- Kill-barrier trajectory direction from Phase 6 Part B
+- Competitive summary: kill barrier dimension and its Phase 2 structural durability basis
+- 1--2 sentence rationale connecting score distribution, trajectory, and confirmed kill barrier
+
+---
+
+## AMEND -- Focus, Quantify, Confirm
+
+Select the persona most exposed to the confirmed kill barrier.
+
+**Focus persona:** [name]
+
+**Switching cost (sharpened):** [most precise quantified value -- time, steps, effort rating, or
+relative measure]
+
+**Kill barrier for this persona:** [one sentence restating the barrier in terms of this
+persona's specific situation -- name the competitive dimension and why it is most acute for them]
+
+**Mitigation with full causal chain:**
+
+> **(a) Intervention:** [one concrete, specific action]
+>
+> **(b) Root cause addressed:** [which structural condition from Phase 5(2) this targets --
+> quote or directly reference the persistence property by name]
+>
+> **(c) Causal mechanism:** [why this lever resolves the structural root cause -- the causal
+> connection. Reference the intervention target from Phase 5(3). Do not describe what happens;
+> explain why this lever reaches the structural condition.]
+>
+> **(d) Confirmation signal at T=6mo:** Write the observable condition using this form:
+>
+> "The absence of [describe the specific Phase 5(3) lever mechanism by its own name -- do
+> not write 'Phase 5(3)' or 'the falsifiability test'; name the mechanism itself] at T=6mo
+> would be observable as: [specific behavioral or measurable condition]."
+>
+> The lever mechanism must be named here by description, not by phase reference. A
+> confirmation signal that writes "the Phase 5(3) lever" instead of naming the mechanism
+> earns PARTIAL on C-26.
+
+The confirmation signal must be an observable, not a hope. The AMEND section is not complete
+without it.
+
+---
+
+### V-33: Citation Chain Verification Step
+
+**Axis:** Lifecycle emphasis -- a post-Phase-7 structural verification step requires the model
+to explicitly name each artifact in the citation chain before AMEND can be written, making
+chain breaks detectable and correctable before the final output is produced
+**Hypothesis:** V-30 embeds citation requirements in individual phases (Phase 4 instruction
+names "SCORING INFRASTRUCTURE DECLARED"; AMEND(d) references "Phase 5(3)"). The chain can
+still break silently if any link paraphrases rather than names. A verification step that
+requires naming all four chain links explicitly -- Phase 1 artifact, Phase 4 citation, Phase
+5(3) lever mechanism, AMEND(d) anchor -- converts C-26 from a distributed requirement into a
+single gate. If any link cannot name its upstream source, the model must correct it before
+AMEND is written. This approach tests whether structural self-verification is a more reliable
+closure mechanism than per-phase inline citation requirements. Expected: C-26 PASS if models
+complete the verification step faithfully; if models skip or abbreviate the step, PARTIAL.
+
+---
+
+You are running **validate-inertia** for: {{topic}}
+
+Map adoption inertia. Why would users not adopt this feature even if it works perfectly? Complete
+each phase in sequence. Each phase gates the next.
+
+---
+
+## Phase 1 -- Scoring Methodology Declaration
+
+Before analyzing any persona, declare the inertia scoring framework that will govern per-persona
+scores in Phase 4.
+
+**Dimension weights:**
+
+| Dimension | Weight (High / Medium / Low) | Why this weight (one sentence -- reference a property of this feature or user population) |
+|-----------|------------------------------|------------------------------------------------------------------------------------------|
+
+Dimensions: Workaround satisfaction / Switching cost / Habit lock-in / Social proof requirement
+/ Learning curve.
+
+**Score thresholds** -- define the dimension-combination rules that produce each tier:
+
+- **Critical:** [state which dimension combinations produce this tier]
+- **High:** [state which combinations produce this tier]
+- **Medium:** [state which combinations]
+- **Low:** [state what condition all dimensions must satisfy]
+
+**Required infrastructure label:** After completing the dimension weights and score thresholds
+above, write the following statement on its own line before Phase 2 begins:
+
+> "SCORING INFRASTRUCTURE DECLARED. All per-persona methodology traces in Phase 4 must cite
+> this Phase 1 output by reference -- naming the specific dimension weights and tier thresholds
+> declared above to show how each persona's score was produced. Phase 4 traces that reference
+> dimension values without citing these thresholds, or that cite thresholds without naming
+> dimension values, will not satisfy the per-score trace requirement."
+
+Do not proceed to Phase 2 until this statement is written. The statement is the boundary
+marker that closes Phase 1.
+
+---
+
+## Phase 2 -- Persona and Competitive Inventory
+
+Identify 2--4 named personas. For each, treat the current solution as a named competitor.
+
+**Persona entry:**
+
+- Name and role (specific, not categorical)
+- Current solution (named tool or method -- "ad hoc" is not a solution; name what they do)
+- Outcome the current solution delivers
+
+**Competitive strength inventory** -- for each persona, complete the following inventory before
+proceeding. This inventory must be finished here, in the persona identification phase. Kill-
+barrier analysis in Phase 5 will cite Phase 2 Durability properties by name -- if they are not
+named here, Phase 5 cannot satisfy its structural persistence requirement.
+
+| Dimension | Advantage | Durability |
+|-----------|-----------|------------|
+
+- **Dimension:** The specific axis on which the current solution wins (zero-setup cost, output
+  format compatibility, existing keyboard shortcuts, audit trail depth, etc.)
+- **Advantage:** What the current solution does better on that dimension for this persona
+- **Durability:** Why this advantage is structurally hard to replicate or displace. Must
+  reference a structural constraint -- technical, organizational, integration-based, or
+  switching-cost-based. **Familiarity is not durability.** "People are used to it" does not
+  qualify. Name the structural constraint that makes the advantage persist after the feature
+  ships and is known.
+
+**Completeness gate:** Before writing Phase 3, verify the following for each persona:
+
+1. All three inventory fields (Dimension, Advantage, Durability) are present and populated.
+2. No Durability entry uses "familiarity," "habit," "people are used to it," or any equivalent.
+   If it does, replace it with a structural constraint before proceeding.
+3. Each Dimension names a specific competitive axis -- not a category like "usability."
+
+Do not proceed to Phase 3 until every persona's inventory passes all three checks. An
+inventory entry that fails any check must be corrected in this phase, not deferred to Phase 5.
+
+---
+
+## Phase 3 -- Inertia Dimension Analysis
+
+For each persona:
+
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis (ref. Phase 2 competitive strength) | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof threshold (named condition) | Learning curve |
+|---------|---------------------------------|-------------------------------------------------------|----------------------------|-------------------------------|------------------------------------------|---------------|
+
+- **Switching cost:** Time, steps, effort rating (1--10), or relative measure. Required.
+  Qualitative descriptions do not pass.
+- **Satisfaction basis:** Reference a named competitive strength from Phase 2 -- not a vague
+  sentiment.
+- **Social proof threshold:** Name a specific count, role, or condition -- not binary Y/N.
+  Examples: "needs 2 colleagues using it for more than one sprint," "will adopt solo if manager
+  endorses at team standup." Binary answers fail.
+
+---
+
+## Phase 4 -- Per-Persona Inertia Scores
+
+Score each persona: Low / Medium / High / Critical.
+
+The score table **requires a Methodology trace column**:
+
+| Persona | Score | Methodology trace |
+|---------|-------|-------------------|
+
+**Methodology trace** -- required: one sentence that (a) names the specific dimension values
+from Phase 3 for this persona, and (b) states the Phase 1 threshold those values satisfy,
+showing how those inputs produce the assigned score. Cite Phase 1 by reference -- the
+SCORING INFRASTRUCTURE DECLARED there is the named source.
+
+Failing trace: "Jordan has high switching costs and depends on the current tool, yielding
+High." -- Values not named precisely; Phase 1 threshold not cited.
+
+Passing trace: "Jordan's switching cost of 7/10 (High, Phase 1 weight: High) and Critical
+workaround satisfaction satisfy the Phase 1 rule that two High-weighted dimensions at H produce
+a High score." -- Dimension values named and Phase 1 threshold explicitly cited.
+
+Every Phase 2 persona must be scored individually. A shared blanket score does not pass.
+
+---
+
+## Phase 5 -- Kill Barrier: Four-Part Causal Analysis with Reselection Gate
+
+Identify the single adoption killer -- expressed as the competitive dimension on which the
+current solution wins. Use exactly **four labeled sub-parts**. Each must be distinct. Do not
+merge any two into a single statement.
+
+**KILL BARRIER**
+
+**(1) Barrier definition**
+[What the barrier is -- the observable adoption friction as the most exposed persona experiences
+it. State the competitive dimension. Describe the phenomenon; do not include its cause here.]
+
+**(2) Structural persistence**
+[Why this barrier structurally persists -- the underlying property from the Phase 2 competitive
+inventory that prevents it from self-resolving through product maturity or organic adoption.
+Do not repeat (1). Name the structural mechanism and reference the relevant Phase 2 durability
+property by name.]
+
+**(3) Intervention target**
+[What a mitigation must target -- the specific lever point that, if addressed, would disrupt
+the structural persistence mechanism in (2). Name the target, not the intervention. "Better
+onboarding" is an intervention; "the moment a user first completes a cross-team workflow
+without reverting to their previous tool" is a lever point.]
+
+**Falsifiability test (required before writing Part (4)):** Write the following sentence,
+completing the bracketed portion:
+
+> "At T=6mo, the absence of this lever being addressed would be observable as: [specific
+> behavioral or measurable condition]."
+
+If you cannot complete this sentence with a specific observable condition -- your Part (3)
+intervention target is too general. Replace Part (3) with a more specific mechanism and repeat
+the falsifiability test. Do not write Part (4) until the test produces a specific observable
+condition. The AMEND confirmation signal in step (d) must cite this lever point directly.
+
+**(4) Lever efficacy**
+[Why addressing (3) resolves the structural root cause in (2). Explain the causal connection.
+Reference (2) by name. "It reduces friction" states a result; explain why this lever reaches
+the structural condition named in (2).]
+
+**Temporal persistence confirmation table:**
+
+| Question | Your answer (write YES or NO) |
+|----------|-------------------------------|
+| Does this barrier exist today (T=0)? | |
+| Does this barrier persist at T=18mo, absent deliberate structural intervention targeting the persistence property in (2)? | |
+
+**Gate rule:** If either answer is NO -- this barrier does not qualify as the kill barrier.
+Return to the top of this phase, select a different barrier, and complete all four sub-parts
+and the confirmation table again. Do not proceed to Phase 6 until both answers are YES.
+
+Label the confirmed result **CONFIRMED KILL BARRIER**. Name the most exposed persona.
+
+---
+
+## Phase 6 -- Adoption Timeline and Kill-Barrier Trajectory Verdict
+
+**Part A: Per-Persona Adoption Timeline**
+
+**Required disqualifier -- write this sentence before presenting the grid:**
+
+> "This Part A grid captures per-persona trajectory only. It does not satisfy the
+> kill-barrier trajectory verdict requirement. That output belongs exclusively to Part B."
+
+Then present the timeline grid for the confirmed kill barrier and at least two personas:
+
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
+
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
+
+**Part B: Kill-Barrier Trajectory Verdict (distinct from Part A grid)**
+
+**KILL-BARRIER TRAJECTORY VERDICT**
+
+**Trajectory direction:** [Resolving / Stable / Worsening]
+
+**Structural reasoning:** [One sentence explaining the direction in terms of the structural
+persistence property from Phase 5(2). Must reference that property by name. The direction must
+be argued from the structural mechanism, not inferred from the per-persona grid.]
+
+**Relationship to Part A grid:** [One sentence: does this verdict align with or differ from
+the per-persona trajectories? If it differs, state why. If it aligns, confirm which structural
+property drives both.]
+
+This verdict must exist as a labeled output in Part B. A trajectory direction present only in
+the Part A grid without a dedicated labeled verdict here fails C-18.
+
+---
+
+## Phase 7 -- Overall Adoption Inertia Risk
+
+Verdict: Low / Medium / High / Critical.
+
+Include:
+
+- Score distribution across personas (e.g., "2 High, 1 Critical, 1 Medium")
+- Kill-barrier trajectory direction from Phase 6 Part B
+- Competitive summary: kill barrier dimension and its Phase 2 structural durability basis
+- 1--2 sentence rationale connecting score distribution, trajectory, and confirmed kill barrier
+
+---
+
+## Citation Chain Verification
+
+Before writing AMEND, confirm the citation chain is intact by completing all four fields below.
+If any field cannot be completed with the named text (must paraphrase or reference by phase
+number), return to the phase that produced the unnamed output and correct it before proceeding.
+
+**Chain verification:**
+
+1. **Phase 1 artifact name:** [write the exact text of the boundary artifact produced in
+   Phase 1 -- the literal statement written on its own line before Phase 2 began]
+2. **Phase 4 citation:** [write the artifact name from (1) as it appears in your Phase 4
+   methodology traces -- show that your traces named the artifact, not just cited the phase]
+3. **Phase 5(3) lever mechanism:** [write the specific lever point mechanism as named or
+   described in Phase 5(3) -- the text that AMEND(d) will use as its observable anchor]
+4. **AMEND(d) anchor:** [write the exact mechanism text from (3) as it will appear in
+   AMEND(d) -- confirm it names the mechanism, not "Phase 5(3)"]
+
+**Gate rule:** Do not proceed to AMEND until all four fields are completed with named text.
+A field that contains "Phase X" or "see above" without the actual artifact name or mechanism
+description fails the verification. Correct the upstream phase before proceeding.
+
+---
+
+## AMEND -- Focus, Quantify, Confirm
+
+Select the persona most exposed to the confirmed kill barrier.
+
+**Focus persona:** [name]
+
+**Switching cost (sharpened):** [most precise quantified value -- time, steps, effort rating, or
+relative measure]
+
+**Kill barrier for this persona:** [one sentence restating the barrier in terms of this
+persona's specific situation -- name the competitive dimension and why it is most acute for them]
+
+**Mitigation with full causal chain:**
+
+> **(a) Intervention:** [one concrete, specific action]
+>
+> **(b) Root cause addressed:** [which structural condition from Phase 5(2) this targets --
+> quote or directly reference the persistence property by name]
+>
+> **(c) Causal mechanism:** [why this lever resolves the structural root cause -- the causal
+> connection. Reference the intervention target from Phase 5(3). Do not describe what happens;
+> explain why this lever reaches the structural condition.]
+>
+> **(d) Confirmation signal at T=6mo:** [The observable condition from the Phase 5(3)
+> falsifiability test, adapted to this persona. Name the specific lever mechanism here --
+> use the text confirmed in Citation Chain Verification step (3), not a phase reference.
+> Must be falsifiable -- possible to observe it as absent.]
+
+The confirmation signal must name the lever mechanism from the chain verification, not reference
+Phase 5(3). The AMEND section is not complete without it.
+
+---
+
+### V-34: Named Lever + AMEND Lever Citation (C-26 Full Chain)
+
+**Axis:** Output format combination -- Phase 5(3) produces a named lever artifact (V-31) and
+AMEND(d) is required to cite that lever by its exact label (V-31 AMEND), closing both C-26
+links 3 and 4 without a verification step
+**Hypothesis:** C-26 links 3 and 4 are independent -- producing a named lever in Phase 5(3)
+and requiring AMEND(d) to cite it occupy different output locations and do not compete. V-33's
+verification step confirms the chain but does not produce it. V-34 confirms that the two
+production requirements alone (named lever label + AMEND lever citation) are sufficient to
+close C-26. If V-34 passes C-26 where V-31 and V-32 individually earn PARTIAL, the mechanism
+is confirmed: both links must be closed simultaneously. If V-34 passes C-26 where V-33 earns
+PARTIAL, the verification step is supplementary, not required.
+
+---
+
+You are running **validate-inertia** for: {{topic}}
+
+Map adoption inertia. Why would users not adopt this feature even if it works perfectly? Complete
+each phase in sequence. Each phase gates the next.
+
+---
+
+## Phase 1 -- Scoring Methodology Declaration
+
+Before analyzing any persona, declare the inertia scoring framework that will govern per-persona
+scores in Phase 4.
+
+**Dimension weights:**
+
+| Dimension | Weight (High / Medium / Low) | Why this weight (one sentence -- reference a property of this feature or user population) |
+|-----------|------------------------------|------------------------------------------------------------------------------------------|
+
+Dimensions: Workaround satisfaction / Switching cost / Habit lock-in / Social proof requirement
+/ Learning curve.
+
+**Score thresholds** -- define the dimension-combination rules that produce each tier:
+
+- **Critical:** [state which dimension combinations produce this tier]
+- **High:** [state which combinations produce this tier]
+- **Medium:** [state which combinations]
+- **Low:** [state what condition all dimensions must satisfy]
+
+**Required infrastructure label:** After completing the dimension weights and score thresholds
+above, write the following statement on its own line before Phase 2 begins:
+
+> "SCORING INFRASTRUCTURE DECLARED. All per-persona methodology traces in Phase 4 must cite
+> this Phase 1 output by reference -- naming the specific dimension weights and tier thresholds
+> declared above to show how each persona's score was produced. Phase 4 traces that reference
+> dimension values without citing these thresholds, or that cite thresholds without naming
+> dimension values, will not satisfy the per-score trace requirement."
+
+Do not proceed to Phase 2 until this statement is written. The statement is the boundary
+marker that closes Phase 1.
+
+---
+
+## Phase 2 -- Persona and Competitive Inventory
+
+Identify 2--4 named personas. For each, treat the current solution as a named competitor.
+
+**Persona entry:**
+
+- Name and role (specific, not categorical)
+- Current solution (named tool or method -- "ad hoc" is not a solution; name what they do)
+- Outcome the current solution delivers
+
+**Competitive strength inventory** -- for each persona, complete the following inventory before
+proceeding. This inventory must be finished here, in the persona identification phase. Kill-
+barrier analysis in Phase 5 will cite Phase 2 Durability properties by name -- if they are not
+named here, Phase 5 cannot satisfy its structural persistence requirement.
+
+| Dimension | Advantage | Durability |
+|-----------|-----------|------------|
+
+- **Dimension:** The specific axis on which the current solution wins (zero-setup cost, output
+  format compatibility, existing keyboard shortcuts, audit trail depth, etc.)
+- **Advantage:** What the current solution does better on that dimension for this persona
+- **Durability:** Why this advantage is structurally hard to replicate or displace. Must
+  reference a structural constraint -- technical, organizational, integration-based, or
+  switching-cost-based. **Familiarity is not durability.** "People are used to it" does not
+  qualify. Name the structural constraint that makes the advantage persist after the feature
+  ships and is known.
+
+**Completeness gate:** Before writing Phase 3, verify the following for each persona:
+
+1. All three inventory fields (Dimension, Advantage, Durability) are present and populated.
+2. No Durability entry uses "familiarity," "habit," "people are used to it," or any equivalent.
+   If it does, replace it with a structural constraint before proceeding.
+3. Each Dimension names a specific competitive axis -- not a category like "usability."
+
+Do not proceed to Phase 3 until every persona's inventory passes all three checks. An
+inventory entry that fails any check must be corrected in this phase, not deferred to Phase 5.
+
+---
+
+## Phase 3 -- Inertia Dimension Analysis
+
+For each persona:
+
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis (ref. Phase 2 competitive strength) | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof threshold (named condition) | Learning curve |
+|---------|---------------------------------|-------------------------------------------------------|----------------------------|-------------------------------|------------------------------------------|---------------|
+
+- **Switching cost:** Time, steps, effort rating (1--10), or relative measure. Required.
+  Qualitative descriptions do not pass.
+- **Satisfaction basis:** Reference a named competitive strength from Phase 2 -- not a vague
+  sentiment.
+- **Social proof threshold:** Name a specific count, role, or condition -- not binary Y/N.
+  Examples: "needs 2 colleagues using it for more than one sprint," "will adopt solo if manager
+  endorses at team standup." Binary answers fail.
+
+---
+
+## Phase 4 -- Per-Persona Inertia Scores
+
+Score each persona: Low / Medium / High / Critical.
+
+The score table **requires a Methodology trace column**:
+
+| Persona | Score | Methodology trace |
+|---------|-------|-------------------|
+
+**Methodology trace** -- required: one sentence that (a) names the specific dimension values
+from Phase 3 for this persona, and (b) states the Phase 1 threshold those values satisfy,
+showing how those inputs produce the assigned score. Cite Phase 1 by reference -- the
+SCORING INFRASTRUCTURE DECLARED there is the named source.
+
+Failing trace: "Jordan has high switching costs and depends on the current tool, yielding
+High." -- Values not named precisely; Phase 1 threshold not cited.
+
+Passing trace: "Jordan's switching cost of 7/10 (High, Phase 1 weight: High per SCORING
+INFRASTRUCTURE DECLARED) and Critical workaround satisfaction satisfy the Phase 1 SCORING
+INFRASTRUCTURE DECLARED rule that two High-weighted dimensions at H produce a High score."
+
+Every Phase 2 persona must be scored individually. A shared blanket score does not pass.
+
+---
+
+## Phase 5 -- Kill Barrier: Four-Part Causal Analysis with Reselection Gate
+
+Identify the single adoption killer -- expressed as the competitive dimension on which the
+current solution wins. Use exactly **four labeled sub-parts**. Each must be distinct. Do not
+merge any two into a single statement.
+
+**KILL BARRIER**
+
+**(1) Barrier definition**
+[What the barrier is -- the observable adoption friction as the most exposed persona experiences
+it. State the competitive dimension. Describe the phenomenon; do not include its cause here.]
+
+**(2) Structural persistence**
+[Why this barrier structurally persists -- the underlying property from the Phase 2 competitive
+inventory that prevents it from self-resolving through product maturity or organic adoption.
+Do not repeat (1). Name the structural mechanism and reference the relevant Phase 2 durability
+property by name.]
+
+**(3) Intervention target**
+[What a mitigation must target -- the specific lever point that, if addressed, would disrupt
+the structural persistence mechanism in (2). Name the target, not the intervention. "Better
+onboarding" is an intervention; "the moment a user first completes a cross-team workflow
+without reverting to their previous tool" is a lever point.]
+
+**Required lever label:** After writing the lever point description above, write the following
+on its own line:
+
+> **LEVER POINT: [exact label -- 3--7 words naming this specific mechanism]**
+
+This label is the named artifact for this lever point. AMEND(d) must cite this exact label
+text. Do not proceed to the falsifiability test until the label is written.
+
+**Falsifiability test (required before writing Part (4)):** Write the following sentence,
+completing the bracketed portion:
+
+> "At T=6mo, the absence of this lever being addressed would be observable as: [specific
+> behavioral or measurable condition]."
+
+If you cannot complete this sentence with a specific observable condition -- your Part (3)
+intervention target is too general. Replace Part (3) with a more specific mechanism, rewrite
+the lever label, and repeat the falsifiability test. Do not write Part (4) until the test
+produces a specific observable condition.
+
+**(4) Lever efficacy**
+[Why addressing (3) resolves the structural root cause in (2). Explain the causal connection.
+Reference (2) by name. "It reduces friction" states a result; explain why this lever reaches
+the structural condition named in (2).]
+
+**Temporal persistence confirmation table:**
+
+| Question | Your answer (write YES or NO) |
+|----------|-------------------------------|
+| Does this barrier exist today (T=0)? | |
+| Does this barrier persist at T=18mo, absent deliberate structural intervention targeting the persistence property in (2)? | |
+
+**Gate rule:** If either answer is NO -- this barrier does not qualify as the kill barrier.
+Return to the top of this phase, select a different barrier, and complete all four sub-parts
+and the confirmation table again. Do not proceed to Phase 6 until both answers are YES.
+
+Label the confirmed result **CONFIRMED KILL BARRIER**. Name the most exposed persona.
+
+---
+
+## Phase 6 -- Adoption Timeline and Kill-Barrier Trajectory Verdict
+
+**Part A: Per-Persona Adoption Timeline**
+
+**Required disqualifier -- write this sentence before presenting the grid:**
+
+> "This Part A grid captures per-persona trajectory only. It does not satisfy the
+> kill-barrier trajectory verdict requirement. That output belongs exclusively to Part B."
+
+Then present the timeline grid for the confirmed kill barrier and at least two personas:
+
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
+
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
+
+**Part B: Kill-Barrier Trajectory Verdict (distinct from Part A grid)**
+
+**KILL-BARRIER TRAJECTORY VERDICT**
+
+**Trajectory direction:** [Resolving / Stable / Worsening]
+
+**Structural reasoning:** [One sentence explaining the direction in terms of the structural
+persistence property from Phase 5(2). Must reference that property by name. The direction must
+be argued from the structural mechanism, not inferred from the per-persona grid.]
+
+**Relationship to Part A grid:** [One sentence: does this verdict align with or differ from
+the per-persona trajectories? If it differs, state why. If it aligns, confirm which structural
+property drives both.]
+
+This verdict must exist as a labeled output in Part B. A trajectory direction present only in
+the Part A grid without a dedicated labeled verdict here fails C-18.
+
+---
+
+## Phase 7 -- Overall Adoption Inertia Risk
+
+Verdict: Low / Medium / High / Critical.
+
+Include:
+
+- Score distribution across personas (e.g., "2 High, 1 Critical, 1 Medium")
+- Kill-barrier trajectory direction from Phase 6 Part B
+- Competitive summary: kill barrier dimension and its Phase 2 structural durability basis
+- 1--2 sentence rationale connecting score distribution, trajectory, and confirmed kill barrier
+
+---
+
+## AMEND -- Focus, Quantify, Confirm
+
+Select the persona most exposed to the confirmed kill barrier.
+
+**Focus persona:** [name]
+
+**Switching cost (sharpened):** [most precise quantified value -- time, steps, effort rating, or
+relative measure]
+
+**Kill barrier for this persona:** [one sentence restating the barrier in terms of this
+persona's specific situation -- name the competitive dimension and why it is most acute for them]
+
+**Mitigation with full causal chain:**
+
+> **(a) Intervention:** [one concrete, specific action]
+>
+> **(b) Root cause addressed:** [which structural condition from Phase 5(2) this targets --
+> quote or directly reference the persistence property by name]
+>
+> **(c) Causal mechanism:** [why this lever resolves the structural root cause -- the causal
+> connection. Reference the intervention target from Phase 5(3). Do not describe what happens;
+> explain why this lever reaches the structural condition.]
+>
+> **(d) Confirmation signal at T=6mo:** Write the following before stating the observable
+> condition:
+>
+> "Lever anchor: [copy the exact LEVER POINT label from Phase 5(3)]."
+>
+> Then state: [At T=6mo, the absence of this lever would be observable as: [specific
+> condition from the Phase 5(3) falsifiability test, adapted to this persona]. Must be
+> falsifiable -- possible to observe it as absent.]
+
+The lever anchor must appear as written above, citing the exact LEVER POINT label text from
+Phase 5(3). A confirmation signal that restates the mechanism in new words without citing the
+label earns PARTIAL on C-26. The AMEND section is not complete without the lever anchor and
+observable condition.
+
+---
+
+### V-35: Full Integration -- All Nineteen Aspirationals
+
+**Axis:** Combination -- all four new single-axis mechanisms (V-31 named lever artifact +
+V-32 mechanism-named AMEND citation + V-33 citation chain verification) layered onto V-30,
+which already closed C-09 through C-25 and C-27
+**Hypothesis:** V-30 scored at most 230/230 on the v6 rubric and passes C-24, C-25, and C-27
+against the v7 rubric. The v7 rubric adds C-26 as the only unclosed gap. V-34 closes C-26
+links 3 and 4 (named lever in Phase 5(3) + AMEND lever citation by exact label). V-33 adds a
+citation chain verification step between Phase 7 and AMEND that makes any remaining chain
+break detectable before AMEND is written. The three additions occupy Phase 5 (lever label),
+Phase 7/AMEND boundary (verification step), and AMEND(d) (lever anchor citation). No phase
+overlap. V-30's coverage of C-09 through C-25 and C-27 is preserved. Expected ceiling:
+270/270.
+
+---
+
+You are running **validate-inertia** for: {{topic}}
+
+Map adoption inertia. Why would users not adopt this feature even if it works perfectly? Complete
+each phase in sequence. Each phase gates the next.
+
+---
+
+## Phase 1 -- Scoring Methodology Declaration
+
+Before analyzing any persona, declare the inertia scoring framework that will govern per-persona
+scores in Phase 4.
+
+**Dimension weights:**
+
+| Dimension | Weight (High / Medium / Low) | Why this weight (one sentence -- reference a property of this feature or user population) |
+|-----------|------------------------------|------------------------------------------------------------------------------------------|
+
+Dimensions: Workaround satisfaction / Switching cost / Habit lock-in / Social proof requirement
+/ Learning curve.
+
+**Score thresholds** -- define the dimension-combination rules that produce each tier:
+
+- **Critical:** [state which dimension combinations produce this tier]
+- **High:** [state which combinations produce this tier]
+- **Medium:** [state which combinations]
+- **Low:** [state what condition all dimensions must satisfy]
+
+**Required infrastructure label:** After completing the dimension weights and score thresholds
+above, write the following statement on its own line before Phase 2 begins:
+
+> "SCORING INFRASTRUCTURE DECLARED. All per-persona methodology traces in Phase 4 must cite
+> this Phase 1 output by reference -- naming the specific dimension weights and tier thresholds
+> declared above to show how each persona's score was produced. Phase 4 traces that reference
+> dimension values without citing these thresholds, or that cite thresholds without naming
+> dimension values, will not satisfy the per-score trace requirement."
+
+Do not proceed to Phase 2 until this statement is written. The statement is the boundary
+marker that closes Phase 1.
+
+---
+
+## Phase 2 -- Persona and Competitive Inventory
+
+Identify 2--4 named personas. For each, treat the current solution as a named competitor.
+
+**Persona entry:**
+
+- Name and role (specific, not categorical)
+- Current solution (named tool or method -- "ad hoc" is not a solution; name what they do)
+- Outcome the current solution delivers
+
+**Competitive strength inventory** -- for each persona, complete the following inventory before
+proceeding. This inventory must be finished here, in the persona identification phase. Kill-
+barrier analysis in Phase 5 will cite Phase 2 Durability properties by name -- if they are not
+named here, Phase 5 cannot satisfy its structural persistence requirement.
+
+| Dimension | Advantage | Durability |
+|-----------|-----------|------------|
+
+- **Dimension:** The specific axis on which the current solution wins (zero-setup cost, output
+  format compatibility, existing keyboard shortcuts, audit trail depth, etc.)
+- **Advantage:** What the current solution does better on that dimension for this persona
+- **Durability:** Why this advantage is structurally hard to replicate or displace. Must
+  reference a structural constraint -- technical, organizational, integration-based, or
+  switching-cost-based. **Familiarity is not durability.** "People are used to it" does not
+  qualify. Name the structural constraint that makes the advantage persist after the feature
+  ships and is known.
+
+**Completeness gate:** Before writing Phase 3, verify the following for each persona:
+
+1. All three inventory fields (Dimension, Advantage, Durability) are present and populated.
+2. No Durability entry uses "familiarity," "habit," "people are used to it," or any equivalent.
+   If it does, replace it with a structural constraint before proceeding.
+3. Each Dimension names a specific competitive axis -- not a category like "usability."
+
+Do not proceed to Phase 3 until every persona's inventory passes all three checks. An
+inventory entry that fails any check must be corrected in this phase, not deferred to Phase 5.
+
+---
+
+## Phase 3 -- Inertia Dimension Analysis
+
+For each persona:
+
+| Persona | Workaround satisfaction (H/M/L) | Satisfaction basis (ref. Phase 2 competitive strength) | Switching cost (quantified) | Habit lock-in (named behavior) | Social proof threshold (named condition) | Learning curve |
+|---------|---------------------------------|-------------------------------------------------------|----------------------------|-------------------------------|------------------------------------------|---------------|
+
+- **Switching cost:** Time, steps, effort rating (1--10), or relative measure. Required.
+  Qualitative descriptions do not pass.
+- **Satisfaction basis:** Reference a named competitive strength from Phase 2 -- not a vague
+  sentiment.
+- **Social proof threshold:** Name a specific count, role, or condition -- not binary Y/N.
+  Examples: "needs 2 colleagues using it for more than one sprint," "will adopt solo if manager
+  endorses at team standup." Binary answers fail.
+
+---
+
+## Phase 4 -- Per-Persona Inertia Scores
+
+Score each persona: Low / Medium / High / Critical.
+
+The score table **requires a Methodology trace column**:
+
+| Persona | Score | Methodology trace |
+|---------|-------|-------------------|
+
+**Methodology trace** -- required: one sentence that (a) names the specific dimension values
+from Phase 3 for this persona, and (b) states the Phase 1 threshold those values satisfy,
+showing how those inputs produce the assigned score. Cite Phase 1 by reference -- the
+SCORING INFRASTRUCTURE DECLARED there is the named source.
+
+Failing trace: "Jordan has high switching costs and depends on the current tool, yielding
+High." -- Values not named precisely; Phase 1 threshold not cited.
+
+Passing trace: "Jordan's switching cost of 7/10 (High, Phase 1 weight: High per SCORING
+INFRASTRUCTURE DECLARED) and Critical workaround satisfaction satisfy the Phase 1 SCORING
+INFRASTRUCTURE DECLARED rule that two High-weighted dimensions at H produce a High score."
+
+Every Phase 2 persona must be scored individually. A shared blanket score does not pass.
+
+---
+
+## Phase 5 -- Kill Barrier: Four-Part Causal Analysis with Reselection Gate
+
+Identify the single adoption killer -- expressed as the competitive dimension on which the
+current solution wins. Use exactly **four labeled sub-parts**. Each must be distinct. Do not
+merge any two into a single statement.
+
+**KILL BARRIER**
+
+**(1) Barrier definition**
+[What the barrier is -- the observable adoption friction as the most exposed persona experiences
+it. State the competitive dimension. Describe the phenomenon; do not include its cause here.]
+
+**(2) Structural persistence**
+[Why this barrier structurally persists -- the underlying property from the Phase 2 competitive
+inventory that prevents it from self-resolving through product maturity or organic adoption.
+Do not repeat (1). Name the structural mechanism and reference the relevant Phase 2 durability
+property by name.]
+
+**(3) Intervention target**
+[What a mitigation must target -- the specific lever point that, if addressed, would disrupt
+the structural persistence mechanism in (2). Name the target, not the intervention. "Better
+onboarding" is an intervention; "the moment a user first completes a cross-team workflow
+without reverting to their previous tool" is a lever point.]
+
+**Required lever label:** After writing the lever point description above, write the following
+on its own line:
+
+> **LEVER POINT: [exact label -- 3--7 words naming this specific mechanism]**
+
+This label is the named artifact for this lever point. The Citation Chain Verification step
+and AMEND(d) must cite this exact label text. Do not proceed to the falsifiability test until
+the label is written.
+
+**Falsifiability test (required before writing Part (4)):** Write the following sentence,
+completing the bracketed portion:
+
+> "At T=6mo, the absence of this lever being addressed would be observable as: [specific
+> behavioral or measurable condition]."
+
+If you cannot complete this sentence with a specific observable condition -- your Part (3)
+intervention target is too general. Replace Part (3) with a more specific mechanism, rewrite
+the lever label, and repeat the falsifiability test. Do not write Part (4) until the test
+produces a specific observable condition.
+
+**(4) Lever efficacy**
+[Why addressing (3) resolves the structural root cause in (2). Explain the causal connection.
+Reference (2) by name. "It reduces friction" states a result; explain why this lever reaches
+the structural condition named in (2).]
+
+**Temporal persistence confirmation table:**
+
+| Question | Your answer (write YES or NO) |
+|----------|-------------------------------|
+| Does this barrier exist today (T=0)? | |
+| Does this barrier persist at T=18mo, absent deliberate structural intervention targeting the persistence property in (2)? | |
+
+**Gate rule:** If either answer is NO -- this barrier does not qualify as the kill barrier.
+Return to the top of this phase, select a different barrier, and complete all four sub-parts
+and the confirmation table again. Do not proceed to Phase 6 until both answers are YES.
+
+Label the confirmed result **CONFIRMED KILL BARRIER**. Name the most exposed persona.
+
+---
+
+## Phase 6 -- Adoption Timeline and Kill-Barrier Trajectory Verdict
+
+**Part A: Per-Persona Adoption Timeline**
+
+**Required disqualifier -- write this sentence before presenting the grid:**
+
+> "This Part A grid captures per-persona trajectory only. It does not satisfy the
+> kill-barrier trajectory verdict requirement. That output belongs exclusively to Part B."
+
+Then present the timeline grid for the confirmed kill barrier and at least two personas:
+
+| Persona | T=0 score | T=6mo score | T=18mo score | Trajectory | Driver of change |
+|---------|-----------|-------------|--------------|------------|-----------------|
+
+- Trajectory per persona: Resolving / Stable / Worsening
+- At least one trajectory must be non-flat
+- T=6mo and T=18mo cannot copy T=0 without an explicit stated reason
+
+**Part B: Kill-Barrier Trajectory Verdict (distinct from Part A grid)**
+
+**KILL-BARRIER TRAJECTORY VERDICT**
+
+**Trajectory direction:** [Resolving / Stable / Worsening]
+
+**Structural reasoning:** [One sentence explaining the direction in terms of the structural
+persistence property from Phase 5(2). Must reference that property by name. The direction must
+be argued from the structural mechanism, not inferred from the per-persona grid.]
+
+**Relationship to Part A grid:** [One sentence: does this verdict align with or differ from
+the per-persona trajectories? If it differs, state why. If it aligns, confirm which structural
+property drives both.]
+
+This verdict must exist as a labeled output in Part B. A trajectory direction present only in
+the Part A grid without a dedicated labeled verdict here fails C-18.
+
+---
+
+## Phase 7 -- Overall Adoption Inertia Risk
+
+Verdict: Low / Medium / High / Critical.
+
+Include:
+
+- Score distribution across personas (e.g., "2 High, 1 Critical, 1 Medium")
+- Kill-barrier trajectory direction from Phase 6 Part B
+- Competitive summary: kill barrier dimension and its Phase 2 structural durability basis
+- 1--2 sentence rationale connecting score distribution, trajectory, and confirmed kill barrier
+
+---
+
+## Citation Chain Verification
+
+Before writing AMEND, confirm the citation chain is intact by completing all four fields below.
+If any field cannot be completed with the named text (must paraphrase or reference by phase
+number), return to the phase that produced the unnamed output and correct it before proceeding.
+
+**Chain verification:**
+
+1. **Phase 1 artifact name:** [write the exact text of the boundary artifact produced in
+   Phase 1 -- the literal statement written on its own line before Phase 2 began]
+2. **Phase 4 citation:** [write the artifact name from (1) as it appears in your Phase 4
+   methodology traces -- confirm your traces named the artifact, not just cited the phase]
+3. **Phase 5(3) lever label:** [write the exact LEVER POINT label produced in Phase 5(3)]
+4. **AMEND(d) anchor:** [write the exact LEVER POINT label from (3) as it will appear in
+   the "Lever anchor:" line in AMEND(d)]
+
+**Gate rule:** Do not proceed to AMEND until all four fields are completed with named text.
+A field that contains "Phase X" or "see above" without the actual artifact name or label fails
+the verification. Correct the upstream phase before proceeding.
+
+---
+
+## AMEND -- Focus, Quantify, Confirm
+
+Select the persona most exposed to the confirmed kill barrier.
+
+**Focus persona:** [name]
+
+**Switching cost (sharpened):** [most precise quantified value -- time, steps, effort rating, or
+relative measure]
+
+**Kill barrier for this persona:** [one sentence restating the barrier in terms of this
+persona's specific situation -- name the competitive dimension and why it is most acute for them]
+
+**Mitigation with full causal chain:**
+
+> **(a) Intervention:** [one concrete, specific action]
+>
+> **(b) Root cause addressed:** [which structural condition from Phase 5(2) this targets --
+> quote or directly reference the persistence property by name]
+>
+> **(c) Causal mechanism:** [why this lever resolves the structural root cause -- the causal
+> connection. Reference the intervention target from Phase 5(3). Do not describe what happens;
+> explain why this lever reaches the structural condition.]
+>
+> **(d) Confirmation signal at T=6mo:** Write the following before stating the observable
+> condition:
+>
+> "Lever anchor: [copy the exact LEVER POINT label from Phase 5(3) -- confirmed in Citation
+> Chain Verification step (3)]."
+>
+> Then state: [At T=6mo, the absence of this lever would be observable as: [specific
+> condition from the Phase 5(3) falsifiability test, adapted to this persona]. Must be
+> falsifiable -- possible to observe it as absent.]
+
+The lever anchor must cite the exact LEVER POINT label. A confirmation signal that paraphrases
+the mechanism without citing the label fails C-26 link 4. The AMEND section is not complete
+without the lever anchor and observable condition.

@@ -1,248 +1,187 @@
-# discover-competitors-alt — R2 Scorecard
+## discover-competitors-alt — Scorecard R2
 
-## Round Summary
+### Composite Ranking
 
-| Variation | Key changes | Score | Grade |
-|-----------|-------------|-------|-------|
-| V-01 | Single-sentence opening assertion | **180** | Exceptional |
-| V-02 | Phase inversion (inertia = Phase 1) | **180** | Exceptional |
-| V-03 | WRONG:/RIGHT: bilateral labels | **180** | Exceptional |
-| V-04 | Phase inversion + single-sentence opening | **180** | Exceptional |
-| V-05 | Phase inversion + WRONG/RIGHT + inertia manifesto | **180** | Exceptional |
+| Variation | Aspirational | Composite | Golden | Grade |
+|-----------|-------------|-----------|--------|-------|
+| **V-05 All R2** | 5.0/5 | **115** | Yes | Exceptional |
+| **V-04 C-11+C-12** | 4.5/5 | **112.5** | Yes | Exceptional |
+| **V-01 Citation Gate** | 4.0/5 | **110** | Yes | Exceptional |
+| **V-02 Self-Negating** | 3.5/5 | **107.5** | Yes | Strong |
+| **V-03 Claim-Level** | 3.5/5 | **107.5** | Yes | Strong |
 
-All five score **180/180**. The R1 V-05 architecture is invariant under all tested perturbations.
+All 5 variations golden (all essential PASS, composite >= 90). All recommended criteria passed in every variation — the R1 V-05 baseline was strong enough to carry the entire recommended tier into R2.
 
----
+### Key findings
 
-## Open Questions — All Resolved
+**C-11 confirmed load-bearing:** Per-row gate (V-01: 110) vs minimum-one (V-02/V-03: 107.5) — 2.5-point gap isolates the gate scope as the decisive condition.
 
-| Q | Result |
-|---|--------|
-| Q1: Single em-dash sentence sufficient for C-14/C-17? | **CONFIRMED PASS** — sentence count is not prescriptive; naming all three + apparatus is the condition |
-| Q2: C-11/C-13 phase-label or phase-concept sensitive? | **CONFIRMED construct-based** — pre-map and inertia constructs satisfy criteria regardless of phase number |
-| Q3: WRONG:/RIGHT: = equivalent structural framing for C-23? | **CONFIRMED FULL PASS** — bilateral structure is the invariant; label surface is immaterial |
-| Q4: Phase inversion + compressed opening interact? | **CONFIRMED clean** — no unexpected criterion gaps |
+**C-12 requires the template:** V-02/V-04/V-05 all PASS on C-12; V-01/V-03 PARTIAL. Two-step reduction proof forces construction of both single-dimension arguments. Exclusion assertion alone is insufficient.
 
----
+**C-13 requires dedicated instruction:** V-04 (C-11+C-12 without examples) scores PARTIAL on C-13; V-05 (adds ACCEPTABLE/NOT ACCEPTABLE examples) scores PASS. Other R2 mechanisms do not bootstrap claim-level anchoring.
 
-## Excellence Signals
+**V-04 vs V-05 gap:** 2.5 points — the exact cost of missing C-13 instruction when C-11 and C-12 are already encoded.
 
-1. **Phase-order independence** — the architecture is robust to pedagogical reordering. C-01, C-11, C-13 are all construct-based; phase numbers are historical, not prescriptive.
-2. **Bilateral label surface is free variation** — DO NOT/DO, WRONG:/RIGHT:, and descriptive "rejection/acceptance" all satisfy C-18/C-23. Only the *loop language* must be label-agnostic for C-23 FULL PASS.
-3. **Narrative preambles (INERTIA FRAME) are free depth upgrades** — safe under C-24 as long as no SR-style numbering is present. Deepest C-06 compliance in any variation tested.
+### New excellence patterns (5)
 
-```json
-{"top_score": 180, "all_essential_pass": true, "new_patterns": ["single-sentence opening assertion sufficient for C-14/C-17 -- two-sentence form is illustrative not minimum", "WRONG/RIGHT bilateral labels are equivalent structural framing per C-23 -- bilateral structure is the invariant not label surface", "C-11 and C-13 are phase-order-independent -- pre-map and inertia constructs satisfy criteria regardless of which phase number they occupy"]}
-```
-uction: designation token (C-XX) + failure declaration + DO NOT/DO bilateral pair -- proximate to instruction |
-| C-19 | 5 | All three constraints use table schema; Phase 2 multi-table with non-substitutability declared |
-| C-20 | 5 | PRE-SUBMISSION VERIFICATION symmetric; 3 sub-questions per constraint; label-agnostic |
-| C-21 | 5 | C-18 PASS + C-19 PASS |
-| C-22 | 5 | C-19 PASS + C-20 PASS |
-| C-23 | 5 | DO NOT/DO in phase instructions (label-agnostic); loop uses "bilateral enforcement pair present (rejection example + acceptance example)?" -- both layers label-agnostic -> FULL PASS |
-| C-24 | 5 | No numbered SR preamble block; opening assertion (one sentence) satisfies C-14/C-17; phase-embedded declarations per constraint |
-| C-25 | 5 | Phase 2 multi-table: C-13 designation token + portability summary non-substitutability declared |
-| C-26 | 5 | Pre-generation loop checks prompt completeness; post-generation loop checks output completeness; distinct subjects -> PASS |
+1. **AMEND as proof validator** — requiring reduction proof rerun on focus shift propagates C-12 across adjustment iterations
+2. **Inline anchor tag before proof block** — declaring evidentiary source as a named slot before constructing the argument
+3. **Gate failure naming** — naming the error state ("gate failure") vs describing the rule
+4. **WHITESPACE grounded by attribute absence** — claim-level anchoring applied to the gap finding itself
+5. **NOT ACCEPTABLE examples eliminate the name-only escape hatch** — naming the most common compliant-but-inadequate form
+RTIAL | Exclusion assertion present ("cannot be produced by dropping the focus input") but no two-step reduction template — model asserts but does not show single-dimension reductions |
+| C-13 claim-level finding anchors | PARTIAL | "Every finding must name at least one competitor by number" + prohibition framing, but no named attribute list and no ACCEPTABLE/NOT ACCEPTABLE examples — name-only anchoring remains possible |
 
-**Composite: 180** | Essential: all pass | Grade: **Exceptional**
+Essential pass: 5/5 | Recommended pass: 3/3 | Aspirational numerator: 4.0/5 (C-09=1, C-10=1, C-11=1, C-12=0.5, C-13=0.5)
 
-**Q1 resolution: CONFIRMED** -- single em-dash sentence sufficient for C-14/C-17. Two-sentence form in definition is illustrative, not prescriptive minimum.
+Composite = (5/5 x 60) + (3/3 x 30) + (4.0/5 x 25) = 60 + 30 + 20 = **110**
+
+Golden: Yes (all essential PASS, composite >= 90). Grade: **Exceptional**
 
 ---
 
-### V-02 -- Phase Inversion: Inertia as Phase 1
-
-**Change from baseline:** Phase 1 = INERTIA COMPETITOR, Phase 2 = COMPETITIVE LANDSCAPE MAP. Downstream Phase 4/5 references updated to "Phase 2 row." Two-sentence opening retained. DO NOT/DO retained.
+**V-02 — Self-Negating Proof**
 
 | Criterion | Score | Evidence |
 |-----------|-------|---------|
-| **C-01** | **12** | Inertia is now literally Phase 1 -- the first phase of the skill. "Assess inertia before all named competitors." Stronger compliance than baseline -> PASS |
-| C-02 | 12 | Focus distributed via Phase 2 pre-map, Phase 3 columns, Phase 4 dual-row (Phase 2 grounding), Phase 5 findings |
-| C-03 | 12 | Threat levels explicit for inertia (HIGH) and all named competitors (HIGH/MEDIUM/LOW) |
-| C-04 | 12 | Phase 4 whitespace dual-row enforced |
-| C-05 | 12 | SETUP auto-detect; no prompting |
-| C-06 | 10 | Three labeled mechanism slots with domain-exclusivity requirement |
-| C-07 | 10 | WebSearch + inline citation in Phase 3 |
-| C-08 | 10 | AMEND 3 items, each with input->output |
-| C-09 | 5 | Phase 4 Focus gap requires "Phase 2 data and the focus dimension simultaneously" -- cross-dimensional requirement intact |
-| C-10 | 5 | Phase 5: "Each finding must reference at least one named Phase 2 row or Phase 3 competitor by label." Grounding intact |
-| **C-11** | **5** | C-11 construct fully present in Phase 2: "C-11 structural constraint. Apparatus: table schema." + verbatim rule + DO NOT/DO bilateral pair + named row table. Rubric's "Phase 1 produces" is descriptive of the construct's historical position, not prescriptive of phase number -- substantive pass conditions (verbatim rule, bilateral pair, named rows) all satisfied -> PASS (Q2 resolution: construct-based reading) |
-| C-12 | 5 | Phase 4 whitespace dual-row; DO NOT/DO bilateral pair; format-failure declared |
-| **C-13** | **5** | Inertia mechanism construct now in Phase 1; three labeled slots + bilateral pair + apparatus declaration all present. Same construct-based reading as C-11 -> PASS |
-| C-14 | 5 | Two-sentence opening assertion names all three constraints + "table schema" apparatus type |
-| C-15 | 5 | Map Position in Phase 3: "Fill Map Position from Phase 2 row label verbatim. An empty or paraphrased cell fails." |
-| C-16 | 5 | Portability test + exact fail condition in Phase 1 |
-| C-17 | 5 | Opening assertion asserts symmetric enforcement across all three constraints |
-| C-18 | 5 | Phase 1 (inertia): C-13 token + failure declaration + DO NOT/DO. Phase 2 (pre-map): C-11 token + failure declaration + DO NOT/DO. Phase 4 (whitespace): C-12 token + failure declaration + DO NOT/DO -- full fingerprint at each phase instruction |
-| **C-19** | **5** | Phase 1 now multi-table: mechanism table (C-13 structural constraint) + portability summary (explicitly "additional framing only; does not substitute for the mechanism table for C-13 apparatus uniformity or C-19 purposes"). Apparatus identity unambiguous -> PASS |
-| C-20 | 5 | Post-generation loop symmetric; 3 sub-questions per constraint; label-agnostic |
-| C-21 | 5 | C-18 PASS + C-19 PASS |
-| C-22 | 5 | C-19 PASS + C-20 PASS |
-| C-23 | 5 | DO NOT/DO in phase instructions + label-agnostic loop -> FULL PASS |
-| C-24 | 5 | No numbered SR block; opening assertion satisfies C-14/C-17; phase-embedded declarations per constraint |
-| **C-25** | **5** | Phase 1 now has two tables. Designation token: "Table 1 below is the C-13 structural constraint (mechanism table)" + "C-13 structural constraint. Apparatus: table schema." present. Non-substitutability: "Table 2 below is a portability summary -- additional framing only; it does not substitute for the mechanism table for C-13 apparatus uniformity or C-19 purposes." present -> REAL PASS |
-| C-26 | 5 | Pre-generation + post-generation loops; distinct subjects (prompt vs. output) |
+| C-01 inertia assessed first | PASS | Phase 2 dedicated inertia assessment before Phase 3; C0 token; Competitor 0 is first row |
+| C-02 focus woven not appended | PASS | Focus integrated in Phase 2 for C0; focus column in Phase 3; "Do not add a trailing section for focus content" |
+| C-03 threat level per competitor | PASS | "Every row must have a threat level. No row appears without H, M, or L." |
+| C-04 whitespace identified | PASS | WHITESPACE required labeled finding in Phase 4 |
+| C-05 auto-detect without prompting | PASS | "Read repo context... Infer the topic. Do not ask." |
+| C-06 inertia stickiness reasoning | PASS | "name the specific switching cost, habit lock-in, or workaround satisfaction. Not just 'inertia is high.'" |
+| C-07 web-verified competitive claim | PASS | "Use WebSearch to verify at least one external competitor characterization. Inline the citation in the relevant row." — procedurally gated |
+| C-08 AMEND 3 actionable adjustments | PASS | Exactly 3 adjustments; Shift focus includes "Update the CROSS-DIMENSIONAL finding and rerun both reduction proofs" |
+| C-09 cross-dimensional whitespace | PASS | Two-step reduction template enforces "if either reduction answer cannot honestly be NO, find a different gap" — exclusion test encoded in proof structure |
+| C-10 table-stakes grounding per finding | PASS | "Every finding must cite at least one competitor by number. Free-floating findings that do not cite a table row are prohibited." |
+| C-11 fully-cited competitor table | FAIL | "verify at least one external competitor characterization" — minimum-one scope; other external rows have no citation requirement |
+| C-12 self-negating cross-dimensional | PASS | Full two-step template: "-> Competitive map alone (focus dimension removed): ... — NO / -> Focus dimension alone (competitive map removed): ... — NO / Conclusion: This gap requires both..." — both reductions explicitly shown |
+| C-13 claim-level finding anchors | PARTIAL | Prohibition framing present but no named attribute list (threat rating, mechanism phrase, etc.) and no ACCEPTABLE/NOT ACCEPTABLE examples — model anchors to competitor name without attribute specificity |
 
-**Composite: 180** | Essential: all pass | Grade: **Exceptional**
+Essential pass: 5/5 | Recommended pass: 3/3 | Aspirational numerator: 3.5/5 (C-09=1, C-10=1, C-11=0, C-12=1, C-13=0.5)
 
-**Q2 resolution: CONFIRMED** -- C-11 is phase-concept sensitive, not phase-label-sensitive. The pre-map construct satisfies C-11 wherever it appears, provided verbatim rule + bilateral pair + named rows are present. "Phase 1 produces" in the rubric definition is historical/descriptive, not prescriptive of phase number order.
+Composite = (5/5 x 60) + (3/3 x 30) + (3.5/5 x 25) = 60 + 30 + 17.5 = **107.5**
+
+Golden: Yes (all essential PASS, composite >= 90). Grade: **Strong**
 
 ---
 
-### V-03 -- WRONG/RIGHT Bilateral Labels
-
-**Change from baseline:** DO NOT/DO replaced with WRONG:/RIGHT: in all three structural constraint phase instructions. Both verification loops unchanged (label-agnostic: "bilateral enforcement pair present (rejection example + acceptance example)?").
+**V-03 — Claim-Level Anchoring**
 
 | Criterion | Score | Evidence |
 |-----------|-------|---------|
-| C-01 | 12 | Phase 2 inertia assessed before named competitors; explicit HIGH threat |
-| C-02 | 12 | Focus woven via Phase 1 pre-map, Phase 3 columns, Phase 4 dual-row, Phase 5 grounding |
-| C-03 | 12 | Threat levels explicit per competitor |
-| C-04 | 12 | Phase 4 whitespace dual-row enforced |
-| C-05 | 12 | SETUP auto-detect; no prompting |
-| C-06 | 10 | Three labeled mechanism slots with domain-exclusivity requirement |
-| C-07 | 10 | WebSearch + inline citation in Phase 3 |
-| C-08 | 10 | AMEND 3 items |
-| C-09 | 5 | Focus gap row requires Phase 1 data + focus dimension simultaneously |
-| C-10 | 5 | Findings grounding requirement unchanged |
-| C-11 | 5 | "C-11 structural constraint. Apparatus: table schema." + WRONG:/RIGHT: bilateral pair at phase level; verbatim rule stated |
-| C-12 | 5 | "C-12 structural constraint. Apparatus: table schema. An absent table or single-row table fails." + WRONG:/RIGHT: bilateral pair |
-| C-13 | 5 | "C-13 structural constraint. Apparatus: table schema. An absent mechanism table or empty mechanism row fails." + WRONG:/RIGHT: bilateral pair |
-| C-14 | 5 | Two-sentence opening assertion unchanged |
-| C-15 | 5 | Map Position verbatim rule + empty-cell failure unchanged |
-| C-16 | 5 | Portability test unchanged |
-| C-17 | 5 | Opening assertion asserts symmetric enforcement unchanged |
-| **C-18** | **5** | WRONG:/RIGHT: is "equivalent structural framing" per C-18 definition ("any label format: FAILS/PASS, DO NOT/DO, or equivalent structural framing"). WRONG = rejection example; RIGHT = acceptance example. Bilateral structure intact at each phase instruction -> PASS |
-| C-19 | 5 | All three constraints use table schema; Phase 2 non-substitutability declared |
-| C-20 | 5 | Post-generation loop symmetric; label-agnostic ("bilateral enforcement pair present?") |
-| C-21 | 5 | C-18 PASS + C-19 PASS |
-| C-22 | 5 | C-19 PASS + C-20 PASS |
-| **C-23** | **5** | Phase instructions use WRONG:/RIGHT: -- bilateral structure (rejection example + acceptance example) intact. C-23 definition: "Instructions use 'rejection example + acceptance example,' 'DO NOT/DO,' or equivalent structural framing." WRONG:/RIGHT: is equivalent structural framing. Verification loop uses "bilateral enforcement pair present (rejection example + acceptance example)?" -- label-agnostic. Both layers satisfy the invariant -> FULL PASS |
-| C-24 | 5 | No numbered SR block; opening assertion + phase-embedded declarations |
-| C-25 | 5 | Phase 2 multi-table: C-13 designation + non-substitutability declared |
-| C-26 | 5 | Pre-generation + post-generation loops; distinct subjects |
+| C-01 inertia assessed first | PASS | Phase 2 dedicated inertia; C0 token; Phase 3 Competitor 0 first row |
+| C-02 focus woven not appended | PASS | Focus integrated in Phase 2 for C0; column in Phase 3 for all rows; no trailing section rule |
+| C-03 threat level per competitor | PASS | "Every row must have a threat level. No row appears without H, M, or L." |
+| C-04 whitespace identified | PASS | WHITESPACE required labeled finding; "Reference which specific attributes from competitor rows confirm no ownership" adds attribute grounding |
+| C-05 auto-detect without prompting | PASS | "Read repo context... Infer the topic. Do not ask." |
+| C-06 inertia stickiness reasoning | PASS | "name the specific switching cost, habit lock-in, or workaround satisfaction. Not just 'inertia is high.'" |
+| C-07 web-verified competitive claim | PASS | "Use WebSearch to verify at least one external competitor characterization. Inline the citation in the relevant row." |
+| C-08 AMEND 3 actionable adjustments | PASS | Exactly 3 adjustments; each specifies what user changes and what output changes |
+| C-09 cross-dimensional whitespace | PASS | "This finding cannot be produced by dropping the focus input" — exclusion assertion present; CROSS-DIMENSIONAL must also "Anchor it to a specific attribute from a competitor row AND a specific value from the focus column" |
+| C-10 table-stakes grounding per finding | PASS | "Free-floating findings and name-only-anchored findings are both prohibited" — strongest prohibition framing of any variation |
+| C-11 fully-cited competitor table | FAIL | "verify at least one external competitor characterization" — minimum-one scope only |
+| C-12 self-negating cross-dimensional | PARTIAL | "cannot be produced by dropping the focus input" — assertion present but no two-step reduction template showing either single-dimension analysis |
+| C-13 claim-level finding anchors | PASS | Named qualifying-attribute list (threat level, mechanism phrase, differentiation claim, focus-column value) + ACCEPTABLE/NOT ACCEPTABLE examples enforce cell-value granularity; "NOT ACCEPTABLE: 'Competitor 2 reveals that...' — name-only anchor" explicitly prohibited |
 
-**Composite: 180** | Essential: all pass | Grade: **Exceptional**
+Essential pass: 5/5 | Recommended pass: 3/3 | Aspirational numerator: 3.5/5 (C-09=1, C-10=1, C-11=0, C-12=0.5, C-13=1)
 
-**Q3 resolution: CONFIRMED** -- WRONG:/RIGHT: is equivalent structural framing for C-23. Not label-specific (FAILS/PASS) and not DO NOT/DO specifically required. The bilateral structure (rejection + acceptance example) is the invariant; the surface label is immaterial.
+Composite = (5/5 x 60) + (3/3 x 30) + (3.5/5 x 25) = 60 + 30 + 17.5 = **107.5**
+
+Golden: Yes (all essential PASS, composite >= 90). Grade: **Strong**
 
 ---
 
-### V-04 -- Combined: Phase Inversion + Compressed Meta-Declaration
-
-**Changes from baseline:** Phase inversion (V-02) + single-sentence opening assertion (V-01). DO NOT/DO retained.
+**V-04 — Combined: Citation Completeness + Self-Negating Proof**
 
 | Criterion | Score | Evidence |
 |-----------|-------|---------|
-| **C-01** | **12** | Phase 1 = INERTIA COMPETITOR; inertia is literally the first phase -> PASS |
-| C-02 | 12 | Focus woven via Phase 2 pre-map, Phase 3 columns, Phase 4 dual-row ("Phase 2 grounding"), Phase 5 findings |
-| C-03 | 12 | Threat levels explicit per competitor |
-| C-04 | 12 | Phase 4 whitespace dual-row enforced |
-| C-05 | 12 | SETUP auto-detect; no prompting |
-| C-06 | 10 | Three labeled mechanism slots with domain-exclusivity requirement |
-| C-07 | 10 | WebSearch + inline citation in Phase 3 |
-| C-08 | 10 | AMEND 3 items |
-| C-09 | 5 | Phase 4 Focus gap requires "Phase 2 data and the focus dimension simultaneously" -- no gap; references correctly updated |
-| C-10 | 5 | Phase 5: "Each finding must reference at least one named Phase 2 row or Phase 3 competitor by label." -- grounding intact; correctly updated |
-| **C-11** | **5** | Phase 2 carries C-11 construct; all elements present. Phase-concept reading applies -> PASS (as V-02) |
-| C-12 | 5 | Phase 4 whitespace unchanged except "Phase 2 grounding" label -- construct intact |
-| **C-13** | **5** | Phase 1 carries inertia mechanism construct; all elements present -> PASS (as V-02) |
-| **C-14** | **5** | Single sentence names all three + apparatus type -> PASS (as V-01) |
-| C-15 | 5 | Map Position references Phase 2 rows verbatim; empty-cell failure declared |
-| C-16 | 5 | Portability test in Phase 1 |
-| **C-17** | **5** | Single sentence asserts symmetric enforcement -> PASS (as V-01) |
-| C-18 | 5 | Each structural constraint phase carries full fingerprint (designation token + failure declaration + DO NOT/DO bilateral pair) |
-| **C-19** | **5** | Phase 1 now multi-table; non-substitutability declared for portability summary -> PASS (as V-02) |
-| C-20 | 5 | Post-generation loop symmetric; label-agnostic |
-| C-21 | 5 | C-18 PASS + C-19 PASS |
-| C-22 | 5 | C-19 PASS + C-20 PASS |
-| C-23 | 5 | DO NOT/DO + label-agnostic loops -> FULL PASS |
-| C-24 | 5 | No SR block; single-sentence opening assertion + phase-embedded declarations -- V-01 established single sentence sufficient for C-14/C-17; no C-24 impact |
-| **C-25** | **5** | Phase 1 multi-table with designation token + non-substitutability -> REAL PASS (as V-02) |
-| C-26 | 5 | Pre-generation + post-generation loops; distinct subjects |
+| C-01 inertia assessed first | PASS | Phase 2 dedicated inertia; C0 token; Phase 3 table Competitor 0 first row; "not deferred to a later section" |
+| C-02 focus woven not appended | PASS | Focus integrated in Phase 2; column in Phase 3 for all rows including Row 0; "Do not add a trailing section for focus content" |
+| C-03 threat level per competitor | PASS | "Threat must be HIGH, MEDIUM, or LOW for every row." |
+| C-04 whitespace identified | PASS | WHITESPACE required labeled finding in Phase 4 |
+| C-05 auto-detect without prompting | PASS | "Read repo context... Infer the topic. Do not ask." |
+| C-06 inertia stickiness reasoning | PASS | "name the specific switching cost, habit lock-in, or workaround satisfaction. Not just 'inertia is high.'" |
+| C-07 web-verified competitive claim | PASS | Per-row citation gate makes every external row web-verified; trivially satisfies at-least-one |
+| C-08 AMEND 3 actionable adjustments | PASS | Exactly 3 adjustments; Shift focus includes "rerun both reduction proofs"; Add competitor includes "Run WebSearch and add the citation inline" |
+| C-09 cross-dimensional whitespace | PASS | Two-step reduction template + "If either reduction answer cannot honestly be NO, find a different gap." |
+| C-10 table-stakes grounding per finding | PASS | "Every finding must name at least one competitor by number. Free-floating findings that do not cite a table row are prohibited." |
+| C-11 fully-cited competitor table | PASS | "Every external row must have a URL in Citation. Do not proceed to the next row until the Citation cell is filled. Do not proceed to Phase 4 with any empty Citation cells." — per-row gate, all-external scope |
+| C-12 self-negating cross-dimensional | PASS | Template: "-> Competitive map alone (focus dimension removed): ... — NO / -> Focus dimension alone (competitive map removed): ... — NO / Both reductions fail -> this gap requires both inputs simultaneously." |
+| C-13 claim-level finding anchors | PARTIAL | "Every finding must name at least one competitor by number" + prohibition framing; no named attribute list and no ACCEPTABLE/NOT ACCEPTABLE examples — name-only anchor remains structurally possible |
 
-**Composite: 180** | Essential: all pass | Grade: **Exceptional**
+Essential pass: 5/5 | Recommended pass: 3/3 | Aspirational numerator: 4.5/5 (C-09=1, C-10=1, C-11=1, C-12=1, C-13=0.5)
 
-**Q4 resolution: CONFIRMED** -- Phase inversion + compressed opening stack cleanly. No unexpected criterion interactions. Phase 4/5 reference "Phase 2" correctly; C-09/C-10 grounding preserved. C-14/C-17 satisfied by single sentence; C-11/C-13 satisfied by construct-based reading.
+Composite = (5/5 x 60) + (3/3 x 30) + (4.5/5 x 25) = 60 + 30 + 22.5 = **112.5**
+
+Golden: Yes (all essential PASS, composite >= 90). Grade: **Exceptional**
 
 ---
 
-### V-05 -- Combined: Phase Inversion + WRONG/RIGHT + Inertia Manifesto
-
-**Changes from baseline:** Phase inversion (V-02) + WRONG:/RIGHT: labels (V-03) + INERTIA FRAME narrative preamble before SETUP. Two-sentence opening retained.
+**V-05 — Combined: All R2 Criteria**
 
 | Criterion | Score | Evidence |
 |-----------|-------|---------|
-| **C-01** | **12** | Phase 1 = INERTIA COMPETITOR; INERTIA FRAME also establishes inertia primacy narratively before skill phases begin -- double-layered C-01 compliance |
-| C-02 | 12 | Focus woven via Phase 2 pre-map, Phase 3 columns, Phase 4 Focus gap, Phase 5 grounding |
-| C-03 | 12 | Threat levels explicit per competitor |
-| C-04 | 12 | Phase 4 whitespace dual-row enforced |
-| C-05 | 12 | SETUP auto-detect; no prompting |
-| **C-06** | **10** | INERTIA FRAME names all three stickiness mechanisms narratively ("every switching cost, every habit reinforcing the current workflow, and every workaround that has become good enough") before Phase 1 three-slot table elaborates them -> deepest C-06 compliance across all R2 variations |
-| C-07 | 10 | WebSearch + inline citation in Phase 3 |
-| C-08 | 10 | AMEND 3 items |
-| C-09 | 5 | Phase 4 Focus gap requires Phase 2 data + focus dimension simultaneously |
-| C-10 | 5 | Phase 5 findings reference Phase 2 row or Phase 3 competitor by label |
-| **C-11** | **5** | Phase 2 carries C-11 construct: "C-11 structural constraint. Apparatus: table schema." + verbatim rule + WRONG:/RIGHT: bilateral pair + named row table -> PASS (construct-based + WRONG/RIGHT both apply) |
-| C-12 | 5 | Phase 4: "C-12 structural constraint. Apparatus: table schema. An absent table or single-row table fails." + WRONG:/RIGHT: bilateral pair |
-| **C-13** | **5** | Phase 1 carries inertia mechanism construct: "C-13 structural constraint. Apparatus: table schema. An absent mechanism table or empty mechanism row fails." + WRONG:/RIGHT: bilateral pair + three labeled slots |
-| C-14 | 5 | Two-sentence opening assertion names all three + "table schema" apparatus type |
-| C-15 | 5 | Map Position verbatim rule + empty-cell failure |
-| C-16 | 5 | Portability test + exact fail condition in Phase 1 |
-| C-17 | 5 | Opening assertion asserts symmetric enforcement |
-| **C-18** | **5** | WRONG:/RIGHT: is equivalent structural framing; each phase instruction carries designation token + failure declaration + WRONG:/RIGHT: bilateral pair -> PASS (as V-03) |
-| **C-19** | **5** | Phase 1 multi-table; mechanism table designated as C-13 structural constraint; portability summary explicitly non-substitutable for C-19 purposes -> PASS (as V-02) |
-| C-20 | 5 | Post-generation loop symmetric; label-agnostic |
-| C-21 | 5 | C-18 PASS + C-19 PASS |
-| C-22 | 5 | C-19 PASS + C-20 PASS |
-| **C-23** | **5** | WRONG:/RIGHT: in phase instructions (equivalent structural framing) + label-agnostic loops ("bilateral enforcement pair present (rejection example + acceptance example)?") -> FULL PASS (as V-03) |
-| **C-24** | **5** | INERTIA FRAME is a narrative preamble, not a numbered SR preamble block. No "SR1"/"SR2"-style numbering; no structural requirement enumeration. No numbered SR preamble block present -> PASS |
-| **C-25** | **5** | Phase 1 multi-table: C-13 designation token + portability summary non-substitutability -> REAL PASS (as V-02) |
-| C-26 | 5 | Pre-generation + post-generation loops; distinct subjects |
+| C-01 inertia assessed first | PASS | Phase 2 dedicated inertia; C0 token "not 'status quo' or 'inertia'"; Phase 3 Competitor 0 first row — doubly enforced by phase + table position |
+| C-02 focus woven not appended | PASS | Focus integrated in Phase 2 for C0 "not deferred to a later section"; column in Phase 3 for every row including Row 0; no trailing section rule |
+| C-03 threat level per competitor | PASS | "Threat must be HIGH, MEDIUM, or LOW for every row. No other values." |
+| C-04 whitespace identified | PASS | WHITESPACE required labeled finding; "Reference which specific attributes from competitor rows confirm no ownership" |
+| C-05 auto-detect without prompting | PASS | "Read repo context... Infer the topic. Do not ask." |
+| C-06 inertia stickiness reasoning | PASS | "name the specific switching cost, habit lock-in, or workaround satisfaction that explains this threat level. Not just 'inertia is high.'" |
+| C-07 web-verified competitive claim | PASS | Per-row citation gate — all external rows web-verified, trivially satisfies at-least-one |
+| C-08 AMEND 3 actionable adjustments | PASS | Exactly 3 adjustments; Shift focus requires "rerun both reduction proofs"; Add competitor requires "Run WebSearch and add the citation inline" — AMEND validates enforcement constraints |
+| C-09 cross-dimensional whitespace | PASS | Two-step proof + "if either reduction answer cannot honestly be NO, find a different gap" + anchor tag "[Anchor: {specific competitor attribute} + {specific focus-column value}]" establishes cross-dimensional dependence at the finding header |
+| C-10 table-stakes grounding per finding | PASS | "Free-floating findings and name-only-anchored findings are both prohibited" — strongest prohibition; claim-level examples eliminate name-only escape hatch |
+| C-11 fully-cited competitor table | PASS | "Before writing any external competitor row... run WebSearch... Paste the citation URL... Do not write the row without it. Consolidating citations elsewhere is a gate failure." — gate failure language names the error state explicitly |
+| C-12 self-negating cross-dimensional | PASS | Full template: "-> Competitive map alone (focus dimension removed): ... — NO / -> Focus dimension alone (competitive map removed): ... — NO / Both reductions fail -> this gap requires both dimensions simultaneously. Neither alone is sufficient." |
+| C-13 claim-level finding anchors | PASS | Named attribute list (threat level, mechanism phrase, differentiation claim, focus-column value) + ACCEPTABLE/NOT ACCEPTABLE examples + "name-only anchor" explicitly labeled in NOT ACCEPTABLE — claim-level granularity required and modeled |
 
-**Composite: 180** | Essential: all pass | Grade: **Exceptional**
+Essential pass: 5/5 | Recommended pass: 3/3 | Aspirational numerator: 5.0/5 (all PASS)
 
-**INERTIA FRAME analysis:** Narrative manifesto before SETUP adds depth to C-01/C-06 without creating a numbered SR block. C-24 preserved because the block carries no enumerated structural requirement labels. The manifesto's mention of switching cost, habit, and workaround pre-motivates Phase 1's three mechanism slots -- deepest C-06 pass of any R2 variation.
+Composite = (5/5 x 60) + (3/3 x 30) + (5.0/5 x 25) = 60 + 30 + 25 = **115**
+
+Golden: Yes (all essential PASS, composite >= 90). Grade: **Exceptional**
 
 ---
 
-## Round Summary
+### Composite Ranking
 
-| Variation | Key changes | Score | Grade |
-|-----------|-------------|-------|-------|
-| V-01 | Single-sentence opening assertion | **180** | Exceptional |
-| V-02 | Phase inversion (inertia = Phase 1) | **180** | Exceptional |
-| V-03 | WRONG:/RIGHT: bilateral labels | **180** | Exceptional |
-| V-04 | Phase inversion + single-sentence opening | **180** | Exceptional |
-| V-05 | Phase inversion + WRONG/RIGHT + inertia manifesto | **180** | Exceptional |
-
-All five variations score **180/180**. The R1 V-05 architecture is invariant under all tested perturbations.
+| Variation | Essential | Recommended | Aspirational | Composite | Golden | Grade |
+|-----------|-----------|-------------|--------------|-----------|--------|-------|
+| V-05 All R2 | 5/5 | 3/3 | 5.0/5 | **115** | Yes | Exceptional |
+| V-04 C-11+C-12 | 5/5 | 3/3 | 4.5/5 | **112.5** | Yes | Exceptional |
+| V-01 Citation Gate | 5/5 | 3/3 | 4.0/5 | **110** | Yes | Exceptional |
+| V-02 Self-Negating | 5/5 | 3/3 | 3.5/5 | **107.5** | Yes | Strong |
+| V-03 Claim-Level | 5/5 | 3/3 | 3.5/5 | **107.5** | Yes | Strong |
 
 ---
 
-## Open Questions -- Resolved
+### Key Interactions Confirmed
 
-| Q | Hypothesis | Result |
-|---|-----------|--------|
-| Q1: Single em-dash sentence sufficient for C-14/C-17? | Yes | **Confirmed** -- content (naming all three + apparatus) is the pass condition; sentence count is not prescriptive |
-| Q2: C-11/C-13 phase-concept sensitive (not phase-label-sensitive)? | Yes | **Confirmed** -- pre-map and inertia constructs satisfy criteria regardless of phase number order |
-| Q3: WRONG:/RIGHT: is "equivalent structural framing" for C-23 FULL PASS? | Yes | **Confirmed** -- bilateral structure (rejection + acceptance example) is the invariant; label surface is immaterial |
-| Q4: Phase inversion + compressed opening stack cleanly? | Yes | **Confirmed** -- no unexpected criterion interactions; downstream phase references update cleanly |
+**C-11 (fully-cited table):** Per-row gate (V-01) vs minimum-one (V-02/V-03) — the 2.5-point gap confirms the gate scope is the load-bearing condition. "Verify at least one" is insufficient; every-row structural gating is required.
 
-All four hypotheses confirmed. No degenerate cases materialized.
+**C-12 (self-negating proof):** Two-step reduction template (V-02/V-04/V-05) vs exclusion assertion (V-01/V-03) — variations with the template score PASS on C-12; assertion-only variations score PARTIAL. The template forces construction of both single-dimension arguments; assertion allows the model to satisfy by declaration.
+
+**C-13 (claim-level anchors):** ACCEPTABLE/NOT ACCEPTABLE examples + attribute list (V-03/V-05) vs prohibition-only (V-01/V-02/V-04) — example-equipped variations score PASS; prohibition-only score PARTIAL. The qualifying-attribute list distinguishes name-level from claim-level anchoring in a way that general prohibition cannot.
+
+**V-04 vs V-05 on C-13:** V-04 combines C-11 + C-12 without claim-level examples and scores PARTIAL on C-13 (107.5 gap from V-05's 115). Confirms C-13 requires dedicated instruction — two other R2 enforcement mechanisms do not bootstrap it.
 
 ---
 
-## Excellence Signals
+### Excellence Signals from V-05
 
-1. **Phase-order independence** -- the R1 V-05 architecture satisfies all criteria regardless of whether pre-map or inertia comes first. C-01's "first competitor entry" and C-11/C-13's rubric definitions are construct-based, not phase-number-based. The architecture is robust to pedagogical reordering.
+**1. AMEND becomes a proof validator.** V-05's "Shift focus" adjustment requires "rerun both reduction proofs" when the focus dimension changes. The AMEND section re-executes the Phase 4 enforcement machinery across adjustment iterations — the proof template is not a one-time instruction but a propagating constraint.
 
-2. **Bilateral label surface is fully interchangeable** -- DO NOT/DO, WRONG:/RIGHT:, and "rejection example + acceptance example" all satisfy C-18/C-23's invariant. Only the loop language is constrained: must be label-agnostic for C-23 FULL PASS. Phase-level bilateral label choice is a style decision with no scoring impact.
+**2. Inline anchor tag before the proof block.** V-05 inserts `[Anchor: {specific competitor attribute} + {specific focus-column value}]` as a declared slot inside the CROSS-DIMENSIONAL finding header, before the two-step reduction. The evidentiary source must be named before the argument is constructed, making claim-level grounding explicit at the point of claim rather than embedded in body text.
 
-3. **Narrative preambles add depth without structural risk** -- INERTIA FRAME in V-05 deepens C-01/C-06 compliance and is safe under C-24 as long as it carries no "SR1"-style numbering. Narrative framing before SETUP is a free upgrade to inertia depth.
+**3. Gate failure naming.** "Consolidating citations elsewhere is a gate failure" names the error state explicitly. A named failure condition is harder to rationalize around than a rule violation — it is a discrete outcome to avoid, not a guideline to honor in spirit.
+
+**4. WHITESPACE grounded by attribute absence.** V-03 and V-05 extend the WHITESPACE instruction to "Reference which specific attributes from competitor rows confirm no ownership." Claim-level anchoring applies to the whitespace finding itself — the gap is proven by demonstrating no competitor row owns the identified attribute combination, not just by naming an unoccupied space.
+
+**5. NOT ACCEPTABLE examples eliminate the name-only escape hatch.** V-01/V-02 prohibit free-floating findings generally. V-03/V-05 add "NOT ACCEPTABLE: 'Competitor 2 reveals that...' — name-only anchor; no specific attribute cited" — the most common compliant-but-inadequate form is named and prohibited explicitly, eliminating the path of least resistance that satisfies the rule without achieving the required depth.
 
 ---
 
 ```json
-{"top_score": 180, "all_essential_pass": true, "new_patterns": ["single-sentence opening assertion sufficient for C-14/C-17 -- two-sentence form is illustrative not minimum", "WRONG/RIGHT bilateral labels are equivalent structural framing per C-23 -- bilateral structure is the invariant not label surface", "C-11 and C-13 are phase-order-independent -- pre-map and inertia constructs satisfy criteria regardless of which phase number they occupy"]}
+{"top_score": 115, "all_essential_pass": true, "new_patterns": ["AMEND becomes a proof validator — requiring rerun of both reduction proofs on focus shift propagates C-12 enforcement across adjustment iterations, not just the first run", "Inline anchor tag before the proof block — declaring the evidentiary source as a named slot before constructing the reduction argument makes claim-level grounding explicit at point of claim", "Gate failure naming — labeling the error state ('gate failure') rather than describing the rule creates a discrete condition harder to rationalize around than a rule violation", "WHITESPACE grounded by attribute absence — requiring citation of which specific competitor attributes confirm no ownership applies claim-level anchoring to the gap finding itself, not just other findings", "NOT ACCEPTABLE examples eliminate the name-only escape hatch — naming the most common compliant-but-inadequate anchor form blocks the lowest-resistance path that satisfies prohibition without achieving claim-level depth"]}
 ```

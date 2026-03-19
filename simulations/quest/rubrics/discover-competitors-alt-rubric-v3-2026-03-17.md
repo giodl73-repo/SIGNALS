@@ -1,110 +1,156 @@
-Written to `simulations/quest/rubrics/discover-competitors-alt-rubric-v3-2026-03-17.md`.
+Rubric v3 written. Here's what changed:
+
+**5 new aspirational criteria (C-14 — C-18):**
+
+| ID | Pattern | Pass Condition |
+|----|---------|----------------|
+| C-14 | AMEND as proof validator | AMEND must explicitly prescribe C-12 reduction rerun on any focus shift — "update the finding" alone fails |
+| C-15 | Inline anchor tag before proof block | Named SOURCE/ANCHOR slot must appear *before* the reduction arguments, not after |
+| C-16 | Gate failure naming | Instruction must name the error state ("gate failure") not just the positive rule |
+| C-17 | WHITESPACE grounded by attribute absence | Gap finding must name which specific attributes across which rows confirm no ownership — not bare assertion |
+| C-18 | NOT ACCEPTABLE examples for anchoring | Instruction must include a concrete negative exemplar ("Competitor X reveals..." = NOT ACCEPTABLE), not just an abstract prohibition |
+
+**Scoring changes:**
+- Aspirational tier: 5 → 10 criteria, max 25 → 50
+- Max composite: 115 → 140
+- Formula denominator: `aspirational_pass / 10 × 50`
+- Grade bands rescaled proportionally: Exceptional ≥ 131, Strong ≥ 118, Passing ≥ 90 (golden threshold unchanged)
+ in a trailing section. If no focus is provided, this criterion passes by vacuous satisfaction. |
+| C-03 | Threat level per competitor | correctness | Every named competitor and inertia receive an explicit HIGH / MEDIUM / LOW threat rating. No competitor appears without a threat level. |
+| C-04 | Whitespace identified | coverage | Output names an uncontested space or gap that no listed competitor owns — stated in its own finding or clearly labeled. |
+| C-05 | Auto-detect without prompting | behavior | Topic domain is inferred from repo context (README, CLAUDE.md, package.json, etc.). Output does not ask the user to supply the domain or competitor names. |
 
 ---
 
-## What changed in v3
-
-Three new aspirational criteria from R2 patterns, converting the meta-observations about what made V-05 win into scoreable output properties:
-
-| ID | Criterion | Source | What it captures |
-|----|-----------|--------|-----------------|
-| C-14 | Hard-stacked structural constraint enforcement | V-05 hard-stacking | All three of C-11/C-12/C-13 must be simultaneously hard-enforced (labeled mandatory slots, visible format failures). A soft pass on any one disqualifies. V-04 (two hard) scores PARTIAL; V-05 (three hard) is the canonical pass. |
-| C-15 | Focus map position recorded inline per competitor | V-04 Phase 1 row column | Each competitor row (including inertia) carries an explicit field recording its pre-map position. Whitespace findings then reference named map cells, not general focus observations. Structural grounding without special instruction. |
-| C-16 | Domain-exclusive slot content | V-03/V-04/V-05 slot rejection criteria | Inertia slots must pass the portability test — content would be recognizably wrong if transplanted to a different product. Escalates C-13 (domain-specific) to domain-exclusive. Output-observable signature of embedded slot rejection criteria in the prompt. |
-
-**Scoring impact:** Aspirational band expands from 25 → 40 pts. Max composite 115 → 130. Breakthrough threshold raises to >115 (previously >100). V-05 retroactively scores ~127.5 under v3 (passes C-14 and C-15; C-16 depends on slot content in the unprovided V-05 detail).
-ric answer before evaluation |
-
-**Scoring change:** Aspirational expands from 25 pts (5 criteria) to 40 pts (8 criteria). Max composite is now 130. Scores above 115 are the v3 breakthrough signal — structural proof of full-stack constraint integration. V-05 would retroactively pass C-14 and C-15 under v3.
-
----
-
-## Essential Criteria (weight = 60 points total)
+## Recommended Criteria (weight = 30 points total, 10 points each)
 
 | ID | Criterion | Category | Pass Condition |
 |----|-----------|----------|----------------|
-| C-01 | Inertia-first assessment | correctness | "None / status quo" is assessed as the first competitor entry. Threat level is explicitly HIGH. Analysis explains why teams do nothing. |
-| C-02 | Focus woven, not appended | behavior | When a focus dimension (market or positioning) is provided, that content is distributed throughout the output — visible in competitor rows, findings, and narrative — not isolated in a trailing section. |
-| C-03 | Threat level assigned per competitor | correctness | Every named competitor and inertia receive an explicit HIGH / MEDIUM / LOW threat rating. No competitor is rated without a threat level. |
-| C-04 | Whitespace identified | coverage | Output includes an uncontested space or gap that no listed competitor owns. Stated in its own finding or clearly labeled. |
-| C-05 | Auto-detect without prompting | behavior | Topic domain is inferred from context (README, CLAUDE.md, package.json, etc.). Output does not ask the user to supply domain or competitor names. |
+| C-06 | Inertia stickiness reasoning | depth | Inertia section names at least one concrete mechanism — switching cost, habit lock-in, or workaround satisfaction — not just "inertia is high." The mechanism is specific to the status quo competitor's behavior or product feature, not a category label applied generically. |
+| C-07 | Web-verified competitive claim | correctness | At least one named competitor characterization is supported by an inline citation (URL or publication) from a WebSearch result. The citation appears within the competitor entry, not in a trailing footnote block. |
+| C-08 | AMEND section with 3 actionable adjustments | format | AMEND lists exactly 3 adjustments. Each names both what the user changes and what changes in the output as a result. |
 
 ---
 
-## Recommended Criteria (weight = 30 points total)
+## Aspirational Criteria (weight = 50 points total, 5 points each)
 
 | ID | Criterion | Category | Pass Condition |
 |----|-----------|----------|----------------|
-| C-06 | Inertia stickiness reasoning | depth | Inertia section explains at least one concrete mechanism — switching cost, habit lock-in, or workaround satisfaction — not just "inertia is high." |
-| C-07 | Web-verified competitive claim | correctness | At least one named competitor's characterization is supported by an inline citation (URL or publication) from a WebSearch result. |
-| C-08 | AMEND section with 3 actionable adjustments | format | AMEND lists exactly 3 adjustments. Each names both what the user changes and what changes in the output. |
+| C-09 | Cross-dimensional whitespace finding | depth | The whitespace finding names a gap uncontested across both the competitive dimension and the focus dimension simultaneously. The finding cannot be produced by dropping the focus input — it requires the competitive map and the focus dimension together. A finding that merely cites both dimensions without demonstrating that either alone is insufficient does not pass. |
+| C-10 | Table-stakes grounding per finding | depth | Each item in the findings section references at least one named competitor row or map entry by label. No finding is free-floating prose that does not require the competitive analysis to support it. Positive instruction alone does not ensure this passes — the output must demonstrate that ungrounded findings are absent. |
+| C-11 | Fully-cited competitor table | correctness | Every external competitor row (not just one) includes an inline citation from a WebSearch result. The citation appears within the row or immediately adjacent entry — not in a footnote or trailing references section. This extends C-07 from minimum-one to all-external. |
+| C-12 | Self-negating cross-dimensional finding | depth | The CROSS-DIMENSIONAL or equivalent whitespace finding explicitly argues why the finding cannot be derived from the competitive map alone and why it cannot be derived from the focus dimension alone. The output provides or implies the single-dimension reduction for each — showing what is lost when either dimension is removed — rather than just asserting cross-dimensionality. |
+| C-13 | Claim-level finding anchors | depth | Each finding references a specific cell value, column value, or row-level attribute from a named competitor entry — not just the competitor name. For example: citing Competitor X's specific threat rating, mechanism sentence, or focus-column value as the evidentiary basis. Findings grounded only by competitor name ("Competitor X reveals...") do not satisfy; findings grounded by a specific claim within that row do. |
+| C-14 | AMEND as proof validator | behavior | The AMEND section requires that any adjustment shifting the focus dimension must rerun both single-dimension reductions (C-12 proofs) for the updated CROSS-DIMENSIONAL finding. A standalone instruction to "update the finding" does not satisfy — the explicit rerun of both reduction arguments must be prescribed. |
+| C-15 | Inline anchor tag before proof block | format | The proof block or cross-dimensional finding structure declares a named evidentiary source slot (e.g., SOURCE:, ANCHOR:, or equivalent label) before the reduction arguments are written. The evidentiary source is identified first; the proof follows. Constructing the argument before naming the evidence does not satisfy. |
+| C-16 | Gate failure naming | format | The skill instruction names the error condition explicitly (e.g., "gate failure," "citation gate violation," or equivalent) rather than only describing the rule in positive terms. Naming the failure state makes the gate concrete and checkable; a rule stated only as a positive requirement does not satisfy. |
+| C-17 | WHITESPACE grounded by attribute absence | depth | The WHITESPACE finding grounds the identified gap by naming specific attributes from competitor rows that are absent or uncontested across the table — not by assertion alone. The gap is evidenced by what is missing at the attribute level across named rows, not by a claim that no competitor owns the space. |
+| C-18 | NOT ACCEPTABLE examples for anchoring | format | The skill instruction includes at least one explicit NOT ACCEPTABLE example that names the most common inadequate-but-compliant form — such as name-only anchoring ("Competitor X reveals..."). The example must name the failure pattern specifically; an abstract prohibition without a concrete negative exemplar does not satisfy. |
 
 ---
 
-## Aspirational Criteria (weight = 40 points total)
+## Scoring Summary
 
-*C-09 and C-10 carried forward from v1. C-11–C-13 added from R1 excellence signals. C-14–C-16 added from R2 excellence signals.*
+| Tier | Criteria | Points each | Subtotal |
+|------|----------|-------------|---------|
+| Essential | C-01 -- C-05 | 12 | 60 |
+| Recommended | C-06 -- C-08 | 10 | 30 |
+| Aspirational | C-09 -- C-18 | 5 | 50 |
+| **Max composite** | | | **140** |
 
-| ID | Criterion | Category | Pass Condition |
-|----|-----------|----------|----------------|
-| C-09 | Cross-dimensional insight | depth | At least one finding ties the focus dimension to a competitive gap in a way that would not appear in a parameterized output (e.g., market size estimate linked to a specific competitor's weak segment; positioning whitespace grounded in feature overlap scores). |
-| C-10 | Table stakes cross-referenced with focus data | coverage | Table stakes section references at least one data point from the focus dimension (market segment threshold, positioning category requirement) to justify why each stake matters. |
-| C-11 | Focus lens pre-map precedes competitor evaluation | structure | Output contains an explicit focus lens artifact — a market segment inventory (with sizes or growth stage) or a positioning category map (with current ownership) — established before competitor rows are populated. Competitors are subsequently positioned on or evaluated against this map. |
-| C-12 | Dual-axis whitespace identification | depth | Whitespace finding names the uncontested space along both axes simultaneously: competitive (no named competitor owns it) and focus (market segment unaddressed or positioning category unoccupied). Both axes are stated explicitly in the same finding. |
-| C-13 | All three inertia mechanisms named | depth | Inertia section names and explains all three stickiness mechanisms — workaround satisfaction, switching cost, and habit lock-in — each specific to the product domain. C-06 requires one mechanism; C-13 requires all three. |
-| C-14 | Hard-stacked structural constraint enforcement | structure | The output simultaneously satisfies C-11, C-12, and C-13 as visible format constraints — pre-map table present before competitor rows, dual-axis whitespace slots both populated, and all three inertia mechanism slots populated. Any one empty slot or absent table is an observable format failure that disqualifies this criterion. A soft pass on any of the three (narrative compliance without labeled mandatory slots) does not qualify. |
-| C-15 | Focus map position recorded inline per competitor | structure | Each competitor row, including inertia, includes an explicit inline field or column recording its specific position on the focus lens pre-map — the segment it occupies, contests, or ignores; or the positioning category it claims or vacates. Whitespace findings reference named cell values from this column rather than general focus observations. A competitor matrix without this column does not qualify. |
-| C-16 | Domain-exclusive slot content | depth | Every mandatory inertia slot contains content that is product-specific enough to fail a portability test: if the slot content were dropped into a competitor analysis for a different product category, it would be obviously inapplicable. Generic formulations ("teams face switching costs," "habit lock-in is common") disqualify regardless of mechanism name presence. Escalates C-13 from domain-specific to domain-exclusive. Canonical pass: slot names the exact workaround tool, behavior, or workflow tied to this product's competitive context. |
+**Composite formula:**
+```
+composite = (essential_pass / 5 x 60)
+          + (recommended_pass / 3 x 30)
+          + (aspirational_pass / 10 x 50)
+```
 
----
+PARTIAL scores count as 0.5 for numerator purposes.
 
-## Scoring
+**Golden threshold:** All 5 essential pass AND composite >= 90
 
-| Band | Criteria | Points each | Partial | Total |
-|------|----------|-------------|---------|-------|
-| Essential | C-01–C-05 | 12 | 6 | 60 |
-| Recommended | C-06–C-08 | 10 | 5 | 30 |
-| Aspirational | C-09–C-16 | 5 | 2.5 | 40 |
-| **Max composite** | | | | **130** |
+**Grade bands:**
 
-Composites above 115 indicate full-stack structural integration — the output enforces every focus-woven and inertia-depth constraint simultaneously as hard format requirements, not quality suggestions. C-14 pass is the primary proof: it requires C-11, C-12, and C-13 to all be hard-enforced, not just narratively present.
+| Score | Grade |
+|-------|-------|
+| 131 -- 140 | Exceptional |
+| 118 -- 130 | Strong |
+| 90 -- 117 | Passing |
+| < 90 | Below bar |
 
-Composites above 100 remain the legacy threshold — structural proof that the unified `discover-competitors-alt` skill outperforms parameterized `discover-competitors` on the same topic.
-
----
-
-## Scoring Examples
-
-| Scenario | Essential | Recommended | Aspirational | Composite |
-|----------|-----------|-------------|--------------|-----------|
-| Full v3 stack (all pass) | 5/5 | 3/3 | 8/8 | 130 |
-| V-05 baseline (v2 perfect + C-14 + C-15) | 5/5 | 3/3 | 7/8 | 127.5 |
-| v2-era perfect (C-09–C-13 hard, no C-14–C-16) | 5/5 | 3/3 | 5/8 | 115 |
-| v1-era perfect (C-09 + C-10 only) | 5/5 | 3/3 | 2/8 | 100 |
-| No focus provided, base only | 4/5 (C-02 N/A) | 3/3 | 0/8 | 90* |
-| Missing inertia-first | 4/5 | 3/3 | 1/8 | 48+30+5 = 83 — FAIL (essential gap) |
-| Focus appended not woven | 4/5 | 2/3 | 0/8 | 48+20+0 = 68 — FAIL |
-
-*When focus is not provided, C-02 is scored N/A and excluded from the essential denominator (4 essentials total, max essential score = 48 → rescaled to 60 for composite). C-11, C-12, C-15 are also N/A; max aspirational rescales to 25 (C-09, C-10, C-13, C-16 only).
+Grade bands rescaled proportionally from v2 (v2 max = 115; v3 max = 140). Exceptional threshold
+preserved at ~94% of max; Strong threshold at ~84% of max; Passing at golden threshold (90).
 
 ---
 
-## Evaluator Notes
+## Criterion Rationale (v2 additions)
 
-**C-02 (focus woven):** This is the defining criterion separating `discover-competitors-alt` from `discover-competitors`. Fail if: focus content appears only in a clearly delimited appended section (e.g., "## Market Analysis" bolted on after the matrix). Pass if: market or positioning data appears inside competitor rows, informs whitespace/table-stakes sections, or is cited in narrative findings.
+**Why C-11 (Fully-cited table) over C-07 alone:**
+Round 1 showed that requiring one citation is insufficient -- models satisfy C-07 with a single
+verified claim and coast on unverified characterizations for all other rows. C-11 closes this
+gap: WebSearch must be run per external competitor, not just once.
 
-**C-09 (cross-dimensional insight):** Do not award if the insight is trivially additive (e.g., "Competitor X is strong AND the market is large"). Award only when the insight would require both the competitive and focus lenses simultaneously to derive. The V-02 pattern — "the segment no one addresses, the category position no one owns" — is the canonical pass example.
+**Why C-12 (Self-negating cross-dimensional finding):**
+C-09 scored PARTIAL in every variation across Round 1. The common failure: variations required
+the finding to *cite* both dimensions but not to *prove* single-dimension insufficiency. C-12
+makes the exclusion test explicit and output-level -- the finding must demonstrate what is lost
+when either dimension is removed, not merely assert it draws on both.
 
-**C-11 (focus lens pre-map):** The map must be a distinct artifact established before competitor evaluation begins — not inferred from scattered focus references later. A market segment inventory lists segments with quantitative attributes (size, growth stage, or ownership share); a positioning category map lists categories with current ownership or vacancy status. A prose paragraph that names segments without structure does not qualify. The V-04 mechanism — where every subsequent competitor is evaluated "through the lens from Step 1" — is the intended structural pattern.
+**Why C-13 (Claim-level anchors) over C-10 alone:**
+C-10 requires findings to name a competitor row. C-13 requires findings to name a specific
+*claim within* that row -- a threat rating, mechanism sentence, or focus-column value. The
+upgrade matters because "Competitor X reveals a gap" is technically grounded but epistemically
+empty: the reader cannot verify the inference without re-reading the full row. Claim-level
+anchors make inferences checkable in one glance.
 
-**C-12 (dual-axis whitespace):** Both axes must appear in the same finding, not in separate findings that happen to coexist. "No competitor addresses the SME segment (competitive gap) and no one owns the 'workflow-native' positioning category (focus gap)" qualifies. "Gap: no one does X. Also, market Y is large." does not qualify. C-12 subsumes but does not replace C-04 — C-04 can pass on competitive-axis whitespace alone.
+---
 
-**C-13 (all three inertia mechanisms):** All three must be domain-specific — not generic restatements of the mechanism name. "Workaround satisfaction: teams use Notion + Sheets duct-taped together and consider that solved" qualifies. "Workaround satisfaction: teams use workarounds" does not. C-13 is an escalation of C-06, not a replacement; C-06 can pass with one mechanism while C-13 requires all three.
+## Criterion Rationale (v3 additions)
 
-**C-14 (hard-stacked constraint enforcement):** This is a meta-criterion — it cannot pass unless C-11, C-12, and C-13 each pass as hard format constraints (labeled mandatory slots, visible format failures on empty or generic content). Narrative-level compliance on any of the three converts C-14 to a FAIL even if C-11/C-12/C-13 individually pass. A variation that hard-enforces only two of the three (e.g., V-04) scores C-14 PARTIAL at 2.5 pts. The V-05 pattern — three hard constraints combined in a single variation — is the canonical pass. C-14 pass is the output-observable proof that hard-stacking was applied in the variation that produced it.
+**Why C-14 (AMEND as proof validator):**
+V-05 (Round 2) showed that encoding C-12 in the static CROSS-DIMENSIONAL block is insufficient
+if AMEND allows the user to shift the focus dimension without re-running both reductions. The
+proof degrades silently after adjustment. Requiring AMEND to prescribe the full reduction rerun
+propagates C-12 compliance across every iteration, not just the initial invocation.
 
-**C-15 (focus map position inline per competitor):** The column must be explicitly populated for every competitor row, including inertia (Competitor 0). A general focus section that discusses segments or categories does not qualify; the focus map position must be a per-row field in the competitor matrix. The V-04 "Phase 1 row" mechanism is the canonical implementation: each competitor carries a "Phase 1 row: [segment or category]" field that cross-references the pre-map table. When C-15 passes, whitespace findings can reference specific pre-map cells by name rather than by general focus category — that structural grounding is what this criterion is designed to capture.
+**Why C-15 (Inline anchor tag before proof block):**
+Round 2 analysis showed that models construct reduction proofs first and name evidence
+incidentally -- or not at all. Declaring a named SOURCE or ANCHOR slot before the argument
+forces the evidentiary basis to be resolved before the proof is assembled. This prevents
+circular proof construction where the conclusion implicitly selects its own evidence.
 
-**C-16 (domain-exclusive slot content):** The portability test is the evaluation heuristic — ask: could this exact slot content appear unchanged in a competitor analysis for a clearly different product (e.g., a payroll tool vs. a developer plugin)? If yes, the slot fails C-16 even if it passes C-13. The distinction: C-13 requires all three mechanisms to be named and domain-specific. C-16 requires the domain-specificity to be strong enough that the content is recognizably wrong for any other domain. Embedded slot rejection criteria in the prompt (e.g., "Generic restatements do not satisfy this slot") produce C-16-passing outputs by design; C-16 is the output-observable signature of that prompt technique.
+**Why C-16 (Gate failure naming):**
+Positive-only rule framing ("every row must have a citation") leaves the error state
+implicit. When a gate is violated, the model has no named failure mode to report against.
+Naming the failure state explicitly ("citation gate failure -- do not output the row")
+makes gates self-enforcing: the model can produce a structured error rather than silently
+violating the rule.
 
-**A/B test context:** When comparing against `discover-competitors` output on the same topic, a `discover-competitors-alt` output scoring C-11 PASS with composite >= 100 is strong evidence that unified > parameterized for that run. C-14 PASS (composite >= 115 under v3) is strong evidence that full-stack hard-stacking is structurally superior to soft-instruction integration.
+**Why C-17 (WHITESPACE grounded by attribute absence):**
+C-04 requires the whitespace finding to exist. C-13 requires findings to anchor to
+specific attributes. C-17 applies claim-level anchoring specifically to the WHITESPACE
+finding: the gap must be shown to be vacant by naming which attributes across which rows
+confirm no competitor owns it. Asserting "no competitor covers this space" without
+attribute-level evidence is the WHITESPACE analogue of the name-only anchoring failure.
+
+**Why C-18 (NOT ACCEPTABLE examples):**
+V-03 and V-05 (Round 2) showed that ACCEPTABLE/NOT ACCEPTABLE example pairs are the
+single most reliable mechanism for eliminating the name-only anchoring escape hatch.
+Abstract prohibitions ("findings must cite a specific attribute") are consistently
+interpreted as satisfied by naming the competitor. A NOT ACCEPTABLE example naming the
+exact inadequate form ("Competitor 2 reveals that...") closes the interpretation gap.
+
+---
+
+## Summary of Changes
+
+**v2 -> v3:**
+- C-14 added -- AMEND must prescribe C-12 proof rerun on focus shift (not just output update)
+- C-15 added -- proof block must declare evidentiary source slot before reduction arguments
+- C-16 added -- gate instructions must name the failure state, not only the positive rule
+- C-17 added -- WHITESPACE finding must ground the gap in attribute-level absence across rows
+- C-18 added -- skill instruction must include a NOT ACCEPTABLE exemplar for name-only anchoring
+- Aspirational tier expands from 5 to 10 criteria; aspirational max moves from 25 to 50
+- Max composite moves from 115 to 140
+- Golden threshold unchanged: all 5 essential PASS AND composite >= 90
+- Grade bands rescaled: Exceptional >= 131, Strong >= 118, Passing >= 90

@@ -1,180 +1,136 @@
-## Signal Check — Round 2 Scorecard
+# Signal-Check R13 — Scoring Results (Rubric v2, /30)
 
-**Rubric:** signal-check-rubric v2 (12 criteria, 3 tiers)
-**Date:** 2026-03-17
+## Criterion Matrix
 
----
+### Essential (C-01–C-05) · weight 60%
 
-### Criteria Reference
+| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|-----------|------|------|------|------|------|
+| C-01 All four dimensions present | PASS | PASS | PASS | PASS | PASS |
+| C-02 SEQUENCE grounded in artifact dates | PASS | PASS | PASS | PASS | PASS |
+| C-03 COHERENCE names specific agreements/contradictions | PASS | PASS | PASS | PASS | PASS |
+| C-04 CAUSAL GAP states mechanism evidence | PASS | PASS | PASS | PASS | PASS |
+| C-05 Output is coaching, not verdictive | PASS | PASS | PASS | PASS | PASS |
 
-| ID | Tier | Criterion |
-|----|------|-----------|
-| C-01 | Essential | Covers all four dimensions |
-| C-02 | Essential | CAUSAL GAP uses artifact evidence, not hypothesis restatement |
-| C-03 | Essential | STALENESS applies concrete threshold with named artifacts |
-| C-04 | Essential | States explicitly whether artifact evidence exists for causal pathway, names present/missing |
-| C-05 | Essential | Output is coaching, not verdictive |
-| C-06 | Recommended | STALENESS threshold is concrete and stated |
-| C-07 | Recommended | Each flagged issue includes a concrete next action |
-| C-08 | Recommended | Report opens with readiness summary before per-dimension detail |
-| C-09 | Aspirational | Cross-dimension pattern named when present |
-| C-10 | Aspirational | Missing namespaces listed and characterized (not just inventoried) |
-| C-11 | Aspirational | CAUSAL GAP leads the per-dimension analysis |
-| C-12 | Aspirational | CAUSAL GAP includes explicit inertia check (null-action alternative) |
+**5/5 all variations.**
 
 ---
 
-### V-01 — Dual-Draft Readiness Summary
+### Recommended (C-06–C-08) · weight 30%
 
-| ID | Result | Evidence |
-|----|--------|----------|
-| C-01 | PASS | All four dimensions named explicitly in Phase 3 with ordered analysis |
-| C-02 | PASS | "Name specific artifacts if present. Name the gap if not. Do not restate the hypothesis." |
-| C-03 | PASS | Fixed 30-day threshold; Phase 3 STALENESS section requires listing every artifact older than 30 days by name |
-| C-04 | PASS | "Is there artifact evidence that this feature causes the claimed outcome?" with explicit naming requirement |
-| C-05 | PASS | "Coaching register throughout: you surface observations and suggest next steps. You do not block the team or render verdicts." |
-| C-06 | PASS | Threshold stated as 30 days; concrete criterion applied |
-| C-07 | PASS | Each dimension (CAUSAL GAP, SEQUENCE, COHERENCE, STALENESS) explicitly ends with "If flagged, name a/at least one concrete next action" |
-| C-08 | PASS | Phase 6 report structure item 1 is the Draft readiness summary — leads the report before per-dimension sections |
-| C-09 | PASS | Phase 4 instructs: "look for a shared root. Name the pattern explicitly. Do not simply recap the flags." |
-| C-10 | PASS | Phase 6 item 8: "list absent namespaces; characterize each as expected or concerning given the topic stage" |
-| C-11 | PASS | Phase 3 explicitly labels CAUSAL GAP "(analyze first)"; Phase 6 structure positions CAUSAL GAP as item 2, first among the four dimension sections |
-| C-12 | PASS | Two mandatory numbered sub-questions inside CAUSAL GAP; sub-question 2 is the full inertia check: null action, cited artifact or explicit gap flag |
+| Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|-----------|------|------|------|------|------|
+| C-06 Staleness threshold applied concretely | PASS | PASS | PASS | PASS | PASS |
+| C-07 Each flagged issue includes a next action | PASS | PASS | PASS | PASS | PASS |
+| C-08 Report opens with readiness summary | PASS | PASS | PASS | PASS | PASS |
 
-**Essential:** 5/5 | **Recommended:** 3/3 | **Aspirational:** 4/4
-
-**Composite:** (5/5)×60 + (3/3)×30 + (4/4)×10 = **100**
+**3/3 all variations.**
 
 ---
 
-### V-02 — Dynamic Staleness Threshold
+### Aspirational (C-09–C-38) · weight 10%
 
-| ID | Result | Evidence |
-|----|--------|----------|
-| C-01 | PASS | All four dimensions in Step 3 with explicit analysis order |
-| C-02 | PASS | "Name what exists and what is missing. Do not restate the hypothesis." |
-| C-03 | PASS | Dynamic threshold (14 or 30 days) explicitly calibrated in Step 2; STALENESS requires named artifact list |
-| C-04 | PASS | "Does any artifact provide evidence that this feature causes the claimed outcome? Name what exists and what is missing." |
-| C-05 | PASS | "Coaching register: you observe, characterize, and suggest. You do not block the team or render verdicts." |
-| C-06 | PASS | Concrete threshold explicitly stated in Step 2 — either 14 or 30 days with reason declared |
-| C-07 | PASS | Each dimension ends with "If flagged, name a next action" |
-| C-08 | PASS | Step 5 report structure item 1: "Readiness summary" — leads the report |
-| C-09 | PASS | Step 4: "identify the root weakness. Name it explicitly. Four separate flags with no shared root = fail." |
-| C-10 | PASS | Step 5 item 7: "list absent namespaces; characterize each as expected or concerning given the topic stage" |
-| C-11 | PASS | Step 3 specifies analysis order starting with CAUSAL GAP "(analyze first)"; Step 5 positions it second in report (after summary) = first dimension |
-| C-12 | PASS | Two required questions inside CAUSAL GAP: direct mechanism + "Would doing nothing — or the current approach without this feature — also produce the claimed outcome?" |
+| ID | Criterion | V-01 | V-02 | V-03 | V-04 | V-05 |
+|----|-----------|------|------|------|------|------|
+| C-09 | Cross-dimension pattern named | PASS | PASS | PASS | PASS | PASS |
+| C-10 | Missing namespaces identified | PASS | PASS | PASS | PASS | PASS |
+| C-11 | Readiness drafted then confirmed | PASS | PASS | PASS | PASS | PASS |
+| C-12 | Staleness threshold calibrated from inventory | PASS | PASS | PASS | PASS | PASS |
+| C-13 | Analysis phases isolated via separators | PASS | PASS | PASS | PASS | PASS |
+| C-14 | Severity scale embedded, protected | PASS | PASS | PASS | PASS | PASS |
+| C-15 | Inertia baseline anchored at Step 0 | PASS | PASS | PASS | PASS | PASS |
+| C-16 | Two-register separation by document shape | PASS | PASS | PASS | PASS | PASS |
+| C-17 | SEQUENCE as mechanism-evidence audit | PASS | PASS | PASS | PASS | PASS |
+| C-18 | PART 2 inertia case-strength at summary level | PASS | PASS | PASS | PASS | PASS |
+| C-19 | Mechanism verdict verbatim-quoted in SEQUENCE | PASS | PASS | PASS | PASS | PASS |
+| C-20 | Inertia-relevance column propagated through CAUSAL GAP | PASS | PASS | PASS | PASS | PASS |
+| C-21 | Inertia case-strength in dedicated PART 2 section | PASS | PASS | PASS | PASS | PASS |
+| C-22 | PART 2 inertia section opens with mechanism verdict verbatim | PASS | PASS | PASS | PASS | PASS |
+| C-23 | Named binaries consumed by label in STEP 3 and PART 2 | PASS | PASS | PASS | PASS | PASS |
+| C-24 | STEP 3 root-pattern label consumed by PART 2 | PASS | PASS | PASS | PASS | PASS |
+| C-25 | Upfront ARCHITECTURE block declares all outputs | PASS | PASS | PASS | PASS | PASS |
+| C-26 | Consuming steps carry "do not re-derive" prohibition | PASS | PASS | PASS | PASS | PASS |
+| C-27 | ARCHITECTURE in three-column table form | PASS | PASS | PASS | PASS | PASS |
+| **C-28** | C-26 prohibition per-input, not grouped | **FAIL** | **FAIL** | PASS | PASS | PASS |
+| C-29 | STEP C drift binary emitted; STEP D consumes | PASS | PASS | PASS | PASS | PASS |
+| C-30 | Production steps annotate with forward arrow | PASS | PASS | PASS | PASS | PASS |
+| C-31 | ARCHITECTURE opens with per-input meta-rule | PASS | PASS | PASS | PASS | PASS |
+| C-32 | STEP D named confirmed-readiness consumed by STEP E | PASS | PASS | PASS | PASS | PASS |
+| C-33 | STEP A named inertia-case verdict consumed by STEP E | PASS | PASS | PASS | PASS | PASS |
+| **C-34** | STEP E opens with two per-input prohibitions | **FAIL** | **FAIL** | PASS | PASS | PASS |
+| C-35 | ARCHITECTURE extends to PART 2 internal outputs | PASS | PASS | PASS | PASS | PASS |
+| **C-36** | Per-input prohibition independently self-standing at STEP E | **FAIL** | **FAIL** | **PASS** | **PASS** | **PASS** |
+| **C-37** | ARCHITECTURE Consumed-by step-granular for all rows | **FAIL** | **PASS** | **FAIL** | **PASS** | **PASS** |
+| **C-38** | STEP E emits named terminal verdict in ARCHITECTURE | **PASS** | **FAIL** | **FAIL** | **PASS** | **PASS** |
 
-**Essential:** 5/5 | **Recommended:** 3/3 | **Aspirational:** 4/4
-
-**Composite:** (5/5)×60 + (3/3)×30 + (4/4)×10 = **100**
-
----
-
-### V-03 — Internal Severity Scale with Register Protection
-
-| ID | Result | Evidence |
-|----|--------|----------|
-| C-01 | PASS | All four dimensions in Phase 2 table in explicit order |
-| C-02 | PASS | "Is there artifact evidence for the feature-to-outcome pathway? Name what exists and what is missing. Restating the hypothesis is not evidence." |
-| C-03 | PASS | 30-day threshold in STALENESS; list all artifacts older than threshold |
-| C-04 | PASS | Evidence naming requirement explicit in CAUSAL GAP required questions |
-| C-05 | PASS | "Advisory register throughout — observations and suggestions, not verdicts. Nothing in this output should read as a blocking gate." Severity table explicitly labeled "not shown to team as a blocking score." |
-| C-06 | PASS | 30-day threshold stated explicitly |
-| C-07 | PASS | "Next action if gap/concern" is a required column in the severity table; detail sections expand on it |
-| C-08 | PASS | Phase 4 structure item 1 is "Readiness summary (Phase 3 — advisory framing)" — leads the report |
-| C-09 | PASS | Phase 3 item 2: "Cross-dimension pattern: if two or more dimensions are gap or concern, name the shared root. Do not merely restate the table." |
-| C-10 | PASS | Phase 4 item 8: "list absent namespaces; characterize each as expected or concerning given the topic stage" |
-| C-11 | PASS | Phase 2 instructs "Analyze the four dimensions in this order: CAUSAL GAP, SEQUENCE, COHERENCE, STALENESS"; CAUSAL GAP detail section is item 3 in Phase 4 — first among the four |
-| C-12 | PASS | CAUSAL GAP required question 2: "Would doing nothing also produce the claimed outcome? ... If none exist, this is a gap in the causal analysis regardless of how well the direct mechanism is evidenced." |
-
-**Essential:** 5/5 | **Recommended:** 3/3 | **Aspirational:** 4/4
-
-**Composite:** (5/5)×60 + (3/3)×30 + (4/4)×10 = **100**
+**Aspirational pass counts**: V-01: 27/30 · V-02: 27/30 · V-03: 28/30 · V-04: 30/30 · V-05: 30/30
 
 ---
 
-### V-04 — Synthesis (CAUSAL GAP-first + Inertia + Dual-Draft + Skill-Command Next Actions)
+## Evidence Notes — New Criteria
 
-| ID | Result | Evidence |
-|----|--------|----------|
-| C-01 | PASS | All four dimensions in Step 3 with explicit analysis order |
-| C-02 | PASS | "Name specific artifacts if present. Name the gap if not. Do not restate the hypothesis." |
-| C-03 | PASS | 30-day threshold; STALENESS requires named artifact list with sole-evidence annotation |
-| C-04 | PASS | "Is there artifact evidence that this feature causes the claimed outcome? Name specific artifacts if present. Name the gap if not." |
-| C-05 | PASS | "Coaching register: surface observations, name next steps. Do not block the team or render verdicts." |
-| C-06 | PASS | 30-day threshold explicitly stated; applied in STALENESS |
-| C-07 | PASS | Each dimension requires next action in `/namespace:skill` format — highest specificity of any variation (e.g., "Run `/signal:scout-inertia`") |
-| C-08 | PASS | Step 6 item 1: "Draft readiness summary (Step 2 — marked DRAFT)" — leads the report |
-| C-09 | PASS | Step 4: "identify the root weakness they share. Name it explicitly." with worked example in the prompt text |
-| C-10 | PASS | Step 6 item 8: "list each absent namespace and characterize the gap as expected or concerning given the topic stage. 'Missing' without characterization is not sufficient." |
-| C-11 | PASS | Step 3 labels CAUSAL GAP "(analyze first)"; Step 6 places CAUSAL GAP section as item 2, first among the four dimensions |
-| C-12 | PASS | Full inertia check inside CAUSAL GAP: "This is the question teams most commonly skip. Cite any artifact that addresses it. If none exist, flag the inertia gap explicitly even if the direct mechanism question is clean." |
+### C-36 — Per-Input Independence at STEP E
 
-**Essential:** 5/5 | **Recommended:** 3/3 | **Aspirational:** 4/4
+- **V-01 FAIL**: STEP E uses `Required inputs -- do not re-derive: Confirmed readiness from STEP D and Inertia case from STEP A` — shared introductory phrase semantically groups both inputs. The grouped form is a structural entailment of C-36 FAIL: one annotation head covers both inputs, making selective compliance possible (remove one item, the shared head still covers the other with no locally visible violation). Controlled degradation to isolate C-38 axis.
+- **V-02 FAIL**: Identical grouped-header form as V-01. Same C-36/C-28/C-34 triple-fail is the controlled degradation for the C-37 single-axis isolation.
+- **V-03 PASS**: Two standalone lines — `Required input -- do not re-derive: Confirmed readiness from STEP D` and `Required input -- do not re-derive: Inertia case from STEP A`. Each annotation names its source label, prohibiting verb, and consuming step without relying on proximity to the other. C-36 PASS structurally implies C-28 PASS and C-34 PASS simultaneously.
+- **V-04/V-05 PASS**: Same independent form; locked structural feature 11. V-05 uses `Required input -- do not re-derive:` (highest-precision imperative form).
 
-**Composite:** (5/5)×60 + (3/3)×30 + (4/4)×10 = **100**
+### C-37 — Step-Granular Consumed-by
 
----
+- **V-01/V-03 FAIL**: ARCHITECTURE rows for Inertia case and Confirmed readiness use `PART 2 readiness summary` — section-level, not step-level. Reader must traverse PART 2 to locate the specific consuming step. C-37 fail condition met.
+- **V-02 PASS**: All rows name the consuming step at step-level granularity: `PART 2 STEP E (by label)` for both PART 2 internal rows. Root pattern row explicitly names `PART 2 STEP B`, `PART 2 STEP C per-dim`, `PART 2 STEP D`. Full C-33/C-34/C-35 compliance verifiable from one table scan.
+- **V-04/V-05 PASS**: 12-row table, all rows step-granular. Terminal readiness row uses `topic namespace` as the consuming entity, making the register boundary structurally explicit.
 
-### V-05 — Phase Isolation + Dynamic Staleness + Inertia-as-Standalone
+### C-38 — Named Terminal Verdict
 
-| ID | Result | Evidence |
-|----|--------|----------|
-| C-01 | PASS | All four dimensions in Phase C with explicit order |
-| C-02 | PASS | "Is there artifact evidence for the feature-to-outcome pathway? Name what exists and what is missing. Do not restate the hypothesis." |
-| C-03 | PASS | Dynamic threshold from Phase A; STALENESS lists every artifact beyond threshold |
-| C-04 | PASS | Evidence naming requirement explicit in Phase C CAUSAL GAP |
-| C-05 | PASS | "Tone: Coaching. Surface observations. Let the team decide. Do not block or render verdicts." |
-| C-06 | PASS | Dynamic threshold (14 or 30 days) explicitly stated in Phase A with stated rationale |
-| C-07 | PASS | Each dimension in Phase C: "if flagged, one concrete next action" — present for all four |
-| C-08 | **FAIL** | Report structure is Phase A → Phase B → Phase C (dimensions) → Phase D (synthesis/summary) → Phase E. Phase C explicitly says "Do not include readiness summary in this phase." Readiness summary appears in Phase D, **after** per-dimension analysis. Requirement: summary before per-dimension detail. |
-| C-09 | PASS | Phase D item 2: "Cross-dimension pattern: if two or more dimensions flagged, name the root weakness they share. Do not recap the flags." |
-| C-10 | PASS | Phase E: "For each, characterize: is the gap expected at this topic's stage, or is it a meaningful blind spot? One sentence per namespace." |
-| C-11 | PASS | Phase C analyzes CAUSAL GAP first; explicit "(analyze first)" in dimension order |
-| C-12 | PASS | Phase B is a named standalone "Inertia Anchor" before all dimension analysis — strongest inertia treatment of any variation. CAUSAL GAP in Phase C references the anchor: "Reference your Phase B anchor here." |
-
-**Essential:** 5/5 | **Recommended:** 2/3 | **Aspirational:** 4/4
-
-**Composite:** (5/5)×60 + (2/3)×30 + (4/4)×10 = 60 + 20 + 10 = **90**
+- **V-01 PASS**: STEP E closes with `Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason]`. ARCHITECTURE has a 12th row: `Terminal readiness | PART 2 STEP E | topic namespace`. Pipeline asymmetry closed — STEP E now both consumes two named inputs and produces one named output.
+- **V-02/V-03 FAIL**: STEP E states readiness in advisory prose only. No terminal verdict label. 11-row ARCHITECTURE table. C-38 fail condition met.
+- **V-04 PASS**: Full advisory implementation — 12-row table, forward arrow to topic namespace, `Terminal readiness: [PROCEED / LOOP / INVESTIGATE]` at STEP E.
+- **V-05 PASS**: Strongest form — `Required output -- emit exactly: Terminal readiness: [PROCEED / LOOP / INVESTIGATE + one-phrase reason]`. Omission is a locally visible missing `Required output`.
 
 ---
 
-### Ranking
+## Composite Scores
 
-| Rank | Variation | Score | Grade | Note |
-|------|-----------|-------|-------|------|
-| 1 (tie) | V-01 | 100 | A+ | Dual-draft; structural clarity; clean phase discipline |
-| 1 (tie) | V-02 | 100 | A+ | Dynamic staleness; compact step structure |
-| 1 (tie) | V-03 | 100 | A+ | Severity table with register protection; novel analytical layer |
-| 1 (tie) | V-04 | 100 | A+ | Synthesis; `/namespace:skill` next actions; explicit inertia framing |
-| 5 | V-05 | 90 | A | C-08 fail: summary placed after dimensions by structural design |
+Formula: `(essential/5 × 60) + (recommended/3 × 30) + (aspirational/30 × 10)`
+
+| V | Essential | Recommended | Aspirational | **Composite** | Grade | Gold? |
+|---|-----------|-------------|--------------|---------------|-------|-------|
+| V-01 | 60 | 30 | 9.00 (27/30) | **99.00** | A+ | YES |
+| V-02 | 60 | 30 | 9.00 (27/30) | **99.00** | A+ | YES |
+| V-03 | 60 | 30 | 9.33 (28/30) | **99.33** | A+ | YES |
+| **V-04** | **60** | **30** | **10.00 (30/30)** | **100** | **A+** | **YES** |
+| **V-05** | **60** | **30** | **10.00 (30/30)** | **100** | **A+** | **YES** |
+
+**Ranking**: V-04 = V-05 > V-03 > V-01 = V-02
+
+**Recommended for golden**: **V-04** — canonical advisory form, 12-row ARCHITECTURE, step-granular throughout, independent STEP E per-input, terminal verdict. Full v2 structural chain closed at lowest overhead.
 
 ---
 
-### Excellence Signals
+## Excellence Signals
 
-**From V-04 (synthesis, highest differentiation within 100-tier):**
+### EX-01: C-36/C-28/C-34 Structural Cluster at the Convergence Point
 
-1. **`/namespace:skill` format for next actions** — specifying the exact signal command (e.g., "Run `/signal:scout-inertia`") rather than a generic directive makes next actions immediately executable without interpretation. No prior variation required this format. Raises the floor on C-07 compliance.
+At a two-input consuming step, C-36 FAIL (grouped annotation) structurally entails C-28 FAIL and C-34 FAIL — three criterion failures from one design choice. V-03's 28/30 vs. V-01/V-02's 27/30 quantifies the cascade: the independent self-standing form at STEP E eliminates the co-fails at zero additional overhead. The three criteria triangulate the same independence property from different angles: form (C-28), count+form (C-34), parseable completeness (C-36). When a rubric includes all three, C-36's pass/fail state determines the cluster's compliance state.
 
-2. **Inertia framing as "the question teams most commonly skip"** — embedding the skip-reason inside the prompt instruction (not just the requirement) creates a pedagogical reinforcement that increases the likelihood of inertia getting genuine analysis rather than a pro forma sentence.
+### EX-02: Terminal Verdict Closes the Sole Asymmetric Pipeline Node
 
-**From V-01 / V-04 (dual-draft pattern):**
+Before C-38, every intermediate step consumed at least one named input and produced at least one named output — STEP E was the lone exception (consumed two, produced zero). `Terminal readiness: PROCEED/LOOP/INVESTIGATE` closes this: STEP E is now structurally symmetric with all intermediate steps. The 12th ARCHITECTURE row is the only row whose Consumed-by entry names an external system (topic namespace) rather than a downstream analysis step — making the register boundary structurally explicit in the table.
 
-3. **Pre-analysis draft with CONFIRMED/REVISED resolution** — forcing an explicit expectation before analysis exposes the delta between what the inventory predicts and what the artifacts actually reveal. The CONFIRMED/REVISED lifecycle produces a structurally verifiable commitment that a post-hoc summary cannot. New pattern not present in R1.
+### EX-03: C-37 Converts Table from Summary to Audit Contract
 
-**From V-02 (dynamic staleness):**
+Section-level `PART 2 readiness summary` in Consumed-by entries forces the reader to open the PART 2 section to confirm which specific step consumes each output. Step-granular `PART 2 STEP E` enables C-33/C-34/C-35 compliance verification from the ARCHITECTURE table alone before either part runs. The contribution is overhead reduction: the table becomes an independently auditable pipeline contract rather than a pipeline summary requiring cross-referencing.
 
-4. **Threshold calibration from inventory composition** — rather than a single fixed value, the staleness threshold is proportional to decision velocity (14 days if competitive signals exist; 30 days otherwise). The calibration reason is declared alongside the threshold, making the finding defensible.
+---
 
-**From V-03 (severity table):**
+## R14 Direction
 
-5. **Internal severity scale with coaching translation** — a three-tier internal precision layer (clean/gap/concern) decoupled from the coaching register by explicit labeling allows the model to be analytically rigorous without producing verdictive output. The table provides structured signal without becoming a gate.
-
-**V-05 diagnostic note:** The phase isolation architecture (A–E with word budgets and explicit scope restrictions) is the strongest structural discipline of the round — likely to reduce cross-phase contamination. The standalone inertia anchor (Phase B) is superior to embedding it in CAUSAL GAP because it asserts the null-action question as pre-analytic framing rather than a CAUSAL GAP sub-question. However, the rigid A→E ordering hardcodes the summary into Phase D, which structurally violates C-08. Future round: Phase D synthesis (readiness summary) should move to Phase B or be output as a dual-draft element before Phase C.
+All three R13 axes locked. The full named-binary chain is architecturally complete from CAUSAL GAP through the register boundary to the topic namespace (Terminal readiness). No remaining asymmetric nodes. **R14 candidate**: update `signal.skills.yaml` to surface `Terminal readiness` as a declared output contract at the plugin API level, making the topic namespace handoff visible outside the prompt body and completing the external-facing binding that R13 establishes internally.
 
 ---
 
 ```json
-{"top_score": 100, "all_essential_pass": true, "new_patterns": ["pre-analysis draft readiness summary with CONFIRMED/REVISED resolution lifecycle", "/namespace:skill format for concrete next actions", "dynamic staleness threshold calibrated from inventory composition (14 vs 30 days)", "internal severity scale (clean/gap/concern) with coaching translation layer"]}
+{"top_score": 100, "all_essential_pass": true, "new_patterns": ["C-36/C-28/C-34 form a structural cluster at two-input convergence points: C-36 FAIL (grouped annotation) entails C-28 FAIL and C-34 FAIL; C-36 PASS (independent self-standing form) entails C-28 PASS and C-34 PASS. The three criteria triangulate the same independence property from different angles -- form (C-28), count+form (C-34), parseable completeness (C-36). At STEP E, one design choice (grouped vs. independent) determines the compliance state of all three simultaneously. V-03's 28/30 score vs. V-01/V-02's 27/30 quantifies the cascade: C-36 FAIL is not one criterion failure but three.", "C-38 terminal verdict closes the sole asymmetric node in the full named-binary chain: STEP E consumed two named inputs (Confirmed readiness, Inertia case) without producing any named output before C-38. Terminal readiness: PROCEED/LOOP/INVESTIGATE emitted at STEP E and declared in the 12th ARCHITECTURE row makes the signal-check result accessible as a named artifact to external consumers (topic namespace) without prose re-derivation -- applying the same structural closure at the register boundary that C-19 applied at SEQUENCE and C-22 applied at the inertia coaching section.", "C-37 step-granular Consumed-by converts the ARCHITECTURE table from a pipeline summary requiring section-traversal verification to a pipeline contract enabling single-read audit: with PART 2 STEP E named explicitly in both Inertia case and Confirmed readiness rows, C-33/C-34/C-35 compliance is checkable from the table before either part runs. Section-level entries (PART 2 readiness summary) require opening the PART 2 section to locate the specific consuming step, defeating C-25's front-loaded auditability goal for PART 2 internal handoffs."]}
 ```
