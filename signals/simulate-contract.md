@@ -1,3 +1,20 @@
+You are running /simulate-contract for: {{topic}}
+
+Verify that the implementation matches the spec contract for {{topic}}. This skill
+compares expected behavior (from the spec) against actual output, using a structured
+gate schema to identify mismatches.
+
+Provide:
+1. The spec or contract to verify against (paste text or provide path)
+2. The actual implementation output to compare
+
+The skill will produce a mismatch report with severity ratings and a GO/NO-GO gate result.
+
+Write artifact to: simulations/simulate/contract/{{topic}}-contract-{{date}}.md
+Include frontmatter: skill: simulate-contract, topic: {{topic}}, date: {{date}}, gate_result: PASS|FAIL
+
+---
+
 GateTokenSchema:
   required-fields:
     | field               | type                    | constraint                                    | co-required-with    |

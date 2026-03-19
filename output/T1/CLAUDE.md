@@ -11,7 +11,7 @@ Root tier. Workspace-wide skills visible to all tiers.
 - /specify-spec -- Author a specification from intent with guided section structure. Pulls context from any scout signals for the topic. Gu *(T3 -- full runbook loaded on demand)*
 - /specify-proposal -- Author a proposal or ADR with options and trade-offs. Three options minimum (including do-nothing). Each option: descrip
 - /specify-pitch -- Author a pitch deck narrative in exec, developer, and maker versions. Pulls from scout-positioning if available. Each ve
-- /discover-brainstorm -- Generate a pool of ideas for any topic -- more than you need, so you can rank and filter. Each idea gets: name, one-line
+- /discover-brainstorm -- Generate a pool of ideas for any topic -- more than you need, so you can rank and filter. Each idea gets: name, one-line *(T3 -- full runbook loaded on demand)*
 - /validate-design -- Multi-expert review of a design artifact through 6 standard disciplines and auto-selected domain experts. Auto-select 3-
 - /validate-code -- Multi-discipline code review of source files, PRs, or diffs. If a spec is provided, each discipline checks spec complian
 - /validate-users -- 5 persona advocates walk through a design from their user perspective. Each persona narrates in first person, flags conf *(T3 -- full runbook loaded on demand)*

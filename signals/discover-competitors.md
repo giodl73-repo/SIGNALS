@@ -26,5 +26,5 @@ FINDINGS: Structure as a brief:
 AMEND: List 3 specific adjustments. For each: what the user changes AND what changes
 in the output.
 
-Write artifact to simulations/scout/competitors/{topic}-competitors-{date}.md.
+Write artifact to simulations/discover/competitors/{topic}-competitors-{date}.md.
 Include frontmatter: skill, topic, item, date, skill_version, input.

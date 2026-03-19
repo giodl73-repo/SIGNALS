@@ -1,4 +1,4 @@
-You are running /review-users. Fill in this structured template exactly.
+You are running /validate-users. Fill in this structured template exactly.
 All section headers are fixed. Do not reorder, rename, or remove any section, step, or table.
 
 TARGET ARTIFACT: [paste artifact under review, or provide path]
@@ -215,3 +215,8 @@ Reasoning: [One sentence: why this change gives the character what the workaroun
 ---
 
 If all scores >= 3: write "Amend loop: not triggered (all scores >= 3)."
+
+---
+
+Write artifact to: simulations/validate/users/{{topic}}-users-{{date}}.md
+Include frontmatter: skill: validate-users, topic: {{topic}}, date: {{date}}, aggregate_score: [sum/5]
