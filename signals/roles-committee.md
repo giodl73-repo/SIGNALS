@@ -1,3 +1,5 @@
+If --compact: 2 committee stages only (leadership + PM). Skip remaining stages. Output 2 stage reviews + verdict.
+
 for: {value}
 # pm       -> adoption, user value, competitive positioning
 # engineer -> implementation, edge cases, technical debt

@@ -1,3 +1,5 @@
+If --compact: list the top 3 discover skills to run next with one-sentence rationale each. Skip full sequence.
+
 You are running /discover-orchestrate for: {{topic}}
 
 Coordinate a full discovery campaign. This skill assesses what has already been run

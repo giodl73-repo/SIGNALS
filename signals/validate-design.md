@@ -1,3 +1,5 @@
+If --compact: 3 reviewers (Architect, Code-Quality, Process). 2 findings each. Skip BLOCK 0 domain scan and BLOCK 1.5 roster.
+
 A multi-expert design review SHALL be conducted according to the following specification. Each output block MUST conform to its stated requirements; the output SHALL NOT proceed past a failed block until the failure is resolved.
 
 ---
@@ -75,62 +77,50 @@ If no domain experts were added: the table SHALL contain 6 Stock rows only.
 
 Generate a finding table for every reviewer in BLOCK 1.5 order. Domain experts run first.
 
-For each reviewer, produce one table:
-
-**[Reviewer Name] ([Role] / [Source])**
+For each reviewer, produce:
 
 | # | Finding | Sev | Section | Recommendation |
 |---|---------|-----|---------|----------------|
-| 1 | [finding description] | P1/P2/P3 | [section name or "General"] | [action or "Accept as-is"] |
+| 1 | [specific finding from this reviewer's lens] | P1/P2/P3 | [section reference] | [concrete fix] |
 
-Sev definitions: P1 = blocks delivery; P2 = degrades quality or maintainability; P3 = nice-to-fix.
-Minimum 2 findings per reviewer at standard depth; 4 at deep depth.
-If no findings: row `| 1 | No findings at this depth | P3 | General | None |`
+Severity definitions: P1 = blocks implementation (design cannot proceed), P2 = must fix before review sign-off, P3 = should fix before ship.
 
-Repeat table for every reviewer in BLOCK 1.5 order.
+Minimum findings per reviewer: quick=2, standard=4, deep=6. A reviewer with zero findings MUST state "No findings -- [reason this discipline is not implicated by this design]."
 
 ---
 
-**BLOCK 3 -- CONSENSUS ANALYSIS** *(F-04: consensus count MUST be >= 1 at standard depth; F-05: split opinions MUST be listed if any exist)*
+**BLOCK 3 -- SYNTHESIS** *(F-11: MUST be present; F-12: overall verdict MUST be one of APPROVED / APPROVED-WITH-CONDITIONS / NEEDS-WORK)*
 
-After all per-reviewer tables are complete, produce:
+```
+Overall verdict: [APPROVED / APPROVED-WITH-CONDITIONS / NEEDS-WORK]
 
-**Consensus findings (flagged by 2+ reviewers):**
+P1 blockers (must resolve before implementation):
+  - [finding reference] [reviewer] -- [one-line description]
+  (None -- proceed to implementation)
 
-| Finding | Reviewers | Sev (highest) | Recommended action |
-|---------|-----------|---------------|--------------------|
-| [finding] | [list of reviewer names] | P1/P2/P3 | [action] |
+P2 conditions (must resolve before sign-off):
+  - [finding reference] [reviewer] -- [one-line description]
 
-If no consensus findings: row `| None | -- | -- | -- |`
+Cross-reviewer consensus:
+  [2-3 sentences: what multiple reviewers agreed on, if any pattern emerged]
 
-**Split opinions (reviewers disagree on severity or recommendation):**
-
-| Finding | Reviewer A | Reviewer B | Nature of split |
-|---------|-----------|-----------|-----------------|
-| [finding] | [view] | [view] | [why they differ] |
-
-If no splits: "No split opinions."
-
-**Unique catches (flagged by exactly one reviewer, high signal):**
-
-| Finding | Reviewer | Sev | Why notable |
-|---------|---------|-----|-------------|
-| [finding] | [reviewer] | P1/P2/P3 | [why only one reviewer caught this] |
-
-If none: "No unique catches."
+Strongest signal:
+  [the single most important finding from the review -- the one to act on first]
+```
 
 ---
 
 **AMEND**
 
-List 3 specific adjustments. For each: what the user changes AND what changes in the output.
+Three targeted amendments based on the highest-severity findings:
+1. [Specific addition or change to the design document -- cite section]
+2. [Specific addition or change]
+3. [Specific addition or change]
 
-Amend 1: Change [what] -> output [changes how]
-Amend 2: Change [what] -> output [changes how]
-Amend 3: Change [what] -> output [changes how]
+Each amendment names: what changes, where in the document, and why.
 
 ---
 
 Write artifact to: signals/validate/design/{{topic}}-design-{{date}}.md
-If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-[this-skill]-{date}.md). No namespace subdirectory.
+If --output <path> was provided: write to <path>/{{topic}}-[skill]-{{date}}.md instead (flat, no namespace prefix).
 Include frontmatter: skill: validate-design, topic: {{topic}}, date: {{date}}, reviewer_count: [n], p1_count: [n], p2_count: [n], p3_count: [n], domain_roles_active: [list domain expert names from BLOCK 1.5, or "none"]

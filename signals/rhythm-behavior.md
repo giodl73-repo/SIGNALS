@@ -1,3 +1,5 @@
+If --compact: run S1 (flow-lifecycle) and S3 (trace-state) only. Skip S2, S4, S5 and SYNTHESIS.
+
 confidence: standard
 # low    -> include findings without citation
 # standard -> cite source section for each finding (default)

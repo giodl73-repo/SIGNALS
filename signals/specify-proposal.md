@@ -1,3 +1,5 @@
+If --compact: Problem Statement + Proposed Solution + top 3 risks only. Skip success criteria, stakeholders, and alternatives.
+
 Topic: {topic}
 Prior signals: [list any signals already gathered for this topic, or "none"]
 

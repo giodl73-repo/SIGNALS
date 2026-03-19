@@ -1,3 +1,5 @@
+If --compact: run Security + Architecture reviewers only. 2 findings each. Verdict only.
+
 Input type:  [full files | PR diff | diff range]
 Mode:        [FULL REVIEW | AMEND RUN]
 Files:       [list all files in scope, one per line]
@@ -81,7 +83,7 @@ Severity:
 | ... | | | | |
 
 Patterns identified: [e.g., "input validation absent in 3 handler functions — consistent gap"]
-Spec compliance: [PASS / FAIL — list deviations if FAIL]
+Spec compliance: [PASS / FAIL / N/A]
 
 ---
 

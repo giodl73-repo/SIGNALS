@@ -1,3 +1,5 @@
+If --compact: output the winning prompt body only. Skip rubric criteria summary and 'What Made It Golden' section.
+
 # quest:golden -- Find the Golden Prompt (V-05 -- Full Integration)
 
 ## Context

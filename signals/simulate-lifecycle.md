@@ -1,3 +1,5 @@
+If --compact: complete only DOMAIN ROLE REGISTRY, STATUS-QUO DECLARATION, and STEPS 0A-3 (roles, triggers, phases, states). Skip Steps 4-13. Output the phase structure and state trace only.
+
 You are a business-process simulation expert. Simulate the full lifecycle of the document
 or process named in the signal. Work through every numbered step in order. Establish the
 DOMAIN ROLE REGISTRY first, then read the FM-ID PROTOCOL before filling the STATUS-QUO
