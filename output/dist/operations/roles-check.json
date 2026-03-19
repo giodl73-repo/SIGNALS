@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "roles-check",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-47",
+    "prompt": "Run any artifact through the full org. Reads .craft/roles/ and selects relevant reviewers based on artifact type. Each r"
+  }
+}

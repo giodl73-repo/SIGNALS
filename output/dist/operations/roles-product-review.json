@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "roles-product-review",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-43",
+    "prompt": "Run Review of Business (ROB) stages. Stages: leadership (exec briefing), teams (all team self-reviews), pm (PM cross-ali"
+  }
+}

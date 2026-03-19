@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "rhythm-status",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-35",
+    "prompt": "Show topic coverage and commitment readiness. DISPLAY ONLY. Use --view for supplementary perspectives: --view roadmap (w"
+  }
+}

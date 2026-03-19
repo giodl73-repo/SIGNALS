@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-32",
+    "prompt": "Show the Signal command index. Lists all available skills organized by namespace with one-line descriptions. Type /signa"
+  }
+}

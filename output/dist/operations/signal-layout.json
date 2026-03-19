@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "signal-layout",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-34",
+    "prompt": "Show or change your Signal navigation layout. Five variants: A) grouped (9 namespaces), B) groups (5 phases: discover/sp"
+  }
+}

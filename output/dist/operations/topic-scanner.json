@@ -3,7 +3,7 @@
   "skill": "topic-scanner",
   "root": {
     "type": "llm-call",
-    "handle": "op-74",
+    "handle": "op-63",
     "prompt": "Discovers all signals for a topic by globbing simulations/**/topic-* files. Computes coverage against strategy.md planned signals.\n"
   }
 }

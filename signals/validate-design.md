@@ -1,0 +1,76 @@
+A multi-expert design review SHALL be conducted according to the following specification. Each output block MUST conform to its stated requirements; the output SHALL NOT proceed past a failed block until the failure is resolved.
+
+---
+
+**BLOCK 0 -- CONTENT SIGNAL CATALOGUE** *(Pre-scan only -- no tables filled, no experts assigned)*
+
+Read the full design document before any domain expert is assigned. For every phrase, concept, or decision signalling a specialized domain not covered by the 6 stock disciplines, record one row.
+
+| Signal phrase | Domain category |
+|---------------|-----------------|
+| [exact phrase or concept] | [security / data / compliance / accessibility / platform / protocol / ...] |
+
+If no domain signals are detected: row `| No domain signals detected | -- |`
+
+Gate F-13: BLOCK 1 SHALL NOT add any domain expert whose Signal detected value is absent from this catalogue. The block SHALL NOT be closed until all detected signals are recorded.
+
+---
+
+**BLOCK 1 -- EXPERT ROSTER** *(F-03: Signal detected MUST be populated; F-07: Expert added and Reason MUST be populated; F-13: Signal detected MUST match a BLOCK 0 catalogue entry; F-18: every BLOCK 0 signal MUST be resolved as an expert selection or a disposition row; F-21: disposition row reason cell MUST be populated)*
+
+Drawing exclusively from the BLOCK 0 signal catalogue, add one domain expert row per catalogued signal that warrants domain expertise. All three cells in every row MUST be populated.
+
+Stock table (fixed -- SHALL NOT be modified):
+
+| Reviewer | Role |
+|----------|------|
+| Architect | Stock |
+| Code-Quality | Stock |
+| Documentation | Stock |
+| Testing | Stock |
+| Process | Stock |
+| Implementation | Stock |
+
+Domain expert table:
+
+| Signal detected | Expert added | Reason |
+|-----------------|--------------|--------|
+| [signal phrase from BLOCK 0 catalogue] | [expert title or role] | [one sentence: why this signal warrants this expert] |
+
+If no signals were catalogued in BLOCK 0: a single row `| No signals detected | None | -- |` SHALL be present.
+
+Signal disposition gate (F-18 + F-21): for every Signal phrase row in BLOCK 0 that is not `No domain signals detected`, one of the following MUST hold before BLOCK 1 closes:
+1. A domain expert row exists with a matching Signal detected value, OR
+2. A disposition row is present: `| [Signal phrase] | No expert needed | [reason: one sentence explaining why no expert is warranted] |`
+
+A BLOCK 0 signal with neither a domain expert row nor a disposition row fires F-18 -- the block SHALL NOT close until all signals are resolved. A disposition row with an empty reason cell fires F-21 -- the row SHALL NOT be accepted until the reason cell is populated.
+
+After population: record `BLOCK 1 domain count = [n]` (count of domain expert rows, excluding "No signals detected" and disposition rows).
+
+---
+
+**BLOCK 1.5 -- ROSTER COMMITMENT TABLE** *(F-09: block MUST appear; Domain row count MUST equal BLOCK 1 domain count; F-10: no orphaned domain experts)*
+
+The complete reviewer roster MUST be committed before any finding block is generated. Domain experts appear before stock disciplines. The Source column MUST distinguish `Domain` from `Stock`. Every Domain row Reviewer name MUST exactly match an Expert added value from BLOCK 1 -- any deviation fires F-10.
+
+| Reviewer | Role | Source |
+|----------|------|--------|
+| [Expert added value from BLOCK 1] | Domain expert | Domain |
+| Architect | Stock discipline | Stock |
+| Code-Quality | Stock discipline | Stock |
+| Documentation | Stock discipline | Stock |
+| Testing | Stock discipline | Stock |
+| Process | Stock discipline | Stock |
+| Implementation | Stock discipline | Stock |
+
+Conformance gate -- both checks before BLOCK 2 begins:
+1. Domain row count MUST equal `BLOCK 1 domain count`. F-09 fires on mismatch.
+2. Every Domain Reviewer name MUST exactly match an Expert added value in BLOCK 1. F-10 fires on any mismatch.
+
+If no domain experts were added: the table SHALL contain 6 Stock rows only.
+
+---
+
+**BLOCK 2 -- PER-REVIEWER FINDINGS** *(F-01: all 6 stock disciplines MUST be present; F-02: Sev MUST be P1, P2, or P3; domain experts run first)*
+
+Generate a finding table for every reviewer in BLOCK 1.5 order. Domain experts run first.

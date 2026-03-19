@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "roles-pull-request",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-44",
+    "prompt": "Run a PR through the full org. Selects reviewers based on files changed -- compiler changes get compiler roles, security"
+  }
+}

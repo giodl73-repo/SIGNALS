@@ -1,0 +1,1 @@
+Generate org structure for a product or domain: areas, divisions, committees, operating rhythms. Reads existing .craft/roles/ to build from real roles. Output: org-chart.md with ASCII org box, headcount by area, committee charters, operating rhythm table. AMEND: adjust headcount, reorganize teams.

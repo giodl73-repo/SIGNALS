@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "validate-code",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-10",
+    "prompt": "Multi-discipline code review of source files, PRs, or diffs. If a spec is provided, each discipline checks spec complian"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "discover-compare",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-56",
+    "prompt": "Structured A vs B comparison for two approaches, features, or options. For each option: feasibility, inertia (would team"
+  }
+}

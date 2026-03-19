@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "rhythm-story",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-36",
+    "prompt": "Synthesize all signals into a coherent narrative. NOT a summary of each signal -- an editorial synthesis in the author's"
+  }
+}

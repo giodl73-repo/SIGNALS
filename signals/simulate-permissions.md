@@ -1,0 +1,1 @@
+Trace who can do what through RBAC, security roles, teams, and field-level security. For each operation: which roles can perform it, which fields are visible, which records are accessible. Identify: privilege escalation paths, missing field-level security, team membership gaps, sharing rule conflicts. Stock roles: Customer Service / Dataverse security expert.

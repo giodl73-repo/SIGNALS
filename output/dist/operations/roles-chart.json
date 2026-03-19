@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "roles-chart",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-46",
+    "prompt": "Generate org structure for a product or domain: areas, divisions, committees, operating rhythms. Reads existing .craft/r"
+  }
+}

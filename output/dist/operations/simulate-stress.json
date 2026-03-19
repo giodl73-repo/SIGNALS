@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "simulate-stress",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-15",
+    "prompt": "Simulate degraded conditions: offline, partial failure, eventual consistency. For each failure scenario: what state is t"
+  }
+}

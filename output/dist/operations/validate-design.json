@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "validate-design",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-9",
+    "prompt": "Multi-expert review of a design artifact through 6 standard disciplines and auto-selected domain experts. Auto-select 3-"
+  }
+}

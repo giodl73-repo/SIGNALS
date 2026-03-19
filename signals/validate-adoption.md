@@ -1,0 +1,1 @@
+{"simplified_word_count": 1240, "original_word_count": 1535, "all_essential_still_pass": true, "reduction_pct": 19.2}

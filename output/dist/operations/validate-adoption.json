@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "validate-adoption",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-27",
+    "prompt": "Simulate the adoption curve across team archetypes. Map personas to Rogers archetypes (innovator/early-adopter/early-maj"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "tools-preview",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-29",
+    "prompt": "Generate a mock artifact for a single namespace. Same annotation and category rules as mock-all. Use --skill to target a"
+  }
+}

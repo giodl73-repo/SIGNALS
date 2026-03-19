@@ -1,0 +1,1 @@
+Generate synthetic signal artifacts for all 9 namespaces in a single pass. Each mock follows the structural requirements of its golden rubric. Automatic pre-flagging: EVIDENCE-HEAVY namespaces get REAL-REQUIRED, compliance namespaces flagged at all tiers. Coverage summary table at end. Supports --tier 1|2|3 and --compliance flags.

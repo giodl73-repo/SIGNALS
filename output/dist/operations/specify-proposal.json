@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "specify-proposal",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-6",
+    "prompt": "Author a proposal or ADR with options and trade-offs. Three options minimum (including do-nothing). Each option: descrip"
+  }
+}

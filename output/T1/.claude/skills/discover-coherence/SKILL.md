@@ -1,0 +1,13 @@
+---
+name: discover-coherence
+description: "Check whether your discover signals agree with each other. Surfaces contradictions: if discover-competitors rates inerti"
+allowed-tools: [Read, Glob]
+param_set: lean
+---
+depth: standard
+# quick   -> fast scan, 5+ findings, prioritize obvious issues
+# standard -> thorough, 15+ findings, full coverage (default)
+# deep    -> exhaustive adversarial audit, 25+ findings, treat missing as failure
+
+
+Check whether your discover signals agree with each other. Surfaces contradictions: if discover-competitors rates inertia MEDIUM but discover-inertia finds switching cost HIGH, those disagree. If discover-hypothesis predicts adoption but validate-customers shows NPS 4, those disagree. Lists each contradiction with both signals side by side, severity (blocking vs advisory), and the most likely resolution. Run after gathering multiple discover signals before specifying.

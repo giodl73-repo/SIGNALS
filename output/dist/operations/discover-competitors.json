@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "discover-competitors",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-1",
+    "prompt": "Competitive landscape analysis with inertia-first framing. Use --focus to expand scope: --focus market (sizing + segment"
+  }
+}

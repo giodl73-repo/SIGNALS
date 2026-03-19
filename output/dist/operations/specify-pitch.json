@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "specify-pitch",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-7",
+    "prompt": "Author a pitch deck narrative in exec, developer, and maker versions. Pulls from scout-positioning if available. Each ve"
+  }
+}

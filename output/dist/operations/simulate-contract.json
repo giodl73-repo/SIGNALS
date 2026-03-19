@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "simulate-contract",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-18",
+    "prompt": "Verify implementation against spec contract. Use --type to target a specific verification dimension: --type component (U"
+  }
+}

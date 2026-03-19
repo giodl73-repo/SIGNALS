@@ -1,0 +1,1 @@
+Run the full design validation campaign. Orchestrates: review-design, review-users, review-customers, listen-feedback, listen-adoption in sequence. Output: validation brief with findings ranked by adoption impact. Use to validate a design before committing to spec.

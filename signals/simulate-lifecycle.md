@@ -1,0 +1,6 @@
+Phase:          [Ph-ID: Phase Name]
+Exit condition: [verifiable output or state that closes this phase]
+SLA envelope:   [target duration from Step 2]
+Success:        [Ph-ID or T-ID reached on clean exit]
+Failure:        [T-ID or named exception triggered on exit failure]
+Blocked by:     [C-ID(s) -- Mandatory; blank is a structural fail]

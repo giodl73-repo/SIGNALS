@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "rhythm-behavior",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-50",
+    "prompt": "Run the full technical simulation campaign. Orchestrates: flow-lifecycle, flow-conversation, trace-state, trace-contract"
+  }
+}

@@ -1,13 +1,33 @@
 ---
 name: quest-rubric
-description: "Define what good output looks like for a skill. Given a skill spec and sample outputs, produce a scoring rubric: a ranked list of criteria (C-01, C-02...) each with a pass condition, weight, and category (correctness, depth, format, coverage). The rubric is the objective function for /quest:golden. Start with 3-5 essential criteria; the rubric grows as /quest:golden discovers excellence patterns.
-"
+description: "Define what good output looks like for a skill. Given a skill spec and sample outputs, produce a scoring rubric: ranked"
 allowed-tools: [Read, Write, Glob]
 param_set: lean
 ---
-# quest-rubric
+depth: standard
+# quick   -> fast scan, 5+ findings, prioritize obvious issues
+# standard -> thorough, 15+ findings, full coverage (default)
+# deep    -> exhaustive adversarial audit, 25+ findings, treat missing as failure
 
-Define what good output looks like for a skill. Given a skill spec and sample outputs, produce a scoring rubric: a ranked list of criteria (C-01, C-02...) each with a pass condition, weight, and category (correctness, depth, format, coverage). The rubric is the objective function for /quest:golden. Start with 3-5 essential criteria; the rubric grows as /quest:golden discovers excellence patterns.
 
+COMPETITOR PLACEMENT + COVERAGE AUDIT:
 
-*Full runbook at `quest-rubric.t3/SKILL.md`.*
+STEP A — Phase-local placement audit:
+  Competitor [name]: introduced at [Phase/Role N] | gap operationally relevant at [N] |
+  phase-local? [Y/N] | PHASE-LOCALITY RULE zone violated? [zone 1/2/3 / None]
+  STOP if any competitor fails either column.
+  Step A status: [COMPLIANT / BLOCKED]
+
+STEP B — Coverage completeness audit:
+  Novel aspirational criteria: [list by ID and G-NN]
+  Count: [N]
+  Competitors: [list each and criterion governed]
+  Count: [N]
+  STOP if counts differ.
+  Step B status: [COMPLIANT / BLOCKED]
+
+STEP C — Tier-divergence re-run:
+  [Three-tier table with aspirational row populated]
+  Distinct majority categories: [N]
+  STOP if < 2.
+  Final scan status: [COMPLIANT / BLOCKED]

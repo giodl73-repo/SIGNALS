@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "discover-websearch",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-21",
+    "prompt": "Search the public web for evidence supporting or refuting the hypothesis. For each search: query used, sources found, ev"
+  }
+}

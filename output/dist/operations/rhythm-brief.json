@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "rhythm-brief",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-52",
+    "prompt": "Run the full topic narrative campaign. Orchestrates: topic-new (register), topic-roadmap (plan signals), topic-status (c"
+  }
+}

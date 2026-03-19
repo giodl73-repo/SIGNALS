@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "rhythm-decide",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-49",
+    "prompt": "Run the full pre-commitment decision campaign. Orchestrates: scout-competitors, scout-feasibility, scout-risk, prove-hyp"
+  }
+}

@@ -1,0 +1,1 @@
+Hand-compile state transitions: starting state, operations applied, expected outcome at each step. For each operation: preconditions, state changes, postconditions, invariants that must hold. Identify: invalid state transitions, missing precondition checks, invariant violations, race conditions. Stock roles: Sales / Customer Service / Finance state domain expert.

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "roles-build",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-42",
+    "prompt": "Read a confirmed org.yaml and generate the full org. Outputs: (1) org-chart.md with ASCII box diagram, headcount by grou"
+  }
+}

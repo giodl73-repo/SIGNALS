@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "discover-analysis",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-22",
+    "prompt": "Analyze existing data, telemetry, schemas, or scenarios for patterns that bear on the hypothesis. For each data source:"
+  }
+}

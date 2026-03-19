@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "discover-brainstorm",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-8",
+    "prompt": "Generate a pool of ideas for any topic -- more than you need, so you can rank and filter. Each idea gets: name, one-line"
+  }
+}

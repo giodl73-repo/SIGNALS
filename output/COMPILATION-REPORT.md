@@ -2,14 +2,14 @@
 
 ## Summary
 
-Compiled 76 skills across 2 tiers
+Compiled 65 skills across 2 tiers
 
 ## Token Budget
 
 | Metric | Value |
 |--------|-------|
-| Allocated | 114000 |
-| Consumed | 114000 |
+| Allocated | 97500 |
+| Consumed | 97500 |
 | Remaining | 0 |
 | Utilization | 100% |
 
@@ -21,5 +21,5 @@ Compiled 76 skills across 2 tiers
 
 | Metric | Pre | Post | Delta |
 |--------|-----|------|-------|
-| Skills | 76 | 76 | 0 |
-| Tokens | 114000 | 114000 | 0 |
+| Skills | 65 | 65 | 0 |
+| Tokens | 97500 | 97500 | 0 |

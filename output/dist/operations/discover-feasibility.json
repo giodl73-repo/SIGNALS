@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "discover-feasibility",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-2",
+    "prompt": "Technical feasibility assessment. Use --focus for additional discovery dimensions: --focus compliance (regulatory constr"
+  }
+}

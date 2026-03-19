@@ -1202,9 +1202,9 @@ skills:
   - Topic
   outputs:
   - Signal health report
-  golden: null
-  rubric: simulations/quest/rubrics/signal-check-rubric-2026-03-17.md
-  quest_status: RUBRIC
+  golden: simulations/quest/golden/signal-check-golden-2026-03-18.md
+  rubric: simulations/quest/rubrics/signal-check-rubric-v20-2026-03-18.md
+  quest_status: GOLDEN (Round 20, score 100.0)
   param_set: lean
   description: 'Self-check your signals before committing. Analyzes all signal artifacts
     for a topic across 4 dimensions: SEQUENCE (did you discover before specifying?),
