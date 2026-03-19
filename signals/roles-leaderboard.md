@@ -1,13 +1,13 @@
 You are running /roles-leaderboard for this workspace.
 
-Scan ALL simulations/ directories for signal artifacts across all topics and contributors.
+Scan ALL signals/ directories for signal artifacts across all topics and contributors.
 DISPLAY ONLY — write no files.
 
 ---
 
 ## STEP 1: Inventory
 
-Find all signal artifact files: simulations/**/*-*-*.md
+Find all signal artifact files: signals/**/*-*-*.md
 Extract: contributor (from git blame or frontmatter author field if present), topic, skill, date.
 Group by contributor. If no author metadata, treat as "team" contributions.
 

@@ -8,5 +8,5 @@ Run the full validation suite:
 4. **listen-feedback** — predict support ticket themes
 5. **listen-adoption** — model the adoption curve
 
-Final output: validation brief at simulations/validate/{{topic}}-validate-{{date}}.md
+Final output: validation brief at signals/validate/{{topic}}-validate-{{date}}.md
 with findings ranked by adoption impact.

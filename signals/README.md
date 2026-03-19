@@ -23,7 +23,7 @@ Forge assembles the full skill file at install time. You do not edit these direc
 ## How to update
 
 1. Run the quest loop for the skill (`tools/quest-run-one.sh <skill-name>`)
-2. Score variations with the rubric (`simulations/quest/rubrics/`)
+2. Score variations with the rubric (`signals/quest/rubrics/`)
 3. When a variation scores higher, promote it: copy the body into this directory
 4. Re-run `forge generate --stage program` to rebuild the output
 

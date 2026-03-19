@@ -131,10 +131,10 @@ DO NOT declare golden unless BOTH gates are satisfied simultaneously.
 1. Select the highest-composite-scoring variation from this round.
    Tiebreaker: minimal structure (fewest operator constraints).
 2. Write the full prompt body verbatim to:
-     simulations/quest/golden/{skill}-golden-{date}.md
+     signals/quest/golden/{skill}-golden-{date}.md
    Include frontmatter: skill, date, rounds-to-convergence, rubric_final, score, status: golden.
    Body: complete, runnable prompt text -- DO NOT write only a summary or description.
 3. Write the final accumulated rubric (all criteria from all rounds) to:
-     simulations/quest/rubrics/{skill}-rubric-v{N}-{date}.md
+     signals/quest/rubrics/{skill}-rubric-v{N}-{date}.md
    Every criterion must include: ID, category, text, pass condition, weight, added-in-round.
 4. State both artifact paths.

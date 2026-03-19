@@ -77,8 +77,8 @@ signals say together.
 See `plugin-plan.md` for the full catalog and `PRINCIPLES.md` for design decisions.
 
 Artifact naming: `{topic}-{signal}-{date}.md`
-Storage: `simulations/{namespace}/{skill}/{topic}-{signal}-{date}.md`
-Topic registry: `simulations/TOPICS.md`
+Storage: `signals/{namespace}/{skill}/{topic}-{signal}-{date}.md`
+Topic registry: `signals/TOPICS.md`
 
 ## Platform
 

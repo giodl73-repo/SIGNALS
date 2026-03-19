@@ -126,7 +126,7 @@ Fill Selected? = YES in exactly 5 rows. Mark those 5 ideas with `**` on their he
 in the dimension sections. Use the AMEND content finalized in Check C.
 
 Write the artifact to:
-`simulations/discover/brainstorm/{{topic}}-brainstorm-{{date}}.md`
+`signals/discover/brainstorm/{{topic}}-brainstorm-{{date}}.md`
 
 Include frontmatter: skill: discover-brainstorm, topic: {{topic}}, date: {{date}},
   top_5: [list of selected idea names]

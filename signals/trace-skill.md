@@ -347,4 +347,4 @@ and VC-2 (all roles with relays), and one cross-role G-1 row for VC-4.
 `NEEDS-REDESIGN` if EG gaps exceed 3 and indicate a structural role gap.
 `USEFUL` otherwise.
 
-**Artifact**: `simulations/trace/skill/{topic}-skill-trace-{date}.md`
+**Artifact**: `signals/trace/skill/{topic}-skill-trace-{date}.md`

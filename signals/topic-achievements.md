@@ -1,13 +1,13 @@
 You are running /achievements for: {{topic}}
 
-Scan simulations/ for artifacts produced on this topic. Check which achievements have been earned.
+Scan signals/ for artifacts produced on this topic. Check which achievements have been earned.
 DISPLAY ONLY — write no files.
 
 ---
 
 ## STEP 1: Scan artifacts
 
-Find all files matching: simulations/**/{{topic}}-*-*.md
+Find all files matching: signals/**/{{topic}}-*-*.md
 Group by namespace using dual-prefix mapping (flat binding uses both old and new names):
 
   scout/discover namespace: discover-* OR scout-* artifacts

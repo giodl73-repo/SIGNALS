@@ -18,7 +18,7 @@ That question — the inertia case — is the first signal every investigation p
 
 ## The 9 namespaces
 
-Each namespace is an evidence-gathering domain. Every skill in a namespace produces a dated artifact in `simulations/`. The namespace prefix also routes by audience: `scout` and `draft` are PM-facing; `trace` and `flow` are developer-facing; `review` is team-facing.
+Each namespace is an evidence-gathering domain. Every skill in a namespace produces a dated artifact in `signals/`. The namespace prefix also routes by audience: `scout` and `draft` are PM-facing; `trace` and `flow` are developer-facing; `review` is team-facing.
 
 | Namespace | What it answers | Example skill |
 |-----------|----------------|---------------|
@@ -71,7 +71,7 @@ Five steps from idea to first read on readiness:
 /topic-new payment-reminders
 ```
 
-Registers the topic in `simulations/TOPICS.md`, creates a `strategy.md` with planned signals for the investigation. The strategy is an editorial plan — which namespaces to cover, in what order, who owns each signal. Every skill runs standalone even without this step, but opening a topic gives you coverage tracking.
+Registers the topic in `signals/TOPICS.md`, creates a `strategy.md` with planned signals for the investigation. The strategy is an editorial plan — which namespaces to cover, in what order, who owns each signal. Every skill runs standalone even without this step, but opening a topic gives you coverage tracking.
 
 **Step 2: Scout the inertia case first**
 
@@ -79,7 +79,7 @@ Registers the topic in `simulations/TOPICS.md`, creates a `strategy.md` with pla
 /scout-competitors payment-reminders
 ```
 
-Produces `simulations/scout/competitors/payment-reminders-competitors-2026-03-16.md`. The artifact opens with "The Primary Competitor" — why teams do nothing — before listing named competitors. This is the signal that either validates your feature's existence or stops a bad idea early.
+Produces `signals/scout/competitors/payment-reminders-competitors-2026-03-16.md`. The artifact opens with "The Primary Competitor" — why teams do nothing — before listing named competitors. This is the signal that either validates your feature's existence or stops a bad idea early.
 
 **Step 3: Check feasibility**
 
@@ -112,7 +112,7 @@ You are ready when all essential namespaces for your feature's risk tier have co
 Every skill writes one dated artifact. Two people running the same skill on the same topic produce two files — different signals, no collision.
 
 ```
-simulations/
+signals/
   scout/
     competitors/    payment-reminders-competitors-2026-03-16.md
     feasibility/    payment-reminders-feasibility-2026-03-16.md
@@ -224,7 +224,7 @@ Every skill accepts a common parameter set. You rarely need to specify them — 
 
 ## The topic narrative
 
-`/topic-status` is the readout of your current position. It globs `simulations/**/{topic}-*`, cross-references against `strategy.md` planned signals, and computes coverage.
+`/topic-status` is the readout of your current position. It globs `signals/**/{topic}-*`, cross-references against `strategy.md` planned signals, and computes coverage.
 
 ```
 topic: payment-reminders
@@ -287,7 +287,7 @@ The first run of any skill produces a useful result with no prior configuration.
 - No skill requires another to have run first. Run `/trace-contract` without running `/scout-competitors` first. The skills are self-contained.
 - The first artifact you see is useful, not a setup wizard.
 
-> **Works without a code repo.** Signal skills run on any topic — a product description, a Notion doc, a feature brief, even a conversation. The `simulations/` directory is the only requirement. Power Platform builders, citizen developers, and pre-code PMs can run Signal from day one.
+> **Works without a code repo.** Signal skills run on any topic — a product description, a Notion doc, a feature brief, even a conversation. The `signals/` directory is the only requirement. Power Platform builders, citizen developers, and pre-code PMs can run Signal from day one.
 
 ---
 

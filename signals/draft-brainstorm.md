@@ -197,7 +197,7 @@ Fill Selected? = YES in exactly 5 rows. Mark those 5 ideas with `**` on their he
 in the dimension sections. Use the AMEND content finalized in Check C.
 
 Write the artifact to:
-`simulations/draft/brainstorm/{{topic}}-brainstorm-{{date}}.md`
+`signals/draft/brainstorm/{{topic}}-brainstorm-{{date}}.md`
 
 ```yaml
 ---
@@ -212,6 +212,6 @@ Displacement Target), dimension sections (top-5 marked, lens tags removed), Peer
 Comparison Registry, AMEND (3 directions, distribution-shift-verified). Total ideas
 including Do Nothing: 20-40.
 
-> **Phase 3 complete.** Artifact written to `simulations/draft/brainstorm/{{topic}}-brainstorm-{{date}}.md`. All phases closed.
+> **Phase 3 complete.** Artifact written to `signals/draft/brainstorm/{{topic}}-brainstorm-{{date}}.md`. All phases closed.
 
 > **Session complete.** Phases closed: Pre-Phase (lenses), Phase 0 (inertia baseline), Phase 1 (pool), Phase 2 (peer-comparison), Phase 3 (finalized). Artifact written and closed.

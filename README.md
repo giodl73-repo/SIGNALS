@@ -146,7 +146,7 @@ Commands shown use flat binding names. Bare uses the same names. Signal uses `si
 | Shipped, adoption is low | `/validate-adoption` | `/signal-listen-adoption` |
 | Core assumption needs testing | `/discover-hypothesis` | `/signal-prove-hypothesis` |
 
-Every skill writes one dated artifact: `simulations/{namespace}/{skill}/{topic}-{signal}-{date}.md`. Two people running the same skill on the same topic produce two files, no collision. Skills are concurrent by default.
+Every skill writes one dated artifact: `signals/{namespace}/{skill}/{topic}-{signal}-{date}.md`. Two people running the same skill on the same topic produce two files, no collision. Skills are concurrent by default.
 
 ## 6 install variants
 
@@ -182,7 +182,7 @@ Every `/scout-competitors` run assesses "none / status quo" first, always. Inert
 | [docs/](docs/QUICKSTART.md) | Guides, QUICKSTART, COMMANDS, ACHIEVEMENTS, philosophy |
 | [install/](install/README.md) | 12 install scripts for 6 bindings x 2 platforms |
 | [signals/](signals/README.md) | 75 golden prompt bodies, one per Signal skill |
-| [simulations/](simulations/README.md) | Quest loop artifacts, skill outputs, topic registry |
+| [signals/](signals/README.md) | Quest loop artifacts, skill outputs, topic registry |
 | [bindings/](bindings/README.md) | 6 program.yaml binding variants |
 | [tools/](tools/README.md) | Quest loop scripts and generator utilities |
 | [.craft/](.craft/README.md) | 206 expert role files organized by domain |

@@ -269,5 +269,5 @@ You ARE the HANDOFF WRITER. Write only the handoff section.
 
 #### HANDOFF
 
-Artifact written: simulations/mock/{topic}-mock-all-{date}.md
-Next: /mock:review {topic} simulations/mock/{topic}-mock-all-{date}.md
+Artifact written: signals/mock/{topic}-mock-all-{date}.md
+Next: /mock:review {topic} signals/mock/{topic}-mock-all-{date}.md

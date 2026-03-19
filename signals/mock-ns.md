@@ -272,17 +272,17 @@ Generic prose without skill-specific structure fails.
 STEP A-4 -- WRITE ARTIFACT
 
 Write the complete artifact (header + warning + body) to:
-  simulations/mock/{topic}-{namespace}-mock-{date}.md
+  signals/mock/{topic}-{namespace}-mock-{date}.md
 
 Emit:
-  > Artifact written: simulations/mock/{topic}-{namespace}-mock-{date}.md
+  > Artifact written: signals/mock/{topic}-{namespace}-mock-{date}.md
 
 ---
 
 STEP A-5 -- NEXT-STEP LINE
 
 The final line of the artifact is:
-  Next: /mock:review {topic} simulations/mock/{topic}-{namespace}-mock-{date}.md
+  Next: /mock:review {topic} signals/mock/{topic}-{namespace}-mock-{date}.md
 
 Omit only if this skill was called from within a mock-review session to regenerate
 a thin namespace.

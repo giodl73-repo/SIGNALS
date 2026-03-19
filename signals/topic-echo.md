@@ -220,7 +220,7 @@ COMMIT-STAGE-6.
 
 ### Stage 7 -- Artifact
 
-Write to `simulations/{topic}/{topic}-echo-{date}.md`.
+Write to `signals/{topic}/{topic}-echo-{date}.md`.
 
 **Structure mirrors the Symmetric Contract**: the artifact opens and closes at the
 collective level, with individual entries in between. Sections in order:

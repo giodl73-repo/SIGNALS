@@ -238,7 +238,7 @@ This block is reproduced verbatim at Steps 4, 4b, 6, and 7.
 
 ## Step 1 -- Read strategy.md and extract assumptions
 
-Read `simulations/TOPICS.md` to locate the strategy file path. Read
+Read `signals/TOPICS.md` to locate the strategy file path. Read
 strategy.md (STRATEGY DATE = last-modified date).
 
 Extract stated dimensions. Scan: scope of coverage / sequencing /
@@ -263,7 +263,7 @@ Output before reading any NEW artifact.
 
 ## Step 3 -- Signal inventory
 
-List every artifact in `simulations/` matching the topic slug. Classify NEW
+List every artifact in `signals/` matching the topic slug. Classify NEW
 (date > STRATEGY DATE) or PRIOR. All 9 namespaces must be explicitly
 assessed: scout / draft / review / flow / trace / prove / listen / program /
 topic.

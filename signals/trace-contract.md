@@ -140,4 +140,4 @@ Coverage: {N PASS} / {N total Expected Output entries} entries verified, {N devi
 
 ---
 
-**Output artifact:** Write to `simulations/trace/contract/{topic}-contract-{date}.md`
+**Output artifact:** Write to `signals/trace/contract/{topic}-contract-{date}.md`

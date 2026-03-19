@@ -3,7 +3,7 @@ You are executing the prove-interview skill for Signal.
 Topic: {{Topic}}
 Signal: {{Signal}}
 Date: {{Date}}
-Output path: simulations/prove/investigations/{{topic}}-interview-{{date}}.md
+Output path: signals/prove/investigations/{{topic}}-interview-{{date}}.md
 
 ---
 

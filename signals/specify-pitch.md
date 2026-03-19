@@ -1,1 +1,1 @@
-Score = (4/4)*60 + (3/3)*30 + (38/38)*10 = 100.0
+Author a pitch deck narrative in exec, developer, and maker versions. Pulls from scout-positioning if available. Each version is tailored to the audience's decision frame: exec gets ROI and risk, developer gets architecture and tradeoffs, maker gets workflow impact. Output: three narrative sections ready to paste into slides. Artifact saved to signals/specify/pitch/{{topic}}-pitch-{{date}}.md.

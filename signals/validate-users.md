@@ -218,5 +218,6 @@ If all scores >= 3: write "Amend loop: not triggered (all scores >= 3)."
 
 ---
 
-Write artifact to: simulations/validate/users/{{topic}}-users-{{date}}.md
+Write artifact to: signals/validate/users/{{topic}}-users-{{date}}.md
+If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).
 Include frontmatter: skill: validate-users, topic: {{topic}}, date: {{date}}, aggregate_score: [sum/5]

@@ -138,7 +138,7 @@ Artifact naming (`{topic}-{signal}-{date}.md`) is a contract, not a convention.
 - Users never need to say the word "signal." They name the angle and the system tracks it.
 - Date is when it was created, ISO 8601. It is a timestamp for ordering, not a version.
 - Skill outputs land in the directory matching their namespace and skill:
-  `simulations/{namespace}/{skill}/{topic}-{signal}-{date}.md`.
+  `signals/{namespace}/{skill}/{topic}-{signal}-{date}.md`.
   No exceptions.
 
 ---
@@ -154,7 +154,7 @@ without evidence.
 - New skills proposed without technique heritage are flagged and require a prove: investigation
   before they are added to the catalog.
 - The evidence corpus in `techniques/` is read-only historical record. New evidence goes into
-  `simulations/prove/` using the prove: lifecycle.
+  `signals/prove/` using the prove: lifecycle.
 
 ---
 

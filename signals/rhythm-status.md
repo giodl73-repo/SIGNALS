@@ -9,7 +9,7 @@ and whether the topic is ready to commit.
 
 ## PHASE 1 -- SIGNAL ACQUISITION
 
-Glob: simulations/**/{topic}-*
+Glob: signals/**/{topic}-*
 If no signals found: output "No signals found for {{topic}}" and stop.
 
 List each found signal:
@@ -19,7 +19,7 @@ List each found signal:
 
 ## PHASE 2 -- COVERAGE ASSESSMENT
 
-Read simulations/strategy.md if it exists.
+Read signals/strategy.md if it exists.
 - If absent: output "No planned baseline -- commit exposure is unquantifiable." and continue.
 - If present: extract planned signals for {{topic}}.
 

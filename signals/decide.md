@@ -11,5 +11,5 @@ Execute these skills in sequence, feeding each output to the next:
 6. **prove-synthesize** — synthesize all evidence into a decision brief
 
 For each skill: run it, capture the output as a signal artifact, then proceed.
-Final output: a decision brief at simulations/{{topic}}/decide-{{date}}.md summarizing
+Final output: a decision brief at signals/{{topic}}/decide-{{date}}.md summarizing
 the evidence and stating a clear recommendation: COMMIT / PAUSE / PIVOT / ABANDON.

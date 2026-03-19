@@ -4,8 +4,8 @@ You are running `/topic:story` for a topic. The topic name is provided.
 
 ### Step 1 -- Gather
 
-Glob `simulations/**/{topic}-*` and read every artifact found. Read
-`simulations/{topic}/strategy.md` if present.
+Glob `signals/**/{topic}-*` and read every artifact found. Read
+`signals/{topic}/strategy.md` if present.
 
 ---
 
@@ -309,7 +309,7 @@ VERIFIED names what was found and why it confirms it -- a reader never needs to 
 The ceiling is 227.5 because C-10 requires a story-forward opening; this artifact opens with
 a verdict. Every other mechanism is active.
 
-Artifact: `simulations/{topic}/{topic}-story-{date}.md`
+Artifact: `signals/{topic}/{topic}-story-{date}.md`
 
 ```markdown
 # {Topic} Story

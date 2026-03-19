@@ -43,7 +43,7 @@ Synthesize findings into a decision brief:
 
 ---
 
-Write campaign artifact to: simulations/rhythm/decide/{{topic}}-decide-{{date}}.md
+Write campaign artifact to: signals/rhythm/decide/{{topic}}-decide-{{date}}.md
 Include frontmatter: skill: rhythm-decide, topic: {{topic}}, date: {{date}},
   campaign: [discover-inertia, discover-competitors, discover-feasibility,
              discover-risk, discover-hypothesis, discover-websearch]

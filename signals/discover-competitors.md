@@ -26,5 +26,6 @@ FINDINGS: Structure as a brief:
 AMEND: List 3 specific adjustments. For each: what the user changes AND what changes
 in the output.
 
-Write artifact to simulations/discover/competitors/{topic}-competitors-{date}.md.
+Write artifact to signals/discover/competitors/{topic}-competitors-{date}.md.
+If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).
 Include frontmatter: skill, topic, item, date, skill_version, input.

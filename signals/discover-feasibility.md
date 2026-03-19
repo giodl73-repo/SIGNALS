@@ -73,6 +73,6 @@ Prerequisites (every RED-rated component must appear):
 
 ---
 
-Write artifact: simulations/discover/feasibility/{topic}-feasibility-{date}.md
+Write artifact: signals/discover/feasibility/{topic}-feasibility-{date}.md
 Frontmatter: skill, topic, date, score, label, team_inferred, timeline_inferred,
 hours_available, hours_estimated, stack_source, inertia_cost_per_sprint.

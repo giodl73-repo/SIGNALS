@@ -64,5 +64,6 @@ AMEND:
 2. Quantify financial exposure per risk (add cost column)
 3. Add a fourth option: risk acceptance rationale for each LOW item
 
-Write artifact to: simulations/discover/risk/{{topic}}-risk-{{date}}.md
+Write artifact to: signals/discover/risk/{{topic}}-risk-{{date}}.md
+If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).
 Include frontmatter: skill: discover-risk, topic: {{topic}}, date: {{date}}

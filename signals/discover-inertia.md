@@ -1,4 +1,5 @@
 Deep analysis of the inertia competitor -- the option to do nothing. Why would teams keep their current workaround instead of adopting this feature? Maps: current workaround in detail, switching cost (time, training, disruption), inertia threat score (always HIGH by default), specific conditions under which inertia loses. This is the most important analysis in Signal. Every feature decision must answer: why does inertia lose? If you cannot answer that, stop. AMEND: quantify switching costs, identify specific workaround failure modes.
 
-Write artifact to: simulations/discover/inertia/{{topic}}-inertia-{{date}}.md
+Write artifact to: signals/discover/inertia/{{topic}}-inertia-{{date}}.md
+If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).
 Include frontmatter: skill: discover-inertia, topic: {{topic}}, date: {{date}}, inertia_score: HIGH|MEDIUM|LOW

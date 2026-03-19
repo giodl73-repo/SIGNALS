@@ -259,7 +259,7 @@ Integration rules:
 
 === PHASE 7: ARTIFACT ===
 
-Write to simulations/discover/causal/{topic}-causal-{date}.md.
+Write to signals/discover/causal/{topic}-causal-{date}.md.
 Frontmatter:
   topic: {topic}
   date: {date}

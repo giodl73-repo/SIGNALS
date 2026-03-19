@@ -1,3 +1,4 @@
 Hand-compile a request through service boundaries, APIs, and middleware. Step by step: entry point, authentication, routing, each service boundary crossed, storage access, response assembly, error paths. No boundary skipped. Identify: failure points at each boundary, latency sources, authorization gaps, batch operation edge cases. Stock roles: Dataverse / Commerce / Automate platform expert auto-selected from context.
 
-Write artifact to: simulations/trace/request/{topic}-request-{date}.md
+Write artifact to: signals/trace/request/{topic}-request-{date}.md
+If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).

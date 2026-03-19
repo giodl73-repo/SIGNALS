@@ -193,7 +193,7 @@ DO NOT proceed to STEP 7 until all decision blocks are complete.
 
 STEP 7 — WRITE REVIEW ARTIFACT
 
-Write simulations/mock/{topic}-review-{date}.md.
+Write signals/mock/{topic}-review-{date}.md.
   Coverage Review table: | Namespace | Category | Decision | trigger |
 
   Ordering rule (state explicitly in artifact):
@@ -233,6 +233,6 @@ CANARY OUTPUT:
 
 Full confirmation block:
   Annotations updated in: {mock-artifact-path}
-  Review written: simulations/mock/{topic}-review-{date}.md
+  Review written: signals/mock/{topic}-review-{date}.md
   Status fields updated: {N} of {N}
   Count: 0 Status fields remain as MOCK (awaiting review). Confirmed.

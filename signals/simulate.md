@@ -9,5 +9,5 @@ Run the full simulation suite covering system dynamics before implementation:
 5. **trace-permissions** — trace access control through the permission model
 
 For each skill: run against the spec/design artifacts for {{topic}}.
-Final output: simulation report at simulations/{{topic}}/simulate-{{date}}.md
+Final output: simulation report at signals/{{topic}}/simulate-{{date}}.md
 with all findings ranked by blast radius.
