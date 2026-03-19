@@ -322,5 +322,5 @@ Run all AC-01 through AC-32 checks. Any FAIL blocks the Production Gate.
 > (2) Check V shows CLOSED.
 
 Write artifact to: signals/simulate/lifecycle/{{topic}}-lifecycle-{{date}}.md
-If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).
+If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-[this-skill]-{date}.md). No namespace subdirectory.
 Include frontmatter: skill: simulate-lifecycle, topic: {{topic}}, date: {{date}}

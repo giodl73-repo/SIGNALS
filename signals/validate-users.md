@@ -219,5 +219,5 @@ If all scores >= 3: write "Amend loop: not triggered (all scores >= 3)."
 ---
 
 Write artifact to: signals/validate/users/{{topic}}-users-{{date}}.md
-If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).
+If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-[this-skill]-{date}.md). No namespace subdirectory.
 Include frontmatter: skill: validate-users, topic: {{topic}}, date: {{date}}, aggregate_score: [sum/5]

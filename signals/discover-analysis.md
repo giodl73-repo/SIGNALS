@@ -216,7 +216,7 @@ Vocabulary: "Phase A and Phase B audit complete. VERDICT WRITE-GATE cleared.
 
 ---
 
-Write artifact: signals/prove/analysis/{topic}-analysis-{date}.md
+Write artifact: signals/discover/analysis/{topic}-analysis-{date}.md
 Frontmatter: skill, topic, date, hypothesis, sources_count, null_met_count,
 null_not_met_count, mechanism_verdict, mechanism_confirmed_count, causal_claim,
 overall_direction, vocabulary_compliant: true, prose_audit_complete: true,

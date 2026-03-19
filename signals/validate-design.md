@@ -132,5 +132,5 @@ Amend 3: Change [what] -> output [changes how]
 ---
 
 Write artifact to: signals/validate/design/{{topic}}-design-{{date}}.md
-If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).
+If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-[this-skill]-{date}.md). No namespace subdirectory.
 Include frontmatter: skill: validate-design, topic: {{topic}}, date: {{date}}, reviewer_count: [n], p1_count: [n], p2_count: [n], p3_count: [n], domain_roles_active: [list domain expert names from BLOCK 1.5, or "none"]

@@ -1,4 +1,4 @@
 Author a specification from intent with guided section structure. Pulls context from any scout signals for the topic. Guided section authoring: purpose, requirements (from scout-requirements if available), design, constraints, open questions. Self-review on completion: flag open questions, gaps, and ambiguity. Stock role: Architect.
 
 Write artifact to: signals/draft/specs/{topic}-spec-{date}.md
-If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).
+If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-[this-skill]-{date}.md). No namespace subdirectory.

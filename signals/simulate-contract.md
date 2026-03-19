@@ -11,7 +11,7 @@ Provide:
 The skill will produce a mismatch report with severity ratings and a GO/NO-GO gate result.
 
 Write artifact to: signals/simulate/contract/{{topic}}-contract-{{date}}.md
-If --output <path> provided: write to <path>/{topic}-{skill}-{date}.md (flat, no namespace prefix).
+If --output <path> provided: write the artifact flat into <path>/ using the same filename as the default (e.g., {topic}-[this-skill]-{date}.md). No namespace subdirectory.
 Include frontmatter: skill: simulate-contract, topic: {{topic}}, date: {{date}}, gate_result: PASS|FAIL
 
 ---
