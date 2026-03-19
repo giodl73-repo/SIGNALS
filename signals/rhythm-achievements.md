@@ -12,7 +12,7 @@ Group by namespace using dual-prefix mapping (flat binding uses both old and new
 
   scout/discover namespace: discover-* OR scout-* artifacts
   draft/specify namespace: draft-* OR specify-* artifacts
-  review/validate namespace: review-* OR validate-design/validate-code/validate-users/validate-customers artifacts
+  review/validate namespace: review-* OR validate-design/validate-code/validate-users/validate-customers/validate-inertia/validate-adoption-blocker artifacts
   flow/simulate namespace: flow-* OR simulate-lifecycle/conversation/trigger/dataflow/integration/throttle/stress/resilience artifacts
   trace namespace: trace-* OR simulate-request/state/contract/component/deployment/migration/permissions artifacts
   prove namespace: prove-* OR discover-hypothesis/discover-websearch/discover-analysis/discover-synthesize artifacts
@@ -81,6 +81,7 @@ For each namespace where an artifact exists, mark EARNED:
 
 ### DISCOVERY
 - [ ] **Falsified** — discover-hypothesis or prove-hypothesis artifact exists AND contains "INCONCLUSIVE" or "REJECTED" or "FALSIFIED"
+  Distinguish: (a) artifact not yet run vs (b) artifact run but hypothesis not yet challenged honestly
 - [ ] **Inertia Wins** — any discover-competitors artifact exists AND contains "status quo is sufficient" or "inertia wins" or "do not build"
 
 ---
@@ -109,7 +110,10 @@ DOMAIN WATCH:
   Platform Expert: [NOT YET / EARNED] -- run /validate-design with 3+ domain roles active.
 
 DISCOVERY WATCH:
-  Falsified: [NOT YET / EARNED] -- run /discover-hypothesis {{topic}} and investigate honestly.
+  Falsified: [NOT YET RUN / RUN BUT NOT FALSIFIED / EARNED]
+    NOT YET RUN: run /discover-hypothesis {{topic}}
+    RUN BUT NOT FALSIFIED: artifact exists -- investigate honestly, not just to confirm
+    EARNED: output contains INCONCLUSIVE, REJECTED, or FALSIFIED
   The Echo: [NOT YET / EARNED] -- run /rhythm-reflect {{topic}} after your session ends.
 
 Coverage: N/9 namespaces | N skills run | N artifacts
