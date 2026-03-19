@@ -1,11 +1,11 @@
 ● List directory .
   └ 13 files found
 
-● List directory simulations
-  └ 1 file found
-
 ● List directory signals
-  └ 8 files found
+  └ 9 files found
+
+● List directory signals\discover
+  └ 13 files found
 
 ● List directory signals\rhythm
   └ 3 files found
@@ -13,118 +13,135 @@
 ● List directory signals\draft
   └ 1 file found
 
-● List directory signals\review
-  └ 3 files found
-
-● List directory signals\discover
-  └ 13 files found
-
-● List directory signals\specify
-  └ 3 files found
-
-● List directory signals\simulate
-  └ 3 files found
-
-● List directory signals\simulate
-  └ 3 files found
-
-● Search (glob)
-  │ "signals\**\*ai-code-review*"
-  └ No matches found
+● List directory signals\draft\specs
+  └ 1 file found
 
 ● List directory signals\rhythm\behavior
   └ 1 file found
+
+● Search (glob)
+  │ "signals/**/*ai-code-review*"
+  └ 42 files found
+
+Let me read the spec and key source signals to ground this simulation.
+
+● Read ai-code-review-spec-2026-03-19.md
+  │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
+  └ 1 line read
 
 ● Read ai-code-review-behavior-2026-03-19.md
   │ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
   └ 1 line read
 
-● Search (glob)
-  │ "**\*ai-code-review*"
-  └ 39 files found
+● Read ai-code-review-risk-2026-03-19.md
+  │ signals\discover\risk\ai-code-review-risk-2026-03-19.md
+  └ 77 lines read
 
-Let me read the key source documents for this analysis.
+● Read ai-code-review-spec-2026-03-19.md
+  │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
+  └ L1:120 (120 lines read)
 
 ● Read ai-code-review-lifecycle-2026-03-19.md
   │ signals\simulate\lifecycle\ai-code-review-lifecycle-2026-03-19.md
-  └ L1:120 (120 lines read)
-
-● Read ai-code-review-behavior-2026-03-19.md
-  │ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
-  └ L1:60 (60 lines read)
+  └ L1:80 (80 lines read)
 
 ● Read ai-code-review-contract-2026-03-19.md
   │ signals\simulate\contract\ai-code-review-contract-2026-03-19.md
-  └ L1:120 (120 lines read)
-
-● Read ai-code-review-spec-2026-03-19.md
-  │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
-  └ L1:120 (120 lines read)
-
-● Read ai-code-review-behavior-2026-03-19.md
-  │ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
-  └ L60:180 (120 lines read)
-
-● Read ai-code-review-spec-2026-03-19.md
-  │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
-  └ L120:300 (181 lines read)
-
-● Read ai-code-review-spec-2026-03-19.md
-  │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
-  └ L300:450 (151 lines read)
-
-● Read ai-code-review-behavior-2026-03-19.md
-  │ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
-  └ L180:400 (202 lines read)
-
-● Read ai-code-review-behavior-2026-03-19.md
-  │ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
-  └ L382:418 (37 lines read)
-
-● Read ai-code-review-risk-2026-03-19.md
-  │ signals\discover\risk\ai-code-review-risk-2026-03-19.md
-  └ L1:80 (75 lines read)
-
-● Read ai-code-review-request-2026-03-19.md
-  │ signals\simulate\request\ai-code-review-request-2026-03-19.md
-  └ L1:100 (100 lines read)
+  └ L1:80 (80 lines read)
 
 ● Read ai-code-review-lifecycle-2026-03-19.md
   │ signals\simulate\lifecycle\ai-code-review-lifecycle-2026-03-19.md
-  └ L120:250 (131 lines read)
+  └ L80:200 (121 lines read)
+
+● Read ai-code-review-spec-2026-03-19.md
+  │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
+  └ L120:280 (161 lines read)
+
+● Read ai-code-review-contract-2026-03-19.md
+  │ signals\simulate\contract\ai-code-review-contract-2026-03-19.md
+  └ L80:180 (101 lines read)
+
+● Read ai-code-review-spec-2026-03-19.md
+  │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
+  └ L280:450 (171 lines read)
+
+● Read ai-code-review-lifecycle-2026-03-19.md
+  │ signals\simulate\lifecycle\ai-code-review-lifecycle-2026-03-19.md
+  └ L200:320 (99 lines read)
+
+● Read ai-code-review-contract-2026-03-19.md
+  │ signals\simulate\contract\ai-code-review-contract-2026-03-19.md
+  └ L180:230 (51 lines read)
+
+Now let me read the remaining key signals and the existing behavior artifact to understand what to iterate on.
+
+● Read ai-code-review-spec-2026-03-19.md
+  │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
+  └ L450:520 (25 lines read)
+
+● Read ai-code-review-feasibility-2026-03-19.md
+  │ signals\discover\feasibility\ai-code-review-feasibility-2026-03-19.md
+  └ L1:60 (60 lines read)
+
+● Read ai-code-review-behavior-2026-03-19.md
+  │ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
+  └ L1:100 (100 lines read)
+
+● Read ai-code-review-behavior-2026-03-19.md
+  │ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
+  └ L100:300 (200 lines read)
+
+● Read ai-code-review-behavior-2026-03-19.md
+  │ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
+  └ L300:500 (119 lines read)
 
 ● Read ai-code-review-request-2026-03-19.md
   │ signals\simulate\request\ai-code-review-request-2026-03-19.md
-  └ L100:250 (151 lines read)
+  └ L1:80 (79 lines read)
 
-Now I have comprehensive understanding of all source artifacts. Let me produce the fresh rhythm-behavior document.
+● Read ai-code-review-causal-2026-03-19.md
+  │ signals\discover\causal\ai-code-review-causal-2026-03-19.md
+  └ L1:60 (60 lines read)
+
+Now I have comprehensive context from all the source signals. Let me write the new iteration of the rhythm-behavior artifact.
+
+● Check output directory exists (shell)
+  │ Test-Path "C:\src\sim-test\signals\rhythm\behavior"
+  └ 2 lines...
+
+The existing artifact is at `ai-code-review-behavior-2026-03-19.md`. Since this is a new iteration run, I'll overwrite with the updated artifact.● Request failed due to a transient API error. Retrying...
+
+The existing artifact will be overwritten. Let me compose and write the new iteration.
+
+● Edit ai-code-review-behavior-2026-03-19.md +191 -152
+  └ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
+
+● Verify artifact header (shell)
+  │ Get-Content "C:\src\sim-test\signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md" |
+  │ Select-Object -First 15
+  └ 16 lines...
+
+Artifact written to `signals/rhythm/behavior/ai-code-review-behavior-2026-03-19.md`.
+
+**Results:** 26 findings (23 sub-skill + 3 cross-skill). 19 **CONFIRMED** from prior iteration, 4 **NEW** findings:
+
+| F-ID | New Finding | Blast Radius |
+|------|-----------|--------------|
+| F-20 | Unbounded remediation cycles (compounds with F-03 model drift → infinite loops) | MEDIUM |
+| F-21 | Zero-finding response contract missing (developers can't tell if AI ran) | NARROW |
+| F-22 | Merge gate label/branch protection contract undefined | MEDIUM |
+| F-23 | Webhook secret rotation protocol absent (silent rejection of all webhooks) | MEDIUM |
+
+**Top priority:** Fix auth layer (CROSS-01: 3 independent SPOFs at BC-1/BC-5/BC-7), then implement configuration (CROSS-02: defeats inertia strategy), then complete context assembly + rate limits.
+
+QUALITY: 5
+COMPACT_WORKED: Y
+OUTPUT_SIZE: large
 
 
-
-#
-# Fatal process out of memory: Zone
-#
------ Native stack trace -----
-
- 1: 00007FF6B291D52D node::MultiIsolatePlatform::DisposeIsolate+5341
- 2: 00007FF6B3D6C206 v8::base::FatalOOM+54
- 3: 00007FF6B360D9C5 v8::Function::NewInstance+245
- 4: 00007FF6B2F88A46 v8::SnapshotCreator::GetIsolate+56566
- 5: 00007FF6B41DF69A v8::base::DiyFp::Multiply+2470186
- 6: 00007FF6B41DED8B v8::base::DiyFp::Multiply+2467867
- 7: 00007FF6B41DE24D v8::base::DiyFp::Multiply+2464989
- 8: 00007FF6B41DDD24 v8::base::DiyFp::Multiply+2463668
- 9: 00007FF6B41DD2B1 v8::base::DiyFp::Multiply+2460993
-10: 00007FF6B41DD00F v8::base::DiyFp::Multiply+2460319
-11: 00007FF6B3FE9A46 v8::base::DiyFp::Multiply+414934
-12: 00007FF6B3FE8760 v8::base::DiyFp::Multiply+410096
-13: 00007FF6B3DCC4EB v8::internal::compiler::CompilationDependencies::FieldTypeDependencyOffTheRecord+192907
-14: 00007FF6B2C82346 DSA_get0_engine+659126
-15: 00007FF6B2C7DA83 DSA_get0_engine+640499
-16: 00007FF6B2C7D369 DSA_get0_engine+638681
-17: 00007FF6B3DDFDDF v8::base::SysInfo::AddressSpaceEnd+3167
-18: 00007FF6B29193EE node::GetNodeReport+89326
-19: 00007FF6B3662DE6 uv_thread_detach+150
-20: 00007FF6B48A4173 v8::base::UnsignedDivisionByConstant<unsigned __int64>+2903907
-21: 00007FFA6549E8D7 BaseThreadInitThunk+23
-22: 00007FFA6666C53C RtlUserThreadStart+44
+Total usage est:        6 Premium requests
+API time spent:         10m 31s
+Total session time:     16m 12s
+Total code changes:     +191 -152
+Breakdown by AI model:
+ claude-opus-4.6-1m       897.2k in, 27.5k out, 723.6k cached (Est. 6 Premium requests)

@@ -2,37 +2,38 @@
   └ 13 files found
 
 ● Read CLAUDE.md
-  └ 12 lines read
-
-● Search (glob)
-  │ "signals\**\*ai-code-review*"
-  └ No matches found
+  └ 17 lines read
 
 ● List directory signals
   └ 8 files found
 
 ● List directory signals\discover
-  └ 11 files found
+  └ 13 files found
 
-● Check existing hypothesis artifacts (shell)
-  │ Get-ChildItem -Path "C:\src\sim-test\signals\discover\hypothesis" -ErrorAction SilentlyContinue
-  │ | Select-Object Name
-  └ 4 lines...
+● List directory signals\discover\hypothesis
+  └ 1 file found
 
 ● Read ai-code-review-hypothesis-2026-03-19.md
   │ signals\discover\hypothesis\ai-code-review-hypothesis-2026-03-19.md
-  └ 153 lines read
+  └ 55 lines read
 
-The file already exists with a full version. I'll produce the compact variant now.
+The artifact already exists for today. I'll generate a fresh compact hypothesis and update it.
 
-● Edit ai-code-review-hypothesis-2026-03-19.md +24 -122
+● Edit ai-code-review-hypothesis-2026-03-19.md +17 -16
   └ signals\discover\hypothesis\ai-code-review-hypothesis-2026-03-19.md
 
-Artifact written to `signals\discover\hypothesis\ai-code-review-hypothesis-2026-03-19.md`.
+Artifact written to `signals/discover/hypothesis/ai-code-review-hypothesis-2026-03-19.md`.
 
-**Summary:** AI code review tool with <15% FP rate → ≥30% senior reviewer labor reduction in 90 days (for teams ≥40% AI-assisted commits). Confidence 60 — problem is well-evidenced, magnitude of relief is not. Two falsification conditions target labor reduction and cross-team precision. Shadow-mode experiment is the fastest path to ground truth.
+**Compact output:**
 
-**Next:** `/discover-websearch` — find published evidence for the 30% labor-reduction figure.
+**Claim:** An AI code-review agent with full-repo context will catch ≥40% of substantive defects (logic, security, concurrency) at <15% false-positive rate, cutting median time-to-merge by ≥25% within one quarter for high-volume teams.
+
+**F1:** Defect overlap <25% after 200 PRs → hypothesis killed.
+**F2:** Time-to-merge doesn't drop ≥10% after 60 days live, OR >30% of devs ignore findings → hypothesis killed.
+
+**Experiment:** Shadow-mode defect-detection audit across 5 repos, 6 weeks, 200+ PRs. Measure defect overlap, FP rate, and baseline merge metrics.
+
+**Next:** `/discover-websearch` to ground the 40% defect-detection claim in published benchmarks.
 
 ---
 
@@ -42,8 +43,8 @@ OUTPUT_SIZE: small
 
 
 Total usage est:        6 Premium requests
-API time spent:         1m 13s
-Total session time:     1m 19s
-Total code changes:     +24 -122
+API time spent:         1m 5s
+Total session time:     1m 9s
+Total code changes:     +17 -16
 Breakdown by AI model:
- claude-opus-4.6-1m       229.1k in, 4.3k out, 206.4k cached (Est. 6 Premium requests)
+ claude-opus-4.6-1m       223.5k in, 2.8k out, 185.2k cached (Est. 6 Premium requests)

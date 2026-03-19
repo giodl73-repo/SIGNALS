@@ -7,9 +7,9 @@
 
 ● Search (glob)
   │ "**\*ai-code-review*"
-  └ 34 files found
+  └ 40 files found
 
-Let me read the design document (spec) and supporting context.
+Let me read the design document (spec) and key supporting signals.
 
 ● Read ai-code-review-spec-2026-03-19.md
   │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
@@ -17,15 +17,21 @@ Let me read the design document (spec) and supporting context.
 
 ● Read ai-code-review-proposal-2026-03-19.md
   │ signals\specify\proposal\ai-code-review-proposal-2026-03-19.md
-  └ 122 lines read
-
-● Read ai-code-review-risk-2026-03-19.md
-  │ signals\discover\risk\ai-code-review-risk-2026-03-19.md
-  └ 75 lines read
+  └ 141 lines read
 
 ● Read ai-code-review-feasibility-2026-03-19.md
   │ signals\discover\feasibility\ai-code-review-feasibility-2026-03-19.md
   └ 157 lines read
+
+● Read ai-code-review-risk-2026-03-19.md
+  │ signals\discover\risk\ai-code-review-risk-2026-03-19.md
+  └ 77 lines read
+
+Now let me read the spec (the primary design document) in sections:
+
+● Read ai-code-review-spec-2026-03-19.md
+  │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
+  └ L120:250 (131 lines read)
 
 ● Read ai-code-review-spec-2026-03-19.md
   │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
@@ -33,33 +39,80 @@ Let me read the design document (spec) and supporting context.
 
 ● Read ai-code-review-spec-2026-03-19.md
   │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
-  └ L120:300 (181 lines read)
+  └ L250:400 (151 lines read)
 
 ● Read ai-code-review-spec-2026-03-19.md
   │ signals\draft\specs\ai-code-review-spec-2026-03-19.md
-  └ L300:500 (175 lines read)
+  └ L400:550 (75 lines read)
 
-Now I have a complete picture. Let me create the output directory and write the review artifact.
+Now let me check the simulate contract for additional context, and the existing validate design file:
 
-● Create validate/design directory (shell)
+● Read ai-code-review-contract-2026-03-19.md
+  │ signals\simulate\contract\ai-code-review-contract-2026-03-19.md
+  └ L1:80 (80 lines read)
+
+● Read ai-code-review-design-2026-03-19.md
+  │ signals\validate\design\ai-code-review-design-2026-03-19.md
+  └ L1:30 (30 lines read)
+
+I have a thorough understanding of the design. Let me create the validate-design artifact.
+
+● Ensure output directory exists (shell)
   │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\validate\design" -Force | Out-Null;
-  │ Write-Output "done"
+  │ Test-Path "C:\src\sim-test\signals\validate\design"
   └ 2 lines...
 
-● Create ai-code-review-design-2026-03-19.md +221
+● Edit ai-code-review-design-2026-03-19.md +10 -5
   └ signals\validate\design\ai-code-review-design-2026-03-19.md
 
-Design review complete. Artifact written to `signals/validate/design/ai-code-review-design-2026-03-19.md`.
+● Read ai-code-review-design-2026-03-19.md
+  │ signals\validate\design\ai-code-review-design-2026-03-19.md
+  └ L30:80 (51 lines read)
 
-**Verdict: APPROVED-WITH-CONDITIONS** — 10 reviewers (4 domain + 6 stock), 20 findings total.
+● Read ai-code-review-design-2026-03-19.md
+  │ signals\validate\design\ai-code-review-design-2026-03-19.md
+  └ L80:200 (121 lines read)
 
-| Severity | Count | Key items |
-|----------|-------|-----------|
-| **P1** | 2 | Queue encryption at rest (S-1), LLM failure mode design (A-1) |
-| **P2** | 10 | Token scoping, data retention, confidence calibration, webhook catch-up, large-PR handling, test strategy, docs plan |
-| **P3** | 8 | Model degradation detection, error taxonomy, accessibility, rollback criteria |
+● Read ai-code-review-design-2026-03-19.md
+  │ signals\validate\design\ai-code-review-design-2026-03-19.md
+  └ L200:260 (26 lines read)
 
-**Strongest signal:** No resilience design for LLM unavailability (A-1) — unbounded queue growth and silent review gaps if the LLM goes down. Three amendments address the top findings: add resilience section, add encryption constraint + data retention policy, and add confidence calibration pipeline.
+The existing file has some cross-reference inconsistencies between my BLOCK 0 edit and the remaining blocks. Let me rewrite it completely:
+
+● Remove existing file for clean rewrite (shell)
+  │ Remove-Item "C:\src\sim-test\signals\validate\design\ai-code-review-design-2026-03-19.md"
+  └ 1 line...
+
+● Create ai-code-review-design-2026-03-19.md +229
+  └ signals\validate\design\ai-code-review-design-2026-03-19.md
+
+Let me verify the artifact is well-formed:
+
+● Verify artifact structure (shell)
+  │ $content = Get-Content
+  │ "C:\src\sim-test\signals\validate\design\ai-code-review-design-2026-03-19.md" -Raw
+  │ Write-Host "File size: $($content.Length) chars"
+  │ Write-Host "Lines: $(($content -split "`n").Count)"
+  │ Write-Host ""…
+  └ 38 lines...
+
+● Verify artifact counts (shell)
+  │ $content = Get-Content
+  │ "C:\src\sim-test\signals\validate\design\ai-code-review-design-2026-03-19.md" -Raw
+  │ Write-Host "File size: $($content.Length) chars, Lines: $(($content -split "`n").Count)"
+  │ $p1 = ([regex]::Matches($content, '\| P1 \|')).Count
+  │ $p2 = ([regex]::Matches($content, '\| P2 \|')).Count…
+  └ 15 lines...
+
+All blocks present and counts verified. Artifact written to `signals/validate/design/ai-code-review-design-2026-03-19.md`.
+
+**Summary:** 10 reviewers (4 domain + 6 stock), 20 findings total.
+
+- **P1 blockers (2):** Queue payload encryption missing (S-1), no LLM failure/resilience mode (A-1)
+- **P2 conditions (11):** Spanning token scope, data retention, audit trail, confidence calibration, webhook catch-up, large-PR handling, linter dedup, docs, testing, OQ deadlines, token budget
+- **P3 advisories (7):** Model degradation, rate-limit budgets, error taxonomy, accessibility, integration tests, rollback plan, idempotency definition
+
+**Verdict: APPROVED-WITH-CONDITIONS** — resolve 2 P1 blockers before implementation, 11 P2s before sign-off.
 
 QUALITY: 4
 COMPACT_WORKED: Y
@@ -67,8 +120,8 @@ OUTPUT_SIZE: medium
 
 
 Total usage est:        6 Premium requests
-API time spent:         3m 31s
-Total session time:     3m 44s
-Total code changes:     +221 -0
+API time spent:         4m 34s
+Total session time:     4m 54s
+Total code changes:     +239 -5
 Breakdown by AI model:
- claude-opus-4.6-1m       374.8k in, 7.9k out, 327.5k cached (Est. 6 Premium requests)
+ claude-opus-4.6-1m       831.3k in, 12.7k out, 763.5k cached (Est. 6 Premium requests)

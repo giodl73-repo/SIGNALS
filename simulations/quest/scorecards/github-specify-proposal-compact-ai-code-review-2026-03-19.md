@@ -2,13 +2,13 @@
   └ 13 files found
 
 ● Read CLAUDE.md
-  └ 12 lines read
+  └ 17 lines read
 
 ● Search (glob)
   │ "signals/**/ai-code-review-*"
-  └ 38 files found
+  └ 41 files found
 
-Extensive prior signals found. Let me read the key discovery signals to ground the proposal.
+There are 41 prior signals — very strong coverage. Let me read the key discovery signals to ground this proposal.
 
 ● Read ai-code-review-competitors-2026-03-19.md
   │ signals\discover\competitors\ai-code-review-competitors-2026-03-19.md
@@ -16,62 +16,61 @@ Extensive prior signals found. Let me read the key discovery signals to ground t
 
 ● Read ai-code-review-hypothesis-2026-03-19.md
   │ signals\discover\hypothesis\ai-code-review-hypothesis-2026-03-19.md
-  └ 55 lines read
+  └ 56 lines read
 
 ● Read ai-code-review-synthesize-2026-03-19.md
   │ signals\discover\synthesize\ai-code-review-synthesize-2026-03-19.md
-  └ 99 lines read
-
-● Read ai-code-review-risk-2026-03-19.md
-  │ signals\discover\risk\ai-code-review-risk-2026-03-19.md
-  └ 75 lines read
-
-● Read ai-code-review-brainstorm-2026-03-19.md
-  │ signals\discover\brainstorm\ai-code-review-brainstorm-2026-03-19.md
-  └ 66 lines read
+  └ 129 lines read
 
 ● Read ai-code-review-feasibility-2026-03-19.md
   │ signals\discover\feasibility\ai-code-review-feasibility-2026-03-19.md
   └ 157 lines read
 
-Let me also read the existing proposal and inertia signals for completeness.
+● Read ai-code-review-causal-2026-03-19.md
+  │ signals\discover\causal\ai-code-review-causal-2026-03-19.md
+  └ 182 lines read
 
-● Read ai-code-review-proposal-2026-03-19.md
-  │ signals\specify\proposal\ai-code-review-proposal-2026-03-19.md
-  └ 122 lines read
+● Read ai-code-review-risk-2026-03-19.md
+  │ signals\discover\risk\ai-code-review-risk-2026-03-19.md
+  └ 77 lines read
+
+Now let me read the existing proposal and a few more key signals:
 
 ● Read ai-code-review-compare-2026-03-19.md
   │ signals\discover\compare\ai-code-review-compare-2026-03-19.md
   └ 175 lines read
 
+● Read ai-code-review-proposal-2026-03-19.md
+  │ signals\specify\proposal\ai-code-review-proposal-2026-03-19.md
+  └ 141 lines read
+
 ● Read ai-code-review-inertia-2026-03-19.md
   │ signals\discover\inertia\ai-code-review-inertia-2026-03-19.md
   └ 175 lines read
 
-Now I have the full picture. 38 prior signals exist. The synthesis recommends Option B (narrow AI-code auditor) with PROCEED at 72 confidence. Let me write the updated proposal grounded in all signals.
+I have thorough context from 41 prior signals. The existing v2 proposal is solid — I'll produce a tighter v3 incorporating the full signal corpus. Let me write it.
 
-● Edit ai-code-review-proposal-2026-03-19.md +67 -48
+● Edit ai-code-review-proposal-2026-03-19.md +61 -62
   └ signals\specify\proposal\ai-code-review-proposal-2026-03-19.md
 
-Artifact written to `signals/specify/proposal/ai-code-review-proposal-2026-03-19.md` (v2).
+Proposal v3 written to `signals/specify/proposal/ai-code-review-proposal-2026-03-19.md`.
 
-**Summary:** Updated proposal from comprehensive AI code review → **narrow AI-code auditor** (Option B), grounded in 38 prior signals. Key changes from v1:
+**Key v2→v3 changes:**
+- Incorporated validate REVISE verdicts (NPS 6.8, customer 3.58/5, contract FAIL) into risks and success criteria
+- Added 0.85 confidence threshold default + developer engagement rate ≥60% at 60-day gate
+- Softened cycle time claim from ≥30% to ≥25% per amended hypothesis (causal T2 evidence gap)
+- Integrated synthesize insights: precision as data moat, self-selecting beachhead, coherence paradox strengthening Option B
+- Signal count 38→41; added simulate-contract finding to Security alignment
+- Recommended next actions: `/prove-prototype` (highest leverage), Copilot websearch (clears coherence), reframe for REVISE remediation
 
-- **Scope narrowed** per discover-compare/synthesize: targets AI-generated PRs only, ~950 hours vs. 1,580
-- **Cloud-only v1** eliminates the RED-rated self-hosted LLM risk
-- **Risks recalibrated**: Copilot moat neutralized by occupying uncontested whitespace; data sovereignty resolved; top risk remains FP fatigue
-- **Shadow-mode phase added** at 30 days (per discover-hypothesis experiment) — 200 PRs calibrated before any public finding
-- **Success criteria tightened**: FP threshold from <20% to <15%
-- **Alternatives**: Option A (comprehensive tool) explicitly rejected with cross-signal evidence
-
-QUALITY: 5
+QUALITY: 4
 COMPACT_WORKED: Y
 OUTPUT_SIZE: medium
 
 
 Total usage est:        6 Premium requests
-API time spent:         4m 1s
-Total session time:     4m 9s
-Total code changes:     +67 -48
+API time spent:         3m 24s
+Total session time:     3m 37s
+Total code changes:     +61 -62
 Breakdown by AI model:
- claude-opus-4.6-1m       250.3k in, 9.6k out, 181.6k cached (Est. 6 Premium requests)
+ claude-opus-4.6-1m       269.0k in, 10.0k out, 189.9k cached (Est. 6 Premium requests)
