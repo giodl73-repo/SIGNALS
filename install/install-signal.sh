@@ -17,12 +17,12 @@ if [[ "$TARGET" != /* ]]; then
 fi
 
 echo "Signal v0.1 — signal- prefix binding install"
-echo "  source : $SIGNAL_ROOT/output/binding-signal/"
+echo "  source : $SIGNAL_ROOT/output/binding-signal/T1/.claude/skills/"
 echo "  target : $TARGET"
 echo ""
 
 # Check if generated output exists
-OUTPUT_DIR="$SIGNAL_ROOT/output/binding-signal"
+OUTPUT_DIR="$SIGNAL_ROOT/output/binding-signal/T1/.claude/skills"
 if [[ ! -d "$OUTPUT_DIR" ]]; then
     echo "Output directory not found. Generating from $BINDING.program.yaml ..."
     if ! command -v craft &>/dev/null; then
