@@ -13,7 +13,8 @@
 set -euo pipefail
 
 SIGNALS_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-CR_ROOT="C:/src/craftworks-research"
+export SIGNALS_ROOT
+CR_ROOT="${CR_ROOT:-C:/src/craftworks-research}"
 BRANCH="release/signal-$(date +%Y-%m-%d)"
 PUSH=false
 CREATE_PR=false
@@ -35,10 +36,12 @@ echo ""
 # ── Step 1: Sync skills from sim-test to release/ ────────────────────────────
 
 echo "--- Step 1: Sync skills to release/"
-python << 'EOF'
-import os, re, shutil
+python << PYEOF
+import os, re, shutil, sys
 
-with open(r'C:\src\sim\signal.skills.yaml') as f:
+SIGNALS_ROOT = os.environ.get('SIGNALS_ROOT', os.getcwd())
+
+with open(os.path.join(SIGNALS_ROOT, 'signal.skills.yaml')) as f:
     canonical = set(re.findall(r'^- id: (.+)$', f.read(), re.MULTILINE))
 canonical.discard('quest-golden')
 canonical.discard('quest-rubric')
@@ -47,14 +50,14 @@ canonical.discard('quest-variate')
 canonical.add('achievements')
 
 # Also include any new research-* and validate-*/simulate-*/discover-* etc added to signals/
-signals_dir = r'C:\src\sim\signals'
+signals_dir = os.path.join(SIGNALS_ROOT, 'signals')
 for f in os.listdir(signals_dir):
     if f.endswith('.md') and not f.startswith('README') and not f.startswith('copilot'):
         skill_id = f[:-3]
         canonical.add(skill_id)
 
-src = r'C:\src\sim-test\.claude\skills'
-dst = r'C:\src\sim\release\.claude\skills'
+src = os.path.join(SIGNALS_ROOT, 'release', '.claude', 'skills')
+dst = os.path.join(SIGNALS_ROOT, 'release', '.claude', 'skills')
 os.makedirs(dst, exist_ok=True)
 
 updated = added = 0
@@ -63,7 +66,7 @@ for skill_id in sorted(canonical):
     dst_dir = os.path.join(dst, skill_id)
 
     # Prefer release/ source if it has newer content
-    signals_body = os.path.join(r'C:\src\sim\signals', f'{skill_id}.md')
+    signals_body = os.path.join(SIGNALS_ROOT, 'signals', f'{skill_id}.md')
 
     if os.path.exists(signals_body):
         # Update release/ from signals/ source
@@ -97,16 +100,17 @@ for skill_id in sorted(canonical):
         updated += 1
 
 print(f'Release skills: {updated} updated, {added} added, {len(canonical)} total')
-EOF
+PYEOF
 
 # ── Step 2: Regenerate .github/prompts ───────────────────────────────────────
 
 echo "--- Step 2: Regenerate release/.github/prompts/"
-python << 'EOF'
+python << PYEOF
 import os, re, shutil
 
-skills_dir = r'C:\src\sim\release\.claude\skills'
-output_dir = r'C:\src\sim\release\.github\prompts'
+SIGNALS_ROOT = os.environ.get('SIGNALS_ROOT', os.getcwd())
+skills_dir = os.path.join(SIGNALS_ROOT, 'release', '.claude', 'skills')
+output_dir = os.path.join(SIGNALS_ROOT, 'release', '.github', 'prompts')
 os.makedirs(output_dir, exist_ok=True)
 
 def get_body(path):
@@ -140,7 +144,7 @@ for folder in sorted(os.listdir(skills_dir)):
     count += 1
 
 print(f'Prompts: {count} generated')
-EOF
+PYEOF
 
 # ── Step 3: Commit and push signals repo ─────────────────────────────────────
 
