@@ -9,7 +9,7 @@ SIGNAL_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 TARGET="${1:-.github/prompts}"
 [[ "$TARGET" != /* ]] && TARGET="$(pwd)/$TARGET"
 
-SOURCE_DIR="$SIGNAL_ROOT/sim-test/.github/prompts"
+SOURCE_DIR="$SIGNAL_ROOT/release/.github/prompts"
 [[ ! -d "$SOURCE_DIR" ]] && echo "ERROR: $SOURCE_DIR not found" && exit 1
 
 mkdir -p "$TARGET"

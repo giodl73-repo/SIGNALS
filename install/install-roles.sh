@@ -10,7 +10,7 @@ while [[ $# -gt 0 ]]; do
     case $1 in --domain) DOMAIN="$2"; shift 2 ;; *) shift ;; esac
 done
 
-SOURCE_DIR="$SIGNAL_ROOT/.craft/roles"
+SOURCE_DIR="$SIGNAL_ROOT/release/.craft/roles"
 [[ ! -d "$SOURCE_DIR" ]] && echo "ERROR: $SOURCE_DIR not found" && exit 1
 
 install_domain() {

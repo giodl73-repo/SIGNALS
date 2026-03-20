@@ -14,7 +14,7 @@ echo "Signal v1.0 — bare binding (shortest names)"
 
 PREFIXES=(discover- specify- validate- simulate- rhythm- roles- signal- tools-)
 
-SOURCE_DIR="$SIGNAL_ROOT/sim-test/.claude/skills"
+SOURCE_DIR="$SIGNAL_ROOT/release/.claude/skills"
 [[ ! -d "$SOURCE_DIR" ]] && echo "ERROR: $SOURCE_DIR not found" && exit 1
 
 CANONICAL=(

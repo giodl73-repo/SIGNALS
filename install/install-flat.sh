@@ -11,11 +11,11 @@ TARGET="${1:-.claude/skills}"
 [[ "$TARGET" != /* ]] && TARGET="$(pwd)/$TARGET"
 
 echo "Signal v1.0 — flat binding"
-echo "  source : $SIGNAL_ROOT/sim-test/.claude/skills/"
+echo "  source : $SIGNAL_ROOT/release/.claude/skills/"
 echo "  target : $TARGET"
 echo ""
 
-SOURCE_DIR="$SIGNAL_ROOT/sim-test/.claude/skills"
+SOURCE_DIR="$SIGNAL_ROOT/release/.claude/skills"
 [[ ! -d "$SOURCE_DIR" ]] && echo "ERROR: $SOURCE_DIR not found" && exit 1
 
 # Canonical 62 skills (discover-*, specify-*, validate-*, simulate-*, rhythm-*, roles-*, signal*, tools-*, achievements)
