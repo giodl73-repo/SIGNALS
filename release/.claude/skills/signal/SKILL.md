@@ -11,7 +11,7 @@ depth: standard
 
 
 Signal — Feature Decision Intelligence
-62 skills across 9 namespaces
+68 skills across 9 namespaces
 
 CAMPAIGNS (start here):
   /rhythm-decide          Full pre-commitment decision campaign

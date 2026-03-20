@@ -1,7 +1,7 @@
 ---
 name: roles-chart
 description: "Inspect the installed role registry in .craft/roles/. Maps roles by domain into an org chart display. No file written — display only."
-allowed-tools: [Read, Write, Glob]
+allowed-tools: [Read, Glob]
 param_set: lean
 ---
 depth: standard
