@@ -8,8 +8,8 @@ Active work items, ordered by priority.
 
 | # | Item | Status | Notes |
 |---|------|--------|-------|
-| 1 | Dispatch `simulate-ode` to quest loop | BLOCKED | Relay is down |
-| 2 | Dispatch `validate-null` to quest loop | BLOCKED | Relay is down |
+| 1 | `simulate-ode` quest loop | RUNNING | job `b29dcef5` dispatched 2026-03-20 |
+| 2 | `validate-null` quest loop | RUNNING | job `3a1d6370` dispatched 2026-03-20 |
 
 ---
 
@@ -42,14 +42,15 @@ When relay is back up:
 
 ```bash
 # Check relay
-curl -s http://localhost:8716/list | python -m json.tool
+curl -s http://localhost:8716/list
 
-# Dispatch both (max 2 parallel -- these are the only active jobs)
+# Dispatch from repo root (relay cwd must be set to the signals repo root)
 curl -s -X POST http://localhost:8716/run \
   -H "Content-Type: application/json" \
-  -d '{"script":"tools/quest-run-one.sh","args":["simulate-ode"],"cwd":"C:/src/sim"}'
+  -d '{"script":"tools/quest-run-one.sh","args":["simulate-ode"],"cwd":"<repo-root>"}'
 
-curl -s -X POST http://localhost:8716/run \
-  -H "Content-Type: application/json" \
-  -d '{"script":"tools/quest-run-one.sh","args":["validate-null"],"cwd":"C:/src/sim"}'
+# Tail output
+curl -s "http://localhost:8716/tail/<job_id>?lines=20"
 ```
+
+Note: quest-run-one.sh now uses `$(pwd)` -- no hardcoded paths. Pass the repo root as cwd.

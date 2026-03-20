@@ -10,7 +10,7 @@ set -e
 
 SKILL_ID="${1:-scout-feasibility}"
 TODAY=$(date +%Y-%m-%d)
-REPO="C:/src/sim"
+REPO="$(pwd)"
 QUEST_DIR="$REPO/simulations/quest"
 TRACE_DIR="$REPO/simulations/trace/skill"
 SPEC_FILE="$REPO/simulations/draft/specs/signal-scout-$TODAY.md"
