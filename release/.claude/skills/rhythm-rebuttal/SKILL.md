@@ -16,17 +16,16 @@ Generates the formal response-to-reviewers letter. All binding rules are declare
 any work begins, each with a violation consequence. RULE-1 carries an explicit evidence
 quality taxonomy: valid forms that overcome inertia (prior literature, methodological
 argument, statistical result) and invalid forms that do not (restatement, appeal to
-precedent). Phase 2 commits to both the revision narrative and any anticipated P1 no-change
-positions before decomposition, naming evidence by category AND specific instance. Phase 3.5
-audits ambiguous type assignments. Phase 3.6 audits P2/P3 severity assignments -- for each
-downgraded concern, one sentence states the specific paper-based reason it does not block
-acceptance. Forecast rows carry forward as flags into exchange headers. The amendment pass
-validates FLAGGED exchanges first, audits P1 pre-commitments with SHIFTED classification --
-PRESSURE-DRIVEN entries close to a binary (REINSTATE / CONFIRM CHANGE) with a named rationale
--- then checks for unflagged failures. Phase 6a reconciliation requires each Paragraph 1 change
-claim to trace to at least one R-ID. Phase 7 structural completion gate verifies P1 no-change
-evidence specificity, PRESSURE-DRIVEN decision closure, severity downgrade audit coverage,
-cover letter traceability, and count-based integrity before artifact write.
+precedent). Phase 2 forward-annotations are individually labeled "Forward-annotation from
+Check X:" self-contained modules -- Phase 2 carries a canonical "Forward-annotation from
+Check 2c:" block (earliest Check 2c decision point) and a canonical "Forward-annotation from
+Check 4 Part C:" block (earliest Check 4 Part C decision point). Phase 7 Check 2c back-
+reference enumerates all three upstream sources by canonical label: Phase 2, Phase 5, and
+Phase 6a. Every Phase 7 "If FAIL" repair block contains only the delegation line -- the
+upstream canonical annotation is the sole repair surface; no inline (a)/(b) follows the
+delegation. Phase 7 is a detection-and-delegation gate: it identifies the failure class,
+names every upstream source that warned about it, and delegates all repair to the upstream
+annotations.
 
 ---
 
@@ -117,27 +116,37 @@ comments, we have [list 3-4 main changes]."
 If none: "All reviewer concerns have been addressed with manuscript changes."
 
 **P1 No-Change Pre-Commitment** (complete before Phase 3 decomposition):
-For each P1 concern anticipated to result in no-change, name the concern and the anticipated
-evidence form (valid form from RULE-1 -- named by category AND specific traceable instance):
+
+> **Forward-annotation from Check 2c**: A P1 no-change evidence instance must name a
+> concrete entity -- cited paper or author (Author Year, not a section of this manuscript),
+> specific statistic with paper location, or named methodological principle with study-design
+> basis. A location reference alone (App. B, section 3.2, Table 4) fails Check 2c even when
+> the evidence category label is correctly named.
+> Repair paths:
+> (a) Name the concrete entity now: Author Year + locator (literature), named statistic +
+>     paper location (statistical), named principle + study-design basis (methodological).
+> (b) If no concrete entity can be named at Phase 2, reconsider whether this P1-NC is
+>     defensible -- an unresolved entity at commitment time will fail Check 2c at write time.
+
+> **Forward-annotation from Check 4 Part C**: If this pre-commitment is later SHIFTED to
+> PRESSURE-DRIVEN in Phase 6a, a binding decision (REINSTATE or NO REINSTATE with a one-
+> sentence rationale) must be recorded in Phase 6a before write. Deferring the decision to
+> the cover letter fails Part C regardless of how clearly it appears there.
+> Repair paths (if PRESSURE-DRIVEN shift occurs in Phase 6a):
+> (a) If the original RULE-1 evidence remains scientifically valid: state REINSTATE with the
+>     evidence category and specific instance in Phase 6a.
+> (b) If the change improved clarity, presentation, or reduced ambiguity without affecting
+>     the scientific claim: state NO REINSTATE with a one-sentence description of the
+>     specific non-scientific improvement achieved.
+
+For each P1 concern anticipated to result in no-change:
 
   P1-NC: [anticipated concern summary] -- anticipated no-change because:
   [evidence category: specific traceable instance -- one sentence]
 
-  Example: P1-NC: Reviewer 1 challenge to sample size adequacy -- anticipated no-change
-  because: statistical result -- power analysis (80% power at N=120, primary outcome, App. B
-  Table B1) showed adequacy before data collection began.
-
-  Example: P1-NC: Reviewer 3 request to adopt Chen 2018 framework -- anticipated no-change
-  because: methodological argument -- Chen 2018 assumes panel data; this study uses
-  cross-sectional design (§2.1, single observation per participant), making that framework
-  inapplicable by structural assumption.
-
-If no P1 no-change decisions are anticipated: "All P1 concerns will be addressed with
-manuscript changes."
+If none: "All P1 concerns will be addressed with manuscript changes."
 
 These pre-commitments are audited in Phase 6a for HELD / SHIFTED outcomes.
-SHIFTED entries require classification. PRESSURE-DRIVEN entries require a named binary
-decision (REINSTATE / CONFIRM CHANGE) -- see Phase 6a protocol.
 
 ---
 
@@ -270,10 +279,31 @@ forecast flag to the exchange header. Use the type-specific AUTHOR RESPONDS temp
   presentation:   "We have [specific change] in the revised manuscript."
 
 **MANUSCRIPT OUTCOME:**
-[Section + specific change. Or: No change -- [rationale naming the valid RULE-1 evidence
-form by category AND a specific traceable instance (citation with Author Year §N, named
-analysis with location, or quantitative statistic with paper location) if P1; RULE-2 applies
-to all no-change; RULE-3 if scope.]]
+[Section + specific change.]
+[Or for P1 no-change:
+  "No change -- [evidence category: named entity-type referent (Author Year + locator for
+  literature; statistic + paper location for statistical; named principle + study-design
+  basis for methodological)]"
+
+  > **Forward-annotation from Check 2c**: A P1 no-change rationale naming a valid evidence
+  > category without a specific traceable instance fails Check 2c -- naming a location alone
+  > (section N, App. C) without the cited paper or author, specific statistic, or named
+  > principle does not satisfy the entity-type referent requirement.
+  > Repair paths:
+  > (a) Add the specific traceable instance: Author Year + locator (literature), named
+  >     statistic + paper location (statistical), named principle + study-design basis
+  >     (methodological).
+  > (b) If no specific instance exists, reclassify MANUSCRIPT OUTCOME to CHANGE and update
+  >     Phase 2 Forward-annotation from Check 2c pre-commitment and Phase 6a table accordingly.
+
+  > **Forward-annotation from Check 6b**: If Paragraph 1 currently claims a change citing
+  > this R-ID, that claim will fail Check 6b -- a cover letter asserting "we changed X in
+  > response to R-NN" paired with a No-change MANUSCRIPT OUTCOME is a structural contradiction.
+  > Repair paths:
+  > (a) Correct this MANUSCRIPT OUTCOME to CHANGE if the change was actually made but recorded
+  >     incorrectly in this exchange.
+  > (b) Revise Paragraph 1 to remove or rephrase the claim asserting a change against this
+  >     R-ID before continuing past this exchange.]
 ---
 
 ---
@@ -282,34 +312,42 @@ to all no-change; RULE-3 if scope.]]
 
 **6a. Cover letter reconciliation + P1 pre-commitment audit**:
 Compare Phase 2 cover letter and P1-NC pre-commitments against Phase 5 outcomes.
-- Update Paragraph 1 to reflect changes actually made. Each named change must include
-  parenthetical R-ID references: "We [change] (R-NN)" or "We [change] (R-NN, R-NN)".
-  An unnamed change claim will fail Phase 7 Check 6.
+- Update Paragraph 1 with parenthetical R-ID references for each named change.
 - Update Paragraph 2 for any shift in disagreement framing.
-- P1 pre-commitment audit with SHIFTED classification and decision closure:
 
-  | P1-NC | Evidence category + instance | Phase 5 outcome | HELD / SHIFTED | Classification | Decision | Rationale |
-  |-------|------------------------------|-----------------|----------------|----------------|----------|-----------|
+> **Forward-annotation from Check 6b**: A Paragraph 1 change claim asserting "we changed X
+> in response to R-NN" while R-NN's Phase 5 MANUSCRIPT OUTCOME is "No change" is a structural
+> contradiction -- the cover letter asserts a change the manuscript does not contain, and
+> Check 6b will block the write.
+> Repair paths:
+> (a) Correct the MANUSCRIPT OUTCOME if the change was actually made and Phase 5 recorded
+>     it incorrectly -- the claim is accurate, the record is wrong.
+> (b) Revise Paragraph 1 to remove or rephrase the false change claim -- the manuscript
+>     record is correct and the cover letter overstated.
+> Resolve before filling the audit table -- it is faster to fix here where both artifacts
+> are simultaneously visible.
 
-  HELD: pre-committed no-change was maintained; named evidence form and instance used in
-  Phase 5. No re-examination required.
+- P1 pre-commitment audit with entity-type referent column, SHIFTED classification, and
+  decision closure:
+
+  | P1-NC | Evidence category | Entity-type referent | Phase 5 outcome | HELD / SHIFTED | Classification | Decision | Rationale |
+  |-------|-------------------|----------------------|-----------------|----------------|----------------|----------|-----------|
+
+  **Entity-type referent column** -- fill during reconciliation, not at Phase 7:
+  - Prior literature: the cited paper or author (Author Year) -- not a section of this ms
+  - Statistical result: the specific statistic and its paper location
+  - Methodological argument: the named inferential principle and its study-design basis
+  An entry with an empty or location-only entity-type referent fails Phase 6a. The referent
+  must be present here -- it cannot be inserted at Phase 7 Check 2c as a last-second addition.
+
+  HELD: pre-committed no-change maintained; named evidence form and instance used in Phase 5.
 
   SHIFTED: position changed during drafting. Classify and re-examine:
 
-    PRESSURE-DRIVEN: author yielded under rhetorical or emotional argument weight without
-    encountering specific new scientific evidence. The original no-change position may still
-    be scientifically correct.
-    Decision required (choose one and state a one-sentence rationale):
-      REINSTATE: [name the specific RULE-1 evidence category and instance that was valid
-      before Phase 5 and remains valid -- the change should be reversed]
-      CONFIRM CHANGE: [name the specific non-scientific improvement achieved by the change
-      (clarity, presentation, reduced ambiguity) -- confirm the scientific claim is unaffected]
-
-    EVIDENCE-DRIVEN: author encountered specific evidence in Phase 5 (a named result,
-    calculation, or argument not anticipated in Phase 2) that genuinely changed the assessment.
-    Re-examination required: Does cover letter Paragraph 2 accurately reflect the resolved
-    disagreement? If this concern was listed as a standing disagreement and the shift resolved
-    it, update Paragraph 2 to remove or revise the disagreement claim.
+    PRESSURE-DRIVEN: author yielded under rhetorical weight without specific new scientific
+    evidence. Decision required: REINSTATE or NO REINSTATE with one-sentence rationale.
+    EVIDENCE-DRIVEN: author encountered specific named evidence not anticipated in Phase 2.
+    Decision required: CONFIRM CHANGE: [specific evidence]. Update Paragraph 2 if needed.
 
 **6b. Forecast validation**: Validate FLAGGED exchanges first, then check unflagged exchanges.
 
@@ -355,55 +393,80 @@ CHECK: list each P1 no-change R-ID and its named evidence form category -- PASS 
 If FAIL: rewrite the MANUSCRIPT OUTCOME rationale to name the evidence form before proceeding.
 
 **Check 2c -- P1 no-change evidence specificity (traceable instance present)**:
-For every P1 MANUSCRIPT OUTCOME that passed Check 2b, verify the rationale names a specific
-traceable instance within the valid category:
-  - Prior literature: Author Year, §Section or Table N (or equivalent locator)
-  - Methodological argument: named inferential claim with its study-design basis
-  - Statistical result: specific statistic and its paper location
-"Prior literature supports our approach" -- fails Check 2c (category present, no instance).
-"Prior literature (Jones 2019, §3.2) demonstrates this measurement approach is validated
-in equivalent cross-sectional populations" -- passes (category + specific citation + locator).
-CHECK: list each P1 no-change R-ID, its evidence category, and its named traceable instance
+For every P1 MANUSCRIPT OUTCOME that passed Check 2b, verify a specific traceable instance:
+Author Year + locator (literature); named statistic + location (statistical); named principle
++ study-design basis (methodological).
+CHECK: list each P1 no-change R-ID, its evidence category, and named traceable instance
 -- PASS / FAIL per entry
-If FAIL: add the specific traceable instance to the MANUSCRIPT OUTCOME rationale before
-proceeding. A P1 no-change without a traceable instance does not meet editorial submission
-standard regardless of how well-phrased the rationale is.
+If FAIL:
+  Back-reference: Phase 2 Forward-annotation from Check 2c warned that a traceable instance
+  was required at the pre-commitment decision point, Phase 5 Forward-annotation from Check 2c
+  warned that entity-type specificity was required at authoring time, and Phase 6a entity-type
+  referent column required the entity to be named during mid-workflow reconciliation -- an
+  entry failing Check 2c missed that constraint at its earliest visible points.
+  Apply the Forward-annotation from Check 2c repair paths.
 
 **Check 3 -- Cover letter structure**:
-Phase 2 (updated in 6a) contains exactly Paragraph 1 (3-4 changes named with R-ID references)
-and Paragraph 2 (areas of disagreement named, or explicit statement that none exist).
+Phase 2 (updated in 6a) contains Paragraph 1 (3-4 changes with R-ID references) and
+Paragraph 2 (disagreement framing or explicit statement of none).
 CHECK: PASS / FAIL
-If FAIL: identify which paragraph is missing or malformed and repair before proceeding.
+If FAIL:
+  (a) Paragraph present but malformed: add parenthetical R-ID references to each change claim.
+  (b) Paragraph missing entirely: draft from Phase 2 pre-commitments and Phase 5 outcomes.
 
 **Check 4 -- Forecast validation coverage + SHIFTED closure + PRESSURE-DRIVEN decision**:
-Part A: Every FLAGGED exchange from Phase 5 must appear as a validated row in Phase 6b
-(with ACCURATE / MISSED / OVERSTATED result).
-CHECK: [n FLAGGED exchange headers in Phase 5] vs [n validated rows in Phase 6b] -- PASS / FAIL
-Part B: Every SHIFTED entry in the Phase 6a pre-commitment audit must have a classification
-(PRESSURE-DRIVEN or EVIDENCE-DRIVEN) and a completed re-examination note. An entry with
-only classification and no re-examination outcome fails Part B.
-CHECK: [n SHIFTED entries] vs [n classified + re-examined entries] -- PASS / FAIL
-Part C: Every PRESSURE-DRIVEN entry from Phase 6a must have a named binary decision
-(REINSTATE or CONFIRM CHANGE) with a one-sentence rationale. An entry with classification
-and a re-examination note but no named binary decision fails Part C. "Considered" alone fails.
+Part A: Every FLAGGED exchange must appear as a validated row in Phase 6b.
+CHECK: [n FLAGGED exchange headers] vs [n validated rows in Phase 6b] -- PASS / FAIL
+If Part A fails:
+  (a) Forecast rows without validation: complete Phase 6b FLAGGED validation for each.
+  (b) Count mismatch: identify unvalidated row and add it.
+
+Part B: Every SHIFTED entry must have classification and completed re-examination note.
+CHECK: [n SHIFTED entries] vs [n classified + re-examined] -- PASS / FAIL
+If Part B fails:
+  (a) SHIFTED entries with no classification: apply PRESSURE-DRIVEN or EVIDENCE-DRIVEN.
+  (b) Classified but note absent: write the re-examination note.
+
+Part C: Every PRESSURE-DRIVEN entry must have REINSTATE or NO REINSTATE with rationale.
 CHECK: [n PRESSURE-DRIVEN entries] vs [n with named binary decision + rationale] -- PASS / FAIL
-If any part fails: complete the missing element before proceeding.
+If Part C fails:
+  Back-reference: Phase 2 Forward-annotation from Check 4 Part C warned that PRESSURE-DRIVEN
+  entries must commit REINSTATE or NO REINSTATE in Phase 6a before write -- an entry failing
+  Part C missed that constraint at its earliest visible point.
+  Apply the Forward-annotation from Check 4 Part C repair paths.
 
 **Check 5 -- Frontmatter integer verification**:
-Compute actual values from Phase 5 outcomes:
-- reviewer_count: total distinct reviewers in Phase 3 table
-- concerns_addressed: total R-IDs in Phase 3 table (= REVIEWER SAID count after Check 1)
-- manuscript_changes: R-IDs with MANUSCRIPT OUTCOME = section + change
-- no_change_responses: R-IDs with MANUSCRIPT OUTCOME = No change
-CHECK: all four values are integers, sum is consistent -- PASS / FAIL
-If FAIL: recompute from Phase 5 outcomes and correct frontmatter values.
+Compute from Phase 5 outcomes:
+- reviewer_count: distinct reviewers in Phase 3
+- concerns_addressed: total R-IDs in Phase 3
+- manuscript_changes: R-IDs with CHANGE MANUSCRIPT OUTCOME
+- no_change_responses: R-IDs with no-change MANUSCRIPT OUTCOME
+CHECK: all four are integers, manuscript_changes + no_change_responses = concerns_addressed
+-- PASS / FAIL
+If FAIL:
+  (a) String placeholders: replace each with the computed integer.
+  (b) Inconsistent totals: recount from Phase 5 and correct all four values.
 
 **Check 6 -- Cover letter Paragraph 1 traceability**:
-Every change claim in Paragraph 1 (Phase 2, updated in 6a) must include at least one
-parenthetical R-ID reference. A claim with no R-ID reference is vague and fails this check.
+Every change claim in Paragraph 1 (updated in 6a) must include at least one parenthetical
+R-ID reference.
 CHECK: list each Paragraph 1 claim and its R-ID reference(s) -- PASS / FAIL per claim
-If FAIL: add R-ID references to untraced claims. If no R-ID maps to the claim, the claim
-names a change not driven by any reviewer concern -- remove or rephrase before proceeding.
+If FAIL:
+  (a) R-ID exists but was omitted: add parenthetical reference.
+  (b) No R-ID maps to the claim: remove or rephrase.
+
+**Check 6b -- Cover letter claim-outcome consistency**:
+For every Paragraph 1 change claim that passed Check 6, verify each referenced R-ID resolves
+to a CHANGE MANUSCRIPT OUTCOME (not "No change").
+CHECK: list each Paragraph 1 claim, R-ID references, and each R-ID MANUSCRIPT OUTCOME type
+(CHANGE or NO CHANGE) -- PASS / FAIL per claim
+If FAIL:
+  Back-reference: Phase 6a Forward-annotation from Check 6b warned that Paragraph 1 change
+  claims referencing an R-ID must resolve to a CHANGE MANUSCRIPT OUTCOME, and Phase 5
+  Forward-annotation from Check 6b warned of this constraint at the moment of authoring the
+  MANUSCRIPT OUTCOME -- an entry failing Check 6b missed that constraint at its earliest
+  visible points.
+  Apply the Forward-annotation from Check 6b repair paths.
 
 All checks PASS -- proceed to artifact write.
 
