@@ -12,12 +12,5 @@
     ]
   },
   "enabledPlugins": {},
-  "extraKnownMarketplaces": {
-    "signal": {
-      "source": {
-        "source": "directory",
-        "path": "C:\\src\\craftworks-research\\toolkits\\signal"
-      }
-    }
-  }
+  "extraKnownMarketplaces": {}
 }
