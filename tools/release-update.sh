@@ -14,7 +14,18 @@ set -euo pipefail
 
 SIGNALS_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 export SIGNALS_ROOT
-CR_ROOT="${CR_ROOT:-C:/src/craftworks-research}"
+
+# Load local config if present (gitignored) — set CR_ROOT there
+LOCAL_CONFIG="$(dirname "${BASH_SOURCE[0]}")/.release-local"
+if [[ -f "$LOCAL_CONFIG" ]]; then
+    source "$LOCAL_CONFIG"
+fi
+
+if [[ -z "${CR_ROOT:-}" ]]; then
+    echo "ERROR: CR_ROOT is not set. Create tools/.release-local with:"
+    echo "  CR_ROOT=/path/to/craftworks-research"
+    exit 1
+fi
 BRANCH="release/signal-$(date +%Y-%m-%d)"
 PUSH=false
 CREATE_PR=false
