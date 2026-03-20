@@ -1,0 +1,5 @@
+---
+mode: agent
+description: "Self-check your signals before committing. Analyzes all signal artifacts for a topic across 4 dimensions: SEQUENCE (did"
+---
+Self-check your signals before committing. Analyzes all signal artifacts for a topic across 4 dimensions: SEQUENCE (did you discover before specifying?), COHERENCE (do your signals agree with each other?), STALENESS (are signals recent enough to trust?), CAUSAL GAP (do you have evidence for the mechanism linking feature to outcome?). Not punitive -- coaching. Surfaces what looks inconsistent so you can decide whether to address it before committing. Run before /specify-commitment or any major decision.

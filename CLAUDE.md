@@ -86,3 +86,19 @@ Windows (MSYS2/Git Bash). Same rules as craftworks CLAUDE.md:
 - `python` not `python3`
 - Prefer Claude Code tools over Bash (Glob, Grep, Read, Write, Edit)
 - ASCII only in output
+
+## Signal
+
+Signal is installed. 62 skills across 9 namespaces.
+
+Quick start:
+  /discover-competitors <feature>   Scout inertia and named competitors
+  /discover-inertia <feature>       Why would teams do nothing instead?
+  /signal                           See all 62 commands
+  /rhythm-decide <feature>          Full pre-commitment decision campaign
+
+Artifacts: signals/{namespace}/{skill}/{topic}-{skill}-{date}.md
+Use /tools-coverage <feature> to see coverage gaps.
+Use /signal-health to check workspace health.
+
+The primary competitor is always inertia.

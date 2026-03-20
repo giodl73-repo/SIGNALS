@@ -1,0 +1,8 @@
+---
+mode: agent
+description: "Prove what you believe. Hypothesis-first investigation decomposed into approachable steps -- state, research, prototype, analyze, interview, synthesiz"
+---
+State what you believe and what would change your mind. Entry point to a prove investigation. A hypothesis has: a claim (what you believe), a falsification condition (what evidence would prove it wrong), a confidence level (0-100), and a list of experiments that will test it. The hypothesis is a commitment -- you cannot move the goalposts after seeing results.
+
+Write artifact to: signals/prove/investigations/{topic}-hypothesis-{date}.md
+If --output <path> was provided: write to <path>/{{topic}}-[skill]-{{date}}.md instead (flat, no namespace prefix).
