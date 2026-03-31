@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skill": "roles-sharpen",
+  "root": {
+    "type": "llm-call",
+    "handle": "op-70",
+    "prompt": "Sharpen role verify checks from execution feedback. Takes a postmortem or completion log and proposes new verify checks for specific roles."
+  }
+}

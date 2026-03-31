@@ -27,15 +27,37 @@ Select relevant roles based on artifact type and domain signals detected. List s
 
 ---
 
+## PHASE 2.5 -- PRIOR SIGNALS
+
+Glob `signals/**/*{{topic}}*` to find all prior signal artifacts for this topic.
+Exclude the artifact being reviewed.
+
+If prior artifacts exist:
+
+| # | Prior artifact | Skill | Date | Open P1/P2 findings |
+|---|----------------|-------|------|---------------------|
+| 1 | | | | |
+
+For each prior finding at P1 or P2:
+- If the finding references code/design that has NOT changed since: carry forward as UNRESOLVED
+- If the finding references code/design that HAS changed since: mark POTENTIALLY-RESOLVED
+
+Unresolved prior P1s are provided to reviewers in PHASE 3 as context. A reviewer who
+encounters the same issue should escalate severity, not re-discover it as new.
+
+If no prior artifacts exist: skip this phase.
+
+---
+
 ## PHASE 3 -- REVIEW
 
 For each selected role, run its lens.verify checks against the artifact.
 
 Per-role output:
 
-| # | Finding | Severity | Section | Recommendation |
-|---|---------|----------|---------|----------------|
-| 1 | [finding from this role's lens] | P1/P2/P3 | [reference] | [fix] |
+| # | Observation | Assessment | Severity | Section | Recommendation |
+|---|-------------|------------|----------|---------|----------------|
+| 1 | [what was observed — factual, no normative claims] | [what it means — the reviewer's judgment] | P1/P2/P3 | [reference] | [fix] |
 
 P1 = blocks ship, P2 = must fix, P3 = should fix.
 Minimum: quick=2 findings/role, standard=3, deep=5.

@@ -64,6 +64,28 @@ Reviewers SHALL NOT skip files because they appear simple or unchanged.
 
 ---
 
+## BLOCK 1.75 — PRIOR SIGNALS
+
+Glob `signals/**/*{topic}*` to find all prior signal artifacts for this topic.
+
+If prior artifacts exist:
+
+| # | Prior artifact | Skill | Date | Open P1/P2 findings |
+|---|----------------|-------|------|---------------------|
+| 1 | | | | |
+
+For each prior finding at P1 or P2 that references files in scope:
+- Check `git log --since={artifact-date} -- {file}` for changes
+- If unchanged: carry forward as UNRESOLVED — reviewers in BLOCK 2 must address it
+- If changed: mark POTENTIALLY-RESOLVED — reviewers verify whether the fix is adequate
+
+Prior findings are provided as context to all reviewers. A recurring unresolved P1 across
+multiple reviews is an escalation signal.
+
+If no prior artifacts exist: skip this block.
+
+---
+
 ## BLOCK 2 — PER-REVIEWER FINDINGS
 
 Each reviewer produces a findings table. Findings are annotated with file:line where applicable.
@@ -78,10 +100,10 @@ Severity:
 
 ### Security
 
-| ID | File:Line | Finding | Severity | Fix |
-|----|-----------|---------|----------|-----|
-| SEC-01 | [file:line] | [finding] | [P1/P2/P3] | [concrete fix] |
-| SEC-02 | [file:line] | [finding] | [P1/P2/P3] | [concrete fix] |
+| ID | File:Line | Observation | Assessment | Severity | Fix |
+|----|-----------|-------------|------------|----------|-----|
+| SEC-01 | [file:line] | [what was observed] | [what it means] | [P1/P2/P3] | [concrete fix] |
+| SEC-02 | [file:line] | [what was observed] | [what it means] | [P1/P2/P3] | [concrete fix] |
 | ... | | | | |
 
 Patterns identified: [e.g., "input validation absent in 3 handler functions — consistent gap"]
@@ -91,9 +113,9 @@ Spec compliance: [PASS / FAIL / N/A]
 
 ### Performance
 
-| ID | File:Line | Finding | Severity | Fix |
-|----|-----------|---------|----------|-----|
-| PERF-01 | [file:line] | [finding] | [P1/P2/P3] | [concrete fix] |
+| ID | File:Line | Observation | Assessment | Severity | Fix |
+|----|-----------|-------------|------------|----------|-----|
+| PERF-01 | [file:line] | [what was observed] | [what it means] | [P1/P2/P3] | [concrete fix] |
 | ... | | | | |
 
 Patterns identified: [e.g., "synchronous I/O in async context — appears in 2 files"]
@@ -103,9 +125,9 @@ Spec compliance: [PASS / FAIL / N/A]
 
 ### Maintainability
 
-| ID | File:Line | Finding | Severity | Fix |
-|----|-----------|---------|----------|-----|
-| MAINT-01 | [file:line] | [finding] | [P1/P2/P3] | [concrete fix] |
+| ID | File:Line | Observation | Assessment | Severity | Fix |
+|----|-----------|-------------|------------|----------|-----|
+| MAINT-01 | [file:line] | [what was observed] | [what it means] | [P1/P2/P3] | [concrete fix] |
 | ... | | | | |
 
 Patterns identified: [e.g., "function length exceeds 50 lines in 4 of 7 files"]
@@ -115,9 +137,9 @@ Spec compliance: [PASS / FAIL / N/A]
 
 ### Testing
 
-| ID | File:Line | Finding | Severity | Fix |
-|----|-----------|---------|----------|-----|
-| TEST-01 | [file:line] | [finding] | [P1/P2/P3] | [concrete fix] |
+| ID | File:Line | Observation | Assessment | Severity | Fix |
+|----|-----------|-------------|------------|----------|-----|
+| TEST-01 | [file:line] | [what was observed] | [what it means] | [P1/P2/P3] | [concrete fix] |
 | ... | | | | |
 
 Patterns identified: [e.g., "happy path only — error branches untested across module"]
@@ -127,9 +149,9 @@ Spec compliance: [PASS / FAIL / N/A]
 
 ### Documentation
 
-| ID | File:Line | Finding | Severity | Fix |
-|----|-----------|---------|----------|-----|
-| DOC-01 | [file:line] | [finding] | [P1/P2/P3] | [concrete fix] |
+| ID | File:Line | Observation | Assessment | Severity | Fix |
+|----|-----------|-------------|------------|----------|-----|
+| DOC-01 | [file:line] | [what was observed] | [what it means] | [P1/P2/P3] | [concrete fix] |
 | ... | | | | |
 
 Patterns identified: [if any]
@@ -139,9 +161,9 @@ Spec compliance: [PASS / FAIL / N/A]
 
 ### Architecture
 
-| ID | File:Line | Finding | Severity | Fix |
-|----|-----------|---------|----------|-----|
-| ARCH-01 | [file:line] | [finding] | [P1/P2/P3] | [concrete fix] |
+| ID | File:Line | Observation | Assessment | Severity | Fix |
+|----|-----------|-------------|------------|----------|-----|
+| ARCH-01 | [file:line] | [what was observed] | [what it means] | [P1/P2/P3] | [concrete fix] |
 | ... | | | | |
 
 Patterns identified: [if any]
@@ -151,9 +173,9 @@ Spec compliance: [PASS / FAIL / N/A]
 
 ### [Domain Expert — if activated]
 
-| ID | File:Line | Finding | Severity | Fix |
-|----|-----------|---------|----------|-----|
-| DOM-01 | [file:line] | [finding] | [P1/P2/P3] | [concrete fix] |
+| ID | File:Line | Observation | Assessment | Severity | Fix |
+|----|-----------|-------------|------------|----------|-----|
+| DOM-01 | [file:line] | [what was observed] | [what it means] | [P1/P2/P3] | [concrete fix] |
 | ... | | | | |
 
 Patterns identified: [if any]

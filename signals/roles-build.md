@@ -31,8 +31,11 @@ name: {role-slug}
 
 orientation:
   frame: >
-    {what this role focuses on — specific, not generic. Not "reviews code quality" but
-    "identifies rate-limiting boundaries that are asserted without causal evidence"}
+    {what TWO concerns this role holds in tension — not a single domain focus.
+    Not "reviews code quality" but "holds implementation correctness and earned
+    complexity in tension — verifies the spec is implemented while challenging
+    whether each code path justifies its existence."
+    A frame that names only one concern is INCOMPLETE. Every role must hold a tension.}
   serves: >
     {who benefits from this role's findings — name the audience and what they do with
     the findings. One sentence.}

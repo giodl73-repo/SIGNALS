@@ -35,8 +35,11 @@ name: {role-slug}
 
 orientation:
   frame: >
-    {what this role focuses on — specific, not generic. Not "reviews code quality" but
-    "identifies rate-limiting boundaries that are asserted without causal evidence"}
+    {what TWO concerns this role holds in tension — not a single domain focus.
+    Not "reviews code quality" but "holds implementation correctness and earned
+    complexity in tension — verifies the spec is implemented while challenging
+    whether each code path justifies its existence."
+    A frame that names only one concern is INCOMPLETE. Every role must hold a tension.}
   serves: >
     {who benefits from this role's findings — name the audience and what they do with
     the findings. One sentence.}
@@ -74,6 +77,28 @@ collaborates_with:
   - {related-role-1}
   - {related-role-2}
 ```
+
+---
+
+## PHASE 2.5 — TENSION VALIDATION
+
+Before proceeding to PHASE 3, validate the orientation.frame:
+
+| Check | Result |
+|-------|--------|
+| Frame names two distinct concerns | [YES / NO — if NO, rewrite frame before proceeding] |
+| Concerns create genuine tension (not two aspects of the same thing) | [YES / NO] |
+| Frame uses "holds X and Y in tension" or equivalent structure | [YES / NO] |
+
+Example of a COMPLETE frame (two concerns in tension):
+> "Holds caller-aware error handling and diagnostic transparency in tension — the right
+> error response depends on whether the caller is a human debugging, an AI agent retrying,
+> or CI expecting deterministic outcomes."
+
+Example of an INCOMPLETE frame (single domain focus):
+> "Reviews error handling patterns for completeness and consistency."
+
+If any check is NO: rewrite the frame before proceeding. Do not continue with a single-lens role.
 
 ---
 

@@ -100,6 +100,33 @@ which the Stage 6 closing synthesis runs.
 
 ---
 
+### Stage 1.5 -- Prior Echo Consumption
+
+Before the signal sweep, check for prior echo artifacts.
+
+Glob `signals/{topic}/{topic}-echo-*.md` for prior echoes.
+
+If prior echoes exist:
+- Read each prior echo artifact
+- Extract all previously recorded surprises (S-# entries from Stage 4)
+- Extract the closing collective synthesis (Stage 6 revision direction)
+- Record the prior echo state:
+
+| Prior echo | Date | Surprises recorded | Verdict |
+|------------|------|--------------------|---------|
+| | | [S-1, S-2, ...] | [COHERENT / CONTRADICTORY / ...] |
+
+The prior echo state is consumed by Stage 2 and Stage 3:
+- Stage 2 deviations that duplicate a prior echo's surprises are marked PRIOR-RECORDED
+- Stage 3 gate adds a sixth check: "Not already recorded in a prior echo?"
+- Only genuinely NEW deviations proceed to Stage 4
+
+If no prior echoes exist: skip this stage. All deviations are new by definition.
+
+COMMIT-STAGE-1.5: prior echo state recorded (or skipped if no prior echoes).
+
+---
+
 ### Stage 2 -- Signal Sweep
 
 Read all signal artifacts for `{topic}`. Record deviations.
@@ -123,6 +150,7 @@ COMMIT-STAGE-2.
 | Design-relevant (names component, not "system")? | | | | | |
 | Genuinely unexpected (not predicted from prior knowledge)? | | | | | |
 | Survives flat-statement test (no qualifiers needed)? | | | | | |
+| Not already recorded in a prior echo? | | | | | |
 | **Verdict** (VALID / INVALID: check # -- reason) | | | | | |
 
 A VALID verdict means all five checks passed. Before any VALID entry proceeds to Stage 4,
@@ -235,3 +263,10 @@ The artifact begins with the Stage 1 collective baseline -- the answer to the op
 Symmetric Contract question -- and ends with the Stage 6 collective synthesis -- the answer
 to the closing Symmetric Contract question. Individual entries are the evidence between
 them. The structure is the contract made visible.
+
+Frontmatter must include:
+```
+prior_echoes_consumed: [count or 0]
+prior_surprises_excluded: [count or 0]
+delta_mode: [true if prior echoes were consumed, false otherwise]
+```

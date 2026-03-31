@@ -1,5 +1,5 @@
 Signal — Feature Decision Intelligence
-62 skills across 9 namespaces
+63 skills across 9 namespaces
 
 CAMPAIGNS (start here):
   /rhythm-decide          Full pre-commitment decision campaign
@@ -38,7 +38,8 @@ NARRATIVE:
 
 GOVERNANCE:
   /roles-scan  /roles-build  /roles-chart  /roles-create  /roles-check
-  /roles-product-review  /roles-pull-request  /roles-committee  /roles-leaderboard
+  /roles-sharpen  /roles-product-review  /roles-pull-request  /roles-committee
+  /roles-leaderboard
 
 TOOLS:
   /signal-setup  /signal-health  /signal-layout  /tools-coverage  /tools-preview  /tools-accept

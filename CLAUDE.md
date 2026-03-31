@@ -89,7 +89,7 @@ Windows (MSYS2/Git Bash). Same rules as craftworks CLAUDE.md:
 
 ## Signal
 
-Signal is installed. 62 skills across 9 namespaces.
+Signal is installed. 63 skills across 9 namespaces.
 
 Quick start:
   /discover-competitors <feature>   Scout inertia and named competitors
