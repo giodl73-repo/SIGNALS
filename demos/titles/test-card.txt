@@ -1,0 +1,6 @@
+Signals gathered so far:
+
+  discover-hypothesis: claim stated
+  discover-competitors: 4 alternatives mapped
+
+Now: validate the spec with 5 personas.

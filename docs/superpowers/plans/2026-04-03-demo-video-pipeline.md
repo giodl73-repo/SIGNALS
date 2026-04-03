@@ -2,15 +2,22 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build an automated pipeline that renders professional demo videos from three text inputs (tape file, narration script, title card text) with one shell command.
+**Goal:** Build an automated pipeline that renders professional demo videos from three text inputs (scenario file, narration script, title card text) with one shell command.
 
-**Architecture:** A bash orchestrator (`render-demo.sh`) coordinates three stages: (1) VHS records a real terminal session from a tape file, (2) ElevenLabs API generates voiceover from a narration markdown file, (3) FFmpeg composites terminal video + audio + subtitles + title cards into a final mp4 and a 30-second clip. Narration duration is the master clock; terminal video is speed-adjusted to match.
+**Architecture:** A bash orchestrator (`render-demo.sh`) coordinates four stages: (1) terminal-demo renders a scenario to .cast, (2) svg-term converts .cast to animated SVG, (3) Puppeteer + FFmpeg renders SVG to terminal mp4, (4) FFmpeg composites terminal video + ElevenLabs narration audio + subtitles + title cards into a final mp4 and a 30-second clip. Narration duration is the master clock.
 
-**Tech Stack:** VHS (terminal recording), FFmpeg (video compositing), ElevenLabs API (TTS), bash + jq (orchestration), curl (API calls)
+**Tech Stack:** terminal-demo + svg-term-cli + Puppeteer (terminal rendering), FFmpeg (compositing), ElevenLabs API (TTS), bash + jq (orchestration)
 
 **Spec:** `docs/superpowers/specs/2026-04-03-demo-video-pipeline-design.md`
 
-**Platform note:** VHS has known issues on Windows 11 with Git Bash (issues #541, #631). Plan includes a WSL2 path as primary and native Windows with ttyd 1.7.3 as fallback.
+**Verified on:** Windows 11 Enterprise 10.0.26100, Node.js v24.14.0, FFmpeg 8.1. No WSL2 or Docker required.
+
+**What already exists (from prototype session):**
+- `demos/lib/svg-to-mp4.js` -- Puppeteer SVG renderer (working)
+- `demos/lib/package.json` -- Puppeteer dependency (installed)
+- `demos/tapes/test-scenario.txt` -- test scenario (verified)
+- `demos/.gitignore` -- ignores raw/, audio/, final/, node_modules
+- Tools installed: terminal-demo, svg-term-cli, FFmpeg 8.1
 
 ---
 
@@ -18,58 +25,53 @@
 
 ```
 demos/
-  render-demo.sh              # Main orchestrator (Task 7)
+  render-demo.sh              # Main orchestrator (Task 5)
   lib/
+    svg-to-mp4.js              # Puppeteer SVG renderer (EXISTS)
+    cast-to-mp4.sh             # .cast -> SVG -> mp4 wrapper (Task 1)
     parse-narration.sh         # Markdown -> section JSON (Task 2)
     generate-audio.sh          # ElevenLabs TTS per section (Task 3)
-    composite-video.sh         # FFmpeg assembly (Task 5)
-    extract-clip.sh            # 30-second clip extraction (Task 6)
-    generate-srt.sh            # Subtitle generation from narration (Task 4)
-    generate-title-card.sh     # Title card image generation (Task 4)
-  config.env.example           # Template for API keys and settings (Task 1)
-  tapes/
-    demo-0-install.tape        # Demo 0 tape file (Task 7)
-    demo-3-persona.tape        # Demo 3 tape file (Task 8)
+    generate-srt.sh            # Subtitle generation (Task 2)
+    generate-title-card.sh     # Title card video generation (Task 2)
+    composite-video.sh         # FFmpeg final assembly (Task 4)
+    extract-clip.sh            # 30-second clip extraction (Task 4)
+    package.json               # Node deps - Puppeteer (EXISTS)
+  config.env.example           # Template for API keys (Task 1)
+  scenarios/
+    demo-0-install.txt         # Demo 0 scenario (Task 6)
+    demo-3-persona.txt         # Demo 3 scenario (Task 7)
   narration/
-    demo-0-install.md          # Demo 0 narration script (Task 7)
-    demo-3-persona.md          # Demo 3 narration script (Task 8)
+    demo-0-install.md          # Demo 0 narration (Task 6)
+    demo-3-persona.md          # Demo 3 narration (Task 7)
   titles/
-    endorsement.txt            # Endorsement card text (Task 7)
-    demo-0-opening.txt         # "You got a link from a colleague." (Task 7)
-    demo-3-opening.txt         # "You wrote a spec..." (Task 8)
-    demo-3-previously.txt      # "Previously gathered" card (Task 8)
-  raw/                         # VHS output (git-ignored)
+    endorsement.txt            # Endorsement card (Task 6)
+    demo-0-install-opening.txt # "You got a link..." (Task 6)
+    demo-3-persona-opening.txt # "You wrote a spec..." (Task 7)
+    demo-3-persona-prev.txt    # "Previously gathered" (Task 7)
+  raw/                         # Intermediate files (git-ignored)
   audio/                       # Generated voiceover (git-ignored)
   final/                       # Finished mp4s and clips (git-ignored)
 ```
 
 ---
 
-## Task 1: Project Scaffolding and Tooling Setup
+## Task 1: Scaffold and Cast-to-MP4 Wrapper
+
+Build the shell wrapper around the existing svg-to-mp4.js prototype. Create config template.
 
 **Files:**
 - Create: `demos/config.env.example`
-- Create: `demos/.gitignore`
-- Create: `demos/README.md`
+- Create: `demos/lib/cast-to-mp4.sh`
+- Modify: `demos/lib/svg-to-mp4.js` (improve frame timing)
 
-- [ ] **Step 1: Create the demos directory structure**
+- [ ] **Step 1: Create directory structure**
 
 ```bash
 cd /c/src/signals
-mkdir -p demos/{lib,tapes,narration,titles,openings,raw,audio,final}
+mkdir -p demos/{scenarios,narration,titles,raw,audio,final}
 ```
 
-- [ ] **Step 2: Create .gitignore for generated files**
-
-Create `demos/.gitignore`:
-```
-raw/
-audio/
-final/
-config.env
-```
-
-- [ ] **Step 3: Create config.env.example**
+- [ ] **Step 2: Create config.env.example**
 
 Create `demos/config.env.example`:
 ```bash
@@ -84,102 +86,182 @@ ELEVENLABS_MODEL_ID="eleven_monolingual_v1"
 # Video settings
 VIDEO_WIDTH=1400
 VIDEO_HEIGHT=800
-VIDEO_FONT_SIZE=14
+VIDEO_FPS=10
 VIDEO_THEME="Catppuccin Mocha"
-VIDEO_FRAMERATE=30
 
-# Paths (auto-detected if blank)
-VHS_BIN=""
+# Tool paths (auto-detected if blank)
 FFMPEG_BIN=""
 ```
 
-- [ ] **Step 4: Verify VHS is available**
+- [ ] **Step 3: Create cast-to-mp4.sh wrapper**
 
-Run in WSL2 (preferred) or native:
+This wraps the three-step conversion: scenario.txt -> .cast -> .svg -> .mp4
+
+Create `demos/lib/cast-to-mp4.sh`:
 ```bash
-# WSL2 path (recommended):
-wsl -- bash -c "which vhs && vhs --version"
+#!/usr/bin/env bash
+# cast-to-mp4.sh <scenario.txt> <output.mp4> [speed]
+# Converts a terminal-demo scenario to mp4 via .cast -> .svg -> Puppeteer+FFmpeg
+#
+# Requires: terminal-demo, svg-term, node, ffmpeg
 
-# Native fallback:
-vhs --version
+set -euo pipefail
 
-# If neither works, install:
-# WSL2: go install github.com/charmbracelet/vhs@latest
-# Native: winget install charmbracelet.vhs
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DEMO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+SCENARIO="$1"
+OUTPUT="$2"
+SPEED="${3:-1}"
+
+# Load config for video settings
+CONFIG="$DEMO_DIR/config.env"
+if [[ -f "$CONFIG" ]]; then source "$CONFIG"; fi
+FPS="${VIDEO_FPS:-10}"
+
+# Temp working directory
+WORK=$(mktemp -d)
+trap "rm -rf $WORK" EXIT
+
+SCENARIO_NAME=$(basename "$SCENARIO" .txt)
+
+echo "  [cast-to-mp4] Scenario: $SCENARIO"
+
+# Step 1: scenario -> .cast
+echo "  [1/3] Recording scenario to .cast..."
+echo "" | terminal-demo play "$SCENARIO" \
+  --record "$WORK/${SCENARIO_NAME}.cast" \
+  --speed "$SPEED" \
+  2>/dev/null
+
+# Step 2: .cast -> .svg
+echo "  [2/3] Converting .cast to animated SVG..."
+cat "$WORK/${SCENARIO_NAME}.cast" | svg-term \
+  --out "$WORK/${SCENARIO_NAME}.svg" \
+  --window \
+  2>/dev/null
+
+# Step 3: .svg -> .mp4 via Puppeteer + FFmpeg
+echo "  [3/3] Rendering SVG to mp4..."
+node "$SCRIPT_DIR/svg-to-mp4.js" \
+  "$WORK/${SCENARIO_NAME}.svg" \
+  "$WORK/video" \
+  "$FPS" \
+  2>/dev/null
+
+# Move final output
+cp "$WORK/video/output.mp4" "$OUTPUT"
+
+DURATION=$(ffprobe -v quiet -show_entries format=duration -of csv=p=0 "$OUTPUT" 2>/dev/null || echo "unknown")
+SIZE=$(du -h "$OUTPUT" | cut -f1)
+echo "  [cast-to-mp4] Done: ${DURATION}s, ${SIZE}"
 ```
 
-Expected: version string like `vhs version v0.7.2`
+- [ ] **Step 4: Improve svg-to-mp4.js frame timing**
 
-- [ ] **Step 5: Verify FFmpeg is available**
+The prototype captures frames in real-time (waits between frames). For a curated scenario where we control timing, we should capture all frames as fast as possible using CSS animation scrubbing. Update `demos/lib/svg-to-mp4.js`:
 
-```bash
-ffmpeg -version | head -1
+```javascript
+#!/usr/bin/env node
+// svg-to-mp4.js <input.svg> <output-dir> [fps]
+// Renders an animated SVG to PNG frames, then FFmpeg encodes to mp4.
+
+const puppeteer = require('puppeteer');
+const path = require('path');
+const fs = require('fs');
+const { execSync } = require('child_process');
+
+const args = process.argv.slice(2);
+if (args.length < 2) {
+  console.error('Usage: node svg-to-mp4.js <input.svg> <output-dir> [fps]');
+  process.exit(1);
+}
+
+const svgPath = path.resolve(args[0]);
+const outputDir = path.resolve(args[1]);
+const fps = parseInt(args[2] || '10');
+
+// Find ffmpeg
+const ffmpegPaths = [
+  'ffmpeg',
+  path.join(process.env.LOCALAPPDATA || '', 'Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1-full_build/bin/ffmpeg.exe')
+];
+let ffmpeg = ffmpegPaths.find(p => {
+  try { execSync(`"${p}" -version`, { stdio: 'ignore' }); return true; } catch { return false; }
+});
+if (!ffmpeg) { console.error('FFmpeg not found'); process.exit(1); }
+
+async function main() {
+  const framesDir = path.join(outputDir, 'frames');
+  fs.mkdirSync(framesDir, { recursive: true });
+
+  const svgContent = fs.readFileSync(svgPath, 'utf8');
+
+  // Extract total animation duration from SVG
+  const durMatches = [...svgContent.matchAll(/dur="([\d.]+)s"/g)];
+  const maxDur = durMatches.reduce((max, m) => Math.max(max, parseFloat(m[1])), 10);
+  const totalFrames = Math.ceil(maxDur * fps);
+
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1400, height: 800 });
+
+  const html = `<!DOCTYPE html>
+<html><head><style>
+  body { margin: 0; padding: 0; background: #1e1e2e; overflow: hidden; }
+  svg { width: 100%; height: 100%; }
+</style></head><body>${svgContent}</body></html>`;
+
+  await page.setContent(html, { waitUntil: 'networkidle0' });
+
+  // Capture frames with real-time pacing
+  const frameInterval = 1000 / fps;
+  for (let i = 0; i < totalFrames; i++) {
+    const framePath = path.join(framesDir, `frame-${String(i).padStart(5, '0')}.png`);
+    await page.screenshot({ path: framePath });
+    await new Promise(r => setTimeout(r, frameInterval));
+  }
+
+  await browser.close();
+
+  // FFmpeg: frames -> mp4
+  const framesPattern = path.join(framesDir, 'frame-%05d.png').replace(/\\/g, '/');
+  const outputMp4 = path.join(outputDir, 'output.mp4').replace(/\\/g, '/');
+
+  execSync(`"${ffmpeg}" -y -framerate ${fps} -i "${framesPattern}" -c:v libx264 -pix_fmt yuv420p -r 30 "${outputMp4}"`, { stdio: 'pipe' });
+}
+
+main().catch(err => { console.error(err); process.exit(1); });
 ```
 
-Expected: `ffmpeg version X.X.X`
-
-If missing: `choco install ffmpeg`
-
-- [ ] **Step 6: Test VHS with a minimal tape**
-
-Create `demos/tapes/test.tape`:
-```tape
-Output demos/raw/test.mp4
-Set FontSize 14
-Set Width 1400
-Set Height 800
-Set Theme "Catppuccin Mocha"
-Set Shell "bash"
-
-Type "echo hello world"
-Enter
-Sleep 2s
-```
-
-Run:
-```bash
-# WSL2 path:
-wsl -- bash -c "cd /mnt/c/src/signals && vhs demos/tapes/test.tape"
-
-# Native path:
-vhs demos/tapes/test.tape
-```
-
-Expected: `demos/raw/test.mp4` exists and shows "hello world" in terminal.
-
-- [ ] **Step 7: Commit scaffolding**
+- [ ] **Step 5: Test the wrapper end-to-end**
 
 ```bash
-git add demos/.gitignore demos/config.env.example
-git commit -m "feat(demos): scaffold video pipeline directory structure"
+chmod +x demos/lib/cast-to-mp4.sh
+bash demos/lib/cast-to-mp4.sh demos/tapes/test-scenario.txt demos/raw/test-wrapped.mp4 2
+```
+
+Expected: `demos/raw/test-wrapped.mp4` exists, plays correctly, slower than the prototype test (speed=2 instead of 10).
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add demos/config.env.example demos/lib/cast-to-mp4.sh demos/lib/svg-to-mp4.js
+git commit -m "feat(demos): cast-to-mp4 wrapper and config template"
 ```
 
 ---
 
-## Task 2: Narration Parser
+## Task 2: Narration Parser, Subtitle Generator, Title Card Generator
 
-Parses a narration markdown file into a JSON array of sections. Each section has a name and text. No timestamps in the input -- those are calculated at render time from audio durations.
+Three utility scripts that prepare assets for compositing.
 
 **Files:**
 - Create: `demos/lib/parse-narration.sh`
+- Create: `demos/lib/generate-srt.sh`
+- Create: `demos/lib/generate-title-card.sh`
 
-- [ ] **Step 1: Write a test narration file**
-
-Create `demos/narration/test.md`:
-```markdown
-## intro
-This is the introduction section.
-It can span multiple lines.
-
-## middle
-This is the middle section with a single line.
-
-## outro
-This is the outro.
-Short and direct.
-```
-
-- [ ] **Step 2: Write the parser**
+- [ ] **Step 1: Write the narration parser**
 
 Create `demos/lib/parse-narration.sh`:
 ```bash
@@ -190,7 +272,6 @@ Create `demos/lib/parse-narration.sh`:
 #   [{"name":"intro","text":"This is the intro..."},...]
 #
 # Format: ## section-name followed by narration text.
-# Blank lines between sections are ignored.
 
 set -euo pipefail
 
@@ -202,16 +283,9 @@ if [[ ! -f "$INPUT" ]]; then
 fi
 
 awk '
-BEGIN {
-  printf "["
-  first = 1
-  name = ""
-  text = ""
-}
-
+BEGIN { printf "["; first = 1; name = ""; text = "" }
 /^## / {
   if (name != "") {
-    # Emit previous section
     gsub(/^ +| +$/, "", text)
     gsub(/"/, "\\\"", text)
     gsub(/\n+$/, "", text)
@@ -224,14 +298,12 @@ BEGIN {
   text = ""
   next
 }
-
 name != "" && /[^ ]/ {
   if (text != "") text = text " "
   line = $0
   gsub(/^ +| +$/, "", line)
   text = text line
 }
-
 END {
   if (name != "") {
     gsub(/^ +| +$/, "", text)
@@ -245,239 +317,44 @@ END {
 ' "$INPUT"
 ```
 
-- [ ] **Step 3: Make it executable and test**
+- [ ] **Step 2: Write a test narration file**
+
+Create `demos/narration/test.md`:
+```markdown
+## intro
+This is the introduction. It sets the scene.
+
+## middle
+This is the middle section where the action happens.
+
+## outro
+This is the conclusion. Short and direct.
+```
+
+- [ ] **Step 3: Test the parser**
 
 ```bash
 chmod +x demos/lib/parse-narration.sh
 bash demos/lib/parse-narration.sh demos/narration/test.md | jq .
 ```
 
-Expected output:
+Expected:
 ```json
 [
-  {
-    "name": "intro",
-    "text": "This is the introduction section. It can span multiple lines."
-  },
-  {
-    "name": "middle",
-    "text": "This is the middle section with a single line."
-  },
-  {
-    "name": "outro",
-    "text": "This is the outro. Short and direct."
-  }
+  {"name": "intro", "text": "This is the introduction. It sets the scene."},
+  {"name": "middle", "text": "This is the middle section where the action happens."},
+  {"name": "outro", "text": "This is the conclusion. Short and direct."}
 ]
 ```
 
-- [ ] **Step 4: Commit**
-
-```bash
-git add demos/lib/parse-narration.sh demos/narration/test.md
-git commit -m "feat(demos): narration markdown parser"
-```
-
----
-
-## Task 3: ElevenLabs TTS Integration
-
-Generates mp3 audio files from narration sections using the ElevenLabs API. One mp3 per section. Also calculates duration of each clip for the sync contract.
-
-**Files:**
-- Create: `demos/lib/generate-audio.sh`
-
-- [ ] **Step 1: Write the audio generator**
-
-Create `demos/lib/generate-audio.sh`:
-```bash
-#!/usr/bin/env bash
-# generate-audio.sh <narration.md> <output-dir>
-# Generates one mp3 per narration section via ElevenLabs API.
-# Outputs a durations JSON file: <output-dir>/durations.json
-#   [{"name":"intro","file":"intro.mp3","duration_s":8.2},...]
-
-set -euo pipefail
-
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-NARRATION="$1"
-OUTPUT_DIR="$2"
-
-# Load config
-CONFIG="$(cd "$SCRIPT_DIR/.." && pwd)/config.env"
-if [[ ! -f "$CONFIG" ]]; then
-  echo "ERROR: config.env not found at $CONFIG" >&2
-  echo "Copy config.env.example to config.env and add your ElevenLabs API key." >&2
-  exit 1
-fi
-source "$CONFIG"
-
-if [[ -z "${ELEVENLABS_API_KEY:-}" || "$ELEVENLABS_API_KEY" == "your-key-here" ]]; then
-  echo "ERROR: ELEVENLABS_API_KEY not set in config.env" >&2
-  exit 1
-fi
-
-mkdir -p "$OUTPUT_DIR"
-
-# Parse narration into sections
-SECTIONS=$("$SCRIPT_DIR/parse-narration.sh" "$NARRATION")
-COUNT=$(echo "$SECTIONS" | jq length)
-
-echo "Generating audio for $COUNT sections..."
-
-DURATIONS="["
-FIRST=true
-
-for i in $(seq 0 $((COUNT - 1))); do
-  NAME=$(echo "$SECTIONS" | jq -r ".[$i].name")
-  TEXT=$(echo "$SECTIONS" | jq -r ".[$i].text")
-  OUTFILE="$OUTPUT_DIR/${NAME}.mp3"
-
-  echo "  [$((i+1))/$COUNT] $NAME..."
-
-  # ElevenLabs text-to-speech API
-  HTTP_CODE=$(curl -s -o "$OUTFILE" -w "%{http_code}" \
-    -X POST \
-    "https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}" \
-    -H "xi-api-key: ${ELEVENLABS_API_KEY}" \
-    -H "Content-Type: application/json" \
-    -d "$(jq -n \
-      --arg text "$TEXT" \
-      --arg model "${ELEVENLABS_MODEL_ID:-eleven_monolingual_v1}" \
-      '{text: $text, model_id: $model, voice_settings: {stability: 0.5, similarity_boost: 0.75}}'
-    )")
-
-  if [[ "$HTTP_CODE" != "200" ]]; then
-    echo "ERROR: ElevenLabs API returned HTTP $HTTP_CODE for section '$NAME'" >&2
-    echo "Response:" >&2
-    cat "$OUTFILE" >&2
-    exit 1
-  fi
-
-  # Get duration using ffprobe
-  DURATION=$(ffprobe -v quiet -show_entries format=duration -of csv=p=0 "$OUTFILE")
-
-  if [[ "$FIRST" == "true" ]]; then
-    FIRST=false
-  else
-    DURATIONS="${DURATIONS},"
-  fi
-  DURATIONS="${DURATIONS}{\"name\":\"${NAME}\",\"file\":\"${NAME}.mp3\",\"duration_s\":${DURATION}}"
-done
-
-DURATIONS="${DURATIONS}]"
-echo "$DURATIONS" | jq . > "$OUTPUT_DIR/durations.json"
-
-echo "Audio generation complete. Durations:"
-cat "$OUTPUT_DIR/durations.json" | jq -r '.[] | "  \(.name): \(.duration_s)s"'
-```
-
-- [ ] **Step 2: Test with the test narration (requires API key)**
-
-```bash
-chmod +x demos/lib/generate-audio.sh
-# First, copy config.env.example to config.env and add your key
-cp demos/config.env.example demos/config.env
-# Edit demos/config.env with your ElevenLabs API key
-
-bash demos/lib/generate-audio.sh demos/narration/test.md demos/audio/test
-```
-
-Expected: `demos/audio/test/` contains `intro.mp3`, `middle.mp3`, `outro.mp3`, and `durations.json`.
-
-- [ ] **Step 3: Verify durations.json**
-
-```bash
-cat demos/audio/test/durations.json | jq .
-```
-
-Expected: JSON array with name, file, and duration_s for each section.
-
-- [ ] **Step 4: Commit**
-
-```bash
-git add demos/lib/generate-audio.sh
-git commit -m "feat(demos): ElevenLabs TTS audio generation"
-```
-
----
-
-## Task 4: Title Card and Subtitle Generators
-
-Generates static title card images (endorsement, opening frame, "previously gathered") and SRT subtitle files from narration sections.
-
-**Files:**
-- Create: `demos/lib/generate-title-card.sh`
-- Create: `demos/lib/generate-srt.sh`
-
-- [ ] **Step 1: Write the title card generator**
-
-Uses FFmpeg to render text onto a dark background image. No external image tools needed.
-
-Create `demos/lib/generate-title-card.sh`:
-```bash
-#!/usr/bin/env bash
-# generate-title-card.sh <text-file> <output.png> [duration_s]
-# Renders text from a file onto a dark background image using FFmpeg.
-# Default resolution: 1400x800 to match VHS output.
-
-set -euo pipefail
-
-TEXT_FILE="$1"
-OUTPUT="$2"
-DURATION="${3:-5}"
-
-# Load config for dimensions
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-CONFIG="$(cd "$SCRIPT_DIR/.." && pwd)/config.env"
-if [[ -f "$CONFIG" ]]; then
-  source "$CONFIG"
-fi
-
-WIDTH="${VIDEO_WIDTH:-1400}"
-HEIGHT="${VIDEO_HEIGHT:-800}"
-
-# Read text and escape for FFmpeg drawtext
-TEXT=$(cat "$TEXT_FILE" | sed "s/'/\\\\'/g" | sed ':a;N;$!ba;s/\n/\\n/g')
-
-# Generate a dark background with centered white text
-ffmpeg -y -f lavfi \
-  -i "color=c=#1e1e2e:s=${WIDTH}x${HEIGHT}:d=${DURATION}:r=30" \
-  -vf "drawtext=text='${TEXT}':fontsize=28:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:line_spacing=12" \
-  -frames:v 1 \
-  "$OUTPUT" \
-  2>/dev/null
-
-echo "Title card: $OUTPUT"
-```
-
-- [ ] **Step 2: Test the title card generator**
-
-Create `demos/titles/test-card.txt`:
-```
-Signals gathered so far:
-
-  discover-hypothesis: claim stated
-  discover-competitors: 4 alternatives mapped
-  discover-synthesize: PROCEED with conditions
-
-Now: validate the spec with 5 personas.
-```
-
-```bash
-chmod +x demos/lib/generate-title-card.sh
-bash demos/lib/generate-title-card.sh demos/titles/test-card.txt demos/raw/test-card.png
-```
-
-Expected: `demos/raw/test-card.png` is a 1400x800 dark image with white text centered.
-
-- [ ] **Step 3: Write the SRT subtitle generator**
+- [ ] **Step 4: Write the SRT subtitle generator**
 
 Create `demos/lib/generate-srt.sh`:
 ```bash
 #!/usr/bin/env bash
 # generate-srt.sh <durations.json> <narration.md> <output.srt>
-# Generates SRT subtitles from narration sections, timed to audio durations.
-# Splits long narration text into subtitle chunks of ~10 words each.
+# Generates SRT subtitles timed to audio durations.
+# Splits text into ~10-word chunks.
 
 set -euo pipefail
 
@@ -489,7 +366,6 @@ OUTPUT="$3"
 SECTIONS=$("$SCRIPT_DIR/parse-narration.sh" "$NARRATION")
 COUNT=$(echo "$SECTIONS" | jq length)
 
-# Format seconds as SRT timestamp: HH:MM:SS,mmm
 format_ts() {
   local total_ms=$(echo "$1 * 1000" | bc | cut -d. -f1)
   local ms=$((total_ms % 1000))
@@ -505,19 +381,14 @@ CURRENT_TIME=0
 > "$OUTPUT"
 
 for i in $(seq 0 $((COUNT - 1))); do
-  NAME=$(echo "$SECTIONS" | jq -r ".[$i].name")
   TEXT=$(echo "$SECTIONS" | jq -r ".[$i].text")
   DURATION=$(jq -r ".[$i].duration_s" "$DURATIONS")
 
-  # Split text into chunks of ~10 words
   WORDS=($TEXT)
   TOTAL_WORDS=${#WORDS[@]}
   CHUNK_SIZE=10
   NUM_CHUNKS=$(( (TOTAL_WORDS + CHUNK_SIZE - 1) / CHUNK_SIZE ))
-
-  if [[ $NUM_CHUNKS -eq 0 ]]; then
-    NUM_CHUNKS=1
-  fi
+  [[ $NUM_CHUNKS -eq 0 ]] && NUM_CHUNKS=1
 
   CHUNK_DURATION=$(echo "$DURATION / $NUM_CHUNKS" | bc -l)
 
@@ -542,41 +413,198 @@ done
 echo "Subtitles: $OUTPUT ($((SUBTITLE_NUM - 1)) entries)"
 ```
 
-- [ ] **Step 4: Commit**
+- [ ] **Step 5: Write the title card generator**
+
+Create `demos/lib/generate-title-card.sh`:
+```bash
+#!/usr/bin/env bash
+# generate-title-card.sh <text-file> <output.mp4> [duration_s]
+# Renders text onto a dark background as a short mp4 clip.
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DEMO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+TEXT_FILE="$1"
+OUTPUT="$2"
+DURATION="${3:-5}"
+
+CONFIG="$DEMO_DIR/config.env"
+if [[ -f "$CONFIG" ]]; then source "$CONFIG"; fi
+WIDTH="${VIDEO_WIDTH:-1400}"
+HEIGHT="${VIDEO_HEIGHT:-800}"
+
+# Find ffmpeg
+FFMPEG="${FFMPEG_BIN:-ffmpeg}"
+if ! command -v "$FFMPEG" &>/dev/null; then
+  FFMPEG="$(find /c/Users/*/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/ffmpeg-*/bin/ffmpeg.exe 2>/dev/null | head -1)"
+fi
+
+TEXT=$(cat "$TEXT_FILE" | sed "s/'/\\\\'/g" | sed ':a;N;$!ba;s/\n/\\n/g')
+
+"$FFMPEG" -y -f lavfi \
+  -i "color=c=#1e1e2e:s=${WIDTH}x${HEIGHT}:d=${DURATION}:r=30" \
+  -vf "drawtext=text='${TEXT}':fontsize=28:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:line_spacing=12" \
+  -c:v libx264 -pix_fmt yuv420p \
+  "$OUTPUT" \
+  2>/dev/null
+
+echo "Title card: $OUTPUT (${DURATION}s)"
+```
+
+- [ ] **Step 6: Test title card generator**
+
+Create `demos/titles/test-card.txt`:
+```
+Signals gathered so far:
+
+  discover-hypothesis: claim stated
+  discover-competitors: 4 alternatives mapped
+
+Now: validate the spec with 5 personas.
+```
 
 ```bash
-chmod +x demos/lib/generate-title-card.sh demos/lib/generate-srt.sh
-git add demos/lib/generate-title-card.sh demos/lib/generate-srt.sh demos/titles/test-card.txt
-git commit -m "feat(demos): title card and subtitle generators"
+chmod +x demos/lib/generate-title-card.sh
+bash demos/lib/generate-title-card.sh demos/titles/test-card.txt demos/raw/test-card.mp4
+```
+
+Expected: 5-second dark background mp4 with white centered text.
+
+- [ ] **Step 7: Commit**
+
+```bash
+chmod +x demos/lib/parse-narration.sh demos/lib/generate-srt.sh demos/lib/generate-title-card.sh
+git add demos/lib/parse-narration.sh demos/lib/generate-srt.sh demos/lib/generate-title-card.sh
+git add demos/narration/test.md demos/titles/test-card.txt
+git commit -m "feat(demos): narration parser, subtitle generator, title card generator"
 ```
 
 ---
 
-## Task 5: Video Compositor
+## Task 3: ElevenLabs TTS Integration
 
-Takes the raw VHS terminal video, narration audio clips, and durations JSON, then produces the composited full-length video with speed ramping, title cards, and subtitles.
+Generate mp3 audio per narration section. Output durations.json for the sync contract.
+
+**Files:**
+- Create: `demos/lib/generate-audio.sh`
+
+- [ ] **Step 1: Write the audio generator**
+
+Create `demos/lib/generate-audio.sh`:
+```bash
+#!/usr/bin/env bash
+# generate-audio.sh <narration.md> <output-dir>
+# Generates one mp3 per narration section via ElevenLabs API.
+# Writes durations.json with per-section timing.
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+NARRATION="$1"
+OUTPUT_DIR="$2"
+
+CONFIG="$(cd "$SCRIPT_DIR/.." && pwd)/config.env"
+if [[ ! -f "$CONFIG" ]]; then
+  echo "ERROR: config.env not found. Copy config.env.example and add your API key." >&2
+  exit 1
+fi
+source "$CONFIG"
+
+if [[ -z "${ELEVENLABS_API_KEY:-}" || "$ELEVENLABS_API_KEY" == "your-key-here" ]]; then
+  echo "ERROR: ELEVENLABS_API_KEY not set in config.env" >&2
+  exit 1
+fi
+
+# Find ffprobe
+FFPROBE="ffprobe"
+if ! command -v "$FFPROBE" &>/dev/null; then
+  FFPROBE="$(find /c/Users/*/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/ffmpeg-*/bin/ffprobe.exe 2>/dev/null | head -1)"
+fi
+
+mkdir -p "$OUTPUT_DIR"
+
+SECTIONS=$("$SCRIPT_DIR/parse-narration.sh" "$NARRATION")
+COUNT=$(echo "$SECTIONS" | jq length)
+
+echo "  Generating audio for $COUNT sections..."
+
+DURATIONS="["
+FIRST=true
+
+for i in $(seq 0 $((COUNT - 1))); do
+  NAME=$(echo "$SECTIONS" | jq -r ".[$i].name")
+  TEXT=$(echo "$SECTIONS" | jq -r ".[$i].text")
+  OUTFILE="$OUTPUT_DIR/${NAME}.mp3"
+
+  echo "    [$((i+1))/$COUNT] $NAME..."
+
+  HTTP_CODE=$(curl -s -o "$OUTFILE" -w "%{http_code}" \
+    -X POST \
+    "https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}" \
+    -H "xi-api-key: ${ELEVENLABS_API_KEY}" \
+    -H "Content-Type: application/json" \
+    -d "$(jq -n \
+      --arg text "$TEXT" \
+      --arg model "${ELEVENLABS_MODEL_ID:-eleven_monolingual_v1}" \
+      '{text: $text, model_id: $model, voice_settings: {stability: 0.5, similarity_boost: 0.75}}'
+    )")
+
+  if [[ "$HTTP_CODE" != "200" ]]; then
+    echo "ERROR: ElevenLabs returned HTTP $HTTP_CODE for '$NAME'" >&2
+    cat "$OUTFILE" >&2
+    exit 1
+  fi
+
+  DURATION=$("$FFPROBE" -v quiet -show_entries format=duration -of csv=p=0 "$OUTFILE")
+
+  [[ "$FIRST" == "true" ]] && FIRST=false || DURATIONS="${DURATIONS},"
+  DURATIONS="${DURATIONS}{\"name\":\"${NAME}\",\"file\":\"${NAME}.mp3\",\"duration_s\":${DURATION}}"
+done
+
+DURATIONS="${DURATIONS}]"
+echo "$DURATIONS" | jq . > "$OUTPUT_DIR/durations.json"
+
+echo "  Audio complete. Total: $(echo "$DURATIONS" | jq '[.[].duration_s] | add')s"
+```
+
+- [ ] **Step 2: Test with test narration (requires API key)**
+
+```bash
+cp demos/config.env.example demos/config.env
+# Edit demos/config.env: add ELEVENLABS_API_KEY
+
+chmod +x demos/lib/generate-audio.sh
+bash demos/lib/generate-audio.sh demos/narration/test.md demos/audio/test
+```
+
+Expected: `demos/audio/test/` contains `intro.mp3`, `middle.mp3`, `outro.mp3`, `durations.json`.
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add demos/lib/generate-audio.sh
+git commit -m "feat(demos): ElevenLabs TTS audio generation"
+```
+
+---
+
+## Task 4: Video Compositor and Clip Extractor
+
+Assembles all layers into the final video: title cards + terminal video + narration audio + subtitles. Also extracts 30-second clips.
 
 **Files:**
 - Create: `demos/lib/composite-video.sh`
+- Create: `demos/lib/extract-clip.sh`
 
 - [ ] **Step 1: Write the compositor**
-
-This is the core of the pipeline. It:
-1. Reads durations.json to know how long each narration section is
-2. Probes the raw VHS video for total duration
-3. Divides the VHS video into segments matching each narration section
-4. Speed-adjusts each terminal segment to match its narration duration
-5. Concatenates narration audio into one track
-6. Overlays subtitles
-7. Prepends title cards (endorsement, opening frame)
 
 Create `demos/lib/composite-video.sh`:
 ```bash
 #!/usr/bin/env bash
-# composite-video.sh <demo-name> <raw-video> <audio-dir> <narration.md> <output.mp4>
-#
-# Composites raw terminal video with narration audio, subtitles, and title cards.
-# The narration audio is the master clock -- terminal video is speed-adjusted to match.
+# composite-video.sh <demo-name> <terminal.mp4> <audio-dir> <narration.md> <output.mp4>
+# Composites terminal video + narration audio + subtitles + title cards.
 
 set -euo pipefail
 
@@ -584,119 +612,97 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DEMO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 DEMO_NAME="$1"
-RAW_VIDEO="$2"
+TERMINAL_VIDEO="$2"
 AUDIO_DIR="$3"
 NARRATION="$4"
 OUTPUT="$5"
 
 DURATIONS="$AUDIO_DIR/durations.json"
 
-# Load config
 CONFIG="$DEMO_DIR/config.env"
 if [[ -f "$CONFIG" ]]; then source "$CONFIG"; fi
 WIDTH="${VIDEO_WIDTH:-1400}"
 HEIGHT="${VIDEO_HEIGHT:-800}"
-FPS="${VIDEO_FRAMERATE:-30}"
 
-# --- Step 1: Calculate total narration duration ---
+# Find ffmpeg/ffprobe
+FFMPEG="${FFMPEG_BIN:-ffmpeg}"
+FFPROBE="ffprobe"
+if ! command -v "$FFMPEG" &>/dev/null; then
+  FFMPEG="$(find /c/Users/*/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/ffmpeg-*/bin/ffmpeg.exe 2>/dev/null | head -1)"
+  FFPROBE="$(find /c/Users/*/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/ffmpeg-*/bin/ffprobe.exe 2>/dev/null | head -1)"
+fi
+
+WORK=$(mktemp -d)
+
+# --- Total narration duration (master clock) ---
 TOTAL_NARRATION=$(jq '[.[].duration_s] | add' "$DURATIONS")
 SECTION_COUNT=$(jq 'length' "$DURATIONS")
-echo "Total narration duration: ${TOTAL_NARRATION}s across $SECTION_COUNT sections"
+echo "  Narration: ${TOTAL_NARRATION}s across $SECTION_COUNT sections"
 
-# --- Step 2: Get raw video duration ---
-RAW_DURATION=$(ffprobe -v quiet -show_entries format=duration -of csv=p=0 "$RAW_VIDEO")
-echo "Raw terminal video duration: ${RAW_DURATION}s"
+# --- Terminal video duration ---
+RAW_DURATION=$("$FFPROBE" -v quiet -show_entries format=duration -of csv=p=0 "$TERMINAL_VIDEO")
+echo "  Terminal video: ${RAW_DURATION}s"
 
-# --- Step 3: Calculate uniform speed factor ---
-# Simple approach: apply uniform speed to entire terminal video to match narration length.
-# This avoids complex per-section splitting which is fragile.
-# The tape file's Wait commands already create natural section breaks.
+# --- Speed factor ---
 SPEED_FACTOR=$(echo "$RAW_DURATION / $TOTAL_NARRATION" | bc -l)
-echo "Speed factor: ${SPEED_FACTOR}x"
+echo "  Speed factor: ${SPEED_FACTOR}x"
 
-# --- Step 4: Concatenate all audio sections ---
-AUDIO_LIST="$AUDIO_DIR/concat.txt"
+# --- Concatenate audio sections ---
+AUDIO_LIST="$WORK/audio-concat.txt"
 > "$AUDIO_LIST"
 for i in $(seq 0 $((SECTION_COUNT - 1))); do
   FILE=$(jq -r ".[$i].file" "$DURATIONS")
   echo "file '$(cd "$AUDIO_DIR" && pwd)/${FILE}'" >> "$AUDIO_LIST"
 done
+COMBINED_AUDIO="$WORK/combined.mp3"
+"$FFMPEG" -y -f concat -safe 0 -i "$AUDIO_LIST" -c copy "$COMBINED_AUDIO" 2>/dev/null
 
-COMBINED_AUDIO="$AUDIO_DIR/combined.mp3"
-ffmpeg -y -f concat -safe 0 -i "$AUDIO_LIST" -c copy "$COMBINED_AUDIO" 2>/dev/null
-echo "Combined audio: $COMBINED_AUDIO"
+# --- Subtitles ---
+SRT_FILE="$WORK/subtitles.srt"
+bash "$SCRIPT_DIR/generate-srt.sh" "$DURATIONS" "$NARRATION" "$SRT_FILE" 2>/dev/null
 
-# --- Step 5: Generate subtitles ---
-SRT_FILE="$AUDIO_DIR/subtitles.srt"
-bash "$SCRIPT_DIR/generate-srt.sh" "$DURATIONS" "$NARRATION" "$SRT_FILE"
-
-# --- Step 6: Check for title cards ---
-ENDORSEMENT="$DEMO_DIR/titles/endorsement.txt"
-OPENING="$DEMO_DIR/titles/${DEMO_NAME}-opening.txt"
-PREVIOUSLY="$DEMO_DIR/titles/${DEMO_NAME}-previously.txt"
-
-# Build title card videos (5s each) if text files exist
-TITLE_PARTS=""
-TITLE_CONCAT="$AUDIO_DIR/title-concat.txt"
+# --- Title cards ---
+TITLE_CONCAT="$WORK/title-concat.txt"
 > "$TITLE_CONCAT"
+TITLE_DURATION=0
 
-for CARD_FILE in "$ENDORSEMENT" "$OPENING" "$PREVIOUSLY"; do
+for CARD_FILE in \
+  "$DEMO_DIR/titles/endorsement.txt" \
+  "$DEMO_DIR/titles/${DEMO_NAME}-opening.txt" \
+  "$DEMO_DIR/titles/${DEMO_NAME}-prev.txt"; do
+
   if [[ -f "$CARD_FILE" ]]; then
     CARD_NAME=$(basename "$CARD_FILE" .txt)
-    CARD_VIDEO="$AUDIO_DIR/${CARD_NAME}-card.mp4"
-    CARD_TEXT=$(cat "$CARD_FILE" | sed "s/'/\\\\'/g" | sed ':a;N;$!ba;s/\n/\\n/g')
-
-    ffmpeg -y -f lavfi \
-      -i "color=c=#1e1e2e:s=${WIDTH}x${HEIGHT}:d=5:r=${FPS}" \
-      -vf "drawtext=text='${CARD_TEXT}':fontsize=28:fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:line_spacing=12" \
-      -c:v libx264 -pix_fmt yuv420p \
-      "$CARD_VIDEO" 2>/dev/null
-
+    CARD_VIDEO="$WORK/${CARD_NAME}.mp4"
+    bash "$SCRIPT_DIR/generate-title-card.sh" "$CARD_FILE" "$CARD_VIDEO" 5
     echo "file '$CARD_VIDEO'" >> "$TITLE_CONCAT"
-    echo "Title card: $CARD_NAME (5s)"
+    TITLE_DURATION=$((TITLE_DURATION + 5))
   fi
 done
 
-# --- Step 7: Composite everything ---
-# Speed-adjust terminal video, add title cards at front, overlay audio + subtitles
-
-# Speed-adjusted terminal video
-SPEED_VIDEO="$AUDIO_DIR/speed-adjusted.mp4"
-# FFmpeg setpts: PTS/speed_factor speeds up, PTS*factor slows down
-# For speed factor > 1 (video longer than audio), we speed up: PTS/factor
-ffmpeg -y -i "$RAW_VIDEO" \
+# --- Speed-adjust terminal video ---
+SPEED_VIDEO="$WORK/speed-adjusted.mp4"
+"$FFMPEG" -y -i "$TERMINAL_VIDEO" \
   -filter:v "setpts=PTS/${SPEED_FACTOR}" \
-  -an \
-  -c:v libx264 -pix_fmt yuv420p -r "$FPS" \
+  -an -c:v libx264 -pix_fmt yuv420p -r 30 \
   "$SPEED_VIDEO" 2>/dev/null
-echo "Speed-adjusted video: ${SPEED_FACTOR}x"
+echo "  Speed-adjusted terminal video"
 
-# Concatenate: title cards + speed-adjusted terminal
-FINAL_CONCAT="$AUDIO_DIR/final-concat.txt"
+# --- Concatenate: title cards + terminal ---
+FINAL_CONCAT="$WORK/final-concat.txt"
 > "$FINAL_CONCAT"
-
-# Add title card parts if they exist
 if [[ -s "$TITLE_CONCAT" ]]; then
   cat "$TITLE_CONCAT" >> "$FINAL_CONCAT"
 fi
-
 echo "file '$SPEED_VIDEO'" >> "$FINAL_CONCAT"
 
-CONCAT_VIDEO="$AUDIO_DIR/concat-video.mp4"
-ffmpeg -y -f concat -safe 0 -i "$FINAL_CONCAT" \
-  -c:v libx264 -pix_fmt yuv420p -r "$FPS" \
+CONCAT_VIDEO="$WORK/concat.mp4"
+"$FFMPEG" -y -f concat -safe 0 -i "$FINAL_CONCAT" \
+  -c:v libx264 -pix_fmt yuv420p -r 30 \
   "$CONCAT_VIDEO" 2>/dev/null
 
-# Calculate title card total duration for subtitle offset
-TITLE_DURATION=0
-if [[ -s "$TITLE_CONCAT" ]]; then
-  TITLE_COUNT=$(wc -l < "$TITLE_CONCAT")
-  TITLE_DURATION=$((TITLE_COUNT * 5))
-fi
-
-# Final composite: video + audio + subtitles
-# Offset subtitles by title card duration
-ffmpeg -y \
+# --- Final: video + audio + subtitles ---
+"$FFMPEG" -y \
   -i "$CONCAT_VIDEO" \
   -i "$COMBINED_AUDIO" \
   -c:v libx264 -pix_fmt yuv420p \
@@ -706,43 +712,20 @@ ffmpeg -y \
   -shortest \
   "$OUTPUT" 2>/dev/null
 
-echo ""
-echo "=== OUTPUT: $OUTPUT ==="
-FINAL_DURATION=$(ffprobe -v quiet -show_entries format=duration -of csv=p=0 "$OUTPUT")
+FINAL_DURATION=$("$FFPROBE" -v quiet -show_entries format=duration -of csv=p=0 "$OUTPUT")
 FINAL_SIZE=$(du -h "$OUTPUT" | cut -f1)
-echo "Duration: ${FINAL_DURATION}s | Size: ${FINAL_SIZE}"
+echo "  Output: $OUTPUT (${FINAL_DURATION}s, ${FINAL_SIZE})"
+
+rm -rf "$WORK"
 ```
 
-- [ ] **Step 2: Make executable**
-
-```bash
-chmod +x demos/lib/composite-video.sh
-```
-
-- [ ] **Step 3: Commit**
-
-```bash
-git add demos/lib/composite-video.sh
-git commit -m "feat(demos): FFmpeg video compositor with speed ramping and title cards"
-```
-
----
-
-## Task 6: Clip Extractor
-
-Extracts a 30-second highlight clip from the full video, targeting the "money moment."
-
-**Files:**
-- Create: `demos/lib/extract-clip.sh`
-
-- [ ] **Step 1: Write the clip extractor**
+- [ ] **Step 2: Write the clip extractor**
 
 Create `demos/lib/extract-clip.sh`:
 ```bash
 #!/usr/bin/env bash
-# extract-clip.sh <full-video.mp4> <output-clip.mp4> [start_time] [duration]
-# Extracts a clip from the full video.
-# Default: last 30 seconds (where the money moment typically is).
+# extract-clip.sh <full-video.mp4> <output-clip.mp4> [start_s] [duration_s]
+# Extracts a clip. Default: 30 seconds starting at 60% through.
 
 set -euo pipefail
 
@@ -750,46 +733,51 @@ INPUT="$1"
 OUTPUT="$2"
 DURATION="${4:-30}"
 
-# Get total video duration
-TOTAL=$(ffprobe -v quiet -show_entries format=duration -of csv=p=0 "$INPUT")
+FFMPEG="${FFMPEG_BIN:-ffmpeg}"
+FFPROBE="ffprobe"
+if ! command -v "$FFMPEG" &>/dev/null; then
+  FFMPEG="$(find /c/Users/*/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/ffmpeg-*/bin/ffmpeg.exe 2>/dev/null | head -1)"
+  FFPROBE="$(find /c/Users/*/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg*/ffmpeg-*/bin/ffprobe.exe 2>/dev/null | head -1)"
+fi
 
-# Default start: 30 seconds before end, minus title cards (~15s into terminal section)
+TOTAL=$("$FFPROBE" -v quiet -show_entries format=duration -of csv=p=0 "$INPUT")
+
 if [[ -z "${3:-}" ]]; then
-  # Find a good start point: skip title cards, grab the climactic section
-  # Heuristic: start at 60% of the way through
   START=$(echo "$TOTAL * 0.6" | bc -l)
 else
   START="$3"
 fi
 
-# Ensure we don't go past the end
 MAX_START=$(echo "$TOTAL - $DURATION" | bc -l)
 if (( $(echo "$START > $MAX_START" | bc -l) )); then
   START="$MAX_START"
 fi
+# Don't go negative
+if (( $(echo "$START < 0" | bc -l) )); then
+  START=0
+fi
 
-ffmpeg -y \
-  -ss "$START" -i "$INPUT" \
+"$FFMPEG" -y -ss "$START" -i "$INPUT" \
   -t "$DURATION" \
   -c:v libx264 -pix_fmt yuv420p \
   -c:a aac -b:a 192k \
   "$OUTPUT" 2>/dev/null
 
 CLIP_SIZE=$(du -h "$OUTPUT" | cut -f1)
-echo "Clip: $OUTPUT (${DURATION}s from ${START}s, ${CLIP_SIZE})"
+echo "  Clip: $OUTPUT (${DURATION}s from ${START}s, ${CLIP_SIZE})"
 ```
 
-- [ ] **Step 2: Commit**
+- [ ] **Step 3: Commit**
 
 ```bash
-chmod +x demos/lib/extract-clip.sh
-git add demos/lib/extract-clip.sh
-git commit -m "feat(demos): 30-second clip extractor"
+chmod +x demos/lib/composite-video.sh demos/lib/extract-clip.sh
+git add demos/lib/composite-video.sh demos/lib/extract-clip.sh
+git commit -m "feat(demos): video compositor and clip extractor"
 ```
 
 ---
 
-## Task 7: Main Orchestrator (render-demo.sh)
+## Task 5: Main Orchestrator (render-demo.sh)
 
 The one command that does everything.
 
@@ -804,13 +792,13 @@ Create `demos/render-demo.sh`:
 # render-demo.sh <demo-name>
 #
 # Renders a complete demo video from three inputs:
-#   tapes/<demo-name>.tape     - VHS terminal recording script
-#   narration/<demo-name>.md   - Narration text by section
-#   titles/<demo-name>-*.txt   - Title card text files (optional)
+#   scenarios/<demo-name>.txt    - terminal-demo scenario
+#   narration/<demo-name>.md     - narration text by section
+#   titles/<demo-name>-*.txt     - title cards (optional)
 #
 # Outputs:
-#   final/<demo-name>.mp4      - Full demo video
-#   final/<demo-name>-clip.mp4 - 30-second highlight clip
+#   final/<demo-name>.mp4        - full demo video
+#   final/<demo-name>-clip.mp4   - 30-second highlight clip
 #
 # Usage:
 #   ./render-demo.sh demo-0-install
@@ -828,53 +816,26 @@ echo "  Demo Video Pipeline: $DEMO_NAME"
 echo "========================================"
 echo ""
 
-# Verify inputs exist
-TAPE="$DEMO_DIR/tapes/${DEMO_NAME}.tape"
+# Verify inputs
+SCENARIO="$DEMO_DIR/scenarios/${DEMO_NAME}.txt"
 NARRATION="$DEMO_DIR/narration/${DEMO_NAME}.md"
 
-if [[ ! -f "$TAPE" ]]; then
-  echo "ERROR: tape file not found: $TAPE" >&2
-  exit 1
-fi
+[[ ! -f "$SCENARIO" ]] && echo "ERROR: scenario not found: $SCENARIO" >&2 && exit 1
+[[ ! -f "$NARRATION" ]] && echo "ERROR: narration not found: $NARRATION" >&2 && exit 1
 
-if [[ ! -f "$NARRATION" ]]; then
-  echo "ERROR: narration file not found: $NARRATION" >&2
-  exit 1
-fi
-
-# Create output directories
+# Output paths
 RAW_DIR="$DEMO_DIR/raw"
 AUDIO_DIR="$DEMO_DIR/audio/${DEMO_NAME}"
 FINAL_DIR="$DEMO_DIR/final"
 mkdir -p "$RAW_DIR" "$AUDIO_DIR" "$FINAL_DIR"
 
-RAW_VIDEO="$RAW_DIR/${DEMO_NAME}.mp4"
+TERMINAL_VIDEO="$RAW_DIR/${DEMO_NAME}-terminal.mp4"
 FINAL_VIDEO="$FINAL_DIR/${DEMO_NAME}.mp4"
 CLIP_VIDEO="$FINAL_DIR/${DEMO_NAME}-clip.mp4"
 
 # --- Stage 1: Record terminal session ---
-echo "[1/4] Recording terminal session..."
-echo "      Tape: $TAPE"
-
-# Detect VHS environment
-if command -v vhs &>/dev/null; then
-  vhs "$TAPE"
-elif wsl -- bash -c "which vhs" &>/dev/null 2>&1; then
-  # Convert Windows path to WSL path
-  WSL_TAPE=$(wsl -- wslpath -u "$(cygpath -w "$TAPE")")
-  wsl -- bash -c "cd /mnt/c/src/signals && vhs '$WSL_TAPE'"
-else
-  echo "ERROR: VHS not found. Install with:" >&2
-  echo "  go install github.com/charmbracelet/vhs@latest" >&2
-  exit 1
-fi
-
-if [[ ! -f "$RAW_VIDEO" ]]; then
-  echo "ERROR: VHS did not produce output at $RAW_VIDEO" >&2
-  echo "Check that the tape file Output path matches: $RAW_VIDEO" >&2
-  exit 1
-fi
-echo "      Done: $RAW_VIDEO"
+echo "[1/4] Recording terminal scenario..."
+bash "$LIB/cast-to-mp4.sh" "$SCENARIO" "$TERMINAL_VIDEO" 2
 echo ""
 
 # --- Stage 2: Generate narration audio ---
@@ -884,10 +845,10 @@ echo ""
 
 # --- Stage 3: Composite video ---
 echo "[3/4] Compositing video..."
-bash "$LIB/composite-video.sh" "$DEMO_NAME" "$RAW_VIDEO" "$AUDIO_DIR" "$NARRATION" "$FINAL_VIDEO"
+bash "$LIB/composite-video.sh" "$DEMO_NAME" "$TERMINAL_VIDEO" "$AUDIO_DIR" "$NARRATION" "$FINAL_VIDEO"
 echo ""
 
-# --- Stage 4: Extract 30-second clip ---
+# --- Stage 4: Extract clip ---
 echo "[4/4] Extracting 30-second clip..."
 bash "$LIB/extract-clip.sh" "$FINAL_VIDEO" "$CLIP_VIDEO"
 echo ""
@@ -900,47 +861,107 @@ echo ""
 echo "  Full:  $FINAL_VIDEO"
 echo "  Clip:  $CLIP_VIDEO"
 echo ""
-
-FULL_DURATION=$(ffprobe -v quiet -show_entries format=duration -of csv=p=0 "$FINAL_VIDEO")
-CLIP_DURATION=$(ffprobe -v quiet -show_entries format=duration -of csv=p=0 "$CLIP_VIDEO")
-FULL_SIZE=$(du -h "$FINAL_VIDEO" | cut -f1)
-CLIP_SIZE=$(du -h "$CLIP_VIDEO" | cut -f1)
-
-echo "  Full:  ${FULL_DURATION}s (${FULL_SIZE})"
-echo "  Clip:  ${CLIP_DURATION}s (${CLIP_SIZE})"
-echo ""
 ```
 
-- [ ] **Step 2: Make executable and commit**
+- [ ] **Step 2: Commit**
 
 ```bash
 chmod +x demos/render-demo.sh
 git add demos/render-demo.sh
-git commit -m "feat(demos): render-demo.sh orchestrator - one command to build"
+git commit -m "feat(demos): render-demo.sh orchestrator"
 ```
 
 ---
 
-## Task 8: Author Demo 0 -- Install
+## Task 6: Author Demo 0 -- Install
 
 The gateway video. 90 seconds. "You got a link from a colleague."
 
 **Files:**
-- Create: `demos/tapes/demo-0-install.tape`
+- Create: `demos/scenarios/demo-0-install.txt`
 - Create: `demos/narration/demo-0-install.md`
 - Create: `demos/titles/endorsement.txt`
 - Create: `demos/titles/demo-0-install-opening.txt`
 
-- [ ] **Step 1: Write the opening frame text**
+- [ ] **Step 1: Run a real bootstrap session and capture the output**
 
-Create `demos/titles/demo-0-install-opening.txt`:
+Run the actual bootstrap flow in a separate terminal. Copy the real output for the scenario file. The scenario must contain authentic output, not guesses.
+
+```bash
+# In a separate terminal, run:
+# gh repo clone gim-home/craftworks-research /tmp/cr -- --depth=1 --filter=blob:none --sparse --quiet
+# cd /tmp/cr && git sparse-checkout set toolkits/simlab --quiet
+# bash toolkits/simlab/bootstrap.sh test-demo
+#
+# Copy the output from each step into the scenario file below.
 ```
-You got a link from a colleague.
 
-"Try this on your next spec."
+- [ ] **Step 2: Write the scenario file**
+
+Create `demos/scenarios/demo-0-install.txt` using real output from Step 1:
+```
+$ gh repo clone gim-home/craftworks-research /tmp/cr -- --depth=1 --filter=blob:none --sparse --quiet
+Cloning into '/tmp/cr'...
+
+$ cd /tmp/cr && git sparse-checkout set toolkits/simlab --quiet
+
+$ bash toolkits/simlab/bootstrap.sh my-simlab
+
+Signal simlab bootstrap
+  destination : /c/src/my-simlab
+
+Fetching simlab from craftworks-research...
+Copying to /c/src/my-simlab...
+Installing Signal skills...
+Done.
+
+  Your Signal workspace is ready at /c/src/my-simlab
+  cd ../my-simlab && claude
+
+$ cd ../my-simlab && claude
+
+Claude Code v1.0.0
+
+$ /signal
+
+Signal - 63 skills across 9 namespaces
+
+  discover:  competitors, feasibility, inertia, hypothesis, risk, analysis, synthesize
+  specify:   spec, proposal, pitch, commitment, abstract
+  validate:  design, users, customers, code, adoption, feedback, support
+  simulate:  lifecycle, request, state, contract, conversation, argument
+  rhythm:    decide, status, story, qa, brief, rebuttal
+  roles:     scan, build, check, product-review, pull-request
+  research:  pre-write, post-write
+  tools:     coverage, preview, accept
+  signal:    signal, signal-health, signal-setup
+
+  Type /signal <namespace> for details.
 ```
 
-- [ ] **Step 2: Write the endorsement card**
+Note: Replace the output above with actual output from Step 1 before rendering.
+
+- [ ] **Step 3: Write the narration script**
+
+Create `demos/narration/demo-0-install.md`:
+```markdown
+## opening
+You are a principal PM. A colleague sent you a link and said: try this on your next spec. This is a representative session showing what happens in the next 90 seconds.
+
+## clone
+One command pulls the Signal toolkit from GitHub. Sparse clone -- only what you need.
+
+## bootstrap
+The bootstrap script creates your workspace and installs 63 skills across 9 namespaces. Each skill produces a signal -- an auditable artifact toward your feature decision.
+
+## launch
+Claude Code opens in the workspace. Signal is ready.
+
+## skills
+Sixty-three skills. Investigation, specification, validation, simulation. Every stage of product design, one command each. You are ready to run your first investigation.
+```
+
+- [ ] **Step 4: Write title cards**
 
 Create `demos/titles/endorsement.txt`:
 ```
@@ -950,105 +971,88 @@ Create `demos/titles/endorsement.txt`:
  -- [Name], Principal PM, [Product Area]
 ```
 
-Note: Replace `[Name]` and `[Product Area]` with real endorsement before Phase 2 launch.
-
-- [ ] **Step 3: Write the VHS tape file**
-
-Create `demos/tapes/demo-0-install.tape`:
-```tape
-Output demos/raw/demo-0-install.mp4
-Set FontSize 14
-Set Width 1400
-Set Height 800
-Set Theme "Catppuccin Mocha"
-Set Shell "bash"
-Set TypingSpeed 50ms
-
-Require claude
-
-# Pause for opening title card (added in post)
-Sleep 1s
-
-# Step 1: Clone and bootstrap
-Type "gh repo clone gim-home/craftworks-research /tmp/cr -- --depth=1 --filter=blob:none --sparse --quiet"
-Enter
-Wait+Screen /\$/ 30s
-Sleep 1s
-
-Type "cd /tmp/cr && git sparse-checkout set toolkits/simlab --quiet"
-Enter
-Wait+Screen /\$/ 10s
-Sleep 1s
-
-Type "bash toolkits/simlab/bootstrap.sh my-simlab"
-Enter
-Wait+Screen /Signal simlab bootstrap/ 10s
-Wait+Screen /\$/ 60s
-Sleep 2s
-
-# Step 2: Enter simlab and launch Claude Code
-Type "cd ../my-simlab && claude"
-Enter
-Wait+Screen /claude/ 15s
-Sleep 2s
-
-# Step 3: Show what's installed
-Type "/signal"
-Enter
-Wait+Screen /signal-health/ 30s
-Sleep 3s
-
-# Step 4: Show the namespace map
-Type "/tools-preview"
-Enter
-Wait+Screen /validate/ 30s
-Sleep 5s
+Create `demos/titles/demo-0-install-opening.txt`:
 ```
+You got a link from a colleague.
 
-- [ ] **Step 4: Write the narration script**
-
-Create `demos/narration/demo-0-install.md`:
-```markdown
-## opening
-You are a principal PM. A colleague sent you a link and said: try this on your next spec. Here is what happens in the next 90 seconds.
-
-## clone
-First, one command pulls the Signal toolkit from GitHub. This is a sparse clone -- it downloads only what you need, nothing else.
-
-## bootstrap
-The bootstrap script creates your workspace. It installs 63 skills across 9 namespaces: discover, specify, validate, simulate, and more. Each skill produces a signal -- an auditable artifact toward your feature decision.
-
-## launch
-Now we launch Claude Code inside the workspace. Signal is ready.
-
-## show-skills
-Sixty-three skills. Investigation, specification, validation, simulation -- every stage of product design, one command each.
-
-## preview
-Here is the full map. Nine namespaces covering the entire decision lifecycle. From competitive analysis to customer persona testing to support ticket prediction. This is a representative session showing how a PM sets up Signal. You are ready to run your first investigation.
+"Try this on your next spec."
 ```
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add demos/tapes/demo-0-install.tape demos/narration/demo-0-install.md
+git add demos/scenarios/demo-0-install.txt demos/narration/demo-0-install.md
 git add demos/titles/endorsement.txt demos/titles/demo-0-install-opening.txt
-git commit -m "feat(demos): Demo 0 Install -- tape file and narration script"
+git commit -m "feat(demos): Demo 0 Install scenario and narration"
 ```
 
 ---
 
-## Task 9: Author Demo 3 -- Spec + Persona Test
+## Task 7: Author Demo 3 -- Spec + Persona Test
 
 The signature video. 3 minutes. "You wrote a spec. Before the review meeting..."
 
 **Files:**
-- Create: `demos/tapes/demo-3-persona.tape`
+- Create: `demos/scenarios/demo-3-persona.txt`
 - Create: `demos/narration/demo-3-persona.md`
 - Create: `demos/titles/demo-3-persona-opening.txt`
-- Create: `demos/titles/demo-3-persona-previously.txt`
+- Create: `demos/titles/demo-3-persona-prev.txt`
 
-- [ ] **Step 1: Write the opening frame text**
+- [ ] **Step 1: Run a real /validate-users session and capture output**
+
+Run `/validate-users` on a real topic in simlab. Copy the actual output for the scenario.
+
+```bash
+# In Claude Code in simlab workspace:
+# /validate-users api-copilot
+#
+# Copy the output including persona names, findings, scores.
+# Also copy your steering prompts and the AI's responses.
+```
+
+- [ ] **Step 2: Write the scenario file**
+
+Create `demos/scenarios/demo-3-persona.txt` using real output from Step 1. Structure:
+
+```
+$ /validate-users api-copilot
+
+[Paste real persona walkthrough output here]
+
+$ Persona 3 raised a good point about the onboarding flow. Go deeper on that. What specifically would confuse a new user in the first 5 minutes?
+
+[Paste real response here]
+
+$ The mobile PM persona is not relevant for this feature. Focus on the platform PM and data analyst personas. What would they change about section 3?
+
+[Paste real response here]
+
+$ Summarize the top 5 findings I should fix before Thursday. Priority order.
+
+[Paste real prioritized summary here]
+```
+
+- [ ] **Step 3: Write the narration script**
+
+Create `demos/narration/demo-3-persona.md`:
+```markdown
+## opening
+You wrote a spec. The review meeting is Thursday. What if five different personas could read it first? This is a representative session showing how a PM validates a spec with Signal.
+
+## personas
+The validate-users skill sends the spec through five persona advocates. Each reads in first person and flags what confuses them. Watch the findings come in -- each persona sees the spec differently.
+
+## steer
+Here is the moment that matters. The PM reads the output and pushes back. Persona 3 flagged the onboarding flow -- the PM decides to go deeper. This is not a passive tool. The PM steers it.
+
+## focus
+Another judgment call. The PM drops an irrelevant persona and narrows focus to the two that matter. The AI follows the PM's domain knowledge.
+
+## summary
+Five personas. Twelve findings. The PM asks for the top five in priority order. The spec improves before a single engineer reads it.
+```
+
+- [ ] **Step 4: Write title cards**
 
 Create `demos/titles/demo-3-persona-opening.txt`:
 ```
@@ -1057,9 +1061,7 @@ You wrote a spec. The review meeting is Thursday.
 What if five different personas read it first?
 ```
 
-- [ ] **Step 2: Write the "previously gathered" card**
-
-Create `demos/titles/demo-3-persona-previously.txt`:
+Create `demos/titles/demo-3-persona-prev.txt`:
 ```
 Signals gathered so far:
 
@@ -1070,132 +1072,44 @@ Signals gathered so far:
 Now: validate the spec with 5 personas.
 ```
 
-- [ ] **Step 3: Write the VHS tape file**
-
-Create `demos/tapes/demo-3-persona.tape`:
-```tape
-Output demos/raw/demo-3-persona.mp4
-Set FontSize 14
-Set Width 1400
-Set Height 800
-Set Theme "Catppuccin Mocha"
-Set Shell "bash"
-Set TypingSpeed 50ms
-
-Require claude
-
-Sleep 1s
-
-# PM launches Claude Code in their simlab
-Type "cd /c/src/signals/simlab && claude"
-Enter
-Wait+Screen /claude/ 15s
-Sleep 2s
-
-# PM runs persona validation on their spec topic
-Type "/validate-users api-copilot"
-Enter
-Wait+Screen /Persona 1/ 60s
-Sleep 1s
-
-# Wait for all 5 personas to complete
-Wait+Screen /Cross-Persona/ 180s
-Sleep 3s
-
-# PM reacts to findings -- steers the AI
-Type "Persona 3 raised a good point about the onboarding flow. Go deeper on that. What specifically would confuse a new user in the first 5 minutes?"
-Enter
-Wait+Screen /onboarding/ 60s
-Sleep 2s
-
-# PM makes a judgment call
-Type "OK, the mobile PM persona is not relevant for this feature. Focus on the platform PM and the data analyst personas instead. What would they change about section 3 of the spec?"
-Enter
-Wait+Screen /section 3/ 60s
-Sleep 3s
-
-# PM asks for the summary
-Type "Summarize the top 5 findings I should fix before Thursday's review meeting. Priority order."
-Enter
-Wait+Screen /Priority/ 45s
-Sleep 5s
-```
-
-- [ ] **Step 4: Write the narration script**
-
-Create `demos/narration/demo-3-persona.md`:
-```markdown
-## opening
-You wrote a spec. The review meeting is Thursday. What if five different personas could read it first and tell you what they think? This is a representative session showing how a PM validates a spec with Signal.
-
-## launch
-The PM opens Claude Code in their Signal workspace. Three investigation signals have already been gathered for this topic -- hypothesis, competitors, and a synthesis. Now it is time to validate.
-
-## personas-run
-The validate-users skill sends the spec through five persona advocates. Each persona reads in first person and flags what confuses them, what they would change, and what they like. Watch the findings come in -- each persona sees the spec differently.
-
-## steer-onboarding
-Here is the moment that matters. The PM reads the output and makes a judgment call. Persona 3 flagged the onboarding flow. The PM decides this is worth investigating deeper and asks the AI to expand. The PM is steering, not spectating.
-
-## steer-focus
-Another judgment call. The PM decides the mobile persona is irrelevant and narrows the focus to the two personas that matter most for this feature. The AI follows the PM's direction. This is not a generic review -- it is shaped by the PM's domain knowledge.
-
-## summary
-Five personas. Twelve findings. The PM asks for the top five in priority order -- the ones to fix before Thursday. The spec improves before a single engineer reads it. No meetings were needed to get here.
-```
-
 - [ ] **Step 5: Commit**
 
 ```bash
-git add demos/tapes/demo-3-persona.tape demos/narration/demo-3-persona.md
-git add demos/titles/demo-3-persona-opening.txt demos/titles/demo-3-persona-previously.txt
-git commit -m "feat(demos): Demo 3 Spec + Persona Test -- tape file and narration script"
+git add demos/scenarios/demo-3-persona.txt demos/narration/demo-3-persona.md
+git add demos/titles/demo-3-persona-opening.txt demos/titles/demo-3-persona-prev.txt
+git commit -m "feat(demos): Demo 3 Spec + Persona Test scenario and narration"
 ```
 
 ---
 
-## Task 10: End-to-End Test Run
+## Task 8: End-to-End Test
 
-Run the full pipeline on Demo 0 to verify everything works together.
+Run the full pipeline on Demo 0 and verify all acceptance criteria.
 
-**Files:**
-- No new files
+**Files:** No new files.
 
-- [ ] **Step 1: Ensure config.env is set up**
+- [ ] **Step 1: Set up config.env**
 
 ```bash
 cp demos/config.env.example demos/config.env
-# Edit demos/config.env: set ELEVENLABS_API_KEY
+# Add ELEVENLABS_API_KEY to demos/config.env
 ```
 
-- [ ] **Step 2: Run the full pipeline for Demo 0**
+- [ ] **Step 2: Run Demo 0**
 
 ```bash
-cd /c/src/signals
 bash demos/render-demo.sh demo-0-install
 ```
 
-Expected output:
+Expected:
 ```
 ========================================
   Demo Video Pipeline: demo-0-install
 ========================================
 
-[1/4] Recording terminal session...
-      Tape: demos/tapes/demo-0-install.tape
-      Done: demos/raw/demo-0-install.mp4
-
+[1/4] Recording terminal scenario...
 [2/4] Generating narration audio...
-  [1/6] opening...
-  [2/6] clone...
-  [3/6] bootstrap...
-  [4/6] launch...
-  [5/6] show-skills...
-  [6/6] preview...
-
 [3/4] Compositing video...
-  ...speed factor, compositing details...
-
 [4/4] Extracting 30-second clip...
 
 ========================================
@@ -1206,22 +1120,7 @@ Expected output:
   Clip:  demos/final/demo-0-install-clip.mp4
 ```
 
-- [ ] **Step 3: Verify output files**
-
-```bash
-ls -la demos/final/demo-0-install*
-ffprobe -v quiet -show_entries format=duration -of csv=p=0 demos/final/demo-0-install.mp4
-ffprobe -v quiet -show_entries format=duration -of csv=p=0 demos/final/demo-0-install-clip.mp4
-```
-
-Check against acceptance criteria:
-- Full video exists and plays
-- Clip is ~30 seconds
-- 1080p H.264, AAC audio
-- File size under 150MB
-- Subtitles visible
-
-- [ ] **Step 4: Watch and iterate**
+- [ ] **Step 3: Verify acceptance criteria**
 
 Open both videos:
 ```bash
@@ -1229,44 +1128,41 @@ start demos/final/demo-0-install.mp4
 start demos/final/demo-0-install-clip.mp4
 ```
 
-Review for:
-- [ ] Opening title card displays for ~5 seconds
-- [ ] Endorsement card displays for ~10-15 seconds
-- [ ] Terminal text is readable at the playback speed
-- [ ] Narration syncs with terminal activity
-- [ ] Subtitles are present and correctly timed
-- [ ] Human typing is at real speed (can read PM input)
+Check:
+- [ ] Opening title card visible for ~5 seconds
+- [ ] Endorsement card visible for ~10-15 seconds
+- [ ] Terminal text readable at playback speed
+- [ ] Narration syncs with terminal content
+- [ ] Subtitles present and timed correctly
+- [ ] Clip is ~30 seconds
+- [ ] File size under 150MB
 
-- [ ] **Step 5: Run Demo 3 if Demo 0 passes**
+- [ ] **Step 4: Run Demo 3**
 
 ```bash
 bash demos/render-demo.sh demo-3-persona
 ```
 
-Same verification steps as above.
+Same verification as above.
 
-- [ ] **Step 6: Commit any fixes from iteration**
+- [ ] **Step 5: Commit any fixes**
 
 ```bash
-git add -A demos/lib/ demos/tapes/ demos/narration/
-git commit -m "fix(demos): iteration fixes from end-to-end test run"
+git add demos/lib/
+git commit -m "fix(demos): iteration fixes from end-to-end test"
 ```
 
 ---
 
 ## Task Summary
 
-| Task | What | Depends On |
-|------|------|-----------|
-| 1 | Scaffolding + tool verification | -- |
-| 2 | Narration parser | 1 |
-| 3 | ElevenLabs TTS integration | 2 |
-| 4 | Title card + subtitle generators | 1 |
-| 5 | Video compositor | 2, 3, 4 |
-| 6 | Clip extractor | 1 |
-| 7 | Main orchestrator (render-demo.sh) | 5, 6 |
-| 8 | Author Demo 0: Install | 7 |
-| 9 | Author Demo 3: Spec + Persona | 7 |
-| 10 | End-to-end test run | 8, 9 |
-
-**Parallelizable:** Tasks 2+4 can run in parallel. Tasks 8+9 can run in parallel.
+| Task | What | Depends On | Parallelizable With |
+|------|------|-----------|-------------------|
+| 1 | Scaffold + cast-to-mp4 wrapper | -- | -- |
+| 2 | Parser + subtitles + title cards | 1 | 3 |
+| 3 | ElevenLabs TTS | 1 | 2 |
+| 4 | Compositor + clip extractor | 2, 3 | -- |
+| 5 | Orchestrator (render-demo.sh) | 4 | -- |
+| 6 | Author Demo 0: Install | 5 | 7 |
+| 7 | Author Demo 3: Persona Test | 5 | 6 |
+| 8 | End-to-end test | 6, 7 | -- |
