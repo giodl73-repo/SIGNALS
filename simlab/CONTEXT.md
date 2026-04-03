@@ -11,6 +11,7 @@ Active investigations. The slug is what you pass to every skill.
 
 | Slug | Description | Status | Repos | Started |
 |------|-------------|--------|-------|---------|
+| demo-videos | Automated demo video series showing Signal skills to Microsoft Principal PMs | active | signals | 2026-04-03 |
 | <!-- e.g. dark-mode --> | <!-- what it is --> | <!-- active / paused / decided --> | <!-- repo names --> | <!-- date --> |
 
 To start a new topic:
