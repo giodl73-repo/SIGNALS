@@ -1,0 +1,23 @@
+$ echo "Hello from terminal-demo on Windows"
+Hello from terminal-demo on Windows
+
+$ echo "This is a scripted, repeatable terminal recording"
+This is a scripted, repeatable terminal recording
+
+$ /signal
+Signal - 63 skills across 9 namespaces
+
+  discover:  competitors, feasibility, inertia, hypothesis, risk, analysis, synthesize
+  specify:   spec, proposal, pitch, commitment, abstract
+  validate:  design, users, customers, code, adoption, feedback, support
+  simulate:  lifecycle, request, state, contract, conversation, argument
+  rhythm:    decide, status, story, qa, brief, rebuttal
+  roles:     scan, build, check, product-review, pull-request
+  research:  pre-write, post-write
+  tools:     coverage, preview, accept
+  signal:    signal, signal-health, signal-setup
+
+  Type /signal <namespace> for details.
+
+$ echo "Done. The pipeline works."
+Done. The pipeline works.
