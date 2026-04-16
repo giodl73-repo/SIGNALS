@@ -1,12 +1,13 @@
 version: 1
 plugin: signal
 updated: 2026-03-16
-skills_count: 62
+skills_count: 64
 namespaces:
 - discover
 - specify
 - validate
 - simulate
+- narrate
 - rhythm
 - roles
 - signal
@@ -1425,6 +1426,82 @@ skills:
     sprint boundaries. Competitive but constructive — the point is coverage gaps,
     not ranking.'
   artifact: simulations/roles/achievements-{date}.md
+- id: narrate-edit
+  namespace: narrate
+  audience: author+editor
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  golden: null
+  rubric: null
+  quest_status: NEW
+  param_set: lean
+  description: 'Structured editorial pass with productive tension. Three dependency-ordered
+    passes: Architecture (Mehta + Korda — is the structure right?), Cut (Gottlieb +
+    Lish — what can come out?), Voice (Talese + Perkins — does it sound like one author?).
+    Each pass pairs two real literary editors with different loyalties, producing concrete
+    editorial actions — not scores. Dependency order is mandatory: architecture first
+    (no point cutting sentences in a paragraph that should be moved), cut second (no
+    point polishing voice in a passage that should be removed), voice last (polish
+    what remains). Includes the Lish test (one passage stripped of all explanation,
+    before/after) and the gift passage (the single best paragraph). Use --pass to run
+    a single pass. AMEND: apply proposed fixes and re-run the affected pass.'
+  artifact: signals/narrate/{topic}-edit-{date}.md
+  spec: signals/narrate-edit.md
+  param_inline:
+    pass:
+      architecture: 'Run only the Architecture pass (Mehta + Korda). Produces: beat
+        map, structural verdict, accessibility flags, gift passage.'
+      cut: 'Run only the Cut pass (Gottlieb + Lish). Produces: cut list, compression
+        candidates, word count projection, the Lish test.'
+      voice: 'Run only the Voice pass (Talese + Perkins). Produces: voice verdict,
+        register shifts, weak endings, circling passages.'
+- id: narrate-review
+  namespace: narrate
+  audience: author+editor
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  golden: null
+  rubric: null
+  quest_status: NEW
+  param_set: lean
+  description: 'Multi-persona prose review with structural assessment. 7 reviewer
+    clusters (Rigor, Pace, Beauty, Lightness, Honesty, Myth, Life) with 19 named literary
+    voices. Lead cluster shifts by section type: narrative (Myth + Life lead), analytical
+    (Rigor + Honesty), argument (Rigor + Honesty), opening (Pace + Lightness), close
+    (Beauty + Myth). Structural assessment: pacing maps, emotional trajectory, what
+    is missing, what should be cut. Cross-cluster synthesis: universal praise, universal
+    friction, cluster conflicts. Up to 5 concrete fixes with the replacement test —
+    does this fix improve the reading, or just satisfy a rule? Use --section-type to
+    override inferred classification. AMEND: apply fixes and re-review the affected
+    sections.'
+  artifact: signals/narrate/{topic}-review-{date}.md
+  spec: signals/narrate-review.md
+  param_inline:
+    section-type:
+      narrative: 'Review as narrative prose. Lead clusters: Myth + Life. Priority stack:
+        Myth > Life > Pace > Beauty.'
+      analytical: 'Review as analytical prose. Lead clusters: Rigor + Honesty. Priority
+        stack: Honesty > Rigor > Pace > Beauty.'
+      argument: 'Review as argumentative prose. Lead clusters: Rigor + Honesty. Priority
+        stack: Rigor > Honesty > Pace > Lightness.'
+      opening: 'Review as opening section. Lead clusters: Pace + Lightness. Priority
+        stack: Pace > Lightness > Beauty > Myth.'
+      close: 'Review as closing section. Lead clusters: Beauty + Myth. Priority stack:
+        Beauty > Myth > Honesty > Pace.'
 parameters:
   definitions:
   - name: focus
