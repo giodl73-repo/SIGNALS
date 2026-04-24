@@ -1,0 +1,103 @@
+Scanning the Round 6 scorecard for patterns that pass in at least one variation but aren't captured by C-01 through C-17.
+
+**V-03 introduces one new pattern not in any existing criterion:**
+
+- **C-18 (topology invariant registry with cross-traceability)**: Developer Phase 0-D pre-commits named structural invariants (`INVARIANT-TOPO-NN`, `INVARIANT-SV-NN`). The Auditor adds `INVARIANT_CONFORMANCE: HOLDS | VIOLATED[NN]` as a mandatory trace table column. `CONFIRMED_ABSENT` defect rows must cite the invariant ID that guarantees absence. This creates bidirectional traceability from design-time claim to runtime finding — a defect row without an invariant citation is a structural failure. This extends C-16 (domain pre-contract) by adding a named-ID system that propagates through audit columns and defect classification.
+
+Aspirational denominator bumps from 10 to 11.
+
+---
+
+```markdown
+# Rubric — flow-conversation — v6 (2026-03-14)
+
+> **What changed in v6**: Added C-18 (topology invariant registry with
+> cross-traceability), extracted from Round 6 excellence signal in V-03.
+> C-18 extends C-16 (Developer domain pre-contract) by requiring named
+> structural invariants (INVARIANT-TOPO-NN, INVARIANT-SV-NN) that propagate
+> into the Auditor's trace table as a mandatory INVARIANT_CONFORMANCE column
+> and into defect rows as required invariant citations. The invariant ID system
+> creates bidirectional traceability from design-time claim to runtime finding.
+> Aspirational denominator updated from 10 to 11.
+>
+> **What changed in v5**: Added C-16 (developer domain pre-contract) and C-17
+> (gap-closure annotation), extracted from Round 5 excellence signals in V-01
+> and V-04 respectively. C-16 extends C-14 with mutual pre-commitment: the
+> Developer declares a domain block before the Auditor writes the assertion
+> schema. C-17 makes rubric evolution traceable within the output by tagging
+> each phase with the prior-round gap it closes. Aspirational denominator
+> updated from 8 to 10.
+>
+> **What changed in v4**: Added C-14 (contract-first schema authorship) and C-15
+> (table columns as structural enforcement), extracted from Round 4 excellence
+> signals in V-03/V-04/V-05 and V-01/V-04/V-05 respectively. Aspirational
+> denominator updated from 6 to 8.
+>
+> **What changed in v3**: Added C-12 (role-separated post-production audit) and
+> C-13 (typed assertion fields with constrained verdict enums), extracted from
+> Round 2 excellence signals in V-03 and V-04. Aspirational denominator updated
+> from 4 to 6.
+>
+> **What changed in v2**: Added C-10 (prohibited vocabulary gate) and C-11
+> (turn-level conformance verdict), extracted from Round 1 excellence signals in
+> V-03 and V-04. Aspirational denominator updated from 2 to 4.
+
+---
+
+## Purpose
+
+Evaluate a simulated Copilot Studio conversation-flow trace for dialog coverage,
+defect classification completeness, session state fidelity, and domain vocabulary
+discipline.
+
+---
+
+## Essential Criteria (60 points total)
+
+| ID | Criterion | Category | Weight | Pass Condition |
+|----|-----------|----------|--------|----------------|
+| C-01 | **Dialog path traced as turns** | coverage | essential | Output walks the conversation turn-by-turn. Each turn shows: user utterance, topic matched, nodes executed, agent response, and transition target. No turns may be skipped or collapsed into a summary. |
+| C-02 | **All four defect classes addressed** | correctness | essential | Output explicitly addresses all four defect classes: dead ends, infinite loops, intent collisions, missing fallbacks. Each class is either found (with example) or confirmed absent. CONFIRMED ABSENT requires an explicit statement of scope. |
+| C-03 | **Session state tracked** | correctness | essential | Output maintains and displays session state across turns (e.g., active topic, slot values, prior intent history). State must visibly change or be held across at least two transitions. |
+| C-04 | **Copilot Studio framing** | behavior | essential | Analysis uses Copilot Studio vocabulary: topics, trigger phrases, conditions, fallback topics, escalation, session variables. Generic chatbot terms without grounding are not sufficient. |
+
+---
+
+## Recommended Criteria (30 points total)
+
+| ID | Criterion | Category | Weight | Pass Condition |
+|----|-----------|----------|--------|----------------|
+| C-05 | **Defect reproduction steps** | depth | recommended | For each defect found, output provides a minimal reproduction: the exact utterance sequence that triggers the defect and the observable failure mode. |
+| C-06 | **Fallback chain coverage** | coverage | recommended | Output traces at least one fallback path to completion — what happens when no topic matches, including escalation or graceful exit. Shows the full chain, not just the first fallback node. |
+| C-07 | **Intent collision disambiguation** | depth | recommended | If intent collisions are found, output proposes a disambiguation strategy (e.g., entity enrichment, condition ordering, trigger phrase refactor) with rationale. |
+
+---
+
+## Aspirational Criteria (11 points total)
+
+| ID | Criterion | Category | Weight | Pass Condition |
+|----|-----------|----------|--------|----------------|
+| C-08 | **Graph coverage metric** | depth | aspirational | Output reports a coverage ratio: topics visited / total topics in graph, or intents exercised / total trigger phrases. Gives a quantified signal, not just narrative. |
+| C-09 | **Adversarial turn injection** | behavior | aspirational | Output includes at least one adversarial scenario — unexpected user utterance mid-flow, topic switch during slot filling, or session timeout — and shows how the agent responds. |
+| C-10 | **Prohibited vocabulary gate** | behavior | aspirational | Output pre-maps the CS topology term set used in the trace AND explicitly lists prohibited generic terms (e.g., "intent," "dialog," "slot," "NLU," "chatbot," "handoff") with a verification that none appear in the output. Demonstrates active vocabulary enforcement, not passive CS term usage. |
+| C-11 | **Turn-level conformance verdict** | correctness | aspirational | Each turn in the dialog trace carries an explicit CONFORMS / DEVIATES verdict against the expected topology spec, separate from the defect classification section. Provides inline spec conformance at every step rather than only surfacing findings at the amendments stage. |
+| C-12 | **Role-separated post-production audit** | behavior | aspirational | Output assigns a distinct Auditor role that operates on the *completed* Developer trace as a finished artifact — not inline during production. A hard phase-gate boundary marker (e.g., `=== DEVELOPER ARTIFACT COMPLETE ===`) separates production from audit. The Auditor reads the full output in scan mode and produces a separate audit layer. Role separation provides full-output context and prevents the producer from self-certifying. The phase gate is load-bearing: imperative role-switch phrasing without the hard boundary is insufficient. |
+| C-13 | **Typed assertion fields with constrained verdict enums** | correctness | aspirational | All key assertion positions use typed structured fields with constrained vocabulary — e.g., `SPEC_CONFORMANCE: CONFORMS \| DEVIATES`, `PROHIBITED_TERM_SCAN: CLEAN \| FOUND`, `DEFECT_VERDICT: FOUND \| CONFIRMED_ABSENT`. No free-text hedging permitted in verdict positions. Constrained enums remove ambiguity and prevent partial or qualified verdicts from masking non-compliance. |
+| C-14 | **Contract-first schema authorship** | behavior | aspirational | The Auditor declares the complete assertion contract (all typed fields, all enum values, all prohibited-term list) in a Phase 0 schema block *before* the Developer writes any output. The Developer is bound to the Phase 0 schema in all subsequent phases. This prevents the Auditor from reverse-engineering criteria post-hoc and provides a stronger independence guarantee than retroactive-only auditing. |
+| C-15 | **Table columns as structural enforcement** | correctness | aspirational | Per-turn output is formatted as a typed table with mandatory columns for each assertion field (e.g., SPEC_CONFORMANCE, PROHIBITED_TERM_SCAN, SESSION_VARIABLES). A blank cell in a mandatory column is a visible structural failure. Block or narrative per-turn format cannot achieve this property: omitted fields are invisible, whereas a missing table cell is not. |
+| C-16 | **Developer domain pre-contract** | behavior | aspirational | The Developer declares a Phase 0 domain block — topic inventory, CS vocabulary binding, and session variable registry — *before* the Auditor writes the assertion schema. The Auditor's Phase 0 is written against the Developer's declared domain rather than a hypothetical one. This mutual pre-commitment is distinct from C-14 (Auditor contract-first): C-14 requires Auditor pre-contracting; C-16 requires both parties to declare before any trace output exists. Domain declarations (what the system contains) do not constitute trace output; the independence guarantee for the Auditor phase gate is preserved. |
+| C-17 | **Gap-closure annotation** | correctness | aspirational | Each structural phase carries an explicit annotation linking it to the prior-round gap it resolves (e.g., "Phase 3 — Gap-03 closure: trace MUST reach terminal state"), and produces a `GAP_CLOSURE_VERDICT: CLOSED \| OPEN` enum confirming closure. Confirmed closures make rubric evolution traceable within the output and prevent regression on gaps identified in prior scoring rounds. A phase that re-opens a previously closed gap is a structural failure. |
+| C-18 | **Topology invariant registry with cross-traceability** | correctness | aspirational | Developer Phase 0-D pre-commits named structural invariants (e.g., `INVARIANT-TOPO-NN`, `INVARIANT-SV-NN`) representing design-time guarantees about the agent topology (e.g., "every topic has exactly one fallback exit," "session variable X is cleared on topic exit"). The Auditor incorporates these invariant IDs into the assertion contract (C-14) and adds `INVARIANT_CONFORMANCE: HOLDS \| VIOLATED[NN]` as a mandatory column in the trace table (C-15). `CONFIRMED_ABSENT` defect rows must cite the invariant ID that structurally guarantees absence — a CONFIRMED_ABSENT row without an invariant citation is a contract violation. This creates bidirectional traceability: every design-time claim is testable at runtime, and every runtime absence claim is grounded in a declared invariant. C-18 extends C-16 (domain pre-contract) by requiring the domain block to carry a named ID system that propagates through audit columns and defect classification, not merely a vocabulary and topology description. |
+```
+
+---
+
+**What was extracted from V-03:**
+
+V-03's distinguishing axis was "Topology Invariants as Explicit C-16 Layer." Three evidence points in the scorecard converge on a single pattern not covered by existing criteria:
+
+1. `INVARIANT-TOPO-NN` / `INVARIANT-SV-NN` named IDs in Phase 0-D
+2. `INVARIANT_CONFORMANCE: HOLDS | VIOLATED[NN]` as the 4th mandatory trace table column
+3. `CONFIRMED_ABSENT` defect rows required to cite which invariant guarantees absence
+
+C-16 already requires a domain pre-contract. What V-03 adds is the **named ID system** — the invariants aren't just declared, they propagate into every downstream structural position. That's the new property: design-time claims become addressable by ID at runtime. C-18 captures that propagation contract.

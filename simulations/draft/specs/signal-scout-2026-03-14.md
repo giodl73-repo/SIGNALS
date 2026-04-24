@@ -1,0 +1,333 @@
+# Scout Specification
+
+**Topic**: signal
+**Namespace**: /scout:
+**Skills**: 8
+**Default mode**: Lightweight
+**Audience**: Product managers, strategy leads, compliance officers -- anyone who needs to validate an idea before committing engineering resources
+
+## Purpose
+
+Scout answers "Should we build this?" by running structured investigations against market, technical, regulatory, and stakeholder dimensions. It produces a single go/no-go brief with quantified confidence, so PMs stop relying on gut feel and start relying on evidence.
+
+## Skills
+
+### /scout:competitors
+
+**What**: Analyze the competitive landscape for a product idea, identifying direct competitors, adjacent players, and whitespace opportunities.
+**Stock roles**: PM, Strategy, Architect, GTM
+**Input**: Product concept (1-2 sentences), optional market segment constraint
+**Output**: Competitive landscape brief (report artifact, Markdown)
+**Lifecycle**:
+- Setup: Infer product domain from repo context (README, package.json, CLAUDE.md). Identify 5-10 competitors by name. Always include "none / status quo" as a competitor row -- the most common competitor is teams doing nothing at all. If repo context is insufficient, ask the user for a one-line domain description.
+- Execute: Each role evaluates competitors through their lens -- PM scores feature parity, Strategy scores positioning, Architect scores technical moat, GTM scores distribution advantage. Produce a comparison matrix (rows = competitors, columns = dimensions).
+- Findings: Highlight gaps where no competitor has solved the problem, and crowded zones where 3+ competitors overlap. Flag "table stakes" features the product must have.
+- Amend: User can add/remove competitors, adjust scoring weights, or narrow the market segment.
+**Lightweight**: Single-pass execution. All 4 roles evaluate in one prompt. No iterative refinement -- the matrix is final on first pass. Setup auto-detects from context without confirmation.
+**Flags**: `--mode risk` reframes output from competitive matrix to "cost of not acting" risk brief -- useful for exec or all-hands audiences who respond to risk quantification over feature comparison.
+**Artifact**: `simulations/scout/competitors/{topic}-competitors-{date}.md`
+**Tools**: Read, Write, Glob, Grep, WebSearch (use web search to verify competitor feature claims, not just training data reasoning)
+**Example**:
+```
+User: /scout:competitors "AI-assisted simulation plugin for Claude Code"
+> Analyzing developer tooling AI copilot market...
+> Setup: auto-detected from repo context (Claude Code plugin, simulation methodology)
+> Competitors identified: Cursor (AI IDE), GitHub Copilot Workspace, Codium AI,
+>   Devin (autonomous), Factory AI, Sweep AI, Tabnine, Cody (Sourcegraph)
+> Executing: PM (feature parity) + Strategy (positioning) + Architect (moat) + GTM (distribution)
+>
+> ## Competitive Matrix
+> | Competitor | Feature Parity | Positioning Gap | Technical Moat | Distribution |
+> |------------|---------------|-----------------|----------------|--------------|
+> | Cursor     | 7/10          | IDE-bound       | Editor lock-in | VS Code fork |
+> | Copilot WS | 6/10          | Code-only       | GitHub lock-in | GitHub native|
+> | Devin      | 3/10          | Full autonomy   | Agent infra    | API-first   |
+>
+> Whitespace: No competitor offers design-time simulation (pre-code validation).
+> Table stakes: CLI integration, Markdown output, git-aware context.
+> Artifact written: scout/competitors/sim-competitors-ai-sim-plugin-2026-03-14.md
+```
+
+### /scout:feasibility
+
+**What**: Assess whether a product idea is technically feasible given current constraints (stack, team size, timeline, dependencies).
+**Stock roles**: Architect, PM, Strategy
+**Input**: Product concept, optional constraints (timeline, team size, tech stack)
+**Output**: Feasibility assessment (report artifact, Markdown)
+**Lifecycle**:
+- Setup: Scan repo for tech stack signals (package.json, Cargo.toml, pyproject.toml, tsconfig.json). If no stack files found, fall back to CLAUDE.md content -- but surface this explicitly: "Stack inferred from CLAUDE.md assertion only -- no package.json found." Estimate team size from git log contributor count. Always show inferred team size and timeline to the user before proceeding, even when flags are omitted -- never silently infer constraints.
+- Execute: Architect evaluates technical complexity (1-5 scale per component), identifies hard dependencies and unknown unknowns. PM maps to timeline feasibility. Strategy evaluates build-vs-buy for each component.
+- Findings: Traffic-light rating per component (green = straightforward, yellow = risky, red = blocking). Overall feasibility score (0-100). List of prerequisites that must be true.
+- Amend: User can adjust constraints, add/remove components, or provide additional context about team capabilities.
+**Lightweight**: Single-pass. Architect does the heavy lift, PM and Strategy annotate. No component-by-component deep dive -- top-level assessment only.
+**Artifact**: `simulations/scout/feasibility/{topic}-feasibility-{date}.md`
+**Example**:
+```
+User: /scout:feasibility "real-time collaboration for craft plugin" --timeline "3 months" --team "2 devs"
+> Scanning repo for stack signals...
+> Stack: TypeScript, Node.js, Claude Code SDK, Markdown-based config
+> Contributors (90d): 2
+>
+> ## Feasibility Assessment
+> | Component          | Complexity | Risk   | Build/Buy |
+> |--------------------|-----------|--------|-----------|
+> | CRDT engine        | 5/5       | RED    | Buy       |
+> | Conflict resolver  | 4/5       | YELLOW | Build     |
+> | Session management | 3/5       | GREEN  | Build     |
+> | Transport layer    | 4/5       | RED    | Buy       |
+>
+> Overall: 35/100 -- NOT FEASIBLE with current constraints.
+> Blocker: CRDT + transport require 6+ months for 2-person team.
+> Recommendation: Reduce scope to async collaboration (file-level locking).
+```
+
+### /scout:naming
+
+**What**: Generate and evaluate candidate names for a product, feature, or concept using multi-persona scoring.
+**Stock roles**: PM, Design, UX, GTM, Strategy
+**Input**: What needs a name (1-2 sentences), optional constraints (length, tone, existing brand)
+**Output**: Naming study (report artifact, Markdown)
+**Lifecycle**:
+- Setup: Extract domain vocabulary from repo context. Identify naming constraints (existing brand terms, reserved words, competitor names to avoid).
+- Execute: Generate 10-15 candidates. Each role scores candidates on their dimension -- PM (memorability), Design (visual weight), UX (speakability), GTM (searchability), Strategy (positioning fit). Compute weighted aggregate.
+- Findings: Ranked candidate list with per-role scores. Top 3 recommendations with rationale. Collision check against package registries and domain names.
+- Amend: User can add candidates, adjust weights, or constrain to a specific naming pattern (e.g., "must be 5 letters").
+**Flags**: `--validate <name>` pins the named candidate at row 1 and adds a "Validation Summary" block ("SIGNAL scores 8.4, rank 1 of 12. Chosen name is the strongest available candidate."). The default generate-and-score path is unchanged.
+**Lightweight**: Single-pass generation + scoring. No iterative candidate refinement. Top 3 delivered immediately.
+**Artifact**: `simulations/scout/naming/{topic}-naming-{date}.md`
+**Example**:
+```
+User: /scout:naming "simulation plugin for design-time validation" --constraint "5 letters, active verb feel"
+> Extracting domain vocabulary: simulate, validate, trace, probe, check, verify...
+> Generating candidates...
+>
+> ## Naming Matrix (top 5 of 12)
+> | Candidate | PM  | Design | UX  | GTM | Strategy | Weighted |
+> |-----------|-----|--------|-----|-----|----------|----------|
+> | PROVE     | 8   | 7      | 9   | 6   | 8        | 7.6      |
+> | TRACE     | 7   | 8      | 8   | 5   | 7        | 7.0      |
+> | SCOUT     | 9   | 7      | 9   | 7   | 6        | 7.6      |
+> | FORGE     | 8   | 9      | 7   | 4   | 7        | 7.0      |
+> | DRAFT     | 6   | 7      | 8   | 5   | 8        | 6.8      |
+>
+> Top pick: PROVE -- active verb, implies validation, 5 letters, no package conflicts.
+> Runner-up: SCOUT -- strong recall, implies exploration, npm "scout" taken (use @scope).
+```
+
+### /scout:compliance
+
+**What**: Identify regulatory, legal, and policy constraints that affect a product idea before design begins.
+**Stock roles**: Compliance, PM, Architect, Strategy
+**Input**: Product concept, target markets/industries, optional regulatory frameworks
+**Output**: Compliance landscape brief (report artifact, Markdown)
+**Lifecycle**:
+- Setup: Infer target domain from repo context. Identify applicable regulatory frameworks (GDPR, HIPAA, SOC2, FedRAMP, etc.) based on industry and data types mentioned.
+- Execute: Compliance role catalogs requirements per framework. When evaluating AI/ML tools, explicitly distinguish between compliance obligations on the product vs. on the host platform (e.g., SR 11-7 applies to the AI model and its operator, not to a structured prompt methodology running on top of it -- misclassifying the scope triggers unnecessary work). When the product is git-native with no server and no user data persistence, surface this as a compliance-favorable design property, not a gap. Architect maps requirements to technical constraints. PM identifies timeline impact. Strategy evaluates market access vs. compliance cost.
+- Findings: Requirements matrix (rows = requirements, columns = frameworks). Blocking requirements that must be designed in from day one. "Cost of late compliance" estimate for requirements deferred past MVP.
+- Amend: User can add/remove frameworks, specify data types handled, or narrow to specific jurisdictions.
+**Lightweight**: Single-pass. Compliance role drives, others annotate. No framework-by-framework deep dive -- consolidated matrix only.
+**Artifact**: `simulations/scout/compliance/{topic}-compliance-{date}.md`
+**Example**:
+```
+User: /scout:compliance "agent orchestration platform" --industry healthcare --market US,EU
+> Applicable frameworks: HIPAA, GDPR, SOC2 Type II, FDA 21 CFR Part 11
+>
+> ## Compliance Matrix
+> | Requirement            | HIPAA | GDPR | SOC2 | FDA   | Design Impact    |
+> |------------------------|-------|------|------|-------|------------------|
+> | Audit trail            | REQ   | REQ  | REQ  | REQ   | Day-1 (blocking) |
+> | Data residency         | --    | REQ  | --   | --    | Day-1 (blocking) |
+> | Right to deletion      | --    | REQ  | --   | --    | MVP+1            |
+> | Encryption at rest     | REQ   | REQ  | REQ  | REQ   | Day-1 (blocking) |
+> | Access controls (RBAC) | REQ   | --   | REQ  | REQ   | Day-1 (blocking) |
+>
+> Blocking: 4 requirements must be in initial architecture.
+> Cost of deferring audit trail past MVP: estimated 3-month retrofit.
+```
+
+### /scout:market
+
+**What**: Size the addressable market for a product idea and identify target segments ranked by fit.
+**Stock roles**: Strategy, PM, GTM
+**Input**: Product concept, optional segment constraints
+**Output**: Market sizing brief (report artifact, Markdown)
+**Lifecycle**:
+- Setup: Infer product category from repo context. Identify 3-5 market segments from the product description.
+- Execute: Strategy estimates TAM/SAM/SOM per segment. Use developer headcount for tooling/platform segments; use dollar TAM for enterprise/market segments -- never mix units in the same table. PM scores segment fit on three dimensions (pain severity 1-10, willingness to pay 1-10, accessibility 1-10), equal weights, composite = average. GTM scores go-to-market difficulty per segment (1=days, 10=years), composite of channel availability, sales cycle, competition intensity.
+- Findings: Segment ranking by composite rank score = fit score + (10 - GTM difficulty). Higher is better. Recommended beachhead segment with rationale. Revenue model suggestions per segment.
+- Amend: User can adjust segment definitions, provide pricing assumptions, or add/remove segments.
+**Lightweight**: Single-pass. Strategy leads with TAM/SAM/SOM, PM and GTM annotate. No bottom-up sizing -- top-down estimates only.
+**Artifact**: `simulations/scout/market/{topic}-market-{date}.md`
+**Example**:
+```
+User: /scout:market "CLI-based simulation plugin for AI agent developers"
+> Segments identified: (1) AI agent startups, (2) Enterprise AI teams,
+>   (3) DevTools companies, (4) Consulting/SI firms, (5) Academic research
+>
+> ## Segment Analysis
+> | Segment           | TAM    | SAM   | SOM   | Fit | GTM Difficulty |
+> |-------------------|--------|-------|-------|-----|----------------|
+> | AI agent startups | $2.1B  | $340M | $12M  | 9   | 3 (easy)       |
+> | Enterprise AI     | $18B   | $1.2B | $45M  | 6   | 8 (hard)       |
+> | DevTools co's     | $5.4B  | $620M | $8M   | 7   | 5 (medium)     |
+>
+> Beachhead: AI agent startups -- highest fit, lowest GTM friction,
+>   CLI-native audience, fast adoption cycle (days not quarters).
+```
+
+### /scout:stakeholders
+
+**What**: Map the stakeholder landscape for a product decision -- who cares, what they care about, and who has veto power.
+**Stock roles**: PM, Strategy, UX
+**Input**: Product concept or decision to be made, optional org context
+**Output**: Stakeholder map (report artifact, Markdown)
+**Lifecycle**:
+- Setup: Infer organizational context from repo (CODEOWNERS, team structure, contribution patterns). If CODEOWNERS is absent and repo contribution signals are minimal, extract org context from the invocation string instead. If the invocation is also insufficient (e.g., too generic to identify an org), ask one question before proceeding: "What org or team is this decision for?" Never silently infer an org structure from nothing. Identify stakeholder categories (buyer, user, influencer, gatekeeper, champion).
+- Execute: PM maps stakeholders to categories and scores influence (1-5) and interest (1-5). Strategy identifies alignment and conflicts between stakeholders. UX maps stakeholders to user journeys they care about.
+- Findings: Power/interest grid (2x2). Key alliances and conflicts. Communication strategy per quadrant. Veto risks ranked by probability and mitigation.
+- Amend: User can add/remove stakeholders, adjust influence scores, or specify known organizational dynamics.
+**Lightweight**: Single-pass. PM drives the map, Strategy and UX annotate. No stakeholder interview simulation -- assessment from available signals only.
+**Artifact**: `simulations/scout/stakeholders/{topic}-stakeholders-{date}.md`
+**Example**:
+```
+User: /scout:stakeholders "adopting simulate plugin across 3 engineering teams"
+> Stakeholder categories identified from org signals...
+>
+> ## Power/Interest Grid
+> | Stakeholder       | Role        | Power | Interest | Category   |
+> |-------------------|-------------|-------|----------|------------|
+> | VP Engineering    | Gatekeeper  | 5     | 2        | Keep happy |
+> | Team Lead (Alpha) | Champion    | 3     | 5        | Engage     |
+> | Team Lead (Beta)  | Skeptic     | 3     | 4        | Engage     |
+> | QA Director       | Influencer  | 4     | 5        | Engage     |
+> | DevOps Lead       | User        | 2     | 3        | Inform     |
+>
+> Veto risk: VP Engineering (low interest = easy to lose).
+> Mitigation: Frame as cost reduction (fewer post-ship bugs), not process addition.
+> Key alliance: QA Director + Team Lead (Alpha) -- natural coalition.
+```
+
+### /scout:positioning
+
+**What**: Define how a product should be positioned against alternatives -- the "why us" narrative for each audience.
+**Stock roles**: Strategy, GTM, PM, Design
+**Input**: Product concept, target audiences (2-4), key competitors
+**Output**: Positioning brief (report artifact, Markdown)
+**Lifecycle**:
+- Setup: Search for a prior scout-competitors signal in simulations/scout/competitors/ and simulations/trace/skill/ (hand-compiled traces count). If found, load the competitor context -- positioning built without it degrades silently and misses the "inertia is primary competitor" finding. If not found: note the degradation in the output ("Positioning built from repo-context inference only -- run scout-competitors for richer positioning"), run competitor identification inline (auto-detect 5-8 competitors from domain context), then proceed. Never fail silently. Identify 2-4 target audiences from product context.
+- Execute: Strategy defines the positioning framework (category, differentiation, proof points). GTM crafts per-audience value propositions. PM validates against feature reality. Design evaluates narrative coherence.
+- Findings: Positioning statement per audience. Competitive differentiation matrix. Messaging hierarchy (primary claim, supporting points, proof points). Anti-positioning (what we are NOT). PM reality check: validate each claim against actual feature capability -- flag claims that are ahead of the spec as "(roadmap)" so they are not presented as current reality.
+- Amend: User can adjust audiences, refine differentiation claims, or add competitive context.
+**Lightweight**: Single-pass. Strategy leads the framework, others validate. No A/B message testing -- single best positioning per audience.
+**Artifact**: `simulations/scout/positioning/{topic}-positioning-{date}.md`
+**Example**:
+```
+User: /scout:positioning "simulate plugin" --audiences "developers, PMs, architects"
+> Pulling competitor context from prior scout:competitors run...
+>
+> ## Positioning Statements
+>
+> **Developers**: "Simulate finds spec bugs the way TDD finds code bugs --
+>   before you ship. Write expected outputs from specs, trace through the system,
+>   catch gaps before line one of implementation."
+>
+> **PMs**: "Simulate gives you a go/no-go confidence score on any design
+>   without waiting for a prototype. Run 12 customer personas against your spec
+>   in 10 minutes, not 10 weeks."
+>
+> **Architects**: "Simulate is a formal verification methodology for designs
+>   that don't have formal languages yet. Hand-compile your specs the way you'd
+>   hand-compile a parser -- systematically, with findings."
+>
+> Anti-positioning: NOT a testing framework. NOT a code generator. NOT AI autocomplete.
+```
+
+### /scout:requirements
+
+**What**: Extract and prioritize requirements from a product concept, producing a structured requirements brief that feeds into /draft:spec.
+**Stock roles**: PM, Architect, UX, Compliance
+**Input**: Product concept, optional constraints (timeline, compliance needs, target users)
+**Output**: Requirements brief (report artifact, Markdown)
+**Lifecycle**:
+- Setup: Pull context from prior scout signals. Search BOTH simulations/scout/ (real runs) AND simulations/trace/skill/ (hand-compiled traces) -- never skip the trace directory. Report which prior signals were found and loaded. If no prior context found, note this: requirements will be extracted from the product concept alone without competitive, feasibility, or compliance grounding. Identify requirement categories (functional, non-functional, constraints, assumptions).
+- Execute: PM extracts user-facing requirements. Architect extracts technical requirements and constraints. UX extracts usability requirements. Compliance extracts regulatory requirements. Each requirement gets a MoSCoW priority (Must/Should/Could/Won't).
+- Findings: Prioritized requirements list grouped by category. Dependency graph (which requirements block others). Ambiguity flags (requirements that need clarification before design). Gap analysis (areas with no requirements -- suspicious silence).
+- Amend: User can reprioritize, add/remove requirements, or resolve ambiguity flags.
+**Lightweight**: Single-pass. PM extracts, others annotate with their lens. No requirement elicitation interview -- extraction from available context only.
+**Artifact**: `simulations/scout/requirements/{topic}-requirements-{date}.md`
+**Example**:
+```
+User: /scout:requirements "simulation plugin for design-time validation"
+> Pulling context from prior scout runs (competitors, feasibility)...
+>
+> ## Requirements (32 extracted, prioritized)
+>
+> ### Must Have (P0) -- 12 requirements
+> | ID   | Category    | Requirement                                    |
+> |------|-------------|------------------------------------------------|
+> | R-01 | Functional  | Scaffold scenario series from domain config    |
+> | R-02 | Functional  | Track findings with severity and resolution     |
+> | R-03 | Functional  | Generate coverage reports per spec              |
+> | R-04 | Constraint  | CLI-only interface (no GUI dependency)          |
+> | R-05 | Constraint  | Work on Windows, macOS, Linux                  |
+>
+> ### Should Have (P1) -- 11 requirements
+> ...
+>
+> Ambiguity flags: 3 requirements need clarification (R-14, R-22, R-28).
+> Suspicious silence: No requirements for versioning/migration of simulation data.
+```
+
+## Roles
+
+### Stock roles
+
+| Role | What it does in scout |
+|------|----------------------|
+| PM | Scores feature parity, maps timeline impact, extracts user-facing requirements, prioritizes MoSCoW |
+| Strategy | Evaluates positioning, sizes markets, identifies whitespace, defines competitive differentiation |
+| Architect | Assesses technical feasibility, maps complexity, identifies hard dependencies and moats |
+| Compliance | Catalogs regulatory requirements, maps frameworks to technical constraints |
+| Design | Evaluates naming visual weight, narrative coherence, brand alignment |
+| UX | Scores speakability, maps stakeholder journeys, extracts usability requirements |
+| GTM | Scores searchability, distribution advantage, go-to-market difficulty per segment |
+
+### Custom roles (optional)
+
+- **/scout:competitors** benefits from industry-specific roles (e.g., "FinTech Analyst" for financial services, "HealthTech Strategist" for healthcare) that bring domain-specific competitor knowledge.
+- **/scout:compliance** benefits from jurisdiction-specific roles (e.g., "EU Privacy Counsel", "HIPAA Specialist") for deep regulatory analysis.
+- **/scout:stakeholders** benefits from org-specific roles when the user provides organizational context.
+
+## Artifacts
+
+```
+scout/
+├── competitors/
+│   └── sim-competitors-{slug}-{date}.md
+├── feasibility/
+│   └── sim-feasibility-{slug}-{date}.md
+├── naming/
+│   └── sim-naming-{slug}-{date}.md
+├── compliance/
+│   └── sim-compliance-{slug}-{date}.md
+├── market/
+│   └── sim-market-{slug}-{date}.md
+├── stakeholders/
+│   └── sim-stakeholders-{slug}-{date}.md
+├── positioning/
+│   └── sim-positioning-{slug}-{date}.md
+└── requirements/
+    └── sim-requirements-{slug}-{date}.md
+```
+
+All artifacts use the `sim-` topic prefix. Slug is derived from the user's input concept (lowercased, hyphenated, truncated to 40 chars). Date is ISO 8601 (YYYY-MM-DD).
+
+## Cross-Namespace Integration
+
+- **scout:requirements -> draft:spec**: The requirements brief is the primary input to /draft:spec. Requirements IDs (R-01, R-02...) carry through to spec traceability.
+- **scout:competitors -> draft:pitch**: Competitive landscape feeds into differentiation claims in /draft:pitch.
+- **scout:compliance -> draft:spec**: Blocking compliance requirements become spec constraints (day-1 architectural decisions).
+- **scout:positioning -> draft:pitch**: Positioning statements become the narrative backbone of /draft:pitch.
+- **scout:feasibility -> draft:proposal**: Feasibility assessment feeds the "risks and mitigations" section of /draft:proposal.
+- **scout:naming -> all namespaces**: Once a name is chosen, it propagates as the slug across all subsequent artifacts.
+- **listen:feedback -> scout:requirements (loop)**: Post-ship feedback from /listen can trigger a new scout:requirements cycle for the next version.

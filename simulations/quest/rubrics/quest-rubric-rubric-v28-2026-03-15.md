@@ -1,0 +1,562 @@
+## quest-rubric rubric v11 -- complete
+
+### Changes from v10
+
+Four new aspirational criteria (C-31, C-32, C-33, C-34) extracted from Round 10 excellence
+signals. Denominator /22 -> /26. Round 10 ceiling 100 (unchanged max; prior ceiling 98.462
+without new criteria).
+
+| # | Name | Signal it formalizes |
+|---|------|---------------------|
+| **C-31** | aspirational-tier-count-bounded | All five Round 10 variations specify 3-5 essential and 2-3 recommended tier counts but leave the aspirational tier unbounded -- C-06 requires tier count targets; C-31 requires the aspirational tier's explicit upper bound to complete the three-tier count triplet |
+| **C-32** | category-diversity-stop-enforced | All five Round 10 variations list category options as a menu but none include a STOP condition enforcing >= 3 distinct categories in the output -- C-07 requires that 3+ categories appear; C-32 requires an operative STOP condition in the role that makes under-diversity a construction blocker, not a missed aspiration |
+| **C-33** | partial-handling-named-in-scoring | V-01/V-02 PASS C-04 because Phase 4 Emit explicitly requires "composite formula, golden threshold, PARTIAL handling" as three named sub-elements; V-03/V-04/V-05 PARTIAL C-04 because they list "Scoring" without requiring PARTIAL handling as a named component -- C-04 requires formula and threshold; C-33 requires PARTIAL handling to be a named sub-element with score value and earn conditions |
+| **C-34** | independence-map-criterion-annotated | V-02 PASS C-25 because its independence map uses "Yes -- affects C-NN only" per entry with STOP for "No," making the map auditor-readable without the removal test; V-01 PARTIAL C-25 because one-to-one assignment is implicit but no independence check or STOP is present -- C-29 requires the dedicated prior role to produce a completed independence map; C-34 requires the map's entries to cite the affected criterion by number, making the map a verifiable artifact rather than a declarative table |
+
+**Denominator:** `/22` -> `/26`
+
+**New ceiling math:** A rubric passing C-09--C-30 (the Round 9 ceiling, twenty-two of
+twenty-six) scores 22/26 x 10 = 8.462 on aspirational; with full essential+recommended that
+yields 98.462 -- still golden, but the new ceiling requires all four new criteria to reach 100.
+
+**Distinction notes:**
+- C-31 != C-06: C-06 requires tier count targets to be present; C-31 requires the aspirational
+  tier's upper bound specifically, completing the three-tier triplet. A role spec stating
+  "3-5 essential / 2-3 recommended" with no aspirational ceiling satisfies C-06 partially
+  and fails C-31.
+- C-32 != C-07: C-07 requires that 3+ distinct categories appear in the output; C-32 requires
+  an explicit STOP condition in the operative role that makes under-diversity a blocker, not
+  an aspiration. A rubric may satisfy C-07 incidentally (the output happens to have 3+
+  categories) while failing C-32 (no operative STOP enforced the distribution).
+- C-33 != C-04: C-04 requires the formula and golden threshold to be stated; C-33 requires
+  PARTIAL handling to be a named scoring sub-element with score value and earn conditions.
+  A rubric passes C-04 (formula and threshold present) while failing C-33 (PARTIAL is implied
+  by the formula structure but not named with earn conditions).
+- C-34 != C-29: C-29 requires the Mechanism Definer role to produce a completed independence
+  map as its exit condition; C-34 requires the map's format to cite the affected criterion
+  by number per entry, enabling a third-party auditor to verify the one-to-one assignment
+  without running the removal test. C-29 pass + C-34 fail: map exists, entries declare
+  independence without citing a specific criterion. C-34 != C-30: C-30 requires the mechanism
+  set to satisfy the removal test as a constructive property; C-34 requires the map to encode
+  criterion-specific annotations that allow audit without the removal test. A mechanism set
+  satisfying C-30 by construction can still fail C-34 if the annotations are absent.
+
+---
+
+## Essential Criteria (C-01--C-05) -- 60 points
+
+**C-01** (completeness) -- All criteria carry the full five-field structure: Name, Text, Pass,
+Fail, Notes. Tests whether the rubric builder enforces complete five-field criteria in every
+tier, with no fields omitted or merged.
+
+**C-02** (testability) -- Pass conditions are anchored to auditable observables; qualitative-
+only language is structurally prohibited. Tests whether the rubric builder bans phrases like
+"clearly written" or "well-structured" without observable anchors, requiring that every Pass
+condition can be verified against an artifact.
+
+**C-03** (failure-first essential) -- Essential criteria derive from explicit failure mode
+extraction targeting non-functional structural or semantic gaps. Tests whether failure mode
+analysis precedes criterion drafting, and whether essential criteria address failures whose
+absence causes the artifact to be broken rather than merely suboptimal.
+
+**C-04** (formula + threshold) -- The scoring formula and golden threshold are stated
+explicitly. Tests whether the rubric names the denominator, the per-tier weight, and the
+numeric threshold a rubric must clear to be considered golden.
+
+**C-05** (skill-specific) -- Criteria derive from reading the skill spec before any criterion
+is drafted; generic quality concerns are not substituted for skill-derived failure modes. Tests
+whether the rubric builder requires the skill spec as input and whether failure modes are
+traceable to that spec.
+
+---
+
+## Recommended Criteria (C-06--C-08) -- 30 points
+
+**C-06** (tier distribution) -- The rubric builder specifies tier count targets of 3-5
+essential / 2-3 recommended / 1-2 aspirational. Tests whether the rubric enforces these
+ranges, preventing essential-heavy rubrics that dilute tier meaning.
+
+**C-07** (3+ categories) -- Three or more distinct categories appear across the full rubric.
+Tests whether the rubric produces categorical diversity -- either by enumeration requirement
+or, preferably, as a consequence of tier-dimension design.
+
+**C-08** (quality not presence) -- Recommended criteria test quality properties (degree,
+precision, specificity) rather than checking whether an element is present at all. Tests
+whether recommended criteria require "how well" rather than "whether."
+
+---
+
+## Aspirational Criteria (C-09--C-34) -- 10 points
+
+Denominator: **/26**. Each criterion scores 1 (full pass), 0.5 (partial), or 0 (fail).
+Score = (sum) / 26 x 10.
+
+**C-09** (causal observables) -- Criterion Text establishes the causal observable before the
+Pass condition invokes it: "without X, Y fails." Tests whether the rubric builder instruction
+for the Text field requires naming the downstream consequence of the observable's absence,
+making the Pass condition the conclusion of an argument rather than a standalone assertion.
+A rubric that only instructs "name an observable" satisfies C-02 but fails C-09.
+
+**C-10** (contrast example) -- The rubric builds contrast awareness through "not: X but: Y"
+framing. Tests whether the rubric distinguishes good criterion construction from bad by naming
+the rejected form alongside the required form -- in preamble, structural guidance, or
+per-criterion instruction.
+
+**C-11** (aspirational reference anchor) -- The aspirational section names a specific
+competitor or prior-version reference that passes C-01--C-08, then describes the exact
+dimension in which it falls short of the aspirational bar. Tests whether the rubric builder
+requires a structured Reference / Passes / Fails template before aspirational criteria are
+written, so that clearing essential+recommended creates genuine further pressure rather than
+a nominal ceiling.
+
+**C-12** (Text-argues-before-Pass) -- Criterion Text establishes the causal observable
+*before* the Pass condition invokes it. Tests whether the Text field instruction explicitly
+requires "without X, Y fails because Z" such that the Pass condition is the conclusion of an
+argument already made in the Text. This makes C-09 compliance structural from the first draft
+rather than a post-hoc correction.
+
+**C-13** (tier-grounded organic category diversity) -- Tier structure is grounded in distinct
+failure dimensions, producing organic category diversity. Tests whether each tier maps to a
+different failure dimension (broken artifact / quality shortfall / structural gap) and whether
+the rubric builder runs a predictability or divergence check confirming that >= 2/3 tiers
+produce distinct majority categories -- so that C-07 is satisfied as a consequence of tier
+design, not by label assignment after criteria are drafted.
+
+**C-14** (contrast-in-Text) -- The contrast template is embedded within the criterion Text
+field construction instruction itself, not only in preamble or structural framing. Tests
+whether the rubric builder explicitly requires each criterion's Text field to encode
+"not: X but: Y" -- naming what the criterion rejects alongside what it requires -- such that
+contrast is structurally present in every criterion's Text field rather than an emergent
+property of earlier framing awareness. A rubric that builds contrast awareness in its preamble
+(satisfying C-10 partially) but does not carry that requirement into the per-criterion Text
+instruction fails C-14.
+
+**C-15** (causal direction) -- The causal chain in criterion Text runs from absence of the
+required property to artifact failure, not from presence of the rejected form to failure.
+Tests whether the rubric builder instruction distinguishes "X causes F" (wrong-form-
+consequence) from "without Y, the artifact fails because Z" (required-property-absence-
+consequence) and requires the latter. A constitutive definition that names "not [X, which
+causes F] but [Y]" supplies a causal chain in the wrong direction -- the argument is about
+what the wrong form does, not about what the absence of the required property costs. Only
+"without Y, the artifact fails because Z" passes C-15. A rubric whose Text field instruction
+says "name the failure caused by the wrong form" satisfies C-09 at most partially but fails
+C-15; only "name the consequence of the required property's absence" passes.
+
+**C-16** (two-phase enforcement) -- Key structural requirements (contrast-in-Text, causal
+chain, causal direction) are enforced at both the generation phase and the post-draft phase.
+Tests whether the rubric builder includes both a generative structural gate -- a constraint
+that makes non-compliant output unproducible from the first draft (e.g., a constitutive
+definition that cannot be satisfied without the required structure) -- and a post-draft audit
+step that reads each criterion's Text stripped of preamble and flags criteria that pass on
+context dependency rather than self-containment (e.g., an isolation diagnostic). A rubric
+with only a generation gate satisfies neither; a rubric with only a post-draft audit catches
+failures but permits them to be produced and corrected. Both phases present and operative
+is the pass condition. C-14 compliance achieved solely through a post-draft auditor satisfies
+C-14 but fails C-16.
+
+**C-17** (two-phase testability) -- The testability standard for Pass conditions -- that they
+name auditable observables and contain no qualitative-only language -- is enforced at both
+the generation phase and a post-draft audit step, not only in preamble instruction. Tests
+whether the rubric builder's generation gate includes a Pass field template that makes non-
+verifiable conditions structurally unproducible (e.g., by requiring Pass to name a specific
+artifact location, observable token, or measurable count), AND whether the post-draft
+isolation audit explicitly checks each criterion's Pass field for qualitative-only language
+alongside the direction and contrast checks. A rubric that enforces causal direction at both
+phases (passing C-16) but enforces testability only in preamble or isolated generation-phase
+instruction creates an asymmetric enforcement structure -- direction is gated, verifiability
+is not -- and satisfies C-02 partially while failing C-17.
+
+**C-18** (role-isolated pre-instantiation) -- A dedicated pre-construction role or step
+generates skill-specific instantiations of the causal direction rule and contrast pairs before
+the Builder constructs any criterion. Tests whether the rubric builder includes a named Definer
+step that: (a) reads the skill spec, (b) produces a concrete template naming the specific
+required property (Y), failure consequence (Z), and rejected form (X) for that skill, and
+(c) outputs this template as the Builder's binding input -- so the Builder operates from
+concrete, skill-specific forms rather than applying abstract direction principles on-the-fly
+to an unfamiliar domain. A rubric that states direction and contrast rules as abstract
+principles in a shared preamble (passing C-10 and C-15) but has no dedicated pre-construction
+instantiation step fails C-18, because abstract principles applied on-the-fly produce the
+wrong-form-consequence failure pattern even when the rules are correctly stated in surrounding
+context. The distinction from C-16: C-16 requires two phases to be present and operative;
+C-18 requires the generation phase to include a definitional step that is logically prior to
+construction, not concurrent with it.
+
+**C-19** (dual-template Definer) -- The Definer role generates both the Text-direction
+template (required property Y, failure consequence Z, rejected form X) and the Pass-
+observability template (artifact location, observable token, measurement unit) as a unified
+paired output before the Builder runs. Tests whether the rubric builder's Definer step
+produces a complete, skill-specific specification pair -- not just direction guidance -- so
+that the Builder receives both templates simultaneously and C-17 and C-18 are satisfied
+through the same structural mechanism rather than independently. A rubric whose Definer
+generates a Text template but leaves the Pass generation gate as a separate inline step
+(satisfying C-18 and C-17 independently) fails C-19, because the two enforcement paths
+remain architecturally separate: direction is Definer-gated, testability is step-gated.
+C-19 requires that a single Definer role output governs both fields, making the generation
+gate symmetric by construction. Evidence: V-03 satisfies C-17 via Step A-5 (a step within
+Phase A) and C-18 PARTIAL (no dedicated role boundary); V-04's Definer produces two binding
+templates as a pair, closing the asymmetry at the architectural level.
+
+**C-20** (template composability) -- The Definer's output templates are in the exact phrasing
+register of the final criterion fields, making them slot-fillable by the Builder without
+paraphrase or on-the-fly interpretation. Tests whether the Text template is expressed in the
+form "Without [Y], the artifact [fails] because [Z]. Not [X], but [Y]." and the Pass template
+in the form "LOCATION: [artifact field or section]. OBSERVABLE: [what must appear].
+STANDARD: [count or exact token]." -- such that the Builder instantiates criteria by filling
+slots from the Definer's output verbatim rather than translating abstract direction rules into
+concrete language during construction. A rubric whose Definer produces structural guidance in
+propositional form ("the Text must identify the required property, the consequence of its
+absence, and the rejected form") rather than a fill-in template fails C-20, because the
+Builder must still perform the translation step that produces the wrong-form-consequence
+failure pattern even when the structural rules are correctly understood. The distinction from
+C-18: C-18 requires that instantiation is definitionally prior to construction; C-20 requires
+that the instantiation output is in a register that eliminates the interpretation gap -- that
+there is no translation step between Definer output and Builder input. Evidence: V-04's title
+names "phrasing register" alongside "Pre-Instantiation Definer: two binding templates,"
+indicating the templates are expressly in field-register form rather than propositional form.
+
+**C-21** (audit symmetry) -- The post-draft isolation audit mirrors the generation gate's
+two-field structure: dedicated checks applied to the Text field (direction, contrast, causal
+chain) and dedicated checks applied to the Pass field (observability, location specificity,
+measurement presence) as parallel, individually operative audit tracks. Tests whether the
+rubric builder's post-draft audit section enumerates numbered checks that cover each
+generation-phase constraint -- with Text-field checks and Pass-field checks explicitly
+separated rather than direction-dominant with testability as a subordinate note. A rubric
+that runs post-draft checks 1-3 on Text direction+contrast+causal-chain and post-draft check
+4 on Pass observability satisfies C-21; a rubric that audits direction and contrast for Text
+but audits Pass only by reference to what the Definer already produced, or conflates Text and
+Pass audit into a single undifferentiated isolation step, fails C-21. The distinction from
+C-16 and C-17: both require two-phase enforcement for their respective fields independently;
+C-21 requires the audit phase to be structurally symmetric across both fields simultaneously
+-- the number and granularity of audit checks for the Pass field must match the number and
+granularity for the Text field. Evidence: V-04's Auditor Checks 1-3 audit Text direction,
+contrast, and causal-chain properties; Check 4 audits Pass observability in isolation --
+four named checks, three for Text and one for Pass, demonstrating the parallel structure.
+
+**C-22** (form-class prohibition exhaustiveness) -- The causal direction prohibition is stated
+as form-class exhaustive -- naming the prohibited pattern as a class covering all variant
+phrasings rather than as a canonical example whose variants may pass inspection. Tests whether
+the rubric builder's direction constraint explicitly declares that any Text which locates the
+causal chain in the wrong-form-consequence direction is prohibited "in any phrasing" -- not
+just the specific form "X causes failure" but all synonymous constructions ("X leads to
+failure," "the artifact fails when X is present," etc.) -- so that a Builder cannot satisfy
+the prohibition check by paraphrasing the forbidden form. A rubric that names "X causes
+failure" as the sole prohibited example satisfies C-15 (the direction is correctly identified)
+but fails C-22, because variant phrasings of the same wrong-direction argument remain
+producible. Only a prohibition that explicitly extends to the form-class closes this gap.
+The distinction from C-15: C-15 requires the rubric to distinguish wrong direction from right
+direction and require the latter; C-22 requires the prohibition to be exhaustive over the
+wrong-direction form-class, not example-bounded. Evidence: V-04's C-15 evidence reads
+"A Text beginning '[X] causes [failure]' -- in any phrasing -- is in the prohibited
+direction," extending the prohibition beyond the named example to the full form-class.
+
+**C-23** (audit report format enforces symmetry) -- The post-draft audit section specifies an
+output format that makes the structural symmetry between Text-field and Pass-field audit
+tracks externally verifiable. Tests whether the rubric builder requires the audit report to
+separately enumerate Text-field flags and Pass-field flags as distinct named lists -- e.g.,
+"Text flags: [direction N, contrast N, causal chain N]. Pass flags: [location N, observable N,
+prohibited-form N]." -- so that the symmetric structure required by C-21 cannot be satisfied
+nominally (equal check count on paper) while collapsing to asymmetry in practice. The
+distinction from C-21: C-21 requires that the audit enumerates individually numbered checks
+for both fields with equal granularity; C-23 requires that the audit specifies a report format
+whose structure makes symmetry independently falsifiable -- an evaluator examining only the
+report output can determine whether the implementation was symmetric, without reading the
+procedure. A rubric that runs three Text checks and three Pass checks but produces a single
+undifferentiated flag tally passes C-21 but fails C-23. Evidence: V-04's audit report format
+"Text flags: [N,N,N]. Pass flags: [N,N,N]." enforces symmetry by making it independently
+reportable; the format is the enforcement mechanism, not a documentation artifact alongside it.
+
+**C-24** (check function redefinition) -- The Auditor's operative check function for the
+prohibited direction is explicitly redefined from example-matching to causal-structure testing.
+Tests whether the rubric builder's audit step states the Auditor's check function as "does
+this text locate causality in the wrong form's consequence?" -- not "does this match the
+canonical prohibited example?" -- so that the shift from example-bounded to form-class testing
+is present in the procedure, not merely implied by the form-class enumeration. The distinction
+from C-22: C-22 requires the prohibition to enumerate variant phrasings and close the
+form-class; C-24 requires the Auditor's operative function to be redefined to class-membership
+testing, making the check function the conclusion that the enumeration and closure together
+entail. Enumeration and closure without function redefinition leave the Auditor running a
+longer pattern-match list; function redefinition makes the Auditor test against the underlying
+causal structure regardless of surface phrasing. A rubric that enumerates five prohibited
+variants and states "form-class is closed" (satisfying C-22) but whose Auditor check reads
+each variant in sequence satisfies C-22 but fails C-24. Evidence: V-04's Auditor Check 1
+names the check function as "does this locate causality in the wrong form's consequence, in
+any phrasing? -- not 'does this match the canonical example?'" -- the function redefinition
+is stated explicitly, not derived from the enumeration list.
+
+**C-25** (independent-mechanism pairing) -- When multiple independent gaps exist, the rubric
+builder closes each with a dedicated, independent mechanism -- one mechanism per gap -- such
+that removing one mechanism causes exactly one criterion to fail, not both. Tests whether the
+builder's architecture assigns one structural element per criterion gap, making the design
+decomposable: each mechanism can be traced to the single criterion it closes, and no mechanism
+carries dual responsibility for two gaps simultaneously. A rubric that introduces a combined
+"unified enforcement step" that addresses two independent gaps with one structural move
+satisfies neither criterion as cleanly as two independent mechanisms, because coupling means
+neither mechanism can be evaluated in isolation. The pattern recurs: C-21 gap closed by
+symmetric-checks mechanism; C-22 gap closed by form-class-exhaustive mechanism. C-23 gap
+closed by format-as-output mechanism; C-24 gap closed by function-redefinition mechanism.
+Each pair demonstrates independent closure without coupling. The distinction from C-16/C-17
+(which require two enforcement phases for individual fields): C-25 requires that across
+multiple gap-criterion pairs, the assignment is one-to-one -- each gap has one mechanism,
+each mechanism targets one gap -- not many-to-one or one-to-many. Evidence: V-04 and V-05
+each add exactly two mechanisms and close exactly two criteria; the mechanisms are
+architecturally independent -- the format table does not depend on the function redefinition
+block, and vice versa.
+
+**C-26** (constraint-as-output-requirement) -- Structural constraints (audit format, template
+shape, field content) are stated as required outputs of the operative role that must produce
+them, not delegated to a downstream role. Tests whether the rubric builder embeds each
+enforcement requirement inside the operative role's output instruction -- rather than as a
+target for a separate role that the operative role passes findings to -- so that the operative
+role cannot satisfy its own instructions while omitting the required structure. A rubric that
+delegates format specification to a downstream "Report Format Specifier" role fails C-26:
+the Auditor can complete all its checks and satisfy its own instructions before the Specifier
+runs; if the Specifier is abbreviated or omitted, the constraint is unenforced. Format-as-
+output-requirement is structurally stronger than format-as-downstream-role because the
+operative role's completion condition requires the structured output to exist. The distinction
+from C-23: C-23 requires that the audit format makes symmetry independently falsifiable; C-26
+requires that the format be embedded as the operative role's own output requirement, not
+handed off. V-03 closes C-23 partially (a format exists) but fails C-26 (the Auditor hands
+findings to a Specifier; the Auditor's own output instruction specifies no format). V-01 and
+V-04 satisfy both: the mandatory per-criterion table is the Auditor's required output, with
+an explicit prohibition on substituting a narrative log. Evidence: V-04's Auditor output
+instruction reads "Do not substitute a narrative log for this table" -- the table is the
+Auditor's required output, making delegation structurally impossible.
+
+**C-27** (competitor-as-gap-specification) -- The rubric builder names a specific wrong-
+implementation competitor before defining the correct implementation, making the competitor
+description the constitutive gap specification. Tests whether a named block preceding each
+key mechanism describes the specific alternative that has the mechanism's surface form without
+its operative substance -- e.g., naming a "Pattern-Matcher Auditor" that consults the
+PROHIBITED DIRECTION list and extends to semantic equivalence, then stating "this is still
+a list-membership test" -- such that a reader can derive what the correct implementation must
+not do from the competitor alone, independently of the positive definition that follows.
+The competitor description functions as a negative-space definition: the gap between what the
+competitor does and what the required implementation does is the criterion the mechanism
+closes. A rubric that correctly states the required function (satisfying C-24) without naming
+the competitor satisfies C-24 but fails C-27; the distinction is whether the gap is visible
+through negative-space specification before positive specification, or only stated directly.
+The distinction from C-11 (aspirational reference anchor): C-11 requires a prior-version
+reference that passes essential+recommended but falls short on an aspirational dimension; C-27
+requires a named wrong-implementation that has the mechanism's surface form (e.g., a list,
+a format, a step) but lacks its operative substance -- the competitor is a foil for mechanism
+design, not a ceiling-setting reference. Evidence: V-05's OPERATING PRINCIPLE 1 names the
+Pattern-Matcher Auditor and describes its failure mode -- "this is still a list-membership
+test" -- before stating the required function; the competitor description IS the gap
+specification, making the required function derivable from the foil alone.
+
+**C-28** (competitor-derivation-instruction) -- The competitor block that constitutes the
+gap specification (C-27) includes an explicit imperative directing the reader to perform the
+derivation from the competitor alone before reading the positive definition. Tests whether
+the rubric builder requires each competitor block to end with an instruction of the form
+"from the description above, derive the required function before reading the positive
+definition below" -- converting the derivability property required by C-27 into a structured
+reader procedure. A competitor block that correctly constitutes the gap specification
+(satisfying C-27) without a derivation instruction leaves derivation as an optional inference
+available to an attentive reader rather than a required procedure for all readers; two rubrics
+with identical competitor content differ on C-28 solely by presence or absence of this
+imperative. The distinction from C-27: C-27 requires the required function to be derivable
+from the competitor description alone; C-28 requires the competitor block to explicitly
+instruct the derivation, converting a derivable property into a required procedure. Evidence:
+V-01's competitor block ends with "This competitor IS the gap specification -- from the
+description above, derive the required function before reading the positive definition below.
+OPERATING PRINCIPLE 1 follows and confirms." -- the derivation is instructed, not merely
+made available.
+
+**C-29** (independence-verification-role-boundary) -- Independence verification for mechanism-
+criterion assignment is performed by a dedicated sequential role -- the Mechanism Definer --
+that is structurally prior to the aspirational criterion Builder, not as a gate within the
+Builder's instructions or a post-draft audit step. Tests whether the construction workflow
+names a specific role whose sole output is the independence map, and whose completion is the
+Builder's input precondition -- so that the Builder receives a completed independence map as
+input rather than verifying independence concurrently with construction. A rubric whose
+Builder instructions include a pre-criterion independence check (satisfying C-25 partially)
+but with no dedicated prior role boundary fails C-29: the independence check is concurrent
+with, not prior to, construction, and can be abbreviated or skipped without violating the
+Builder's role contract. The distinction from C-25: C-25 requires one-to-one assignment as
+a design principle and requires the assignment to be stated explicitly; C-29 requires that
+verification occur in a named, sequentially prior role phase, making it structurally impossible
+to begin writing aspirational criteria without a completed independence map. The distinction
+from C-18: C-18 requires a definitional step prior to criterion-field construction; C-29
+requires that independence verification specifically -- not direction instantiation -- be a
+prior named role step with the independence map as its exit condition. Evidence: V-04's
+four-role sequence (Dual Definer -> Builder E+R -> Mechanism Definer -> Builder aspirational
+-> Dual Auditor) places the MECHANISM DEFINER between construction phases; the Definer's exit
+condition is the independence map; the Builder aspirational cannot run until the map is
+complete and shows "Yes -- affects C-NN only" in every row.
+
+**C-30** (independence-demonstrable-by-removal) -- The mechanism set is assembled so that
+independence is demonstrable by the removal test: removing any single mechanism from the
+architecture leaves exactly one criterion failing, confirming that no mechanism carries dual
+responsibility for two gaps and that no two mechanisms jointly close a single criterion.
+Tests whether the rubric builder's mechanism assignment satisfies the removal test as a
+structural property -- independently verifiable by an evaluator who inspects what criterion
+would fail if each mechanism were absent, without reading the mechanism-design rationale.
+A rubric whose mechanism map correctly names one mechanism per criterion (satisfying C-25 by
+declaration) but whose mechanisms share structural dependencies -- such that removing
+mechanism A degrades both criterion X and criterion Y because they both rely on a shared
+structural property A produces -- satisfies C-25 by statement but fails C-30 by construction.
+The distinction from C-25: C-25 requires one-to-one assignment as a stated principle,
+evidenced by named mechanism-criterion pairs; C-30 requires the architecture to satisfy the
+removal test as a constructive property, making independence verifiable by inspection rather
+than by reading the builder's design argument. The distinction from C-29: C-29 requires a
+dedicated prior role step to produce the independence map; C-30 requires that the mechanism
+set itself passes the removal test -- the role boundary can exist (C-29 pass) while the
+mechanisms share dependencies (C-30 fail). Evidence: V-05's three-mechanism design --
+MECHANISM MAP, OUTPUT OWNERSHIP PRINCIPLE, Pattern-Matcher competitor block -- demonstrates
+independence by construction: removing any one mechanism leaves exactly one criterion failing
+(C-25, C-26, or C-27 respectively), no mechanism degrades two criteria, and no two mechanisms
+jointly close one criterion; independence is architectural, not asserted.
+
+**C-31** (aspirational-tier-count-bounded) -- The tier distribution specification names an
+explicit upper bound for the aspirational tier count ("1-2 aspirational"), completing the
+three-tier count triplet; the aspirational tier is bounded by the same range-setting
+instruction that bounds the essential and recommended tiers. Without an aspirational ceiling,
+a rubric builder can produce a criteria-dense aspirational tier that absorbs failures from
+the recommended tier, inflates the aspirational score, and makes the tier structure
+progressively meaningless as criteria accumulate. Not "targets stated for essential and
+recommended only" but "targets stated for all three tiers, with the aspirational upper bound
+making over-population of the aspirational tier a STOP condition parallel to the essential
+and recommended ranges." Tests whether the role spec states an explicit aspirational count
+range alongside the essential and recommended ranges, and whether the aspirational upper
+bound is operative (a STOP or rewrite condition for a builder who drafts more than two
+aspirational criteria, not merely a preference). The distinction from C-06: C-06 requires
+tier count targets to be present; C-31 requires the aspirational tier's explicit upper bound
+to complete the three-tier triplet. A role spec can satisfy C-06 partially by stating
+essential and recommended ranges while failing C-31 because the aspirational tier is
+unbounded. Evidence: all five Round 10 variations specify "3-5 essential / 2-3 recommended"
+but none state "1-2 aspirational"; the aspirational tier remains unbounded across the full
+round, confirming the gap is systematic rather than incidental.
+
+**C-32** (category-diversity-stop-enforced) -- Category diversity (>= 3 distinct categories
+across the full rubric) is enforced by an explicit STOP condition or named verification check
+in the operative role's construction instructions, not merely by listing category options as
+a menu. Without enforcement, a builder can select three adjacent quality properties from the
+same category domain, producing a rubric that appears diverse by label while measuring the
+same underlying property from multiple angles. Not "categories offered as choices from a
+named list" but "distribution verified by an operative check with a STOP on under-diversity
+-- a named condition requiring the builder to confirm >= 3 distinct categories appear before
+proceeding to Emit." Tests whether the role spec includes a named STOP condition or
+verification step requiring the builder to confirm >= 3 distinct categories across the output;
+the check must be operative (blocking Emit if the distribution requirement is not met) rather
+than aspirational (noting that diversity is preferred). The distinction from C-07: C-07
+requires that 3+ distinct categories appear across the full rubric; C-32 requires that their
+presence is enforced by an explicit operative check, not merely encouraged by the category
+menu. A rubric can satisfy C-07 incidentally (the output happens to have 3+ categories
+because the builder selected well from the menu) while failing C-32 (no operative STOP made
+the distribution required). Evidence: all five Round 10 variations list five category options
+(correctness | depth | format | coverage | behavior) but none include a verification step or
+STOP condition requiring >= 3 distinct categories in the output; C-07 is universally PARTIAL
+across Round 10, confirming that listing options does not produce enforced diversity.
+
+**C-33** (partial-handling-named-in-scoring) -- The scoring specification names PARTIAL
+handling as an explicitly required sub-element, defining the fractional score assigned to a
+PARTIAL result and the conditions under which a criterion earns PARTIAL rather than PASS or
+FAIL; all three scoring states are named with their values and earn conditions. Without named
+PARTIAL handling, a rubric whose criteria have partial-satisfaction states produces
+inconsistent scoring -- evaluators assign partial credit by judgment rather than by defined
+procedure, making the same criterion earn different point values across evaluators. Not
+"PARTIAL implied by the composite formula structure" but "PARTIAL named as a third scoring
+state alongside PASS and FAIL, with fractional score value (e.g., 0.5) and earn conditions
+stated explicitly in the Scoring section." Tests whether the Scoring section contains an
+explicitly named PARTIAL sub-element that states: (a) the fractional score value and (b) the
+conditions under which a criterion earns PARTIAL rather than PASS or FAIL; both elements must
+be present, not just the score value or the earn conditions alone. The distinction from C-04:
+C-04 requires the composite formula and golden threshold to be stated; C-33 requires PARTIAL
+handling to be a named scoring sub-element with score value and earn conditions, making the
+three-state scoring system complete and unambiguous. A rubric passes C-04 (formula and
+threshold present) while failing C-33 (PARTIAL is implied by the formula structure but not
+named with earn conditions). Evidence: V-01 and V-02 require Phase 4 Emit to produce
+"Scoring -- composite formula, golden threshold, PARTIAL handling" as three named sub-
+elements; V-03, V-04, and V-05 require only "Scoring" with no sub-element specification,
+leaving PARTIAL handling undefined in the rubric output.
+
+**C-34** (independence-map-criterion-annotated) -- The independence map produced by the
+Mechanism Definer cites the single affected criterion by number for each mechanism entry,
+enabling a third-party auditor to verify the one-to-one assignment without running the
+removal test. Without criterion-specific annotation, the independence map is a declarative
+table (mechanisms listed, independence claimed) rather than a verifiable artifact -- an
+auditor must construct the argument that each mechanism targets exactly one criterion by
+reading the mechanism descriptions and matching them to criteria. Not "independence declared
+per mechanism" but "criterion number cited per mechanism entry in the form 'affects C-NN
+only,' with a STOP condition if any entry is blank or cites multiple criteria." Tests whether
+the independence map's output format includes, for each mechanism entry, an explicit citation
+of the single criterion it affects (e.g., "Yes -- affects C-NN only"); whether the map
+format makes it structurally impossible to complete an entry without naming a specific
+criterion; and whether there is a STOP condition for entries that are absent, blank, or cite
+multiple criteria. The distinction from C-29: C-29 requires the Mechanism Definer role to
+produce a completed independence map as its exit condition; C-34 requires the map's per-entry
+format to cite the affected criterion by number, making the map independently auditable.
+A rubric satisfies C-29 (dedicated prior role, map exists) while failing C-34 (the map
+entries declare independence without naming the affected criterion). The distinction from
+C-30: C-30 requires the mechanism set to satisfy the removal test as a constructive property;
+C-34 requires the map to encode criterion-specific annotations enabling third-party audit
+without the removal test -- a mechanism set satisfying C-30 by construction can still fail
+C-34 if the per-entry criterion citations are absent from the map format. Evidence: V-02's
+independence map uses "Yes -- affects C-NN only" per entry with an explicit STOP condition
+for any "No" row; the format makes the one-to-one assignment auditable from the map alone,
+without access to the criteria or the removal test. V-01's PARTIAL on C-25 traces precisely
+to this gap: one-to-one assignment is implicit in V-01's competitor-block structure, but no
+independence map format with criterion citations exists, so the assignment cannot be verified
+by a third party without reading the mechanism descriptions and performing the matching step.
+
+---
+
+## Scoring
+
+```
+Essential:    (C-01 + C-02 + C-03 + C-04 + C-05) x 12            max 60
+Recommended:  (C-06 + C-07 + C-08) / 3 x 30                       max 30  (partials = 0.5)
+Aspirational: (C-09 through C-34) / 26 x 10                        max 10  (partials = 0.5)
+
+Composite = Essential + Recommended + Aspirational                  max 100
+Golden threshold: >= 90
+```
+
+**Scoring note:** The aspirational denominator shifts from `/22` to `/26` to reflect the
+addition of C-31, C-32, C-33, and C-34.
+
+*Round 10 ceiling recalibration.* A rubric that passes C-09--C-30 (the Round 9 ceiling,
+twenty-two of twenty-six) scores 22/26 x 10 = 8.462 on aspirational; with full
+essential+recommended that yields 98.462 -- still golden, but the new ceiling requires
+C-31, C-32, C-33, and C-34 to reach 100. A rubric that passes only the minimum contrast-
+aware configuration (C-09+C-10+C-14, three of twenty-six) scores 3/26 x 10 = 1.154 on
+aspirational; with full essential+recommended that yields 91.154, still golden but well below
+the new ceiling.
+
+*C-31 closes the tier-distribution gap at the aspirational level.* C-06 requires tier count
+targets; it is universally PARTIAL in Round 10 because all variations state essential and
+recommended ranges but leave the aspirational tier unbounded. C-31 requires the aspirational
+upper bound specifically -- not because aspirational criteria are uniquely problematic, but
+because the tier-distribution instruction is only complete when all three tiers are bounded.
+A role spec that says "3-5 essential / 2-3 recommended" with no aspirational ceiling creates
+an implicit fourth tier at the top of the aspirational range: any number of criteria above
+C-30 is permissible. C-31 closes this by requiring "1-2 aspirational" to be stated alongside
+the other two ranges.
+
+*C-32 closes the enforcement gap that makes C-07 universally PARTIAL.* C-07 requires that
+3+ distinct categories appear; all Round 10 variations list five category options but none
+include a STOP condition for under-diversity. The listing creates the appearance of a
+diversity requirement without the operative force: a builder who reads the category list and
+selects three entries from the same domain (e.g., correctness, depth, coverage -- all content-
+quality properties) produces apparent diversity by label while measuring the same underlying
+dimension. C-32 requires an operative check that fires before Emit, catching this pattern
+before the rubric is finalized.
+
+*C-33 operationalizes C-04 at the three-state scoring level.* C-04 requires formula and
+threshold; a rubric can pass C-04 while leaving PARTIAL handling undefined. V-01 and V-02
+demonstrate the pattern: they require "composite formula, golden threshold, PARTIAL handling"
+as three named sub-elements in Emit, making PARTIAL a first-class scoring state alongside
+PASS and FAIL. V-03/V-04/V-05 list "Scoring" without sub-element requirements, leaving
+PARTIAL handling to evaluator judgment. C-33 closes this by requiring PARTIAL to be named
+with its fractional value and earn conditions.
+
+*C-34 operationalizes C-29 at the map-format level.* C-29 requires the Mechanism Definer
+role to produce a completed independence map as its exit condition; the map can satisfy C-29
+while being unauditable if its entries declare independence without naming the specific
+criterion each mechanism affects. V-02's "Yes -- affects C-NN only" format demonstrates the
+pattern: the criterion citation makes the map a verifiable artifact -- an auditor reads the
+format and confirms one-to-one assignment without performing the removal test. V-01's PARTIAL
+on C-25 traces to the absence of this format: the one-to-one assignment exists structurally
+(one competitor block per mechanism) but is not declared in a map with per-entry criterion
+citations, so verification requires re-reading all mechanism descriptions. C-34 closes this
+by requiring the map format to do the verification work, not the auditor.

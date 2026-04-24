@@ -1,0 +1,121 @@
+Written. Here's the diff from v1:
+
+---
+
+**What changed in v2**
+
+**C-10 extended** — added "Shallow Spread" (many topics with only 1 signal each) to the named pattern vocabulary. V-04 enumerated 5 patterns; v1 only had 4.
+
+**C-11 added** — Pre-Compilation Inertia Diagnosis. The stagnation pattern must appear *before* the per-topic achievement grid, not as a closing note. V-04's role-sequence architecture enforced this structurally (Inertia Diagnostician fires before Compiler). V-01/V-02/V-03/V-05 all named the pattern at the end, which is why they could pass C-10 but wouldn't pass C-11.
+
+**C-12 added** — Full Action-Pattern Cohesion. Every action must name the stagnation pattern it breaks, not just one. V-04's "Anti-Inertia Next Actions" section required this per-action; other variates satisfied C-10's "at least one action" threshold but left remaining actions pattern-free.
+
+**Score table updated** — aspirational tier now has 4 criteria (was 2). V-04 against v2 still scores 100. Other R1 variates would score 95 on v1 and would score ~88 on v2 (C-11 FAIL, C-12 FAIL, losing 5 pts from the aspirational tier).
+an summary). A topic present on disk but absent from all output sections fails. If `simulations/` is empty or absent, the output explicitly states this rather than producing empty sections without explanation.
+
+### C-02 -- Achievement Completeness per Topic
+- **Weight**: essential
+- **Category**: correctness
+- **Text**: For every discovered topic, the output presents both which achievements are earned and which are not yet earned. Achievement definitions applied must include at minimum: First Signal (>= 1 file), Signal Depth (>= 3 files), Full Sweep (signals span >= 3 namespaces), Solo Pioneer (exactly 1 contributor, >= 1 signal), and Team Topic (>= 2 contributors with >= 1 signal each).
+- **Pass condition**: Every topic from the scan appears in an achievements section with at least one explicit earned or locked achievement listed. A topic row showing only `---` without checking any of the five defined achievements fails. Achievement names must match the defined set -- paraphrasing ("Team Coverage" for "Team Topic") fails.
+
+### C-03 -- All Three Team Milestones Present with Exact Names
+- **Weight**: essential
+- **Category**: correctness
+- **Text**: The output reports all three team milestones using their exact names: "first team signal", "shared coverage", and "debate starter". Each milestone includes a status (EARNED or NOT YET) and supporting evidence (file path, contributor count, or namespace list).
+- **Pass condition**: All three milestone names appear verbatim. A milestone labeled "first signal posted" instead of "first team signal", or "cross-contributor coverage" instead of "shared coverage", fails. Each milestone has a non-empty evidence field -- "---" without explanation counts as a gap. A missing milestone section fails this criterion entirely.
+
+### C-04 -- Contributor Leaderboard Present and Ranked
+- **Weight**: essential
+- **Category**: coverage
+- **Text**: A contributor leaderboard section is present, ranked in descending order by signal count (or equivalent primary metric). Each entry includes at minimum: rank, contributor identity, total signal count, and topics covered. If contributor metadata is not extractable from the workspace, the leaderboard states this explicitly rather than being omitted.
+- **Pass condition**: A leaderboard section exists with at least one entry. If no contributor attribution is detectable (no frontmatter `author:` / `contributor:` fields, no parseable filename prefixes), the output writes one explicit row stating "no contributor metadata found" -- this passes. A missing leaderboard section fails regardless of workspace state. An unranked list fails.
+
+### C-05 -- Specific Next Actions Naming Namespace and Achievement
+- **Weight**: essential
+- **Category**: behavior
+- **Text**: The output includes at least 3 recommended next actions. Each action must name (1) a specific namespace and topic (not just a category), and (2) the exact achievement or milestone name it unlocks. Generic advice such as "add more signals" or "increase namespace coverage" without naming a target fails.
+- **Pass condition**: At least 3 actions are present. Each action names a namespace (e.g., `scout`, `flow`, `trace`) and a topic path (e.g., `scout/competitors`), and references an achievement or milestone by its exact name from the defined set. An action that names a topic without naming the unlocked achievement fails. An action that names an achievement without a specific namespace+topic fails.
+
+---
+
+## Recommended Criteria (improve output quality -- 30% of score)
+
+### C-06 -- Earned / Available Achievement Separation
+- **Weight**: recommended
+- **Category**: format
+- **Text**: The output visually or structurally separates earned achievements from locked/available achievements for each topic. A reader scanning the output can immediately distinguish what the team has already unlocked from what remains.
+- **Pass condition**: The achievements section uses a consistent structural indicator to separate earned from locked (e.g., distinct subsections, table columns, badge markers like checkmark vs circle, or equivalent). A flat list of achievements without any earned/locked distinction fails. Topics with only earned or only locked achievements need only show one group -- but must not mix the two without differentiation.
+
+### C-07 -- 1-Away Gap Detection
+- **Weight**: recommended
+- **Category**: depth
+- **Text**: The output identifies achievements or milestones that are exactly one step away from being unlocked, with the gap quantified precisely (e.g., "needs 1 more signal", "needs 1 more contributor", "needs 1 more namespace").
+- **Pass condition**: A dedicated "close to unlock" or "almost there" section exists. Each entry names the topic or milestone, states the exact numeric gap (not "a few more"), and names the target achievement. If no gaps are within 1 step, the section states this explicitly rather than being omitted. A generic "keep adding signals" note without per-achievement gap counts fails.
+
+### C-08 -- Empty Workspace Graceful Handling
+- **Weight**: recommended
+- **Category**: behavior
+- **Text**: When `simulations/` is empty or absent, the output explicitly acknowledges this state and still produces all required sections (achievements, milestones, leaderboard, next actions) with empty or "NOT YET" values. The skill does not silently omit sections or produce a one-line error and stop.
+- **Pass condition**: If evaluated on an empty workspace, all required sections appear with appropriate empty-state values. All three team milestones show "NOT YET". The leaderboard section states "no signals found". Next actions are still written (even if they all point to bootstrapping the first signal). If evaluated on a non-empty workspace, this criterion passes automatically -- it is only falsifiable on the empty case.
+
+---
+
+## Aspirational Criteria (ceiling-raising -- 10% of score)
+
+### C-09 -- Cross-Topic Team Insight
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The output includes exactly one synthesizing sentence or short paragraph drawing a cross-topic or cross-contributor conclusion that is not visible from any single-topic view. The insight is stated as a named finding (e.g., "Alice spans 4 topics -- highest breadth on the team") using specific numbers and topic or contributor names.
+- **Pass condition**: A team insight statement appears that (1) references two or more topics or contributors in a single observation, (2) uses at least one specific number or name, and (3) closes with a recommended implication for the team. A list of per-topic statistics does not satisfy this criterion -- the insight must be a synthesizing sentence that emerges from comparing across rows, not restating them.
+
+### C-10 -- Inertia Pattern Identification and Anti-Inertia Actions
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The output names the team's current stagnation pattern (e.g., "Lone Wolf" -- single contributor dominates; "Namespace Tunnel" -- all signals in one namespace; "Empty Start" -- no signals yet; "Stale Coverage" -- signals exist but no recent activity; "Shallow Spread" -- many topics with only 1 signal each) and ties at least one recommended next action back to breaking that named pattern.
+- **Pass condition**: A stagnation pattern is named (either from the listed examples or an equivalently specific label). The pattern is supported by evidence from the scan (e.g., "single contributor accounts for 100% of signals"). At least one next action explicitly references breaking this pattern by name. A generic observation ("the team should diversify") without naming the pattern fails. If the workspace shows no stagnation pattern, the output states this and this criterion is considered passed by exception.
+- **Change from v1**: Added "Shallow Spread" (many topics each with only 1 signal) to the named pattern vocabulary.
+
+### C-11 -- Pre-Compilation Inertia Diagnosis
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The stagnation pattern diagnosis (C-10) appears before the topic-by-topic achievement compilation, not as a closing appendix. By naming the inertia pattern upfront, the pattern frames how the team reads the entire achievement grid -- every locked achievement is visible as a consequence of the named pattern rather than an isolated gap.
+- **Pass condition**: The inertia diagnosis section (or equivalent named diagnostic step) is positioned before the per-topic achievement section in the output. If C-10 fails (no pattern named), this criterion automatically fails. A closing "team insight" note that diagnoses stagnation only after the full topic compilation fails -- the diagnosis must precede the compilation, not follow it.
+- **Derived from**: V-04 (Role Sequence + Inertia Framing) -- the Inertia Diagnostician role fired before the Compiler role, forcing the pattern to frame the output.
+
+### C-12 -- Full Action-Pattern Cohesion
+- **Weight**: aspirational
+- **Category**: behavior
+- **Text**: Every recommended next action (not just one) explicitly ties back to breaking the named stagnation pattern, referencing the pattern by name. This elevates the actions section from a list of independent recommendations into a coordinated response to a diagnosed team condition.
+- **Pass condition**: Every action in the next-actions section names the stagnation pattern it addresses (or explicitly states it breaks a different component of the same pattern). An action that unlocks an achievement without referencing the pattern fails. If fewer than all actions name the pattern, this criterion fails -- partial coverage (e.g., only the first action names the pattern) is not sufficient. If C-10 fails, this criterion automatically fails.
+- **Derived from**: V-04 (Role Sequence + Inertia Framing) -- "Anti-Inertia Next Actions" required each action to tie back to breaking the named pattern, distinguishing it from variates that named the pattern but then decoupled actions from it.
+
+---
+
+## Scoring Reference
+
+| Tier | Criteria | Count | Max contribution |
+|------|----------|-------|-----------------|
+| Essential | C-01, C-02, C-03, C-04, C-05 | 5 | 60 pts |
+| Recommended | C-06, C-07, C-08 | 3 | 30 pts |
+| Aspirational | C-09, C-10, C-11, C-12 | 4 | 10 pts |
+
+**Golden threshold**: All 5 essential pass + composite >= 80.
+
+**Minimum passing composite** (all essential, no recommended, no aspirational):
+`5/5 * 60 + 0/3 * 30 + 0/4 * 10 = 60` -- below golden threshold.
+
+**Typical floor for golden** (all essential + 2/3 recommended):
+`60 + 20 + 0 = 80` -- exactly at golden threshold.
+
+**V-04 score against v2 rubric**:
+`5/5 * 60 + 3/3 * 30 + 4/4 * 10 = 100` -- ceiling intact.
+
+---
+
+## Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| v1 | 2026-03-17 | Initial rubric -- 5 essential, 3 recommended, 2 aspirational |
+| v2 | 2026-03-17 | Added Shallow Spread to C-10 pattern vocabulary; added C-11 (pre-compilation inertia diagnosis) and C-12 (full action-pattern cohesion) from V-04 excellence signals |

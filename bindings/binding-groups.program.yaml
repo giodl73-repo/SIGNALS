@@ -1,0 +1,1457 @@
+version: 1
+plugin: signal
+model: claude-sonnet-4-6
+workspace: signal
+target_platform: claude-code
+agents:
+  emit: true
+  model: claude-sonnet-4-6
+  orchestration: false
+tiers:
+- id: root
+  path: .claude/
+  parent: null
+parameters:
+  definitions:
+  - name: depth
+    type: enum
+    values:
+    - quick
+    - standard
+    - deep
+    default: standard
+    description: Controls thoroughness. quick=fast scan, standard=thorough, deep=exhaustive adversarial.
+    inject: block
+    block_text: 'depth: {value}
+
+      # quick   -> fast scan, 5+ findings, prioritize obvious issues
+
+      # standard -> thorough, 15+ findings, full coverage (default)
+
+      # deep    -> exhaustive adversarial audit, 25+ findings, treat missing as failure
+
+      '
+  - name: confidence
+    type: enum
+    values:
+    - low
+    - standard
+    - strict
+    default: standard
+    description: Evidence threshold per finding. strict=cite specific line/section or omit.
+    inject: block
+    block_text: 'confidence: {value}
+
+      # low    -> include findings without citation
+
+      # standard -> cite source section for each finding (default)
+
+      # strict  -> only include findings with quotable specific evidence
+
+      '
+  - name: for
+    type: enum
+    values:
+    - pm
+    - engineer
+    - exec
+    - team
+    description: Audience calibration. Shifts salience and vocabulary to match role perspective.
+    inject: block
+    block_text: 'for: {value}
+
+      # pm       -> adoption, user value, competitive positioning
+
+      # engineer -> implementation, edge cases, technical debt
+
+      # exec     -> risk, cost, strategic alignment
+
+      # team     -> shared understanding, action items, ownership
+
+      '
+  - name: iterations
+    type: int
+    min: 1
+    max: 3
+    default: 1
+    description: Run the skill N times independently. Marginal finding rate drops ~50% per pass.
+    inject: block
+    block_text: 'iterations: {value}  # run {value}x independently, aggregate findings, mark new vs confirmed
+
+      '
+  param_sets:
+  - name: lean
+    params:
+    - depth
+    applies_to:
+    - simulate
+    - govern
+    - quest
+    rationale: Structure-focused skills where audience/confidence don't change what's found
+  - name: standard
+    params:
+    - depth
+    - for
+    applies_to:
+    - discover
+    - specify
+    rationale: Discovery/planning skills where audience changes which signals matter
+  - name: analysis
+    params:
+    - depth
+    - confidence
+    applies_to:
+    - simulate
+    rationale: Contract/state verification -- evidence threshold matters, audience doesn't
+  - name: full
+    params:
+    - depth
+    - confidence
+    - for
+    - iterations
+    applies_to:
+    - validate
+    rationale: Research-grade skills where all quality axes are meaningful
+commands:
+- name: discover
+  description: 'Discover group -- market context + evidence gathering. Combines all scout (market, competition, feasibility,
+    naming, compliance, stakeholders, positioning, requirements) and prove (hypothesis, websearch, intelligence, prototype,
+    analysis, interview, synthesize, publish, topic, program) skills.
+
+
+    /discover-competitors     -> inertia-first competitive analysis
+
+    /discover-feasibility     -> traffic-light technical feasibility
+
+    /discover-market          -> market sizing and segment ranking
+
+    /discover-naming          -> name generation with multi-persona scoring
+
+    /discover-compliance      -> regulatory constraint scan
+
+    /discover-stakeholders    -> power/interest grid with veto risk
+
+    /discover-positioning     -> per-audience positioning statements
+
+    /discover-requirements    -> MoSCoW requirements extraction
+
+    /discover-hypothesis      -> hypothesis framing with falsification
+
+    /discover-websearch       -> web evidence with quoted sources
+
+    /discover-intelligence    -> internal source evidence search
+
+    /discover-prototype       -> smallest-possible prototype
+
+    /discover-analysis        -> data pattern analysis
+
+    /discover-interview       -> persona stakeholder simulation
+
+    /discover-synthesize      -> answer-first evidence synthesis
+
+    /discover-publish         -> investigation write-up as paper
+
+    /discover-topic           -> full prove evidence campaign
+
+    /discover-program         -> open-ended research orchestrator
+
+
+    inferAggregators: true
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - WebSearch
+  - WebFetch
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  param_set: standard
+  body: "Research and evidence before you commit. Covers competitive analysis, feasibility, market sizing, risk, compliance,\
+    \ hypothesis testing, and intelligence gathering.\n\nUsage: /discover-<skill> <topic>  (NOT /discover <skill> <topic>)\n\
+    \nSub-skills:\n  /discover-competitors <topic>  → competitive landscape + inertia analysis\n  /discover-inertia <topic>\
+    \      → deep dive: why would teams do nothing?\n  /discover-feasibility <topic>  → technical feasibility + team/timeline\n\
+    \  /discover-market <topic>       → market sizing + segment analysis\n  /discover-risk <topic>         → risk register\
+    \ across 5 dimensions\n  /discover-compliance <topic>   → regulatory and policy constraints\n  /discover-size <topic>\
+    \         → effort sizing and complexity estimate\n  /discover-naming <topic>       → name validation + trademark search\n\
+    \  /discover-positioning <topic>  → positioning framework + category\n  /discover-stakeholders <topic> → stakeholder map\
+    \ + power/interest\n  /discover-requirements <topic> → requirements extraction\n  /discover-hypothesis <topic>   → hypothesis\
+    \ + falsification conditions\n  /discover-websearch <topic>    → web evidence gathering\n  /discover-analysis <topic>\
+    \     → data and pattern analysis\n  /discover-intelligence <topic> → competitive intelligence synthesis\n  /discover-synthesize\
+    \ <topic>   → evidence synthesis + verdict\n  /discover-prototype <topic>    → prototype evaluation\n  /discover-interview\
+    \ <topic>    → interview simulation\n\nStart here: /discover-competitors <topic> and /discover-inertia <topic>"
+- name: discover-competitors
+  description: Competitive landscape analysis leading with inertia as primary competitor.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-competitors.md
+  param_set: standard
+- name: discover-feasibility
+  description: Technical feasibility assessment with traffic-light ratings and budget chain.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-feasibility.md
+  param_set: standard
+- name: discover-market
+  description: Market sizing and segment ranking by fit score.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-market.md
+  param_set: standard
+- name: discover-naming
+  description: Name generation and evaluation with multi-persona scoring.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-naming.md
+  param_set: standard
+- name: discover-compliance
+  description: Regulatory and policy constraint scan before design begins.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-compliance.md
+  param_set: standard
+- name: discover-stakeholders
+  description: Stakeholder mapping with power/interest grid and veto risk ranking.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-stakeholders.md
+  param_set: standard
+- name: discover-positioning
+  description: Per-audience positioning statements with competitive differentiation.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-positioning.md
+  param_set: standard
+- name: discover-requirements
+  description: Requirements extraction with MoSCoW prioritization and dependency graph.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/scout-requirements.md
+  param_set: standard
+- name: discover-hypothesis
+  description: Hypothesis framing with claim, falsification condition, confidence, and experiment list.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-hypothesis.md
+  param_set: full
+- name: discover-websearch
+  description: Web evidence gathering with direct quotes, URLs, and strength-of-evidence rating per source.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  - WebFetch
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-websearch.md
+  param_set: full
+- name: discover-intelligence
+  description: Internal source evidence search with file-path citations and relevance assessment.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-intelligence.md
+  param_set: full
+- name: discover-prototype
+  description: Smallest-possible prototype with defined measure and predicted vs actual results.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Bash
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-prototype.md
+  param_set: full
+- name: discover-analysis
+  description: Data pattern analysis distinguishing correlation from causation with source attribution.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-analysis.md
+  param_set: full
+- name: discover-interview
+  description: Persona-driven stakeholder interview simulation grounded in documented role knowledge.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-interview.md
+  param_set: full
+- name: discover-synthesize
+  description: Answer-first evidence synthesis with confidence rating and counter-evidence.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-synthesize.md
+  param_set: full
+- name: discover-publish
+  description: Investigation write-up as paper with abstract, method, findings, and limitations.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-publish.md
+  param_set: full
+- name: discover-topic
+  description: Full prove evidence campaign orchestrating hypothesis through synthesis in one command.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-topic.md
+  param_set: full
+- name: discover-program
+  description: General-purpose research orchestrator for open-ended research questions.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/prove-program.md
+  param_set: full
+- name: specify
+  description: 'Specify group -- authoring and planning. Combines all draft (spec, proposal, pitch, brainstorm) and program
+    (plan) skills.
+
+
+    /specify-spec         -> guided specification with self-review
+
+    /specify-proposal     -> ADR or proposal with three-option minimum
+
+    /specify-pitch        -> pitch deck in exec, developer, and maker versions
+
+    /specify-brainstorm   -> idea pool with inertia baseline
+
+    /specify-commitment   -> staged program plan with gates and topic tracking
+
+
+    inferAggregators: true
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  param_set: standard
+- name: specify-spec
+  description: Specification authoring with guided section structure and self-review.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/draft-spec.md
+  param_set: standard
+- name: specify-proposal
+  description: Proposal or ADR with three-option minimum and recommendation rationale.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/draft-proposal.md
+  param_set: standard
+- name: specify-pitch
+  description: Pitch deck narrative in exec, developer, and maker versions.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/draft-pitch.md
+  param_set: standard
+- name: specify-brainstorm
+  description: Idea pool generation with inertia baseline and peer-comparison scoring.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/draft-brainstorm.md
+  param_set: standard
+- name: specify-commitment
+  description: Staged program plan generation with gates and topic tracking.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/program-plan.md
+  param_set: standard
+- name: validate
+  description: 'Validate group -- design validation and post-ship simulation. Combines all review (design, code, users, customers)
+    and listen (feedback, support, adoption) skills.
+
+
+    /validate-design      -> 6-discipline expert review
+
+    /validate-code        -> multi-discipline code review with file annotations
+
+    /validate-users       -> 5-persona usability walkthrough
+
+    /validate-customers   -> 12-persona NPS evaluation
+
+    /validate-feedback    -> pre-ship customer reaction simulation
+
+    /validate-support     -> top support ticket prediction for first 90 days
+
+    /validate-adoption    -> adoption curve across Rogers archetypes
+
+
+    inferAggregators: true
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  param_set: full
+- name: validate-design
+  description: Multi-expert design review through 6 disciplines and domain-selected experts.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/review-design.md
+  param_set: full
+- name: validate-code
+  description: Multi-discipline code review with file-level annotations and pass/fail per discipline.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/review-code.md
+  param_set: full
+- name: validate-users
+  description: Five persona advocates walk through design with usability scores and cross-persona synthesis.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/review-users.md
+  param_set: full
+- name: validate-customers
+  description: Twelve customer personas evaluate feature for usefulness, clarity, and would-adopt.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/review-customers.md
+  param_set: full
+- name: validate-feedback
+  description: Pre-ship customer reaction simulation with per-persona NPS prediction and threshold gate.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/listen-feedback.md
+  param_set: full
+- name: validate-support
+  description: Top support ticket prediction for first 90 days with gap analysis.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/listen-support.md
+  param_set: full
+- name: validate-adoption
+  description: Adoption curve simulation across Rogers archetypes with chasm analysis.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/listen-adoption.md
+  param_set: full
+- name: simulate
+  description: 'Simulate group -- system behavior and platform simulation. Combines all flow (lifecycle, conversation, trigger,
+    dataflow, integration, throttle, resilience) and trace (request, state, contract, component, deployment, migration, permissions)
+    skills.
+
+
+    /simulate-lifecycle     -> business document lifecycle with phase contracts
+
+    /simulate-conversation  -> multi-turn agent conversation with dead-end detection
+
+    /simulate-trigger       -> automation trigger fire order and side effects
+
+    /simulate-dataflow      -> ETL pipeline with data loss detection
+
+    /simulate-integration   -> cross-system connector gap analysis
+
+    /simulate-throttle      -> rate-limit backpressure propagation
+
+    /simulate-resilience    -> degraded-condition failure modes
+
+    /simulate-request       -> request hand-compilation through service boundaries
+
+    /simulate-state         -> state transition with precondition/postcondition
+
+    /simulate-contract      -> expected vs actual output comparison
+
+    /simulate-component     -> user action through UI component tree
+
+    /simulate-deployment    -> deployment sequence with rollback path
+
+    /simulate-migration     -> schema change with data loss detection
+
+    /simulate-permissions   -> RBAC walk-through with privilege escalation detection
+
+
+    inferAggregators: true
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  dependencies: []
+  param_set: lean
+- name: simulate-lifecycle
+  description: Multi-step business document lifecycle simulation with phase contracts and exception flows.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-lifecycle.md
+  param_set: lean
+- name: simulate-conversation
+  description: Multi-turn agent conversation simulation through topic graph with dead-end and loop detection.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-conversation.md
+  param_set: lean
+- name: simulate-trigger
+  description: Automation trigger simulation showing fire order and side effects per field/event change.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-trigger.md
+  param_set: lean
+- name: simulate-dataflow
+  description: ETL pipeline and sync process tracing with data loss and schema mismatch detection.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-dataflow.md
+  param_set: lean
+- name: simulate-integration
+  description: Cross-system integration tracing through connectors and APIs with gap analysis.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-integration.md
+  param_set: lean
+- name: simulate-throttle
+  description: Rate-limit throughput simulation showing backpressure propagation and burst path gaps.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-throttle.md
+  param_set: lean
+- name: simulate-resilience
+  description: Degraded-condition simulation covering offline, partial failure, and eventual consistency.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/flow-resilience.md
+  param_set: lean
+- name: simulate-request
+  description: Request hand-compilation through service boundaries with no boundary skipped.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-request.md
+  param_set: analysis
+- name: simulate-state
+  description: State transition hand-compilation with preconditions, postconditions, and invariant checks.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-state.md
+  param_set: analysis
+- name: simulate-contract
+  description: Expected vs actual output comparison using three-directory pattern with mismatch severity.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-contract.md
+  param_set: analysis
+- name: simulate-component
+  description: User action tracing through UI component tree, state management, and re-render chain.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-component.md
+  param_set: analysis
+- name: simulate-deployment
+  description: Deployment sequence tracing with pre-checks, validation, and rollback path.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-deployment.md
+  param_set: analysis
+- name: simulate-migration
+  description: Schema change tracing with before/after data state and data loss detection.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-migration.md
+  param_set: analysis
+- name: simulate-permissions
+  description: RBAC walk-through tracing who can do what with privilege escalation detection.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/trace-permissions.md
+  param_set: analysis
+- name: govern
+  description: 'Govern group -- topic narrative, org governance, and campaigns. Combines topic (new, status, plan, report,
+    story, echo), org (roles, chart, review, committee), and campaign (decide, simulate, validate, specify, evidence, track)
+    skills.
+
+
+    /govern-status          -> terminal coverage display for a topic
+
+    /govern-story           -> editorial narrative synthesis with recommendation
+
+    /govern-new             -> topic registration and signal strategy
+
+    /govern-plan            -> signal strategy revision
+
+    /govern-report          -> shareable status document
+
+    /govern-echo            -> unexpected findings synthesis
+
+    /govern-roles           -> typed role registry generation
+
+    /govern-chart           -> org structure with committees and rhythms
+
+    /govern-product-review  -> full org review through all relevant roles
+
+    /govern-committee       -> committee meeting simulation (ROB, shiproom, arch board)
+
+    /govern-decide          -> full pre-commitment decision campaign
+
+    /govern-simulate        -> full technical simulation campaign
+
+    /govern-validate        -> full design validation campaign
+
+    /govern-blueprint       -> full specification campaign
+
+    /govern-evidence        -> full evidence campaign
+
+    /govern-track           -> full topic narrative campaign
+
+
+    inferAggregators: true
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  outputs:
+  - Topic
+  - Signal
+  dependencies: []
+  param_set: lean
+- name: govern-new
+  description: Topic registration with strategy planning and signal coverage plan.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Topic
+  - Signal
+  dependencies: []
+  body_file: signals/topic-new.md
+  param_set: lean
+- name: govern-status
+  description: Terminal coverage display computed from signal glob against strategy.
+  tier: T1
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - Topic
+  outputs: []
+  dependencies: []
+  body_file: signals/topic-status.md
+  param_set: lean
+- name: govern-plan
+  description: Signal strategy revision as new information arrives with user confirmation.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Topic
+  dependencies: []
+  body_file: signals/topic-plan.md
+  param_set: lean
+- name: govern-report
+  description: Shareable status document with progress table and readiness statement.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/topic-report.md
+  param_set: lean
+- name: govern-story
+  description: Editorial synthesis of all signals into a coherent narrative with recommendation.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/topic-story.md
+  param_set: lean
+- name: govern-echo
+  description: Unexpected findings synthesis asking what we learned that we did not expect.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/topic-echo.md
+  param_set: lean
+- name: govern-roles
+  description: Typed role registry generation for a domain with orientation, lens, and expertise.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/org-roles.md
+  param_set: standard
+- name: govern-chart
+  description: Org structure generation with areas, committees, and operating rhythms.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/org-chart.md
+  param_set: standard
+- name: govern-product-review
+  description: Full org review running artifact through all relevant roles from .roles/.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/org-review.md
+  param_set: full
+- name: govern-committee
+  description: Committee meeting simulation for ROB, shiproom, or architecture board.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/org-committee.md
+  param_set: standard
+- name: govern-decide
+  description: 'Run the full pre-commitment decision campaign. Orchestrates: scout-competitors (inertia first), scout-feasibility,
+    scout-market, prove-hypothesis, prove-websearch, prove-synthesize in sequence. Output: a complete decision brief with
+    market landscape, technical viability, evidence base, and a recommendation with stated confidence. Use when you need to
+    decide whether to build something.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-decide.md
+  param_set: full
+- name: govern-simulate
+  description: 'Run the full technical simulation campaign. Orchestrates: flow-lifecycle, flow-conversation, trace-state,
+    trace-contract, trace-permissions in sequence. Output: simulation findings report ranked by blast radius. Use before implementation
+    to find spec gaps and contract violations.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-simulate.md
+  param_set: full
+- name: govern-validate
+  description: 'Run the full design validation campaign. Orchestrates: review-design, review-users, review-customers, listen-feedback,
+    listen-adoption in sequence. Output: validation brief with findings ranked by adoption impact. Use to validate a design
+    before committing to spec.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-validate.md
+  param_set: full
+- name: govern-blueprint
+  description: 'Run the full specification campaign. Orchestrates: draft-spec, draft-proposal, draft-pitch in sequence. Output:
+    complete specification package covering technical spec, business proposal, and executive pitch. Use when you need the
+    full written artifact suite for a feature.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-specify.md
+  param_set: standard
+- name: govern-evidence
+  description: 'Run the full evidence campaign. Orchestrates all prove skills in sequence: prove-hypothesis, prove-websearch,
+    prove-intelligence, prove-analysis, prove-synthesize. Output: complete evidence brief with confidence levels and falsification
+    status. Use for thorough research questions that need the full investigation.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-evidence.md
+  param_set: full
+- name: govern-track
+  description: 'Run the full topic narrative campaign. Orchestrates: topic-new (register), topic-roadmap (plan signals), topic-status
+    (current coverage), topic-story (narrative synthesis). Output: complete topic dashboard showing what signals exist, what
+    is missing, and the narrative arc. Use at the start and end of a signal-gathering session.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/campaign-track.md
+  param_set: standard
+- name: quest
+  description: 'Quest namespace -- prompt quality tooling. Find golden prompts through systematic variation, scoring, and
+    rubric convergence.
+
+
+    /quest-rubric    -> define what good output looks like for a skill
+
+    /quest-variate   -> generate N prompt variations for comparison
+
+    /quest-score     -> score skill outputs against a rubric
+
+    /quest-golden    -> full loop: variate -> score -> evolve -> converge
+
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - SkillSpec
+  outputs:
+  - Rubric
+  - QuestScorecard
+  dependencies: []
+  param_set: lean
+- name: quest-rubric
+  description: 'Define what good output looks like for a skill. Given a skill spec and sample outputs, produce a scoring rubric:
+    a ranked list of criteria (C-01, C-02...) each with a pass condition, weight, and category (correctness, depth, format,
+    coverage). The rubric is the objective function for /quest:golden. Start with 3-5 essential criteria; the rubric grows
+    as /quest:golden discovers excellence patterns.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - SkillSpec
+  - TraceOutput
+  outputs:
+  - Rubric
+  dependencies: []
+  body_file: signals/quest-rubric.md
+  param_set: lean
+- name: quest-variate
+  description: Generate N prompt variations of a skill body for comparison. Given a skill description and variation axes (role
+    sequence, output format, lifecycle emphasis, stock role selection, phrasing), produce N distinct prompt formulations of
+    the same skill. Each variation is a complete, runnable skill body -- not a diff. Variation axes are independent; combinations
+    are intentional. Default N=5.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  inputs:
+  - SkillSpec
+  outputs:
+  - SkillVariation
+  dependencies: []
+  body_file: signals/quest-variate.md
+  param_set: lean
+- name: quest-score
+  description: 'Score a set of skill outputs against a rubric. Given outputs from N skill runs and a rubric file, evaluate
+    each output against every criterion. Produce: per-criterion pass/fail per output, composite score per output, ranked leaderboard,
+    excellence signals (outputs scoring unusually high on specific criteria), and failure patterns (criteria that fail consistently
+    across all outputs -- rubric gap or skill gap?).'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - SkillVariation
+  - Rubric
+  - TraceOutput
+  outputs:
+  - QuestScorecard
+  dependencies: []
+  body_file: signals/quest-score.md
+  param_set: lean
+- name: quest-golden
+  description: 'Find the golden prompt for a skill through systematic variation and scoring. Full loop: (1) load rubric or
+    call quest-rubric to create one, (2) call quest-variate to generate N variations, (3) call quest-score to rank them, (4)
+    identify excellence signals -- what made the top output better?, (5) extract the pattern, propose a rubric criterion update,
+    (6) apply the update, (7) iterate from step 2 until dual convergence: all scenarios pass AND no new excellence patterns
+    emerge across 2 consecutive rounds. Write the converged prompt as the skill body. Dual convergence = the golden prompt.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - SkillSpec
+  - TraceInput
+  outputs:
+  - TraceOutput
+  - SkillFinding
+  dependencies: []
+  body_file: signals/quest-golden.md
+  param_set: lean
+- name: mock
+  description: 'Mock namespace -- synthetic signal artifacts for coverage preview before real research.
+
+
+    /mock-all     -> synthetic artifacts for all 9 namespaces with coverage picture
+
+    /mock-ns      -> mock artifact for a single namespace
+
+    /mock-review  -> coverage review: MOCK-ACCEPTED or REAL-REQUIRED per namespace
+
+
+    '
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  param_set: lean
+- name: mock-all
+  description: Synthetic signal artifacts for all 9 namespaces with coverage picture.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/mock-all.md
+  param_set: lean
+- name: mock-ns
+  description: Mock artifact for a single namespace with category annotation.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/mock-ns.md
+  param_set: lean
+- name: mock-review
+  description: Mock coverage review writing MOCK-ACCEPTED or REAL-REQUIRED per namespace.
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  dependencies: []
+  body_file: signals/mock-review.md
+  param_set: lean
+- name: trace-skill
+  description: 'Hand-compile a skill execution before building it. Given a skill spec and a test invocation, trace the 4-phase
+    lifecycle (setup, execute, findings, amend) step by step -- producing the expected artifact as if the skill had run. Read
+    the spec. Simulate setup (auto-detect from repo context). Run each stock role through their lens. Synthesize findings
+    into the artifact. List 3 amend options. Deliver a verdict: useful or needs redesign? The hand-compiled artifact becomes
+    the scenario baseline for testing. Findings feed back to the skill spec before implementation.'
+  tier: T1
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - SkillSpec
+  - TraceInput
+  outputs:
+  - TraceOutput
+  - SkillFinding
+  dependencies: []
+  body_file: signals/trace-skill.md
+  param_set: lean

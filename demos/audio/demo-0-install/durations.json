@@ -1,0 +1,32 @@
+[
+  {
+    "name": "link",
+    "file": "link.mp3",
+    "duration_s": 9.816000
+  },
+  {
+    "name": "setup",
+    "file": "setup.mp3",
+    "duration_s": 11.688000
+  },
+  {
+    "name": "competitors",
+    "file": "competitors.mp3",
+    "duration_s": 17.496000
+  },
+  {
+    "name": "feasibility",
+    "file": "feasibility.mp3",
+    "duration_s": 15.552000
+  },
+  {
+    "name": "inertia",
+    "file": "inertia.mp3",
+    "duration_s": 21.024000
+  },
+  {
+    "name": "coverage",
+    "file": "coverage.mp3",
+    "duration_s": 15.936000
+  }
+]

@@ -1,0 +1,251 @@
+## Round 2 Scorecard — corps-chart
+
+| Rank | Variation | Essential | Recommended | Aspirational | **Score** |
+|------|-----------|-----------|-------------|--------------|-----------|
+| 1 | V-04 Role Lock + Rebuttal Case | 5/5 | 3/3 | 4/4 | **100** |
+| 1 | V-05 Full Integration | 5/5 | 3/3 | 4/4 | **100** |
+| 3 | V-01 Role Name Lock | 5/5 | 3/3 | 3.5/4 | **98.75** |
+| 4 | V-02 Rebuttal Case Template | 5/5 | 3/3 | 3/4 | **97.5** |
+| 5 | V-03 Lifecycle Emphasis | 4/5 | 3/3 | 2.5/4 | **84.25** |
+
+**Key findings:**
+
+**C-11 and C-12 are independent failure surfaces.** Targeting one leaves the other open — V-01 gets 98.75 (solves C-12, PARTIAL on C-11), V-02 gets 97.5 (solves C-11, FAIL on C-12). Only the combination (V-04, V-05) closes both.
+
+**Why V-01 C-11 is PARTIAL, not PASS:** The prose instruction ("Identify which role or roles from ROLES-LOADED are the failure agents") competes with the model's fluent default. R1 showed that V-03 had similar explicit role-naming language and still got C-06 PARTIAL because no argumentative pressure forced the model to work. V-02's mandatory form eliminates that competition structurally.
+
+**Why V-03 drops to 84.25:** Compressing downstream instructions reintroduces C-03 and C-05 risk — the two highest-frequency failures in R1, both requiring strong imperative anchoring. The tradeoff of inertia depth for downstream safety isn't worth it when C-11 is still only PARTIAL and C-12 is FAIL.
+
+**Recommended golden: V-04** — minimum mechanism addition (Role Lock + Rebuttal Case only), both directly traceable to target criteria, no instruction-density risk. V-05 is the alternative if live runs show C-03/C-05 regression.
+
+```json
+{"top_score": 100, "all_essential_pass": true, "new_patterns": ["emitting role-name lock as a visible post-classification block creates a mechanical per-section check that closes role-drift across diagram, rhythm table, and charter fields simultaneously", "mandatory case form with labeled fields makes role selection a syntactic precondition before prose can begin, eliminating the compliance-risk gap between explicit prose instruction and structural enforcement"]}
+```
+�� specific headcount number, named milestone event, or structural symptom" |
+| C-07 | ORG-ELEMENT REGISTER — 4 categories | **PASS** | Step 8 lists all four categories with format per entry |
+| C-08 | All 4 phase gate lines in sequence | **PASS** | All four verbatim gate strings present |
+| C-09 | Anti-Pattern Watch with typed cat-N citations | **PASS** | "[element name] (cat-N) —" syntax required; "valid cat-N from the ORG-ELEMENT REGISTER" |
+| C-10 | Org Evolution Roadmap — 2 trigger categories | **PASS** | Row 1 headcount threshold; Row 2 different category explicit; "Two headcount thresholds do not satisfy this requirement" |
+| C-11 | Inertia Rebuttal role-grounded + concrete threshold | **PARTIAL** | "Identify which role or roles from ROLES-LOADED are the failure agents" is explicit; generic growth projection prohibited; concrete threshold required in VERDICT. Risk: no structural enforcement (mandatory form) and no "flat team wins by default" argumentative pressure — compliance depends on model following prose instruction without mechanical precondition |
+| C-12 | Role-name coherence across all document sections | **PASS** | Explicit ROLE-NAME LOCK block emitted after classification naming every permitted role; lock-check reminders in Steps 4 (diagram), 6 (rhythm table DRI/Owner), 7 (charter Membership/Decides) — all three failure surfaces addressed |
+
+**Essential**: all PASS -> **60/60**
+**Recommended**: all PASS -> **30/30**
+**Aspirational**: C-09 P + C-10 P + C-11 PA + C-12 P -> (1+1+0.5+1)/4 * 10 = **8.75/10**
+
+```
+composite = 60 + 30 + 8.75 = 98.75
+```
+
+**V-01 Score: 98.75**
+
+---
+
+## V-02 — Rebuttal Case Template (targeting C-11)
+
+*Replaces prose Rebuttal sub-section with mandatory four-field case form: ROLE UNDER PRESSURE / OBSERVABLE BREAKDOWN / WHY EXISTING MECHANISMS FAIL / RE-ASSESSMENT TRIGGER. No ROLE-NAME LOCK added.*
+
+| ID | Criterion | Verdict | Evidence |
+|----|-----------|---------|----------|
+| C-01 | Roles block + classification | **PASS** | Steps 1-2 with tier ordering; "Every loaded role must be classified. No unloaded role may appear in classification." |
+| C-02 | ASCII diagram with distinct committee nodes | **PASS** | Two-level hierarchy with distinct committee nodes; role names must match ROLES-LOADED |
+| C-03 | Separate Decides / Escalates columns | **PASS** | Five-column specification retained |
+| C-04 | Rhythm table >=3 distinct rows | **PASS** | Three-type row requirement and no-merge rule explicit |
+| C-05 | Quorum in fraction form (N of M) | **PASS** | Fraction format required; short form not accepted |
+| C-06 | Inertia Assessment — 4 sub-sections + FLAT-CASE-PRESSURE + VERDICT | **PASS** | Four sub-sections present; mandatory case form forces rebuttal work; FLAT-CASE-PRESSURE with rating from closed set; hard gate on VERDICT declaration |
+| C-07 | ORG-ELEMENT REGISTER — 4 categories | **PASS** | All four categories required; "No category may be empty or missing" |
+| C-08 | All 4 phase gate lines in sequence | **PASS** | All four verbatim gate strings present |
+| C-09 | Anti-Pattern Watch with typed cat-N citations | **PASS** | Typed citation syntax required for every "Why It Applies Here" cell |
+| C-10 | Org Evolution Roadmap — 2 trigger categories | **PASS** | Row 1 headcount threshold; Row 2 different category; two headcount rows prohibited |
+| C-11 | Inertia Rebuttal role-grounded + concrete threshold | **PASS** | "ROLE UNDER PRESSURE: [name exactly one role from ROLES-LOADED...]" is a mandatory form field that must be completed before the breakdown field can be written. Structural precondition: model cannot proceed without naming a loaded role. Eliminates the generic growth projection failure mode at the syntactic level. |
+| C-12 | Role-name coherence across all document sections | **FAIL** | No ROLE-NAME LOCK block added. No per-section lock-check reminders for diagram, rhythm table DRI/Owner, or charter Membership/Decides. Role drift at downstream sections remains possible. |
+
+**Essential**: all PASS -> **60/60**
+**Recommended**: all PASS -> **30/30**
+**Aspirational**: C-09 P + C-10 P + C-11 P + C-12 F -> (1+1+1+0)/4 * 10 = **7.5/10**
+
+```
+composite = 60 + 30 + 7.5 = 97.5
+```
+
+**V-02 Score: 97.5**
+
+---
+
+## V-03 — Lifecycle Emphasis (Inertia as weight-bearing section)
+
+*Allocates ~50% of instruction space to the Inertia Assessment; explicitly labels it the most consequential section. Downstream sections receive tighter (compressed) instructions. No ROLE-NAME LOCK; no mandatory rebuttal case form.*
+
+| ID | Criterion | Verdict | Evidence |
+|----|-----------|---------|----------|
+| C-01 | Roles block + classification | **PASS** | Classification block and tier ordering present |
+| C-02 | ASCII diagram with distinct committee nodes | **PASS** | Diagram requirements present |
+| C-03 | Separate Decides / Escalates columns | **PARTIAL** | Compressed downstream instructions reduce salience of the DO NOT anchor. The Decides/Escalates separation was a high-frequency R1 failure requiring strong imperative framing ("DO NOT merge"). Compressed headcount section instructions lower confidence that the imperative survives the space trade. |
+| C-04 | Rhythm table >=3 distinct rows | **PASS** | 3-type row requirement and no-merge rule are brief to state; survive compression |
+| C-05 | Quorum in fraction form (N of M) | **PARTIAL** | The N-of-M format and short-form rejection needed explicit dual assertion in R1 to pass. Compressed charter instructions risk losing the short-form prohibition ("N roles required is NOT accepted"), which is the critical guard against the known failure mode. |
+| C-06 | Inertia Assessment — 4 sub-sections + FLAT-CASE-PRESSURE + VERDICT | **PASS** | Inertia emphasis means C-06 requirements get the most instruction space. FLAT-CASE-PRESSURE format, closed rating set, and VERDICT gate all likely intact. |
+| C-07 | ORG-ELEMENT REGISTER — 4 categories | **PASS** | Register requirement brief to state; survives compression |
+| C-08 | All 4 phase gate lines in sequence | **PASS** | Phase gate strings are verbatim and likely preserved even in compressed form |
+| C-09 | Anti-Pattern Watch with typed cat-N citations | **PASS** | Typed citation syntax requirement brief to state; likely survives |
+| C-10 | Org Evolution Roadmap — 2 trigger categories | **PASS** | Two-category constraint explicit even in compressed form |
+| C-11 | Inertia Rebuttal role-grounded + concrete threshold | **PARTIAL** | Greater instruction space for inertia improves depth, and some role-naming language is likely present. But without the mandatory case form (V-02) or the ROLE-NAME LOCK (V-01), the role-grounding is emphasis-based, not structure-enforced. The "flat team wins by default" argumentative frame (R1 V-02's key differentiator) may or may not be present. |
+| C-12 | Role-name coherence across all document sections | **FAIL** | No ROLE-NAME LOCK block. Compressed downstream instructions make per-section lock-check reminders unlikely. |
+
+**Essential**: C-01 P + C-02 P + C-03 PA + C-04 P + C-05 PA -> 12+12+6+12+6 = **48/60**
+**Recommended**: all PASS -> **30/30**
+**Aspirational**: C-09 P + C-10 P + C-11 PA + C-12 F -> (1+1+0.5+0)/4 * 10 = **6.25/10**
+
+```
+composite = 48 + 30 + 6.25 = 84.25
+```
+
+**V-03 Score: 84.25**
+
+---
+
+## V-04 — Role Lock + Rebuttal Case (V-01 + V-02)
+
+*Direct combination: ROLE-NAME LOCK block and per-section lock-check reminders (V-01) plus mandatory four-field rebuttal case form with ROLE UNDER PRESSURE field (V-02). Clean combination with no additional mechanism overhead.*
+
+| ID | Criterion | Verdict | Evidence |
+|----|-----------|---------|----------|
+| C-01 | Roles block + classification | **PASS** | Both blocks present with tier ordering and consistency constraints |
+| C-02 | ASCII diagram with distinct committee nodes | **PASS** | Lock-check reminder at diagram step; distinct committee nodes; names must match ROLES-LOADED |
+| C-03 | Separate Decides / Escalates columns | **PASS** | Imperative DO NOT language preserved from V-01/V-02 base |
+| C-04 | Rhythm table >=3 distinct rows | **PASS** | Lock-check reminder at rhythm table step; 3-type requirement and no-merge rule |
+| C-05 | Quorum in fraction form (N of M) | **PASS** | Fraction format required; short form prohibited |
+| C-06 | Inertia Assessment — 4 sub-sections + FLAT-CASE-PRESSURE + VERDICT | **PASS** | Four sub-sections; mandatory case form drives argumentative work in Rebuttal; FLAT-CASE-PRESSURE with hard gate; concrete threshold required |
+| C-07 | ORG-ELEMENT REGISTER — 4 categories | **PASS** | All four categories; no category may be empty |
+| C-08 | All 4 phase gate lines in sequence | **PASS** | All four verbatim gate strings |
+| C-09 | Anti-Pattern Watch with typed cat-N citations | **PASS** | Typed citation syntax required |
+| C-10 | Org Evolution Roadmap — 2 trigger categories | **PASS** | Row 1 headcount; Row 2 different category; two headcount rows disallowed |
+| C-11 | Inertia Rebuttal role-grounded + concrete threshold | **PASS** | ROLE UNDER PRESSURE mandatory form field — structural precondition before breakdown can be written. Names exactly one role from ROLES-LOADED. Cannot be bypassed. |
+| C-12 | Role-name coherence across all document sections | **PASS** | ROLE-NAME LOCK block emitted after classification; lock-check reminders in diagram, rhythm table, and charter steps. All three independent failure surfaces covered. |
+
+**Essential**: all PASS -> **60/60**
+**Recommended**: all PASS -> **30/30**
+**Aspirational**: all PASS -> (4/4) * 10 = **10/10**
+
+```
+composite = 60 + 30 + 10 = 100
+```
+
+**V-04 Score: 100**
+
+---
+
+## V-05 — Full Integration (V-04 + R1-V-05 base)
+
+*V-04's combination (Role Lock + Rebuttal Case) layered onto the R1-V-05 gold base: upfront FORMAT CONTRACT for table schemas + inertia-first "flat team wins by default" framing. Most comprehensive variation; tests whether full integration produces cleaner output or over-specification noise.*
+
+| ID | Criterion | Verdict | Evidence |
+|----|-----------|---------|----------|
+| C-01 | Roles block + classification | **PASS** | Format contract pre-anchors classification requirements before output begins; tier ordering and consistency constraints explicit |
+| C-02 | ASCII diagram with distinct committee nodes | **PASS** | Lock-check reminder; diagram requirements pre-anchored; role names must match ROLES-LOADED |
+| C-03 | Separate Decides / Escalates columns | **PASS** | FORMAT CONTRACT pre-declares five-column headcount schema with "DO NOT merge Decides and Escalates" before output begins — strongest protection of any variation |
+| C-04 | Rhythm table >=3 distinct rows | **PASS** | FORMAT CONTRACT pre-declares rhythm schema with minimum rows and no-merge constraint; lock-check reminder at execution |
+| C-05 | Quorum in fraction form (N of M) | **PASS** | FORMAT CONTRACT pre-declares Quorum field format with "Fraction format required. Short form NOT accepted." — pre-anchored before charter step |
+| C-06 | Inertia Assessment — 4 sub-sections + FLAT-CASE-PRESSURE + VERDICT | **PASS** | "Flat team wins by default" argumentative framing from R1-V-02 + mandatory case form from V-02 + FLAT-CASE-PRESSURE hard gate. Dual reinforcement: structural form forces role work; argumentative framing drives verdict quality |
+| C-07 | ORG-ELEMENT REGISTER — 4 categories | **PASS** | Four categories; no category empty; hard gate before Roadmap |
+| C-08 | All 4 phase gate lines in sequence | **PASS** | All four verbatim gate strings; format contract upfront creates ordering anchor |
+| C-09 | Anti-Pattern Watch with typed cat-N citations | **PASS** | FORMAT CONTRACT pre-declares typed citation syntax requirement |
+| C-10 | Org Evolution Roadmap — 2 trigger categories | **PASS** | FORMAT CONTRACT pre-declares Row 1 / Row 2 type constraint |
+| C-11 | Inertia Rebuttal role-grounded + concrete threshold | **PASS** | ROLE UNDER PRESSURE form field (structural) + "flat team wins by default" framing (argumentative) — double enforcement. Structural precondition cannot be bypassed; argumentative pressure drives specificity of the breakdown description. |
+| C-12 | Role-name coherence across all document sections | **PASS** | ROLE-NAME LOCK block emitted after classification; lock-check reminders in diagram, rhythm table, and charter steps — same as V-04 |
+
+**Essential**: all PASS -> **60/60**
+**Recommended**: all PASS -> **30/30**
+**Aspirational**: all PASS -> (4/4) * 10 = **10/10**
+
+```
+composite = 60 + 30 + 10 = 100
+```
+
+**V-05 Score: 100**
+
+*Note: V-05 carries the highest instruction density of any variation. The FORMAT CONTRACT + ROLE-NAME LOCK + rebuttal case form creates three overlapping enforcement layers. If these conflict or the model loses track of the upfront contract by the time it reaches inertia, C-11 could degrade. This risk is not detectable by rubric scoring alone and would require live model runs to assess.*
+
+---
+
+## Summary Table
+
+| Rank | Variation | Essential | Recommended | Aspirational | **Score** | C-11 | C-12 |
+|------|-----------|-----------|-------------|--------------|-----------|------|------|
+| 1 | V-04 Role Lock + Rebuttal Case | 5/5 | 3/3 | 4/4 | **100** | PASS | PASS |
+| 1 | V-05 Full Integration | 5/5 | 3/3 | 4/4 | **100** | PASS | PASS |
+| 3 | V-01 Role Name Lock | 5/5 | 3/3 | 3.5/4 | **98.75** | PARTIAL | PASS |
+| 4 | V-02 Rebuttal Case Template | 5/5 | 3/3 | 3/4 | **97.5** | PASS | FAIL |
+| 5 | V-03 Lifecycle Emphasis | 4/5 | 3/3 | 2.5/4 | **84.25** | PARTIAL | FAIL |
+
+**C-11 and C-12 are the sole discriminators at the top of the table.**
+
+---
+
+## Round 2 Analysis
+
+### The two-failure-surface problem
+
+C-11 and C-12 are independent failure surfaces. A variation targeting only one gets at most 97.5 (V-02: solves C-11, leaves C-12 open) or 98.75 (V-01: solves C-12, partially addresses C-11). Only V-04 and V-05 close both simultaneously.
+
+### Why V-01 C-11 is PARTIAL, not PASS
+
+V-01 explicitly instructs "Identify which role or roles from ROLES-LOADED are the failure agents" and prohibits generic growth projections. The instruction is clear. But the R1 evidence is instructive: R1 V-03 had similar explicit role-naming language ("ROLE-GROUNDED FAILURE REQUIRED") and still got C-06 PARTIAL because the argumentative pressure was absent. Role-naming as a prose instruction competes with the model's tendency to default to "as the team grows." V-02's mandatory form ("ROLE UNDER PRESSURE:" as a field that must be filled) eliminates this competition at the structural level. V-01's prose instruction does not.
+
+### Why V-02 C-12 is FAIL
+
+V-02 resolves C-11 definitively but never emits a ROLE-NAME LOCK. Without a visible permitted-names reference, role drift at the DRI/Owner column and charter Membership fields remains an open failure mode. The mandatory form protects the rebuttal; nothing protects the downstream sections.
+
+### Why V-03 drops to 84.25
+
+V-03's tradeoff is explicit in its axis: better C-11 specificity at the cost of tighter downstream sections. The two downstream criteria most vulnerable to instruction compression are C-03 (Decides/Escalates separation) and C-05 (N-of-M quorum format) — both were the highest-frequency failures in R1. V-03 accepts this regression in exchange for inertia depth, but it gets C-11 only PARTIAL (no mandatory form) and C-12 FAIL (no lock). The net result is the weakest composite of the five variations.
+
+### Structural guarantee comparison within the 100 cluster
+
+Both V-04 and V-05 close all four aspirational criteria. The difference is enforcement depth:
+
+| Mechanism | V-04 | V-05 |
+|-----------|------|------|
+| Role name source of truth | ROLE-NAME LOCK block | ROLE-NAME LOCK block |
+| Downstream role-name enforcement | 3 lock-check reminders | 3 lock-check reminders + FORMAT CONTRACT |
+| Rebuttal role grounding | ROLE UNDER PRESSURE form field | ROLE UNDER PRESSURE form field + "flat team wins by default" framing |
+| Essential format (C-03, C-05) | Imperative instructions at step | FORMAT CONTRACT pre-anchored before output |
+
+V-05 has stronger enforcement on C-03 and C-05 (format contract pre-anchors both before any output) and stronger C-11 depth (argumentative framing drives verdict quality). V-04 is cleaner with lower instruction density risk.
+
+---
+
+## Excellence Signals — Round 2
+
+### E-1: Role-lock artifact closes C-12 at the structural level
+
+Emitting the ROLE-NAME LOCK as a visible block (not a prose instruction) creates an in-context reference the model can check against for every downstream section. The three per-section reminders ("[ROLE-NAME LOCK CHECK: All role names in this diagram must appear in the ROLE-NAME LOCK block]") transform C-12 from a compliance requirement into a mechanical check. This is structurally equivalent to how the FORMAT CONTRACT protected C-03 and C-05 in R1.
+
+### E-2: Mandatory case form closes C-11 at the structural level
+
+The ROLE UNDER PRESSURE form field makes role selection a syntactic requirement, not an instruction. The model must write a role name to complete the field before it can write a breakdown sentence. This eliminates the class of failures where the model follows the intent (writes about coordination failure) without following the letter (names a loaded role). Prose prohibitions ("do not write 'the team is growing'") compete with fluent output; mandatory fields preclude competition.
+
+### E-3: V-04 demonstrates that combining targeted mechanisms is cleaner than over-specifying
+
+V-04 achieves 100 by combining exactly two mechanisms (Role Lock + Rebuttal Case) with no additional overhead. V-05 adds the FORMAT CONTRACT and inertia-led framing from R1 — both proven improvements — but also adds instruction density risk. For a skill that already inherited a strong R1 baseline, the two targeted additions in V-04 may be the minimal sufficient solution.
+
+---
+
+## Recommended Golden Candidate
+
+**V-04** is the primary recommendation:
+- Achieves 100 with the minimum mechanism addition over baseline
+- ROLE-NAME LOCK closes C-12 cleanly at the diagram, rhythm, and charter steps
+- Mandatory case form closes C-11 at the syntactic level
+- No instruction density risk from format contract or argumentative framing layering
+- Clean, auditable addition: two mechanisms, both directly traceable to target criteria
+
+**V-05** is a strong alternative when format-failure risk on C-03/C-05 is a concern:
+- FORMAT CONTRACT pre-anchors the two highest-frequency essential failure modes
+- "Flat team wins by default" framing adds verdict quality depth not captured by rubric score
+- Recommended if live model runs show C-03 or C-05 regression in V-04
+
+---
+
+```json
+{"top_score": 100, "all_essential_pass": true, "new_patterns": ["emitting role-name lock as a visible post-classification block (not prose) creates a mechanical per-section check that closes role-drift across diagram, rhythm table, and charter fields simultaneously", "mandatory case form with labeled fields makes role selection a syntactic precondition before prose can begin, eliminating the compliance-risk gap between explicit prose instruction and structural enforcement"]}
+```

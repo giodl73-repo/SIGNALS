@@ -1,0 +1,1053 @@
+Written to `simulations/quest/rubrics/org-rob-rubric-v11-2026-03-16.md` (1061 lines, 56 KB).
+
+---
+
+**Four criteria extracted from R11, added as C-28 through C-31:**
+
+**C-28 -- Source-LID Risk Traceability** (depth, aspirational) -- from V-01 R11. Risk register entries carry a `Source-LIDs` field naming the LID document(s) that triggered each risk. Pass condition: >= 3 entries with structurally-encoded Source-LIDs citations (not prose). Requires C-07.
+
+**C-29 -- Prerequisite Completion Registry** (depth, aspirational) -- from V-02 R11. Shared cross-stage registry established before Stage 1; each stage marks COMPLETE upon exit, citing a LID. Distinct from C-11 phase gate contracts (per-stage blocks vs. shared document-level registry). Requires C-11.
+
+**C-30 -- Evidence-Grounded Finding Schema** (format, aspirational) -- from V-03 R11. `Evidence:` column at position 3 in the finding table (after `Via:`, before `Severity`). 100% of findings carry a non-empty Evidence: value. Extends C-19's schema-enforcement principle from lens attribution to source provenance. Requires C-19.
+
+**C-31 -- Deep Enforcement Mesh** (format, aspirational) -- from V-05 R11. 7+ VIOLATION-NN entries with index >= 9, each targeting a distinct structural element -- 4 loops beyond C-27's minimum of 3. V-05 achieves VIOLATION-09 through VIOLATION-15, covering C-21, C-25, C-11, C-28, C-29, C-30, and a fourth element. V-04 with 6 loops does not clear the threshold (C-31=o). Requires C-27.
+
+**Scoring changes:**
+
+| | v10 | v11 |
+|---|---|---|
+| Aspirational criteria | C-09--C-27 (19) | C-09--C-31 (23) |
+| Aspirational max | 38 | **46** |
+| Total max | 128 | **136** |
+
+**R11 scores under v11:** V-01 130/136 (C-28++), V-02 130/136 (C-29++), V-03 130/136 (C-30++), V-04 130/136 (C-30++), V-05 136/136 (all four).
+-- one short of the C-31 threshold (C-31=o).
+
+Total max bumped from 128 to 136.
+
+**R11 scores under v11:** V-01 130/136 (C-28++), V-02 130/136 (C-29++),
+V-03 130/136 (C-30++), V-04 130/136 (C-30++), V-05 136/136 (C-28++, C-29++,
+C-30++, C-31++).
+
+---
+
+### v10 (2026-03-16) -- C-27 from R10
+
+C-27 (Multi-Criterion Taxonomy Enforcement) extracted from V-03 R10. Extends C-24's
+single enforcement loop to three or more independent loops, each targeting a named
+structural element from a *different* aspirational criterion. V-03 R10 achieves this
+with VIOLATION-09 -> IB-01 (C-21), VIOLATION-10 -> IB-02 (C-25), VIOLATION-11 ->
+phase gate exit LID citation (C-11). V-01 and V-02 R10 both achieve C-24++ with two
+loops but fail C-27 -- the third loop is the gap.
+Total max bumped from 126 to 128.
+
+### v9 (2026-03-16) -- C-25 and C-26 from R9
+
+C-25 (Typed Dual Inertia Baselines) from V-03 R9; C-26 (Full-Coverage Violation
+Consequences) from V-02 R9. C-23 pass condition raised from "at least 3" to
+"at least 6" to match observed ++ threshold from R9.
+Total max bumped from 122 to 126.
+
+### v8 (2026-03-16) -- C-24 from R8
+
+C-24 (Taxonomy-Enforced Structural Elements) extracted from V-04 R8. VIOLATION-09
+enforces INERTIA BASELINE, making C-21 mechanically policed through the taxonomy.
+Total max bumped from 120 to 122.
+
+### v7 (2026-03-16) -- C-21, C-22, C-23 from R7
+
+C-21 (Inertia Anchor), C-22 (Extensible Violation Taxonomy), C-23
+(Self-Documenting Violation Rationale) extracted from R7. All five R7 variations
+reached 114/114 under v6. R7 is the convergence round: once C-20 is satisfied,
+the other 19 criteria are structurally assured. Total max bumped from 114 to 120.
+
+### v6 (2026-03-16) -- C-20 from R6
+
+C-20 (Named Violation Taxonomy) extracted from V-03 R6. V-03 R6 scores 114;
+V-01 and V-02 R6 score 108 and 107 (C-20=o). Total max bumped from 112 to 114.
+
+### v5 (2026-03-15) -- C-18 and C-19 from R5
+
+C-18 (Role Orientation Frame Citation) from V-01 R5; C-19 (Schema-Enforced Lens
+Coverage) from V-02 R5. Total max bumped from 108 to 112.
+
+### v4 (2026-03-15) -- C-17 from R3
+
+C-17 (Stage-Maintained Finding Ledger) from V-03 R3. Total max bumped from 106 to 108.
+
+### v3 (2026-03-14) -- C-14 through C-16 from R2
+
+C-14, C-15, C-16 extracted from R2 divergence. Total max bumped from 100 to 106.
+
+### v2 (2026-03-14) -- C-09 through C-13 from R1
+
+C-09 through C-13 extracted from V-04 R1. Total max bumped from 90 to 100.
+
+### v1 (2026-03-14) -- Initial rubric
+
+C-01 through C-08 (essential and recommended tier only).
+
+---
+
+## Scoring Framework
+
+| Tier | Criteria | Max pts | ++ | + | o |
+|------|----------|---------|----|---|---|
+| Essential | C-01--C-05 | 60 | 12 | 12* | 0 |
+| Recommended | C-06--C-08 | 30 | 10 | 7 | 0 |
+| Aspirational | C-09--C-31 | 46 | 2 | 1 | 0 |
+
+*Essential + = PASS. Both + and ++ earn full points for essential criteria.
+
+**Total max: 60 + 30 + 46 = 136**
+
+Any essential failure = not golden regardless of composite score.
+
+---
+
+## Essential Criteria
+
+*Output must satisfy all five. Any essential failure = not golden regardless of
+composite score.*
+
+### C-01 -- Stage Identity and Labeling
+- **Category**: format
+- **Weight**: essential
+- **Text**: Every stage in the output is explicitly labeled with its name. The
+  stage header identifies which stage is running -- not inferred from context or
+  implied by position. A reader must be able to locate any stage without parsing
+  surrounding prose.
+- **Pass condition**: Each stage in the output includes a labeled header
+  identifying it by name. No stage is anonymous.
+
+---
+
+### C-02 -- Role-Loaded Perspective
+- **Category**: correctness
+- **Weight**: essential
+- **Text**: Each stage review reflects the perspective of the role loaded from
+  .roles/ -- not a generic review. The role orientation, lens, and
+  expertise shape which concerns are raised.
+- **Pass condition**: At least one finding per stage is grounded in the loaded
+  role's documented lens (e.g., a PM flags adoption risk, a TPM flags schedule
+  risk, an architect flags coupling). Generic findings that any role could have
+  written do not satisfy this criterion.
+
+---
+
+### C-03 -- ROB Document Format Compliance
+- **Category**: format
+- **Weight**: essential
+- **Text**: Output follows the ROB stage document format: stage header, role
+  identity, numbered findings with severity, and a stage verdict. All four
+  structural elements must be present for each stage.
+- **Pass condition**: For each stage run: (1) stage header present, (2) role
+  identity stated, (3) at least one finding with severity label (HIGH/MED/LOW
+  or equivalent), (4) explicit stage verdict (APPROVED / APPROVED WITH CONDITIONS
+  / BLOCKED / DEFERRED or equivalent).
+
+---
+
+### C-04 -- Actionable Findings
+- **Category**: depth
+- **Weight**: essential
+- **Text**: Each stage produces at least 2 concrete findings or decision points.
+  Findings name a specific concern, not a category. Each finding has an implied
+  or explicit owner and a suggested resolution or next step.
+- **Pass condition**: Total findings >= 2 * N_stages_run. Each finding is specific
+  (references the artifact, not just the domain). At least half of findings include
+  a resolution path or owner.
+
+---
+
+### C-05 -- Go/No-Go Signal
+- **Category**: correctness
+- **Weight**: essential
+- **Text**: When the tpm stage runs (including via --stage all), output includes
+  an explicit go/no-go recommendation with rationale. The verdict is not implied or
+  buried -- it is a top-level statement.
+- **Pass condition**: tpm stage output contains an unambiguous GO / NO-GO /
+  GO WITH CONDITIONS verdict as a labeled top-level element, accompanied by at
+  least one sentence of rationale citing a specific finding.
+
+---
+
+## Recommended Criteria
+
+*Output is better with these. Each adds material value.*
+
+### C-06 -- Cross-Stage Coherence
+- **Category**: depth
+- **Weight**: recommended
+- **Text**: When multiple stages run, later stages reference or escalate findings
+  from earlier stages. The escalation chain (teams -> pm -> tpm) is visible: a
+  teams finding becomes a pm alignment item, which becomes a tpm risk.
+- **Pass condition**: At least 2 cross-stage references in any multi-stage run
+  (e.g., "teams raised X; pm confirms X is unresolved; tpm registers X as risk R-02").
+
+---
+
+### C-07 -- Risk Register Structure
+- **Category**: depth
+- **Weight**: recommended
+- **Text**: The tpm stage produces a structured risk register, not a prose list.
+  Each entry has a title, severity, likelihood, and mitigation. The register is
+  machine-scannable.
+- **Pass condition**: tpm stage includes a risk register table or structured list
+  with >= 3 entries, each containing title, severity, likelihood, and mitigation.
+  At least one risk is rated HIGH.
+
+---
+
+### C-08 -- Spire Cascade Tracing
+- **Category**: coverage
+- **Weight**: recommended
+- **Text**: When the spire stage runs, output traces how S-office missions cascade
+  down to the artifact under review. At least one mission-to-artifact link is
+  explicit: mission -> program -> artifact alignment or gap.
+- **Pass condition**: spire stage output names at least one S-office mission by
+  name and traces its alignment or misalignment to the artifact under review with
+  a specific example.
+
+---
+
+## Aspirational Criteria
+
+*Raise the bar once essential and recommended are stable.*
+
+### C-09 -- Inter-Stage Blocker Detection
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: Output explicitly identifies when a finding from one stage creates a
+  hard blocker for a downstream stage. Blockers are surfaced proactively, not
+  discovered retroactively.
+- **Pass condition**: At least 1 inter-stage blocker is named in a multi-stage run,
+  with the upstream stage, the blocking finding, and the downstream stage impact
+  stated explicitly (e.g., "teams finding F-03 blocks tpm go/no-go: ownership
+  unresolved").
+
+---
+
+### C-10 -- Cross-Cutting Theme Elevation
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: When the same concern surfaces in 2 or more stages, output recognizes
+  the pattern and elevates it as a cross-cutting theme -- above the individual
+  stage findings. Cross-cutting themes receive priority weighting.
+- **Pass condition**: At least 1 cross-cutting theme is named at the document level
+  (not buried inside a single stage), citing the 2+ stages that surfaced it and
+  noting why the repetition increases severity.
+
+---
+
+### C-11 -- Phase Gate Contracts
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: Each stage defines explicit entry and exit conditions that enforce
+  cross-stage coherence structurally rather than narratively. Entry conditions
+  state what must be true before the stage can proceed; exit conditions state
+  what the stage certifies as resolved before handing off downstream.
+- **Pass condition**: At least 2 stages in a multi-stage run include a Phase Gate
+  block (or equivalent labeled section) with named entry conditions and named exit
+  conditions. Exit conditions must reference at least one finding ID or open item
+  from that stage, not just generic readiness language.
+- **Source**: V-04 Round 1 -- only variation to hit 100. Phase gate contracts make
+  C-06 structurally checkable instead of relying on narrative cross-references.
+  V-02 R2 fails this criterion: finding registry accumulation is not equivalent
+  to phase gate contracts.
+
+---
+
+### C-12 -- Dual-Direction Traceability
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: Cross-stage finding propagation is acknowledged in both directions:
+  the sending stage escalates the finding, and the receiving stage explicitly
+  acknowledges receipt by finding ID. Traceability is not one-sided.
+- **Pass condition**: In any multi-stage run with escalation, at least 1 receiving
+  stage contains a Responds-to or Inherits field (or equivalent) citing the
+  upstream finding ID (e.g., "Inherits: PM-F-02 -- ownership gap"). The downstream
+  stage verdict must reference the inherited finding.
+- **Source**: V-04 Round 1 -- dual-direction acknowledgment makes the escalation
+  chain independently verifiable; no other Round 1 variation enforced the receiving
+  side.
+
+---
+
+### C-13 -- Named Blocker Format
+- **Category**: correctness
+- **Weight**: aspirational
+- **Text**: When a downstream finding retroactively invalidates an upstream verdict
+  (e.g., arch-board finding overturns a tpm go), the output names this explicitly
+  using a triad: upstream stage + blocking finding + required action. Retroactive
+  invalidation is surfaced as a named event, not implied by silence.
+- **Pass condition**: At least 1 retroactive invalidation scenario in a multi-stage
+  run is expressed using the triad format: {upstream-stage} verdict affected by
+  {finding-ID}: {reason}. Required action: {action}. The upstream stage and its
+  original verdict must be identifiable from the named blocker.
+- **Source**: V-04 Round 1 -- named format {AB-01} blocks tpm go/no-go: [reason].
+  Upstream stage affected. Required action. was the sole mechanism enabling
+  cross-stage retroactive invalidation. No other variation in Round 1 enforced this.
+
+---
+
+### C-14 -- Lens-Anchored Findings
+- **Category**: correctness
+- **Weight**: aspirational
+- **Text**: Each finding cites the specific lens item or orientation frame from the
+  loaded role (.roles/) that triggered it. Role-loading is verifiable at
+  the finding level, not just at the stage level. A finding that could have been
+  written by any role does not clear C-14, even if the stage header names a role.
+- **Pass condition**: At least 50% of findings across the run include a Lens:,
+  Via:, or equivalent field naming the specific role lens item that motivated the
+  concern (e.g., "Lens: tpm.lens.schedule-risk" or "Via: orientation.frame --
+  delivery velocity"). The cited lens item must exist in the loaded role file.
+- **Source**: R2 scorecard -- both V-01 and V-02 scored + on C-02 but neither
+  reached ++. The gap: no per-finding lens citation field was required. The ++
+  path on C-02 requires finding-level lens enforcement, which C-14 now rewards
+  explicitly.
+
+---
+
+### C-15 -- Column-Invariant Verdict Format
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: Stage verdicts are expressed as table rows with named columns rather
+  than prose blocks. Column-invariant output eliminates the structural ambiguity
+  that allows omission of rationale or finding-ID citation. Prose verdicts satisfy
+  C-03 but do not satisfy C-15.
+- **Pass condition**: At least 2 stage verdicts in the run are expressed as rows
+  in a named-column table containing at minimum: (1) status (GO / NO-GO / etc.),
+  (2) rationale, (3) at least one finding-ID reference. Prose verdict blocks, even
+  if they contain the same information, do not satisfy this criterion.
+- **Source**: R2 scorecard -- V-02 scored ++ on C-03 because "verdict table is
+  a structural table row, not prose." V-01 scored + because "prose template, not
+  column invariant." C-15 rewards the encoding that makes verdict omission
+  structurally impossible.
+
+---
+
+### C-16 -- Synthesis Residual Open Items
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: Synthesis contains a dedicated section enumerating all finding
+  escalations that were sent upstream but not yet acknowledged or resolved
+  downstream. This inventory makes gaps in the escalation chain structurally
+  visible without requiring manual comparison of sending and receiving stages.
+  A Dual-Direction Check table satisfies C-12; a Residual Open Items section
+  satisfies C-16 -- they are complementary, not interchangeable.
+- **Pass condition**: Synthesis output includes a Residual Open Items section (or
+  equivalent labeled section) listing every finding where the downstream
+  acknowledgment is absent or empty, naming: (1) the originating stage, (2) the
+  finding ID, (3) the intended receiving stage, (4) the gap (e.g., Acknowledged
+  As = empty). The section must be present even when the list is empty -- an
+  empty residual section is a stronger signal than a missing one.
+- **Source**: R2 scorecard -- V-02 achieved C-06 ++ partly via "Residual Open
+  Items section flags any Acknowledged As = empty." V-01 achieved C-06 ++ via
+  Dual-Direction Check table instead. C-16 rewards the dedicated residual-items
+  inventory as a distinct structural property separate from C-09 and C-12.
+
+---
+
+### C-17 -- Stage-Maintained Finding Ledger
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: A shared finding ledger is initialized before the first stage runs and
+  actively maintained by each stage throughout the review. Unlike a synthesis
+  registry compiled after the fact, the ledger is a write-as-you-go artifact:
+  each stage appends new findings as rows and fills in Resolved By and Resolution
+  for any inherited rows it closes. Stages cite the ledger by row number within
+  their own output. The ledger serves as the authoritative cross-stage audit trail
+  and is the primary source for Residual Open Items filtering (C-16).
+- **Pass condition**: A named finding ledger (or equivalent table) is present,
+  referenced by row number in at least 2 distinct stages, and contains at least
+  one row where both Resolved By (the downstream stage) and Resolution are filled
+  in -- demonstrating that a stage consumed and closed an upstream row. A
+  synthesis-only registry that aggregates after all stages complete does not
+  satisfy this criterion; the ledger must be written to incrementally.
+- **Source**: V-03 R3 (Residual-Accumulator Model) -- achieves C-12 ++ via each
+  stage citing ledger row number and filling Resolved By + Resolution, and C-16 ++
+  via Residual Open Items filtering ledger rows where Resolved By = (pending). V-02
+  Finding Registry (managed centrally at synthesis) does not satisfy C-17.
+
+---
+
+### C-18 -- Role Orientation Frame Citation
+- **Category**: correctness
+- **Weight**: aspirational
+- **Text**: Each stage cites the specific `orientation.frame` (or equivalent named
+  field) from the loaded .roles/ file in its stage-level ROLE: block. Role
+  loading is verifiable at the stage level independently of per-finding Via: fields
+  (C-14). A stage that names the role without surfacing the governing orientation
+  frame satisfies C-02 but does not satisfy C-18.
+- **Pass condition**: At least 2 stages in the run include a ROLE: line (or
+  equivalent labeled block) that cites a specific named field from the loaded role
+  file -- e.g., `orientation.frame`, `lens.primary`, or equivalent -- by field name
+  and value. The cited field must be traceable to the .roles/ file. Naming
+  the role alone (e.g., "Role: tpm") does not satisfy this criterion.
+- **Source**: V-01 R5 -- `orientation.frame` extracted from .roles/ and cited
+  in ROLE: line of each stage, enabling per-stage verification of the correct lens.
+  C-14 anchors lens citation to findings; C-18 anchors it to stage identity.
+
+---
+
+### C-19 -- Schema-Enforced Lens Coverage
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: The finding schema positions the lens citation field (Via:, Lens:, or
+  equivalent) such that omission is structurally visible -- specifically, as the
+  second column in the finding table, before Severity and Owner. This structural
+  placement achieves 100% lens coverage across all findings without relying on
+  prose instruction or per-finding discipline. C-14 requires 50%+ coverage; C-19
+  requires 100% coverage enforced by column position.
+- **Pass condition**: (1) The lens citation field appears as the second column in
+  the finding table, before Severity and Owner in the schema. (2) 100% of findings
+  in the run carry a lens citation value -- no finding has a blank or omitted lens
+  field. A schema that satisfies C-14 at 50%+ but does not place the lens field
+  second does not satisfy C-19.
+- **Source**: V-02 R5 -- Via: positioned as SECOND field in every finding row,
+  making omission structurally visible and achieving 100% coverage by schema
+  enforcement. V-01 R5 fails C-19: its finding schema has no Via: field.
+
+---
+
+### C-20 -- Named Violation Taxonomy
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: Every structural rule in the schema has a corresponding named violation
+  type -- VIOLATION-01, VIOLATION-02, etc. -- with an explicit identifier and a
+  description of the anti-pattern it prohibits. Rules are expressed in both
+  positive form ("X must be present") and prohibition form ("Omitting X is
+  VIOLATION-NN: [description]"). Named violations make anti-pattern detection
+  mechanistic: any reviewer can ask "was VIOLATION-NN committed?" independently
+  of prose interpretation. A schema that states requirements positively but has
+  no enumerated violation taxonomy does not satisfy C-20 regardless of how many
+  structural rules it contains.
+- **Pass condition**: At least 5 distinct structural rules in the schema each have
+  a corresponding named VIOLATION-NN identifier (or equivalent enumerated
+  anti-pattern label) with a description of the violation. Violation identifiers
+  must be distinct (no two rules share an ID) and referenced in the pass/fail
+  language of the schema (e.g., "A blank Via: cell is VIOLATION-03"). A schema
+  with prohibition language that does not assign enumerated IDs to violations does
+  not satisfy this criterion.
+- **Source**: V-03 R6 (Prohibition-Mode Enforcement) -- all structural rules
+  expressed as named VIOLATION types (VIOLATION-01 through VIOLATION-08+), making
+  the schema self-policing. VIOLATION-08 prohibits cross-cutting themes named only
+  in a single stage (drives C-10 ++ -- the mechanism that distinguishes V-03 R6
+  at ++ from V-02 R6 at + on C-10). No R1--R5 variation enumerated violations by
+  name and number. C-20 is structurally independent of C-19 and C-15: V-01 and
+  V-02 R6 each achieve both C-18 and C-19 without naming violations.
+
+---
+
+### C-21 -- Inertia Anchor
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: A named inertia baseline element is written as a first-class schema
+  element before Stage 1 runs and propagates its identity through every downstream
+  structural artifact: as an Inertia Impact column in the finding ledger, as an
+  Inertia Link field in the risk register, and as an Inertia Pressure Summary
+  section in synthesis. Status-quo displacement is tracked end-to-end without
+  prose assertion -- each structural position that carries inertia data names the
+  pre-stage baseline by ID. A schema that raises inertia concerns in finding prose
+  but does not define a named baseline element propagated to at least 2 structural
+  positions does not satisfy C-21.
+- **Pass condition**: (1) A named INERTIA BASELINE (or equivalent labeled element)
+  appears before Stage 1, defining the status-quo position being displaced.
+  (2) At least 2 downstream structural positions reference this baseline by name
+  or ID -- e.g., Inertia Impact in ledger rows, Inertia Link in risk register
+  entries, or equivalent named fields. (3) Synthesis includes an Inertia Pressure
+  Summary (or equivalent labeled section) that traces displacement from the named
+  baseline. Inertia commentary embedded in finding prose without a pre-stage
+  baseline element does not satisfy this criterion.
+- **Source**: R7 scorecards -- Inertia Anchor pattern first appeared as a
+  first-class schema element in R7. Prior rounds tracked inertia concerns via
+  finding prose or risk register entries without a named pre-stage baseline.
+  C-21 rewards the structural discipline of seeding a named baseline before any
+  stage runs and requiring every inertia-bearing artifact to carry a reference
+  to that baseline, making displacement measurable across the review timeline.
+
+---
+
+### C-22 -- Extensible Violation Taxonomy
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: The violation taxonomy is designed as an open-ended series: VIOLATION
+  numbering continues beyond the initial VIOLATION-01..08 set, and the schema
+  commits to assigning a named VIOLATION-NN to every new structural requirement
+  added in the future. VIOLATION-09 or higher appearing in the schema is the
+  canonical signal of extensibility. A schema that reaches VIOLATION-08 and treats
+  the taxonomy as closed -- adding new requirements in prose form without extending
+  the violation series -- does not satisfy C-22, even if it satisfies C-20. C-22
+  requires C-20 (violation taxonomy must exist before it can be extensible).
+- **Pass condition**: (1) The violation taxonomy includes at least one VIOLATION-09
+  or higher identifier (i.e., the series extends beyond the initial eight).
+  (2) The schema makes explicit -- either by statement or by structural pattern --
+  that future structural requirements will receive VIOLATION-NN identifiers rather
+  than prose prohibitions. A schema that names VIOLATION-09 for a specific new rule
+  satisfies (1); a schema that includes an open-ended VIOLATION-09+ slot or states
+  "new requirements extend this taxonomy" satisfies (2). Both conditions must hold.
+- **Source**: R7 scorecards -- VIOLATION-09 first appeared as an extensible
+  taxonomy slot in R7, signaling that the violation taxonomy is architecturally
+  open-ended. V-03 R6 defined VIOLATION-01..08 as a complete set; R7 introduced
+  the extensibility principle. C-22 is structurally independent of C-23: a schema
+  can have VIOLATION-09+ without explanatory rationale per violation.
+
+---
+
+### C-23 -- Self-Documenting Violation Rationale
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: Each VIOLATION-NN entry includes a rationale paragraph explaining WHY
+  the anti-pattern undermines review quality -- not just WHAT the anti-pattern is.
+  The rationale addresses downstream consequences or degraded outcomes ("without
+  named ownership, downstream stages cannot certify resolution") rather than
+  restating the rule ("owner field must be non-blank"). Self-documenting violations
+  reduce borderline-compliant output without changing enforcement structure: a
+  reviewer who understands why VIOLATION-05 matters will not produce technically-
+  compliant-but-vacuous exit conditions. A violation entry that states the
+  prohibition and anti-pattern description but provides no consequence reasoning
+  does not satisfy C-23. C-23 requires C-20 (violation taxonomy must exist first).
+- **Pass condition**: At least 6 VIOLATION-NN entries in the taxonomy each include
+  a rationale paragraph (distinct from the anti-pattern description) that: (1)
+  states a consequence or degraded outcome caused by the violation, (2) does not
+  merely restate the rule in different words. A rationale that says "this matters
+  because the field is required" does not satisfy the consequence requirement. A
+  rationale that says "without named escalation IDs, the receiving stage cannot
+  distinguish new findings from inherited ones, breaking dual-direction
+  traceability" satisfies the consequence requirement.
+- **Source**: R7 scorecards -- self-documenting violation rationale first appeared
+  in R7. V-03 R6 named violations with anti-pattern descriptions but without
+  consequence reasoning; R7 variations enriched each VIOLATION-NN with explanatory
+  paragraphs. C-23 is independent of C-22: a schema can have thorough rationale
+  for VIOLATION-01..08 without extending to VIOLATION-09+. The combination C-20 ++
+  C-22 ++ C-23 produces a violation taxonomy that is named, extensible, and
+  self-documenting. Pass condition threshold updated from "at least 3" (v8) to
+  "at least 6" (v9) to reflect observed ++ threshold from R9: V-01 R9 achieves ++
+  with 6 violations carrying Consequence: paragraphs.
+
+---
+
+### C-24 -- Taxonomy-Enforced Structural Elements
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: The extensible violation taxonomy is used to enforce named structural
+  elements introduced by other aspirational criteria in this rubric -- making a
+  depth criterion self-enforcing through the format mechanism. At least one
+  VIOLATION-NN entry with index >= 9 is assigned to the absence of a specific
+  named structural element from another criterion (e.g., INERTIA BASELINE from
+  C-21, Via: column from C-19, phase gate contract from C-11). This creates a
+  cross-criterion enforcement loop: the taxonomy violation (format) guards a
+  named structural element (depth), so any reviewer can ask "was VIOLATION-NN
+  committed?" to verify whether the structural element is present. A violation
+  assigned to a generic structural omission (e.g., "omitting synthesis
+  subsections") without naming a criterion-specific element by its schema name
+  does not satisfy C-24. C-24 requires C-20 (violation taxonomy must exist) and
+  C-22 (taxonomy must be extensible to reach VIOLATION-09+).
+- **Pass condition**: At least one VIOLATION-NN entry with index >= 9 is defined
+  as the absence or omission of a named structural element introduced by another
+  criterion in this rubric (C-09 through C-23). The violation description must
+  identify the structural element by its schema name -- e.g., "INERTIA BASELINE,"
+  "Via: column," "phase gate contract," "Inertia Impact column." The structural
+  element cited must be traceable to a specific criterion definition. A VIOLATION-NN
+  that enforces a structural requirement without naming the element's schema name
+  (e.g., "omitting any of three synthesis subsections" with no schema-level name
+  for the subsections) does not satisfy this criterion.
+- **Source**: V-04 R8 -- first variation to assign an extensible violation slot
+  (VIOLATION-09) to enforce a criterion-specific named structural element (INERTIA
+  BASELINE, from C-21): "A review that raises inertia displacement concerns without
+  a named INERTIA BASELINE element before Stage 1." This makes C-21 mechanically
+  enforceable via the taxonomy. V-01 R8 achieves C-21 (inertia baseline present)
+  but the violation taxonomy is closed at VIOLATION-08 -- inertia baseline
+  enforcement cannot be encoded as a numbered violation (C-24=o). V-02 R8 achieves
+  C-22 (VIOLATION-09 present) but assigns it to a generic synthesis completeness
+  rule without naming a criterion-specific structural element (C-24=o). V-04 R8
+  achieves the architectural integration: VIOLATION-09 = absence of INERTIA
+  BASELINE, making C-21 self-policing through the violation taxonomy. C-24 is
+  independent of C-23: taxonomy enforcement of a structural element does not
+  require -- but benefits from -- a consequence rationale on the enforcement
+  violation. V-03 R10 extended the pattern to three enforcement loops (VIOLATION-09
+  + VIOLATION-10 + VIOLATION-11), each targeting a different criterion -- the
+  multi-loop generalization is captured by C-27.
+
+---
+
+### C-25 -- Typed Dual Inertia Baselines
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: At least two named inertia baselines of distinct types are established
+  before Stage 1 -- each representing a different dimension of status-quo
+  displacement (e.g., IB-01 = technical inertia, IB-02 = organizational inertia).
+  Each baseline is independently tracked through every inertia-bearing structural
+  artifact: the Inertia Impact field in finding ledger rows can reference IB-01,
+  IB-02, or both; the Inertia Link column in the risk register accepts
+  multi-baseline values (IB-01 / IB-02 / both / N/A); the Inertia Pressure
+  Summary in synthesis rates each baseline separately. A single named baseline
+  (IB-01 only) satisfies C-21 but does not satisfy C-25, because the type
+  distinction enables independent measurement, independent mitigation, and
+  independent resolution of structurally different displacement forces. Requires
+  C-21.
+- **Pass condition**: (1) At least 2 named inertia baselines appear before Stage 1,
+  each identified by a distinct ID (e.g., IB-01, IB-02) and a distinct type label
+  (e.g., "technical," "organizational"). (2) The risk register Inertia Link column
+  accommodates multi-baseline citation -- at least one entry cites IB-01, at least
+  one cites IB-02, and the column schema allows "both" as a value. (3) The synthesis
+  Inertia Pressure Summary rates the two baseline types separately rather than
+  producing a single composite rating. A schema that mentions two inertia concerns
+  in prose without naming them as distinct pre-stage baseline elements does not
+  satisfy this criterion.
+- **Source**: V-03 R9 -- first variation to establish two typed inertia baselines
+  (IB-01 technical, IB-02 organizational) as independent pre-stage structural
+  elements, each independently propagated through the finding ledger, risk register,
+  and synthesis. V-01 and V-02 R9 each achieve C-21 with a single IB-01 baseline
+  (C-25=o). V-03 R9 extends the inertia axis to two typed dimensions, producing a
+  richer synthesis in which organizational and technical displacement pressures are
+  independently rated. This distinction matters because mitigation of technical
+  inertia (e.g., migration tooling) often differs from mitigation of organizational
+  inertia (e.g., change management); collapsing both into a single baseline obscures
+  which displacement force is driving risk. C-25 is independent of C-24: the dual
+  baseline structure does not require its own VIOLATION-NN to be present, though
+  assigning VIOLATION-10 to the absence of IB-02 makes C-25 self-enforcing through
+  the taxonomy (the C-24 architectural integration pattern applied to the second
+  baseline dimension).
+
+---
+
+### C-26 -- Full-Coverage Violation Consequences
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: Every VIOLATION-NN entry in the taxonomy carries a distinct
+  *Consequence:* paragraph -- not just the minimum set required by C-23. C-23
+  sets the floor at >= 6 violations with consequence rationale; C-26 requires
+  100% coverage across all violations in the taxonomy regardless of how many
+  violations are defined. This matters because borderline compliance concentrates
+  at the violations without consequence documentation: a reviewer encountering an
+  undocumented violation for the first time cannot self-calibrate without a
+  paragraph explaining what degrades when that violation occurs. A schema where
+  >= 6 but not all violations carry *Consequence:* paragraphs satisfies C-23 but
+  not C-26. Requires C-23.
+- **Pass condition**: Every VIOLATION-NN entry defined in the taxonomy -- all N
+  of them, not a subset -- includes a *Consequence:* paragraph (or equivalent
+  consequence rationale block) that states a degraded outcome or downstream impact
+  caused by the violation. The rationale must be distinct from the violation
+  description (no restating the rule) and must name a concrete consequence. A
+  schema achieving C-23 at 6/9 does not satisfy C-26; achieving 9/9 satisfies
+  C-26 for a 9-violation taxonomy. If the taxonomy grows (e.g., to 10 or 11
+  violations), C-26 requires 10/10 or 11/11 coverage respectively.
+- **Source**: V-02 R9 -- first variation to achieve 100% violation consequence
+  coverage (9/9 violations with *Consequence:* paragraphs), earning the distinction
+  "most thorough of all R9 variations" on this dimension. V-01 R9 achieves C-23 ++
+  with 6/9 violations carrying *Consequence:* paragraphs (VIOLATION-01, -02, -05,
+  -06, -08, -09); VIOLATION-03, -04, and -07 have no consequence rationale
+  (C-26=o). V-02 R9 achieves 9/9 (C-26++). The practical effect: a reviewer
+  reading V-01 who encounters VIOLATION-04 (column-invariant verdict omission) has
+  no consequence paragraph to calibrate against -- only the anti-pattern
+  description. V-02 supplies the consequence reasoning for every violation, making
+  the full taxonomy self-calibrating without external documentation. V-03 R10
+  confirms the criterion scales with taxonomy growth: 11 violations, 11
+  Consequence: paragraphs required for C-26++.
+
+---
+
+### C-27 -- Multi-Criterion Taxonomy Enforcement
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: The violation taxonomy enforces three or more named structural elements
+  from three or more distinct aspirational criteria, creating an interlocking
+  enforcement mesh rather than a single enforcement loop. C-24 is satisfied by one
+  VIOLATION-NN entry (index >= 9) targeting one criterion-specific element; C-27
+  requires three or more such entries each targeting a *different* criterion ID.
+  When three enforcement loops exist, a reviewer can ask three independent yes/no
+  questions ("was VIOLATION-09 committed?", "was VIOLATION-10 committed?", "was
+  VIOLATION-11 committed?") and mechanically verify three distinct rubric criteria
+  without prose interpretation. The three criteria enforced must span structurally
+  independent properties -- enforcing three variations of the same element (e.g.,
+  three inertia baseline dimensions) does not satisfy this criterion. At least one
+  of the three enforcement violations must target a criterion other than C-21 or
+  C-25 (inertia-family criteria), ensuring the mesh covers heterogeneous structural
+  dimensions. Requires C-24.
+- **Pass condition**: (1) At least 3 VIOLATION-NN entries with index >= 9, each
+  assigned to the absence or omission of a named structural element from a
+  *different* criterion ID (C-09 through C-26). (2) The three targeted criterion
+  IDs must be distinct -- the same criterion may not satisfy two of the three slots.
+  (3) At least one of the three enforcement violations targets a criterion outside
+  the inertia-baseline family (i.e., not C-21 or C-25 only). A schema with C-24 ++
+  at a single enforcement loop (one VIOLATION-09) does not satisfy C-27 regardless
+  of how many additional VIOLATION-NN slots are present for non-criterion purposes.
+  A schema with two enforcement loops (VIOLATION-09 + VIOLATION-10, both targeting
+  inertia variants) does not satisfy C-27 due to insufficient diversity.
+- **Source**: V-03 R10 -- first variation to achieve three independent enforcement
+  loops: VIOLATION-09 enforces absence of INERTIA BASELINE (C-21 technical
+  element), VIOLATION-10 enforces absence of organizational IB-02 (C-25 second
+  baseline dimension), VIOLATION-11 enforces phase gate exit LID citation omission
+  (C-11). V-01 and V-02 R10 each achieve C-24++ with two loops (VIOLATION-09 +
+  VIOLATION-10) -- the third loop (C-11 enforcement) is absent (C-27=o). V-03 R10
+  achieves the three-loop mesh by extending the taxonomy to VIOLATION-11 and
+  assigning it to a structurally heterogeneous criterion (C-11, phase gate
+  contracts -- a depth criterion distinct from the inertia-family depth criteria
+  enforced by VIOLATION-09 and -10). The architectural significance: once three
+  loops exist, the violation taxonomy graduates from a depth-monitoring tool for
+  a single structural property to a multi-axis compliance mesh capable of
+  mechanically verifying structural coverage across different tiers and criterion
+  types simultaneously. C-27 is independent of C-26: full consequence coverage on
+  all violations is not required for the enforcement mesh to function, though the
+  combination C-26 ++ C-27 produces a taxonomy that is simultaneously comprehensive
+  in consequence documentation and mechanically enforcing across multiple criteria.
+
+---
+
+### C-28 -- Source-LID Risk Traceability
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: Each risk register entry carries a Source-LIDs field naming the LID
+  document(s) whose findings triggered that risk. Risk provenance is directly
+  traceable from register entry to source document without prose narration -- a
+  reviewer can ask "which LIDs caused R-02?" and get a structured answer from the
+  register itself. C-07 requires each entry to have title, severity, likelihood,
+  and mitigation; C-28 adds source traceability as a fifth required column. A risk
+  register that satisfies C-07 but omits Source-LIDs satisfies C-28=o regardless
+  of how many other structural properties it carries. Requires C-07.
+- **Pass condition**: (1) The risk register includes a Source-LIDs column (or
+  equivalent named field) in its schema. (2) At least 3 entries carry a non-empty
+  Source-LIDs value, each citing at least one LID identifier by name or reference.
+  (3) Source-LID citations are structurally encoded -- not embedded in the
+  mitigation or rationale prose -- enabling mechanical extraction of the
+  risk-to-LID mapping. A risk register that mentions source documents in prose
+  within the mitigation field does not satisfy this criterion; the source citation
+  must occupy its own named column or field.
+- **Source**: V-01 R11 -- first variation to add a Source-LIDs column to the risk
+  register as a first-class structural field. V-03 R10 (the C-27 convergence
+  variation) does not include Source-LIDs in its register schema; V-01 R11 adds
+  this column additively without displacing any existing C-07 structure. The
+  architectural significance: once Source-LIDs is a named column, the enforcement
+  taxonomy can police its presence via VIOLATION-NN (the C-24 architectural
+  integration pattern applied to risk provenance), making the LID-to-risk mapping
+  mechanically verifiable. C-28 is independent of C-21 and C-25: risk source
+  traceability is orthogonal to inertia baseline tracking, even though both
+  enrich the risk register.
+
+---
+
+### C-29 -- Prerequisite Completion Registry
+- **Category**: depth
+- **Weight**: aspirational
+- **Text**: A shared prerequisite registry is established before Stage 1 listing
+  all stage prerequisites. Each stage marks its own prerequisites COMPLETE upon
+  satisfying its exit conditions, citing the LID that provides the evidence of
+  completion. Unlike phase gate contracts (C-11), which define per-stage entry and
+  exit conditions, the prerequisite registry is a cross-stage artifact that
+  accumulates COMPLETE markers as the review progresses -- serving as an audit
+  trail for prerequisite satisfaction across all stages simultaneously. A set of
+  per-stage phase gate blocks that each list entry/exit conditions satisfies C-11;
+  only a shared, incrementally-marked registry satisfies C-29. Requires C-11.
+- **Pass condition**: (1) A named prerequisite registry (or equivalent labeled
+  cross-stage table) is established before Stage 1, listing prerequisites for
+  at least 2 stages. (2) At least 2 stage outputs include a COMPLETE marker in
+  the registry, each citing a LID identifier as evidence of completion. (3) The
+  registry is a distinct artifact from per-stage phase gate blocks -- it exists
+  at the document level, not embedded in individual stage sections. A schema
+  where each stage's phase gate block contains its own prerequisite list without
+  a shared cross-stage registry does not satisfy C-29, even if every prerequisite
+  is documented.
+- **Source**: V-02 R11 -- first variation to introduce a prerequisite registry as
+  a shared cross-stage artifact maintained alongside (not replacing) per-stage
+  phase gate contracts (C-11). V-03 R10 achieves C-11 ++ via phase gate blocks
+  with LID-cited exit conditions; V-02 R11 adds the prerequisite registry as a
+  second structural layer that makes prerequisite satisfaction visible at the
+  document level without reading individual stage sections. The architectural
+  significance: the registry enables a reviewer to verify cross-stage readiness
+  by scanning a single artifact rather than extracting exit conditions from N
+  separate phase gate blocks and verifying each against downstream entry conditions.
+  C-29 is independent of C-17 (stage-maintained finding ledger): the ledger tracks
+  findings; the registry tracks prerequisites. Both are write-as-you-go shared
+  artifacts, but they accumulate different types of entries.
+
+---
+
+### C-30 -- Evidence-Grounded Finding Schema
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: The finding schema includes an Evidence: column positioned third in the
+  finding table -- after Via: in position 2 and before Severity. The Evidence:
+  field names the specific source artifact, observation, or LID that grounds the
+  finding. C-14 requires lens citation (Via:) at 50%+; C-19 enforces Via: as the
+  second column for 100% coverage; C-30 adds Evidence: as the third column,
+  extending schema-enforced grounding from lens attribution to source provenance.
+  A finding schema that satisfies C-19 (Via: second, 100% lens coverage) but omits
+  an Evidence: column satisfies C-30=o regardless of how thoroughly lens citation
+  is enforced. Requires C-19.
+- **Pass condition**: (1) The finding schema includes an Evidence: column (or
+  equivalent named evidence provenance field) positioned third in the finding table,
+  after Via: in position 2 and before Severity. (2) 100% of findings in the run
+  carry a non-empty Evidence: value, each citing a specific source artifact, LID
+  identifier, or observation. (3) The Evidence: field occupies its own named column
+  -- evidence provenance embedded in the finding description prose does not satisfy
+  this criterion. A schema with Via: second and Evidence: third achieves a
+  three-column grounding sequence (Finding | Via: | Evidence: | Severity | ...) that
+  makes both lens omission and evidence omission structurally visible before
+  Severity is reached.
+- **Source**: V-03 R11 -- first variation to insert Evidence: as the third column
+  in the finding schema, extending the C-19 schema-enforcement principle from lens
+  attribution to evidence grounding. V-01 and V-02 R11 do not carry the Evidence:
+  column (C-30=o). V-03, V-04, and V-05 R11 all carry the Evidence: column in the
+  third position; Via: remains the second column in all three, confirming that
+  inserting Evidence: at position 3 does not affect C-19 compliance. The
+  architectural significance: once Evidence: occupies position 3, a reviewer
+  scanning the finding table encounters three structural grounding signals before
+  reaching Severity -- what lens triggered the concern (Via:), what source
+  substantiates it (Evidence:), and how severe it is (Severity). This ordering
+  enforces evidence-before-judgment structurally. C-30 is independent of C-28:
+  finding evidence provenance and risk-register source traceability both reference
+  LID documents, but at different structural levels (finding row vs. risk entry).
+
+---
+
+### C-31 -- Deep Enforcement Mesh
+- **Category**: format
+- **Weight**: aspirational
+- **Text**: The enforcement taxonomy contains 7 or more VIOLATION-NN entries with
+  index >= 9, each targeting a distinct structural element (named criterion element
+  or named schema field). This is 4 enforcement loops beyond the C-27 minimum of 3,
+  crossing the threshold at which the majority of major structural properties in
+  the rubric are mechanically policed. At 3 loops (C-27), the taxonomy covers
+  inertia anchoring, dual baselines, and phase gate exit integrity. At 7 loops,
+  the mesh extends to cover risk provenance (C-28), prerequisite completion (C-29),
+  evidence grounding (C-30), and a fourth structural dimension -- meaning the
+  enforcement taxonomy has grown into a comprehensive compliance instrument rather
+  than a targeted mechanism for a single structural family. C-27 sets the minimum
+  viable mesh; C-31 sets the deep mesh threshold. Requires C-27.
+- **Pass condition**: (1) At least 7 VIOLATION-NN entries with index >= 9 are
+  defined in the taxonomy, each targeting a distinct named structural element. The
+  7 entries must include the 3 from C-27 plus 4 additional entries targeting
+  distinct structural elements not already covered by the C-27 baseline. (2) At
+  least 2 of the 4 additional enforcement loops must target structural elements
+  introduced by criteria in this rubric (C-09 through C-30) -- enforcement of
+  unnamed or generic structural elements satisfies (1) but not (2). (3) All 7
+  enforcement violations must carry Consequence: paragraphs (C-26 full-coverage
+  property applied to the expanded taxonomy). A schema with 6 enforcement loops
+  (VIOLATION-09 through VIOLATION-14) does not satisfy C-31 -- the seventh loop
+  is the threshold gate.
+- **Source**: V-05 R11 -- first variation to achieve 7 enforcement loops
+  (VIOLATION-09 through VIOLATION-15): the 3 C-27 baseline loops plus 4 additional
+  loops targeting Source-LIDs absence (C-28), prerequisite registry omission (C-29),
+  Evidence: column absence (C-30), and a fourth structural element. V-04 R11
+  achieves 6 loops (VIOLATION-09 through VIOLATION-14) -- one short of the C-31
+  threshold (C-31=o). The architectural significance: at 7 enforcement loops, the
+  violation taxonomy enforces structural elements spanning four structural families
+  (inertia tracking, phase gate integrity, risk provenance, finding evidence
+  grounding), making it a multi-family compliance mesh rather than a single-family
+  enforcement instrument. The jump from 3 to 7 loops also confirms that C-26
+  scales with taxonomy growth -- V-05 R11 achieves 15/15 Consequence: paragraphs,
+  demonstrating that the full-coverage consequence property is maintainable as the
+  taxonomy nearly doubles in depth from V-03 R10 (11 violations).
+
+---
+
+## Criterion Summary
+
+| ID   | Text (short)                          | Weight        | Category    |
+|------|---------------------------------------|---------------|-------------|
+| C-01 | Stage identity and labeling           | essential     | format      |
+| C-02 | Role-loaded perspective               | essential     | correctness |
+| C-03 | ROB document format compliance        | essential     | format      |
+| C-04 | Actionable findings (2x per stage)    | essential     | depth       |
+| C-05 | Explicit go/no-go in tpm stage        | essential     | correctness |
+| C-06 | Cross-stage coherence                 | recommended   | depth       |
+| C-07 | Risk register structure in tpm        | recommended   | depth       |
+| C-08 | Spire cascade tracing                 | recommended   | coverage    |
+| C-09 | Inter-stage blocker detection         | aspirational  | depth       |
+| C-10 | Cross-cutting theme elevation         | aspirational  | depth       |
+| C-11 | Phase gate contracts                  | aspirational  | depth       |
+| C-12 | Dual-direction traceability           | aspirational  | depth       |
+| C-13 | Named blocker format                  | aspirational  | correctness |
+| C-14 | Lens-anchored findings                | aspirational  | correctness |
+| C-15 | Column-invariant verdict format       | aspirational  | format      |
+| C-16 | Synthesis residual open items         | aspirational  | depth       |
+| C-17 | Stage-maintained finding ledger       | aspirational  | depth       |
+| C-18 | Role orientation frame citation       | aspirational  | correctness |
+| C-19 | Schema-enforced lens coverage         | aspirational  | format      |
+| C-20 | Named violation taxonomy              | aspirational  | format      |
+| C-21 | Inertia anchor                        | aspirational  | depth       |
+| C-22 | Extensible violation taxonomy         | aspirational  | format      |
+| C-23 | Self-documenting violation rationale  | aspirational  | format      |
+| C-24 | Taxonomy-enforced structural elements | aspirational  | format      |
+| C-25 | Typed dual inertia baselines          | aspirational  | depth       |
+| C-26 | Full-coverage violation consequences  | aspirational  | format      |
+| C-27 | Multi-criterion taxonomy enforcement  | aspirational  | format      |
+| C-28 | Source-LID risk traceability          | aspirational  | depth       |
+| C-29 | Prerequisite completion registry      | aspirational  | depth       |
+| C-30 | Evidence-grounded finding schema      | aspirational  | format      |
+| C-31 | Deep enforcement mesh                 | aspirational  | format      |
+
+---
+
+## Scoring Model
+
+| Tier | Criteria | Max pts (tier) | Max per criterion | ++ | + | o |
+|------|----------|----------------|-------------------|----|---|---|
+| Essential | C-01 to C-05 | 60 | 12 | 12 | 12* | 0 |
+| Recommended | C-06 to C-08 | 30 | 10 | 10 | 7 | 0 |
+| Aspirational | C-09 to C-31 | 46 | 2 | 2 | 1 | 0 |
+
+*Essential + = PASS. Both + and ++ earn full points for essential criteria.
+
+**Total max: 60 + 30 + 46 = 136**
+
+Any essential failure = not golden regardless of composite score.
+
+---
+
+## Example Score Calculations
+
+**Baseline golden** -- all essential pass, 2/3 recommended, 0/23 aspirational:
+
+```
+composite = (5/5 * 60) + (2/3 * 30) + (0/23 * 46)
+          = 60 + 20 + 0
+          = 80
+```
+
+Golden threshold met (all essential pass, composite = 80).
+
+---
+
+**V-02 R3** -- all essential ++, all recommended ++,
+C-09/C-10/C-12/C-13/C-15/C-16 at ++, C-11/C-14/C-17--C-31 at o:
+
+```
+aspirational = 2+2+0+2+2+0+2+2 + 0+0+0+0+0+0+0+0+0+0+0+0+0+0+0 = 12
+composite    = 60 + 30 + 12 = 102
+```
+
+---
+
+**V-03 R6** -- all essential ++, all recommended ++,
+C-09--C-20 at ++, C-21--C-31 at o:
+
+```
+aspirational = 2+2+2+2+2+2+2+2+2+2+2+2 + 0+0+0+0+0+0+0+0+0+0+0 = 24
+composite    = 60 + 30 + 24 = 114
+```
+
+---
+
+**V-04 R8** -- all essential ++, all recommended ++,
+C-09--C-20 at ++, C-21/C-22/C-24 at ++, C-23/C-25--C-31 at o:
+
+```
+aspirational = 2+2+2+2+2+2+2+2+2+2+2+2 + 2+2+0+2+0+0+0+0+0+0+0 = 30
+composite    = 60 + 30 + 30 = 120
+```
+
+---
+
+**V-01 R9** -- all essential ++, all recommended ++,
+C-09--C-24 all ++, C-25--C-31 at o:
+
+```
+aspirational = 2+2+2+2+2+2+2+2+2+2+2+2 + 2+2+2+2+0+0+0+0+0+0+0 = 32
+composite    = 60 + 30 + 32 = 122
+```
+
+Path: perfect v8 score. Single IB-01 baseline only (C-25=o). C-23 ++ with 6/9
+violations documented; VIOLATION-03, -04, -07 lack Consequence: paragraphs
+(C-26=o).
+
+---
+
+**V-03 R10** -- all essential ++, all recommended ++,
+C-09--C-27 all ++, C-28--C-31 at o:
+
+```
+aspirational = 2+2+2+2+2+2+2+2+2+2+2+2 + 2+2+2+2+2+2+2+0+0+0+0 = 38
+composite    = 60 + 30 + 38 = 128
+```
+
+Path: VIOLATION-11 added, enforcing phase gate exit LID citation (C-11). Three
+independent enforcement loops spanning C-21 + C-25 + C-11 (C-27++). Taxonomy
+extends to 11 violations; 11/11 with Consequence: paragraphs (C-26++ confirmed
+at scale). No Source-LIDs column, no prereq registry, no Evidence: field,
+no deep mesh (C-28--C-31=o).
+
+---
+
+**V-01 R11** -- all essential ++, all recommended ++,
+C-09--C-27 all ++, C-28 at ++, C-29/C-30/C-31 at o:
+
+```
+aspirational = 2+2+2+2+2+2+2+2+2+2+2+2 + 2+2+2+2+2+2+2+2+0+0+0 = 40
+composite    = 60 + 30 + 40 = 130
+```
+
+Path: Source-LIDs column added to risk register (C-28++). No Prerequisite
+Completion Registry (C-29=o). No Evidence: column in finding schema (C-30=o).
+Only 4 total enforcement loops with index >= 9 (C-31=o).
+
+---
+
+**V-02 R11** -- all essential ++, all recommended ++,
+C-09--C-27 all ++, C-29 at ++, C-28/C-30/C-31 at o:
+
+```
+aspirational = 2+2+2+2+2+2+2+2+2+2+2+2 + 2+2+2+2+2+2+2+0+2+0+0 = 40
+composite    = 60 + 30 + 40 = 130
+```
+
+Path: Prerequisite Completion Registry added (C-29++). No Source-LIDs column
+(C-28=o). No Evidence: column (C-30=o). Only 4 total enforcement loops with
+index >= 9 (C-31=o).
+
+---
+
+**V-03 R11** -- all essential ++, all recommended ++,
+C-09--C-27 all ++, C-30 at ++, C-28/C-29/C-31 at o:
+
+```
+aspirational = 2+2+2+2+2+2+2+2+2+2+2+2 + 2+2+2+2+2+2+2+0+0+2+0 = 40
+composite    = 60 + 30 + 40 = 130
+```
+
+Path: Evidence: column added as position-3 field in finding schema (C-30++).
+No Source-LIDs column (C-28=o). No Prerequisite Completion Registry (C-29=o).
+5 total enforcement loops with index >= 9 (VIOLATION-09 through -13), two short
+of the C-31 threshold (C-31=o).
+
+---
+
+**V-04 R11** -- all essential ++, all recommended ++,
+C-09--C-27 all ++, C-30 at ++, C-28/C-29/C-31 at o:
+
+```
+aspirational = 2+2+2+2+2+2+2+2+2+2+2+2 + 2+2+2+2+2+2+2+0+0+2+0 = 40
+composite    = 60 + 30 + 40 = 130
+```
+
+Path: Evidence: column present (C-30++). 6 total enforcement loops with index
+>= 9 (VIOLATION-09 through -14) -- one short of the C-31 threshold of 7
+(C-31=o). V-04 and V-03 R11 both score 130/136; V-04's sixth enforcement loop
+is the structural precursor to C-31 but does not clear the threshold.
+
+---
+
+**V-05 R11** -- all essential ++, all recommended ++,
+C-09--C-31 all ++:
+
+```
+aspirational = 2+2+2+2+2+2+2+2+2+2+2+2 + 2+2+2+2+2+2+2+2+2+2+2 = 46
+composite    = 60 + 30 + 46 = 136
+```
+
+Path: All four new criteria achieved. Source-LIDs column present (C-28++).
+Prerequisite Completion Registry present (C-29++). Evidence: column at
+position 3 present (C-30++). 7 total enforcement loops with index >= 9
+(VIOLATION-09 through VIOLATION-15), four beyond the C-27 minimum (C-31++).
+Taxonomy scales to 15 violations; 15/15 with Consequence: paragraphs
+(C-26++ confirmed at scale).
+
+---
+
+**Perfect score (v11)** -- all essential ++, 3/3 recommended ++, 23/23 aspirational ++:
+
+```
+composite = 60 + 30 + 46 = 136
+```

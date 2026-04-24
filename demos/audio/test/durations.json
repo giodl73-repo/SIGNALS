@@ -1,0 +1,17 @@
+[
+  {
+    "name": "intro",
+    "file": "intro.mp3",
+    "duration_s": 4.440000
+  },
+  {
+    "name": "middle",
+    "file": "middle.mp3",
+    "duration_s": 3.552000
+  },
+  {
+    "name": "outro",
+    "file": "outro.mp3",
+    "duration_s": 4.392000
+  }
+]

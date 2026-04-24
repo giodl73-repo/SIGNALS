@@ -1,0 +1,25 @@
+# Signal artifact outputs (nested paths under signals/)
+# Source prompt bodies live at signals/*.md (flat)
+# Artifacts live at signals/{namespace}/{skill}/*.md (nested)
+signals/*/
+signals/*/*/
+
+# Node / Python
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
+.github/prompts/
+
+# Experiment snapshots and generated artifacts (Pass 2 cleanup)
+study/
+output/
+release/
+from-program/
+from-contract/
+from-intent/
+C:/

@@ -1,0 +1,35 @@
+condition=low run=1 findings_est=19
+condition=low run=2 findings_est=16
+condition=low run=3 findings_est=0
+0
+condition=low run=4 findings_est=14
+condition=low run=5 findings_est=17
+condition=low run=6 findings_est=0
+0
+condition=low run=7 findings_est=12
+condition=low run=8 findings_est=13
+condition=low run=9 findings_est=0
+0
+condition=low run=10 findings_est=12
+condition=standard run=1 findings_est=19
+condition=standard run=2 findings_est=11
+condition=standard run=3 findings_est=17
+condition=standard run=4 findings_est=16
+condition=standard run=5 findings_est=24
+condition=standard run=6 findings_est=13
+condition=standard run=7 findings_est=14
+condition=standard run=8 findings_est=13
+condition=standard run=9 findings_est=10
+condition=standard run=10 findings_est=12
+condition=strict run=1 findings_est=8
+condition=strict run=2 findings_est=10
+condition=strict run=3 findings_est=8
+condition=strict run=4 findings_est=0
+0
+condition=strict run=5 findings_est=12
+condition=strict run=6 findings_est=7
+condition=strict run=7 findings_est=9
+condition=strict run=8 findings_est=0
+0
+condition=strict run=9 findings_est=9
+condition=strict run=10 findings_est=13

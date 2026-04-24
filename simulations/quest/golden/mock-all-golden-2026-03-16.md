@@ -1,0 +1,404 @@
+---
+skill: quest-golden
+skill_target: mock-all
+date: 2026-03-16
+rounds: 20
+rubric_final: mock-all-rubric-v21-2026-03-16.md
+score: 100.0
+status: GOLDEN
+---
+
+# mock-all -- Golden Prompt
+
+**Skill:** mock-all
+**Score:** 100.0 / 100.0
+**Rubric:** v21 (denominator 33: C-09 through C-41)
+**Winning variation:** V-05 (Round 20)
+**Selection rationale:** V-04 and V-05 both score 100.0; V-05 selected because it eliminates
+model-behavior risk on C-40 via pre-seeded example phrases rather than instruction-only domain
+constraints -- same rubric score, stronger structural guarantee.
+
+---
+
+## What Made It Golden
+
+**1. Architecturally separate declarations (C-39)**
+The prompt establishes two named declarations before any role activates. Declaration A governs
+only the REAL-REQUIRED canonical identifier; Declaration B governs only per-stage inertia
+extension firing. Neither declaration contains language belonging to the other's scope. Earlier
+variations (V-01, V-03) cross-contaminated by having each declaration mention both dimensions,
+making the labeling decorative rather than structurally enforced.
+
+**2. Pre-seeded stage instance examples, not instruction-only constraints (C-40/C-41)**
+Each stage body contains a printed example phrase in the correct artifact-domain vocabulary
+before the model ever writes. Stage 1 example names a HIGH-STRUCTURE domain ("the trigger
+condition that determines when {topic}'s state machine transitions..."). Stage 2 names an
+EVIDENCE-HEAVY domain ("the prototype result showing whether {topic}'s core hypothesis
+held..."). Stage 3 names a MIXED domain ("the open question about whether {topic}'s
+positioning holds..."). The model copies or adapts a pre-printed phrase rather than generating
+from a domain-constraint instruction -- eliminating the risk that a model ignoring the
+instruction produces a generic cross-stage phrase.
+
+**3. Ontological role identity with named category error (C-18, C-26)**
+Roles are not process positions -- they are ontological states. The prompt names the specific
+category error: "Producing artifact output while in the CLASSIFIER role means you have ceased
+to be the CLASSIFIER and have become the GENERATOR, which you are not yet. That is a category
+error: the CLASSIFIER does not have the capacity to produce artifacts, because artifact
+production is what the GENERATOR is, not what the CLASSIFIER is." This framing reinforces
+role isolation at the identity level rather than instruction level.
+
+**4. Authoritative seed list with verbatim-copy requirement (C-19, C-21, C-23)**
+Nine seed phrases are declared before ROLE 1 as an authoritative source list. The STOP gate
+explicitly prohibits paraphrases: "A restatement, synonym, abbreviated form, or adaptation of
+a seed phrase is not the seed phrase." The pre-seeded skeleton column in the classification
+table is populated with these verbatim phrases, making the classification output the ground
+truth the GENERATOR extends.
+
+**5. REAL-REQUIRED Rationale as template-authored canonical block (C-22)**
+The REAL-REQUIRED rationale content is pre-authored in the skill template body with the
+declaration "The template is the author; the GENERATOR copies." The GENERATOR copies verbatim
+by canonical identifier (not by location heuristic), enforced both by Declaration A and by
+each stage's STOP gate. This ensures empirical-validity language is consistent across all
+runs rather than model-generated per invocation.
+
+---
+
+## Prompt Body
+
+You are running /mock:all.
+
+Input:
+  Topic:      {topic}
+  Tier:       {1|2|3} -- read from TOPICS.md if not specified; default 1
+  Compliance: --compliance (if provided)
+
+Read TOPICS.md. Record tier and compliance tags for {topic}.
+State: `Tier: {N}  (source: TOPICS.md | --tier | default)`
+
+This skill runs four sequential roles: CLASSIFIER, GENERATOR, SUMMARIZER, HANDOFF WRITER.
+Each role has a named identity. You ARE each role while it is active -- not as a process
+position but as an ontological state. The CLASSIFIER is not the GENERATOR. Producing
+artifact output while in the CLASSIFIER role means you have ceased to be the CLASSIFIER
+and have become the GENERATOR, which you are not yet. That is a category error: the
+CLASSIFIER does not have the capacity to produce artifacts, because artifact production is
+what the GENERATOR is, not what the CLASSIFIER is. Each role begins at its named header
+and ends at its STOP gate.
+
+This template establishes two structural authority declarations before any role is activated:
+
+**Declaration A -- Rationale identifier authority:** "REAL-REQUIRED" is the canonical
+identifier for the rationale section in this template. The ROLE 2 STOP gate and each stage's
+REAL-REQUIRED block reference this section by its canonical identifier. The GENERATOR copies
+from the REAL-REQUIRED Rationale section by canonical name, not by location heuristic. Any
+gate text referencing "the pre-authored REAL-REQUIRED rationale" names this section by its
+canonical identifier per Declaration A.
+
+**Declaration B -- Per-stage inertia extension authority:** The inertia extension
+`-- specifically, {instance}` is a required instruction at every artifact-collection stage.
+It is not a shared preamble instruction applied once across all stages; it fires
+independently within Stage 1, Stage 2, and Stage 3. The per-stage STOP gates enforce this
+requirement individually at each stage boundary per Declaration B. Completing a stage
+without per-artifact inertia extension is a Declaration B violation and fails the stage gate.
+
+---
+
+### ROLE 1 -- CLASSIFIER
+
+You ARE the CLASSIFIER. Your sole output is the classification table below, fully populated.
+You classify. Nothing else.
+
+Skeleton seed phrases -- copy one verbatim into the Inertia-Gap column for each namespace.
+This list is the authoritative seed source for the skeleton column:
+
+- scout: directional market signals and competitor positioning
+- draft: the structural shape of the feature and its core acceptance criteria
+- review: design quality judgment and stakeholder risk flags
+- flow: the state transition contract and trigger conditions
+- trace: the component boundary contract and integration failure modes
+- prove: empirical validation of the core hypothesis
+- listen: real adoption evidence and friction points from actual users
+- program: delivery milestones, owner assignments, and sequencing rationale
+- topic: a unified coverage signal that shows which namespaces are ready
+
+| Namespace | Category | MUST use | DO NOT use | Tier 2/3 Critical | Compliance-Tagged | REAL-REQUIRED | Inertia gap skeleton: Without this signal, {topic}'s story would be missing: ___ |
+|-----------|----------|----------|------------|-------------------|-------------------|---------------|-----------------------------------------------------------------------------------|
+| scout | MIXED | discovery language: signals, findings, open questions, directional hypotheses | pure specification language; pure study methodology framing | NO | YES if --compliance or TOPICS.md compliance tag; else NO | NO unless Compliance-Tagged YES | directional market signals and competitor positioning |
+| draft | MIXED | structural scaffold: sections, properties, acceptance criteria | pure specification language; pure study methodology framing | NO | NO | NO | the structural shape of the feature and its core acceptance criteria |
+| review | MIXED | qualitative observations; design judgments; structural rationale | pure specification language; pure study methodology framing | NO | NO | NO | design quality judgment and stakeholder risk flags |
+| flow | HIGH-STRUCTURE | specification language: state transitions, trigger conditions, data flow contracts, schema shapes | interview language; user quotes; adoption percentages; study framing | NO | NO | NO | the state transition contract and trigger conditions |
+| trace | HIGH-STRUCTURE | specification language: interfaces, component boundaries, contracts, state transitions, configuration keys | interview language; adoption rates; user quotes; study framing | YES if tier >= 2; else NO | YES if --compliance or TOPICS.md tag; else NO | NO unless Compliance-Tagged YES | the component boundary contract and integration failure modes |
+| prove | EVIDENCE-HEAVY | study/data framing: "N of M tests showed...", "prototype against {topic} produced...", hypothesis-and-result | specification language; schema definitions; contract structures | NO | NO | YES | empirical validation of the core hypothesis |
+| listen | EVIDENCE-HEAVY | study/data framing: adoption rates, "N users found...", survey response framing | specification language; state machine language; schema definitions | YES if tier >= 2; else NO | NO | YES | real adoption evidence and friction points from actual users |
+| program | MIXED | structural scaffold: milestones, owners, dependencies; qualitative rationale | pure specification language; pure study methodology framing | NO | NO | NO | delivery milestones, owner assignments, and sequencing rationale |
+| topic | MIXED | signal synthesis narrative; structured coverage reference | pure specification language alone | NO | NO | NO | a unified coverage signal that shows which namespaces are ready |
+
+**ROLE 1 STOP -- Do not activate ROLE 2 -- GENERATOR until all nine namespace rows are fully
+populated across all seven fields: Category, MUST use, DO NOT use, Tier 2/3 Critical,
+Compliance-Tagged, REAL-REQUIRED, and Inertia gap skeleton. The column names above are the
+required field names -- use them verbatim. The Inertia gap skeleton cell for each row must be
+the verbatim seed phrase from the list above, not a paraphrase. A restatement, synonym,
+abbreviated form, or adaptation of a seed phrase is not the seed phrase. Check each skeleton
+cell against the list before proceeding.**
+
+---
+
+### ROLE 2 -- GENERATOR
+
+You ARE the GENERATOR. Produce nine namespace artifact sections across three collection
+stages, ordered by register category. Do not write a coverage summary. You generate.
+Nothing else.
+
+---
+
+**REAL-REQUIRED Rationale**
+
+"REAL-REQUIRED" is the canonical identifier for this section, per Declaration A. The
+following rationale content is pre-authored here in the skill template body. The GENERATOR
+copies verbatim from this REAL-REQUIRED Rationale section into each applicable namespace
+block. The template is the author; the GENERATOR copies. Do not substitute, paraphrase,
+or expand:
+
+- prove: Empirical validation of the core hypothesis requires actual prototype output and
+  observed system behavior -- synthetic generation produces plausible structure without
+  the falsifiability that makes the signal meaningful.
+- listen: Adoption evidence and friction discovery require contact with actual users --
+  synthetic responses cannot surface the unanticipated friction patterns or reveal the
+  gap between stated intent and observed behavior.
+- compliance-tagged: Compliance-flagged namespaces require traceable real-world sources --
+  a synthetic artifact produces the structural appearance of compliance coverage without
+  the audit-trail substance that traceable sources provide.
+
+---
+
+**Stage 1 -- HIGH-STRUCTURE namespaces (flow, trace)**
+
+Per Declaration B: extend the inertia skeleton for each artifact in this stage.
+The instance phrase names a HIGH-STRUCTURE artifact domain for {topic}. Example:
+"the trigger condition that determines when {topic}'s state machine transitions from
+PENDING to ACTIVE under nominal load."
+> Without this signal, {topic}'s feature story would be missing: {ROLE 1 skeleton phrase}
+> -- specifically, {one phrase: a state transition / boundary contract / trigger condition /
+>    configuration key that is the HIGH-STRUCTURE contribution of this namespace to {topic}
+>    -- not a phrase equally valid for an EVIDENCE-HEAVY or MIXED namespace}.
+
+For each namespace (flow, trace):
+
+  #### {namespace} -- {skill name}
+
+  **MOCK ARTIFACT**
+  Skill:    {namespace}:{skill-name}
+  Topic:    {topic}
+  Category: HIGH-STRUCTURE
+  Date:     {today}
+  Status:   MOCK
+
+  **Without this signal, {topic}'s feature story would be missing:**
+  {ROLE 1 skeleton phrase} -- specifically, {HIGH-STRUCTURE instance: e.g., "the trigger
+  condition that governs {topic}'s {X} state transition under {Y}"}
+
+  {3-5 sentence body; specification language; state/contract/boundary vocabulary;
+  DO NOT use interview language, adoption rates, or study framing}
+
+  [If REAL-REQUIRED = YES (compliance-tagged trace):]
+  REAL-REQUIRED: A synthetic artifact cannot substitute for real signal here.
+  Rationale: {verbatim text from the REAL-REQUIRED Rationale above for compliance-tagged}
+
+**STAGE 1 STOP -- Do not proceed to Stage 2 until: (1) flow and trace artifact sections are
+complete; (2) each has a MOCK ARTIFACT header with all five fields; (3) each has an extended
+inertia statement with the skeleton phrase and a HIGH-STRUCTURE instance phrase per
+Declaration B -- the instance phrase names a state transition, boundary contract, trigger
+condition, or configuration key for {topic} and would not be valid in a Stage 2 or Stage 3
+artifact; (4) each body is 3-5 sentences with HIGH-STRUCTURE vocabulary; (5) any
+compliance-tagged namespace has a REAL-REQUIRED block with pre-authored REAL-REQUIRED
+rationale copied verbatim per Declaration A.**
+
+---
+
+**Stage 2 -- EVIDENCE-HEAVY namespaces (prove, listen)**
+
+Per Declaration B: extend the inertia skeleton for each artifact in this stage.
+The instance phrase names an EVIDENCE-HEAVY artifact domain for {topic}. Example:
+"the prototype result showing whether {topic}'s core hypothesis held under the N=20
+test run against realistic input data."
+> Without this signal, {topic}'s feature story would be missing: {ROLE 1 skeleton phrase}
+> -- specifically, {one phrase: a study finding / empirical result / adoption measurement /
+>    hypothesis outcome that is the EVIDENCE-HEAVY contribution of this namespace to {topic}
+>    -- not a phrase equally valid for a HIGH-STRUCTURE or MIXED namespace}.
+
+For each namespace (prove, listen):
+
+  #### {namespace} -- {skill name}
+
+  **MOCK ARTIFACT**
+  Skill:    {namespace}:{skill-name}
+  Topic:    {topic}
+  Category: EVIDENCE-HEAVY
+  Date:     {today}
+  Status:   MOCK
+
+  **Without this signal, {topic}'s feature story would be missing:**
+  {ROLE 1 skeleton phrase} -- specifically, {EVIDENCE-HEAVY instance: e.g., "the
+  prototype result confirming whether {topic}'s hypothesis held under realistic load"}
+
+  {3-5 sentence body; study/data language; hypothesis-and-result framing;
+  DO NOT use specification language or schema definitions}
+
+  REAL-REQUIRED: A synthetic artifact cannot substitute for real signal here.
+  Rationale: {verbatim text from the REAL-REQUIRED Rationale above for this namespace}
+
+**STAGE 2 STOP -- Do not proceed to Stage 3 until: (1) prove and listen artifact sections
+are complete; (2) each has a MOCK ARTIFACT header with all five fields; (3) each has an
+extended inertia statement with the skeleton phrase and an EVIDENCE-HEAVY instance phrase
+per Declaration B -- the instance phrase names a study finding, empirical result, adoption
+measurement, or hypothesis outcome for {topic} and would not be valid in a Stage 1 or Stage
+3 artifact; (4) each body is 3-5 sentences with EVIDENCE-HEAVY vocabulary; (5) each has a
+REAL-REQUIRED block with pre-authored REAL-REQUIRED rationale copied verbatim per
+Declaration A.**
+
+---
+
+**Stage 3 -- MIXED namespaces (scout, draft, review, program, topic)**
+
+Per Declaration B: extend the inertia skeleton for each artifact in this stage.
+The instance phrase names a MIXED artifact domain for {topic}. Example:
+"the open question about whether {topic}'s positioning holds against the closest
+competitor's announced roadmap."
+> Without this signal, {topic}'s feature story would be missing: {ROLE 1 skeleton phrase}
+> -- specifically, {one phrase: a market signal / design judgment / delivery milestone /
+>    coverage gap that is the MIXED contribution of this namespace to {topic}
+>    -- not a phrase equally valid for a HIGH-STRUCTURE or EVIDENCE-HEAVY namespace}.
+
+For each namespace (scout, draft, review, program, topic):
+
+  #### {namespace} -- {skill name}
+
+  **MOCK ARTIFACT**
+  Skill:    {namespace}:{skill-name}
+  Topic:    {topic}
+  Category: MIXED
+  Date:     {today}
+  Status:   MOCK
+
+  **Without this signal, {topic}'s feature story would be missing:**
+  {ROLE 1 skeleton phrase} -- specifically, {MIXED instance: e.g., "the open question
+  about {topic}'s positioning against the closest competitor's announced roadmap"}
+
+  {3-5 sentence body; discovery/signal language or structural scaffold vocabulary as
+  appropriate per ROLE 1; MUST-use vocabulary applied; DO NOT-use vocabulary avoided}
+
+  [If REAL-REQUIRED = YES (compliance-tagged scout):]
+  REAL-REQUIRED: A synthetic artifact cannot substitute for real signal here.
+  Rationale: {verbatim text from the REAL-REQUIRED Rationale above for compliance-tagged}
+
+**ROLE 2 STOP -- Do not activate ROLE 3 -- SUMMARIZER until: (1) nine artifact sections
+present across all three stages; (2) each has a complete MOCK ARTIFACT header with all five
+fields (Skill, Topic, Category, Date, Status: MOCK); (3) each has an extended inertia
+statement with the skeleton seed phrase and a stage-category-specific instance phrase per
+Declaration B -- HIGH-STRUCTURE instance at Stage 1 (naming a state transition, boundary
+contract, trigger condition, or configuration key), EVIDENCE-HEAVY instance at Stage 2
+(naming a study finding, empirical result, adoption measurement, or hypothesis outcome),
+MIXED instance at Stage 3 (naming a market signal, design judgment, delivery milestone, or
+coverage gap) -- each instance phrase valid only for its stage category, not cross-stage;
+(4) each body is 3-5 sentences, vocabulary-compliant, register-matched; (5) every
+REAL-REQUIRED = YES namespace has a REAL-REQUIRED block with the pre-authored REAL-REQUIRED
+rationale above copied verbatim per Declaration A.**
+
+---
+
+### ROLE 3 -- SUMMARIZER
+
+You ARE the SUMMARIZER. Produce the coverage summary table. Writing the handoff here means
+you have become the HANDOFF WRITER, which you are not yet. You summarize. Nothing else.
+
+## Coverage Summary
+
+| Namespace | Category | Flag | Recommended Next Step |
+|-----------|----------|------|-----------------------|
+
+Flag rules:
+- REAL-REQUIRED: all namespaces where REAL-REQUIRED = YES in ROLE 1
+- TIER-2-CRITICAL: trace at tier >= 2; listen at tier >= 2
+- Multiple flags: comma-separated
+- No applicable flag: --
+
+Recommended Next Step: derive from the ROLE 2 extended inertia statement for this namespace.
+Must name the skill that closes the concrete gap. Format: `/namespace:skill {topic}`.
+
+**ROLE 3 STOP -- Do not activate ROLE 4 -- HANDOFF WRITER until: (1) nine rows present;
+(2) each row has Category matching ROLE 1; (3) each row has all applicable Flags; (4) each
+Recommended Next Step is derived from the ROLE 2 inertia statement and names a specific
+skill invocation.**
+
+---
+
+### ROLE 4 -- HANDOFF WRITER
+
+You ARE the HANDOFF WRITER. Write only the handoff section.
+
+#### HANDOFF
+
+Artifact written: simulations/mock/{topic}-mock-all-{date}.md
+Next: /mock:review {topic} simulations/mock/{topic}-mock-all-{date}.md
+
+---
+
+## Final Rubric Criteria Summary (v21)
+
+**Denominator:** 33 (C-09 through C-41)
+**Formula:** `(E/5 x 60) + (R/3 x 30) + (A/33 x 10)`
+
+### Essential (60 pts)
+
+| # | Criterion |
+|---|-----------|
+| E-01 | TOPICS.md lookup + tier state line before any role activates |
+| E-02 | Classification table with correct column headers |
+| E-03 | Nine namespace rows in classification table |
+| E-04 | Sequential gated phases that cannot be skipped |
+| E-05 | REAL-REQUIRED block structure with at least one entry |
+
+### Recommended (30 pts)
+
+| # | Criterion |
+|---|-----------|
+| R-01 | Per-namespace MUST/DO NOT vocabulary in each row |
+| R-02 | Explicit body vocabulary compliance instruction |
+| R-03 | Stage STOP gates reference classification-derived conditions |
+
+### Aspirational (10 pts, denominator 33)
+
+| # | Criterion | Source round |
+|---|-----------|--------------|
+| C-09 | TOPICS.md lookup + tier state present before any role | baseline |
+| C-10 | Classification table column headers present and correctly named | baseline |
+| C-11 | Nine namespace rows present | baseline |
+| C-12 | Sequential gated phases; phases cannot be skipped | baseline |
+| C-13 | REAL-REQUIRED block structure present | baseline |
+| C-14 | Per-namespace MUST/DO NOT use vocabulary present | baseline |
+| C-15 | Body vocabulary compliance instruction present | baseline |
+| C-16 | Stage STOP gate references classification-derived conditions | baseline |
+| C-17 | Inertia extension instruction present | baseline |
+| C-18 | Named phases with ontological violation mechanism | R-early |
+| C-19 | Depth-anchored seed phrases present | R-early |
+| C-20 | Body-grounding instruction present | R-early |
+| C-21 | Inertia gap skeleton column pre-seeded in template body | R-early |
+| C-22 | REAL-REQUIRED rationale copied by canonical identifier, not location heuristic | R-mid |
+| C-23 | Per-namespace seed phrases drawn from authoritative list declared before ROLE 1 | R-mid |
+| C-24 | Stage 1 STOP gate checks compliance-tagged namespaces have REAL-REQUIRED block | R-mid |
+| C-25 | Stage 2 STOP gate checks REAL-REQUIRED = YES namespaces addressed | R-mid |
+| C-26 | Ontological identity framing names specific category error | R-mid |
+| C-27 | ROLE 2 STOP gate checks all nine artifacts present | R-mid |
+| C-28 | ROLE 2 STOP gate checks REAL-REQUIRED blocks reference pre-authored rationale | R-mid |
+| C-29 | ROLE 3 STOP gate checks Recommended Next Step names a specific skill invocation | R-mid |
+| C-30 | ROLE 4 STOP gate or identity framing prevents premature handoff writing | R-mid |
+| C-31 | Compliance-tagged namespaces identified conditionally based on tier and flags | R-late |
+| C-32 | ROLE 1 STOP gate checks verbatim seed phrase (no paraphrase) | R-late |
+| C-33 | Pre-authored REAL-REQUIRED rationale names three distinct entry types | R-late |
+| C-34 | ROLE 2 STOP gate enforces stage-category-specific vocabulary compliance | R-late |
+| C-35 | ROLE 3 STOP gate checks Category matches ROLE 1 | R-late |
+| C-36 | Two compliance dimensions (REAL-REQUIRED identifier scope; per-stage firing scope) are formally labeled as distinct declarations | R18 |
+| C-37 | Declaration B names each of the three stages by number or label | R18 |
+| C-38 | ROLE 2 STOP gate references both declarations by name | R19 |
+| C-39 | Declarations architecturally separate: Declaration A contains no per-stage firing language; Declaration B contains no REAL-REQUIRED identifier language | R20 |
+| C-40 | Stage body inertia instance phrase is stage-specific (HIGH-STRUCTURE / EVIDENCE-HEAVY / MIXED domain vocabulary) -- not a generic placeholder valid across stages | R20 |
+| C-41 | C-40 is enforced by pre-seeded example phrase per stage, not instruction-only domain constraint | R20 |

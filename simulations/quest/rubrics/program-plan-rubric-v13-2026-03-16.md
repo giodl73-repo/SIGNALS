@@ -1,0 +1,1328 @@
+# program-plan Rubric — v13
+
+Evaluates a `program:plan` prompt against Signal's plugin contract and evidence-quality bar.
+36 aspirational criteria, 4 essential, 3 recommended. Total max: **270 pts**.
+
+---
+
+## Essential Criteria (structural correctness — 60 pts)
+
+### C-01 — Valid YAML Structure
+- **Weight**: essential
+- **Category**: correctness
+- **Text**: The output is valid, parseable YAML with `program:` as the top-level key and
+  `stages:` as a list of stage objects. Each stage has at minimum a `name:` field and a
+  `skills:` list. A response that is prose only, a bulleted list, or syntactically invalid
+  YAML fails this criterion immediately. A plan with a `program:` key but missing `stages:`
+  also fails.
+- **Pass condition**: The YAML is parseable and structurally complete: `program:` top-level key,
+  `stages:` list, each stage has `name:` and `skills:`. Prose plans and bulleted-list plans fail.
+
+### C-02 — Echo Stage Contract
+- **Weight**: essential
+- **Category**: correctness
+- **Text**: The last stage in the `stages:` list has `name: echo`, `skills: []`, and
+  `auto: true`. Any plan where echo has skills listed in it, echo is missing `auto: true`, or
+  echo is absent entirely fails. The echo contract is a hard requirement from plugin design.
+- **Pass condition**: The final stage is named `echo`, carries an empty `skills` list, and has
+  `auto: true` set. Echo in any non-terminal position, echo with any skills listed, or echo
+  missing `auto: true` all fail regardless of how well the rest of the plan scores.
+
+### C-03 — Valid Signal Skill Names Only
+- **Weight**: essential
+- **Category**: correctness
+- **Text**: Every entry in every `skills` list is a real, namespace-qualified skill from
+  Signal's 9-namespace catalog: `scout`, `draft`, `review`, `flow`, `trace`, `prove`, `listen`,
+  `program`, `topic`. Valid format: `namespace:skill` (e.g., `scout:feasibility`, `flow:lifecycle`,
+  `prove:interview`). Invented skill names, unrecognized namespaces, plain English phrases,
+  and namespace-only entries (e.g., `scout:` alone) all fail. A plan with even one invented
+  skill name fails this criterion.
+- **Pass condition**: Every `skills` entry in every stage is a real, namespace-qualified skill
+  from Signal's catalog. No invented names, no namespace-only entries. The echo stage's empty
+  `skills: []` is correct and does not fail this criterion.
+
+### C-04 — Evidence-State Gates Only
+- **Weight**: essential
+- **Category**: correctness
+- **Text**: Every non-echo stage has a `gate:` field whose value describes an artifact-presence
+  or evidence-state condition: what must exist, what must be true of artifacts, what signals
+  must be present -- not whether skills have been run or tasks have been completed. Execution-
+  state gates (`"done"`, `"complete"`, `"skills executed"`, `"proceed to next stage"`) fail this
+  criterion. Evidence-state gates (`"scout:feasibility artifact present"`, `"at least 2
+  review:design signals with PASS"`, `"draft:spec reviewed and approved"`) pass. The distinction
+  is verifiability by artifact inspection rather than execution history.
+- **Pass condition**: All non-echo stage gates describe artifact-presence or evidence-state
+  conditions. Every gate must be verifiable by examining artifacts, not by checking execution
+  history. A single execution-state gate fails the criterion for the entire plan.
+
+---
+
+## Recommended Criteria (quality bar — 30 pts)
+
+### C-05 — Namespace Dependency Order Respected
+- **Weight**: recommended
+- **Category**: quality
+- **Text**: Skills are sequenced to respect Signal's namespace dependency layer: `scout` skills
+  precede `draft` skills, `draft:spec` must exist before `review:*` skills, `review` signals
+  must precede `flow`, `trace`, `prove`, and `listen` skills. A plan that places `review:design`
+  in a stage before any `draft:spec` skill has run violates C-05, because design review requires
+  a spec artifact to review. The dependency order is semantic: skills that consume artifacts
+  must appear after stages that produce those artifacts.
+- **Pass condition**: All namespace dependencies are respected in the stage sequence. Each skill
+  that consumes an artifact appears in a stage after the skill that produces that artifact.
+  Adjacent or out-of-order namespaces that have no dependency relationship are permitted.
+
+### C-06 — Descriptive Stage Names
+- **Weight**: recommended
+- **Category**: quality
+- **Text**: Stage `name:` values describe the intent or evidence goal of the stage, not the
+  namespace of the skills they contain. Names like `"Scout the competitive landscape"`,
+  `"Draft the feature spec"`, `"Review design for feasibility"` pass. Names like `"scout"`,
+  `"draft"`, `"review"` fail -- they repeat the namespace label without describing what the
+  stage is trying to learn or produce. The echo stage is exempt (its name is fixed by contract).
+- **Pass condition**: Every non-echo stage has a `name:` value that describes the stage's
+  evidence goal or intent. Namespace-only names, generic labels (`"stage 1"`, `"phase A"`),
+  and one-word namespace repetitions fail.
+
+### C-07 — Plan Identity Present
+- **Weight**: recommended
+- **Category**: quality
+- **Text**: The plan is framed as a plan artifact -- a signal-gathering roadmap authored for
+  a human decision-maker -- not as a list of executor instructions. This signal can appear as
+  a `strategy:` field, a `purpose:` comment, a framing paragraph, or any element that positions
+  the plan as "here is how we propose to gather evidence" rather than "here is what you must
+  do." The distinction between plan-as-artifact and plan-as-executor-script is the core of
+  Signal's philosophy. A plan with no framing beyond the YAML stages fails C-07.
+- **Pass condition**: The output contains at least one element that frames the plan as a
+  signal-gathering artifact for a decision-maker: a strategy field, a purpose comment, a framing
+  paragraph, or equivalent. Pure skill lists with no framing fail.
+
+---
+
+## Aspirational Criteria (teaching quality — 180 pts)
+
+### C-08 — Quantified Gate Thresholds
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: At least one gate condition includes a quantified threshold: a numeric count of
+  signals, a percentage of passing reviews, or a minimum artifact count. `"at least 2 scout
+  signals present"`, `"3 of 5 review criteria pass"`, `"scout:feasibility artifact with >= 4
+  of 6 dimensions covered"` are all quantified. `"sufficient scout signals"`, `"enough
+  evidence"`, `"scout complete"` are not. Quantification makes the gate deterministic --
+  a human or automated checker can evaluate it without judgment.
+- **Pass condition**: At least one non-echo gate includes a numeric threshold or quantified
+  condition. A plan with zero quantified gates fails even if all gates are evidence-state gates
+  (C-04 compliance alone does not satisfy C-08).
+- **Partial credit**: Not applicable -- either at least one quantified gate is present or it
+  is not.
+
+### C-09 — Deliberate Evidence Arc
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The stage sequence reflects a deliberate evidence arc -- typically breadth-first
+  discovery followed by depth-of-design, then validation, synthesis, and integration -- not
+  an arbitrary or alphabetical skill grouping. The arc should be visible from the stage names
+  and skill selections alone, independent of any prose explanation. A plan that groups all
+  scout skills together, all review skills together, and all flow skills together in namespace
+  buckets rather than evidence-phase buckets fails C-09 even if the gates are correct.
+- **Pass condition**: The stage sequence reflects a recognizable evidence-gathering arc with
+  at least three distinct phases (e.g., discovery, design, validation) whose order reflects
+  signal-gathering logic. Namespace-bucketed plans and arbitrary orderings fail.
+- **Partial credit**: Arc is present in stage-name hints or ordering rules but the prompt's
+  top-level structure is flat, indexed, or otherwise does not enforce arc navigation.
+
+### C-14 -- Deletion-Resistance Annotations on Structural Slots
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Every pre-positioned structural element -- particularly echo, but also any required
+  section or slot -- carries explicit deletion-resistance annotations that create friction against
+  omission or displacement. Deletion-resistance annotations are inline markers placed at the
+  structural element itself: `# REQUIRED: ...`, `# DO NOT REMOVE`, `# DO NOT add skills here.
+  DO NOT move echo before other stages.` These name what the element is and what violation looks
+  like. Pre-positioning alone is insufficient: a model reading cursorily can skip or relocate an
+  un-annotated pre-positioned element without encountering labeled resistance. Annotations
+  convert structural placement from a suggestion into a visible constraint. Evidence from R2:
+  V-03 earned C-11 PARTIAL specifically because echo was pre-positioned at template end but
+  carried no `# REQUIRED` annotations -- a model filling the template without reading prose could
+  still move or delete echo without structural friction. V-02 and V-04 achieved C-11 PASS via
+  multi-annotation echo slots (`# REQUIRED: DO NOT add skills here. DO NOT move echo before
+  other stages.`, `# REQUIRED: empty`, `# REQUIRED: must be present and true`).
+- **Pass condition**: Every pre-positioned structural requirement in the output scaffold carries
+  at least one explicit annotation at the element itself identifying it as required and naming
+  the prohibited action. Echo with no annotations fails even if placed correctly in the template.
+- **Partial credit**: Some structural slots carry deletion-resistance annotations but at least
+  one required structural element (e.g., echo) is pre-positioned without annotation.
+
+### C-10 -- Failure-Mode Contrast Pair
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The prompt includes at least one explicit BAD/GOOD or FAIL/PASS contrast pair
+  targeting an essential criterion (C-01 through C-04). The contrast must show a wrong form
+  alongside its correct replacement -- not just describe what is wrong, but show it in
+  juxtaposition. A contrast pair targeting C-04 would show an execution-state gate (`# BAD:
+  "done"`) alongside an evidence-state gate (`# GOOD: "scout:feasibility artifact present"`).
+  This provides a model with a concrete reference for the wrong shape at the moment it is
+  generating that field.
+- **Pass condition**: At least one BAD/GOOD or FAIL/PASS contrast pair for an essential
+  criterion is present in the output, with both the wrong form and the correct form shown.
+  Contrast pairs that target only recommended or aspirational criteria do not satisfy C-10.
+- **Partial credit**: Not applicable -- either at least one essential-criterion contrast pair
+  is present or it is not.
+
+### C-11 -- Structural Enforcement of Requirements
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: At least one essential requirement (C-01 through C-04) is enforced structurally
+  in the output scaffold, not just stated in prose rules. Structural enforcement means the
+  scaffold itself makes the correct form the default and the wrong form requires active
+  deviation. Examples: echo pre-positioned at the end of the YAML template (C-02 structural
+  enforcement), namespace ordering enforced by zone section headers (C-05), `gate:` field
+  pre-populated with an artifact-state placeholder (C-04). A prompt that only lists rules
+  without embedding them in the scaffold relies entirely on the model reading and retaining
+  prose rules -- structural enforcement provides a model that skims prose with a second path
+  to compliance.
+- **Pass condition**: At least one essential requirement is embedded structurally in the
+  output scaffold -- not merely stated in prose. The scaffold must make compliance the path
+  of least resistance for that requirement.
+- **Partial credit**: Structural enforcement is present for some but not all essential
+  criteria, or structural elements exist but are advisory (not default-state).
+
+### C-12 -- Dual-Anchor Reinforcement
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Each essential criterion (C-01 through C-04) has at least two independent
+  teaching anchors in the prompt -- two different mechanisms that each independently reinforce
+  the requirement. Two anchors might be: a prose rule statement (anchor 1) plus a YAML template
+  placeholder that embeds the requirement (anchor 2). Or: a prose rule (anchor 1) plus a BAD
+  YAML block that shows the violation (anchor 2). The key property is independence: if a model
+  misses one anchor, the other alone is sufficient to teach the criterion. A prompt with a
+  single comprehensive prose section that covers C-01 through C-04 provides one anchor for each
+  criterion regardless of length.
+- **Pass condition**: All four essential criteria each have at least two independent anchors.
+  At minimum: one structural/template anchor and one prose or error-artifact anchor per
+  essential criterion.
+- **Partial credit**: Dual anchoring covers at least 2 of the 4 essential criteria, but not all.
+
+### C-13 -- Arc as Structural Spine
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The evidence arc (C-09) is expressed as the primary structural division of the
+  prompt -- the top-level headers, zone delimiters, or section markers ARE the arc phases.
+  This means that the arc is not described in a prose paragraph and then presented as a flat
+  YAML template; the arc phases ARE the template structure. A prompt with `## Discovery Phase`,
+  `## Design Phase`, `## Validation Phase` as major structural headers, each containing the
+  corresponding YAML zone template, makes the arc impossible to miss because it IS the document
+  structure. The distinction from C-09: C-09 asks whether the arc is present; C-13 asks whether
+  the arc IS the structure.
+- **Pass condition**: The evidence arc phases are the primary structural headers or zone
+  delimiters of the prompt -- the document navigates arc phases as structural divisions, not as
+  a flat YAML list with arc described in prose.
+- **Partial credit**: Arc is present in stage-name hints or ordering rules but the prompt's
+  top-level structure is flat, indexed, or otherwise does not enforce arc navigation.
+
+### C-15 -- Plan-Level YAML Error Artifact
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The prompt includes a complete, multi-field YAML block explicitly labeled as a
+  wrong example -- a full plan-level BAD YAML artifact showing structural failure across multiple
+  fields -- not just a single inline gate comment. This provides a second anchor for C-01 (YAML
+  structural validity) because inline gate-level `# BAD` comments target gate correctness (C-04),
+  not structural correctness (C-01). Without a plan-level error block, C-01 has only one anchor
+  (the template), and C-12 (dual-anchor) must be PARTIAL for that reason. A plan-level BAD YAML
+  artifact shows what a wrong program structure looks like -- e.g., execution-state gates across
+  all stages, missing `auto: true`, flat stage design -- as a complete parseable (but semantically
+  wrong) YAML document. Evidence from R2: V-04's `# BAD: flat plan` YAML block with
+  `gate: "all done"` across multiple stages was the sole R2 implementation achieving C-12 full
+  PASS; it provided the second anchor for C-01 that all other variates (template-only or
+  inline-comment only) lacked. V-01, V-02, and V-03 all received C-12 PARTIAL specifically
+  because C-01 had only the template as its structural anchor.
+- **Pass condition**: The prompt contains at least one complete YAML block -- not an inline
+  comment and not a partial snippet -- explicitly labeled as a wrong example, showing plan-level
+  structural failure or semantic anti-pattern across multiple fields. The block must be large
+  enough (at least 2 stages with wrong gates, or structural key violations) to demonstrate
+  plan-level error, not just field-level error.
+- **Partial credit**: Not applicable -- either a plan-level YAML error block is present or it
+  is not. Inline `# BAD: "done"` comments at gate positions do not count.
+
+### C-16 -- Criterion-Referenced Error Tagging
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Error examples -- whether inline gate comments or a plan-level BAD YAML block -- are
+  annotated with the specific criterion they violate: `# WRONG C-02: echo must have auto: true`,
+  `# WRONG C-03: invented skill name`, `# WRONG C-04: execution-state gate`. Criterion-referenced
+  tagging creates a direct semantic link from each wrong shape to the rubric criterion it
+  violates, letting a model understand WHY the example is wrong, not just THAT it is wrong.
+  Untagged BAD examples (C-10, C-15) show failure shape but leave the causal mapping implicit;
+  tagged examples make the criterion-to-error index explicit at the point of failure. Evidence
+  from R3: V-03's BAD PLAN YAML block annotated each wrong field with `# WRONG C-02`,
+  `# WRONG C-03`, `# WRONG C-04`, enabling a model to cross-reference errors against requirements
+  without global rule recall.
+- **Pass condition**: At least one error example (inline or block) carries explicit criterion
+  tags (e.g., `# WRONG C-02`, `# VIOLATES C-04`) at the wrong field or stage. Untagged contrast
+  pairs (C-10) and untagged BAD YAML blocks (C-15) do not satisfy C-16. A single criterion-tagged
+  wrong example satisfies the criterion regardless of how many other examples are untagged.
+- **Partial credit**: Not applicable -- either at least one criterion-tagged error annotation
+  is present or it is not.
+
+### C-17 -- Per-Zone Gate Contrast
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Every arc zone (not just a dedicated contrast section) carries its own inline
+  PASS/FAIL gate example, making gate correctness visible at each authoring decision point.
+  C-10 requires at least one BAD/GOOD pair in the prompt; C-17 requires the contrast to be
+  embedded per-zone so a model authoring stage N encounters the correct gate form immediately,
+  without needing to navigate back to a central contrast section. Per-zone contrast removes
+  the attention gap between the contrast section and the gate field being authored. Evidence
+  from R3: V-01 embedded labeled `PASS:` / `FAIL:` gate examples at every arc zone header,
+  producing consistent C-04 compliance across all stages -- a pattern not achievable by a
+  single contrast pair whose lesson must be carried forward across the document.
+- **Pass condition**: Every non-echo arc zone or stage section carries an inline gate example
+  showing both a correct evidence-state gate (PASS) and an incorrect execution-state gate
+  (FAIL) for that zone. A single central contrast section (C-10) with no per-zone repetition
+  does not pass. Partial credit when per-zone contrast covers at least half the arc zones.
+- **Partial credit**: Per-zone gate contrast is present for at least half the non-echo zones
+  but not all.
+
+### C-18 -- Wrong-to-Correct Correction Table
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The prompt includes a structured correction table mapping common error forms to
+  their correct replacements -- wrong skill name to real skill name, execution gate to
+  artifact gate, namespace-only stage name to intent label -- as a scannable lookup artifact
+  distinct from inline contrast examples or a BAD YAML block. A correction table is consulted
+  before generating rather than encountered during error; it enables active avoidance rather
+  than passive pattern-matching from embedded examples. This complements C-10 (contrast pair)
+  and C-15 (plan-level YAML error block) by providing a reference format rather than an
+  illustration format. Evidence from R3: V-03 included a wrong-to-correct table mapping
+  invented skill names to valid catalog entries and execution-state gate strings to their
+  artifact-referencing equivalents, giving a model an explicit lookup before each field
+  rather than relying on inference from scattered BAD/GOOD pairs.
+- **Pass condition**: The prompt contains at least one table (markdown table, two-column list,
+  or labeled mapping block) explicitly mapping wrong forms to correct forms for at least one
+  essential criterion (C-01 through C-04). The table must cover at least 3 wrong-to-correct
+  pairs to demonstrate coverage depth. A single inline `# BAD: X  # GOOD: Y` comment does not
+  satisfy this criterion.
+- **Partial credit**: Not applicable -- either a correction table with >= 3 pairs is present
+  or it is not.
+
+### C-19 -- Cross-Tier Error Coverage
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Error artifacts -- BAD YAML block (C-15), criterion-tagged errors (C-16), or
+  correction table (C-18) -- cover errors from BOTH the essential tier (C-01 through C-04)
+  AND at least one recommended criterion (C-05 through C-07). Essential-only error coverage
+  teaches the model to avoid structural failures but leaves recommended errors (wrong stage
+  names, out-of-order namespaces, missing plan identity) unconstrained at authoring time. Cross-
+  tier coverage closes that gap by making the wrong shapes for recommended criteria equally
+  visible. Evidence from R4: V-01's BAD PLAN block tagged `# WRONG C-05` (dependency order)
+  and `# WRONG C-06` (stage name) alongside essential-tier tags, extending criterion-tagged
+  error teaching from essentials to recommended criteria in a single artifact; V-03's correction
+  table included 2 C-06 pairs (namespace-label stage names mapped to intent-label stage names)
+  alongside 9 essential-tier pairs.
+- **Pass condition**: At least one error artifact (BAD YAML block, criterion-tagged inline
+  error, or correction table) contains at least one entry explicitly targeting a recommended
+  criterion (C-05, C-06, or C-07) alongside essential-criterion entries. Essential-only coverage,
+  however comprehensive, does not pass.
+- **Partial credit**: Not applicable -- cross-tier coverage is either present in at least one
+  artifact or it is not.
+
+### C-20 -- Per-Zone Dependency Constraint Reminder
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Every arc zone that depends on artifacts from a prior zone carries an inline
+  dependency constraint reminder at the skill-list authoring position -- not just gate contrast
+  (C-17) but an explicit prerequisite statement naming the required prior artifact: `"review:*
+  requires draft:spec artifact from prior stage"`, `"flow:* requires review:design artifact"`,
+  `"listen:* requires at least one flow or trace signal"`. These reminders fire at the moment
+  the model is choosing skills for that zone, preventing dependency-order violations (C-05) at
+  source rather than after-the-fact. C-05 states the ordering rule; C-20 embeds a zone-local
+  check that makes out-of-order skill placement feel wrong at the point of authoring. Evidence
+  from R4: V-02 placed `review:* requires draft:spec` inline at the Design zone skill-selection
+  point, converting a rules-section statement into a per-zone constraint visible at the exact
+  moment it matters.
+- **Pass condition**: Every non-echo arc zone whose skills depend on prior-zone artifacts carries
+  an inline prerequisite statement at the skill-list position naming the required artifact or
+  condition. A zone with no upstream dependencies (e.g., a pure scout discovery zone) is exempt.
+  Stating the dependency ordering rule once in a rules section does not satisfy this criterion.
+- **Partial credit**: Dependency constraint reminders are present for at least half the
+  dependency-bearing zones but not all.
+
+### C-21 -- Correction Table Scaffold Integration
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: YAML template fields carry explicit navigational bridges to the correction table
+  at the authoring moment -- `# check correction table`, `# see correction table: stage names`,
+  `# see correction table: gates` -- placed inline at every field type the correction table
+  covers: skill-list fields, gate fields, and stage-name fields. C-18 requires a correction
+  table to exist; C-21 requires the template to actively route the model to that table at each
+  decision point, ensuring the table is consulted during generation rather than read once before
+  generation begins. Without scaffold integration, a correction table risks being read at
+  document start and forgotten by the time the model reaches a specific field. With scaffold
+  integration, every covered field is a pointer back to the lookup. Evidence from R4: V-03
+  embedded `# check correction table` at skill list placeholders, gate placeholders, and stage
+  name placeholders in the YAML template, creating bidirectional coupling between the scaffold
+  and the correction reference -- the table pulls the model in at document level; the template
+  pushes the model back to the table at field level.
+- **Pass condition**: The YAML template carries `# check correction table` (or equivalent
+  navigational annotations) inline at every field type covered by the correction table: skill
+  lists, gates, and stage names. C-18 must also pass (a correction table must exist). Inline
+  annotations without a correction table, or a correction table without inline template
+  bridges, each fail C-21 alone. Partial credit when at least one field type carries a
+  navigational bridge but not all field types covered by the table do.
+- **Partial credit**: Navigational bridges to the correction table are present at some but
+  not all covered field types in the YAML template.
+
+### C-22 -- Complete Recommended-Tier Error Annotation
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Error artifacts cover ALL THREE recommended criteria (C-05, C-06, and C-07), not
+  merely "at least one" as C-19 requires. C-19 opens cross-tier error coverage; C-22 closes
+  it by requiring the full recommended tier to be represented, ensuring wrong shapes for
+  dependency violations (C-05), generic stage names (C-06), and executor framing (C-07) are
+  each explicitly visible at authoring time. Without complete coverage, a prompt may teach
+  C-05 errors but leave C-06 and C-07 errors implicit, creating an asymmetric error surface.
+  Evidence from R5: V-01 tagged `# WRONG C-05` (dependency order violation), `# WRONG C-06`
+  (namespace-label stage name), and `# WRONG C-07` (executor framing) in the BAD PLAN block,
+  achieving the first complete recommended-tier error annotation -- teaching the error shape
+  for every recommended criterion, not just a representative sample.
+- **Pass condition**: At least one error artifact (BAD YAML block, criterion-tagged inline
+  errors, or correction table entries) contains entries explicitly targeting each of C-05,
+  C-06, and C-07. Coverage of only one or two recommended criteria does not pass. All three
+  must appear in the error artifact set.
+- **Partial credit**: Not applicable -- complete coverage requires all three; partial
+  recommended-tier coverage satisfies C-19 but not C-22.
+
+### C-23 -- Dual-Position Zone Dependency Reminder
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Dependency constraint reminders appear at BOTH the zone-header position AND the
+  `skills:` placeholder line within each dependency-bearing zone -- belt-and-suspenders within
+  the zone itself. C-20 requires the reminder at the skill-list position; C-23 extends that
+  to require the zone header to also carry the prerequisite statement, so a model scanning
+  either at the zone boundary or at the skill-selection point encounters the constraint. Zone-
+  header placement catches a model who reads ahead to the zone without reaching the skill list;
+  skill-list placement catches a model who skips the header. Together they close both attention
+  gaps within a single zone. Evidence from R5: V-01 failed C-20 because reminders appeared
+  at zone headers only (e.g., `# review:* requires draft:spec -- this zone MUST precede the
+  Validation phase`) but NOT at the `skills:` placeholder line. V-02 satisfied both positions
+  by carrying PREREQUISITE comments at zone headers AND `# requires: ...` annotations at every
+  `skills:` placeholder, demonstrating that dual-position placement achieves the maximum zone-
+  local dependency constraint density.
+- **Pass condition**: Every dependency-bearing zone carries an explicit prerequisite statement
+  at both the zone-header position AND the `skills:` placeholder line. Zones with no upstream
+  dependencies are exempt. Single-position placement (header only or skills only) satisfies
+  C-20 but not C-23.
+- **Partial credit**: Dual-position reminders are present for at least half the dependency-
+  bearing zones but not all.
+
+### C-24 -- Template-Field Gate Contrast
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Per-zone gate contrast pairs appear as labeled YAML template fields -- `FAIL gate:`
+  and `PASS gate:` as actual keys in the template skeleton at each zone -- not merely as prose
+  comments adjacent to or above the gate field. C-17 requires per-zone gate contrast to be
+  inline; C-24 requires it to be structural, embedded in the YAML skeleton itself so the model
+  must actively replace or resolve the contrast fields during generation. When contrast is in
+  comment form, a model can produce the gate field without engaging with the contrast; when
+  contrast is a template field, the model encounters it as part of the skeleton it is filling.
+  This converts gate contrast from optional reading into a forced authoring decision at every
+  zone. Evidence from R5: V-02 embedded labeled `FAIL gate: "..."` / `PASS gate: "..."` as
+  actual fields in the template skeleton at all 5 non-echo zones, achieving C-17 PASS with
+  the highest structural fidelity -- not just inline notes, but YAML keys the model must
+  acknowledge during template completion.
+- **Pass condition**: Every non-echo arc zone in the YAML template skeleton carries both a
+  `FAIL gate:` field and a `PASS gate:` field (or equivalently labeled keys) as actual template
+  entries, not as comment annotations. A template where gate contrast appears only in adjacent
+  prose comments or zone-header comment blocks does not pass, even if per-zone contrast is
+  present (C-17). Partial credit when template-field gate contrast covers at least half the
+  non-echo zones.
+- **Partial credit**: Template-field gate contrast is present in the skeleton at some but not
+  all non-echo zones.
+
+### C-25 -- Gate Contrast Rationale Annotation
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Per-zone gate contrast pairs (C-17) or structural gate fields (C-24) carry an
+  explicit `Why:` explanation alongside each FAIL and PASS verdict -- stating why the FAIL form
+  violates the criterion and why the PASS form satisfies it. C-17 requires the contrast pair
+  to be present; C-25 requires the reasoning to be present at each pair, converting the contrast
+  from a pattern-only example into a criterion-grounded teaching artifact. Without rationale, a
+  model sees correct and incorrect shapes but must infer the criterion being taught; with
+  rationale, the criterion basis is stated at the point of encounter. The "Why:" element also
+  distinguishes shallow execution-state failures (`"done" is wrong`) from the criterion-level
+  principle (`gates must be artifact-verifiable, not execution-history-dependent`). Evidence
+  from R6: V-02's zone headers carried `# FAIL gate: "..." Why: ...` / `# PASS gate: "..." Why:
+  ...` annotations at all five non-echo zones -- the first variate to include per-pair rationale
+  alongside per-zone contrast, raising gate contrast from shape-teaching to principle-teaching.
+- **Pass condition**: Every non-echo zone with gate contrast (C-17 or C-24) carries a `Why:`
+  explanation for both the FAIL and PASS examples. A zone carrying FAIL/PASS examples without
+  any rationale satisfies C-17 or C-24 but not C-25. Partial credit when rationale is present
+  for at least half the non-echo zones.
+- **Partial credit**: Gate contrast rationale is present for at least half the non-echo zones
+  but not all.
+
+### C-26 -- Criterion-Tagged Structural Gate Values
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: When structural gate-contrast fields are used (C-24's `FAIL gate:` / `PASS gate:`
+  or equivalent template keys), each `FAIL gate:` field carries an inline criterion-reference
+  tag (`# WRONG C-04`) within the field value or as an adjacent same-line comment -- combining
+  C-24's structural forcing with C-16's criterion-referencing at the exact field position. C-16
+  requires criterion tags somewhere in error artifacts (typically a BAD block or correction
+  table); C-24 requires structural gate-contrast fields; C-26 requires the criterion tag to be
+  embedded AT the structural `FAIL gate:` field itself, not only in a separate BAD block. This
+  ensures a model resolving the structural field encounters both the wrong shape AND the named
+  criterion in a single atomic location -- no cross-document lookup required. Evidence from R6:
+  V-03 embedded `# WRONG C-04` as an inline comment on the `gate_fail:` field at each non-echo
+  zone, placing the criterion tag inside the structural skeleton rather than only in the BAD
+  PLAN block, achieving criterion-to-structural-field linkage without requiring global document
+  recall.
+- **Pass condition**: Every non-echo zone's `FAIL gate:` structural field (or equivalent)
+  carries an inline criterion-reference tag (`# WRONG C-04` or equivalent) at the field
+  position. C-24 must also pass (structural gate-contrast fields must exist). Criterion tags
+  only in a BAD block, with no tags at structural field positions, satisfy C-16 but not C-26.
+  Partial credit when criterion-tagged structural gate fields cover at least half the non-echo
+  zones.
+- **Partial credit**: Criterion-tagged structural gate fields are present at some but not all
+  non-echo zones.
+
+### C-27 -- Uniform Dependency Reminder Syntax
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: All dependency constraint reminders -- across every dependency-bearing zone and
+  every position (zone-header and skills-line per C-23) -- use identical syntactic form:
+  `# requires: <artifact> from Zone: <name> (C-05)` or a consistently applied equivalent
+  pattern. Syntactic uniformity means the reminder is scannable as a machine-readable pattern;
+  a model recognizes the `# requires:` prefix as a structured signal without needing to
+  semantically parse varied natural-language phrasings. Inconsistent framing -- mixing
+  `# requires: draft:spec`, `# this zone MUST follow...`, and `# dependency: review:*` across
+  zones -- satisfies C-20's reminder-presence requirement but not C-27's uniformity requirement,
+  because each reminder must be interpreted independently rather than recognized as an instance
+  of a single pattern. C-23 requires dual-position placement; C-27 requires that the
+  dual-position reminders share a single syntactic form across all zones and both positions.
+  Evidence from R6: V-02's C-23 PASS evidence explicitly cited "in same format" across all
+  four dependent zones at both positions -- `# requires: <artifact> from Zone: <name> (C-05)`
+  used uniformly; V-01's C-23 FAIL was attributed specifically to "inconsistent framing" where
+  zone headers used different phrasings from skills-line reminders.
+- **Pass condition**: All dependency constraint reminders across all dependency-bearing zones
+  and all positions share a single syntactic template. Minor substitution within a fixed
+  template (replacing `<artifact>` or `<name>` with specific values) is permitted; restructuring
+  the sentence form or omitting the criterion reference tag is not. C-23 must also pass.
+  Partial credit when uniform syntax holds for at least half the dependency-bearing zones.
+- **Partial credit**: Uniform reminder syntax holds across at least half the dependency-bearing
+  zones but not all, or syntax is uniform at one position (e.g., skills-line only) but not both.
+
+### C-28 -- Structural Gate Target Field Co-Location
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: When structural gate-contrast fields are used (C-24's `gate_fail:` / `gate_pass:`
+  or equivalent keys), the actual authoring-target `gate:` field appears as a named sibling
+  YAML key at each zone -- alongside but distinct from the teaching-only contrast fields. Without
+  the `gate:` target sibling, a model resolving the template cannot distinguish from YAML
+  structure alone which field is the production output and which fields are teaching examples;
+  it may populate `gate_fail:` or `gate_pass:` as the actual gate, or leave the real gate
+  absent. When the `gate:` sibling is present, the schema explicitly separates the two roles:
+  `gate_fail:` and `gate_pass:` are contrast-only; `gate:` is what the model must fill. C-24
+  requires the contrast fields to exist as YAML keys; C-28 requires the production target to
+  co-locate with them as a third key, converting a two-field contrast pair into a three-field
+  teaching unit where output and examples are structurally distinguished. Evidence from R7:
+  V-02 and V-03 both used `gate_fail:/gate_pass:/gate:` as actual YAML sibling keys at all 5
+  non-echo zones -- the first variates to make the production gate field structurally explicit
+  alongside the contrast pair rather than leaving it implicit or expecting the model to replace
+  the contrast fields.
+- **Pass condition**: Every non-echo zone in the YAML template carries an explicit `gate:` (or
+  equivalently named target) field as a sibling alongside the contrast fields (`gate_fail:` /
+  `gate_pass:` or equivalent). C-24 must also pass. A template where the contrast fields appear
+  without a co-located production target satisfies C-24 but not C-28. Partial credit when the
+  three-field structure is present at least half the non-echo zones.
+- **Partial credit**: Gate target field is co-located with contrast fields at some but not all
+  non-echo zones.
+
+### C-29 -- Correction Table Recommended-Tier Pairs
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The correction table (C-18) includes at least one wrong-to-correct pair for each
+  of the three recommended criteria (C-05, C-06, and C-07) individually, not just essential-tier
+  pairs. C-22 requires error artifacts collectively to cover all three recommended criteria; C-29
+  requires the correction table specifically to carry that recommended-tier coverage, so the
+  reference-format lookup -- the artifact designed for pre-generation consultation -- covers the
+  full criterion spectrum rather than only structural failures. A correction table containing
+  only wrong skill names, execution gates, and YAML violations satisfies C-18 but not C-29;
+  a table with rows for out-of-order namespace placement (C-05), namespace-label stage names
+  (C-06), and executor-framing (C-07) alongside essential-tier rows satisfies both. The
+  distinction from C-22: C-22 asks whether recommended-tier errors appear anywhere in the
+  prompt's error artifacts; C-29 asks whether they appear specifically in the correction table's
+  lookup format, enabling a model to look them up by criterion type before authoring. Evidence
+  from R7: V-02's 13-row correction table included rows for C-05 (dep order wrong-to-correct),
+  C-06 (namespace-label-to-intent-label stage name), and C-07 (executor-framing-to-plan-identity),
+  extending the lookup reference from structural to quality failures.
+- **Pass condition**: The correction table contains at least one wrong-to-correct pair explicitly
+  targeting each of C-05, C-06, and C-07. C-18 must also pass. A table covering only essential-
+  tier criteria, however comprehensive, does not satisfy C-29. All three recommended criteria
+  must appear as table entries.
+- **Partial credit**: Not applicable -- the correction table either covers all three recommended
+  criteria individually or it does not.
+
+### C-30 -- Dep-Reminder and Correction-Bridge Independence
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: At skills-list positions in dependency-bearing zones that satisfy C-23 (dual-position
+  dep reminders), a dependency constraint reminder (`# requires: <artifact> from Zone: <name>
+  (C-05)`) and a correction-table navigational bridge (`# check correction table`) are each
+  present independently -- neither annotation substitutes for the other. The two annotations
+  serve orthogonal purposes: the dep reminder informs prerequisite ordering (which artifacts
+  must exist before skills in this zone can be chosen); the correction-table bridge enables
+  skill-name and gate-value lookup (whether chosen skills or gate strings are valid). A skills
+  line carrying only a correction-table bridge satisfies C-21's navigational requirement but
+  fails C-20/C-23's prerequisite-constraint requirement; the bridge tells the model to verify
+  skill names but says nothing about whether this zone's skills can be placed here at all. A
+  skills line carrying only a dep reminder satisfies C-20/C-23 but leaves the correction-table
+  lookup absent at the most error-prone authoring position. C-30 requires both annotations to
+  coexist at every dependent skills-list position, closing the conflation gap where one
+  annotation type displaces the other. C-21 and C-23 are both prerequisites. Evidence from R7:
+  V-02's Design zone skills line carried only `# check correction table: skill names` with no
+  dep reminder, earning C-20 and C-23 PARTIAL for the Design zone; V-03 carried both a dep
+  reminder and a correction-table bridge independently at all 4 dep zones' skills lines,
+  demonstrating that the two annotations are additive, not alternative.
+- **Pass condition**: Every dependency-bearing zone's `skills:` placeholder line carries both
+  an explicit prerequisite statement (naming the required prior artifact) AND a correction-table
+  navigational bridge. C-21 and C-23 must both pass. A skills line with only one of the two
+  annotation types fails C-30 regardless of whether it satisfies C-21 or C-23 individually.
+  Partial credit when both annotations coexist at at least half the dep-bearing skills positions.
+- **Partial credit**: Both annotations coexist at at least half the dependency-bearing zones'
+  skills-list positions but not all.
+
+### C-31 -- Complete BAD-YAML Cross-Criterion Coverage
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The plan-level BAD YAML block (C-15) contains at least one `# WRONG C-XX` tagged
+  violation for each of the 7 criteria (C-01 through C-07) -- both essential (C-01 through C-04)
+  and recommended (C-05 through C-07). C-16 requires at least one criterion-tagged error anywhere
+  in the prompt; C-22 requires recommended-tier coverage across the full error artifact set; C-31
+  requires the BAD PLAN block specifically to be a complete single-artifact criterion index --
+  all 7 criteria each represented by at least one tagged wrong field within the single block.
+  Without this, a model reading only the BAD PLAN block learns which shapes violate essential
+  criteria but has no illustration of recommended-tier violations inside the concrete error
+  example. When the BAD PLAN block carries all 7 criterion tags, it becomes a self-contained
+  teaching index that covers every failure mode in one scannable artifact. Evidence from R8:
+  V-03's BAD PLAN block carried 7 criterion-tagged violations spanning C-01 through C-07 -- the
+  first variate to make the BAD PLAN block a complete criterion index rather than an
+  essential-tier-only error sample.
+- **Pass condition**: The plan-level BAD YAML block contains at least one `# WRONG C-XX` tag
+  for each of C-01, C-02, C-03, C-04, C-05, C-06, and C-07. C-15 must also pass (the block
+  must exist as a complete plan-level artifact). Criterion-tagged errors only in inline comments
+  or only in the correction table do not satisfy C-31; the tags must appear within the BAD PLAN
+  block itself. A block covering all 4 essential criteria but missing any recommended criterion
+  satisfies C-16 and C-22 (if recommended errors appear elsewhere) but not C-31.
+- **Partial credit**: Not applicable -- the BAD PLAN block either covers all 7 criteria with
+  criterion tags or it does not. Partial coverage (e.g., 5 of 7) earns C-16 and possibly C-22
+  but not C-31.
+
+### C-32 -- Production Gate Field Correction Bridge
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: When the three-field gate structure (C-28) is present, the production `gate:`
+  sibling field at every non-echo zone carries an explicit `# check correction table: gate
+  values` navigational bridge inline at the field position itself. C-21 requires navigational
+  bridges at every field type covered by the correction table, including gate fields; C-28
+  establishes the `gate:` production field as a structurally distinct YAML sibling separated
+  from the contrast fields; C-32 requires the correction bridge to appear at the production
+  `gate:` field specifically -- not only at `gate_fail:` / `gate_pass:` or at other template
+  fields -- so the model encounters the lookup pointer at the exact moment it fills the
+  production gate slot. Without this, a model filling `gate:` has the contrast examples visible
+  as YAML siblings but no explicit pointer to the correction table at the authoring target;
+  the bridge at other field types does not substitute because the model is focused on the
+  production field when making the gate authoring decision. C-18 and C-28 are prerequisites.
+  Evidence from R8: V-04 (first variate combining the three-field gate structure with an
+  explicit `# check correction table: gate values` annotation at the production `gate:` field
+  across all non-echo zones, completing the three-field unit so the production slot carries
+  active lookup guidance alongside the contrast examples).
+- **Pass condition**: Every non-echo zone's production `gate:` sibling field carries an explicit
+  navigational bridge to the correction table (`# check correction table: gate values` or
+  equivalent) at the field position. C-18 and C-28 must both pass. Bridges at `gate_fail:` or
+  `gate_pass:` fields, or at other template field types, do not satisfy C-32; the bridge must
+  appear at the production `gate:` field itself. Partial credit when the production gate
+  correction bridge is present at at least half the non-echo zones.
+- **Partial credit**: Production gate field correction bridge is present at some but not all
+  non-echo zones.
+
+### C-33 -- Maximal Zone Teaching Density
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Every dependency-bearing non-echo zone simultaneously carries all of the following
+  annotation mechanisms: (a) three-field gate structure with criterion-tagged `gate_fail:` field
+  (C-28 + C-26); (b) production `gate:` field with correction bridge (C-32); (c) dual-position
+  dep reminder in uniform syntax at both zone-header and skills line (C-27); and (d) independent
+  dep reminder and correction bridge coexisting at the `skills:` placeholder line (C-30). C-26,
+  C-27, C-28, C-30, and C-32 each require their mechanism to be present independently and in
+  isolation; C-33 requires all four to coexist in the same zone simultaneously, so each
+  dependency-bearing zone is a fully equipped authoring unit where gate teaching, prerequisite
+  ordering, and lookup navigation are all locally active without requiring cross-document
+  navigation. A zone satisfying three of the four mechanisms but missing one fails C-33 because
+  the single absent mechanism leaves a gap -- the model can avoid gate errors (C-28/C-26) and
+  look up skill names (C-30 bridge) and respect prerequisites (C-27), but without C-32 at the
+  production gate field, the gate lookup is not available at the moment the model fills the
+  production slot. Evidence from R8: V-05 (first variate to achieve full four-mechanism
+  coexistence at every dependency-bearing zone, demonstrating that the mechanisms are additive
+  and independently preservable within a single zone structure).
+- **Pass condition**: Every dependency-bearing non-echo zone carries all four annotation
+  mechanisms: C-28 three-field gate structure, C-26 criterion-tagged gate_fail: field, C-32
+  production gate: correction bridge, C-27 uniform dual-position dep reminder, and C-30
+  independent dep reminder + correction bridge at skills: line. C-26, C-27, C-28, C-30, and
+  C-32 must all pass independently as prerequisites. A zone missing any one of the four
+  mechanisms fails C-33 for that zone. Partial credit when full four-mechanism coexistence
+  holds at at least half the dependency-bearing zones.
+- **Partial credit**: All four mechanisms coexist at at least half the dependency-bearing zones
+  but not all.
+
+### C-34 -- Compound gate_fail: Annotation
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: When structural gate-contrast fields (C-24) exist at every non-echo zone, each
+  `gate_fail:` field carries BOTH a criterion-reference tag (C-26) AND a `Why:` rationale
+  explanation (C-25) co-located at the same field position -- making `gate_fail:` a complete,
+  self-contained teaching unit: wrong form + criterion violated + principle reason, all in one
+  atomic annotation. C-25 requires a `Why:` explanation at gate contrast pairs (which may appear
+  in a header comment adjacent to the field); C-26 requires a criterion tag at the structural
+  `gate_fail:` field. C-34 requires both to coexist directly at the `gate_fail:` field itself
+  -- e.g., `gate_fail: "done"  # WRONG C-04: Why: execution-history check, not artifact-
+  verifiable` -- rather than split across field-inline and zone-header positions. This ensures
+  a model resolving the structural field encounters the criterion name, the wrong shape, and
+  the reason it is wrong in a single atomic read, without needing to scan the surrounding
+  comment context. Evidence from R9: V-02 demonstrates the full structural gate infrastructure
+  (C-24+C-28+C-32 all PASS) while failing both C-25 (no `Why:` rationale) and C-26 (no
+  criterion reference at `gate_fail:`) -- the first variate to build the production-side gate
+  machinery while leaving both teaching-side annotations absent from the `gate_fail:` field,
+  establishing that the compound annotation must be explicitly required as a co-located unit
+  rather than assumed to follow from C-25 and C-26 individually.
+- **Pass condition**: Every non-echo zone's `gate_fail:` structural field carries both an
+  inline criterion-reference tag (`# WRONG C-04` or equivalent) AND an inline `Why:` explanation
+  at the same field position. C-24, C-25, and C-26 must all pass independently as prerequisites.
+  A `gate_fail:` field with a criterion tag but no `Why:`, or with a `Why:` in an adjacent
+  header comment but not on the field itself, satisfies C-26 or C-25 but not C-34. Partial
+  credit when the compound annotation (criterion tag + Why:) coexists at `gate_fail:` in at
+  least half the non-echo zones but not all.
+- **Partial credit**: Compound annotation (criterion-reference tag + Why: explanation) is
+  co-located at the `gate_fail:` field in at least half the non-echo zones but not all.
+
+### C-35 -- Dual Error-Format Recommended Coverage
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Both primary error reference formats -- the BAD PLAN block (C-15) and the correction
+  table (C-18) -- independently cover all three recommended criteria (C-05, C-06, C-07): the
+  BAD PLAN carries `# WRONG C-05`, `# WRONG C-06`, `# WRONG C-07` tags within the block (C-31
+  requirement), and the correction table contains at least one wrong-to-correct pair for each of
+  C-05, C-06, and C-07 (C-29 requirement). Without C-35, a prompt may deliver recommended-tier
+  error teaching through one format only -- example-based BAD PLAN (C-31) OR lookup-based
+  correction table (C-29) -- leaving the other format as an essential-tier-only reference.
+  A model consulting the BAD PLAN block finds all recommended error shapes by example; a model
+  consulting the correction table before authoring finds all recommended error shapes by lookup.
+  C-35 closes the asymmetry: both reference formats independently cover the full criterion
+  spectrum, so a model consulting either artifact is equally equipped against recommended-tier
+  violations regardless of which format it accesses first or most frequently. C-29 and C-31 are
+  both prerequisites. Evidence from R9: V-01 achieves C-31 (BAD PLAN carries all 7 criterion
+  tags including C-05/C-06/C-07) but fails C-29 (correction table has essential-tier pairs only)
+  -- demonstrating that the two error formats build their recommended-tier coverage independently
+  and the lookup format gap cannot be filled by example-format completeness alone.
+- **Pass condition**: C-29 and C-31 must both pass. The BAD PLAN block carries criterion tags
+  for all 7 criteria (C-31 passes) AND the correction table contains at least one wrong-to-
+  correct pair for each of C-05, C-06, and C-07 (C-29 passes). A prompt satisfying C-31 but
+  not C-29, or C-29 but not C-31, does not satisfy C-35. Both formats must independently carry
+  full recommended-tier coverage.
+- **Partial credit**: Not applicable -- both formats must independently satisfy their respective
+  recommended-tier coverage requirements; asymmetric format coverage satisfies C-29 or C-31
+  individually but not C-35.
+
+### C-36 -- BAD PLAN Header Label Coverage Accuracy
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The BAD PLAN block's header comment (the label or title above the YAML block)
+  accurately describes the criterion coverage scope of the block below it. When the block
+  contains criterion tags for all 7 criteria -- essential (C-01 through C-04) AND recommended
+  (C-05 through C-07) -- the header must not restrict its claimed scope to essential-tier only.
+  A header reading "essential violations" or "essential-tier failures only" is accurate when
+  the block body contains only essential tags; it becomes inaccurate when the block body also
+  carries recommended-tier tags, creating a label-content mismatch that may cause a model to
+  believe recommended criteria are not illustrated in the BAD PLAN. Evidence from R10: V-01
+  passes C-31 (all 7 criterion tags present in the BAD PLAN block) while carrying a header
+  labeled "essential-tier violations only" -- the first variate to build a complete-criterion
+  BAD PLAN block while advertising narrower coverage than the block delivers. A model reading
+  the header before scanning the block may skip recommended-tier tag processing, believing
+  only essential violations are modeled there.
+- **Pass condition**: The BAD PLAN block's header comment does not falsely restrict the claimed
+  coverage tier. If C-31 passes (all 7 criteria are tagged in the block), the header must not
+  claim "essential violations only" or equivalent. Headers claiming full coverage or making no
+  scope claim pass. A header claiming essential-only coverage over a block that carries
+  recommended-tier tags fails. C-31 is a prerequisite.
+- **Partial credit**: Not applicable -- label accuracy is binary: the header either misrepresents
+  the block's coverage scope or it does not.
+
+### C-37 — BAD PLAN Stage Name Field-Level Annotation
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Every wrong-format stage `name:` value in the BAD PLAN block that violates C-06
+  (namespace-only label, generic label, or other non-intent-describing form) carries `# WRONG
+  C-06` as an inline comment at the `name:` field itself -- not at an adjacent gate field, not
+  in a header comment, and not only via a criterion tag at the skills line. C-22 requires C-06
+  to be covered somewhere across error artifacts; C-31 requires C-06 to be tagged somewhere
+  within the BAD PLAN block; C-37 requires the C-06 tag to be co-located with the violating
+  `name:` field specifically, so a model filling a stage name slot in the template encounters
+  the C-06 annotation at the exact field position -- identical to how C-26 requires criterion
+  tags at structural `gate_fail:` fields rather than only in nearby blocks. Evidence from R10:
+  V-03's BAD PLAN uses non-namespace-label stage names ("information-gathering", "spec-writing")
+  that violate C-06, but neither name carries `# WRONG C-06` at the field -- the C-06 violation
+  pattern is physically untaught at the `name:` position, causing C-22 FAIL and C-31 FAIL.
+  V-01's BAD PLAN, by contrast, tags namespace-label stage names with `# WRONG C-06` at the
+  `name:` fields, establishing field-level C-06 annotation as an achievable and separable
+  design choice.
+- **Pass condition**: Every stage `name:` value in the BAD PLAN block that violates C-06 carries
+  `# WRONG C-06` (or equivalent) as an inline comment at the `name:` field itself. C-22 and
+  C-31 must both pass independently as prerequisites. A BAD PLAN where C-06 is tagged at gate
+  or skills fields but not at the violating `name:` field satisfies C-31 (tag present in block)
+  but not C-37. Partial credit when field-level C-06 annotation is present on at least half the
+  wrong-format `name:` fields in the BAD PLAN block.
+- **Partial credit**: Field-level C-06 annotation is present on at least half the wrong-format
+  `name:` fields in the BAD PLAN block but not all.
+
+---
+
+### C-38 — BAD PLAN Header Affirmative Full-Criterion Coverage Claim
+
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The BAD PLAN block's header comment does not merely avoid false restriction (C-36)
+  but affirmatively states that the block covers the full criterion spectrum — using language
+  such as "all 7 criteria," "C-01 through C-07," "essential and recommended violations," or
+  equivalent positive coverage claim. A header with no scope claim ("BAD PLAN," "wrong
+  example," "violations") is neutral: a model reading it cannot determine from the header alone
+  how many criteria to scan for or whether recommended-tier tags will be present. An affirmative
+  coverage claim primes the model to scan for all 7 criterion tags, ensuring none are skipped
+  on a first pass. C-36 closes the false-restriction failure mode (essential-only labels over
+  full-coverage blocks); C-38 closes the neutral-silence failure mode (headers that neither
+  restrict nor affirm, leaving coverage scope ambiguous). Evidence from R11: all V-04/V-05
+  variates carry accurate headers passing C-36, but no variate uses affirmative coverage
+  language — the distinction between "not falsely restricted" and "positively claimed" is the
+  gap C-38 targets. A header reading "BAD PLAN — all 7 criteria (C-01 through C-07)" or
+  "BAD PLAN: essential and recommended violations" passes C-38; "BAD PLAN" alone does not.
+- **Pass condition**: The BAD PLAN block's header comment includes an affirmative claim of
+  full-criterion coverage scope naming all 7 criteria collectively or individually. C-36 and
+  C-31 must both pass (the block must actually carry all 7 criterion tags, and the header must
+  not falsely restrict). A header with no scope claim passes C-36 but fails C-38. Prerequisites:
+  C-36, C-31.
+- **Partial credit**: Not applicable — affirmative coverage claim is binary: either the header
+  makes a positive full-scope assertion or it does not.
+
+---
+
+### C-39 — BAD PLAN Skills-Field Criterion-Tag Co-Location
+
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Every `skills:` entry in the BAD PLAN block that violates C-03 (invented skill
+  name, unrecognized namespace, namespace-only entry) carries `# WRONG C-03` as an inline
+  comment at the skills-field line itself — not at an adjacent gate field, not in a header
+  comment, and not only via a tag at the name: line. C-26 establishes co-location at structural
+  `gate_fail:` fields for C-04; C-37 establishes co-location at `name:` fields for C-06; C-39
+  extends the same co-location discipline to `skills:` field entries for C-03, completing
+  field-level co-location coverage across all three primary YAML field types that carry
+  criterion-testable values. Without C-39, a BAD PLAN block may satisfy C-31 (all 7 criterion
+  tags present somewhere in the block) while leaving invented skill names physically unannotated
+  at the field position — a model filling the skills slot in the template encounters the wrong
+  shape without a criterion tag to name why it is wrong. With C-39, every invalid skills entry
+  in the BAD PLAN carries the violation reason at the exact field line, matching the co-location
+  standard established for gate and name fields. Evidence from R11: V-04 and V-05 carry C-26
+  (gate_fail: field-level tags for C-04) and C-37 (name: field-level tags for C-06) but the
+  skills: field co-location pattern has not been assessed — the structural logic of C-26 and
+  C-37 applies directly and C-39 makes it explicit as a separate requirement for the third
+  field type.
+- **Pass condition**: Every `skills:` entry (or skills-list line) in the BAD PLAN block that
+  contains an invented or invalid skill name carries `# WRONG C-03` (or equivalent) as an
+  inline comment on that line. C-22 and C-31 must both pass independently as prerequisites. A
+  BAD PLAN where C-03 violations are tagged at adjacent gate or name fields but not at the
+  skills entry itself satisfies C-31 (tag present in block) but not C-39. Prerequisites: C-22,
+  C-31.
+- **Partial credit**: Field-level C-03 annotation is present on at least half the C-03-violating
+  `skills:` entries in the BAD PLAN block but not all.
+
+---
+
+### C-40 — Compound gate_fail: Annotation and Correction-Table Recommended Coverage Conjunction
+
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: Both the YAML-template teaching zone (C-34 compound `gate_fail:` annotation with
+  criterion tag and `Why:` at the field) and the correction-table lookup format (C-29
+  recommended-tier wrong-to-correct pairs) are simultaneously present, ensuring that recommended-
+  tier error teaching is delivered at both teaching moments: at template-filling time (when the
+  model resolves gate fields during generation) and at pre-generation consultation time (when
+  the model scans the correction table before authoring). C-35 requires the BAD PLAN example
+  block (C-31) and the correction table (C-29) to independently carry full recommended-tier
+  error coverage; C-40 requires the YAML template compound annotation (C-34) and the correction
+  table (C-29) to independently carry recommended-tier coverage, closing the gap between the
+  third teaching format (structural template zone) and the lookup format. The distinction from
+  C-35: C-35 pairs example-format (BAD PLAN block) with lookup-format (correction table); C-40
+  pairs template-zone-format (compound gate_fail: annotation) with lookup-format (correction
+  table). The two criteria are orthogonal — a prompt satisfying C-35 need not satisfy C-40 if
+  the YAML template compound annotations are absent, and a prompt satisfying C-40 need not
+  satisfy C-35 if the BAD PLAN block lacks recommended-tier tags. Evidence from R11: V-04 and
+  V-05 achieve both C-34 and C-29 simultaneously — the first rounds to confirm that the
+  compound gate_fail: annotation mechanism (YAML template zone) and the correction table
+  recommended-tier mechanism (lookup zone) are additive and non-conflicting, establishing the
+  conjunction as a reachable and independently valuable design target. Neither mechanism
+  references the other as an alternative; each addresses its distinct teaching moment.
+- **Pass condition**: C-34 and C-29 must both pass independently. The YAML template carries
+  compound `gate_fail:` annotations with criterion tag and `Why:` at every non-echo zone (C-34
+  passes), AND the correction table contains at least one wrong-to-correct pair for each of
+  C-05, C-06, and C-07 (C-29 passes). A prompt satisfying C-34 but not C-29 (essential-only
+  correction table) fails C-40. A prompt satisfying C-29 but not C-34 (no compound annotation
+  at gate_fail: fields) fails C-40. Prerequisites: C-34, C-29.
+- **Partial credit**: Not applicable — both prerequisite criteria must independently pass; any
+  deficit in either format is a C-40 fail.
+
+---
+
+### C-41 — BAD PLAN Header Meta-Commentary: Per-Criterion Annotation-Type Index
+
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The BAD PLAN block's header comment enumerates which rubric criterion each
+  annotation type within the block satisfies — e.g., `# C-38: affirmative header`, `# C-39:
+  skills entries annotated`, `# C-37: name entries annotated`, `# C-26: gate_fail: entries
+  annotated` — converting the block header from a scope declaration into a criterion-indexed
+  artifact directory. C-38 requires the header to make an affirmative full-coverage claim;
+  C-41 requires the header to additionally itemize which annotation type addresses which
+  criterion, so a model reading the header before scanning the block knows in advance both
+  what the block covers (C-38) and which annotation type maps to which criterion (C-41). Without
+  C-41, a model reading the header receives a scope claim but must infer the criterion-to-
+  annotation-type mapping by scanning the block; with C-41, the mapping is stated at the entry
+  point, reducing cross-reference load and ensuring no annotation type is encountered without
+  its criterion already named. The header becomes a navigational index for the block's teaching
+  content, not just an accuracy label for its coverage breadth. Evidence from R12: V-05 uniquely
+  provides per-criterion annotation-type commentary inline in the BAD PLAN header — `# C-38:
+  affirmative header`, `# C-39: skills entries annotated`, `# C-37: name entries annotated`,
+  `# C-26: gate_fail: entries annotated` — the first variate to make the BAD PLAN header a
+  criterion-indexed directory. All other R12 variates (V-01 through V-04) achieve C-38
+  (affirmative scope claim) but none itemize annotation-type-to-criterion mappings in the
+  header, leaving that synthesis for the model to perform while scanning the block.
+- **Pass condition**: The BAD PLAN block's header comment explicitly maps at least 3 of the
+  4 primary annotation types (affirmative coverage claim satisfied by C-38, skills-field
+  co-location addressed by C-39, name-field co-location addressed by C-37, gate_fail: field
+  co-location addressed by C-26) to their criterion numbers. C-38 must also pass (the header
+  must first make an affirmative coverage claim before it can also be a criterion index).
+  Prerequisites: C-38.
+- **Partial credit**: Header meta-commentary maps exactly 2 of the 4 annotation types to
+  criterion numbers but fewer than 3.
+
+---
+
+### C-42 — Co-Location Family Declared as a Named Document Section
+
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The three field-level co-location criteria — C-26 (criterion tag at `gate_fail:`
+  fields), C-37 (criterion tag at `name:` fields), C-39 (criterion tag at `skills:` field
+  entries) — are presented together as a named family principle in a dedicated document section
+  that appears before the BAD PLAN block, with a structured table or enumeration organizing all
+  three field types by: field type, criterion addressed, required annotation tag, and rule
+  summary. Without C-42, each co-location criterion appears independently in the rubric and
+  each prompt that satisfies them does so by accumulating three separate decisions rather than
+  recognizing a single generalizable principle. With C-42, the principle is stated once as a
+  named architectural element — e.g., "FIELD CO-LOCATION RULE" or "SKILLS-FIELD ANNOTATION
+  RULE" — and each criterion becomes a predictable instance that a model can apply by pattern
+  extension rather than isolated requirement recall. The named section also makes future field
+  types structurally predictable: a model that understands the family principle expects any new
+  YAML field carrying a criterion-testable value to follow the same co-location rule. Evidence
+  from R12: V-05 dedicates a "SKILLS-FIELD ANNOTATION RULE" section with a three-row table
+  (field type / criterion / tag / rule) before the BAD PLAN block; V-02 dedicates a "THREE-FIELD
+  CO-LOCATION RULE" named section with equivalent structure — both demonstrating that the co-
+  location family can be named and tabulated as a principle before the block rather than implied
+  by block structure alone. V-01, V-03, V-04 achieve C-26, C-37, and C-39 individually without
+  naming the family principle, leaving the generalization implicit.
+- **Pass condition**: A named section (document header, labeled block, or dedicated subsection
+  with an explicit title) appears before the BAD PLAN block that presents all three field-level
+  co-location criteria (C-26/gate_fail:, C-37/name:, C-39/skills:) as a structured family with
+  a table or enumeration mapping each field type to its criterion and annotation tag. C-26,
+  C-37, and C-39 must all pass independently as prerequisites. A prose paragraph that mentions
+  all three field types without a structured table or enumeration does not satisfy C-42; the
+  family principle must be organized as a scannable reference, not embedded in flowing text.
+  Prerequisites: C-26, C-37, C-39.
+- **Partial credit**: A named section presents exactly 2 of the 3 field-level co-location
+  criteria in a structured table format but not all three.
+
+---
+
+### C-43 — Recommended-Tier strategy: Field Structurally Pre-Populated in YAML Template
+
+- **Weight**: aspirational
+- **Category**: depth
+- **Text**: The YAML template scaffold pre-populates the `strategy:` field (or equivalent
+  plan-identity field such as `purpose:`) with a non-empty placeholder string — e.g.,
+  `strategy: "why this feature is worth the investment — ..."` — rather than leaving the field
+  absent, requiring the model to add it from prose rules alone, or providing only a comment
+  placeholder. C-07 requires the output to contain at least one plan-identity element; C-11
+  requires at least one essential requirement to be enforced structurally; C-43 applies the
+  structural-enforcement principle from C-11 to the recommended tier, converting C-07 from a
+  post-generation quality check into a structural scaffold default. The analogy to C-11/C-02
+  is exact: just as echo is pre-positioned at the template end to enforce the C-02 contract
+  structurally, a pre-populated `strategy:` field enforces C-07 structurally — a model filling
+  the template cannot omit plan identity without actively removing the pre-populated field.
+  Without C-43, a model that does not read the C-07 prose rule may generate a plan without any
+  framing element; with C-43, the framing element is present by default and omission requires
+  deliberate deletion. The principle generalizes: recommended criteria that require "at least
+  one framing element" can be promoted from prose-dependent to scaffold-enforced by pre-
+  population, raising the structural enforcement ceiling from essential-only to full-spectrum.
+  Evidence from R12: V-05 is the only variate to pre-populate `strategy:` in the YAML template
+  — the first to extend structural enforcement to the recommended tier. All other R12 variates
+  (V-01 through V-04) achieve C-07 through prose rules or BAD PLAN illustration but leave the
+  `strategy:` field absent from the template, making C-07 compliance model-attention-dependent
+  rather than scaffold-enforced.
+- **Pass condition**: The YAML template scaffold contains a `strategy:` field (or equivalent
+  plan-identity field) with a non-empty pre-populated placeholder string value. C-07 and C-11
+  must both pass independently as prerequisites. A template that includes `strategy:` with only
+  a comment placeholder (`# add strategy here`) and no string value does not satisfy C-43; the
+  field must carry a pre-populated string. A `strategy: ""` empty string does not satisfy C-43.
+  Prerequisites: C-07, C-11.
+- **Partial credit**: Not applicable — the field is either pre-populated with a non-empty string
+  in the template or it is not.
+
+---
+
+## Scoring Formula
+
+| Tier | Weight | Criteria | Points each | Max |
+|------|--------|----------|-------------|-----|
+| Essential | 60 pts | C-01, C-02, C-03, C-04 | 15 | 60 |
+| Recommended | 30 pts | C-05, C-06, C-07 | 10 | 30 |
+| Aspirational | 180 pts | C-08 through C-43 (36 criteria) | 5 | 180 |
+
+```
+composite = (essential_pass/4 * 60)
+          + (recommended_pass/3 * 30)
+          + (aspirational_pass/36 * 180)
+```
+
+PASS = full points, PARTIAL = half points, FAIL = 0.
+
+**Golden threshold**: all 4 essential criteria pass **and** composite >= 80.
+
+---
+
+## Scoring Worksheet
+
+```
+Essential:    C-01 [ ]  C-02 [ ]  C-03 [ ]  C-04 [ ]
+              Pass count: ___ / 4  ->  ___ / 4 * 60 = ___ pts  (of 60)
+
+Recommended:  C-05 [ ]  C-06 [ ]  C-07 [ ]
+              Pass count: ___ / 3  ->  ___ / 3 * 30 = ___ pts  (of 30)
+
+Aspirational: C-08 [ ]  C-09 [ ]  C-10 [ ]  C-11 [ ]
+              C-12 [ ]  C-13 [ ]  C-14 [ ]  C-15 [ ]
+              C-16 [ ]  C-17 [ ]  C-18 [ ]  C-19 [ ]
+              C-20 [ ]  C-21 [ ]  C-22 [ ]  C-23 [ ]
+              C-24 [ ]  C-25 [ ]  C-26 [ ]  C-27 [ ]
+              C-28 [ ]  C-29 [ ]  C-30 [ ]  C-31 [ ]
+              C-32 [ ]  C-33 [ ]  C-34 [ ]  C-35 [ ]
+              C-36 [ ]  C-37 [ ]  C-38 [ ]  C-39 [ ]
+              C-40 [ ]  C-41 [ ]  C-42 [ ]  C-43 [ ]
+              Pass count: ___ / 36  ->  ___ / 36 * 180 = ___ pts  (of 180)
+
+Composite score: ___ / 270
+Golden: all essential pass AND composite >= 80  ->  [ ] YES  [ ] NO
+```
+
+---
+
+## Failure Fast-Paths
+
+The following conditions fail scoring regardless of composite score:
+
+- Output contains no YAML at all (prose plan or bulleted list only)
+- Echo stage is absent, not last, or has any skills listed in it
+- Any stage contains an invented Signal skill name not in the 9-namespace catalog
+- Every non-echo gate uses execution-state language only (`"done"`, `"complete"`, `"proceed"`)
+
+---
+
+## Scorer Notes
+
+- **C-01**: Check YAML validity first. If unparseable, C-01 fails. Score remaining criteria
+  as best-effort but note the failure.
+- **C-02**: Echo is a hard contract. Missing `auto: true`, placing echo mid-plan, or listing
+  any skills in echo are all hard fails regardless of otherwise valid structure.
+- **C-03**: Authority for valid skill names is the plugin-plan.md catalog (9 namespaces, ~47
+  skills). Skills listed without namespace prefix fail unless the plan establishes unambiguous
+  context -- prefer `namespace:skill` form.
+- **C-04**: The key test: can the next-phase owner verify the gate is satisfied by looking at
+  artifacts, not by asking "did we run the skills?" Gates that describe running fail; gates
+  that describe what must exist pass.
+- **C-05**: Dependency ordering is assessed by namespace layer (`scout -> draft -> review/prove
+  -> topic`), not alphabetically. A plan with `review:design` before any `draft:spec` fails
+  C-05 because design review requires a spec artifact to review.
+- **C-07**: The "plan not executor" signal can be subtle (a comment, a strategy field framing)
+  -- it does not require an explicit disclaimer paragraph.
+- **C-10**: The contrast must target one of C-01 through C-04. A BAD/GOOD pair for a
+  recommended criterion (e.g., descriptive vs generic stage names) does not satisfy C-10.
+- **C-11**: The distinction is structural vs stated. Ask: "If a model followed the prompt's
+  scaffold without reading the rules section, would the output still satisfy this requirement?"
+  If yes, C-11 passes for that requirement.
+- **C-12**: Partial credit applies when dual-anchoring covers at least 2 of the 4 essential
+  criteria. Full credit requires all 4 essential criteria to have dual anchoring.
+- **C-13**: The test is whether the arc is navigable as structure, not just readable as text.
+  If you removed all prose from the prompt and kept only headers and YAML skeleton, would the
+  arc still be visible? If yes, C-13 passes.
+- **C-14**: Check each pre-positioned structural element individually. Echo is the primary
+  target. A `# REQUIRED: must be last` comment at the echo slot satisfies this for echo.
+  Absence of any annotation on a pre-positioned element fails for that element.
+- **C-15**: Inline `# BAD: "done"` comments within a YAML skeleton are C-10 evidence (gate
+  contrast), not C-15. C-15 requires a complete YAML block -- multiple fields, multiple stages
+  -- that is explicitly a wrong plan, not a wrong gate.
+- **C-16**: The criterion tag must name a specific criterion (e.g., `C-02`, `C-04`), not just
+  a generic label (`# WRONG`, `# BAD`). A tag without a criterion reference does not satisfy
+  C-16. C-10 or C-15 elements that also carry criterion tags satisfy both C-10/C-15 and C-16.
+- **C-17**: Per-zone contrast is assessed per non-echo zone. A zone carrying only PASS or only
+  FAIL but not both does not satisfy per-zone contrast for that zone. Count zones with both
+  PASS and FAIL examples; require >= 100% for full pass, >= 50% for partial.
+- **C-18**: The correction table is scanned for covered criteria (C-01 through C-04) and pair
+  count (>= 3 pairs). A table that maps only one criterion's errors fails. A table with fewer
+  than 3 pairs fails. Criterion-tagged inline comments (C-16) and correction tables (C-18) are
+  orthogonal -- C-16 can be satisfied without C-18 and vice versa.
+- **C-19**: Scan all error artifacts (BAD YAML blocks, criterion-tagged inline errors, and
+  correction table entries) for recommended-criterion coverage. A single C-05/C-06/C-07 entry
+  in any artifact satisfies C-19, even if most entries target essential criteria. Ambiguous
+  error entries not tagged to any criterion do not count toward C-19.
+- **C-20**: Assess per dependency-bearing zone. Zones that only use upstream-independent skills
+  (e.g., pure `scout:*` discovery) are exempt. For dependent zones, the reminder must be at
+  the skill-list authoring position, not in a prior rules section. A zone-level header comment
+  counts; a prose note before the template does not.
+- **C-21**: C-18 is a prerequisite -- if no correction table is present, C-21 fails regardless
+  of inline annotations. Check that navigational bridges appear at each field type covered in
+  the table: if the table covers stage names, gate strings, and skill names, bridges must appear
+  at all three field types in the template. A table with gate entries but no `# check correction
+  table` at gate template fields fails C-21 for that field type. When C-24 structural gate
+  fields are present, they may substitute for correction-table bridges at gate fields only if
+  the structural field itself carries a criterion tag (C-26) -- structural presence alone does
+  not excuse the navigational bridge absence.
+- **C-22**: Scan all error artifacts for criterion tags. All three recommended criteria (C-05,
+  C-06, C-07) must each appear at least once across the artifact set. C-22 subsumes C-19: a
+  prompt satisfying C-22 necessarily satisfies C-19. Score C-22 and C-19 independently; partial
+  recommended coverage (one or two of three) earns C-19 but not C-22.
+- **C-23**: Assess per dependency-bearing zone. Both the zone-header position and the `skills:`
+  placeholder must carry an explicit prerequisite statement. A zone-header-only reminder (like
+  V-01's `# review:* requires draft:spec -- this zone MUST precede the Validation phase`)
+  satisfies C-20 partial but not C-23. A zone with reminder only at `skills:` (no header
+  mention) also fails C-23. Partial credit when dual-position coverage holds for at least half
+  the dependency-bearing zones.
+- **C-24**: C-24 requires contrast as actual YAML keys (`FAIL gate:` / `PASS gate:` as
+  template fields), not as comment annotations. A zone where contrast appears only as
+  `# FAIL: "done"` / `# PASS: "2 scout signals present"` adjacent to the gate field satisfies
+  C-17 (inline per-zone contrast) but not C-24 (template-field contrast). The test: if you
+  stripped all comments from the template, would the contrast still be visible as YAML
+  structure? If yes, C-24 passes for that zone. Partial credit when template-field contrast
+  covers at least half the non-echo zones.
+- **C-25**: Assess per non-echo zone that has gate contrast (C-17 or C-24). A zone where
+  contrast appears as `# FAIL: "done"` / `# PASS: "artifact present"` with no explanation
+  satisfies C-17 or C-24 but not C-25. The "Why:" must explain the criterion basis -- why the
+  FAIL form fails (e.g., execution-state vs artifact-state) -- not just restate the label.
+  A `Why: this is wrong` gloss without criterion-level reasoning does not satisfy C-25.
+  Partial credit when rationale is present for at least half the non-echo zones.
+- **C-26**: C-24 is a prerequisite -- structural gate fields must exist for C-26 to apply.
+  The criterion tag must appear at the structural field position itself (e.g., `gate_fail:
+  "done"  # WRONG C-04`), not only in a separate BAD block. A prompt that has C-24 structural
+  fields and C-16 tags in a BAD block satisfies both C-24 and C-16 but not C-26, because the
+  tag is not co-located with the structural field. Partial credit when criterion-tagged
+  structural gate fields cover at least half the non-echo zones.
+- **C-27**: C-23 is a prerequisite -- dual-position placement must be established. Assess
+  syntactic form by checking whether all reminders across all zones and positions use the same
+  sentence structure and carry the criterion tag. Substitution of artifact names and zone names
+  within a fixed template is allowed. A template that uses `# requires: X from Zone: Y (C-05)`
+  uniformly but drops `(C-05)` in some positions fails C-27's uniformity requirement. Partial
+  credit when uniform syntax holds across at least half the dependency-bearing zones, or when
+  syntax is uniform at one position (skills-line or header) but not both.
+- **C-28**: C-24 is a prerequisite -- structural contrast fields must exist. Assess per non-echo
+  zone: does a `gate:` (or equivalently named production-target) key appear as a sibling
+  alongside `gate_fail:` / `gate_pass:`? The production-target field may carry a placeholder
+  value or an instruction comment; its presence as a YAML key is what matters. A zone with only
+  `gate_fail:` and `gate_pass:` satisfies C-24 but not C-28. Partial credit when the three-
+  field structure is present at at least half the non-echo zones.
+- **C-29**: C-18 is a prerequisite -- a correction table must exist. Scan the correction table
+  for rows targeting each of C-05, C-06, and C-07. Each criterion must have at least one entry
+  (wrong-form to correct-form pair). A table that covers C-05 and C-06 but not C-07 fails C-29
+  even if it satisfies C-22 (if C-07 appears in a BAD block but not the table). The test is
+  specifically the correction table as a format, not the artifact set collectively.
+- **C-30**: C-21 and C-23 are both prerequisites. Assess per dependency-bearing zone's `skills:`
+  line. Both a dep reminder (`# requires: <artifact>`) and a correction-table bridge (`# check
+  correction table`) must appear. The correction-table bridge for skill names does not satisfy
+  the dep reminder requirement; a dep reminder does not satisfy the correction-table bridge
+  requirement. They serve different purposes and must each be present independently. A skills
+  line with only one type fails C-30 for that zone. Partial credit when both annotations coexist
+  at at least half the dep-bearing zones.
+- **C-31**: C-15 is a prerequisite -- the BAD PLAN YAML block must exist. Scan the block for
+  criterion tags. All seven criteria (C-01 through C-07) must each appear at least once as
+  `# WRONG C-XX` within the block. Tags in inline gate comments outside the block, in the
+  correction table, or in the scoring notes section do not count. The criterion must be tagged
+  inside the BAD PLAN block itself. A block with all 4 essential tags but missing even one
+  recommended tag fails C-31; satisfying C-16 and C-22 through other artifacts does not
+  substitute for coverage within the BAD PLAN block.
+- **C-32**: C-18 and C-28 are both prerequisites -- a correction table and the three-field gate
+  structure must both be present. Assess per non-echo zone: does the production `gate:` sibling
+  field carry a `# check correction table: gate values` annotation (or equivalent) at the field
+  position? The correction bridge at `gate_fail:` / `gate_pass:` fields (which may exist via
+  C-21) does not satisfy C-32. The bridge must appear on the production `gate:` key specifically.
+  A zone with a correction bridge at the `skills:` placeholder but not at `gate:` passes C-21
+  partial but not C-32. Partial credit when the production gate correction bridge is present at
+  at least half the non-echo zones.
+- **C-33**: C-26, C-27, C-28, C-30, and C-32 are all prerequisites. Assess per dependency-
+  bearing zone: verify all four mechanisms coexist -- (a) `gate_fail:` has criterion tag (C-26),
+  (b) production `gate:` has correction bridge (C-32), (c) zone header and skills: line both
+  carry uniform dep reminder (C-27), (d) skills: line carries both dep reminder and correction
+  bridge independently (C-30). A zone satisfying three of four fails C-33. Count dependency-
+  bearing zones achieving all four; require >= 100% for full pass, >= 50% for partial. Echo and
+  upstream-independent zones (no deps) are exempt from C-33 assessment.
+- **C-34**: C-24, C-25, and C-26 are all prerequisites. Assess per non-echo zone's `gate_fail:`
+  structural field. The compound annotation requirement means both the criterion tag AND the
+  `Why:` explanation must appear at the field line itself -- not split between the field and an
+  adjacent header comment. A `gate_fail:` field that carries `# WRONG C-04` (criterion tag
+  present, satisfying C-26) but has `Why: execution-history check` only in a surrounding header
+  comment satisfies C-26 but not C-34. The test: if you read only the `gate_fail:` line in
+  isolation, does it carry both the criterion reference and the principle reason? If yes, C-34
+  passes for that zone. Partial credit when compound annotation coexists at gate_fail: in at
+  least half the non-echo zones.
+- **C-35**: C-29 and C-31 are both prerequisites. Check each format independently. First,
+  confirm C-31 passes (BAD PLAN block carries # WRONG C-05, # WRONG C-06, # WRONG C-07 tags).
+  Second, confirm C-29 passes (correction table has at least one wrong-to-correct pair for each
+  of C-05, C-06, C-07). C-35 passes only if both confirmations succeed. A prompt where the BAD
+  PLAN has all 7 tags but the correction table has only essential-tier rows fails C-35 (and
+  fails C-29). A prompt where the correction table has recommended-tier rows but the BAD PLAN
+  only covers essential criteria fails C-35 (and fails C-31). There is no partial credit --
+  the dual-format coverage either holds for both formats or it does not.
+- **C-36**: C-31 is a prerequisite -- the BAD PLAN block must carry all 7 criterion tags before
+  label accuracy is meaningful. Read the block's header comment (the label immediately above the
+  YAML block, not a document-level section header). Check for scope-restricting language:
+  "essential violations", "essential-tier failures only", "C-01 through C-04 violations", or
+  any equivalent claim that excludes the recommended tier. If found, and C-31 passes (the block
+  body actually does carry recommended-tier tags), the header label is inaccurate and C-36 fails.
+  A header with no scope claim ("BAD PLAN", "wrong example", "violations") passes by default.
+  A header explicitly claiming full coverage ("all-criterion violations", "C-01 through C-07")
+  passes when C-31 also passes.
+- **C-37**: C-22 and C-31 are both prerequisites. Locate every stage `name:` field in the BAD
+  PLAN block that carries a C-06-violating value: namespace-only labels (`"scout"`, `"draft"`),
+  generic labels (`"stage 1"`, `"phase A"`), or any name that does not describe evidence intent.
+  Check whether each such `name:` field carries `# WRONG C-06` (or equivalent criterion tag) as
+  an inline comment on the same line as the field. A criterion tag at the adjacent gate field,
+  at the skills line, or in the zone header does not satisfy field-level annotation for that
+  `name:` field. Partial credit when at least half the violating `name:` fields carry the
+  criterion tag.
+- **C-38**: C-36 and C-31 are both prerequisites. Read the BAD PLAN block header — the line
+  immediately above the YAML block. Check not just for false restriction (C-36) but for
+  affirmative coverage language: does the header contain a positive claim naming "all 7
+  criteria," "C-01 through C-07," "essential and recommended," or equivalent? A header saying
+  only "BAD PLAN" passes C-36 but fails C-38. A header saying "BAD PLAN — all 7 criteria"
+  passes both. There is no partial credit; the affirmative claim is either present or absent.
+- **C-39**: C-22 and C-31 are both prerequisites. Locate every `skills:` list entry in the BAD
+  PLAN block that contains an invented or invalid skill name — any string not in Signal's 9-
+  namespace catalog, any namespace-only entry (e.g., `scout:`), or any plain-English phrase
+  (e.g., `"gather evidence"`). Check whether each such entry carries `# WRONG C-03` (or
+  equivalent) as an inline comment on the same line. A criterion tag in the block header,
+  adjacent to the gate field, or at the name: line does not satisfy field-level annotation for
+  that skills entry. Partial credit when at least half the C-03-violating skills entries carry
+  the field-level tag.
+- **C-40**: C-34 and C-29 are both prerequisites. Confirm C-34 passes: every non-echo zone's
+  `gate_fail:` structural field carries both `# WRONG C-04` and `Why:` at the field position.
+  Then confirm C-29 passes: the correction table has at least one wrong-to-correct pair for
+  each of C-05, C-06, and C-07. C-40 passes only if both confirmations succeed independently.
+  A prompt with compound gate_fail: annotations but an essential-only correction table fails
+  C-40 (C-29 fails). A prompt with recommended-tier correction table rows but missing compound
+  annotations fails C-40 (C-34 fails). There is no partial credit.
+- **C-41**: C-38 is a prerequisite. Read the BAD PLAN block header comment in full. Count the
+  number of annotation types explicitly mapped to criterion numbers (affirmative header scope
+  to C-38, skills-field co-location to C-39, name-field co-location to C-37, gate_fail: field
+  co-location to C-26). A comment that says "see C-26, C-37, C-39, C-38" without naming what
+  annotation type each criterion addresses does not satisfy C-41; the mapping must be from
+  annotation type to criterion, not just a criterion list. Full pass: >= 3 annotation types
+  mapped. Partial: exactly 2 mapped. Fail: fewer than 2 mapped or C-38 fails.
+- **C-42**: C-26, C-37, and C-39 are all prerequisites. Locate any named section (a document
+  header, a labeled block title, or a dedicated subsection with an explicit name) that appears
+  before the BAD PLAN block and organizes field-level co-location criteria by field type. The
+  section must present all three field types (gate_fail:, name:, skills:) with their criterion
+  numbers and annotation tags in a structured format — table, enumeration, or labeled list with
+  at least field, criterion, and tag columns or fields. A prose paragraph that mentions all
+  three field types in running text without a structured table or enumeration does not satisfy
+  C-42; the principle must be scannable as a reference. Partial credit when the named section
+  covers exactly 2 of the 3 field types in structured format.
+- **C-43**: C-07 and C-11 are both prerequisites. Locate the YAML template scaffold. Find the
+  `strategy:` field (or equivalent plan-identity field). Check that it carries a non-empty
+  pre-populated string value — not a comment, not an empty string, not a YAML null. The value
+  must contain substantive placeholder text that frames the plan as a signal-gathering artifact.
+  A `strategy: "..."` with only ellipsis does not satisfy C-43; a `strategy: "why this feature
+  is worth the investment — ..."` with substantive framing does. There is no partial credit.
+
+---
+
+## Design Decisions
+
+- **C-01/C-02/C-03/C-04 are essential** because a plan failing any of them is structurally
+  unusable -- bad YAML cannot be consumed, missing echo violates the plugin contract, invented
+  skills reference nothing real, and execution-state gates destroy the only value the plan
+  provides.
+- **C-05 is recommended** (not essential) because namespace ordering is about quality of
+  evidence sequencing -- a plan with scout/draft/review in correct order but flow/trace slightly
+  misplaced is still useful.
+- **C-06/C-07 are recommended** because descriptive names and explicit plan identity improve
+  readability but do not break the plan's core function.
+- **C-10 is aspirational** because failure-mode contrasts are a prompt engineering technique
+  -- valuable for reliability but not required for a correct plan.
+- **C-11 is aspirational** because structural enforcement requires more scaffold investment.
+  Prose rules produce correct plans; structural enforcement makes them reliably correct without
+  requiring careful reading.
+- **C-12 is aspirational** because dual anchoring is a belt-and-suspenders technique. A
+  well-attentive model passes all essentials from a single clear statement; dual anchoring
+  provides robustness across inattentive or abbreviated generation.
+- **C-13 is aspirational** because making the arc the structural spine -- not just stating it
+  -- requires a prompt design decision that goes beyond ordering skills correctly. The arc must
+  govern the document structure, not just the stage sequence.
+- **C-14 is aspirational** because deletion-resistance annotations require deliberate placement
+  work. Pre-positioning structural elements is C-11; annotating them against deletion is C-14.
+  The two together achieve the highest structural reliability.
+- **C-15 is aspirational** because a full BAD YAML plan block requires more construction effort
+  than inline comments. It is the only technique that provides C-01 a second anchor, enabling
+  C-12 full PASS. Without it, C-12 is structurally capped at PARTIAL regardless of how well
+  other criteria are satisfied.
+- **C-41 is aspirational** because header meta-commentary requires a second design layer at the
+  header position — after C-38 establishes the affirmative coverage claim, C-41 adds the
+  criterion-indexed directory that converts the header from a scope declaration into a navigation
+  aid. The annotation-type-to-criterion mapping is implicit in the block; C-41 makes it explicit
+  at the entry point, reducing model cross-reference load during block scanning.
+- **C-42 is aspirational** because naming a family principle requires architectural awareness
+  of the rubric's structural families, not just implementation of individual criteria. It is
+  the first criterion that explicitly requires the prompt to present rubric structure as a named
+  concept — converting three accumulated independent criteria into a single generalizable rule
+  with a document home. Future field types that follow the co-location pattern become
+  structurally predictable rather than requiring new standalone criteria.
+- **C-43 is aspirational** because structural enforcement of recommended criteria is a design
+  choice beyond what is required for correctness or quality. It demonstrates that the scaffold-
+  first approach used for essential criteria (C-11) can extend to the recommended tier, raising
+  the structural enforcement ceiling from essential-only to full-spectrum. A pre-populated
+  `strategy:` field is the minimal viable extension: one field, one tier boundary crossed, one
+  class of attention-dependent failure closed by default.
+
+---
+
+## Version History
+
+| Version | Added | Source | Scoring delta |
+|---------|-------|--------|---------------|
+| v10 | C-34, C-35 | R9 excellence signals | 31 → 33 asp · 155 → 165 pts · 245 → 255 total |
+| v11 | C-36, C-37 | R10 excellence signals | 31 → 33 asp · 155 → 165 pts · 245 → 255 total |
+| v12 | C-38, C-39, C-40 | R11 excellence signals | 30 → 33 asp · 150 → 165 pts · 240 → 255 total |
+| v13 | C-41, C-42, C-43 | R12 excellence signals | 33 → 36 asp · 165 → 180 pts · 255 → 270 total |
+
+---
+
+## Pattern Map (v13 additions)
+
+| Criterion | Source pattern | Gap closed |
+|-----------|----------------|------------|
+| **C-41** | C-38 is a scope declaration — adding annotation-type index converts it from accuracy label to navigation aid | Header makes affirmative coverage claim but leaves annotation-type-to-criterion mapping for the model to perform while scanning the block |
+| **C-42** | C-26/C-37/C-39 form a co-location family — naming the family makes the pattern architectural and each criterion an instance of a generalizable rule | Field-level co-location criteria scattered as independent requirements; the family principle is implied but unnamed, making future field types unpredictable |
+| **C-43** | C-11 structural enforcement applies to essentials — extending to recommended tier via strategy: pre-population generalizes the scaffold-first principle | Recommended-tier C-07 enforced only by prose rules; a model skimming the template can generate without plan-identity framing unless the field is already there |

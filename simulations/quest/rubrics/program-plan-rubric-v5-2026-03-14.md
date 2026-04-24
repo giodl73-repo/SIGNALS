@@ -1,0 +1,209 @@
+The file looks correct. Written to `simulations/quest/rubrics/program-plan-rubric-v5-2026-03-14.md`.
+
+---
+
+**v5 summary:**
+
+Two new aspirational criteria extracted from R4 excellence signals:
+
+| ID | Criterion | What it captures |
+|----|-----------|-----------------|
+| **C-20** | Header embeds cascade notation and depth requirement | Generalizes C-18's header-loading principle to cascade depth. The column header must contain not just displacement-impossibility framing but also explicit `->` arrow notation and 2+ consequence depth requirement. V-01 passes; V-02/V-03/V-04 pass C-18 but fail C-20 (their headers stop at "cannot run earlier" without cascade spec). Source: R4-H01/H02. |
+| **C-21** | All actor entries demonstrate cascade depth | Stricter than C-19's "at least one cascade." Every actor row must be a `->` cascade. V-01 and V-05 pass (all six entries are 3-hop chains). V-02/V-03/V-04 fail (all entries single-consequence). Source: R4-H04. |
+
+**Scoring:** 65 pts aspirational (13 x 5) → **155 total** → golden threshold **124**. R4 retroactive: V-01/V-05 = 155/155; V-02/V-03/V-04 = 140/155 (fail C-19, C-20, C-21).
+-03/V-04 fail because their entries are single-consequence throughout the table. Full-table cascade coverage is the strongest form of the demonstrated-entry pattern: every row serves as a cascade template with no single-consequence entries to anchor against. |
+
+**Scoring adjustment:** aspirational grows from 55 pts (11 x 5) to 65 pts (13 x 5). Total moves
+to **155**. Golden threshold adjusts from 116 to **124** (~80% of max). R4 V-02/V-03/V-04
+(140/145) retroactively score 140/155 (fail C-19, C-20, C-21); V-01 and V-05 (145/145)
+retroactively score **155/155** -- full-table cascade coverage and header-embedded cascade
+notation are both present.
+
+---
+
+## Essential Criteria (60 pts total)
+
+| ID   | Criterion | Category | Pass Condition |
+|------|-----------|----------|----------------|
+| C-01 | **Valid YAML structure** | correctness | Output is valid YAML with a top-level `stages` key. Each stage has at minimum: `name` (string), `skills` (list), `gate` (string), and the echo stage has `auto: true`. No syntax errors. |
+| C-02 | **Echo stage contract** | correctness | The last stage is named `echo`, has an empty `skills` list (or `skills: []`), and is marked `auto: true`. No other stage is named `echo`. |
+| C-03 | **All referenced skills are valid** | correctness | Every skill listed in any stage's `skills` array is a real Signal plugin skill (from the 47-skill catalog across 9 namespaces). No invented, misspelled, or hallucinated skill names. |
+| C-04 | **Gates are present and non-trivial** | correctness | Every non-echo stage has a `gate` value that expresses a real condition (not empty string, not "done", not "proceed"). Gate states what signals or artifacts must exist before advancing. |
+| C-05 | **Skills are ordered by dependency** | correctness | Scout-namespace skills appear before draft-namespace skills; draft before review or prove; the sequence does not require artifacts that have not yet been produced by an earlier stage. |
+
+Weight per essential: 12 pts (5 criteria x 12 = 60 pts)
+
+---
+
+## Recommended Criteria (30 pts total)
+
+| ID   | Criterion | Category | Pass Condition |
+|------|-----------|----------|----------------|
+| C-06 | **Stages group skills meaningfully** | depth | Each stage represents a coherent phase of work (e.g., "discovery", "validation", "synthesis") -- not one skill per stage and not all skills dumped in one stage. Grouping reflects logical workflow cohesion. |
+| C-07 | **Gate conditions reference artifacts** | depth | At least half of the non-echo gates name specific artifact types or signal counts (e.g., "scout-feasibility artifact present", "3+ scout signals present") rather than stating abstract completion. |
+| C-08 | **Stage names are descriptive** | format | Stage names are human-readable labels that communicate the phase intent (e.g., `discovery`, `evidence`, `validation`) -- not generic (`stage1`, `step2`) and not skill names reused as stage names. |
+
+Weight per recommended: 10 pts (3 criteria x 10 = 30 pts)
+
+---
+
+## Aspirational Criteria (65 pts total)
+
+| ID   | Criterion | Category | Pass Condition |
+|------|-----------|----------|----------------|
+| C-09 | **Strategic pacing across signal types** | depth | The plan shows deliberate signal-building strategy: early stages produce breadth signals (scout, draft), middle stages produce depth signals (prove, review), late stages synthesize (topic). The program reflects a coherent evidence arc, not just topological sort. |
+| C-10 | **Gates are quantified where possible** | behavior | At least one gate specifies a minimum signal count or threshold (e.g., `gate: ">=2 scout signals and draft-spec artifact present"`). Quantified gates are machine-checkable in principle. |
+| C-11 | **Skill catalog grounded inline** | reliability | The variation enumerates all valid skill names organized by namespace inline in the prompt -- not by reference to an external file. This eliminates hallucination risk for C-03 at the source rather than relying on post-hoc validation. Pass if all 47 skills are listed inline; fail if the prompt delegates to "see plugin-plan.md" or "use the catalog." |
+| C-12 | **Actor-role framing for gates** | depth | Gate conditions are written in actor-role transition language (e.g., "researcher needs X before designer can proceed", "PM sign-off requires Y") rather than abstract artifact checklists alone. Actor framing naturally grounds gates in workflow transitions and produces C-07-passing conditions without additional instruction. |
+| C-13 | **Quantified gate syntax instructed** | behavior | The variation embeds a concrete `>=N signal_type` syntax example directly inside the gate-writing instruction (not only in a general examples section). The inline example drives machine-checkable threshold syntax in output, producing C-10-passing gates reliably. |
+| C-14 | **Naive-competitor framing** | reliability | The variation opens by naming the failure mode it is designed to defeat and the structural choice that defeats it. Pass if the variation contains an explicit contrast statement naming (a) a specific failure mode (e.g., "flat skill lists", "dependency-free stage ordering", "abstract gates") AND (b) the structural choice that addresses it. The verb form is flexible: "defeats that by," "breaks that pattern by requiring," "counters this by enforcing" are all equivalent -- the criterion is structural (both elements present), not lexical. Fail if only the failure mode is named without the structural response, or if only what the variation does is described without identifying the failure mode it defeats. |
+| C-15 | **Why-this-position column in actor table** | depth | The actor ordering table includes a justification column where each entry contains both (a) a reason the actor belongs at that position AND (b) a consequence-of-displacement clause naming what breaks, fails, or is ungrounded if the actor is moved. Compact form is sufficient: a single sentence combining both elements (e.g., "Moved later: design targets an unvalidated problem") passes. Position rationale alone is insufficient (R3 finding: V-01 had rationale, failed C-15). Fail if entries contain position rationale only without a consequence-of-displacement clause, or if the column is present but entries are left blank. Prose depth is not required; one consequence-of-displacement sentence per actor passes. |
+| C-16 | **Unified handoff+threshold gate template** | behavior | The variation specifies a single required gate format string that combines all three elements: actor names, `>=N` threshold, and artifact type (e.g., "[Delivering actor] hands off to [Receiving actor] when >=N artifact_type present"). A unified template hits C-07, C-12, and C-13 simultaneously with no instruction density cost. Pass if a single format string incorporating all three elements appears in the gate-writing instruction; fail if these elements are specified separately or the template omits any one of them. |
+| C-17 | **What-happens-if-removed clause** | depth | The arc-strategy step requires the model to answer "what happens if any gate is removed?" as part of producing the strategy statement. This forcing function distinguishes genuine arc reasoning (model can explain the consequence) from restatement (model paraphrases the artifact list). Pass if the arc-strategy instruction contains this clause or equivalent; fail if the strategy step only asks for a summary of what was prioritized. |
+| C-18 | **Column header frames displacement impossibility** | reliability | The actor table column header is phrased to ask why the actor *cannot be positioned earlier* or *what breaks if moved*, rather than why the actor *belongs* at that position. Displacement-impossibility framing keeps the forcing function visible at every row and drives consequence-of-displacement reasoning in each cell without relying on the model carrying an earlier instruction. Pass if the column header contains a displacement-impossibility clause (e.g., "cannot run earlier", "what breaks if moved earlier", "what is lost if displaced", "and what breaks if moved"); fail if the header names positive belonging only (e.g., "Why this position", "Rationale", "Position justification") without a consequence or impossibility clause. |
+| C-19 | **Multi-hop downstream consequence cascade** | depth | At least one actor table entry traces a chain of two or more ordered downstream consequences -- not a single consequence but an explicit sequence across arc layers (e.g., "Moved later: design targets wrong problem -> review critiques a design anchored in assumptions -> prove tests a hypothesis without market grounding"). A multi-hop chain demonstrates causal chain awareness across the arc, not just first-order impact. Pass if at least one entry contains an ordered sequence of two or more downstream consequences using explicit sequencing (arrows, "then", "which means", numbered steps); fail if all entries contain single-consequence-of-displacement statements only, even if those statements are well-reasoned. The cascade must cross at least one arc-layer boundary (consequence in one namespace layer causing a problem in a later namespace layer). Single-actor cascades are sufficient; not every actor entry needs a cascade, only one. |
+
+| C-20 | **Header embeds cascade notation and depth requirement** | reliability | The column header extends displacement-impossibility framing (C-18) to also specify cascade notation format (-> arrows) and minimum cascade depth (2+ ordered consequences crossing arc-layer boundaries) directly in the header text. The header is the most instruction-efficient placement because it fires as a visible reminder at every row during table construction, eliminating reliance on model memory of a separate instruction block. Pass if the header contains both a displacement-impossibility clause (C-18) AND an explicit cascade specification naming arrow notation and minimum depth -- e.g., "cannot run earlier -- and what cascade breaks downstream (use -> arrows, 2+ ordered consequences, crossing arc-layer boundaries)"; fail if the cascade notation specification exists only in a separate instruction block, a post-table check, or is absent. A header that passes C-18 but omits cascade notation and depth fails C-20. Source: R4 finding -- V-01 (header embeds cascade requirement, 145/145) > V-02/V-03 (post-table cascade instruction, 140/145). |
+| C-21 | **All actor entries demonstrate cascade depth** | depth | Every actor entry in the variation's actor table template demonstrates a -> cascade of 2+ ordered consequences crossing arc-layer boundaries -- not just one entry (C-19), but all entries. Full-table cascade coverage means every row serves as a cascade template with no single-consequence entries to anchor against. Pass if all actor entries in the variation's own actor table use -> notation with 2+ ordered downstream consequences crossing at least one arc-layer boundary; fail if any actor entry is single-consequence even if at least one entry passes C-19. A variation that passes C-19 (one cascade entry) but leaves remaining entries as single-consequence fails C-21. Source: R4 finding -- V-01 and V-05 (all six entries have 3-hop -> chains, 155/155 retroactive) vs. V-02/V-03/V-04 (all entries single-consequence, 140/155 retroactive). |
+
+Weight per aspirational: 5 pts (13 criteria x 5 = 65 pts)
+
+---
+
+## Scoring Worksheet
+
+```
+Essential:    C-01 [ ] C-02 [ ] C-03 [ ] C-04 [ ] C-05 [ ]
+              Pass count: ___ / 5   -> ___ * 12 = ___ pts (of 60)
+
+Recommended:  C-06 [ ] C-07 [ ] C-08 [ ]
+              Pass count: ___ / 3   -> ___ * 10 = ___ pts (of 30)
+
+Aspirational: C-09 [ ] C-10 [ ] C-11 [ ] C-12 [ ] C-13 [ ]
+              C-14 [ ] C-15 [ ] C-16 [ ] C-17 [ ] C-18 [ ]
+              C-19 [ ] C-20 [ ] C-21 [ ]
+              Pass count: ___ / 13  -> ___ * 5  = ___ pts (of 65)
+
+Composite score: ___ / 155
+
+Golden: all essential pass AND composite >= 124  ->  [ ] YES  [ ] NO
+```
+
+---
+
+## Notes for Scorers
+
+- **C-01**: Check YAML validity first. If YAML is invalid, score C-01 fail and note -- remaining
+  criteria may still be partially assessable from intent.
+- **C-02**: Echo stage is a hard contract. If missing or misplaced, C-02 fails regardless of
+  otherwise good structure.
+- **C-03**: Use the 47-skill catalog in `plugin-plan.md` as the authority for valid skill names.
+  Namespace-qualified names (`scout:feasibility`) and unqualified names (`feasibility`) both
+  acceptable if unambiguous.
+- **C-05**: Dependency order is assessed by namespace layer (scout -> draft -> review/prove -> topic),
+  not strict alphabetical. Within a namespace, order is flexible.
+- **C-07**: "References artifacts" means the gate text includes artifact type names, not that it
+  invokes the artifact system at runtime. This is a plan, not an executor.
+- **C-11**: This is a prompt-design criterion evaluated on the variation, not the output. Check
+  whether the variation text itself contains an inline listing of skills by namespace. A pointer
+  like "refer to plugin-plan.md" fails; a block like "valid scout skills: feasibility, market,
+  naming, ..." passes.
+- **C-12**: Actor framing is assessed in the gate text of the output. Look for role-transition
+  language ("before X can proceed", "Y needs Z to hand off") in addition to artifact references.
+  Pure artifact lists without role context do not pass C-12.
+- **C-13**: Distinguished from C-10 by scope: C-10 checks whether any output gate is quantified;
+  C-13 checks whether the *variation* contains an embedded `>=N` syntax example inside its
+  gate-writing instruction. A variation can pass C-13 but still fail C-10 (if the instruction
+  is present but the model ignored it).
+- **C-14**: Evaluated on the variation text, not the output. The contrast statement must name a
+  *specific* failure mode (e.g., "flat skill lists", "dependency-free stage ordering", "abstract
+  gates") -- not a generic claim like "this is better than naive approaches." The failure mode
+  named should be the one the variation's structural choices actually defeat. The verb form is
+  flexible: "defeats," "breaks that pattern by requiring," "counters," "addresses" are all
+  equivalent. Both elements must be present (failure mode + structural response).
+- **C-15**: Evaluated on the variation text. An actor table where each entry has both a position
+  reason AND a consequence-of-displacement clause passes. Position rationale alone fails (R3
+  finding: V-01 had rationale, failed C-15 -- the gap is absence of "what breaks if moved"
+  reasoning). Compact form is sufficient (R3 finding: V-03's one-sentence consequence entries
+  passed). Prose depth is not required.
+- **C-16**: The template must appear *inside* the gate-writing instruction, not only in an
+  examples section. A format string that omits actor names (threshold + artifact only) passes
+  C-13 but not C-16. All three elements -- actor, threshold, artifact -- must appear in one
+  required format.
+- **C-17**: Evaluated on the variation text. The clause can take any form ("explain what would
+  break if this gate were removed", "state the consequence of skipping this gate", etc.) as long
+  as it requires the model to reason about gate removal consequences. A step that only asks for
+  a summary of what was prioritized does not pass C-17.
+- **C-18**: Evaluated on the variation text -- specifically the column header text for the actor
+  table's justification column. The boundary case: "Why this position" fails; "Why this position
+  (what breaks if moved earlier)" passes; "Why this actor cannot run earlier" passes; "Position
+  rationale" fails; "Justification" fails. The key test: does the header direct the model toward
+  *displacement impossibility or consequence* rather than *position belonging*? Headers phrased
+  as "why cannot" or "what breaks if" pass; headers phrased as "why this" or "rationale" without
+  a consequence clause fail. V-01's failure (header "Why this position", entries had rationale
+  but no displacement consequence) is the archetype for this fail pattern.
+- **C-19**: Evaluated on the variation output -- the actor table entries themselves. A cascade
+  requires two or more ordered consequences using explicit sequencing (arrows, "then", numbered
+  steps, "which means"). A single consequence restated in multiple clauses does not count. The
+  chain must cross at least one arc-layer boundary (e.g., a consequence in the design layer that
+  causes a problem in the validation layer). Single-actor cascades are sufficient; not every actor
+  entry needs a cascade, only one. V-05's evidence ("Moved later: design is anchored in the
+  author's assumptions -> review critiques a design targeting the wrong problem -> prove
+  investigates a hypothesis without market grounding. Scout gates protect all downstream layers
+  simultaneously.") is the archetype for a passing cascade.
+- **C-20**: Evaluated on the variation text -- specifically the column header. Distinguished from C-18: C-18 requires displacement-impossibility framing; C-20 requires that same header to *also* specify cascade notation format (-> arrows) and minimum depth (2+ ordered consequences, arc-layer crossing). A header passes C-18 but fails C-20 if it contains "cannot run earlier" without cascade specification. A header passes both if it contains both elements, e.g., "cannot run earlier -- and what cascade breaks downstream (use -> arrows, 2+ ordered consequences, crossing arc-layer boundaries)." V-01 and V-05 pass C-20; V-02/V-03/V-04 pass C-18 but fail C-20 (headers carry displacement-impossibility framing without cascade notation). Post-table cascade checks do not substitute: the header must be the location of the cascade specification. R4 finding: V-01 (header cascade requirement) > V-02 (post-table check) in cascade entry reliability.
+- **C-21**: Evaluated on the variation text -- all actor entries in the actor table template. Distinguished from C-19: C-19 requires at least one cascade entry; C-21 requires every entry to be a cascade. Inspect each actor row in the variation's table. If any row is single-consequence (even one), C-21 fails. If every row has a -> chain of 2+ ordered consequences crossing arc-layer boundaries, C-21 passes. V-01 (all six entries: 3-hop chains, 155/155 retroactive) and V-05 (all entries: 3-hop chains, 155/155 retroactive) are the archetypes. V-02/V-03/V-04 fail (all entries single-consequence, no -> notation in table body). A variation that includes one cascade entry to satisfy C-19 while leaving remaining entries as single-consequence fails C-21 -- full-table cascade coverage is required.
+
+---
+
+## Version Delta
+
+### v4 -> v5
+
+| Change | Detail |
+|--------|--------|
+| Added C-20 | Header embeds cascade notation and depth requirement -- from R4 finding: V-01 (header embeds "use -> arrows, 2+ ordered consequences, crossing arc-layer boundaries", 145/145) outperforms V-02/V-03 (post-table cascade instruction, 140/145). The C-18 header-loading principle generalizes to cascade depth: whatever requirement belongs in every row belongs in the header. R4-H01 and R4-H02 resolution. |
+| Added C-21 | All actor entries demonstrate cascade depth -- from R4 finding: V-01 and V-05 (all entries have 3-hop -> chains) both reach the 145/145 ceiling; V-02/V-03/V-04 (all entries single-consequence) score 140/145. C-19 requires at least one cascade; C-21 requires all entries to be cascades. Full-table cascade coverage is the maximum-density form of the demonstrated-entry pattern. R4-H04 resolution. |
+| Aspirational tier | 11 criteria x 5 pts -> 13 criteria x 5 pts = 65 pts |
+| Total points | 145 -> 155 |
+| Golden threshold | composite >= 116 -> composite >= 124 (same ~80% of max) |
+| R4 best scores retroactive | V-01: 155/155 (pass C-20, pass C-21); V-05: 155/155 (pass C-20, pass C-21); V-02: 140/155 (fail C-19, fail C-20, fail C-21); V-03: 140/155 (fail C-19, fail C-20, fail C-21); V-04: 140/155 (fail C-19, fail C-20, fail C-21). C-20 and C-21 are the new ceiling gap for R5. |
+
+
+### v3 -> v4
+
+| Change | Detail |
+|--------|--------|
+| Updated C-14 pass condition | Verb form clarified as flexible -- "defeats," "breaks that pattern by requiring," "counters" are equivalent. Criterion is structural (both elements present), not lexical. Source: R3-H01 resolution. |
+| Updated C-15 pass condition | Tightened: position rationale alone is insufficient (V-01 had rationale, failed C-15 -- the gap is absence of displacement-consequence reasoning). Pass now requires a consequence-of-displacement clause per actor in addition to position rationale. Compact form (one sentence) sufficient; prose depth not required. Source: R3-H02 resolution. |
+| Added C-18 | Column header frames displacement impossibility -- from R3 finding: all C-15-passing variations (V-02 through V-05) phrased their column header around displacement impossibility or consequence; V-01's "Why this position" header drove rationale-without-consequence entries. Header formulation is load-bearing for C-15 reliability. |
+| Added C-19 | Multi-hop downstream consequence cascade -- from R3 finding: V-05 traced 2-3 ordered downstream consequences per actor entry while V-03/V-04 had single-consequence entries; all scored 135/135 under v3. C-19 opens territory above the v3 ceiling. V-05 is the only R3 variation that retroactively passes C-19 (145/145). |
+| Aspirational tier | 9 criteria x 5 pts -> 11 criteria x 5 pts = 55 pts |
+| Total points | 135 -> 145 |
+| Golden threshold | composite >= 108 -> composite >= 116 (same ~80% of max) |
+| R3 best scores retroactive | V-03: 140/145 (pass C-18, fail C-19); V-04: 140/145 (pass C-18, fail C-19); V-05: 145/145 (pass C-18, pass C-19 -- multi-hop cascade present, "scout gates protect all downstream layers simultaneously"). C-19 cascade is the new ceiling gap. |
+
+### v2 -> v3
+
+| Change | Detail |
+|--------|--------|
+| Added C-14 | Naive-competitor framing -- from R2 finding: contrast opener primes principled arc reasoning; strongest C-09 discriminator in R2 |
+| Added C-15 | Why-this-position column -- from R2 finding: actor table justification column produces C-09-passing causal logic inline, eliminating need for separate arc-strategy step |
+| Added C-16 | Unified handoff+threshold gate template -- from R2 finding: single format string combining actor+threshold+artifact hits C-07+C-12+C-13 with no instruction density cost |
+| Added C-17 | What-happens-if-removed clause -- from R2 finding: forcing function that distinguishes genuine arc reasoning from restatement; validates C-09 more reliably |
+| Aspirational tier | 5 criteria x 5 pts -> 9 criteria x 5 pts = 45 pts |
+| Total points | 115 -> 135 |
+| Golden threshold | composite >= 92 -> composite >= 108 (same ~80% of max) |
+| R2 best score retroactive | V-05 scores 125/135 (C-14 fail, C-15 fail -- no contrast opener or justification column) |
+
+### v1 -> v2
+
+| Change | Detail |
+|--------|--------|
+| Added C-11 | Skill catalog grounded inline -- from R1 finding: V-04 was the only golden because it enumerated all 47 skills; all others referenced external catalog and failed C-03 |
+| Added C-12 | Actor-role framing for gates -- from R1 finding: V-04's actor-ordering implied artifact-grounded transitions without extra instruction |
+| Added C-13 | Quantified gate syntax instructed -- from R1 finding: V-05 achieved both C-09 and C-10 because it embedded `>=N` syntax in the requirement; V-04 did not |
+| Aspirational tier | 2 criteria x 5 pts -> 5 criteria x 5 pts = 25 pts |
+| Total points | 100 -> 115 |
+| Golden threshold | composite >= 80 -> composite >= 92 |

@@ -1,0 +1,1456 @@
+version: 1
+plugin: signal
+updated: 2026-03-16
+skills_count: 62
+namespaces:
+- discover
+- specify
+- validate
+- simulate
+- rhythm
+- roles
+- signal
+- tools
+skills:
+- id: discover-competitors
+  namespace: discover
+  audience: pm
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  golden: simulations/quest/golden/discover-competitors-golden-simplified-2026-03-15.md
+  rubric: simulations/quest/rubrics/scout-competitors-rubric-v2-2026-03-14.md
+  quest_status: GOLDEN (Round 2, score 100)
+  description: 'Competitive landscape analysis with inertia-first framing. Use --focus
+    to expand scope: --focus market (sizing + segments), --focus positioning (framework
+    + category). Default: named competitors + inertia analysis. THE PRIMARY COMPETITOR:
+    always assess status quo first, always HIGH threat. AMEND: 3 adjustments to shift
+    the analysis.'
+  artifact: simulations/scout/competitors/{topic}-competitors-{date}.md
+  spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-competitors
+  param_inline:
+    focus:
+      market: 'After the competitive brief, add: TAM/SAM/SOM estimate, top 3 segments
+        ranked by fit score, market growth rate (CAGR if available), and whether market
+        size justifies building.'
+      positioning: 'After the competitive brief, add: positioning framework (category,
+        frame of reference, differentiator), category creation opportunity assessment,
+        and 2-3 candidate positioning statements.'
+- id: discover-feasibility
+  namespace: discover
+  audience: pm+architect
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  description: 'Technical feasibility assessment. Use --focus for additional discovery
+    dimensions: --focus compliance (regulatory constraints), --focus stakeholders
+    (power/interest map), --focus requirements (extraction + ambiguity flags), --focus
+    naming (validation + trademark), --focus size (effort estimation). Default: team/timeline/complexity
+    feasibility with traffic-light ratings.'
+  artifact: simulations/scout/feasibility/{topic}-feasibility-{date}.md
+  spec: simulations/draft/specs/signal-scout-2026-03-14.md#scout-feasibility
+  golden: simulations/quest/golden/discover-feasibility-golden-simplified-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+  param_inline:
+    focus:
+      compliance: 'After feasibility, add: regulatory framework scan, applicable standards
+        (GDPR, SOC2, HIPAA etc.), compliance timeline impact, and show-stopper risks.'
+      stakeholders: 'After feasibility, add: stakeholder power/interest map, key decision
+        makers, blockers, and recommended engagement sequence.'
+      requirements: 'After feasibility, add: full requirements extraction with ambiguity
+        flags, compliance-scope boundary, and missing information list.'
+      naming: 'After feasibility, add: name validation across trademark, domain, brand
+        fit, and competitor namespace. Produce 3 candidate names with risk scores.'
+      size: 'After feasibility, add: effort sizing (S/M/L/XL), team composition signal,
+        timeline range (sprint estimate), confidence level.'
+- id: discover-risk
+  namespace: discover
+  param_set: standard
+  tools:
+  - Read
+  - Write
+  - Glob
+  artifact: simulations/scout/risk/{topic}-risk-{date}.md
+  description: 'Risk register for a feature or decision. What could go wrong? Lists
+    top risks across dimensions: technical (implementation unknowns), market (adoption
+    risk), compliance (regulatory exposure), dependency (third-party, platform), timeline
+    (schedule risk). Each risk gets: severity (HIGH/MEDIUM/LOW), likelihood, mitigation.
+    The inertia risk is always listed first -- the risk that the status quo was good
+    enough and you built the wrong thing. AMEND: focus on specific risk dimension,
+    adjust severity thresholds.'
+  golden: simulations/quest/golden/discover-risk-golden-2026-03-16.md
+  rubric: simulations/quest/rubrics/scout-risk-rubric-v20-2026-03-16.md
+  quest_status: GOLDEN (Round 20, score 188)
+- id: discover-inertia
+  namespace: discover
+  param_set: standard
+  tools:
+  - Read
+  - Write
+  - Glob
+  artifact: simulations/scout/inertia/{topic}-inertia-{date}.md
+  description: 'Deep analysis of the inertia competitor -- the option to do nothing.
+    Why would teams keep their current workaround instead of adopting this feature?
+    Maps: current workaround in detail, switching cost (time, training, disruption),
+    inertia threat score (always HIGH by default), specific conditions under which
+    inertia loses. This is the most important analysis in Signal. Every feature decision
+    must answer: why does inertia lose? If you cannot answer that, stop. AMEND: quantify
+    switching costs, identify specific workaround failure modes.'
+  golden: simulations/quest/golden/discover-inertia-golden-2026-03-16.md
+  rubric: simulations/quest/rubrics/scout-inertia-rubric-v21-2026-03-16.md
+  quest_status: GOLDEN (Round 20, score 290)
+- id: specify-spec
+  namespace: specify
+  audience: pm+architect
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Author a specification from intent with guided section structure.
+    Pulls context from any scout signals for the topic. Guided section authoring:
+    purpose, requirements (from scout-requirements if available), design, constraints,
+    open questions. Self-review on completion: flag open questions, gaps, and ambiguity.
+    Stock role: Architect.
+
+    '
+  artifact: simulations/draft/specs/{topic}-spec-{date}.md
+  spec: simulations/draft/specs/signal-draft-2026-03-14.md#draft-spec
+  golden: simulations/quest/golden/specify-spec-golden-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: specify-proposal
+  namespace: specify
+  audience: pm+architect
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Author a proposal or ADR with options and trade-offs. Three options
+    minimum (including do-nothing). Each option: description, pros, cons, risk, effort.
+    Recommendation section with rationale. Pulls from scout-feasibility if available.
+    Stock roles: Architect (technical options), PM (business trade-offs).
+
+    '
+  artifact: simulations/draft/proposals/{topic}-proposal-{date}.md
+  spec: simulations/draft/specs/signal-draft-2026-03-14.md#draft-proposal
+  golden: simulations/quest/golden/specify-proposal-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: specify-pitch
+  namespace: specify
+  audience: pm
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Author a pitch deck narrative in exec, developer, and maker versions.
+    Pulls from scout-positioning if available. Each version: hook, what it does, why
+    it matters, call to action. Anti-positioning section (what we are NOT). Exec version:
+    outcome-first, ROI framing. Dev version: show the tool, not the business case.
+    Maker version: jargon-free, "can I do this?" framing. Stock roles: PM, Strategy.
+
+    '
+  artifact: simulations/draft/pitches/{topic}-pitch-{date}.md
+  spec: simulations/draft/specs/signal-draft-2026-03-14.md#draft-pitch
+  golden: simulations/quest/golden/specify-pitch-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: discover-brainstorm
+  namespace: discover
+  param_set: standard
+  tools:
+  - Read
+  - Write
+  artifact: simulations/draft/brainstorm/{topic}-brainstorm-{date}.md
+  description: 'Generate a pool of ideas for any topic -- more than you need, so you
+    can rank and filter. Each idea gets: name, one-line pitch, category, rationale.
+    Produce 20-40 candidates. Group by category. Mark top 5 with ** for immediate
+    viability. Inertia check: include do nothing as a candidate. AMEND: 3 adjustments
+    to shift the pool.'
+  golden: simulations/quest/golden/discover-brainstorm-golden-2026-03-16.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: validate-design
+  namespace: validate
+  audience: team
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Multi-expert review of a design artifact through 6 standard disciplines
+    and auto-selected domain experts. Auto-select 3-5 domain experts from content
+    signals (e.g., spec mentioning RBAC selects a security architect). Per-reviewer
+    findings with P1/P2/P3 severity. Consensus analysis (2+ reviewers flag same thing),
+    split opinions, unique catches. Amend: address findings one by one, re-run specific
+    reviewers on changed sections. Stock: 6 disciplines (architect, code-quality,
+    documentation, testing, process, implementation) + domain experts.
+
+    '
+  artifact: simulations/review/design/{topic}-design-{date}.md
+  spec: simulations/draft/specs/signal-review-2026-03-14.md#review-design
+  golden: simulations/quest/golden/validate-design-golden-simplified-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: validate-code
+  namespace: validate
+  audience: dev
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  description: 'Multi-discipline code review of source files, PRs, or diffs. If a
+    spec is provided, each discipline checks spec compliance. Per-discipline findings
+    with code-level file:line annotations. Group findings by file. Identify patterns
+    (e.g., "error handling inconsistent across 4 files"). Pass/fail per discipline.
+    Amend: re-run affected disciplines on changed files only. Stock: 6 disciplines
+    + auto-selected domain experts from language/framework context.
+
+    '
+  artifact: simulations/review/code/{topic}-code-{date}.md
+  spec: simulations/draft/specs/signal-review-2026-03-14.md#review-code
+  golden: simulations/quest/golden/validate-code-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: validate-users
+  namespace: validate
+  audience: pm+ux
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: '5 persona advocates walk through a design from their user perspective.
+    Each persona narrates in first person, flags confusion/friction/fear/jargon with
+    exact artifact quotes, gives usability score 1-5. Cross-persona synthesis: universal
+    friction (3+ personas), role-specific friction, persona conflicts (what helps
+    one hurts another). Aggregate usability score. Amend: iterate until no persona
+    scores below 3/5. Stock: Maker, Developer, Compliance, Supervisor, Operator.
+
+    '
+  artifact: simulations/review/users/{topic}-users-{date}.md
+  spec: simulations/draft/specs/signal-review-2026-03-14.md#review-users
+  golden: simulations/quest/golden/validate-users-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: validate-customers
+  namespace: validate
+  audience: pm
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: '12 customer personas (C-01 through C-12) evaluate a feature for usefulness,
+    clarity, and would-adopt (all 1-5). Primary audience weighted 3x, secondary 2x,
+    non-target 1x. Identify adoption blockers (primary persona would-adopt < 3), positioning
+    leaks (non-target confused about who this is for), delight signals (score 5).
+    Weighted aggregate score. Amend: address blockers and leaks first. Stock: C-01
+    Maria Chen (Maker) through C-12 Frank Hoffmann (Regulator).
+
+    '
+  artifact: simulations/review/customers/{topic}-customers-{date}.md
+  spec: simulations/draft/specs/signal-review-2026-03-14.md#review-customers
+  golden: simulations/quest/golden/validate-customers-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: simulate-lifecycle
+  namespace: simulate
+  audience: dev
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Simulate the full business process lifecycle and flow behavior. Use
+    --focus to zoom into a specific flow dimension: --focus trigger (event-trigger
+    analysis), --focus dataflow (data pipeline trace), --focus integration (connector/API
+    integration), --focus ratelimit (throughput and backpressure). Default: full lifecycle
+    simulation across all phases. Each focus produces a targeted simulation finding
+    rather than a full lifecycle trace.'
+  artifact: simulations/flow/lifecycle/{topic}-lifecycle-{date}.md
+  spec: simulations/draft/specs/signal-flow-2026-03-14.md#flow-lifecycle
+  golden: simulations/quest/golden/simulate-lifecycle-golden-2026-03-16.md
+  quest_status: GOLDEN (synced 2026-03-17)
+  param_inline:
+    depth:
+      quick: 3 phases
+      standard: full lifecycle
+      deep: full lifecycle + all focus dimensions
+- id: simulate-conversation
+  namespace: simulate
+  audience: dev
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Simulate a multi-turn agent conversation through a topic graph. Walk
+    the dialog path: user intents, agent responses, topic transitions, fallback handling,
+    session state. Identify: dead ends (no valid next intent), infinite loops, intent
+    collisions (same utterance maps to multiple topics), missing fallbacks. Stock
+    roles: Copilot Studio domain expert.
+
+    '
+  artifact: simulations/flow/conversation/{topic}-conversation-{date}.md
+  spec: simulations/draft/specs/signal-flow-2026-03-14.md#flow-conversation
+  golden: simulations/quest/golden/simulate-conversation-golden-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: simulate-stress
+  namespace: simulate
+  audience: dev
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Simulate degraded conditions: offline, partial failure, eventual consistency.
+    For each failure scenario: what state is the system in, what can the user still
+    do, what data is at risk, what is the recovery path. Identify: offline experience
+    gaps, data consistency violations, missing recovery flows. Stock roles: Commerce
+    / distributed systems domain expert.
+
+    '
+  artifact: simulations/flow/resilience/{topic}-resilience-{date}.md
+  spec: simulations/draft/specs/signal-flow-2026-03-14.md#flow-resilience
+  golden: simulations/quest/golden/simulate-stress-golden-simplified-2026-03-15.md
+- id: simulate-request
+  namespace: simulate
+  audience: dev
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Hand-compile a request through service boundaries, APIs, and middleware.
+    Step by step: entry point, authentication, routing, each service boundary crossed,
+    storage access, response assembly, error paths. No boundary skipped. Identify:
+    failure points at each boundary, latency sources, authorization gaps, batch operation
+    edge cases. Stock roles: Dataverse / Commerce / Automate platform expert auto-selected
+    from context.
+
+    '
+  artifact: simulations/trace/request/{topic}-request-{date}.md
+  spec: simulations/draft/specs/signal-trace-2026-03-14.md#trace-request
+  golden: simulations/quest/golden/simulate-request-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: simulate-state
+  namespace: simulate
+  audience: dev
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Hand-compile state transitions: starting state, operations applied,
+    expected outcome at each step. For each operation: preconditions, state changes,
+    postconditions, invariants that must hold. Identify: invalid state transitions,
+    missing precondition checks, invariant violations, race conditions. Stock roles:
+    Sales / Customer Service / Finance state domain expert.
+
+    '
+  artifact: simulations/trace/state/{topic}-state-{date}.md
+  spec: simulations/draft/specs/signal-trace-2026-03-14.md#trace-state
+  golden: simulations/quest/golden/simulate-state-golden-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: simulate-contract
+  namespace: simulate
+  audience: dev
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Verify implementation against spec contract. Use --type to target
+    a specific verification dimension: --type component (UI component tree and state),
+    --type deployment (deployment and infrastructure compliance), --type migration
+    (schema and data migration invariants), --type inspect (skill/plugin trace). Default:
+    full contract verification. Two-role architecture (Automate/Expert) with 7-gate
+    manifest applies to all types.'
+  artifact: simulations/trace/contract/{topic}-contract-{date}.md
+  spec: simulations/draft/specs/signal-trace-2026-03-14.md#trace-contract
+  golden: simulations/quest/golden/simulate-contract-golden-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+  param_inline:
+    depth:
+      quick: essential gates only
+      standard: full 7-gate manifest
+      deep: full manifest + all type variants
+- id: simulate-permissions
+  namespace: simulate
+  audience: dev
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Trace who can do what through RBAC, security roles, teams, and field-level
+    security. For each operation: which roles can perform it, which fields are visible,
+    which records are accessible. Identify: privilege escalation paths, missing field-level
+    security, team membership gaps, sharing rule conflicts. Stock roles: Customer
+    Service / Dataverse security expert.
+
+    '
+  artifact: simulations/trace/permissions/{topic}-permissions-{date}.md
+  spec: simulations/draft/specs/signal-trace-2026-03-14.md#trace-permissions
+  golden: simulations/quest/golden/simulate-permissions-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/trace-permissions-rubric-v20-2026-03-16.md
+  quest_status: GOLDEN (Round 20, score 100.0)
+- id: discover-hypothesis
+  namespace: discover
+  audience: pm+researcher
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal
+  description: 'State what you believe and what would change your mind. Entry point
+    to a prove investigation. A hypothesis has: a claim (what you believe), a falsification
+    condition (what evidence would prove it wrong), a confidence level (0-100), and
+    a list of experiments that will test it. The hypothesis is a commitment -- you
+    cannot move the goalposts after seeing results.
+
+    '
+  artifact: simulations/prove/investigations/{topic}-hypothesis-{date}.md
+  spec: simulations/draft/specs/signal-prove-2026-03-14.md#prove-hypothesis
+  golden: simulations/quest/golden/discover-hypothesis-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: discover-websearch
+  namespace: discover
+  audience: pm+researcher
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  - WebFetch
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Search the public web for evidence supporting or refuting the hypothesis.
+    For each search: query used, sources found, evidence extracted (direct quotes
+    with URLs), relevance to hypothesis, strength of evidence (strong/weak/mixed).
+    Cite sources. Do not paraphrase without attribution. Do not use training data
+    as evidence -- every claim must have a URL.
+
+    '
+  artifact: simulations/prove/investigations/{topic}-websearch-{date}.md
+  spec: simulations/draft/specs/signal-prove-2026-03-14.md#prove-websearch
+  golden: simulations/quest/golden/discover-websearch-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: discover-analysis
+  namespace: discover
+  audience: dev+researcher
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Analyze existing data, telemetry, schemas, or scenarios for patterns
+    that bear on the hypothesis. For each data source: what was analyzed, what pattern
+    was found, what is the statistical or logical strength of the pattern. Distinguish
+    correlation from causation explicitly.
+
+    '
+  artifact: simulations/prove/investigations/{topic}-analysis-{date}.md
+  spec: simulations/draft/specs/signal-prove-2026-03-14.md#prove-analysis
+  golden: simulations/quest/golden/discover-analysis-golden-simplified-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: discover-synthesize
+  namespace: discover
+  audience: pm+researcher
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Merge all investigation signals into an answer-first synthesis. Structure:
+    answer (yes/no/maybe), confidence (0-100), key evidence (top 3 signals that most
+    influenced the answer), counter-evidence (what argues against), principles extracted
+    (what this tells us beyond this specific hypothesis), open questions (what the
+    investigation did not resolve). The synthesis is the deliverable -- it supersedes
+    the individual investigation signals.
+
+    '
+  artifact: simulations/prove/investigations/{topic}-synthesis-{date}.md
+  spec: simulations/draft/specs/signal-prove-2026-03-14.md#prove-synthesize
+  golden: simulations/quest/golden/discover-synthesize-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: discover-orchestrate
+  namespace: discover
+  param_set: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  artifact: simulations/prove/research/{topic}-research-{date}.md
+  description: 'Orchestrate a full prove evidence campaign. Runs hypothesis, websearch,
+    intelligence, analysis, synthesize in sequence. Use --focus to add specialized
+    steps: --focus intelligence (competitive intel synthesis), --focus topic (topic-scoped
+    evidence), --focus prototype (prototype evaluation), --focus publish (research
+    publication review), --focus interview (simulated expert interview). Default:
+    5-step core evidence arc.'
+  golden: simulations/quest/golden/discover-orchestrate-golden-2026-03-15.md
+- id: validate-feedback
+  namespace: validate
+  audience: pm+ux
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Simulate customer reactions to a spec or design before it ships. All
+    12 customer personas (C-01 through C-12) read the spec through their lens. Per-persona
+    feedback cards with severity (blocking/major/minor/cosmetic) and NPS prediction
+    (1-10). Cross-persona theme matrix. Aggregate NPS threshold: 7.0. Below 7.0 =
+    spec needs revision. Stock roles: C-01 through C-12, PM, UX.
+
+    '
+  artifact: simulations/listen/feedback/{topic}-feedback-{date}.md
+  spec: simulations/draft/specs/signal-listen-2026-03-14.md#listen-feedback
+  golden: simulations/quest/golden/validate-feedback-golden-2026-03-14.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: validate-support
+  namespace: validate
+  audience: pm+sre
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Predict the top support tickets filed in the first 90 days. For each
+    predicted ticket: title, category (how-to/bug/feature-request/config/integration),
+    persona most likely to file, predicted volume (high/medium/low), severity (P0-P3),
+    sample ticket body in the persona''s voice. Gap analysis: doc gaps, design gaps,
+    operational gaps. Stock roles: Support, SRE, PM, UX, C-01 through C-12 (background).
+
+    '
+  artifact: simulations/listen/support/{topic}-support-{date}.md
+  spec: simulations/draft/specs/signal-listen-2026-03-14.md#listen-support
+  golden: simulations/quest/golden/validate-support-golden-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: validate-adoption
+  namespace: validate
+  audience: pm
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Simulate the adoption curve across team archetypes. Map personas to
+    Rogers archetypes (innovator/early-adopter/early-majority/late-majority/laggard).
+    Month-by-month simulation: who tries first, what spreads, what bridges the chasm.
+    Chasm analysis: the gap between early adopters and early majority. Champion network,
+    churn risks, intervention recommendations ranked by adoption delta. Stock roles:
+    PM, UX, C-01 through C-12, Support, SRE.
+
+    '
+  artifact: simulations/listen/adoption/{topic}-adoption-{date}.md
+  spec: simulations/draft/specs/signal-listen-2026-03-14.md#listen-adoption
+  golden: simulations/quest/golden/validate-adoption-golden-simplified-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: tools-coverage
+  namespace: tools
+  param_set: lean
+  tools:
+  - Read
+  - Write
+  - Glob
+  artifact: simulations/mock/{topic}-mock-{date}.md
+  description: 'Generate synthetic signal artifacts for all 9 namespaces in a single
+    pass. Each mock follows the structural requirements of its golden rubric. Automatic
+    pre-flagging: EVIDENCE-HEAVY namespaces get REAL-REQUIRED, compliance namespaces
+    flagged at all tiers. Coverage summary table at end. Supports --tier 1|2|3 and
+    --compliance flags.'
+  golden: simulations/quest/golden/tools-coverage-golden-2026-03-16.md
+  quest_status: GOLDEN (copied from mock-all)
+- id: tools-preview
+  namespace: tools
+  param_set: lean
+  tools:
+  - Read
+  - Write
+  - Glob
+  artifact: simulations/mock/{topic}-{namespace}-mock-{date}.md
+  description: Generate a mock artifact for a single namespace. Same annotation and
+    category rules as mock-all. Use --skill to target a specific skill within the
+    namespace. Supports --tier 1|2|3.
+  golden: simulations/quest/golden/tools-preview-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/mock-ns-rubric-v20-2026-03-16.md
+  quest_status: GOLDEN (copied from mock-ns)
+- id: tools-accept
+  namespace: tools
+  param_set: lean
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  artifact: simulations/mock/{topic}-accept-{date}.md
+  description: 'Step 2 of mock-first workflow: review mock coverage picture and produce
+    MOCK-ACCEPTED or REAL-REQUIRED decisions per namespace. WRITES updated Status
+    fields back into source mock artifact (only permitted in-place edit in Signal).
+    Reason codes: STRUCTURAL-COVERAGE-SUFFICIENT or DOMAIN-KNOWLEDGE-CONSISTENT. Produces
+    next-steps list.'
+  golden: simulations/quest/golden/tools-accept-golden-2026-03-16.md
+  quest_status: GOLDEN (copied from mock-review)
+- id: specify-commitment
+  namespace: specify
+  audience: lead
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  inputs:
+  - Topic
+  - Strategy
+  outputs:
+  - Signal
+  description: 'Sequence skills into a staged program plan with gates and topic tracking.
+    Generate program.yaml for the topic: stages (name, skills, gate), each stage with
+    the skills to run and the gate condition that must be met before advancing. Final
+    stage is always echo (auto, no skills). Program is optional -- every skill runs
+    standalone. The program is a plan, not an executor.
+
+    '
+  artifact: simulations/program/plans/{topic}-program-{date}.md
+  spec: simulations/draft/specs/signal-program-2026-03-14.md#program-plan
+  golden: simulations/quest/golden/specify-commitment-golden-2026-03-16.md
+- id: signal
+  namespace: topic
+  audience: all
+  default_mode: lightweight
+  tools:
+  - Read
+  inputs:
+  - (none)
+  outputs:
+  - Command index
+  golden: simulations/quest/golden/signal-golden-2026-03-17.md
+  rubric: null
+  quest_status: GOLDEN (direct, index/help skill)
+  param_set: lean
+  description: Show the Signal command index. Lists all available skills organized
+    by namespace with one-line descriptions. Type /signal to see what is available.
+    Type /signal <namespace> to see skills in that namespace. Type /signal --bare
+    to see bare command names. Use as a starting point when you are not sure which
+    skill to run.
+  artifact: null
+- id: signal-setup
+  namespace: topic
+  audience: all
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
+  inputs:
+  - (none)
+  outputs:
+  - Updated CLAUDE.md and/or .github/copilot-instructions.md
+  golden: simulations/quest/golden/signal-setup-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/signal-setup-rubric-v18-2026-03-16.md
+  quest_status: GOLDEN (Round 20, score 98)
+  param_set: lean
+  description: Configure Signal in your workspace after installation. Checks for existing
+    CLAUDE.md and .github/copilot-instructions.md. Shows a preview of the Signal section
+    it will add. Asks confirmation before writing. Appends a Signal section that advertises
+    available skills and the inertia rule to Claude Code context. Optionally updates
+    GitHub Copilot instructions. Run once after installing Signal skills. Safe to
+    re-run -- detects existing Signal sections and skips if already configured.
+  artifact: CLAUDE.md (updated)
+- id: signal-layout
+  namespace: topic
+  audience: all
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Bash
+  inputs:
+  - (none) | switch <variant> | recommend
+  outputs:
+  - Layout info, install guidance
+  golden: simulations/quest/golden/signal-layout-golden-2026-03-17.md
+  rubric: null
+  quest_status: GOLDEN (direct, utility skill)
+  param_set: lean
+  description: 'Show or change your Signal navigation layout. Five variants: A) grouped
+    (9 namespaces), B) groups (5 phases: discover/specify/validate/simulate/govern),
+    C) signal (conversational /signal routes everything), D) flat (/scout-competitors
+    style), E) bare (/competitors style). Called bare: shows current layout and what
+    to try. Called with switch <variant>: runs the appropriate install script. Called
+    with recommend: analyzes which skills you have used most and suggests the best
+    layout for your pattern. Use after install to explore different navigation styles.'
+  artifact: null
+- id: rhythm-status
+  namespace: rhythm
+  audience: anyone
+  default_mode: lightweight
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - Topic
+  outputs: []
+  description: 'Show topic coverage and commitment readiness. DISPLAY ONLY. Use --view
+    for supplementary perspectives: --view roadmap (what signals still needed), --view
+    reflect (what did we learn unexpectedly), --view retro (post-ship retrospective),
+    --view achievements (milestones earned on this topic). Default: coverage exposure
+    computation with per-namespace status.'
+  artifact: none (terminal display only)
+  spec: simulations/draft/specs/signal-topic-2026-03-14.md#topic-status
+  golden: simulations/quest/golden/rhythm-status-golden-simplified-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: rhythm-story
+  namespace: rhythm
+  audience: anyone
+  default_mode: lightweight
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  - Signal
+  outputs:
+  - Signal
+  description: 'Synthesize all signals into a coherent narrative. NOT a summary of
+    each signal -- an editorial synthesis in the author''s voice interpreting what
+    the signals say together. Structure: what we set out to understand, what each
+    signal revealed (key finding, not exhaustive), what the signals say together (the
+    pattern), what remains uncertain, the recommendation (proceed/pause/pivot/abandon).
+
+    '
+  artifact: simulations/{topic}/{topic}-story-{date}.md
+  spec: simulations/draft/specs/signal-topic-2026-03-14.md#topic-story
+  golden: simulations/quest/golden/rhythm-story-golden-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: quest-rubric
+  namespace: quest
+  audience: internal
+  default_mode: internal
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - SkillSpec
+  - TraceOutput
+  outputs:
+  - Rubric
+  description: 'Define what good output looks like for a skill. Given a skill spec
+    and sample outputs, produce a scoring rubric: ranked criteria (C-01, C-02...)
+    each with text, weight (essential/recommended/aspirational), category (correctness/depth/
+    format/coverage/behavior), and pass condition. Start with 3-5 essential criteria
+    covering the non-negotiable behaviors. The rubric is the objective function for
+    quest-golden. It grows as quest-golden discovers excellence patterns.
+
+    '
+  artifact: simulations/quest/rubrics/{skill}-rubric-{date}.md
+  spec: simulations/draft/specs/signal-quest-2026-03-14.md#quest-rubric
+  golden: simulations/quest/golden/quest-rubric-golden-QU5-2026-03-16.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: quest-variate
+  namespace: quest
+  audience: internal
+  default_mode: internal
+  tools:
+  - Read
+  - Write
+  inputs:
+  - SkillSpec
+  outputs:
+  - SkillVariation
+  description: 'Generate N distinct prompt variations of a skill body. Each variation
+    is a complete, runnable skill body -- not a diff. Variation axes: role sequence,
+    output format, lifecycle emphasis, stock role selection, phrasing register, scoring
+    granularity. Single-axis variation isolates the effect of each choice. Combinations
+    come after single-axis passes. Default N=5. Each variation labeled V-01 through
+    V-0N with its axis and hypothesis.
+
+    '
+  artifact: simulations/quest/variations/{skill}-variations-{date}.md
+  spec: simulations/draft/specs/signal-quest-2026-03-14.md#quest-variate
+  golden: simulations/quest/golden/quest-variate-golden-QU5-simplified-2026-03-15.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: quest-score
+  namespace: quest
+  audience: internal
+  default_mode: internal
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - SkillVariation
+  - Rubric
+  - TraceOutput
+  outputs:
+  - QuestScorecard
+  description: 'Score N skill outputs against a rubric. Per-criterion PASS/PARTIAL/FAIL
+    with evidence quote. Composite score per output. Ranked leaderboard. Excellence
+    signals: outputs scoring unusually high on a specific criterion. Failure patterns:
+    criteria failing across ALL outputs (rubric gap or skill design issue?). Regression
+    signals: outputs that passed in round N-1 but fail in round N.
+
+    '
+  artifact: simulations/quest/scorecards/{skill}-scorecard-R{round}-{date}.md
+  spec: simulations/draft/specs/signal-quest-2026-03-14.md#quest-score
+  golden: simulations/quest/golden/quest-score-golden-QU5-simplified-2026-03-16.md
+  quest_status: GOLDEN (synced 2026-03-17)
+- id: quest-golden
+  namespace: quest
+  audience: internal
+  default_mode: internal
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - SkillSpec
+  - TraceOutput
+  outputs:
+  - Signal
+  description: 'Find the golden prompt through systematic variation and scoring. Full
+    loop: load or create rubric, generate variations, score against rubric and scenarios,
+    identify excellence signals, extract pattern (QU2), propose rubric criterion (QU3),
+    apply if approved (QU4), iterate until dual convergence. Dual convergence: all
+    scenarios pass (trial converged) AND no new excellence patterns for 2 consecutive
+    rounds (quest plateaued). The converged prompt body is the golden prompt. Write
+    it as the skill body. Write the final rubric.
+
+    '
+  artifact: simulations/quest/golden/{skill}-golden-{date}.md
+  spec: simulations/draft/specs/signal-quest-2026-03-14.md#quest-golden
+- id: roles-scan
+  namespace: roles
+  audience: lead+architect
+  default_mode: full
+  tools:
+  - Read
+  - Glob
+  - Grep
+  inputs:
+  - Repo path (optional)
+  outputs:
+  - org.yaml draft
+  golden: simulations/quest/golden/roles-scan-golden-QU5-simplified-2026-03-16.md
+  rubric: null
+  quest_status: GOLDEN (copied from org-scan)
+  param_set: standard
+  description: 'Walk a repo and produce a draft org.yaml -- the org configuration
+    contract. Pivot modes: directory, concept, service, domain. Produces detected
+    team areas, suggested group structure (divisions/tribes/pillars), suggested standard
+    roles, exec office placeholder. Does NOT write .roles/ -- outputs draft
+    org.yaml for human review and confirmation first. AMEND: adjust pivot mode, exec
+    office name, group structure.'
+  artifact: simulations/corps/{topic}-scan-{date}.md
+  spec: simulations/draft/specs/signal-corp-2026-03-15.md#org-scan
+- id: roles-build
+  namespace: roles
+  audience: lead+exec
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - org.yaml (confirmed)
+  outputs:
+  - org-chart.md
+  - .roles/ directory
+  golden: simulations/quest/golden/roles-build-golden-2026-03-16.md
+  rubric: null
+  quest_status: GOLDEN (copied from org-build)
+  param_set: standard
+  description: 'Read a confirmed org.yaml and generate the full org. Outputs: (1)
+    org-chart.md with ASCII box diagram, headcount by group/area, level distribution;
+    (2) .roles/{area}/{role}.md typed files for every role -- standard roles
+    per team, specialized roles per team, shared group roles, exec office roles. Supports
+    arbitrary group nesting: Division > Team > Sub-group. Inertia-advocate always
+    included in every team. AMEND: regenerate specific area, adjust level vocabulary,
+    change group structure.'
+  artifact: design/corp/org-chart.md
+  spec: simulations/draft/specs/signal-corp-2026-03-15.md#corp-build
+- id: roles-product-review
+  namespace: roles
+  audience: lead+exec
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Stage (all|leadership|teams|pm|tpm|arch-board|exec-office)
+  - Topic or artifact
+  outputs:
+  - ROB stage documents
+  golden: simulations/quest/golden/roles-product-review-golden-2026-03-16.md
+  rubric: simulations/quest/rubrics/corps-rob-rubric-v20-2026-03-16.md
+  quest_status: GOLDEN (Round 20, score 330)
+  param_set: full
+  description: 'Run Review of Business (ROB) stages. Stages: leadership (exec briefing),
+    teams (all team self-reviews), pm (PM cross-alignment), tpm (risk register + go/no-go),
+    arch-board (architecture board), exec-office (S-office missions cascade). Use
+    --stage all for full ROB in sequence. Use --scope {group} to run for one division/tribe
+    only. Reads org.yaml for role selection and committee definitions. Loads .roles/
+    for personas. Outputs stage documents in ROB format. AMEND: re-run specific stage,
+    adjust scope.'
+  artifact: simulations/corps/{topic}-rob-{stage}-{date}.md
+  spec: simulations/draft/specs/signal-corp-2026-03-15.md#org-rob
+- id: roles-pull-request
+  namespace: roles
+  audience: dev+lead
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Bash
+  inputs:
+  - PR number or diff path
+  outputs:
+  - PR review from org
+  golden: simulations/quest/golden/roles-pull-request-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/corps-pr-rubric-v18-2026-03-16.md
+  quest_status: GOLDEN (Round 20, score 100)
+  param_set: full
+  description: 'Run a PR through the full org. Selects reviewers based on files changed
+    -- compiler changes get compiler roles, security changes get security + compliance,
+    etc. Each role reviews from their perspective. Output: per-role findings P1/P2/P3,
+    consensus analysis, go/no-go recommendation. Use before merging high-impact PRs.
+    Reads org.yaml for role scope and committee definitions. AMEND: add specific reviewer,
+    change scope.'
+  artifact: simulations/corps/{topic}-pr-review-{date}.md
+  spec: simulations/draft/specs/signal-corp-2026-03-15.md#org-pr
+- id: roles-generate
+  namespace: roles
+  param_set: standard
+  tools:
+  - Read
+  - Write
+  - Glob
+  artifact: .roles/{domain}/
+  description: 'Generate a typed role registry for a domain. Analyzes product/codebase
+    to determine what expert perspectives are needed. Each role gets: orientation,
+    lens (verify + simplify), expertise, scope, collaborates_with. Output is .roles/{area}/
+    directory of markdown role files. Inertia-advocate always included. AMEND: add
+    more roles, adjust level distribution.'
+  golden: simulations/quest/golden/roles-generate-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/crew-roles-rubric-v15-2026-03-17.md
+  quest_status: GOLDEN (Round 20, score 10.0)
+- id: roles-chart
+  namespace: roles
+  param_set: standard
+  tools:
+  - Read
+  - Write
+  - Glob
+  artifact: simulations/corps/{domain}-org-{date}.md
+  description: 'Generate org structure for a product or domain: areas, divisions,
+    committees, operating rhythms. Reads existing .roles/ to build from real
+    roles. Output: org-chart.md with ASCII org box, headcount by area, committee charters,
+    operating rhythm table. AMEND: adjust headcount, reorganize teams.'
+  golden: simulations/quest/golden/roles-chart-golden-QU5-simplified-2026-03-16.md
+  quest_status: GOLDEN (copied from org-chart)
+- id: roles-check
+  namespace: roles
+  param_set: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  artifact: simulations/crew/{topic}-check-{date}.md
+  description: 'Run any artifact through the full org. Reads .roles/ and selects
+    relevant reviewers based on artifact type. Each role reviews from their perspective.
+    Produces review matrix: role, findings, severity, recommendation. --depth deep
+    runs all roles; standard runs relevant roles only. AMEND: add specific reviewer,
+    change scope.'
+  golden: simulations/quest/golden/roles-check-golden-2026-03-17.md
+  quest_status: GOLDEN (copied from org-review)
+- id: roles-committee
+  namespace: roles
+  param_set: standard
+  tools:
+  - Read
+  - Write
+  - Glob
+  artifact: simulations/corps/{topic}-committee-{date}.md
+  description: 'Simulate a committee meeting before the real one. Types: ROB (product
+    review, service review), shiproom (go/no-go), arch-board (architecture decision
+    review). Reads committee charter from .roles/. Each participant reviews
+    from their role perspective. Output: mock meeting minutes with decisions, action
+    items, dissenting opinions. AMEND: add attendees, change scope.'
+  golden: simulations/quest/golden/roles-committee-golden-2026-03-16.md
+  quest_status: GOLDEN (copied from org-committee)
+- id: rhythm-decide
+  namespace: rhythm
+  audience: pm+team
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  - WebSearch
+  inputs:
+  - Topic
+  outputs:
+  - Decision brief
+  golden: simulations/quest/golden/rhythm-decide-golden-2026-03-16.md
+  rubric: simulations/quest/rubrics/campaign-decide-rubric-v20-2026-03-16.md
+  quest_status: GOLDEN (Round 20, score 110.5)
+  param_set: full
+  description: 'Run the full pre-commitment decision campaign. Orchestrates: scout-competitors,
+    scout-feasibility, scout-risk, prove-hypothesis, prove-websearch, prove-synthesize.
+    Use --scope to narrow: --scope evidence (evidence only), --scope blueprint (spec
+    package only). Default: full decision brief with recommendation and stated confidence.'
+  artifact: simulations/campaign/{topic}-decide-{date}.md
+- id: rhythm-behavior
+  namespace: rhythm
+  audience: dev+architect
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic or spec
+  outputs:
+  - Simulation report
+  golden: simulations/quest/golden/rhythm-behavior-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/rhythm-behavior-rubric-v21-2026-03-17.md
+  quest_status: GOLDEN (Round 20, score 56)
+  param_set: full
+  description: 'Run the full technical simulation campaign. Orchestrates: flow-lifecycle,
+    flow-conversation, trace-state, trace-contract, trace-permissions in sequence.
+    Output: simulation findings report ranked by blast radius. Use before implementation
+    to find spec gaps and contract violations.'
+  artifact: simulations/campaign/{topic}-simulate-{date}.md
+- id: rhythm-qa
+  namespace: rhythm
+  audience: pm+ux+team
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic or design
+  outputs:
+  - Validation brief
+  golden: simulations/quest/golden/rhythm-qa-golden-2026-03-16.md
+  rubric: simulations/quest/rubrics/campaign-validate-rubric-v5-2026-03-16.md
+  quest_status: GOLDEN (Round 6, score 155)
+  param_set: full
+  description: 'Run the full design validation campaign. Orchestrates: review-design,
+    review-users, review-customers, listen-feedback, listen-adoption in sequence.
+    Output: validation brief with findings ranked by adoption impact. Use to validate
+    a design before committing to spec.'
+  artifact: simulations/campaign/{topic}-validate-{date}.md
+- id: rhythm-brief
+  namespace: rhythm
+  audience: pm+team
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Topic narrative dashboard
+  golden: simulations/quest/golden/rhythm-brief-golden-2026-03-16.md
+  rubric: simulations/quest/rubrics/campaign-brief-rubric-v20-2026-03-16.md
+  quest_status: GOLDEN (Round 20, score 390)
+  param_set: lean
+  description: 'Run the full topic narrative campaign. Orchestrates: topic-new (register),
+    topic-roadmap (plan signals), topic-status (current coverage), topic-story (narrative
+    synthesis). Output: complete topic dashboard showing what signals exist, what
+    is missing, and the narrative arc. Use at the start and end of a signal-gathering
+    session.'
+  artifact: simulations/campaign/{topic}-brief-{date}.md
+- id: signal-health
+  namespace: signal
+  audience: team
+  default_mode: full
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Signal health report
+  golden: simulations/quest/golden/signal-health-golden-2026-03-18.md
+  rubric: simulations/quest/rubrics/signal-check-rubric-v20-2026-03-18.md
+  quest_status: GOLDEN (Round 20, score 100.0)
+  param_set: lean
+  description: 'Self-check your signals before committing. Analyzes all signal artifacts
+    for a topic across 4 dimensions: SEQUENCE (did you discover before specifying?),
+    COHERENCE (do your signals agree with each other?), STALENESS (are signals recent
+    enough to trust?), CAUSAL GAP (do you have evidence for the mechanism linking
+    feature to outcome?). Not punitive -- coaching. Surfaces what looks inconsistent
+    so you can decide whether to address it before committing. Run before /specify-commitment
+    or any major decision.'
+  artifact: simulations/signal/check/{topic}-check-{date}.md
+- id: discover-causal
+  namespace: discover
+  audience: pm+researcher
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  inputs:
+  - Topic
+  - Hypothesis or feature claim
+  outputs:
+  - Causal validity signal
+  golden: simulations/quest/golden/discover-causal-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/discover-causal-rubric-v13-2026-03-17.md
+  quest_status: GOLDEN (Round 14, score 230)
+  param_set: standard
+  description: 'Test whether the causal mechanism linking your feature to the claimed
+    outcome is actually sound. Given: hypothesis X causes Y, this skill asks: what
+    is the causal pathway? what would falsify the mechanism? is there evidence the
+    mechanism holds in your context? The inertia check applies here too -- does doing
+    nothing also produce Y? This is the most commonly skipped eval in feature decisions.
+    AMEND: narrow the causal claim, add mechanism pathway, add falsification condition.'
+  artifact: simulations/discover/causal/{topic}-causal-{date}.md
+- id: discover-coherence
+  namespace: discover
+  audience: team
+  default_mode: full
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Coherence report
+  golden: simulations/quest/golden/discover-coherence-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/discover-coherence-rubric-v3-2026-03-17.md
+  quest_status: GOLDEN (Round 4, score 130)
+  param_set: lean
+  description: 'Check whether your discover signals agree with each other. Surfaces
+    contradictions: if discover-competitors rates inertia MEDIUM but discover-inertia
+    finds switching cost HIGH, those disagree. If discover-hypothesis predicts adoption
+    but validate-customers shows NPS 4, those disagree. Lists each contradiction with
+    both signals side by side, severity (blocking vs advisory), and the most likely
+    resolution. Run after gathering multiple discover signals before specifying.'
+  artifact: simulations/discover/coherence/{topic}-coherence-{date}.md
+- id: discover-compare
+  namespace: discover
+  audience: pm+team
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - WebSearch
+  inputs:
+  - Topic
+  - Option A
+  - Option B
+  outputs:
+  - Comparison signal
+  golden: simulations/quest/golden/discover-compare-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/discover-compare-rubric-v18-2026-03-17.md
+  quest_status: GOLDEN (Round 20, score 100.0)
+  param_set: standard
+  description: 'Structured A vs B comparison for two approaches, features, or options.
+    For each option: feasibility, inertia (would teams do nothing instead of THIS
+    option?), risk, and competitive positioning. Produces a decision matrix with recommendation.
+    The inertia check applies to BOTH options -- sometimes neither is worth building.
+    AMEND: add a third option, weight specific dimensions, adjust for exec vs engineering
+    audience.'
+  artifact: simulations/discover/compare/{topic}-compare-{date}.md
+- id: validate-adoption-blocker
+  namespace: validate
+  audience: pm+ux
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  inputs:
+  - Topic
+  outputs:
+  - Adoption inertia signal
+  golden: simulations/quest/golden/validate-adoption-blocker-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/validate-inertia-rubric-v21-2026-03-17.md
+  quest_status: GOLDEN (Round 20, score 500)
+  param_set: standard
+  description: 'Validate the adoption case by stress-testing the inertia scenario.
+    Why would users NOT adopt this feature even if it works perfectly? Maps: current
+    workaround satisfaction, switching cost per persona, habit lock-in, social proof
+    requirements, learning curve. Produces per-persona inertia score and overall adoption
+    inertia risk. AMEND: focus on specific persona, quantify switching cost, identify
+    the one barrier that would kill adoption.'
+  artifact: simulations/validate/inertia/{topic}-validate-inertia-{date}.md
+- id: discover-competitors-alt
+  namespace: discover
+  audience: pm
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - WebSearch
+  inputs:
+  - Topic
+  - 'Focus (optional: market|positioning)'
+  outputs:
+  - Signal
+  golden: simulations/quest/golden/discover-competitors-alt-golden-2026-03-18.md
+  rubric: simulations/quest/rubrics/discover-competitors-alt-rubric-v20-2026-03-18.md
+  quest_status: GOLDEN (Round 20, score 100.0)
+  param_set: standard
+  description: 'UNIFIED VERSION (A/B test against discover-competitors). Single prompt
+    handles base competitive analysis AND optional focus dimensions (market sizing,
+    positioning framework) in one coherent output. The focus is not appended -- it
+    is woven into the analysis. Goal: test whether unified > parameterized for depth
+    and coherence. The inertia competitor is always assessed first. AMEND: shift focus
+    dimension, adjust depth.'
+  artifact: simulations/discover/competitors/{topic}-competitors-alt-{date}.md
+- id: discover-feasibility-alt
+  namespace: discover
+  audience: pm+architect
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  - Grep
+  inputs:
+  - Topic
+  - 'Focus (optional: compliance|stakeholders|requirements|naming|size)'
+  outputs:
+  - Signal
+  golden: null
+  rubric: null
+  quest_status: QUEUED
+  param_set: standard
+  description: 'UNIFIED VERSION (A/B test against discover-feasibility). Single prompt
+    handles base feasibility AND optional focus dimensions woven together, not appended.
+    Produces a richer, more coherent output when focus is active. Test whether unified
+    > parameterized. AMEND: shift focus, adjust confidence thresholds.'
+  artifact: simulations/discover/feasibility/{topic}-feasibility-alt-{date}.md
+- id: roles-create
+  namespace: roles
+  audience: lead+team
+  default_mode: full
+  tools:
+  - Read
+  - Write
+  - Glob
+  inputs:
+  - Role name (area:subrole) or description
+  outputs:
+  - .roles/{area}/{subrole}.md
+  golden: simulations/quest/golden/roles-create-golden-2026-03-17.md
+  rubric: simulations/quest/rubrics/roles-create-rubric-v19-2026-03-17.md
+  quest_status: GOLDEN (Round 20, score 100)
+  param_set: standard
+  description: 'Create a new role or sub-role in .roles/. Three modes: (1) name
+    only -- /roles-create backend:healthcare generates from name with smart defaults;
+    (2) description -- /roles-create "healthcare compliance officer who reviews HIPAA"
+    generates from description; (3) interactive -- /roles-create walks through orientation/lens/expertise
+    fields. Output: .roles/{area}/{subrole}.md in exact craftworks format. The
+    inertia-advocate sub-role is always suggested if not already present in the area.
+    AMEND: adjust archetype, sharpen lens.verify questions, add domain specializations
+    table.'
+  artifact: .roles/{area}/{subrole}.md
+- id: rhythm-achievements
+  namespace: rhythm
+  audience: team
+  default_mode: lightweight
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - Topic
+  outputs:
+  - Achievement report
+  golden: null
+  rubric: null
+  quest_status: QUEUED
+  param_set: lean
+  description: Show earned achievements for a topic. Scans simulations/ for artifacts,
+    checks 31 achievements across 7 categories (exploration, depth, coverage, chain,
+    quality, discovery, roles/corps). Shows EARNED, IN PROGRESS, NEXT RECOMMENDED
+    (2 skills that unlock the most), and DISCOVERY WATCH (Falsified + The Echo always
+    visible). Run after any skill session to see progress and get oriented. The NEXT
+    RECOMMENDED section always suggests the highest-value next step.
+  artifact: null
+- id: roles-leaderboard
+  namespace: roles
+  audience: team+lead
+  default_mode: full
+  tools:
+  - Read
+  - Glob
+  inputs:
+  - (none — scans workspace)
+  outputs:
+  - Team achievement dashboard
+  golden: null
+  rubric: null
+  quest_status: QUEUED
+  param_set: lean
+  description: 'Team achievement leaderboard across all topics in the workspace. Shows:
+    each contributor, their achievement count, which achievements they earned, team
+    milestones (shared coverage, first team signal), coverage gaps (namespaces nobody
+    has run yet), and recommended next actions for the team. Run at weekly syncs and
+    sprint boundaries. Competitive but constructive — the point is coverage gaps,
+    not ranking.'
+  artifact: simulations/roles/achievements-{date}.md
+parameters:
+  definitions:
+  - name: focus
+    type: enum
+    values:
+    - market
+    - positioning
+    - compliance
+    - stakeholders
+    - requirements
+    - naming
+    - size
+    - component
+    - deployment
+    - migration
+    - inspect
+    - prototype
+    - publish
+    - interview
+    - intelligence
+    - topic
+    description: Expand into a specific sub-dimension of this skill.
+    inject: block
+    block_text: 'focus: {value}
+
+      # Expand the analysis into the {value} dimension (see skill description for
+      details)
+
+      '

@@ -1,0 +1,5 @@
+# Rubric -- mock-accept v8
+
+## What changed from v7
+
+Two new aspirational criteria (C-31 and C-32) extracted from R7 excellence signals:

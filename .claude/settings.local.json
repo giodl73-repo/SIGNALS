@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Write",
+      "Edit",
+      "Read",
+      "WebSearch",
+      "WebFetch(*)",
+      "Skill(*)",
+      "Agent(*)"
+    ]
+  },
+  "enabledPlugins": {},
+  "extraKnownMarketplaces": {}
+}
