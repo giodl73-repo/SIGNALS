@@ -1,13 +1,15 @@
 # Signal — Know What You Know Before You Commit
 
-Feature decision intelligence for Claude Code and GitHub Copilot. 62 skills across 9 namespaces. The primary competitor is always inertia.
+**The primary competitor is always inertia.** Most features compete not against another product but against the world where the team simply doesn't ship anything new. Signal is feature decision intelligence for Claude Code and GitHub Copilot that takes that fact seriously: every `/discover-competitors` run scores "none / status quo" first, and scores it HIGH. If you cannot explain why inertia loses, the feature does not have a clear value case — and you should know that *before* you commit, not after.
+
+62 skills across 9 namespaces, organized around the loop from *is this worth building?* to *what will users say after we ship?*
 
 ## Install
 
 ```bash
-git clone https://github.com/giodl_microsoft/signals
+git clone https://github.com/giodl73-repo/SIGNALS
 cd your-project
-bash ../signals/install/install-flat.sh
+bash ../SIGNALS/install/install-flat.sh
 ```
 
 Adds Signal context to `CLAUDE.md` automatically. First commands:
@@ -19,23 +21,7 @@ Adds Signal context to `CLAUDE.md` automatically. First commands:
 /rhythm-decide <feature>          Full pre-commitment decision campaign
 ```
 
----
-
-## 4 install variants
-
-| Binding | Commands | Install |
-|---------|----------|---------|
-| **flat** (default) | `/discover-competitors`, `/specify-spec` | `install/install-flat.sh` |
-| **bare** | `/competitors`, `/spec`, `/design` | `install/install-bare.sh` |
-| **grouped** | `/discover` menu + direct | `install/install-grouped.sh` |
-| **GitHub Copilot** | `.github/prompts/` | `install/install-flat-github.sh` |
-
-```bash
-# Domain roles (optional — richer signal output)
-bash install/install-roles.sh --domain dynamics   # Dynamics 365 (13 roles)
-bash install/install-roles.sh --domain msft       # MSFT internal (5 roles)
-bash install/install-roles.sh --domain flask      # Flask/Python (3 roles)
-```
+Four install variants are available — flat (default), bare, grouped, and a GitHub Copilot binding. See [`install/README.md`](install/README.md) for which to choose.
 
 ---
 
@@ -58,15 +44,13 @@ bash install/install-roles.sh --domain flask      # Flask/Python (3 roles)
 ## How it works
 
 ```
-1. /discover-competitors my-feature   The primary competitor is always inertia
+1. /discover-competitors my-feature   Inertia is scored first, and HIGH
 2. /discover-inertia my-feature       Why would teams do nothing instead?
 3. /specify-spec my-feature           Write the spec
 4. /rhythm-status my-feature          See what signals exist, readiness %
 ```
 
 Start anywhere. Every skill is self-contained.
-
-**The inertia rule**: Every `/discover-competitors` run assesses "none / status quo" first. Inertia is the primary competitor, always scored HIGH. If you cannot explain why inertia loses, the feature does not have a clear value case.
 
 ---
 
@@ -90,7 +74,7 @@ Use `--output <path>` to write anywhere flat:
 ## Claude Code plugin
 
 ```bash
-claude plugin marketplace add https://github.com/giodl_microsoft/signals
+claude plugin marketplace add https://github.com/giodl73-repo/SIGNALS
 claude plugin install signal
 ```
 
@@ -105,14 +89,10 @@ Commands: `/signal:discover competitors`, `/signal:specify spec`, `/signal:valid
 - **[docs/ACHIEVEMENTS.md](docs/ACHIEVEMENTS.md)** — 38 achievements. The most important: Falsified.
 - **[install/README.md](install/README.md)** — which binding to choose
 
-## Research
-
-35 papers on Signal's methodology in [`craftworks-research/signals/papers/`](https://github.com/gim-home/craftworks-research).
-
 ## Issues
 
-- **GitHub Issues**: [github.com/giodl_microsoft/signals/issues](https://github.com/giodl_microsoft/signals/issues)
-- **Discussions**: [github.com/giodl_microsoft/signals/discussions](https://github.com/giodl_microsoft/signals/discussions)
+- **GitHub Issues**: [github.com/giodl73-repo/SIGNALS/issues](https://github.com/giodl73-repo/SIGNALS/issues)
+- **Discussions**: [github.com/giodl73-repo/SIGNALS/discussions](https://github.com/giodl73-repo/SIGNALS/discussions)
 
 ## Status
 
