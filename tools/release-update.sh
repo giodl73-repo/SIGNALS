@@ -125,10 +125,10 @@ def get_description(path):
 
 count = 0
 for folder in sorted(os.listdir(skills_dir)):
-    if folder.endswith('.t3'): continue
+    if folder.endswith(''): continue
     skill_md = os.path.join(skills_dir, folder, 'SKILL.md')
     if not os.path.exists(skill_md): continue
-    t3_md = os.path.join(skills_dir, f'{folder}.t3', 'SKILL.md')
+    t3_md = os.path.join(skills_dir, f'{folder}', 'SKILL.md')
     body = get_body(skill_md)
     if 't3/SKILL.md' in body and os.path.exists(t3_md):
         t3_body = get_body(t3_md)

@@ -63,7 +63,7 @@
 | ID | Issue | Fixed in |
 |----|-------|---------|
 | I-01 | Bare binding program.yaml used old stems causing wrong folder names | `1e01562` |
-| I-02 | `specify-spec.t3` SCOUT-STATUS-TABLE only scanned for `scout-*` not `discover-*` — broke artifact continuity for every user | `6ccafd0` |
+| I-02 | `specify-spec` SCOUT-STATUS-TABLE only scanned for `scout-*` not `discover-*` — broke artifact continuity for every user | `6ccafd0` |
 | I-03 | CLAUDE.md not generated per-binding automatically | `1e01562` |
 | I-04 | `--depth deep` undocumented — 4/12 customers tried it, all got better output | Fixed: already in QUICKSTART.md parameters table (standard=15+ findings, deep=30+ findings) |
 

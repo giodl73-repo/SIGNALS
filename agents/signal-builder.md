@@ -159,7 +159,7 @@ The quality gate loop runs N rounds of customer simulations, finds bugs, fixes t
 
 **Quest-* skills excluded from release**: `quest-golden`, `quest-rubric`, `quest-score`, `quest-variate` are internal dev tools. They live in `sim-test` but not in `release/`.
 
-**`.t3` files**: Some skills have a full runbook in `SKILL.t3.md` (next to `SKILL.md`). The stub `SKILL.md` redirects to `./SKILL.t3.md`. This is the two-tier pattern — stub in slash menu, full runbook for execution.
+**`` files**: Some skills have a full runbook in `SKILL.md` (next to `SKILL.md`). The stub `SKILL.md` redirects to `./SKILL.md`. This is the two-tier pattern — stub in slash menu, full runbook for execution.
 
 ---
 
