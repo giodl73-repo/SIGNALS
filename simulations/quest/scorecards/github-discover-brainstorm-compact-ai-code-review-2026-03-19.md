@@ -8,8 +8,8 @@
   └ 8 files found
 
 ● Create brainstorm output directory (shell)
-  │ if (-not (Test-Path "C:\src\sim-test\signals\discover\brainstorm")) { New-Item -ItemType
-  │ Directory -Path "C:\src\sim-test\signals\discover\brainstorm" -Force }
+  │ if (-not (Test-Path "sim-test\signals\discover\brainstorm")) { New-Item -ItemType
+  │ Directory -Path "sim-test\signals\discover\brainstorm" -Force }
   └ 1 line...
 
 ● List directory signals\discover

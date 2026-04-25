@@ -8,12 +8,12 @@
   └ 7 files found
 
 ● List signals directory structure (shell)
-  │ Get-ChildItem -Path C:\src\sim-test\signals -Recurse -Directory | Select-Object FullName
+  │ Get-ChildItem -Path sim-test\signals -Recurse -Directory | Select-Object FullName
   └ 39 lines...
 
 ● Create support signals directory (shell)
-  │ if (!(Test-Path "C:\src\sim-test\signals\validate\support")) { New-Item -ItemType Directory
-  │ -Path "C:\src\sim-test\signals\validate\support" -Force }
+  │ if (!(Test-Path "sim-test\signals\validate\support")) { New-Item -ItemType Directory
+  │ -Path "sim-test\signals\validate\support" -Force }
   └ 4 lines...
 
 Now I'll produce the full listen-support artifact for the `ai-code-review` topic.

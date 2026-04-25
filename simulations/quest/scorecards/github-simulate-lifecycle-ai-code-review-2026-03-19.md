@@ -12,14 +12,14 @@
   └ No matches found
 
 ● Check signals directory (shell)
-  │ Get-ChildItem -Path "C:\src\sim-test\signals" -Recurse -ErrorAction SilentlyContinue |
+  │ Get-ChildItem -Path "sim-test\signals" -Recurse -ErrorAction SilentlyContinue |
   │ Select-Object FullName
   └ 1 line...
 
 Now I'll build the full lifecycle simulation. Let me ensure the output directory exists and then create the artifact.
 
 ● Create signals directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\simulate\lifecycle" -Force |
+  │ New-Item -ItemType Directory -Path "sim-test\signals\simulate\lifecycle" -Force |
   │ Out-Null; Write-Output "Created"
   └ 2 lines...
 
@@ -30,7 +30,7 @@ Artifact written. Let me verify the file is complete and well-formed.
 
 ● Verify artifact completeness (shell)
   │ $content = Get-Content
-  │ "C:\src\sim-test\signals\simulate\lifecycle\ai-code-review-lifecycle-2026-03-19.md" -Raw;
+  │ "sim-test\signals\simulate\lifecycle\ai-code-review-lifecycle-2026-03-19.md" -Raw;
   │ Write-Output "Lines: $((($content -split "`n").Count))"; Write-Output "Chars:
   │ $($content.Length)"; Write-Output "---"; Write-Output "Frontmatter check:"; $content |
   │ Select-String -Pattern "^skill:|^topic:|^date:" -AllMatches | ForEach-Object { …
@@ -38,7 +38,7 @@ Artifact written. Let me verify the file is complete and well-formed.
 
 ● Verify gates and terminals (shell)
   │ $c = Get-Content
-  │ "C:\src\sim-test\signals\simulate\lifecycle\ai-code-review-lifecycle-2026-03-19.md" -Raw; "Has
+  │ "sim-test\signals\simulate\lifecycle\ai-code-review-lifecycle-2026-03-19.md" -Raw; "Has
   │ frontmatter: $($c.StartsWith('---'))"; "Has GATE A CLOSED: $($c -match 'GATE A.*CLOSED')";
   │ "Has GATE B CLOSED: $($c -match 'GATE B.*CLOSED')"; "Has GATE C CLOSED: $($c -match 'GATE
   │ C.*CLOSED')"; "Has GATE D CLOSED: $($c -match 'GATE D.*CLOSED')"; "Has Check V CLOSED: $($c …

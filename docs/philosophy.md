@@ -133,8 +133,8 @@ Every technique we've built, organized by what gets simulated, who does the simu
 - `.claude/skills/research/SKILL.md` — `/research` skill (hypothesis first, then validate)
 - `design/admin/focus/Q07/README.md` — investigation methodology (craftworks)
 - `design/admin/focus/Q0*/` — craftworks investigations
-- `C:\src\agentverse\designs\questions.md` — master question registry (59 questions, 8 contributors)
-- `C:\src\agentverse\designs\_consensus\questions\` — 59 question files, 30 with experiment subdirectories
+- `agentverse\designs\questions.md` — master question registry (59 questions, 8 contributors)
+- `agentverse\designs\_consensus\questions\` — 59 question files, 30 with experiment subdirectories
 
 **Pattern**: "We think X" → design experiment → run it → "Actually Y" → update hypothesis → next loop. Result files use prefixes: `exp-` (enterprise search / Work IQ), `inv-` (web/desk inquiry), `exp-` (code experiment). Each loop produces: "What we thought we learned" vs "What we actually learned."
 
@@ -146,11 +146,11 @@ Every technique we've built, organized by what gets simulated, who does the simu
 **Who simulates**: 51 AI expert personas across 10 categories (systems, compilers, AI agents, prompting, HCI, ML systems, ML research, DevOps, NLP, security).
 **Scale**: 51 reviewers, 10 research papers, 3 tiers, 10-point scoring.
 **Sources**:
-- `C:\src\panel/` — complete panel system
-- `C:\src\panel/.roles/panel-reviewer/R-1.md` through `R-51.md` — OLE-format persona files
-- `C:\src\panel/context/panel/reviewers/profiles/` — cached reviewer profiles (~2KB each)
-- `C:\src\panel/config/scoring.yaml` — 4-point (paper) and 10-point (module/board) scales
-- `C:\src\panel/config/stages.yaml` — 8-stage lifecycle
+- `panel/` — complete panel system
+- `panel/.roles/panel-reviewer/R-1.md` through `R-51.md` — OLE-format persona files
+- `panel/context/panel/reviewers/profiles/` — cached reviewer profiles (~2KB each)
+- `panel/config/scoring.yaml` — 4-point (paper) and 10-point (module/board) scales
+- `panel/config/stages.yaml` — 8-stage lifecycle
 
 **Architecture**:
 - **Tier 1 (Paper)**: 5-7 reviewers per paper, 8-stage lifecycle (draft → panel → synthesis → revision → recheck → ready → submit → accepted), P1/P2/P3 priority classification, threshold avg >= 2.5/4.

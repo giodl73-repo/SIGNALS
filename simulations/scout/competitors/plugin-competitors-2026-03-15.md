@@ -4,7 +4,7 @@ topic: plugin
 item: plugin-competitors
 date: 2026-03-15
 skill_version: golden-v1
-input: Signal plugin (C:/src/sim) — 9 namespaces, 47-56 skills, developer-native evidence gathering for feature decision-making
+input: Signal plugin (sim) — 9 namespaces, 47-56 skills, developer-native evidence gathering for feature decision-making
 ---
 
 # Competitive Brief: Signal Plugin

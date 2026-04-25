@@ -1,4 +1,4 @@
-`C:/src/sim/simulations/quest/rubrics/trace-state-variate-R15-2026-03-15.md` written.
+`sim/simulations/quest/rubrics/trace-state-variate-R15-2026-03-15.md` written.
 
 ---
 

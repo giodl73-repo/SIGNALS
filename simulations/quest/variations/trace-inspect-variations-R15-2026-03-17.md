@@ -1,4 +1,4 @@
-`C:\src\sim\simulations\quest\golden\trace-inspect-variate-R15-2026-03-17.md` written.
+`sim\simulations\quest\golden\trace-inspect-variate-R15-2026-03-17.md` written.
 
 ---
 

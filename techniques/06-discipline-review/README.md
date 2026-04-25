@@ -16,17 +16,17 @@ A review board — AI acts as architect, code quality reviewer, documentation re
 
 | File | Purpose |
 |------|---------|
-| `C:\src\craftworks\plugins\craft\shared\make\discipline-operations.md` | CRUD operations for disciplines (new, show, list, edit, remove, assign, audit, brief) |
-| `C:\src\craftworks\plugins\craft\shared\make\discipline-resolver.md` | 5-tier resolution chain — exact match, domain-prefix fallback, specialization fallback, interactive generation |
-| `C:\src\craftworks\plugins\craft\templates\help\disciplines.md` | Discipline help documentation |
+| `craftworks\plugins\craft\shared\make\discipline-operations.md` | CRUD operations for disciplines (new, show, list, edit, remove, assign, audit, brief) |
+| `craftworks\plugins\craft\shared\make\discipline-resolver.md` | 5-tier resolution chain — exact match, domain-prefix fallback, specialization fallback, interactive generation |
+| `craftworks\plugins\craft\templates\help\disciplines.md` | Discipline help documentation |
 
 ### Review Output
 
 | Path | Content |
 |------|---------|
-| `C:\src\craftworks\.roles\reviews\concepts\` | Review output directories |
-| `C:\src\craftworks\design\flash\reviews\` | Flash discipline reviews (R-B1 through R-B8) |
-| `C:\src\craftworks\design\agent\reviews\founding\` | Agent founding review rounds (1-5) |
+| `craftworks\.roles\reviews\concepts\` | Review output directories |
+| `craftworks\design\flash\reviews\` | Flash discipline reviews (R-B1 through R-B8) |
+| `craftworks\design\agent\reviews\founding\` | Agent founding review rounds (1-5) |
 
 ### Standard Disciplines
 

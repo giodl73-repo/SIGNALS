@@ -1,4 +1,4 @@
-`C:\src\sim\simulations\quest\golden\org-scan-variate-R9-2026-03-16.md`
+`sim\simulations\quest\golden\org-scan-variate-R9-2026-03-16.md`
 
 ---
 

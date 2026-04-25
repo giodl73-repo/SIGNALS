@@ -16,27 +16,27 @@ Real customers — AI acts as maker, developer, architect, PM, compliance office
 
 | File | Purpose |
 |------|---------|
-| `C:\src\craftworks\design\admin\focus\Q07\data\customer-personas.md` | 12 persona definitions — role, industry, tech depth, primary concern, mental model, blind spots |
+| `craftworks\design\admin\focus\Q07\data\customer-personas.md` | 12 persona definitions — role, industry, tech depth, primary concern, mental model, blind spots |
 
 ### Investigation Results
 
 | Path | Content |
 |------|---------|
-| `C:\src\craftworks\design\admin\focus\Q07\results\inv-a.md` | Scoping & sharing |
-| `C:\src\craftworks\design\admin\focus\Q07\results\inv-b.md` | One-screen readability |
-| `C:\src\craftworks\design\admin\focus\Q07\results\inv-c.md` | Prompt-to-prose syntax |
-| `C:\src\craftworks\design\admin\focus\Q07\results\inv-d.md` | AI authoring model |
-| `C:\src\craftworks\design\admin\focus\Q07\results\inv-e.md` | ASCII diagram grammar |
-| `C:\src\craftworks\design\admin\focus\Q07\results\inv-f.md` | OpenClaw gap closure |
-| `C:\src\craftworks\design\admin\focus\Q07\results\inv-h.md` | Naming study + user testing |
-| `C:\src\craftworks\design\admin\focus\Q07\results\inv-h-*.md` | 8 sub-studies under inv-h |
+| `craftworks\design\admin\focus\Q07\results\inv-a.md` | Scoping & sharing |
+| `craftworks\design\admin\focus\Q07\results\inv-b.md` | One-screen readability |
+| `craftworks\design\admin\focus\Q07\results\inv-c.md` | Prompt-to-prose syntax |
+| `craftworks\design\admin\focus\Q07\results\inv-d.md` | AI authoring model |
+| `craftworks\design\admin\focus\Q07\results\inv-e.md` | ASCII diagram grammar |
+| `craftworks\design\admin\focus\Q07\results\inv-f.md` | OpenClaw gap closure |
+| `craftworks\design\admin\focus\Q07\results\inv-h.md` | Naming study + user testing |
+| `craftworks\design\admin\focus\Q07\results\inv-h-*.md` | 8 sub-studies under inv-h |
 
 ### Investigation Methodology
 
 | File | Purpose |
 |------|---------|
-| `C:\src\craftworks\design\admin\focus\Q07\README.md` | Full investigative journey — loops, pivots, confirmed/overturned |
-| `C:\src\craftworks\design\admin\focus\Q07\Q07.md` | Source of truth — question, experiments, findings |
+| `craftworks\design\admin\focus\Q07\README.md` | Full investigative journey — loops, pivots, confirmed/overturned |
+| `craftworks\design\admin\focus\Q07\Q07.md` | Source of truth — question, experiments, findings |
 
 ## Persona Index
 

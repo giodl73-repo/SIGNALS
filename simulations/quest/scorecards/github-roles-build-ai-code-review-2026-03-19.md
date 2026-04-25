@@ -59,8 +59,8 @@
 Now I have full context from the existing signals. Let me build the role. I need to create the `.roles/` directory structure and the signal artifact.
 
 ● Create role and signal directories (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\.roles\roles\product" -Force | Out-Null;
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\roles\build" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\.roles\roles\product" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\signals\roles\build" -Force | Out-Null;
   │ Write-Output "Directories created"
   └ 2 lines...
 
@@ -72,9 +72,9 @@ Now I have full context from the existing signals. Let me build the role. I need
 
 ● Verify files written (shell)
   │ Write-Output "=== Role file ===" ; Get-Item
-  │ "C:\src\sim-test\.roles\roles\product\false-positive-analyst.md" | Select-Object FullName,
+  │ "sim-test\.roles\roles\product\false-positive-analyst.md" | Select-Object FullName,
   │ Length ; Write-Output "`n=== Signal artifact ===" ; Get-Item
-  │ "C:\src\sim-test\signals\roles\build\ai-code-review-roles-build-2026-03-19.md" | Select-Object
+  │ "sim-test\signals\roles\build\ai-code-review-roles-build-2026-03-19.md" | Select-Object
   │ FullName, Length
   └ 7 lines...
 

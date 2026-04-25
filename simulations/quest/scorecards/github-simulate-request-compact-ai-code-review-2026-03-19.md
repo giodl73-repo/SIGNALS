@@ -44,7 +44,7 @@
 Now I have the full context. Let me produce a fresh, complete request trace artifact for the `ai-code-review` topic.
 
 ● Remove existing artifact for overwrite (shell)
-  │ Remove-Item "C:\src\sim-test\signals\simulate\request\ai-code-review-request-2026-03-19.md"
+  │ Remove-Item "sim-test\signals\simulate\request\ai-code-review-request-2026-03-19.md"
   └ 1 line...
 
 ● Create ai-code-review-request-2026-03-19.md +456

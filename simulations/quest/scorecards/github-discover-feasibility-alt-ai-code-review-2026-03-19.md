@@ -63,7 +63,7 @@ Good — I found 13 existing signals for `ai-code-review`. Let me read the key o
 Now I have rich context from 4 prior signals. Let me create the feasibility-alt artifact.
 
 ● Create feasibility-alt output directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\feasibility-alt" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\feasibility-alt" -Force
   └ 4 lines...
 
 ● Create ai-code-review-feasibility-alt-2026-03-19.md +229
@@ -73,7 +73,7 @@ Artifact written. Let me verify it.
 
 ● Verify artifact file (shell)
   │ Get-Item
-  │ "C:\src\sim-test\signals\discover\feasibility-alt\ai-code-review-feasibility-alt-2026-03-19.md"
+  │ "sim-test\signals\discover\feasibility-alt\ai-code-review-feasibility-alt-2026-03-19.md"
   │ | Select-Object Name, Length, LastWriteTime
   └ 4 lines...
 

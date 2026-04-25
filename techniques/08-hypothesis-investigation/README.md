@@ -17,35 +17,35 @@ Design decisions — the designer (or team members) use AI to run experiments an
 
 | File | Purpose |
 |------|---------|
-| `C:\src\craftworks\.claude\skills\research\SKILL.md` | `/research` skill — 708-line orchestrator for hypothesis-driven investigation |
+| `craftworks\.claude\skills\research\SKILL.md` | `/research` skill — 708-line orchestrator for hypothesis-driven investigation |
 
 ### Craftworks Investigations
 
 | Path | Content |
 |------|---------|
-| `C:\src\craftworks\design\admin\focus\Q02\` | Q02 investigation |
-| `C:\src\craftworks\design\admin\focus\Q04\` | Q04 investigation |
-| `C:\src\craftworks\design\admin\focus\Q05\` | Q05 investigation |
-| `C:\src\craftworks\design\admin\focus\Q07\` | Q07 investigation (16 sub-studies) |
-| `C:\src\craftworks\design\admin\focus\Q07\README.md` | Investigative journey narrative |
+| `craftworks\design\admin\focus\Q02\` | Q02 investigation |
+| `craftworks\design\admin\focus\Q04\` | Q04 investigation |
+| `craftworks\design\admin\focus\Q05\` | Q05 investigation |
+| `craftworks\design\admin\focus\Q07\` | Q07 investigation (16 sub-studies) |
+| `craftworks\design\admin\focus\Q07\README.md` | Investigative journey narrative |
 
 ### Agentverse Question Registry (Multi-Contributor)
 
 | File | Purpose |
 |------|---------|
-| `C:\src\agentverse\designs\questions.md` | Master registry — 59 questions, 8 contributors, P0/P1 priority |
-| `C:\src\agentverse\designs\_consensus\questions\` | 59 question files + 30 experiment subdirectories |
+| `agentverse\designs\questions.md` | Master registry — 59 questions, 8 contributors, P0/P1 priority |
+| `agentverse\designs\_consensus\questions\` | 59 question files + 30 experiment subdirectories |
 
 ### Sample Agentverse Questions (with experiments)
 
 | File | Owner | Topic |
 |------|-------|-------|
-| `C:\src\agentverse\designs\_consensus\questions\Q01.md` | giodl | Workspace topology |
-| `C:\src\agentverse\designs\_consensus\questions\Q02.md` | jamesol | Agent Workspace 1:N |
-| `C:\src\agentverse\designs\_consensus\questions\Q04.md` | jamesol | Git-based config UX |
-| `C:\src\agentverse\designs\_consensus\questions\Q05.md` | jamesol | Agentverse blueprint |
-| `C:\src\agentverse\designs\_consensus\questions\Q11.md` | jeffand | Git vs Dataverse substrate |
-| `C:\src\agentverse\designs\_consensus\questions\Q18.md` | giodl | Solution escape path |
+| `agentverse\designs\_consensus\questions\Q01.md` | giodl | Workspace topology |
+| `agentverse\designs\_consensus\questions\Q02.md` | jamesol | Agent Workspace 1:N |
+| `agentverse\designs\_consensus\questions\Q04.md` | jamesol | Git-based config UX |
+| `agentverse\designs\_consensus\questions\Q05.md` | jamesol | Agentverse blueprint |
+| `agentverse\designs\_consensus\questions\Q11.md` | jeffand | Git vs Dataverse substrate |
+| `agentverse\designs\_consensus\questions\Q18.md` | giodl | Solution escape path |
 
 ## Skill Workflow
 

@@ -45,7 +45,7 @@ Let me get key sections from the larger files.
 Now let me ensure the output directory exists and then write the pitch artifact.
 
 ● Create pitch output directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\specify\pitch" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\signals\specify\pitch" -Force | Out-Null;
   │ Write-Output "Created"
   └ 2 lines...
 
@@ -55,7 +55,7 @@ Now let me ensure the output directory exists and then write the pitch artifact.
 Pitch artifact written. Let me verify it.
 
 ● Verify pitch file (shell)
-  │ $f = Get-Item "C:\src\sim-test\signals\specify\pitch\ai-code-review-pitch-2026-03-19.md";
+  │ $f = Get-Item "sim-test\signals\specify\pitch\ai-code-review-pitch-2026-03-19.md";
   │ "$($f.Length) bytes, $((Get-Content $f).Count) lines"
   └ 2 lines...
 

@@ -56,7 +56,7 @@ Now let me spot-check a few artifacts to confirm they're real signal artifacts:
   └ L1:15 (15 lines read)
 
 ● Check roles/product-review dir (shell)
-  │ Get-ChildItem -Path "C:\src\sim-test\signals\roles\product-review" -Recurse -File 2>$null |
+  │ Get-ChildItem -Path "sim-test\signals\roles\product-review" -Recurse -File 2>$null |
   │ Select-Object -ExpandProperty FullName
   └ 1 line...
 

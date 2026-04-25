@@ -75,7 +75,7 @@ Now I have the full spec. Let me also read key prior signals for cross-reference
   └ L1:60 (60 lines read)
 
 ● Create review/design directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\review\design" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\signals\review\design" -Force | Out-Null;
   │ Write-Output "done"
   └ 2 lines...
 
@@ -87,7 +87,7 @@ Now running **review-users** (validate-users):
 ● skill(review-users)
 
 ● Create review/users directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\review\users" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\signals\review\users" -Force | Out-Null;
   │ Write-Output "done"
   └ 2 lines...
 
@@ -99,7 +99,7 @@ Now running **review-customers** (validate-customers):
 ● skill(review-customers)
 
 ● Create review/customers directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\review\customers" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\signals\review\customers" -Force | Out-Null;
   │ Write-Output "done"
   └ 2 lines...
 

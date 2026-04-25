@@ -90,10 +90,10 @@ Now let me check existing signals and ensure the output directory exists.
   └ L1:40 (40 lines read)
 
 ● Check output directories exist (shell)
-  │ Test-Path "C:\src\sim\signals\rhythm\decide" ; Test-Path
-  │ "C:\src\sim\signals\discover\competitors" ; Test-Path "C:\src\sim\signals\discover\feasibility"
-  │ ; Test-Path "C:\src\sim\signals\discover\risk" ; Test-Path
-  │ "C:\src\sim\signals\discover\websearch"
+  │ Test-Path "sim\signals\rhythm\decide" ; Test-Path
+  │ "sim\signals\discover\competitors" ; Test-Path "sim\signals\discover\feasibility"
+  │ ; Test-Path "sim\signals\discover\risk" ; Test-Path
+  │ "sim\signals\discover\websearch"
   └ 6 lines...
 
 ● Read ai-code-review-inertia-2026-03-18.md
@@ -106,8 +106,8 @@ Now let me check existing signals and ensure the output directory exists.
 
 ● Create output directories (shell)
   │ New-Item -ItemType Directory -Force -Path
-  │ "C:\src\sim\signals\discover\competitors","C:\src\sim\signals\discover\feasibility","C:\src\sim\
-  │ signals\discover\risk","C:\src\sim\signals\discover\websearch" | Select-Object FullName
+  │ "sim\signals\discover\competitors","sim\signals\discover\feasibility","sim\
+  │ signals\discover\risk","sim\signals\discover\websearch" | Select-Object FullName
   └ 7 lines...
 
 Now I have all the context I need. Let me create the full campaign: individual sub-artifacts for each new skill, plus the final synthesis. I'll write them all in parallel.
@@ -132,7 +132,7 @@ Now let me create the final synthesis — the decision brief artifact:
 Let me verify all artifacts were created correctly:
 
 ● Verify all campaign artifacts (shell)
-  │ Get-ChildItem -Path "C:\src\sim\signals" -Recurse -Filter "*ai-code-review*2026-03-19*" |
+  │ Get-ChildItem -Path "sim\signals" -Recurse -Filter "*ai-code-review*2026-03-19*" |
   │ Select-Object FullName, Length | Format-Table -AutoSize
   └ 11 lines...
 

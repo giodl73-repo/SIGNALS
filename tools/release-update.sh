@@ -13,7 +13,7 @@
 set -euo pipefail
 
 SIGNALS_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-CR_ROOT="C:/src/craftworks-research"
+CR_ROOT="craftworks-research"
 BRANCH="release/signal-$(date +%Y-%m-%d)"
 PUSH=false
 CREATE_PR=false
@@ -38,7 +38,7 @@ echo "--- Step 1: Sync skills to release/"
 python << 'EOF'
 import os, re, shutil
 
-with open(r'C:\src\sim\signal.skills.yaml') as f:
+with open(r'sim\signal.skills.yaml') as f:
     canonical = set(re.findall(r'^- id: (.+)$', f.read(), re.MULTILINE))
 canonical.discard('quest-golden')
 canonical.discard('quest-rubric')
@@ -47,14 +47,14 @@ canonical.discard('quest-variate')
 canonical.add('achievements')
 
 # Also include any new research-* and validate-*/simulate-*/discover-* etc added to signals/
-signals_dir = r'C:\src\sim\signals'
+signals_dir = r'sim\signals'
 for f in os.listdir(signals_dir):
     if f.endswith('.md') and not f.startswith('README') and not f.startswith('copilot'):
         skill_id = f[:-3]
         canonical.add(skill_id)
 
-src = r'C:\src\sim-test\.claude\skills'
-dst = r'C:\src\sim\release\.claude\skills'
+src = r'sim-test\.claude\skills'
+dst = r'sim\release\.claude\skills'
 os.makedirs(dst, exist_ok=True)
 
 updated = added = 0
@@ -63,7 +63,7 @@ for skill_id in sorted(canonical):
     dst_dir = os.path.join(dst, skill_id)
 
     # Prefer release/ source if it has newer content
-    signals_body = os.path.join(r'C:\src\sim\signals', f'{skill_id}.md')
+    signals_body = os.path.join(r'sim\signals', f'{skill_id}.md')
 
     if os.path.exists(signals_body):
         # Update release/ from signals/ source
@@ -105,8 +105,8 @@ echo "--- Step 2: Regenerate release/.github/prompts/"
 python << 'EOF'
 import os, re, shutil
 
-skills_dir = r'C:\src\sim\release\.claude\skills'
-output_dir = r'C:\src\sim\release\.github\prompts'
+skills_dir = r'sim\release\.claude\skills'
+output_dir = r'sim\release\.github\prompts'
 os.makedirs(output_dir, exist_ok=True)
 
 def get_body(path):

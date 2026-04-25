@@ -143,9 +143,9 @@ Now I have full context. Let me generate the ROB product review artifact.● Req
 Now I have comprehensive understanding of all artifacts. Let me compose the ROB product review.
 
 ● Create product-review signal directory (shell)
-  │ Test-Path "C:\src\sim-test\signals\roles\product-review" ; if (-not (Test-Path
-  │ "C:\src\sim-test\signals\roles\product-review")) { New-Item -ItemType Directory -Path
-  │ "C:\src\sim-test\signals\roles\product-review" -Force }
+  │ Test-Path "sim-test\signals\roles\product-review" ; if (-not (Test-Path
+  │ "sim-test\signals\roles\product-review")) { New-Item -ItemType Directory -Path
+  │ "sim-test\signals\roles\product-review" -Force }
   └ 6 lines...
 
 ● Request failed due to a transient API error. Retrying...

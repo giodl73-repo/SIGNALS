@@ -49,7 +49,7 @@ Now let me search for a couple more specific claims referenced in the artifacts.
 Now I have comprehensive evidence. Let me create the output directory and write the artifact.
 
 ● Create websearch output directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\websearch" -Force |
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\websearch" -Force |
   │ Out-Null; Write-Output "done"
   └ 2 lines...
 

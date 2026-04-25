@@ -22,7 +22,7 @@ curl -s http://127.0.0.1:8716/list 2>/dev/null
 
 > The Relay server is not running. Please start it in a separate terminal:
 > ```
-> python C:/src/craftworks/scripts/relay/server.py
+> python craftworks/scripts/relay/server.py
 > ```
 > Then say "ready" and I'll continue.
 
@@ -35,7 +35,7 @@ For a **single question**, dispatch via the relay:
 ```bash
 curl -s -X POST http://127.0.0.1:8716/run \
   -H 'Content-Type: application/json' \
-  -d '{"script":"scripts/relay/workiq-ask-relay.sh","cwd":"C:/src/craftworks","args":["THE QUESTION HERE"]}'
+  -d '{"script":"scripts/relay/workiq-ask-relay.sh","cwd":"craftworks","args":["THE QUESTION HERE"]}'
 ```
 
 For **multiple questions**, pass them all as args:
@@ -43,7 +43,7 @@ For **multiple questions**, pass them all as args:
 ```bash
 curl -s -X POST http://127.0.0.1:8716/run \
   -H 'Content-Type: application/json' \
-  -d '{"script":"scripts/relay/workiq-ask-relay.sh","cwd":"C:/src/craftworks","args":["Question 1","Question 2","Question 3"]}'
+  -d '{"script":"scripts/relay/workiq-ask-relay.sh","cwd":"craftworks","args":["Question 1","Question 2","Question 3"]}'
 ```
 
 Save the returned `job_id` for polling.
@@ -104,7 +104,7 @@ Then dispatch it:
 ```bash
 curl -s -X POST http://127.0.0.1:8716/run \
   -H 'Content-Type: application/json' \
-  -d '{"script":"scripts/relay/your-script.sh","cwd":"C:/src/craftworks"}'
+  -d '{"script":"scripts/relay/your-script.sh","cwd":"craftworks"}'
 ```
 
 ## Troubleshooting

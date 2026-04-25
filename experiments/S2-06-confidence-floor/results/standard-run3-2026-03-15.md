@@ -136,7 +136,7 @@ When QU5 fails, the entire variations file (all 5 variations V-01 through V-05) 
 ### F-17 — Hardcoded `REPO` path
 **Line 13**
 ```bash
-REPO="C:/src/sim"
+REPO="sim"
 ```
 Script is not relocatable. If run from any other machine or path, it silently uses a wrong root. Derive it from the script's own location:
 ```bash

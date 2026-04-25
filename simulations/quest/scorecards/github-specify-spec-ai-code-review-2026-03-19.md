@@ -59,7 +59,7 @@
 Now I have the full runbook. No scout signals exist for `ai-code-review` — Branch A. I'll proceed through all phases with inline requirements extraction and C-03 WAIVERs. Let me create the artifact.
 
 ● Create signals directory structure (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\draft\specs" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\draft\specs" -Force
   └ 4 lines...
 
 ● Create ai-code-review-spec-2026-03-19.md +475

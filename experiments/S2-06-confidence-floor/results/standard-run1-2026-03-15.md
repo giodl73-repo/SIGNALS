@@ -52,7 +52,7 @@ Here are all findings, organized by severity:
 
 **R-04** (line 54–62) — `$SKILL_ID` is interpolated directly into a Python string passed to `-c`. If a skill ID contains a single quote (unlikely given current naming, but not validated), the Python code breaks. Validate `$SKILL_ID` is alphanumeric+hyphen before use, or pass it as `sys.argv`.
 
-**R-05** (line 13) — `REPO="C:/src/sim"` is hardcoded. The script accepts a `cwd` in the relay dispatch (line 3 comment) but ignores it — the repo path is baked in. Running this from a different checkout or on another machine requires editing the script. Should use `REPO="$(cd "$(dirname "$0")/.." && pwd)"` or `REPO="${SIM_REPO:-C:/src/sim}"` with an env override.
+**R-05** (line 13) — `REPO="sim"` is hardcoded. The script accepts a `cwd` in the relay dispatch (line 3 comment) but ignores it — the repo path is baked in. Running this from a different checkout or on another machine requires editing the script. Should use `REPO="$(cd "$(dirname "$0")/.." && pwd)"` or `REPO="${SIM_REPO:-sim}"` with an env override.
 
 ---
 
@@ -70,7 +70,7 @@ Here are all findings, organized by severity:
 | B-01 | Low | Bug | Trace file selection non-deterministic when multiple files match |
 | B-05 | Low | Bug | Empty `LAST_VARIATIONS` crashes QU5 if loop runs 0 rounds |
 | R-03 | Low | Robustness | `set -e` kills entire run on any `claude` failure mid-loop |
-| R-05 | Low | Portability | Hardcoded `C:/src/sim` repo path |
+| R-05 | Low | Portability | Hardcoded `sim` repo path |
 | L-02 | Info | Cleanup | `SPEC_FILE` is set but never used |
 | L-03 | Info | Cleanup | Useless `cat` pipe — `head -80 "$RUBRIC_FILE"` is sufficient |
 | R-01 | Info | Note | PID-based temp file is safe now, fragile if parallelized |

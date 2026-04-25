@@ -35,7 +35,7 @@ Now let me read the spec and the existing customers signal for context:
   └ L1:100 (99 lines read)
 
 ● Check output dir and date (shell)
-  │ Test-Path "C:\src\sim-test\signals\validate\customers" ; Get-Date -Format "yyyy-MM-dd"
+  │ Test-Path "sim-test\signals\validate\customers" ; Get-Date -Format "yyyy-MM-dd"
   └ 3 lines...
 
 ● Read ai-code-review-customers-2026-03-19.md

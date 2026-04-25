@@ -1,12 +1,12 @@
 #!/bin/bash
 # github-test-compact.sh -- Test Signal skills with --compact flag
 # Tests skills that previously OOMed copilot, now with --compact mode
-# Usage: {"script":"tools/github-test-compact.sh","args":["ai-code-review"],"cwd":"C:/src/sim"}
+# Usage: {"script":"tools/github-test-compact.sh","args":["ai-code-review"],"cwd":"sim"}
 
 TOPIC="${1:-ai-code-review}"
 TODAY=$(date +%Y-%m-%d)
-REPO="C:/src/sim"
-TEST_DIR="C:/src/sim-test"
+REPO="sim"
+TEST_DIR="sim-test"
 OUTPUT_DIR="$REPO/simulations/quest/scorecards"
 mkdir -p "$OUTPUT_DIR"
 

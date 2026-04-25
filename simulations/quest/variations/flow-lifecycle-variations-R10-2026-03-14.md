@@ -1,4 +1,4 @@
-`C:/src/sim/simulations/quest/rubrics/flow-lifecycle-rubric-v10-variate-R10-2026-03-15.md` written.
+`sim/simulations/quest/rubrics/flow-lifecycle-rubric-v10-variate-R10-2026-03-15.md` written.
 
 ---
 

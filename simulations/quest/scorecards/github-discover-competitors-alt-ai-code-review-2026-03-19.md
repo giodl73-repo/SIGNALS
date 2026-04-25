@@ -25,7 +25,7 @@ Now let me check the existing directory structure and write the artifact.
   └ 1 file found
 
 ● Create competitors-alt directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\competitors-alt" -Force |
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\competitors-alt" -Force |
   │ Out-Null; Write-Output "done"
   └ 2 lines...
 

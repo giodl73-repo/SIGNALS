@@ -1,6 +1,6 @@
 #!/bin/bash
 # quest-resume.sh -- Resume a quest loop from the best available state on disk.
-# Usage: dispatch via relay with args: {"script":"tools/quest-resume.sh","args":["scout-feasibility"],"cwd":"C:/src/sim"}
+# Usage: dispatch via relay with args: {"script":"tools/quest-resume.sh","args":["scout-feasibility"],"cwd":"sim"}
 #
 # Detects the latest rubric version and last completed scorecard round,
 # then resumes from START_ROUND = last_round + 1.
@@ -14,7 +14,7 @@
 
 SKILL_ID="${1:-scout-feasibility}"
 TODAY=$(date +%Y-%m-%d)
-REPO="C:/src/sim"
+REPO="sim"
 QUEST_DIR="$REPO/simulations/quest"
 TRACE_DIR="$REPO/simulations/trace/skill"
 MAX_ROUNDS=20

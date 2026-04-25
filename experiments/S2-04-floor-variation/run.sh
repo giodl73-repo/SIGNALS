@@ -5,7 +5,7 @@
 set -e
 SKILL="scout-competitors"
 TODAY=$(date +%Y-%m-%d)
-OUT="C:/src/sim/experiments/S2-04-floor-variation/results"
+OUT="sim/experiments/S2-04-floor-variation/results"
 mkdir -p "$OUT"
 
 TOPIC="Signal plugin for Claude Code — a developer tool for feature decision-making"
@@ -25,7 +25,7 @@ for condition in no-floor floor-5 floor-10 floor-15 floor-20; do
     outfile="$OUT/${condition}-run${run}-${TODAY}.md"
     
     # Build prompt using golden skill + floor instruction
-    GOLDEN=$(cat "C:/src/sim/simulations/quest/golden/scout-competitors-golden-2026-03-14.md" | head -60)
+    GOLDEN=$(cat "sim/simulations/quest/golden/scout-competitors-golden-2026-03-14.md" | head -60)
     
     prompt="Topic: $TOPIC
 

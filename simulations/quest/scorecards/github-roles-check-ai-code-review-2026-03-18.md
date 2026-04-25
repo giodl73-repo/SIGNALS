@@ -104,8 +104,8 @@ Let me read the remaining signals and sections I need.
 I now have comprehensive context. Let me write the roles-check artifact.
 
 ● Ensure output directory exists (shell)
-  │ if (-not (Test-Path "C:\src\sim\signals\roles\check")) { New-Item -ItemType Directory -Path
-  │ "C:\src\sim\signals\roles\check" -Force }
+  │ if (-not (Test-Path "sim\signals\roles\check")) { New-Item -ItemType Directory -Path
+  │ "sim\signals\roles\check" -Force }
   └ 1 line...
 
 ● Create ai-code-review-roles-check-2026-03-19.md +227
@@ -115,7 +115,7 @@ Artifact written. Let me verify it's well-formed.
 
 ● Verify artifact counts (shell)
   │ $content = Get-Content
-  │ "C:\src\sim\signals\roles\check\ai-code-review-roles-check-2026-03-19.md" -Raw; $lines =
+  │ "sim\signals\roles\check\ai-code-review-roles-check-2026-03-19.md" -Raw; $lines =
   │ ($content -split "`n").Count; $p1 = ([regex]::Matches($content, '\| P1 \|')).Count; $p2 =
   │ ([regex]::Matches($content, '\| P2 \|')).Count; $p3 = ([regex]::Matches($content, '\| P3
   │ \|')).Count; Write-Host "Lines: $lines | P1: $p1 | P2: $p2 | P3: $p3 | Frontmatter p1_count …

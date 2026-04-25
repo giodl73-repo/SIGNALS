@@ -26,7 +26,7 @@ Short answer: **yes, substantially** — with a specific pattern of failure mode
 
 ## The Methodology We Developed
 
-We built a per-paper workflow that runs Signal skills *before* writing, not after. The final METHODOLOGY.md is at `C:\src\rmm\research\METHODOLOGY.md`.
+We built a per-paper workflow that runs Signal skills *before* writing, not after. The final METHODOLOGY.md is at `rmm\research\METHODOLOGY.md`.
 
 ### Phase 1 — Before Writing (7 skills)
 

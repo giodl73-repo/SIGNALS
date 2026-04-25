@@ -23,7 +23,7 @@ prior_trace: plugin-scout-competitors-2026-03-14.md
 ## Setup Phase (re-trace)
 
 **Same invocation**: `/scout-competitors "Signal plugin for Claude Code"`
-**Same repo context**: C:\src\sim
+**Same repo context**: sim
 
 **Setup with SF-02 applied**:
 

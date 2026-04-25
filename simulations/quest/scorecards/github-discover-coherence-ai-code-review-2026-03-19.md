@@ -47,7 +47,7 @@ Found 9 discover signals. Let me read all of them in parallel.
 Now I have all 9 signals. Let me analyze contradictions and write the artifact.
 
 ● Create coherence directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\coherence" -Force |
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\coherence" -Force |
   │ Out-Null; Write-Output "Directory created"
   └ 2 lines...
 

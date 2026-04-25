@@ -90,8 +90,8 @@ I have enough context now. Let me read the proposal and commitment files, then b
 Now I have comprehensive context. Let me construct the PR review artifact with all roles reviewing the simulated PR.
 
 ● Create pull-request signal directory (shell)
-  │ if (-not (Test-Path "C:\src\sim-test\signals\roles\pull-request")) { New-Item -ItemType
-  │ Directory -Path "C:\src\sim-test\signals\roles\pull-request" -Force }
+  │ if (-not (Test-Path "sim-test\signals\roles\pull-request")) { New-Item -ItemType
+  │ Directory -Path "sim-test\signals\roles\pull-request" -Force }
   └ 4 lines...
 
 ● Create ai-code-review-pull-request-2026-03-19.md +489
@@ -101,7 +101,7 @@ Artifact written. Let me verify it's well-formed:
 
 ● Verify artifact stats (shell)
   │ (Get-Content
-  │ "C:\src\sim-test\signals\roles\pull-request\ai-code-review-pull-request-2026-03-19.md" |
+  │ "sim-test\signals\roles\pull-request\ai-code-review-pull-request-2026-03-19.md" |
   │ Measure-Object -Line -Word -Character) | Format-List
   └ 5 lines...
 

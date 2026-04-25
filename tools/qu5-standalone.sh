@@ -6,7 +6,7 @@ set -e
 SKILL_ID="$1"
 [ -z "$SKILL_ID" ] && echo "Usage: $0 <skill-id>" && exit 1
 
-QUEST_DIR="C:/src/sim/simulations/quest"
+QUEST_DIR="sim/simulations/quest"
 TODAY=$(date +%Y-%m-%d)
 
 # Find the latest golden file

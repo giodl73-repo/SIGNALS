@@ -1,6 +1,6 @@
 #!/bin/bash
 # quest-run-one.sh -- Run the quest loop for a single skill via relay
-# Usage: dispatch via relay with args: {"script":"tools/quest-run-one.sh","args":["scout-feasibility"],"cwd":"C:/src/sim"}
+# Usage: dispatch via relay with args: {"script":"tools/quest-run-one.sh","args":["scout-feasibility"],"cwd":"sim"}
 #
 # Steps: trace check -> rubric -> variate R1 -> score R1 -> [evolve rubric] -> variate R2 -> score R2 -> golden
 # Writes all artifacts to simulations/quest/ independently (P-01 concurrent by default)
@@ -10,7 +10,7 @@ set -e
 
 SKILL_ID="${1:-scout-feasibility}"
 TODAY=$(date +%Y-%m-%d)
-REPO="C:/src/sim"
+REPO="sim"
 QUEST_DIR="$REPO/simulations/quest"
 TRACE_DIR="$REPO/simulations/trace/skill"
 SPEC_FILE="$REPO/simulations/draft/specs/signal-scout-$TODAY.md"

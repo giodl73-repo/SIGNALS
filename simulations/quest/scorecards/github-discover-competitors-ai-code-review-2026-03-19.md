@@ -11,7 +11,7 @@
   └ 1 file found
 
 ● Check signals directory (shell)
-  │ if (Test-Path "C:\src\sim-test\signals") { Get-ChildItem -Recurse "C:\src\sim-test\signals" }
+  │ if (Test-Path "sim-test\signals") { Get-ChildItem -Recurse "sim-test\signals" }
   │ else { "signals directory does not exist" }
   └ 2 lines...
 
@@ -37,7 +37,7 @@ Now let me get a few more targeted competitive data points to verify key claims.
 Now I have comprehensive research. Let me create the artifact.
 
 ● Create signals directory structure (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\competitors" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\competitors" -Force
   └ 4 lines...
 
 ● Create ai-code-review-competitors-2026-03-19.md +220
@@ -47,7 +47,7 @@ Artifact written. Let me verify it.
 
 ● Verify artifact structure (shell)
   │ $content = Get-Content
-  │ "C:\src\sim-test\signals\discover\competitors\ai-code-review-competitors-2026-03-19.md" -Raw;
+  │ "sim-test\signals\discover\competitors\ai-code-review-competitors-2026-03-19.md" -Raw;
   │ "Lines: $((($content -split "`n").Count))"; "Size: $($content.Length) chars"; "Has frontmatter:
   │ $($content.StartsWith('---'))"; "Sections: $(($content | Select-String -Pattern '^## '
   │ -AllMatches).Matches.Count)"

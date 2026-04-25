@@ -5,13 +5,13 @@
   └ 12 lines read
 
 ● Check signals directory (shell)
-  │ if (Test-Path "C:\src\sim-test\signals") { Get-ChildItem -Recurse "C:\src\sim-test\signals" }
+  │ if (Test-Path "sim-test\signals") { Get-ChildItem -Recurse "sim-test\signals" }
   │ else { Write-Output "signals/ does not exist" }
   └ 91 lines...
 
 ● Check if .roles exists (shell)
-  │ Test-Path "C:\src\sim-test\.roles\roles" ; if (Test-Path "C:\src\sim-test\.roles\roles") {
-  │ Get-ChildItem -Recurse "C:\src\sim-test\.roles\roles" } else { Write-Output ".roles/ does
+  │ Test-Path "sim-test\.roles\roles" ; if (Test-Path "sim-test\.roles\roles") {
+  │ Get-ChildItem -Recurse "sim-test\.roles\roles" } else { Write-Output ".roles/ does
   │ not exist" }
   └ 23 lines...
 
@@ -54,7 +54,7 @@ Let me check the full roles-generate artifact for any gap roles and see the spec
 Now I have full context. The key gap: **cross-repo / cross-service architectural review** — the #1 whitespace from the competitive analysis, uncovered by any existing role. Let me create the role and artifact.
 
 ● Create signals/roles/create directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\roles\create" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\signals\roles\create" -Force | Out-Null;
   │ Write-Output "created"
   └ 2 lines...
 
@@ -67,9 +67,9 @@ Now I have full context. The key gap: **cross-repo / cross-service architectural
 Let me verify both files were written correctly.
 
 ● Verify files exist (shell)
-  │ Test-Path "C:\src\sim-test\.roles\roles\engineering\cross-repo-review-architect.md"; Test-Path
-  │ "C:\src\sim-test\signals\roles\create\ai-code-review-roles-create-2026-03-19.md"; Get-ChildItem
-  │ "C:\src\sim-test\.roles\roles\engineering\"
+  │ Test-Path "sim-test\.roles\roles\engineering\cross-repo-review-architect.md"; Test-Path
+  │ "sim-test\signals\roles\create\ai-code-review-roles-create-2026-03-19.md"; Get-ChildItem
+  │ "sim-test\.roles\roles\engineering\"
   └ 10 lines...
 
 Done. Created **cross-repo-review-architect** in `.roles/engineering/`.

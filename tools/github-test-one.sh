@@ -1,6 +1,6 @@
 #!/bin/bash
 # github-test-one.sh -- Test a Signal .prompt.md via copilot -p relay
-# Usage: {"script":"tools/github-test-one.sh","args":["discover-competitors","ai-code-review"],"cwd":"C:/src/sim"}
+# Usage: {"script":"tools/github-test-one.sh","args":["discover-competitors","ai-code-review"],"cwd":"sim"}
 #
 # Runs copilot from sim-test/ (clean workspace, minimal signals/) to avoid OOM
 # when copilot globs the signals/ directory.
@@ -9,8 +9,8 @@ set -e
 SKILL_ID="${1:-discover-competitors}"
 TOPIC="${2:-payment-reminders}"
 TODAY=$(date +%Y-%m-%d)
-REPO="C:/src/sim"
-TEST_DIR="C:/src/sim-test"    # copilot runs here -- has .github/prompts + sparse signals/
+REPO="sim"
+TEST_DIR="sim-test"    # copilot runs here -- has .github/prompts + sparse signals/
 OUTPUT_DIR="$REPO/simulations/quest/scorecards"
 mkdir -p "$OUTPUT_DIR"
 

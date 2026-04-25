@@ -49,7 +49,7 @@ Now let me read the inertia and spec signals for deeper adoption context:
 Now I have deep context across all signals. Let me create the artifact:
 
 ● Create adoption signal directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\validate\adoption" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\validate\adoption" -Force
   └ 4 lines...
 
 ● Create ai-code-review-adoption-2026-03-19.md +172

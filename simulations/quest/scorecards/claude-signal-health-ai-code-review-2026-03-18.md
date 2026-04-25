@@ -18,7 +18,7 @@ Signal skills are not registered in `.claude/skills/` but are functional as inli
 
 ### 2. signals/ Directory Present?
 
-**Present** at `C:/src/sim/signals/`
+**Present** at `sim/signals/`
 
 Namespaces with artifact subdirectories (6 of 9):
 - `discover/`, `specify/`, `validate/`, `simulate/`, `rhythm/`, `roles/`
@@ -30,7 +30,7 @@ Namespaces missing subdirectories (no artifacts yet):
 
 ### 3. CLAUDE.md Present?
 
-**Present** at `C:/src/sim/CLAUDE.md`
+**Present** at `sim/CLAUDE.md`
 
 ---
 

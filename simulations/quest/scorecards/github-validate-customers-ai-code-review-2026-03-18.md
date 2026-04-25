@@ -42,8 +42,8 @@ Now let me read the design artifact for the most complete picture of the feature
 Now I have all the context I need. Let me create the output directory and write the artifact.
 
 ● Create customers output directory (shell)
-  │ if (-not (Test-Path "C:\src\sim\signals\validate\customers")) { New-Item -ItemType Directory
-  │ -Path "C:\src\sim\signals\validate\customers" -Force }
+  │ if (-not (Test-Path "sim\signals\validate\customers")) { New-Item -ItemType Directory
+  │ -Path "sim\signals\validate\customers" -Force }
   └ 4 lines...
 
 ● Create ai-code-review-customers-2026-03-19.md +232
@@ -52,7 +52,7 @@ Now I have all the context I need. Let me create the output directory and write 
 Artifact written. Let me verify:
 
 ● Verify artifact written (shell)
-  │ Get-Item "C:\src\sim\signals\validate\customers\ai-code-review-customers-2026-03-19.md" |
+  │ Get-Item "sim\signals\validate\customers\ai-code-review-customers-2026-03-19.md" |
   │ Select-Object Name, Length
   └ 4 lines...
 

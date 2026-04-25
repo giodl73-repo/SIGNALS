@@ -5,11 +5,11 @@
 set -e
 SKILL="review-code"
 TODAY=$(date +%Y-%m-%d)
-OUT="C:/src/sim/experiments/S2-06-confidence-floor/results"
+OUT="sim/experiments/S2-06-confidence-floor/results"
 mkdir -p "$OUT"
 
 TOPIC="Signal plugin quest-run-one.sh script"
-ARTIFACT="C:/src/sim/tools/quest-run-one.sh"
+ARTIFACT="sim/tools/quest-run-one.sh"
 
 declare -A CONFIDENCE=(
   [low]="Find all findings. You do not need to cite specific lines."

@@ -10,7 +10,7 @@ variations: 5
 # Variations: scout-competitors Round 1
 
 Test invocation: `/scout-competitors "Signal plugin -- structured pre-build investigation for development teams"`
-Repo context: C:\src\sim
+Repo context: sim
 
 ---
 

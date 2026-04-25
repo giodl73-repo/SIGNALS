@@ -1,11 +1,11 @@
 #!/bin/bash
 # claude-test-batch.sh -- Same test as github-test-batch but via claude -p
 # Uses installed SKILL.md files from sim-test for apples-to-apples comparison
-# Usage: {"script":"tools/claude-test-batch.sh","args":["ai-code-review"],"cwd":"C:/src/sim"}
+# Usage: {"script":"tools/claude-test-batch.sh","args":["ai-code-review"],"cwd":"sim"}
 
 TOPIC="${1:-ai-code-review}"
 TODAY=$(date +%Y-%m-%d)
-REPO="C:/src/sim"
+REPO="sim"
 SKILLS_DIR="$REPO/../sim-test/.claude/skills"
 OUTPUT_DIR="$REPO/simulations/quest/scorecards"
 mkdir -p "$OUTPUT_DIR"

@@ -25,7 +25,7 @@
   └ L1:80 (79 lines read)
 
 ● Create request simulation directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\simulate\request" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\simulate\request" -Force
   └ 4 lines...
 
 ● Create ai-code-review-request-2026-03-19.md +568

@@ -53,7 +53,7 @@ Now I have rich context from the existing competitor signals. Let me build the d
 Now I have comprehensive context from both competitor signals plus the project's quality history. Let me create the output directory and write the artifact.
 
 ● Create inertia signal directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\inertia" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\inertia" -Force
   └ 4 lines...
 
 ● Create ai-code-review-inertia-2026-03-19.md +176

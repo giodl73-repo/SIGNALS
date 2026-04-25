@@ -31,7 +31,7 @@
 Now I have enough context. Let me produce the committee simulation for **ai-code-review** in compact mode (2 stages: leadership + PM).
 
 ● Create signals output directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\org\committee" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\signals\org\committee" -Force | Out-Null;
   │ Write-Output "done"
   └ 2 lines...
 

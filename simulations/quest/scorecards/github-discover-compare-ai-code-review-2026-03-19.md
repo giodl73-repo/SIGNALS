@@ -50,7 +50,7 @@ Good — rich signal history exists. Let me read the key prior signals to ground
 Now I have rich context from 5 prior signals. Let me build the comparison artifact.
 
 ● Create compare signal directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\compare" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\compare" -Force
   └ 4 lines...
 
 ● Create ai-code-review-compare-2026-03-19.md +176

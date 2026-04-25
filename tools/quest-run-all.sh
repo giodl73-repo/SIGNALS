@@ -4,7 +4,7 @@
 # Usage: bash tools/quest-run-all.sh [--namespace scout] [--dry-run]
 
 RELAY="http://127.0.0.1:8716"
-REPO="C:/src/sim"
+REPO="sim"
 SKILLS_YAML="$REPO/signal.skills.yaml"
 NAMESPACE_FILTER=""
 DRY_RUN=false

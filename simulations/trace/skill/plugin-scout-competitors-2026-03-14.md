@@ -11,7 +11,7 @@ input: simulations/draft/specs/signal-scout-2026-03-14.md
 
 **Skill under trace**: scout-competitors
 **Test invocation**: `/scout-competitors "Signal plugin for Claude Code -- AI-assisted feature investigation"`
-**Repo context**: C:\src\sim (Signal plugin repo -- CLAUDE.md, plugin-plan.md, PRINCIPLES.md, signal.program.yaml, 9 namespace specs)
+**Repo context**: sim (Signal plugin repo -- CLAUDE.md, plugin-plan.md, PRINCIPLES.md, signal.program.yaml, 9 namespace specs)
 **Scenario**: First-time user, PM persona, wants to understand the competitive landscape before committing to building Signal
 
 ---

@@ -141,7 +141,7 @@ Good — there are already lifecycle and contract simulation signals. Let me rea
 Now I have comprehensive context from all prior signals. Let me create the behavior artifact.
 
 ● Create behavior signal directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\rhythm\behavior" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\rhythm\behavior" -Force
   └ 4 lines...
 
 ● Create ai-code-review-behavior-2026-03-19.md +419

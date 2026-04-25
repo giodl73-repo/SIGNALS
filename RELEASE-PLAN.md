@@ -4,7 +4,7 @@
 
 | Location | What it is | Status |
 |----------|-----------|--------|
-| `C:\src\sim` | Signal source repo (skills, signals, install scripts, tests) | DONE |
+| `sim` | Signal source repo (skills, signals, install scripts, tests) | DONE |
 | `craftworks-research/signals/papers/` | 35 research papers (S1-S4, T5 tracks) | DONE |
 | `craftworks-research/signals/MODULE.md` | Research module design doc | DONE |
 | `craftworks-research/README.md` | Research portfolio overview | NEEDS UPDATE |

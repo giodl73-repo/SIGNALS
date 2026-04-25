@@ -51,7 +51,7 @@ Now let me check for additional signals and read more of the spec for context.
 Now I have all 4 prior signals. Let me create the proposal artifact.
 
 ● Create proposal output directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\specify\proposal" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\specify\proposal" -Force
   └ 4 lines...
 
 ● Create ai-code-review-proposal-2026-03-19.md +123

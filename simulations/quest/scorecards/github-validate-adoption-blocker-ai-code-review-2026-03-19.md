@@ -52,7 +52,7 @@ There's already an existing adoption artifact. Let me read it and explore the br
 Now I have all the context I need. Let me create the adoption blocker artifact.
 
 ● Create adoption-blocker directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\validate\adoption-blocker" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\validate\adoption-blocker" -Force
   └ 4 lines...
 
 ● Create ai-code-review-adoption-blocker-2026-03-19.md +299
@@ -61,7 +61,7 @@ Now I have all the context I need. Let me create the adoption blocker artifact.
 Artifact created. Let me verify it rendered correctly.
 
 ● Verify artifact line count (shell)
-  │ (Get-Content "C:\src\sim-test\signals\validate\adoption-blocker\ai-code-review-adoption-blocker-
+  │ (Get-Content "sim-test\signals\validate\adoption-blocker\ai-code-review-adoption-blocker-
   │ 2026-03-19.md" | Measure-Object -Line -Word).Lines
   └ 2 lines...
 

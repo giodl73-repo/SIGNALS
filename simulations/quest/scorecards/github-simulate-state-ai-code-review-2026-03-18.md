@@ -65,7 +65,7 @@
 Now I have comprehensive context on the topic. Let me create the artifact.
 
 ● Create simulate/state directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim\signals\simulate\state" -Force
+  │ New-Item -ItemType Directory -Path "sim\signals\simulate\state" -Force
   └ 4 lines...
 
 ● Create ai-code-review-state-2026-03-19.md +309
@@ -74,7 +74,7 @@ Now I have comprehensive context on the topic. Let me create the artifact.
 Artifact written. Let me verify it.
 
 ● Verify artifact file (shell)
-  │ $f = Get-Item "C:\src\sim\signals\simulate\state\ai-code-review-state-2026-03-19.md";
+  │ $f = Get-Item "sim\signals\simulate\state\ai-code-review-state-2026-03-19.md";
   │ "$($f.Length) bytes"; (Get-Content $f -Head 6) -join "`n"
   └ 7 lines...
 

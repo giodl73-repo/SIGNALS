@@ -16,17 +16,17 @@ Real users — maker, developer, compliance officer, supervisor, operator. Each 
 
 | File | Purpose |
 |------|---------|
-| `C:\src\craftworks\.roles\pipelines\suite\simulate.md` | Simulate stage — 5 personas, walkthrough protocol, gate criteria |
+| `craftworks\.roles\pipelines\suite\simulate.md` | Simulate stage — 5 personas, walkthrough protocol, gate criteria |
 
 ### Sample Walkthrough Outputs
 
 | File | Persona |
 |------|---------|
-| `C:\src\craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-maker.md` | Maker persona |
-| `C:\src\craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-developer.md` | Developer persona |
-| `C:\src\craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-compliance.md` | Compliance officer persona |
-| `C:\src\craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-supervisor.md` | Supervisor persona |
-| `C:\src\craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-operator.md` | Operator persona |
+| `craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-maker.md` | Maker persona |
+| `craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-developer.md` | Developer persona |
+| `craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-compliance.md` | Compliance officer persona |
+| `craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-supervisor.md` | Supervisor persona |
+| `craftworks\.roles\waves\260314+theseus-the-unifier+suite-cli\simulate-operator.md` | Operator persona |
 
 ## Persona Journeys
 

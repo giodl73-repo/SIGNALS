@@ -130,7 +130,7 @@ Let me look more broadly for the design document and related specs.
 Now I have a thorough understanding of the design under review. Let me create the directory structure and write the artifact.
 
 ● Create artifact directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim\signals\validate\design" -Force
+  │ New-Item -ItemType Directory -Path "sim\signals\validate\design" -Force
   └ 4 lines...
 
 ● Read (Explore agent — find-design-doc)
@@ -144,7 +144,7 @@ Good — I have all the design material I need. Now let me write the full review
 Now let me verify the artifact was written correctly and the counts are consistent.
 
 ● Verify artifact counts (shell)
-  │ $content = Get-Content "C:\src\sim\signals\validate\design\ai-code-review-design-2026-03-19.md"
+  │ $content = Get-Content "sim\signals\validate\design\ai-code-review-design-2026-03-19.md"
   │ -Raw; "Lines: $((($content -split "`n").Count))"; "P1 findings: $(([regex]::Matches($content,
   │ '\| P1 \|')).Count)"; "P2 findings: $(([regex]::Matches($content, '\| P2 \|')).Count)"; "P3
   │ findings: $(([regex]::Matches($content, '\| P3 \|')).Count)"

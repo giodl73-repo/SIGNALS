@@ -30,7 +30,7 @@ curl -s http://localhost:8716/list | python -m json.tool
 ```bash
 JOB=$(curl -s -X POST http://localhost:8716/run \
   -H "Content-Type: application/json" \
-  -d '{"script":"tools/quest-run-one.sh","args":["skill-name"],"cwd":"C:/src/sim"}' \
+  -d '{"script":"tools/quest-run-one.sh","args":["skill-name"],"cwd":"sim"}' \
   | python -c "import sys,json; print(json.load(sys.stdin)['job_id'])")
 ```
 
@@ -60,13 +60,13 @@ The quest loop runs rubric → variate → score → evolve rubric → repeat un
 # Via relay (preferred — takes 30-120 min per skill)
 JOB=$(curl -s -X POST http://localhost:8716/run \
   -H "Content-Type: application/json" \
-  -d '{"script":"tools/quest-run-one.sh","args":["validate-referee"],"cwd":"C:/src/sim"}')
+  -d '{"script":"tools/quest-run-one.sh","args":["validate-referee"],"cwd":"sim"}')
 
 # Run multiple in parallel
 for skill in validate-consistency discover-limiting-cases rhythm-track; do
   curl -s -X POST http://localhost:8716/run \
     -H "Content-Type: application/json" \
-    -d "{\"script\":\"tools/quest-run-one.sh\",\"args\":[\"$skill\"],\"cwd\":\"C:/src/sim\"}"
+    -d "{\"script\":\"tools/quest-run-one.sh\",\"args\":[\"$skill\"],\"cwd\":\"sim\"}"
 done
 ```
 
@@ -93,7 +93,7 @@ The golden file structure has metadata at the top and the prompt body embedded. 
 
 **The canonical source of truth:**
 ```
-C:\src\sim\
+sim\
 ├── signals/*.md          ← skill prompt bodies (source)
 ├── release/
 │   ├── .claude/skills/   ← 71 canonical skills for distribution
@@ -145,7 +145,7 @@ The quality gate loop runs N rounds of customer simulations, finds bugs, fixes t
 - Run rounds in parallel with different skill groups
 - Score on: Quality (1-5), artifact path correct (Y/N), lifecycle present (Y/N), bugs
 - Copilot -p OOM threshold: ~4KB prompt. Add `--compact` flag to any skill that crashes.
-- The GitHub relay test uses `tools/github-test-one.sh` and runs from `C:\src\sim-test` (sparse workspace) to avoid OOM from large signals/ directory scans.
+- The GitHub relay test uses `tools/github-test-one.sh` and runs from `sim-test` (sparse workspace) to avoid OOM from large signals/ directory scans.
 
 ---
 
@@ -165,7 +165,7 @@ The quality gate loop runs N rounds of customer simulations, finds bugs, fixes t
 
 ## The RMM Research Program
 
-Giovanni runs an academic research program (Relational Motivation Model) that uses Signal as its evidence-gathering backbone. The per-paper workflow is documented in `C:\src\rmm\research\methodology.md`.
+Giovanni runs an academic research program (Relational Motivation Model) that uses Signal as its evidence-gathering backbone. The per-paper workflow is documented in `rmm\research\methodology.md`.
 
 The academic skills were built specifically for this:
 
@@ -210,10 +210,10 @@ Or just run `/research-post-write {paper}`.
 
 | Repo | Remote | What it is |
 |------|--------|-----------|
-| `C:\src\sim` | `github.com/giodl_microsoft/signals` | Signal source — skills, quest artifacts, install scripts |
-| `C:\src\craftworks-research` | `github.com/gim-home/craftworks-research` | Research portfolio + toolkits/signal/ distribution |
-| `C:\src\rmm` | — | RMM academic research program (uses Signal) |
-| `C:\src\craftworks` | `github.com/gim-home/craftworks` | Craftworks toolchain (links to research) |
+| `sim` | `github.com/giodl_microsoft/signals` | Signal source — skills, quest artifacts, install scripts |
+| `craftworks-research` | `github.com/gim-home/craftworks-research` | Research portfolio + toolkits/signal/ distribution |
+| `rmm` | — | RMM academic research program (uses Signal) |
+| `craftworks` | `github.com/gim-home/craftworks` | Craftworks toolchain (links to research) |
 
 **craftworks-research has branch protection** — push to `release/signal-YYYY-MM-DD`, create PR, Giovanni merges.
 **signals pushes to main directly** — no branch protection.

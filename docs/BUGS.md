@@ -49,7 +49,7 @@
 
 | ID | Severity | Bug | Fixed in |
 |----|----------|-----|---------|
-| R4-B01 | CRITICAL | `/achievements` not installed in flat binding — signal file exists but not packaged as skill | Fixed this session: `C:/src/sim-test/.claude/skills/achievements/SKILL.md` created |
+| R4-B01 | CRITICAL | `/achievements` not installed in flat binding — signal file exists but not packaged as skill | Fixed this session: `sim-test/.claude/skills/achievements/SKILL.md` created |
 | R4-B02 | CRITICAL | `/roles-leaderboard` does not exist in any binding — no skill built | Fixed: `sim-test/.claude/skills/roles-leaderboard/SKILL.md` + `signals/roles-leaderboard.md` |
 | R4-B03 | HIGH | Achievement namespace mismatch: `topic-achievements.md` checks `discover-*`/`specify-*` paths; flat binding uses `draft-*`/`review-*`/`flow-*`/`trace-*` — scanner misses half of earned achievements | Fixed in R4-B01 SKILL.md: dual-prefix scanning added |
 | R4-B04 | MED | `topic-achievements.md` signal only covers ~20 of 31 achievements — QUALITY, CHAIN, DISCOVERY groups incomplete | Fixed: expanded to 35 achievements — DEPTH (6), COVERAGE (6), CHAIN (5), CORP (3), DISCOVERY (2) |

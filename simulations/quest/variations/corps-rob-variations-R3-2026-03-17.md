@@ -1,4 +1,4 @@
-`C:/src/sim/simulations/quest/golden/corps-rob-variate-R3-2026-03-17.md`
+`sim/simulations/quest/golden/corps-rob-variate-R3-2026-03-17.md`
 
 ---
 

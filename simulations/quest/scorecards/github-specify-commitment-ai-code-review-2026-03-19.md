@@ -57,7 +57,7 @@
 Now I have a complete picture. Zero signal artifacts exist for the `ai-code-review` topic. Let me build the commitment plan.
 
 ● Create commitment directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\specify\commitment" -Force |
+  │ New-Item -ItemType Directory -Path "sim-test\signals\specify\commitment" -Force |
   │ Out-Null; Write-Output "done"
   └ 2 lines...
 

@@ -1,12 +1,12 @@
 #!/bin/bash
 # github-test-batch.sh -- Test Signal .prompt.md files via copilot -p relay
-# Usage: {"script":"tools/github-test-batch.sh","args":["ai-code-review","G1"],"cwd":"C:/src/sim"}
+# Usage: {"script":"tools/github-test-batch.sh","args":["ai-code-review","G1"],"cwd":"sim"}
 # Second arg selects group: G1=discover, G2=specify+validate, G3=simulate+rhythm, G4=roles+tools, ALL=everything
 
 TOPIC="${1:-ai-code-review}"
 GROUP="${2:-ALL}"
 TODAY=$(date +%Y-%m-%d)
-REPO="C:/src/sim"
+REPO="sim"
 
 # Skill groups
 G1=(discover-competitors discover-competitors-alt discover-inertia discover-feasibility

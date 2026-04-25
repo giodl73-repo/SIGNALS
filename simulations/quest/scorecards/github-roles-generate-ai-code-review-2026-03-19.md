@@ -49,9 +49,9 @@ Now let me read the spec and roles-scan for full domain understanding.
 Now I have full domain context. Let me generate the role registry.
 
 ● Create role directory structure (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\.roles\roles\engineering" -Force | Out-Null;
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\.roles\roles\security" -Force | Out-Null;
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\.roles\roles\platform" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\.roles\roles\engineering" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\.roles\roles\security" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\.roles\roles\platform" -Force | Out-Null;
   │ Write-Output "Directories created"
   └ 2 lines...
 
@@ -83,7 +83,7 @@ Now I have full domain context. Let me generate the role registry.
   └ .roles\roles\platform\developer-experience-reviewer.md
 
 ● Create signal output directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\roles\generate" -Force | Out-Null;
+  │ New-Item -ItemType Directory -Path "sim-test\signals\roles\generate" -Force | Out-Null;
   │ Write-Output "done"
   └ 2 lines...
 

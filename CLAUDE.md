@@ -52,9 +52,9 @@ simulate/
 
 | Source | Path | What It Contributes |
 |--------|------|---------------------|
-| Craftworks (main) | `C:\src\craftworks` | Techniques 01-08 (scenarios, specs, skills, pipelines) |
-| Panel | `C:\src\panel` | Technique 09 (3-tier review, 51 reviewer personas, scoring) |
-| Agentverse | `C:\src\agentverse` | Technique 08 (59 research questions, multi-contributor) |
+| Craftworks (main) | `craftworks` | Techniques 01-08 (scenarios, specs, skills, pipelines) |
+| Panel | `panel` | Technique 09 (3-tier review, 51 reviewer personas, scoring) |
+| Agentverse | `agentverse` | Technique 08 (59 research questions, multi-contributor) |
 
 ## Cross-Cutting Patterns
 

@@ -66,9 +66,9 @@ Now let me check if the output directory exists and read the existing users revi
   └ L1:60 (59 lines read)
 
 ● Check/create validate/users directory (shell)
-  │ Test-Path "C:\src\sim-test\signals\validate\users" ; if (-not (Test-Path
-  │ "C:\src\sim-test\signals\validate\users")) { New-Item -ItemType Directory -Path
-  │ "C:\src\sim-test\signals\validate\users" -Force }
+  │ Test-Path "sim-test\signals\validate\users" ; if (-not (Test-Path
+  │ "sim-test\signals\validate\users")) { New-Item -ItemType Directory -Path
+  │ "sim-test\signals\validate\users" -Force }
   └ 6 lines...
 
 Good, I now have a comprehensive understanding of the target artifact (the spec) and the existing signals. Let me now write the validate-users output.
@@ -80,7 +80,7 @@ Artifact written. Let me verify the file:
 
 ● Verify output file (shell)
   │ $content = Get-Content
-  │ "C:\src\sim-test\signals\validate\users\ai-code-review-users-2026-03-19.md" -Raw; Write-Host
+  │ "sim-test\signals\validate\users\ai-code-review-users-2026-03-19.md" -Raw; Write-Host
   │ "Size: $($content.Length) chars, Lines: $(($content -split "`n").Count)"
   └ 2 lines...
 

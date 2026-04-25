@@ -18,40 +18,40 @@ The compiler — specs, passes, IR structures, cross-cutting concerns. The desig
 
 | File | Purpose |
 |------|---------|
-| `C:\src\craftworks\design\astro\scenarios\SIMULATION.md` | Astro simulation guide — wave structure, finding lifecycle, hand-compile rules |
-| `C:\src\craftworks\design\agent\scenarios\SIMULATION.md` | Craft simulation guide — pure functions, diagnostic arrays, coverage gates |
-| `C:\src\craftworks\design\flows\SCENARIOS.md` | Flows scenario master index — IR-to-output validation |
+| `craftworks\design\astro\scenarios\SIMULATION.md` | Astro simulation guide — wave structure, finding lifecycle, hand-compile rules |
+| `craftworks\design\agent\scenarios\SIMULATION.md` | Craft simulation guide — pure functions, diagnostic arrays, coverage gates |
+| `craftworks\design\flows\SCENARIOS.md` | Flows scenario master index — IR-to-output validation |
 
 ### Session Drivers (per-series)
 
 | File | Purpose |
 |------|---------|
-| `C:\src\craftworks\design\astro\scenarios\<series>\CLAUDE.md` | Per-series session driver — vocabulary, pipeline, progress, bugs |
-| `C:\src\craftworks\design\agent\scenarios\<series>\CLAUDE.md` | Craft series session drivers |
-| `C:\src\craftworks\design\flash\scenarios\CLAUDE.md` | Flash scenario session driver |
+| `craftworks\design\astro\scenarios\<series>\CLAUDE.md` | Per-series session driver — vocabulary, pipeline, progress, bugs |
+| `craftworks\design\agent\scenarios\<series>\CLAUDE.md` | Craft series session drivers |
+| `craftworks\design\flash\scenarios\CLAUDE.md` | Flash scenario session driver |
 
 ### Findings & Design Changes
 
 | File | Purpose |
 |------|---------|
-| `C:\src\craftworks\design\astro\DCR.md` | 120 design change records from scenario findings |
-| `C:\src\craftworks\design\astro\scenarios\<series>\FINDINGS.md` | Per-series findings (F-NN format) |
-| `C:\src\craftworks\design\agent\scenarios\FINDINGS.md` | Craft aggregate findings (356 across 7 themes) |
+| `craftworks\design\astro\DCR.md` | 120 design change records from scenario findings |
+| `craftworks\design\astro\scenarios\<series>\FINDINGS.md` | Per-series findings (F-NN format) |
+| `craftworks\design\agent\scenarios\FINDINGS.md` | Craft aggregate findings (356 across 7 themes) |
 
 ### Scenario Directories
 
 | Path | Content |
 |------|---------|
-| `C:\src\craftworks\design\astro\scenarios\` | 53 series directories |
-| `C:\src\craftworks\design\agent\scenarios\` | 31+ series directories |
-| `C:\src\craftworks\design\flows\scenarios\` | 7 series (cloud, cua, bind, trigger, pad, expr, pack) |
+| `craftworks\design\astro\scenarios\` | 53 series directories |
+| `craftworks\design\agent\scenarios\` | 31+ series directories |
+| `craftworks\design\flows\scenarios\` | 7 series (cloud, cua, bind, trigger, pad, expr, pack) |
 
 ### Tests (scenario → test mapping)
 
 | Path | Content |
 |------|---------|
-| `C:\src\craftworks\craft-cli\tests\astro\scenarios\` | Astro simulation tests |
-| `C:\src\craftworks\craft-cli\tests\craft-scenarios\` | Craft simulation tests |
+| `craftworks\craft-cli\tests\astro\scenarios\` | Astro simulation tests |
+| `craftworks\craft-cli\tests\craft-scenarios\` | Craft simulation tests |
 
 ## Pattern
 

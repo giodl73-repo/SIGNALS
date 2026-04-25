@@ -115,8 +115,8 @@ Now I have a thorough understanding of the artifacts. Let me read a bit more of 
   └ 3 files found
 
 ● Create contract output directory (shell)
-  │ if (!(Test-Path "C:\src\sim-test\signals\simulate\contract")) { New-Item -ItemType Directory
-  │ -Path "C:\src\sim-test\signals\simulate\contract" -Force }
+  │ if (!(Test-Path "sim-test\signals\simulate\contract")) { New-Item -ItemType Directory
+  │ -Path "sim-test\signals\simulate\contract" -Force }
   └ 4 lines...
 
 Now I have a comprehensive understanding of all three artifacts. Let me build the contract simulation artifact. The key sources are:
@@ -131,7 +131,7 @@ I need to perform a structured comparison using the GateTokenSchema, identify mi
   └ signals\simulate\contract\ai-code-review-contract-2026-03-19.md
 
 ● Verify artifact written (shell)
-  │ Get-Content "C:\src\sim-test\signals\simulate\contract\ai-code-review-contract-2026-03-19.md" |
+  │ Get-Content "sim-test\signals\simulate\contract\ai-code-review-contract-2026-03-19.md" |
   │ Select-Object -First 5
   └ 6 lines...
 

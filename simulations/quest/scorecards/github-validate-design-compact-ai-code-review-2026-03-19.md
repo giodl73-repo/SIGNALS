@@ -58,8 +58,8 @@ Now let me check the simulate contract for additional context, and the existing 
 I have a thorough understanding of the design. Let me create the validate-design artifact.
 
 ● Ensure output directory exists (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\validate\design" -Force | Out-Null;
-  │ Test-Path "C:\src\sim-test\signals\validate\design"
+  │ New-Item -ItemType Directory -Path "sim-test\signals\validate\design" -Force | Out-Null;
+  │ Test-Path "sim-test\signals\validate\design"
   └ 2 lines...
 
 ● Edit ai-code-review-design-2026-03-19.md +10 -5
@@ -80,7 +80,7 @@ I have a thorough understanding of the design. Let me create the validate-design
 The existing file has some cross-reference inconsistencies between my BLOCK 0 edit and the remaining blocks. Let me rewrite it completely:
 
 ● Remove existing file for clean rewrite (shell)
-  │ Remove-Item "C:\src\sim-test\signals\validate\design\ai-code-review-design-2026-03-19.md"
+  │ Remove-Item "sim-test\signals\validate\design\ai-code-review-design-2026-03-19.md"
   └ 1 line...
 
 ● Create ai-code-review-design-2026-03-19.md +229
@@ -90,7 +90,7 @@ Let me verify the artifact is well-formed:
 
 ● Verify artifact structure (shell)
   │ $content = Get-Content
-  │ "C:\src\sim-test\signals\validate\design\ai-code-review-design-2026-03-19.md" -Raw
+  │ "sim-test\signals\validate\design\ai-code-review-design-2026-03-19.md" -Raw
   │ Write-Host "File size: $($content.Length) chars"
   │ Write-Host "Lines: $(($content -split "`n").Count)"
   │ Write-Host ""…
@@ -98,7 +98,7 @@ Let me verify the artifact is well-formed:
 
 ● Verify artifact counts (shell)
   │ $content = Get-Content
-  │ "C:\src\sim-test\signals\validate\design\ai-code-review-design-2026-03-19.md" -Raw
+  │ "sim-test\signals\validate\design\ai-code-review-design-2026-03-19.md" -Raw
   │ Write-Host "File size: $($content.Length) chars, Lines: $(($content -split "`n").Count)"
   │ $p1 = ([regex]::Matches($content, '\| P1 \|')).Count
   │ $p2 = ([regex]::Matches($content, '\| P2 \|')).Count…

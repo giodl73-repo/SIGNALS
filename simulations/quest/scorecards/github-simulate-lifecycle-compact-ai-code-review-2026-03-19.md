@@ -40,7 +40,7 @@ Let me read key context signals to ground the simulation properly.
 Now I have full domain context. Let me build the lifecycle simulation artifact.
 
 ● Check output directory exists (shell)
-  │ Test-Path "C:\src\sim-test\signals\simulate\lifecycle"
+  │ Test-Path "sim-test\signals\simulate\lifecycle"
   └ 2 lines...
 
 ● Create ai-code-review-lifecycle-2026-03-19-v2.md +306

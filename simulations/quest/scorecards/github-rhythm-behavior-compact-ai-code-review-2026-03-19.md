@@ -106,7 +106,7 @@ Now let me read the remaining key signals and the existing behavior artifact to 
 Now I have comprehensive context from all the source signals. Let me write the new iteration of the rhythm-behavior artifact.
 
 ● Check output directory exists (shell)
-  │ Test-Path "C:\src\sim-test\signals\rhythm\behavior"
+  │ Test-Path "sim-test\signals\rhythm\behavior"
   └ 2 lines...
 
 The existing artifact is at `ai-code-review-behavior-2026-03-19.md`. Since this is a new iteration run, I'll overwrite with the updated artifact.● Request failed due to a transient API error. Retrying...
@@ -117,7 +117,7 @@ The existing artifact will be overwritten. Let me compose and write the new iter
   └ signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md
 
 ● Verify artifact header (shell)
-  │ Get-Content "C:\src\sim-test\signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md" |
+  │ Get-Content "sim-test\signals\rhythm\behavior\ai-code-review-behavior-2026-03-19.md" |
   │ Select-Object -First 15
   └ 16 lines...
 

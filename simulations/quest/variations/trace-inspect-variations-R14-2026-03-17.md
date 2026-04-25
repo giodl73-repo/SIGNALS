@@ -1,4 +1,4 @@
-`C:\src\sim\simulations\quest\golden\trace-inspect-variate-R14-2026-03-17.md`
+`sim\simulations\quest\golden\trace-inspect-variate-R14-2026-03-17.md`
 
 ---
 

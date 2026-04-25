@@ -1,4 +1,4 @@
-Written to `C:/src/sim/simulations/quest/golden/program-plan-variate-R3-2026-03-16.md`.
+Written to `sim/simulations/quest/golden/program-plan-variate-R3-2026-03-16.md`.
 
 ---
 

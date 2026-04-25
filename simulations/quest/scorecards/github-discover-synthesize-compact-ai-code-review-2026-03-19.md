@@ -53,12 +53,12 @@ Now let me read the remaining discover signals for completeness.
 Now I have all the signal data. Let me create the synthesis artifact.
 
 ● Create synthesize output directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\synthesize" -Force |
-  │ Out-Null; Test-Path "C:\src\sim-test\signals\discover\synthesize"
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\synthesize" -Force |
+  │ Out-Null; Test-Path "sim-test\signals\discover\synthesize"
   └ 2 lines...
 
 ● Check if file already exists (shell)
-  │ Test-Path "C:\src\sim-test\signals\discover\synthesize\ai-code-review-synthesize-2026-03-19.md"
+  │ Test-Path "sim-test\signals\discover\synthesize\ai-code-review-synthesize-2026-03-19.md"
   └ 2 lines...
 
 ● Read ai-code-review-synthesize-2026-03-19.md

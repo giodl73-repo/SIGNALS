@@ -102,8 +102,8 @@ Let me read the remaining large files in sections.
   └ L100:200 (101 lines read)
 
 ● Create story signal directory (shell)
-  │ if (-not (Test-Path "C:\src\sim-test\signals\rhythm\story")) { New-Item -Path
-  │ "C:\src\sim-test\signals\rhythm\story" -ItemType Directory -Force }
+  │ if (-not (Test-Path "sim-test\signals\rhythm\story")) { New-Item -Path
+  │ "sim-test\signals\rhythm\story" -ItemType Directory -Force }
   └ 4 lines...
 
 I have all 16 signals fully ingested. Now composing the narrative synthesis.
@@ -112,7 +112,7 @@ I have all 16 signals fully ingested. Now composing the narrative synthesis.
   └ signals\rhythm\story\ai-code-review-story-2026-03-19.md
 
 ● Verify artifact written (shell)
-  │ Get-ChildItem "C:\src\sim-test\signals\rhythm\story\ai-code-review-story-2026-03-19.md" |
+  │ Get-ChildItem "sim-test\signals\rhythm\story\ai-code-review-story-2026-03-19.md" |
   │ Select-Object Name, Length
   └ 4 lines...
 

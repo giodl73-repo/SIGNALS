@@ -14,7 +14,7 @@
   └ 1 file found
 
 ● List all signal artifacts (shell)
-  │ Get-ChildItem -Path "C:\src\sim-test\signals" -Recurse -Name | Select-Object -First 30
+  │ Get-ChildItem -Path "sim-test\signals" -Recurse -Name | Select-Object -First 30
   └ 31 lines...
 
 Good — I can see prior signals exist for this topic. Let me read the existing artifacts to build on them, then execute the full campaign.
@@ -38,9 +38,9 @@ Good — I can see prior signals exist for this topic. Let me read the existing 
 Now I have the existing artifacts. I need to generate the missing pieces (risk + hypothesis) and the final synthesis. Let me check existing directories and create what's needed.
 
 ● Create missing signal directories (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\risk" -Force; New-Item
-  │ -ItemType Directory -Path "C:\src\sim-test\signals\discover\hypothesis" -Force; New-Item
-  │ -ItemType Directory -Path "C:\src\sim-test\signals\rhythm\decide" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\risk" -Force; New-Item
+  │ -ItemType Directory -Path "sim-test\signals\discover\hypothesis" -Force; New-Item
+  │ -ItemType Directory -Path "sim-test\signals\rhythm\decide" -Force
   └ 7 lines...
 
 Now I'll generate all three remaining artifacts in parallel.
@@ -59,7 +59,7 @@ Now I'll create the final synthesis — the decision brief that ties all 6 signa
 Let me verify all artifacts are in place.
 
 ● Verify all campaign artifacts (shell)
-  │ Get-ChildItem -Path "C:\src\sim-test\signals" -Recurse -File -Name | Sort-Object
+  │ Get-ChildItem -Path "sim-test\signals" -Recurse -File -Name | Sort-Object
   └ 24 lines...
 
 All campaign artifacts are in place. Here's the summary:

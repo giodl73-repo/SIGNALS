@@ -58,7 +58,7 @@ Let me read the spec (target artifact) and existing context to inform the review
 Now I have the full spec. Let me write the validate-users artifact.
 
 ● Check output directory exists (shell)
-  │ Test-Path "C:\src\sim-test\signals\validate\users" | Write-Output
+  │ Test-Path "sim-test\signals\validate\users" | Write-Output
   └ 2 lines...
 
 ● Edit ai-code-review-users-2026-03-19.md +1

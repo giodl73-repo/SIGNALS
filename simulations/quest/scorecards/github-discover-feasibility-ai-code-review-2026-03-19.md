@@ -72,7 +72,7 @@ Now let me read the spec and remaining signals for technical details.
 Now I have comprehensive context from 5 prior signals. Let me create the feasibility assessment.
 
 ● Create feasibility signal directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\feasibility" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\feasibility" -Force
   └ 4 lines...
 
 ● Create ai-code-review-feasibility-2026-03-19.md +158

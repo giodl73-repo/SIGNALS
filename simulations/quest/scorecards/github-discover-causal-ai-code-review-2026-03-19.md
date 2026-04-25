@@ -57,7 +57,7 @@ Now let me read the proposal and spec to identify the core hypothesis being test
   └ L1:80 (79 lines read)
 
 ● Create causal signals directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\discover\causal" -Force
+  │ New-Item -ItemType Directory -Path "sim-test\signals\discover\causal" -Force
   └ 4 lines...
 
 Now I'll construct the full causal analysis based on all prior signals.

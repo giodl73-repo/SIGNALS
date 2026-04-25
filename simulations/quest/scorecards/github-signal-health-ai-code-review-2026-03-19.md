@@ -2,12 +2,12 @@
   └ 13 files found
 
 ● Check CLAUDE.md and signals/ (shell)
-  │ Test-Path "C:\src\sim-test\CLAUDE.md" ; Test-Path "C:\src\sim-test\signals"
+  │ Test-Path "sim-test\CLAUDE.md" ; Test-Path "sim-test\signals"
   └ 3 lines...
 
 ● Check skills directory (shell)
-  │ Test-Path "C:\src\sim-test\.claude\skills" ; if (Test-Path "C:\src\sim-test\.claude\skills") {
-  │ Get-ChildItem "C:\src\sim-test\.claude\skills" -Directory | Measure-Object | Select-Object
+  │ Test-Path "sim-test\.claude\skills" ; if (Test-Path "sim-test\.claude\skills") {
+  │ Get-ChildItem "sim-test\.claude\skills" -Directory | Measure-Object | Select-Object
   │ -ExpandProperty Count } else { "no-skills-dir" }
   └ 3 lines...
 
@@ -16,13 +16,13 @@
 
 ● List skill directories (shell)
   │ # Count total skill directories
-  │ Get-ChildItem "C:\src\sim-test\.claude\skills" -Directory | Select-Object -ExpandProperty Name |
+  │ Get-ChildItem "sim-test\.claude\skills" -Directory | Select-Object -ExpandProperty Name |
   │ Sort-Object
   └ 286 lines...
 
 ● Inventory artifacts per namespace (shell)
   │ # Count .md files per namespace and get dates
-  │ Get-ChildItem "C:\src\sim-test\signals" -Directory | ForEach-Object {
+  │ Get-ChildItem "sim-test\signals" -Directory | ForEach-Object {
   │ $ns = $_.Name
   │ $files = Get-ChildItem $_.FullName -Filter "*.md" -ErrorAction SilentlyContinue
   │ $count = ($files | Measure-Object).Count…
@@ -30,13 +30,13 @@
 
 ● Count all signal artifacts recursively (shell)
   │ # Check for any .md files deeper in signals/ (maybe nested)
-  │ Get-ChildItem "C:\src\sim-test\signals" -Recurse -Filter "*.md" | Measure-Object | Select-Object
+  │ Get-ChildItem "sim-test\signals" -Recurse -Filter "*.md" | Measure-Object | Select-Object
   │ -ExpandProperty Count
   └ 2 lines...
 
 ● Count skill variants (shell)
   │ # Count unique skill names (excluding .t3 variants)
-  │ $all = Get-ChildItem "C:\src\sim-test\.claude\skills" -Directory | Select-Object
+  │ $all = Get-ChildItem "sim-test\.claude\skills" -Directory | Select-Object
   │ -ExpandProperty Name
   │ $base = $all | Where-Object { $_ -notmatch '\.t3$' }
   │ "Total skill dirs: $($all.Count)"…
@@ -44,7 +44,7 @@
 
 ● List all signal artifacts with dates (shell)
   │ # Show the 38 artifacts with their namespaces
-  │ Get-ChildItem "C:\src\sim-test\signals" -Recurse -Filter "*.md" | ForEach-Object {
+  │ Get-ChildItem "sim-test\signals" -Recurse -Filter "*.md" | ForEach-Object {
   │ $ns = $_.Directory.Name
   │ $parent = if ($_.Directory.Parent.Name -eq "signals") { $ns } else {
   │ "$($_.Directory.Parent.Name)/$ns" }…

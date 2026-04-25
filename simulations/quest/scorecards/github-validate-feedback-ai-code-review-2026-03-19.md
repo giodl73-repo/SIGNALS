@@ -41,7 +41,7 @@ Now let me read the full spec that the personas will review:
 Now I have the full spec. Let me create the output directory and write the feedback artifact.
 
 ● Create feedback output directory (shell)
-  │ New-Item -ItemType Directory -Path "C:\src\sim-test\signals\validate\feedback" -Force |
+  │ New-Item -ItemType Directory -Path "sim-test\signals\validate\feedback" -Force |
   │ Out-Null; Write-Output "Created"
   └ 2 lines...
 
