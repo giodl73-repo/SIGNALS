@@ -4,6 +4,10 @@
 
 62 skills across 9 namespaces, organized around the loop from *is this worth building?* to *what will users say after we ship?*
 
+**Review roles:** This repo uses
+[ROLES](https://github.com/giodl73-repo/ROLES), the `.roles` convention for
+repository-local review panels.
+
 ## Install
 
 ```bash
