@@ -1,0 +1,14 @@
+[meta]
+name = "SIGNALS"
+description = "Feature decision intelligence"
+
+[files]
+root = true
+include = ["**/*.md"]
+
+[[compile]]
+source_dir = "src/guides"
+output_dir = "docs/guides"
+
+[markdown]
+enabled = true

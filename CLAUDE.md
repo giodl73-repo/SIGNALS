@@ -102,3 +102,5 @@ Use /tools-coverage <feature> to see coverage gaps.
 Use /signal-health to check workspace health.
 
 The primary competitor is always inertia.
+
+
