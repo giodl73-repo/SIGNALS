@@ -93,6 +93,16 @@ Commands: `/signal:discover competitors`, `/signal:specify spec`, `/signal:valid
 - **[docs/ACHIEVEMENTS.md](docs/ACHIEVEMENTS.md)** — 38 achievements. The most important: Falsified.
 - **[install/README.md](install/README.md)** — which binding to choose
 
+## Maintenance ownership
+
+- **Active owner:** the `giodl73-repo/SIGNALS` repository maintainer.
+- **2026-08-16 reduction:** removed 94 unreferenced `test*` demo scratch files
+  (6.43 MiB), including transient audio, raw captures, rendered clips, and
+  frame sequences.
+- **Boundary:** the named `demo-0-install` audio, raw terminal capture, and
+  final videos remain tracked product evidence. Generic test renders are local
+  build state and must not be recommitted.
+
 ## Issues
 
 - **GitHub Issues**: [github.com/giodl73-repo/SIGNALS/issues](https://github.com/giodl73-repo/SIGNALS/issues)

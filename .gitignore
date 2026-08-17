@@ -24,6 +24,11 @@ from-contract/
 from-intent/
 C:/
 
+# Demo scratch renders; named release demos remain tracked.
+demos/audio/test/
+demos/final/test*.mp4
+demos/raw/test*
+
 # Local/editor state (not public)
 .claude/settings.local.json
 .claude/scheduled_tasks.lock
@@ -45,4 +50,3 @@ venv/
 # Env files with potential secrets
 .env
 .env.local
-
