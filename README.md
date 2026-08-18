@@ -10,6 +10,11 @@ repository-local review panels.
 
 ## Install
 
+> **Packaging status:** the installers consume generated assets under
+> `release/`, which are not tracked in this source repository. Until a release
+> bundle is published and accepted, the commands below describe the intended
+> distribution path rather than a clean-clone install contract.
+
 ```bash
 git clone https://github.com/giodl73-repo/SIGNALS
 cd your-project
@@ -26,6 +31,16 @@ Adds Signal context to `CLAUDE.md` automatically. First commands:
 ```
 
 Four install variants are available — flat (default), bare, grouped, and a GitHub Copilot binding. See [`install/README.md`](install/README.md) for which to choose.
+
+### Portfolio reuse posture
+
+SIGNALS is a specialist tool, not a code-library foundation, and is not yet a
+distributable portfolio dependency. Intended reuse is limited to
+installer-managed skill copies from a published release bundle and a packaged
+Claude Code plugin once its manifest ships. Independently maintained corpus
+copies and code-manifest dependencies are unsupported. Adopters maintain and
+are responsible for their generated artifacts; SIGNALS maintains skill
+behavior, binding layouts, and installer compatibility.
 
 ---
 
@@ -75,7 +90,10 @@ Use `--output <path>` to write anywhere flat:
 
 ---
 
-## Claude Code plugin
+## Claude Code plugin (planned packaging)
+
+The source repository does not currently track a `.claude-plugin` manifest.
+Once a package is published, the intended commands are:
 
 ```bash
 claude plugin marketplace add https://github.com/giodl73-repo/SIGNALS
