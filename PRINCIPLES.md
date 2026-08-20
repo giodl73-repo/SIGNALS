@@ -183,6 +183,10 @@ Skills also support `--json` to produce a structured sidecar `{topic}-{item}-{da
 alongside the Markdown artifact. The JSON schema is documented in the skill. Enables notebook
 integration, dashboard queries, and CI/CD consumption without parsing Markdown.
 
+A retained real sidecar is available at
+`experiments/S2-04-floor-variation/results/floor-20-run3-2026-03-15.json`.
+It preserves the corresponding artifact's frontmatter and experiment context.
+
 ---
 
 ## P-10: Skills Are Binding-Agnostic
