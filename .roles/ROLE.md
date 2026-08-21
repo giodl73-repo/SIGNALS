@@ -52,6 +52,32 @@ Signal exists because teams build things that nobody needed. The workaround was 
 
 Every namespace is an evidence-gathering domain. Every skill produces a dated artifact. The topic tells you when coverage is sufficient. You decide whether to commit.
 
+## Operating Panel
+
+Every change uses four active concerns: a **Signal Contract Steward** for meaning and uncertainty,
+an **Evidence and Calibration Reviewer** for thresholds and claims, an **Integration Boundary
+Reviewer** for namespace handoffs, and an **Operator and Misuse Advocate** for visible failures
+and downstream misuse.
+
+The nested namespace role files are a specialist catalog. Select one or two specialists from the
+namespace being changed and, for cross-namespace work, one from each affected boundary. Record
+the selected paths and routing reasons in the review artifact. Never activate the full catalog.
+
+| Pulls | Against | Because |
+|---|---|---|
+| Signal Contract Steward | Evidence and Calibration Reviewer | A crisp contract can overstate what noisy evidence supports. |
+| Integration Boundary Reviewer | Signal Contract Steward | Host needs can pressure the core signal into transport-specific semantics. |
+| Operator and Misuse Advocate | Evidence and Calibration Reviewer | Honest warnings or abstention can reduce apparent coverage while exposing uncertainty. |
+
+Unsupported confidence and ambiguous contracts block first. Resolve integration disputes with a
+boundary fixture and misuse disputes with a documented failure or abstention example. Preserve
+unresolved dissent instead of averaging incompatible interpretations.
+
+New specialists require a unique namespace or change type, distinct review questions, and a named
+routing condition. Review the catalog annually: merge duplicates, repair stale paths, and retire
+roles with no distinct scope or no use across two review cycles while preserving their history.
+Namespace semantics remain locally owned; this index owns only routing and activation.
+
 ## The Core Invariant
 
 The primary competitor is always doing nothing. It is scored threat HIGH by default. It is assessed before any named alternative. It appears in every namespace, not just discover. An inertia assessment in discover is the entry cost; an inertia-first baseline in simulate, an inertia-advocate in govern, and an inertia-honest narrative are how the invariant propagates across the full investigation.
